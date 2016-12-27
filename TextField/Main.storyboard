@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hs8-GW-Mvw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--More Info-->
+        <scene sceneID="tbt-KE-e25">
+            <objects>
+                <tableViewController id="Ezx-Lo-7mX" customClass="TutorSignUpViewControllerOne" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UQN-Ik-6HD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="0.4379126320422535" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="0.79935079225352113" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JuP-Ut-oE6">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JuP-Ut-oE6" id="ZYN-Rb-q9Y">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ezx-Lo-7mX" id="fML-Ga-Mcq"/>
+                            <outlet property="delegate" destination="Ezx-Lo-7mX" id="e9j-N0-xIX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="More Info" id="rse-7o-3yg"/>
+                    <connections>
+                        <segue destination="Hs8-GW-Mvw" kind="show" identifier="toSecondVC" id="ha2-mk-ba7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h24-fb-nn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960.79999999999995" y="1220.2398800599701"/>
+        </scene>
+        <!--Tutor-->
+        <scene sceneID="EQF-AC-2xd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tutor" id="X1N-CK-Yff" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5mP-3f-mgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-889" y="1807"/>
+        </scene>
+        <!--Tutor Sign Up View Controller Two-->
+        <scene sceneID="Ivg-fc-qSQ">
+            <objects>
+                <tableViewController id="2XP-RT-pb8" customClass="TutorSignUpViewControllerTwo" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="I59-LK-GId">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bpe-fB-8Oj">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bpe-fB-8Oj" id="AR5-yK-ZsR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2XP-RT-pb8" id="bEA-bh-KuA"/>
+                            <outlet property="delegate" destination="2XP-RT-pb8" id="6bd-G4-Akg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="eo3-wV-9Qe"/>
+                    <connections>
+                        <segue destination="X1N-CK-Yff" kind="show" identifier="toPagingMenuVC" id="SXW-We-vip"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xj4-KV-VtS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="935.20000000000005" y="1906.5967016491757"/>
+        </scene>
+        <!--Tutor Or Tutee View Controller-->
+        <scene sceneID="2OA-Hw-Woh">
+            <objects>
+                <viewController id="f1O-17-5Nh" customClass="TutorOrTuteeViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MeE-ad-Wbd"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZPH-QJ-GJX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XYM-7p-E6M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mn-N7-jTL" customClass="SpringButton" customModule="Spring">
+                                <rect key="frame" x="164" y="39" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Student">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="studentTapped:" destination="f1O-17-5Nh" eventType="touchUpInside" id="X2U-gT-Tfr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ys-69-rZ9" customClass="SpringButton" customModule="Spring">
+                                <rect key="frame" x="164" y="258" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Tutor">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tutorTapped:" destination="f1O-17-5Nh" eventType="touchUpInside" id="bbR-Sk-VML"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="ballView" destination="6mn-N7-jTL" id="TQ7-x4-0Ct"/>
+                        <outlet property="ballView2" destination="9ys-69-rZ9" id="mEF-yN-G1I"/>
+                        <segue destination="zlZ-Tz-VvW" kind="show" identifier="toTuteeSignUpVC" id="GTo-4u-K6u"/>
+                        <segue destination="r5a-IX-An8" kind="show" identifier="toTutorSignUpVC" id="JkN-MB-NsO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gHJ-44-Zss" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784.8" y="900.89955022488766"/>
+        </scene>
+        <!--TuteeVC-->
+        <scene sceneID="E0p-wa-5BI">
+            <objects>
+                <viewController title="TuteeVC" id="zlZ-Tz-VvW" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RIk-py-ltH"/>
+                        <viewControllerLayoutGuide type="bottom" id="wHd-wa-RqD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e6N-Gc-bDJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oXh-dq-Zli" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2448.8000000000002" y="1137.481259370315"/>
+        </scene>
+        <!--S-->
+        <scene sceneID="cG0-wP-MjU">
+            <objects>
+                <viewController storyboardIdentifier="signupVC" title="S" id="f0J-JI-oTr" customClass="SignUpViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GfZ-H1-YzK"/>
+                        <viewControllerLayoutGuide type="bottom" id="s31-lQ-90V"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RTu-MD-cWI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome" id="zUo-dI-Ll5"/>
+                    <connections>
+                        <segue destination="f1O-17-5Nh" kind="show" identifier="goToTutorOrTutee" id="OLB-7F-WMk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pEX-Hq-NAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002" y="178"/>
+        </scene>
+        <!--Welcome-->
+        <scene sceneID="yMh-AR-mBf">
+            <objects>
+                <viewController storyboardIdentifier="loginVC" id="jKf-CE-eNp" customClass="LoginViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wuX-h5-GPh"/>
+                        <viewControllerLayoutGuide type="bottom" id="PgL-oo-hZ6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bdz-NB-H2e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome" id="xwO-Sm-AOc"/>
+                    <connections>
+                        <segue destination="f1O-17-5Nh" kind="show" identifier="goToTutorOrTutee" id="e38-Qo-rrt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R0P-Lz-3eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2303" y="178"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5l0-M8-h6n">
+            <objects>
+                <navigationController storyboardIdentifier="loginNC" automaticallyAdjustsScrollViewInsets="NO" id="1kV-iB-SjC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TX5-wN-JVX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jKf-CE-eNp" kind="relationship" relationship="rootViewController" id="CEx-WS-39l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zxE-ul-4mc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1634" y="178"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TcH-Zn-r8C">
+            <objects>
+                <navigationController storyboardIdentifier="signupNC" automaticallyAdjustsScrollViewInsets="NO" id="eDQ-NE-3k0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maU-b1-d8V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f0J-JI-oTr" kind="relationship" relationship="rootViewController" id="Iv9-DZ-ron"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ad4-UE-B7n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="178"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EKB-Xj-Ejl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r5a-IX-An8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ks-9t-bVe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ezx-Lo-7mX" kind="relationship" relationship="rootViewController" id="fdd-ML-l2N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wIf-Es-uSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21.600000000000001" y="1220.2398800599701"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Sp-g1-goT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hs8-GW-Mvw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XuY-kb-cq3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2XP-RT-pb8" kind="relationship" relationship="rootViewController" id="thl-r0-esG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGe-l9-fLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4" y="1906.5967016491757"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="OLB-7F-WMk"/>
+    </inferredMetricsTieBreakers>
+</document>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rmb-qr-dQ6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Storyboard Reference-->
+        <scene sceneID="Glo-La-UPg">
+            <objects>
+                <viewControllerPlaceholder id="D2A-iq-uJb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4yE-sV-dHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="825" y="677"/>
+        </scene>
+        <!--tutorPagingMenuVC-->
+        <scene sceneID="MDr-TF-kMT">
+            <objects>
+                <viewController storyboardIdentifier="tutorPagingMenuVC" title="tutorPagingMenuVC" id="Ed7-fB-gXO" customClass="PagingMenuViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Sx-YY-ElH"/>
+                        <viewControllerLayoutGuide type="bottom" id="ySS-Gi-Zeq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2rs-dQ-ocy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HTK-m4-zgN">
+                                <rect key="frame" x="-27" y="28" width="375" height="580"/>
+                                <connections>
+                                    <segue destination="gr2-Y4-ROR" kind="embed" id="UvI-QQ-oUT"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HTK-m4-zgN" firstAttribute="leading" secondItem="2rs-dQ-ocy" secondAttribute="leading" id="Afw-TS-9Uh"/>
+                            <constraint firstItem="ySS-Gi-Zeq" firstAttribute="top" secondItem="HTK-m4-zgN" secondAttribute="bottom" id="f1m-d9-GUS"/>
+                            <constraint firstItem="HTK-m4-zgN" firstAttribute="top" secondItem="0Sx-YY-ElH" secondAttribute="bottom" id="oJq-sn-hBO"/>
+                            <constraint firstAttribute="trailing" secondItem="HTK-m4-zgN" secondAttribute="trailing" id="um3-ZF-uuG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xdf-NT-v0z"/>
+                    <connections>
+                        <segue destination="D2A-iq-uJb" kind="presentation" identifier="toAboutThisApp" modalTransitionStyle="flipHorizontal" id="ZnZ-IK-W4z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VRW-LB-2l5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="259.52023988005999"/>
+        </scene>
+        <!--Paging Menu Controller-->
+        <scene sceneID="4JT-XW-eYb">
+            <objects>
+                <viewController id="gr2-Y4-ROR" customClass="PagingMenuController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mEN-aa-1Nt"/>
+                        <viewControllerLayoutGuide type="bottom" id="oZd-uU-dMD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MXS-dH-EaC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBK-rb-gNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2077.5999999999999" y="229.38530734632684"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ojl-PB-xeH">
+            <objects>
+                <navigationController storyboardIdentifier="tutorPagingMenuNC" automaticallyAdjustsScrollViewInsets="NO" id="rmb-qr-dQ6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="woj-JG-6mC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ed7-fB-gXO" kind="relationship" relationship="rootViewController" id="MgR-gK-YQ1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IwN-W6-VKU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88.799999999999997" y="259.52023988005999"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DjO-4p-UF1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Paging Menu View Controller-->
+        <scene sceneID="PQc-Op-470">
+            <objects>
+                <viewController storyboardIdentifier="tuteePagingMenuVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vdP-cg-t3Y" customClass="PagingMenuViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uy6-cR-KLF"/>
+                        <viewControllerLayoutGuide type="bottom" id="vOw-56-O5z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CCc-gp-J4F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EQb-c5-Tpf">
+                                <rect key="frame" x="-27" y="28" width="375" height="580"/>
+                                <connections>
+                                    <segue destination="69j-bK-dUQ" kind="embed" id="T4g-nv-F4y"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EQb-c5-Tpf" firstAttribute="leading" secondItem="CCc-gp-J4F" secondAttribute="leading" id="Dij-mp-BkO"/>
+                            <constraint firstAttribute="trailing" secondItem="EQb-c5-Tpf" secondAttribute="trailing" id="KlZ-PK-1FK"/>
+                            <constraint firstItem="EQb-c5-Tpf" firstAttribute="top" secondItem="Uy6-cR-KLF" secondAttribute="bottom" id="skX-47-fCQ"/>
+                            <constraint firstItem="vOw-56-O5z" firstAttribute="top" secondItem="EQb-c5-Tpf" secondAttribute="bottom" id="u7u-iu-H70"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ybk-MD-9pw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3do-uY-47R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028" y="259.52023988005999"/>
+        </scene>
+        <!--Paging Menu Controller-->
+        <scene sceneID="8cD-8U-Sk6">
+            <objects>
+                <viewController id="69j-bK-dUQ" customClass="PagingMenuController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pkm-mw-KMB"/>
+                        <viewControllerLayoutGuide type="bottom" id="V25-xp-Qo7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p0w-u0-eAe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="580"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vwf-NG-f8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784.8" y="277.9610194902549"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XiG-xe-FGY">
+            <objects>
+                <navigationController storyboardIdentifier="tuteePagingMenuNC" automaticallyAdjustsScrollViewInsets="NO" id="DjO-4p-UF1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sv3-Ea-C2H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vdP-cg-t3Y" kind="relationship" relationship="rootViewController" id="4w1-8g-eK1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LoN-lB-RYd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88.799999999999997" y="259.52023988005999"/>
+        </scene>
+    </scenes>
+</document>
