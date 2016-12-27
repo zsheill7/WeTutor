@@ -42,7 +42,7 @@ public class WeekDayCell : Cell<Set<WeekDay>>, CellType {
     @IBOutlet var thursdayButton: UIButton!
     @IBOutlet var fridayButton: UIButton!
     @IBOutlet var saturdayButton: UIButton!
-        
+        //hi
     open override func setup() {
         height = { 60 }
         row.title = nil
