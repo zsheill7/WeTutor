@@ -29,6 +29,10 @@
 		C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC41E12F8DE007D24F9 /* ImagePickerController.swift */; };
 		C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */; };
 		C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */; };
+		C86BCCEA1E1371AF007D24F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE51E1371AF007D24F9 /* Channel.swift */; };
+		C86BCCEC1E1371AF007D24F9 /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE71E1371AF007D24F9 /* ChannelListViewController.swift */; };
+		C86BCCED1E1371AF007D24F9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE81E1371AF007D24F9 /* ChatViewController.swift */; };
+		C86BCCEE1E1371AF007D24F9 /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE91E1371AF007D24F9 /* CreateChannelCell.swift */; };
 		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
 		C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984841E0C763F003EB7A1 /* PagingMenuController.swift */; };
 		C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984851E0C763F003EB7A1 /* MenuView.swift */; };
@@ -54,7 +58,6 @@
 		C88498C41E0B8A5D000C4675 /* TutorSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C31E0B8A5C000C4675 /* TutorSignUpViewController.swift */; };
 		C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */; };
 		C88FFC811E0DEFAC00E7972C /* TuteeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */; };
-		C88FFC831E0DEFD500E7972C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88FFC821E0DEFD500E7972C /* ChatViewController.swift */; };
 		C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */; };
 		C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88321E0DB144003775C2 /* FSCalendar.m */; };
 		C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88331E0DB144003775C2 /* FSCalendar+Deprecated.m */; };
@@ -118,6 +121,10 @@
 		C86BCCC41E12F8DE007D24F9 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatLabelTextField.swift; path = TextField/FloatLabelTextField.swift; sourceTree = SOURCE_ROOT; };
+		C86BCCE51E1371AF007D24F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/Channel.swift"; sourceTree = "<group>"; };
+		C86BCCE71E1371AF007D24F9 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
+		C86BCCE81E1371AF007D24F9 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
+		C86BCCE91E1371AF007D24F9 /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateChannelCell.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/CreateChannelCell.swift"; sourceTree = "<group>"; };
 		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
 		C87984841E0C763F003EB7A1 /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
 		C87984851E0C763F003EB7A1 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -143,7 +150,6 @@
 		C88498C31E0B8A5C000C4675 /* TutorSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewController.swift; sourceTree = "<group>"; };
 		C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaSectionHeader.xib; sourceTree = "<group>"; };
 		C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeTableViewController.swift; sourceTree = "<group>"; };
-		C88FFC821E0DEFD500E7972C /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
 		C8EE882E1E0DB08C003775C2 /* TutorMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TutorMe-Bridging-Header.h"; sourceTree = "<group>"; };
 		C8EE88311E0DB144003775C2 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendar.h; path = FSCalendar/FSCalendar.h; sourceTree = "<group>"; };
@@ -229,6 +235,7 @@
 			children = (
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
 				C8EE882D1E0DB050003775C2 /* Calendar */,
+				C86BCCE41E136E58007D24F9 /* Chat */,
 				C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */,
 				C87984AD1E0C7F4C003EB7A1 /* Xib Files */,
 				C87984A81E0C76DD003EB7A1 /* Paging Menu View Controller */,
@@ -239,7 +246,6 @@
 				96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */,
 				C82800E01E0F4F7600329B7D /* Tutee.storyboard */,
 				C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */,
-				C88FFC821E0DEFD500E7972C /* ChatViewController.swift */,
 				C8EE88621E0DB256003775C2 /* CalendarViewController.swift */,
 				96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */,
 				C82800DF1E0EFDEB00329B7D /* Extensions */,
@@ -316,6 +322,18 @@
 				C86BCCBB1E12F6CA007D24F9 /* SwiftForms.h */,
 			);
 			name = SwiftForms;
+			sourceTree = "<group>";
+		};
+		C86BCCE41E136E58007D24F9 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				C86BCCE51E1371AF007D24F9 /* Channel.swift */,
+				C86BCCE71E1371AF007D24F9 /* ChannelListViewController.swift */,
+				C86BCCE81E1371AF007D24F9 /* ChatViewController.swift */,
+				C86BCCE91E1371AF007D24F9 /* CreateChannelCell.swift */,
+			);
+			name = Chat;
+			path = ../../../Eureka/Example;
 			sourceTree = "<group>";
 		};
 		C87984411E0B9760003EB7A1 /* ImageRow */ = {
@@ -586,9 +604,9 @@
 			files = (
 				96090AEA1D9CDD2E00709CA6 /* SignUpViewController.swift in Sources */,
 				C88FFC811E0DEFAC00E7972C /* TuteeTableViewController.swift in Sources */,
-				C88FFC831E0DEFD500E7972C /* ChatViewController.swift in Sources */,
 				C82800DE1E0EFDAF00329B7D /* UIImageExtensions.swift in Sources */,
 				C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */,
+				C86BCCEA1E1371AF007D24F9 /* Channel.swift in Sources */,
 				C8EE88591E0DB144003775C2 /* FSCalendarConstants.m in Sources */,
 				C8EE88541E0DB144003775C2 /* FSCalendarAppearance.m in Sources */,
 				C8EE88581E0DB144003775C2 /* FSCalendarCollectionViewLayout.m in Sources */,
@@ -603,6 +621,7 @@
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewController.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
+				C86BCCEE1E1371AF007D24F9 /* CreateChannelCell.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,
 				C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */,
@@ -614,6 +633,7 @@
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
 				C8EE88531E0DB144003775C2 /* FSCalendarAnimator.m in Sources */,
+				C86BCCEC1E1371AF007D24F9 /* ChannelListViewController.swift in Sources */,
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C86BCCBF1E12F6CA007D24F9 /* FormErrorType.swift in Sources */,
 				C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */,
@@ -634,6 +654,7 @@
 				C8EE88551E0DB144003775C2 /* FSCalendarCalculator.m in Sources */,
 				C87984A51E0C76A5003EB7A1 /* MenuViewCustomizable.swift in Sources */,
 				C87984961E0C763F003EB7A1 /* PagingViewController.swift in Sources */,
+				C86BCCED1E1371AF007D24F9 /* ChatViewController.swift in Sources */,
 				96090AE81D9CDD2E00709CA6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

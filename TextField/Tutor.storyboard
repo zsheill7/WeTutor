@@ -69,12 +69,12 @@
             </objects>
             <point key="canvasLocation" x="2077.5999999999999" y="229.38530734632684"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--chatNC-->
         <scene sceneID="ojl-PB-xeH">
             <objects>
-                <navigationController storyboardIdentifier="tutorPagingMenuNC" automaticallyAdjustsScrollViewInsets="NO" id="rmb-qr-dQ6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="tutorPagingMenuNC" title="chatNC" automaticallyAdjustsScrollViewInsets="NO" id="rmb-qr-dQ6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="woj-JG-6mC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="woj-JG-6mC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
