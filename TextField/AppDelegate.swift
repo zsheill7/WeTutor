@@ -45,7 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 18)]
         
         let userDefaults = UserDefaults.standard
-        if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool{
+        if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+            let hasLanguages = userDefaults.value(forKey: "languages") as? [String]{
             if isTutor == true {
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                 let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
@@ -57,9 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window?.rootViewController = viewController
                // self.present(viewController, animated: true, completion: nil)
             }
-        } else {
-            
-        }
+        } 
         
         FIRApp.configure()
     }

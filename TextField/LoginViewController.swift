@@ -33,6 +33,7 @@ class LoginViewController: UIViewController {
     }
     /// A constant to layout the textFields.
     private let constant: CGFloat = 32
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,10 +134,20 @@ class LoginViewController: UIViewController {
             self.displayAlert(title: "Error", message: "Please enter an email and password.")
         } else {
             FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
-                if error == nil {
-                    self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
+                if error != nil {
+                    print(error?.localizedDescription)
+                } else if (self.userDefaults.value(forKey: "birthday") as? String) != nil {
+                    
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerTwoNC") as! UINavigationController
+                    self.present(viewController, animated: true, completion: nil)
+                    
+                } else if (self.userDefaults.value(forKey: "isTutor") as? String) != nil {
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerOneNC") as! UINavigationController
+                    self.present(viewController, animated: true, completion: nil)
                 } else {
-                    self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
+                    self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
                 }
             })
         }

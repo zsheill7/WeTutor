@@ -325,14 +325,14 @@ class TutorSignUpViewControllerOne : FormViewController {
                                                                       "schoolName": schoolName,
                                                                       "phone": phone,
                                                                       "gender": gender,
-                                                                      "birthday": birthday,
+                                                                      "birthday": String(describing: birthday),
                                                                       "preferredSubject": preferredSubject,
                                                                       "description": description,
                                                                       "email": email,
                                                                       "password": password,
                                                                       "name": name], withCompletionBlock: { (error, ref) in
                        if error == nil {
-                            var geocoder = CLGeocoder()
+                            /*var geocoder = CLGeocoder()
                             geocoder.geocodeAddressString(zipcode as! String) { placemarks, error in
                                 if error != nil {
                                     print("error")
@@ -342,7 +342,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                                         self.ref.child("users/\(user.uid)/location").setValue(location)
                                     }
                                 }
-                            }
+                            }*/
                         
                             self.performSegue(withIdentifier: "toSecondVC", sender: self)
                        } else {

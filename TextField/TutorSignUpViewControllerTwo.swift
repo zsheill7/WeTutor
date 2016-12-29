@@ -126,21 +126,29 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     let row2: TextRow? = self.form.rowBy(tag: "Availability Notes")
                     let availabilityInfo = row2?.value
                     
-                    let row3: TextRow? = self.form.rowBy(tag: "First Language")
-                    let firstLanguage = row3?.value
+                    var firstLanguage = ""
+                    if let row3 = self.form.rowBy(tag: "First Language") as? TextRow? {
+                        firstLanguage = (row3?.value)!
+                    } else {
+                        firstLanguage = "English"
+                    }
+                    
+                   
+                    print(firstLanguage)
                     let row4: TextRow? = self.form.rowBy(tag: "Second Language")
                     let secondLanguage = row4?.value
+                    
                     let row5: TextRow? = self.form.rowBy(tag: "Third Language")
-                    let thirdLanguage = row4?.value
+                    let thirdLanguage = row5?.value
                     
                     if firstLanguage != "None" {
-                        languages.append(firstLanguage!)
+                        languages.append(firstLanguage)
                     }
-                    if secondLanguage != "None" {
-                        languages.append(firstLanguage!)
+                    if secondLanguage != "None" && secondLanguage != nil{
+                        languages.append(secondLanguage!)
                     }
-                    if secondLanguage != "None" {
-                        languages.append(firstLanguage!)
+                    if thirdLanguage != "None" && thirdLanguage != nil{
+                        languages.append(thirdLanguage!)
                     }
 
                     
@@ -154,6 +162,8 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         self.ref.child("users/\(user.uid)/availableDays").setValue(daysValue)
                         self.ref.child("users/\(user.uid)/languages").setValue(languages)
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
+                        
+                        self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
                     
                     } else {
                         // No user is signed in.

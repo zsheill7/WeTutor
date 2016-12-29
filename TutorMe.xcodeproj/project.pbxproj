@@ -55,7 +55,7 @@
 		C87984B51E0D01FB003EB7A1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984B41E0D01FB003EB7A1 /* User.swift */; };
 		C88498C01E0B51A0000C4675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88498BF1E0B51A0000C4675 /* Main.storyboard */; };
 		C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */; };
-		C88498C41E0B8A5D000C4675 /* TutorSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C31E0B8A5C000C4675 /* TutorSignUpViewController.swift */; };
+		C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */; };
 		C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */; };
 		C88FFC811E0DEFAC00E7972C /* TuteeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */; };
 		C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */; };
@@ -147,7 +147,7 @@
 		C87984B41E0D01FB003EB7A1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C88498BF1E0B51A0000C4675 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorOrTuteeViewController.swift; sourceTree = "<group>"; };
-		C88498C31E0B8A5C000C4675 /* TutorSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewController.swift; sourceTree = "<group>"; };
+		C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerOne.swift; sourceTree = "<group>"; };
 		C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaSectionHeader.xib; sourceTree = "<group>"; };
 		C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeTableViewController.swift; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 			children = (
 				C88498BF1E0B51A0000C4675 /* Main.storyboard */,
 				C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */,
-				C88498C31E0B8A5C000C4675 /* TutorSignUpViewController.swift */,
+				C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */,
 				C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */,
 				96090AE91D9CDD2E00709CA6 /* SignUpViewController.swift */,
 				C86ACAF11E0E238200F6695E /* LoginViewController.swift */,
@@ -619,7 +619,7 @@
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
 				C8EE88631E0DB256003775C2 /* CalendarViewController.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
-				C88498C41E0B8A5D000C4675 /* TutorSignUpViewController.swift in Sources */,
+				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
 				C86BCCEE1E1371AF007D24F9 /* CreateChannelCell.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
