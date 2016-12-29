@@ -22,8 +22,11 @@ struct User {
     let school: String
     
     let languages: [String]
-    let availableDays: [Bool]
+    let availableDays: [String]
     let preferredSubjects: [Bool]
+    
+    let availabilityInfo: String
+    let channels: [String]
     /*
      
      uid
@@ -46,10 +49,12 @@ struct User {
         isTutor = false
         languages = [""]
         address = ""
-        availableDays = [false]
+        availableDays = [String]()
         school = ""
         phone = ""
-        preferredSubjects = [false, false, false]
+        preferredSubjects = [Bool]()
+        availabilityInfo = ""
+        channels = [String]()
         
         if let mail = userData.providerData.first?.email {
             email = mail
@@ -104,10 +109,10 @@ struct User {
             languages = [""]
         }
         
-        if let userAvailableDays = snapshotValue?["availableDays"] as? [Bool] {
+        if let userAvailableDays = snapshotValue?["availableDays"] as? [String] {
             availableDays = userAvailableDays
         } else {
-            availableDays = [false]
+            availableDays = [String]()
         }
         
         if let userSchool = snapshotValue?["school"] as? String {
@@ -131,9 +136,21 @@ struct User {
             preferredSubjects = [false, false, false]
         }
         
+        if let userAvailability = snapshotValue?["availabilityInfo"] as? String {
+            availabilityInfo = userAvailability
+        } else {
+            availabilityInfo = ""
+        }
+        
+        if let userChannels = snapshotValue?["channels"] as? [String] {
+            channels = userChannels
+        } else {
+            channels = [String]()
+        }
+        
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [Bool], phone: String, preferredSubjects: [Bool]) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [Bool], channels: [String], availabilityInfo: String) {
         self.uid = uid
         self.email = email
         self.address = address
@@ -146,5 +163,7 @@ struct User {
         self.school = school
         self.phone = phone
         self.preferredSubjects = preferredSubjects
+        self.channels = channels
+        self.availabilityInfo = availabilityInfo
     }
 }

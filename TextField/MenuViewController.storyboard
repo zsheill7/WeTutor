@@ -233,10 +233,10 @@
             </objects>
             <point key="canvasLocation" x="2100" y="1662"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--ChatViewController-->
         <scene sceneID="Gop-g8-ISL">
             <objects>
-                <viewController id="ciN-Cm-s6F" customClass="ChatViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" title="ChatViewController" id="ciN-Cm-s6F" customClass="ChatViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vkg-YD-pr9"/>
                         <viewControllerLayoutGuide type="bottom" id="aFK-uB-f9k"/>

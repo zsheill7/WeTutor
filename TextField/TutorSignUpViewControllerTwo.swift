@@ -121,17 +121,17 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     //let availableDays: [Bool] = row
                     let row1: TextRow? = self.form.rowBy(tag: "Available Days")
-                    let daysValue = row.value
+                    let daysValue = row1?.value
                     
                     let row2: TextRow? = self.form.rowBy(tag: "Availability Notes")
-                    let availabilityInfo = row.value
+                    let availabilityInfo = row2?.value
                     
                     let row3: TextRow? = self.form.rowBy(tag: "First Language")
-                    let firstLanguage = row.value
+                    let firstLanguage = row3?.value
                     let row4: TextRow? = self.form.rowBy(tag: "Second Language")
-                    let secondLanguage = row.value
+                    let secondLanguage = row4?.value
                     let row5: TextRow? = self.form.rowBy(tag: "Third Language")
-                    let thirdLanguage = row.value
+                    let thirdLanguage = row4?.value
                     
                     if firstLanguage != "None" {
                         languages.append(firstLanguage!)
