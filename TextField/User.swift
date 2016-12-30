@@ -27,6 +27,10 @@ struct User {
     
     let availabilityInfo: String
     let channels: [String]
+    
+    let latitude: CGFloat
+    let longitude: CGFloat
+    
     /*
      
      uid
@@ -55,6 +59,8 @@ struct User {
         preferredSubjects = [Bool]()
         availabilityInfo = ""
         channels = [String]()
+        latitude = 0
+        longitude = 0
         
         if let mail = userData.providerData.first?.email {
             email = mail
@@ -147,10 +153,20 @@ struct User {
         } else {
             channels = [String]()
         }
+        if let userLatitude = snapshotValue?["latitude"] as? CGFloat {
+            latitude = userLatitude
+        } else {
+            latitude = 0
+        }
+        if let userLongitude = snapshotValue?["longitude"] as? CGFloat {
+            longitude = userLongitude
+        } else {
+            longitude = 0
+        }
         
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [Bool], channels: [String], availabilityInfo: String) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [Bool], channels: [String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat) {
         self.uid = uid
         self.email = email
         self.address = address
@@ -165,5 +181,7 @@ struct User {
         self.preferredSubjects = preferredSubjects
         self.channels = channels
         self.availabilityInfo = availabilityInfo
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }

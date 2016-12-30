@@ -332,17 +332,20 @@ class TutorSignUpViewControllerOne : FormViewController {
                                                                       "password": password,
                                                                       "name": name], withCompletionBlock: { (error, ref) in
                        if error == nil {
-                            /*var geocoder = CLGeocoder()
+                            var geocoder = CLGeocoder()
                             geocoder.geocodeAddressString(zipcode as! String) { placemarks, error in
                                 if error != nil {
-                                    print("error")
+                                    print(error?.localizedDescription ?? "")
                                 } else {
                                     for placemark in placemarks! {
                                         let location = placemark.location
-                                        self.ref.child("users/\(user.uid)/location").setValue(location)
+                                        let latitude = location?.coordinate.latitude
+                                        let longitude = location?.coordinate.longitude
+                                        self.ref.child("users/\(user.uid)/latitude").setValue(latitude)
+                                        self.ref.child("users/\(user.uid)/longitude").setValue(longitude)
                                     }
                                 }
-                            }*/
+                            }
                         
                             self.performSegue(withIdentifier: "toSecondVC", sender: self)
                        } else {

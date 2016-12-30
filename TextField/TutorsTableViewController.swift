@@ -17,6 +17,7 @@ class TutorTableViewCell: UITableViewCell {
     @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     
+    @IBOutlet weak var contactButton: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +37,22 @@ class TutorsTableViewController: UITableViewController {
     var dbRef: FIRDatabaseReference!
     var tutors = [User]()
     var ref: FIRDatabaseReference!
+    var senderDisplayName: String?
+
+    
+    private var channelRefHandle: FIRDatabaseHandle?
+    private var channels: [Channel] = []
+    var tutorName: String = ""
+    var tuteeName: String = ""
+
+    private lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
+    
+    deinit {
+        if let refHandle = channelRefHandle {
+            channelRef.removeObserver(withHandle: refHandle)
+        }
+    }
+
     
     class func instantiateFromStoryboard() -> TutorsTableViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
@@ -50,7 +67,8 @@ class TutorsTableViewController: UITableViewController {
         
         
         
-        dbRef = FIRDatabase.database().reference().child("tutors")
+        dbRef = FIRDatabase.database().reference().child("users")
+        startObservingDB()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -68,6 +86,7 @@ class TutorsTableViewController: UITableViewController {
             self.tutors = newUsers
             self.tableView.reloadData()
         }) { (error: Error) in
+            print("inside error")
             print(error)
         }
     }
@@ -88,9 +107,37 @@ class TutorsTableViewController: UITableViewController {
         return tutors.count
     }
 
+    @IBAction func createNewChat(_ sender: Any) {
+        createChannel()
+        
+    }
+    func createChannel() {
+        let userDefaults = UserDefaults.standard
+        if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+            let userName = userDefaults.value(forKey: "name") as? String {
+            if isTutor == true {
+                tutorName = userName
+                tuteeName = ""
+            }
+        }
+        else {
+            tutorName = "Chat"
+            tuteeName = "Chat"
+        }
+        
+        let newChannelRef = channelRef.childByAutoId()
+        let channelItem = [
+            "tutorName": tutorName,
+            "tuteeName": tuteeName
+        ]
+        newChannelRef.setValue(channelItem)
+        
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TutorTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TutorTableViewCell
+        
+        print("in cell for row")
         let tutor = tutors[indexPath.row]
         cell.nameLabel?.text = tutor.name
         cell.schoolLabel?.text = tutor.school
@@ -99,6 +146,18 @@ class TutorsTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if let channel = sender as? Channel {
+            let chatVc = segue.destination as! ChatViewController
+            
+            chatVc.senderDisplayName = senderDisplayName
+            chatVc.channel = channel
+            chatVc.channelRef = channelRef.child(channel.id)
+        }
     }
     
 
