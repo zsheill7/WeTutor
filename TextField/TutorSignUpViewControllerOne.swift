@@ -311,7 +311,9 @@ class TutorSignUpViewControllerOne : FormViewController {
             
             
                 let userDefaults = UserDefaults.standard
-            
+                print(schoolName)
+                print(birthday)
+                print(description)
             
                 
             
@@ -322,15 +324,15 @@ class TutorSignUpViewControllerOne : FormViewController {
                     let user = FIRAuth.auth()?.currentUser {
                     
                     self.ref.child("users").child(user.uid).setValue(["zipcode": zipcode,
-                                                                      "schoolName": schoolName,
-                                                                      "phone": phone,
-                                                                      "gender": gender,
+                                                            "schoolName": schoolName,
+                                                            "phone": phone,
+                                                            "gender": gender,
                                                                       "birthday": String(describing: birthday),
                                                                       "preferredSubject": preferredSubject,
-                                                                      "description": description,
-                                                                      "email": email,
-                                                                      "password": password,
-                                                                      "name": name], withCompletionBlock: { (error, ref) in
+                                                        "description": description,
+                                                        "email": email,
+                                                        "password": password,
+                                                        "name": name], withCompletionBlock: { (error, ref) in
                        if error == nil {
                             var geocoder = CLGeocoder()
                             geocoder.geocodeAddressString(zipcode as! String) { placemarks, error in

@@ -151,7 +151,8 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         languages.append(thirdLanguage!)
                     }
 
-                    
+                    print(languages)
+                    print(daysValue)
                     
                     userDefaults.setValue(daysValue, forKey: "availableDays")
                     userDefaults.setValue(languages, forKey: "languages")

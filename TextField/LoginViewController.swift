@@ -129,12 +129,61 @@ class LoginViewController: UIViewController {
             })
         }
     }*/
+    
+    func instantiateNextVC() {
+        
+    }
     func logIn() {
         if self.emailField.text == "" || self.passwordField.text == "" {
             self.displayAlert(title: "Error", message: "Please enter an email and password.")
         } else {
             FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
-                if error != nil {
+                if error == nil {
+                    var ref: FIRDatabaseReference!
+                    
+                    ref = FIRDatabase.database().reference()
+                    
+                    //let userID = FIRAuth.auth()?.currentUser?.uid
+                    ref.child("users").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        let userObject = User(snapshot: snapshot )
+
+                        
+                        let value = snapshot.value as? NSDictionary
+                        let languages = userObject.languages
+                        let isTutor = userObject.isTutor
+                        print(languages)
+                        print(isTutor)
+                        
+                        if languages != nil && isTutor != nil {
+                            print("in neither are nil")
+                            if isTutor == true {
+                                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                                //window?.rootViewController = viewController
+                                self.present(viewController, animated: true, completion: nil)
+                            } else {
+                                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
+                                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
+                                //window?.rootViewController = viewController
+                                self.present(viewController, animated: true, completion: nil)
+                            }
+                        } else {
+                            self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                        }
+                        
+                        
+                        // ...
+                    }) { (error) in
+                        self.displayAlert(title: "Error", message: error.localizedDescription)
+                        
+                    }
+                    
+
+                } else {
+                    self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
+                }
+                /*if error != nil {
                     print(error?.localizedDescription)
                 } else if (self.userDefaults.value(forKey: "birthday") as? String) != nil {
                     
@@ -148,7 +197,8 @@ class LoginViewController: UIViewController {
                     self.present(viewController, animated: true, completion: nil)
                 } else {
                     self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
-                }
+                }*/
+                
             })
         }
     }

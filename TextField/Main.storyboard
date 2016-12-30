@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="2448.8000000000002" y="1137.481259370315"/>
         </scene>
-        <!--S-->
+        <!--SignUpViewController-->
         <scene sceneID="cG0-wP-MjU">
             <objects>
-                <viewController storyboardIdentifier="signupVC" title="S" id="f0J-JI-oTr" customClass="SignUpViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupVC" title="SignUpViewController" id="f0J-JI-oTr" customClass="SignUpViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GfZ-H1-YzK"/>
                         <viewControllerLayoutGuide type="bottom" id="s31-lQ-90V"/>
@@ -160,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="1002" y="178"/>
         </scene>
-        <!--Welcome-->
+        <!--LoginViewController-->
         <scene sceneID="yMh-AR-mBf">
             <objects>
-                <viewController storyboardIdentifier="loginVC" id="jKf-CE-eNp" customClass="LoginViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" title="LoginViewController" id="jKf-CE-eNp" customClass="LoginViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wuX-h5-GPh"/>
                         <viewControllerLayoutGuide type="bottom" id="PgL-oo-hZ6"/>
@@ -175,7 +175,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Welcome" id="xwO-Sm-AOc"/>
                     <connections>
-                        <segue destination="f1O-17-5Nh" kind="show" identifier="goToTutorOrTutee" id="e38-Qo-rrt"/>
+                        <segue destination="f1O-17-5Nh" kind="show" identifier="toTutorOrTuteeVC" id="UNl-nb-Bdv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R0P-Lz-3eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -256,6 +256,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OLB-7F-WMk"/>
+        <segue reference="UNl-nb-Bdv"/>
     </inferredMetricsTieBreakers>
 </document>

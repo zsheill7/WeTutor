@@ -17,6 +17,7 @@ class TutorTableViewCell: UITableViewCell {
     @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     
+    
     @IBOutlet weak var contactButton: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,12 +39,12 @@ class TutorsTableViewController: UITableViewController {
     var tutors = [User]()
     var ref: FIRDatabaseReference!
     var senderDisplayName: String?
-
+    var newChannel: Channel?
     
     private var channelRefHandle: FIRDatabaseHandle?
     private var channels: [Channel] = []
-    var tutorName: String = ""
-    var tuteeName: String = ""
+    var tutorName: String = "Chat"
+    var tuteeName: String = "Chat"
 
     private lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
     
@@ -66,7 +67,7 @@ class TutorsTableViewController: UITableViewController {
         
         
         
-        
+        observeChannels()
         dbRef = FIRDatabase.database().reference().child("users")
         startObservingDB()
         // Uncomment the following line to preserve selection between presentations
@@ -109,28 +110,62 @@ class TutorsTableViewController: UITableViewController {
 
     @IBAction func createNewChat(_ sender: Any) {
         createChannel()
+       
+        
         
     }
     func createChannel() {
         let userDefaults = UserDefaults.standard
-        if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
-            let userName = userDefaults.value(forKey: "name") as? String {
-            if isTutor == true {
-                tutorName = userName
-                tuteeName = ""
-            }
-        }
-        else {
-            tutorName = "Chat"
-            tuteeName = "Chat"
-        }
         
-        let newChannelRef = channelRef.childByAutoId()
-        let channelItem = [
-            "tutorName": tutorName,
-            "tuteeName": tuteeName
-        ]
-        newChannelRef.setValue(channelItem)
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        print(userID)
+        var ref: FIRDatabaseReference!
+        let user = FIRAuth.auth()?.currentUser
+        
+        ref = FIRDatabase.database().reference()
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let userObject = User(snapshot: snapshot )
+            
+            let value = snapshot.value as? NSDictionary
+            let isTutor = userObject.isTutor
+            
+            if isTutor != nil {
+                
+                    if isTutor == true {
+                        self.tutorName = userObject.name
+                        self.tuteeName = ""
+                    } else {
+                        
+                    }
+            } else {
+                self.tutorName = "Chat"
+                self.tuteeName = "Chat"
+            }
+         
+            print("Tutor Name: " + self.tutorName)
+            print("Tutee Name: " + self.tuteeName)
+            
+        
+                let uuid = UUID().uuidString
+            print(uuid)
+                let newChannelRef = self.channelRef.child(uuid)
+                let channelItem = [
+                    "tutorName": self.tutorName,
+                    "tuteeName": self.tuteeName
+                ]
+            print(channelItem["tutorName"]!)
+                newChannelRef.setValue(channelItem)
+                self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
+            let userChannelRef = self.ref.child("users/\(userID!)/channels")
+                //self.ref.child("users/\(userID)/channels/\(uuid)").setValue(channelItem["tutorName"]!)
+                //.setValue(uuid)
+                //self.ref.child("users/\(user.uid)/channels")
+                self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
+
+            
+
+        })
+        
         
     }
     
@@ -150,8 +185,9 @@ class TutorsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
+        print("in prepare for segue")
         if let channel = sender as? Channel {
+            print("in if let")
             let chatVc = segue.destination as! ChatViewController
             
             chatVc.senderDisplayName = senderDisplayName
@@ -160,6 +196,44 @@ class TutorsTableViewController: UITableViewController {
         }
     }
     
+    private func observeChannels() {
+        // We can use the observe method to listen for new
+        // channels being written to the Firebase DB
+        var tutorOrTutee = "tutorName"
+        channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let channelData = snapshot.value as! Dictionary<String, AnyObject>
+            let id = snapshot.key
+            var ref: FIRDatabaseReference!
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref = FIRDatabase.database().reference()
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let userObject = User(snapshot: snapshot )
+                
+                let value = snapshot.value as? NSDictionary
+                let isTutor = userObject.isTutor
+                
+                if isTutor != nil {
+                    if isTutor == true {
+                        tutorOrTutee = "tuteeName"
+                    } else {
+                        tutorOrTutee = "tutorName"
+                    }
+                }
+                else {
+                    // no highscore exists
+                }
+                
+                
+                if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {
+                    self.channels.append(Channel(id: id, name: name))
+                    self.tableView.reloadData()
+                } else {
+                    print("Error! Could not decode channel data")
+                }
+            })
+        })
+    }
 
     /*
     // Override to support conditional editing of the table view.
