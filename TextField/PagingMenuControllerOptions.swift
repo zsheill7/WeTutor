@@ -17,7 +17,7 @@ struct MenuItemOrganization: MenuItemViewCustomizable {}
 struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     let usersViewController = UsersViewController.instantiateFromStoryboard()
     let calendarViewController = CalendarViewController.instantiateFromStoryboard()
-    let chatViewController = ChannelListViewController.instantiateFromStoryboard()
+    let chatViewController = ChatViewController.instantiateFromStoryboard()
     let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
     
     var componentType: ComponentType {

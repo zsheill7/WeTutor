@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 18)]
         
-        /*let userDefaults = UserDefaults.standard
+        let userDefaults = UserDefaults.standard
         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
             let hasLanguages = userDefaults.value(forKey: "languages") as? [String]{
             if isTutor == true {
@@ -61,8 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window?.rootViewController = viewController
                // self.present(viewController, animated: true, completion: nil)
             }
-        } */
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        }
+        /*let userID = FIRAuth.auth()?.currentUser?.uid
         var ref: FIRDatabaseReference!
         
         ref = FIRDatabase.database().reference()
@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // ...
         }) { (error) in
             print(error.localizedDescription)
-        }
+        }*/
         
         
     }

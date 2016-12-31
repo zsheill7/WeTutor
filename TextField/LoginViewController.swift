@@ -154,7 +154,12 @@ class LoginViewController: UIViewController {
                         let isTutor = userObject.isTutor
                         print(languages)
                         print(isTutor)
+                        let userDefaults = UserDefaults.standard
                         
+                        userDefaults.setValue(isTutor, forKey: "isTutor")
+                        
+                        userDefaults.synchronize()
+
                         if languages != nil && isTutor != nil {
                             print("in neither are nil")
                             if isTutor == true {
@@ -220,7 +225,7 @@ class LoginViewController: UIViewController {
         /*let btn = UIButton()
          btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
         let btn = RaisedButton(title: "Log In", titleColor: Color.grey.lighten3)
-        btn.backgroundColor = UIColor.flatBlue
+         btn.backgroundColor = UIColor.flatBlue.lighten(byPercentage: 0.08)
         
         
         btn.addTarget(self, action: #selector(handleNextButton(button:)), for: .touchUpInside)
@@ -280,6 +285,31 @@ class LoginViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
         
         //createForgotPasswordAlert()
+    }
+    func resetIsTutor() {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        var ref: FIRDatabaseReference!
+        
+        ref = FIRDatabase.database().reference()
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let userObject = User(snapshot: snapshot )
+            
+            let value = snapshot.value as? NSDictionary
+            let languages = userObject.languages
+            let isTutor = userObject.isTutor
+            
+            let userDefaults = UserDefaults.standard
+            
+            userDefaults.setValue(isTutor, forKey: "isTutor")
+            
+            userDefaults.synchronize()
+            
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     func createForgotPasswordAlert() {

@@ -53,7 +53,7 @@ class TutorOrTuteeViewController: UIViewController {
         
         print(centerX)
         print(centerY)
-         self.ballView.backgroundColor = UIColor(hex: "69DBFF")
+         self.ballView.backgroundColor = /*UIColor(hex: "69DBFF")*/UIColor.titleBlue()
         /*UIView.animate(withDuration: 0.1, animations: {
            
         }, completion: { finished in
@@ -68,7 +68,7 @@ class TutorOrTuteeViewController: UIViewController {
         ballView.duration =  1.0
         ballView.animate()
         
-        self.ballView2.backgroundColor = UIColor(hex: "69DBFF")
+        self.ballView2.backgroundColor = /*UIColor(hex: "69DBFF")*/ UIColor.titleBlue()
        /* UIView.animate(withDuration: 0.1, animations: {
             
         }, completion: { finished in

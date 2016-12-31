@@ -175,6 +175,9 @@ class TutorSignUpViewControllerOne : FormViewController {
         self.view.addBackground(imageName: "mixed2")
         
     }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+    }
     
     // MARK: Actions
     
@@ -256,7 +259,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             }
         }
         
-        row.value = "M" as AnyObject
+        row.value = "F" as AnyObject
         
         section3.rows.append(row)
         
@@ -264,7 +267,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         row.configuration.cell.showsInputToolbar = true
         section3.rows.append(row)
         
-        row = FormRowDescriptor(tag: Static.subjects, type: .multipleSelector, title: "Preferred Subject")
+        row = FormRowDescriptor(tag: Static.subjects, type: .picker, title: "Preferred Subject")
         row.configuration.selection.options = ([0, 1, 2] as [Int]) as [AnyObject]
         row.configuration.selection.allowsMultipleSelection = true
         row.configuration.selection.optionTitleClosure = { value in
@@ -282,6 +285,8 @@ class TutorSignUpViewControllerOne : FormViewController {
                 return ""
             }
         }
+        
+        
         
         section3.rows.append(row)
 

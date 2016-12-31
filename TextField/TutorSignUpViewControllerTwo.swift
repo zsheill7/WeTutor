@@ -40,6 +40,8 @@ let 👦🏼 = "👦🏼", 🍐 = "🍐", 💁🏻 = "💁🏻", 🐗 = "🐗", 
 
 //MARK: Custom Cells Example
 
+
+
 class TutorSignUpViewControllerTwo : FormViewController {
     
     let firstLanguages = ["English", "Spanish", "French", "Chinese", "Other"]
@@ -50,6 +52,8 @@ class TutorSignUpViewControllerTwo : FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addBackground(imageName: "mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         let availabilityInfo: String = ""
         var languages: [String] = [String]()
@@ -186,6 +190,10 @@ class TutorSignUpViewControllerTwo : FormViewController {
     
     func multipleSelectorDone(_ item:UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
 }
 

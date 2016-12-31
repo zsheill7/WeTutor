@@ -22,6 +22,9 @@ extension UIColor {
     class func flatDarkBlue() -> UIColor {
         return UIColor(red:0.58, green:0.69, blue:0.76, alpha:1.0)
     }
+    class func titleBlue() -> UIColor {
+        return UIColor(netHex: 0x51679F)
+    }
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")

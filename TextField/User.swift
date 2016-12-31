@@ -26,11 +26,12 @@ struct User {
     let preferredSubjects: [Bool]
     
     let availabilityInfo: String
-    let channels: [String]
+
     
     let latitude: CGFloat
     let longitude: CGFloat
     
+    let channels: [String: String]
     /*
      
      uid
@@ -58,10 +59,10 @@ struct User {
         phone = ""
         preferredSubjects = [Bool]()
         availabilityInfo = ""
-        channels = [String]()
+
         latitude = 0
         longitude = 0
-        
+        channels = [String:String]()
         if let mail = userData.providerData.first?.email {
             email = mail
         } else {
@@ -148,11 +149,7 @@ struct User {
             availabilityInfo = ""
         }
         
-        if let userChannels = snapshotValue?["channels"] as? [String] {
-            channels = userChannels
-        } else {
-            channels = [String]()
-        }
+        
         if let userLatitude = snapshotValue?["latitude"] as? CGFloat {
             latitude = userLatitude
         } else {
@@ -163,10 +160,15 @@ struct User {
         } else {
             longitude = 0
         }
+        if let userChannels = snapshotValue?["channels"] as? [String:String] {
+            channels = userChannels
+        } else {
+            channels = [String:String]()
+        }
         
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [Bool], channels: [String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [Bool], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat) {
         self.uid = uid
         self.email = email
         self.address = address

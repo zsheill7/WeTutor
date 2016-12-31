@@ -37,7 +37,7 @@ class TutorsTableViewController: UITableViewController {
 
     var dbRef: FIRDatabaseReference!
     var tutors = [User]()
-    var ref: FIRDatabaseReference!
+    var userRef: FIRDatabaseReference!
     var senderDisplayName: String?
     var newChannel: Channel?
     
@@ -69,6 +69,7 @@ class TutorsTableViewController: UITableViewController {
         
         observeChannels()
         dbRef = FIRDatabase.database().reference().child("users")
+        userRef = FIRDatabase.database().reference().child("users")
         startObservingDB()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -148,15 +149,19 @@ class TutorsTableViewController: UITableViewController {
         
                 let uuid = UUID().uuidString
             print(uuid)
+            print(user?.uid)
                 let newChannelRef = self.channelRef.child(uuid)
                 let channelItem = [
                     "tutorName": self.tutorName,
                     "tuteeName": self.tuteeName
                 ]
             print(channelItem["tutorName"]!)
+            print(user!.uid)
                 newChannelRef.setValue(channelItem)
                 self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
-            let userChannelRef = self.ref.child("users/\(userID!)/channels")
+            //let userChannelRef = child(user.uid).setValue(["username": username])
+            let userChannelRef = self.userRef.child((user!.uid))
+            userChannelRef.child("channels").setValue([uuid: channelItem["tutorName"]!])
                 //self.ref.child("users/\(userID)/channels/\(uuid)").setValue(channelItem["tutorName"]!)
                 //.setValue(uuid)
                 //self.ref.child("users/\(user.uid)/channels")
@@ -188,6 +193,7 @@ class TutorsTableViewController: UITableViewController {
         print("in prepare for segue")
         if let channel = sender as? Channel {
             print("in if let")
+            
             let chatVc = segue.destination as! ChatViewController
             
             chatVc.senderDisplayName = senderDisplayName
