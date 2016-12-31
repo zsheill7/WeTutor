@@ -16,12 +16,12 @@ struct MenuItemOrganization: MenuItemViewCustomizable {}
 
 struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     let usersViewController = UsersViewController.instantiateFromStoryboard()
-    let calendarViewController = CalendarViewController.instantiateFromStoryboard()
+   // let calendarViewController = CalendarViewController.instantiateFromStoryboard()
     let chatViewController = ChatViewController.instantiateFromStoryboard()
     let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
     
     var componentType: ComponentType {
-        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, calendarViewController, chatViewController, organizationsViewController])
+        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, chatViewController, organizationsViewController])
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .all
@@ -39,7 +39,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return 60
         }
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
+            return [MenuItemUsers(), /*MenuItemRepository(),*/ MenuItemGists(), MenuItemOrganization()]
         }
     }
     
@@ -61,14 +61,14 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return .text(title: title)
         }
     }
-    struct MenuItemRepository: MenuItemViewCustomizable {
+    /*struct MenuItemRepository: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Calendar")
             let description = MenuItemText(text: String(describing: self))
             //return .multilineText(title: title, description: description)
             return .text(title: title)
         }
-    }
+    }*/
     struct MenuItemGists: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Chat")

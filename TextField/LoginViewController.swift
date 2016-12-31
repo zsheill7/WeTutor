@@ -225,7 +225,7 @@ class LoginViewController: UIViewController {
         /*let btn = UIButton()
          btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
         let btn = RaisedButton(title: "Log In", titleColor: Color.grey.lighten3)
-         btn.backgroundColor = UIColor.flatBlue.lighten(byPercentage: 0.08)
+         btn.backgroundColor = UIColor.titleBlue().lighten(byPercentage: 0.08)
         
         
         btn.addTarget(self, action: #selector(handleNextButton(button:)), for: .touchUpInside)

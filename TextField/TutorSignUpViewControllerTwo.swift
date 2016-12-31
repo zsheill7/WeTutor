@@ -53,7 +53,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addBackground(imageName: "mixed2")
+        self.tableView?.addBackground(imageName: "mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         let availabilityInfo: String = ""
         var languages: [String] = [String]()
@@ -61,7 +61,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
         
         ref = FIRDatabase.database().reference()
         form +++
-            Section() {
+            /*Section() {
                 var header = HeaderFooterView<EurekaLogoViewNib>(.nibFile(name: "EurekaSectionHeader", bundle: nil))
                 header.onSetupView = { (view, section) -> () in
                     view.imageView.alpha = 0;
@@ -74,8 +74,8 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     })
                 }
                 $0.header = header
-            }
-             +++ Section("Available Days")
+            }*/
+             Section("Available Days")
             
             
             
@@ -129,6 +129,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     let row2: TextRow? = self.form.rowBy(tag: "Availability Notes")
                     let availabilityInfo = row2?.value
+                    row2?.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.5)
                     
                     var firstLanguage = ""
                     if let row3 = self.form.rowBy(tag: "First Language") as? TextRow? {

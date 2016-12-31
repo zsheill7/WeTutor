@@ -182,10 +182,16 @@ class TutorsTableViewController: UITableViewController {
         cell.nameLabel?.text = tutor.name
         cell.schoolLabel?.text = tutor.school
         cell.gradeLabel?.text = "Age:" + String(tutor.age)
+        cell.accessoryType = .detailDisclosureButton
         
         // Configure the cell...
 
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

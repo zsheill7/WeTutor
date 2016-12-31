@@ -24,7 +24,7 @@ extension UIView {
         
         //let rect = CGRect(origin: CGPoint(x: -newWidth / 2,y : 0), size: CGSize(width: newWidth, height: height * 1.75))
         //let rect = CGRect(origin: CGPoint(x: -newWidth / 2 + 400,y : 0), size: CGSize(width: newWidth, height: height * 2))
-        let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 100,y : 0), size: CGSize(width: newWidth, height: height * 1.2))
+        let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 100,y : 0), size: CGSize(width: newWidth, height: height * 1.7))
         
         let imageViewBackground = UIImageView(frame: rect)
         imageViewBackground.image = UIImage(named: imageName)
@@ -171,7 +171,7 @@ class SignUpViewController: UIViewController {
         /*let btn = UIButton()
         btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
         let btn = RaisedButton(title: "Sign Up", titleColor: Color.grey.lighten3)
-        btn.backgroundColor = UIColor.flatBlue.lighten(byPercentage: 0.08)
+        btn.backgroundColor = UIColor.titleBlue().lighten(byPercentage: 0.08)
         
         
         btn.addTarget(self, action: #selector(handleNextButton(button:)), for: .touchUpInside)

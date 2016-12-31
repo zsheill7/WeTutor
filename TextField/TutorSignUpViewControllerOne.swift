@@ -295,6 +295,9 @@ class TutorSignUpViewControllerOne : FormViewController {
         
         let section4 = FormSectionDescriptor(headerTitle: "Description", footerTitle: nil)
         row = FormRowDescriptor(tag: Static.textView, type: .multilineText, title: "About Me")
+       // row.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.5)
+        
+        row.configuration.cell.appearance = ["tintColor" : UIColor.red]
         section4.rows.append(row)
         
         let section5 = FormSectionDescriptor(headerTitle: " ", footerTitle: nil)
