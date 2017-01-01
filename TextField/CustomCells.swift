@@ -505,7 +505,7 @@ public final class EmailFloatLabelRow: FloatFieldRow<EmailFloatLabelCell>, RowTy
 
 //MARK: LocationRow
 
-public final class LocationRow : SelectorRow<PushSelectorCell<CLLocation>, MapViewController>, RowType {
+/*public final class LocationRow : SelectorRow<PushSelectorCell<CLLocation>, MapViewController>, RowType {
     public required init(tag: String?) {
         super.init(tag: tag)
         presentationMode = .show(controllerProvider: ControllerProvider.callback { return MapViewController(){ _ in } }, onDismiss: { vc in _ = vc.navigationController?.popViewController(animated: true) })
@@ -520,9 +520,9 @@ public final class LocationRow : SelectorRow<PushSelectorCell<CLLocation>, MapVi
             return  "\(latitude), \(longitude)"
         }
     }
-}
+}*/
 
-public class MapViewController : UIViewController, TypedRowControllerType, MKMapViewDelegate {
+/*public class MapViewController : UIViewController, TypedRowControllerType, MKMapViewDelegate {
     
     public var row: RowOf<CLLocation>!
     public var onDismissCallback: ((UIViewController) -> ())?
@@ -653,7 +653,7 @@ public final class ImageCheckRow<T: Equatable>: Row<ImageCheckCell<T>>, Selectab
         super.init(tag: tag)
         displayValueFor = nil
     }
-}
+}*/
 
 public class ImageCheckCell<T: Equatable> : Cell<T>, CellType {
     

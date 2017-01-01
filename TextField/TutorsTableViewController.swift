@@ -40,6 +40,7 @@ class TutorsTableViewController: UITableViewController {
     var userRef: FIRDatabaseReference!
     var senderDisplayName: String?
     var newChannel: Channel?
+    var destinationUser: User!
     
     private var channelRefHandle: FIRDatabaseHandle?
     private var channels: [Channel] = []
@@ -200,6 +201,7 @@ class TutorsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let tutor = tutors[indexPath.row]
         UID = tutor.uid
+        destinationUser = tutor
         self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
     }
     
@@ -222,6 +224,7 @@ class TutorsTableViewController: UITableViewController {
                 let moreInfoVC = segue.destination as! MoreInfoViewController
                 
                 moreInfoVC.UID = UID
+                moreInfoVC.destinationUser = destinationUser
         default:
             break
         }

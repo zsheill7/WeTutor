@@ -11,17 +11,19 @@ import PagingMenuController
 
 struct MenuItemUsers: MenuItemViewCustomizable {}
 struct MenuItemRepository: MenuItemViewCustomizable {}
-struct MenuItemGists: MenuItemViewCustomizable {}
+struct MenuItemChat: MenuItemViewCustomizable {}
 struct MenuItemOrganization: MenuItemViewCustomizable {}
+struct MenuItemRequest: MenuItemViewCustomizable {}
 
 struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     let usersViewController = UsersViewController.instantiateFromStoryboard()
    // let calendarViewController = CalendarViewController.instantiateFromStoryboard()
     let chatViewController = ChatViewController.instantiateFromStoryboard()
     let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
+    let requestViewController = RequestViewController.instantiateFromStoryboard()
     
     var componentType: ComponentType {
-        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, chatViewController, organizationsViewController])
+        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, chatViewController, organizationsViewController, requestViewController])
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .all
@@ -39,7 +41,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return 60
         }
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItemUsers(), /*MenuItemRepository(),*/ MenuItemGists(), MenuItemOrganization()]
+            return [MenuItemUsers(), /*MenuItemRepository(),*/ MenuItemChat(), MenuItemOrganization(), MenuItemRequest()]
         }
     }
     
@@ -69,7 +71,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return .text(title: title)
         }
     }*/
-    struct MenuItemGists: MenuItemViewCustomizable {
+    struct MenuItemChat: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Chat")
             let description = MenuItemText(text: String(describing: self))
@@ -80,6 +82,14 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     struct MenuItemOrganization: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "My Hours")
+            let description = MenuItemText(text: String(describing: self))
+            //return .multilineText(title: title, description: description)
+            return .text(title: title)
+        }
+    }
+    struct MenuItemRequest: MenuItemViewCustomizable {
+        var displayMode: MenuItemDisplayMode {
+            let title = MenuItemText(text: "Requests")
             let description = MenuItemText(text: String(describing: self))
             //return .multilineText(title: title, description: description)
             return .text(title: title)
@@ -105,7 +115,7 @@ struct PagingMenuOptions2: PagingMenuControllerCustomizable {
             return .segmentedControl
         }
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
+            return [MenuItemUsers(), MenuItemRepository(), MenuItemChat(), MenuItemOrganization()]
         }
     }
 }
@@ -128,7 +138,7 @@ struct PagingMenuOptions3: PagingMenuControllerCustomizable {
             return .infinite(widthMode: .fixed(width: 80), scrollingMode: .scrollEnabled)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
+            return [MenuItemUsers(), MenuItemRepository(), MenuItemChat(), MenuItemOrganization()]
         }
     }
 }
@@ -146,7 +156,7 @@ struct PagingMenuOptions4: PagingMenuControllerCustomizable {
             return .underline(height: 3, color: UIColor.blue, horizontalPadding: 10, verticalPadding: 0)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
+            return [MenuItemUsers(), MenuItemRepository(), MenuItemChat(), MenuItemOrganization()]
         }
     }
 }
@@ -164,7 +174,7 @@ struct PagingMenuOptions5: PagingMenuControllerCustomizable {
             return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGray)
         }
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItemUsers(), MenuItemRepository(), MenuItemGists(), MenuItemOrganization()]
+            return [MenuItemUsers(), MenuItemRepository(), MenuItemChat(), MenuItemOrganization()]
         }
     }
 }

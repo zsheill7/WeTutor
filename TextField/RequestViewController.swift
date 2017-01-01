@@ -23,6 +23,10 @@ class RequestViewController: UIViewController {
         }
     }
 
+    class func instantiateFromStoryboard() -> RequestViewController {
+        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! RequestViewController
+    }
 }
 
 extension RequestViewController: UITableViewDataSource {
