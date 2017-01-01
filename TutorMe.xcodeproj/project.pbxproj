@@ -19,6 +19,10 @@
 		C82800E11E0F4F7600329B7D /* Tutee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82800E01E0F4F7600329B7D /* Tutee.storyboard */; };
 		C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */; };
 		C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */; };
+		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
+		C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B31E1982BA004A794C /* UserListViewController.swift */; };
+		C838A8B81E1982BA004A794C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B41E1982BA004A794C /* FriendViewController.swift */; };
+		C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B51E1982BA004A794C /* RequestViewController.swift */; };
 		C86ACAF21E0E238300F6695E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ACAF11E0E238200F6695E /* LoginViewController.swift */; };
 		C86BCCBC1E12F6CA007D24F9 /* cells in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB61E12F6CA007D24F9 /* cells */; };
 		C86BCCBD1E12F6CA007D24F9 /* controllers in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB71E12F6CA007D24F9 /* controllers */; };
@@ -112,6 +116,10 @@
 		C82800E01E0F4F7600329B7D /* Tutee.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutee.storyboard; sourceTree = "<group>"; };
 		C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutThisApp.storyboard; sourceTree = "<group>"; };
 		C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutThisAppViewController.swift; sourceTree = "<group>"; };
+		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
+		C838A8B31E1982BA004A794C /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		C838A8B41E1982BA004A794C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		C838A8B51E1982BA004A794C /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		C86ACAF11E0E238200F6695E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C86BCCB61E12F6CA007D24F9 /* cells */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cells; path = SwiftForms/cells; sourceTree = "<group>"; };
 		C86BCCB71E12F6CA007D24F9 /* controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = controllers; path = SwiftForms/controllers; sourceTree = "<group>"; };
@@ -249,8 +257,9 @@
 				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
 				C827B53D1E11DF2C00BDFD50 /* About This App */,
-				96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */,
+				C838A8BA1E1982C1004A794C /* Friend System */,
 				C82800E01E0F4F7600329B7D /* Tutee.storyboard */,
+				96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */,
 				C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */,
 				C8EE88621E0DB256003775C2 /* CalendarViewController.swift */,
 				96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */,
@@ -317,6 +326,17 @@
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
 			);
 			name = "In Main Storyboard";
+			sourceTree = "<group>";
+		};
+		C838A8BA1E1982C1004A794C /* Friend System */ = {
+			isa = PBXGroup;
+			children = (
+				C838A8B21E1982BA004A794C /* FriendSystem.swift */,
+				C838A8B31E1982BA004A794C /* UserListViewController.swift */,
+				C838A8B41E1982BA004A794C /* FriendViewController.swift */,
+				C838A8B51E1982BA004A794C /* RequestViewController.swift */,
+			);
+			name = "Friend System";
 			sourceTree = "<group>";
 		};
 		C86BCCC11E12F6D6007D24F9 /* SwiftForms */ = {
@@ -620,8 +640,10 @@
 			files = (
 				96090AEA1D9CDD2E00709CA6 /* SignUpViewController.swift in Sources */,
 				C88FFC811E0DEFAC00E7972C /* TuteeTableViewController.swift in Sources */,
+				C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */,
 				C82800DE1E0EFDAF00329B7D /* UIImageExtensions.swift in Sources */,
 				C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */,
+				C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */,
 				C86BCCEA1E1371AF007D24F9 /* Channel.swift in Sources */,
 				C8EE88591E0DB144003775C2 /* FSCalendarConstants.m in Sources */,
 				C8EE88541E0DB144003775C2 /* FSCalendarAppearance.m in Sources */,
@@ -654,6 +676,7 @@
 				C86BCCEC1E1371AF007D24F9 /* ChannelListViewController.swift in Sources */,
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C86BCCBF1E12F6CA007D24F9 /* FormErrorType.swift in Sources */,
+				C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */,
 				C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */,
 				C8EE885C1E0DB144003775C2 /* FSCalendarExtensions.m in Sources */,
 				C879849D1E0C763F003EB7A1 /* UsersViewController.swift in Sources */,
@@ -669,6 +692,7 @@
 				C879849C1E0C763F003EB7A1 /* GistsViewController.swift in Sources */,
 				C87984A61E0C76A5003EB7A1 /* Pagable.swift in Sources */,
 				C87984B51E0D01FB003EB7A1 /* User.swift in Sources */,
+				C838A8B81E1982BA004A794C /* FriendViewController.swift in Sources */,
 				C8EE88551E0DB144003775C2 /* FSCalendarCalculator.m in Sources */,
 				C87984A51E0C76A5003EB7A1 /* MenuViewCustomizable.swift in Sources */,
 				C87984961E0C763F003EB7A1 /* PagingViewController.swift in Sources */,

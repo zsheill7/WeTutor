@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/TutorsTableViewController.swift"
-            timestampString = "504833270.12346"
+            timestampString = "504988991.608439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "createChannel()"
             landmarkType = "7">
          </BreakpointContent>

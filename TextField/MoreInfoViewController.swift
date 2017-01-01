@@ -10,15 +10,18 @@ class MoreInfoViewController: UIViewController {
     @IBOutlet var backgroundColoredViews: [UIView]!
     @IBOutlet var headingLabels: [UILabel]!
     
-    @IBOutlet weak var name: UILabel!
+   // @IBOutlet weak var name: UILabel!
     
-    @IBOutlet weak var whyVisitLabel: UILabel!
+   
+    @IBOutlet weak var basicInfoLabel: UILabel!
+   
     @IBOutlet weak var whatToSeeLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+  //  @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var userRatingLabel: UILabel!
     @IBOutlet weak var weatherHideOrShowButton: UIButton!
     @IBOutlet weak var submitRatingButton: UIButton!
     
+     var UID: String!
     var shouldHideWeatherInfoSetting: Bool {
         get {
             return UserDefaults.standard.bool(forKey: "shouldHideWeatherInfo")
@@ -31,6 +34,7 @@ class MoreInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         // Clear background colors from labels and buttons
         for view in backgroundColoredViews {
             view.backgroundColor = UIColor.clear
@@ -73,10 +77,10 @@ class MoreInfoViewController: UIViewController {
         
         if animated {
             UIView.animate(withDuration: 0.3, animations: {
-                self.descriptionLabel.isHidden = shouldHideWeatherInfo
+              //  self.descriptionLabel.isHidden = shouldHideWeatherInfo
             })
         } else {
-            descriptionLabel.isHidden = shouldHideWeatherInfo
+         //   descriptionLabel.isHidden = shouldHideWeatherInfo
         }
     }
     

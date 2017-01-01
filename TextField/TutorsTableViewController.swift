@@ -45,7 +45,8 @@ class TutorsTableViewController: UITableViewController {
     private var channels: [Channel] = []
     var tutorName: String = "Chat"
     var tuteeName: String = "Chat"
-
+    var UID: String = ""
+    
     private lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
     
     deinit {
@@ -71,6 +72,7 @@ class TutorsTableViewController: UITableViewController {
         dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
         startObservingDB()
+        self.view.addBackground(imageName: "mixed2")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -112,6 +114,11 @@ class TutorsTableViewController: UITableViewController {
     @IBAction func createNewChat(_ sender: Any) {
         createChannel()
        
+        
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
     }
@@ -191,21 +198,40 @@ class TutorsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let tutor = tutors[indexPath.row]
+        UID = tutor.uid
         self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         print("in prepare for segue")
-        if let channel = sender as? Channel {
-            print("in if let")
+        switch segue.identifier! {
+            case "toChatVC":
+                if let channel = sender as? Channel {
+                    print("in if let")
+                    
+                    let chatVc = segue.destination as! ChatViewController
+                    
+                    chatVc.senderDisplayName = senderDisplayName
+                    chatVc.channel = channel
+                    chatVc.channelRef = channelRef.child(channel.id)
+                }
+            case "toMoreInfoVC":
             
-            let chatVc = segue.destination as! ChatViewController
-            
-            chatVc.senderDisplayName = senderDisplayName
-            chatVc.channel = channel
-            chatVc.channelRef = channelRef.child(channel.id)
+                let moreInfoVC = segue.destination as! MoreInfoViewController
+                
+                moreInfoVC.UID = UID
+        default:
+            break
         }
+
+        
+            
+        
+    }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
     
     private func observeChannels() {
