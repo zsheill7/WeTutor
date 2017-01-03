@@ -234,6 +234,12 @@ class TutorsTableViewController: UITableViewController {
         cell!.setChatFunction {
             self.createChannel()
         }
+        cell!.setInfoFunction {
+            let tutor = FriendSystem.system.userList[indexPath.row]
+            self.UID = tutor.uid
+            self.destinationUser = tutor
+            self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+        }
         
         // Return cell
         return cell!

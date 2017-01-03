@@ -19,8 +19,12 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var addFriendButton: UIButton!
     @IBOutlet weak var gradeLabel: UILabel!
     
+    @IBOutlet weak var infoButton: UIButton!
+    
+    
     var addFriendFunc: (() -> (Void))!
     var chatFunc: (() -> (Void))!
+    var moreInfoFunc: (() -> (Void))!
     
     @IBAction func addFriendTapped(_ sender: Any) {
         addFriendFunc()
@@ -30,6 +34,9 @@ class UserCell: UITableViewCell {
         chatFunc()
     }
     
+    @IBAction func moreInfoTapped(_ sender: Any) {
+        moreInfoFunc()
+    }
     func setAddFriendFunction(_ function: @escaping () -> Void) {
         self.addFriendFunc = function
         
@@ -38,5 +45,10 @@ class UserCell: UITableViewCell {
         self.chatFunc = function
         
     }
+    func setInfoFunction(_ function: @escaping () -> Void) {
+        self.moreInfoFunc = function
+        
+    }
+    
     
 }
