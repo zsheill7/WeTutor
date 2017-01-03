@@ -67,7 +67,9 @@ class TutorsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        FriendSystem.system.addUserObserver { () in
+            self.tableView.reloadData()
+        }
         
         observeChannels()
         dbRef = FIRDatabase.database().reference().child("users")
@@ -183,7 +185,7 @@ class TutorsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TutorTableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TutorTableViewCell
+       /* let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TutorTableViewCell
         
         print("in cell for row")
         let tutor = tutors[indexPath.row]
@@ -194,7 +196,24 @@ class TutorsTableViewController: UITableViewController {
         
         // Configure the cell...
 
-        return cell
+        return cell*/
+        // Create cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
+        if cell == nil {
+            tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
+            cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
+        }
+        
+        // Modify cell
+        //cell!.emailLabel.text = FriendSystem.system.userList[indexPath.row].email
+        
+        cell!.setFunction {
+            let id = FriendSystem.system.userList[indexPath.row].id
+            FriendSystem.system.sendRequestToUser(id!)
+        }
+        
+        // Return cell
+        return cell!
     }
     
     
