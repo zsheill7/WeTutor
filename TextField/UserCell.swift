@@ -10,21 +10,22 @@ import UIKit
 
 class UserCell: UITableViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
-  
-    @IBOutlet weak var schoolLabel: UILabel!
     
-    @IBOutlet weak var gradeLabel: UILabel!
-
-    @IBOutlet weak var addFriendLabel: UIButton!
-    
-    @IBOutlet weak var chatLabel: UIButton!
    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
+    
+    @IBOutlet weak var schoolLabel: UILabel!
+    @IBOutlet weak var addFriendButton: UIButton!
+    @IBOutlet weak var gradeLabel: UILabel!
+    
     var addFriendFunc: (() -> (Void))!
     var chatFunc: (() -> (Void))!
+    
     @IBAction func addFriendTapped(_ sender: Any) {
         addFriendFunc()
     }
+    
     @IBAction func chatTapped(_ sender: Any) {
         chatFunc()
     }

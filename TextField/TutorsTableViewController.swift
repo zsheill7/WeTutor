@@ -10,6 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 import CoreLocation
+import SCLAlertView
 
 class TutorTableViewCell: UITableViewCell {
     
@@ -56,6 +57,10 @@ class TutorsTableViewController: UITableViewController {
         }
     }
 
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
     
     class func instantiateFromStoryboard() -> TutorsTableViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
@@ -67,9 +72,7 @@ class TutorsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FriendSystem.system.addUserObserver { () in
-            self.tableView.reloadData()
-        }
+        
         
         observeChannels()
         dbRef = FIRDatabase.database().reference().child("users")
@@ -81,6 +84,14 @@ class TutorsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        FriendSystem.system.getCurrentUser { (user) in
+            //self.usernameLabel.text = user.email
+        }
+        FriendSystem.system.addUserObserver { () in
+            self.tableView.reloadData()
+        }
+        
+        
     }
     func startObservingDB () {
         
@@ -185,6 +196,9 @@ class TutorsTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 161.0
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCell {
        /* let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserCell
         
@@ -204,15 +218,18 @@ class TutorsTableViewController: UITableViewController {
             tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
             cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
         }
-        
+        print(FriendSystem.system.userList[indexPath.row].name)
         // Modify cell
-        cell!.nameLabel.text = "Name: " + FriendSystem.system.userList[indexPath.row].name
-        cell!.schoolLabel.text = "School: " + FriendSystem.system.userList[indexPath.row].school
-        cell!.gradeLabel.text = "Grade: " + FriendSystem.system.userList[indexPath.row].grade
+        cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
+        cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"
+        cell!.gradeLabel.text = "Grade: \(FriendSystem.system.userList[indexPath.row].grade)"
         
         cell!.setAddFriendFunction {
+            print(FriendSystem.system.userList[indexPath.row])
             let id = FriendSystem.system.userList[indexPath.row].uid
+            print(id)
             FriendSystem.system.sendRequestToUser(id)
+            self.displayAlert(title: "Success!", message: "Friend Request Sent")
         }
         cell!.setChatFunction {
             self.createChannel()

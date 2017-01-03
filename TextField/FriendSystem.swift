@@ -95,6 +95,7 @@ class FriendSystem {
      - parameter completion: What to do when the block has finished running. The success variable
      indicates whether or not the login was a success
      */
+    
     func loginAccount(_ email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
@@ -154,7 +155,8 @@ class FriendSystem {
                 // let email = snapshot.childSnapshot(forPath: "email").value as! String
                
                 if email != FIRAuth.auth()?.currentUser?.email! {
-                    self.userList.append(User(snapshot: snapshot))
+                    print(User(snapshot: snapshot))
+                    self.userList.append(User(snapshot: child))
                 }
             }
             update()

@@ -74,7 +74,8 @@ struct User {
         
         let snapshotValue = snapshot.value as? NSDictionary
         
-        if let userUID = snapshotValue?["uid"] as? String {
+        
+        if let userUID = snapshot.key as? String {
             uid = userUID
         } else {
             uid = ""

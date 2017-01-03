@@ -266,8 +266,6 @@
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
 				C827B53D1E11DF2C00BDFD50 /* About This App */,
 				C838A8BA1E1982C1004A794C /* Friend System */,
-				C82800E01E0F4F7600329B7D /* Tutee.storyboard */,
-				96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */,
 				C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */,
 				C8EE88621E0DB256003775C2 /* CalendarViewController.swift */,
 				96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */,
@@ -292,7 +290,6 @@
 		C827B53D1E11DF2C00BDFD50 /* About This App */ = {
 			isa = PBXGroup;
 			children = (
-				C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */,
 				C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */,
 			);
 			name = "About This App";
@@ -311,9 +308,6 @@
 		C82800E61E107AC900329B7D /* In Tutor Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				C87984B01E0CC00A003EB7A1 /* Tutor.storyboard */,
-				C838A8BB1E19C47E004A794C /* Map.storyboard */,
-				C87984AE1E0C8138003EB7A1 /* MenuViewController.storyboard */,
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
 				C838A9491E1B6E32004A794C /* UserCell.swift */,
 				C87984A91E0C7782003EB7A1 /* Pages of Tutor Menu */,
@@ -325,6 +319,12 @@
 			isa = PBXGroup;
 			children = (
 				C88498BF1E0B51A0000C4675 /* Main.storyboard */,
+				C87984B01E0CC00A003EB7A1 /* Tutor.storyboard */,
+				C838A8BB1E19C47E004A794C /* Map.storyboard */,
+				C87984AE1E0C8138003EB7A1 /* MenuViewController.storyboard */,
+				C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */,
+				C82800E01E0F4F7600329B7D /* Tutee.storyboard */,
+				96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */,
 				C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */,
 				C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */,
 				C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */,
