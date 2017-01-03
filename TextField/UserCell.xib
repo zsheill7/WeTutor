@@ -91,7 +91,6 @@
                                         <rect key="frame" x="443" y="0.0" width="40" height="40"/>
                                         <connections>
                                             <action selector="chatTapped:" destination="-1" eventType="touchUpInside" id="PJb-EU-BB3"/>
-                                            <action selector="chatTapped:" destination="4fn-4T-5JP" eventType="touchUpInside" id="XI9-bC-kht"/>
                                             <action selector="moreInfoTapped:" destination="4fn-4T-5JP" eventType="touchUpInside" id="HCI-Pt-r49"/>
                                         </connections>
                                     </button>

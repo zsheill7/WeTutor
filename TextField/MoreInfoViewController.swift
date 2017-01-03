@@ -4,6 +4,7 @@ import UIKit
 import SafariServices
 import Eureka
 import CoreLocation
+import SCLAlertView
 
 class MoreInfoViewController: UIViewController {
     
@@ -14,7 +15,7 @@ class MoreInfoViewController: UIViewController {
     
    // @IBOutlet weak var name: UILabel!
     
-    
+    var indexPathRow: Int!
    
     @IBOutlet weak var basicInfoLabel: UILabel!
    
@@ -85,6 +86,11 @@ class MoreInfoViewController: UIViewController {
         
     }
     
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -103,6 +109,14 @@ class MoreInfoViewController: UIViewController {
         shouldHideWeatherInfoSetting = shouldHideWeatherInfo
     }
     
+    func addFriendFunction() {
+        let id = destUser.uid
+        print(id)
+        FriendSystem.system.sendRequestToUser(id)
+        self.displayAlert(title: "Success!", message: "Friend Request Sent")
+    }
+    
+    
     
     func updateWeatherInfoViews(hideWeatherInfo shouldHideWeatherInfo: Bool, animated: Bool) {
         let newButtonTitle = shouldHideWeatherInfo ? "Show" : "Hide"
@@ -117,6 +131,12 @@ class MoreInfoViewController: UIViewController {
         }
     }
     
+    @IBAction func addFriendTapped(_ sender: Any) {
+        addFriendFunction()
+    }
+    
+    @IBAction func chatTapped(_ sender: Any) {
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

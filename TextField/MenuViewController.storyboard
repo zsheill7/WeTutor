@@ -475,15 +475,18 @@
                                                                     <segue destination="0w8-YX-8kT" kind="presentation" identifier="presentMapViewController" id="JoQ-VH-bYf"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDC-5n-N1P">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDC-5n-N1P" userLabel="Add Friend">
                                                                 <rect key="frame" x="125" y="0.0" width="70" height="70"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="70" id="4Lb-k3-vEE"/>
                                                                     <constraint firstAttribute="width" constant="70" id="F2o-fu-QSW"/>
                                                                 </constraints>
                                                                 <state key="normal" image="telephonebook"/>
+                                                                <connections>
+                                                                    <action selector="addFriendTapped:" destination="6W2-gH-bYd" eventType="touchUpInside" id="htx-yG-2oh"/>
+                                                                </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-HM-hnn">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ss-HM-hnn" userLabel="Contact">
                                                                 <rect key="frame" x="250" y="0.0" width="70" height="70"/>
                                                                 <color key="backgroundColor" red="1" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -491,6 +494,9 @@
                                                                     <constraint firstAttribute="height" constant="70" id="hup-uW-oVN"/>
                                                                 </constraints>
                                                                 <state key="normal" image="message talk"/>
+                                                                <connections>
+                                                                    <action selector="chatTapped:" destination="6W2-gH-bYd" eventType="touchUpInside" id="OAe-1J-Pkg"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>

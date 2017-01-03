@@ -247,17 +247,18 @@ class TutorsTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let tutor = tutors[indexPath.row]
+        /*let tutor = tutors[indexPath.row]
         UID = tutor.uid
         destinationUser = tutor
-        self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+        self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)*/
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         print("in prepare for segue")
-        switch segue.identifier! {
-            case "toChatVC":
+       if segue.identifier == "toChatVC" {
+        
+                print("toChatVC")
                 if let channel = sender as? Channel {
                     print("in if let")
                     
@@ -267,18 +268,19 @@ class TutorsTableViewController: UITableViewController {
                     chatVc.channel = channel
                     chatVc.channelRef = channelRef.child(channel.id)
                 }
-            case "toMoreInfoVC":
-            
-                let moreInfoVC = segue.destination as! MoreInfoViewController
-                
-                moreInfoVC.UID = UID
-                moreInfoVC.destUser = destinationUser
-        default:
-            break
-        }
+       } else if segue.identifier == "toMoreInfoVC" {
+        print("toMoreInfoVC")
+        let moreInfoVC = segue.destination as! MoreInfoViewController
+        
+        moreInfoVC.UID = UID
+        //moreInfoVC.indexPathRow = indexPath.row
+        moreInfoVC.destUser = destinationUser
+        
+    }
+        
 
         
-            
+        
         
     }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
