@@ -111,7 +111,8 @@ class TutorsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tutors.count
+        //return tutors.count
+        return FriendSystem.system.userList.count
     }
 
     @IBAction func createNewChat(_ sender: Any) {
@@ -184,8 +185,8 @@ class TutorsTableViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> TutorTableViewCell {
-       /* let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TutorTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCell {
+       /* let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserCell
         
         print("in cell for row")
         let tutor = tutors[indexPath.row]
@@ -205,11 +206,16 @@ class TutorsTableViewController: UITableViewController {
         }
         
         // Modify cell
-        //cell!.emailLabel.text = FriendSystem.system.userList[indexPath.row].email
+        cell!.nameLabel.text = "Name: " + FriendSystem.system.userList[indexPath.row].name
+        cell!.schoolLabel.text = "School: " + FriendSystem.system.userList[indexPath.row].school
+        cell!.gradeLabel.text = "Grade: " + FriendSystem.system.userList[indexPath.row].grade
         
-        cell!.setFunction {
-            let id = FriendSystem.system.userList[indexPath.row].id
-            FriendSystem.system.sendRequestToUser(id!)
+        cell!.setAddFriendFunction {
+            let id = FriendSystem.system.userList[indexPath.row].uid
+            FriendSystem.system.sendRequestToUser(id)
+        }
+        cell!.setChatFunction {
+            self.createChannel()
         }
         
         // Return cell

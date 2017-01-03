@@ -26,7 +26,7 @@ struct User {
     let preferredSubjects: [String]
     
     let availabilityInfo: String
-
+    let grade: String
     
     let latitude: CGFloat
     let longitude: CGFloat
@@ -59,7 +59,7 @@ struct User {
         phone = ""
         preferredSubjects = [String]()
         availabilityInfo = ""
-
+        grade = ""
         latitude = 0
         longitude = 0
         channels = [String:String]()
@@ -165,10 +165,15 @@ struct User {
         } else {
             channels = [String:String]()
         }
+        if let userGrade = snapshotValue?["grade"] as? String {
+            grade = userGrade
+        } else {
+            grade = ""
+        }
         
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String) {
         self.uid = uid
         self.email = email
         self.address = address
@@ -185,5 +190,6 @@ struct User {
         self.availabilityInfo = availabilityInfo
         self.latitude = latitude
         self.longitude = longitude
+        self.grade = grade
     }
 }
