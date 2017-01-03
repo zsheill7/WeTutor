@@ -73,7 +73,7 @@ class TutorsTableViewController: UITableViewController {
         dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
         startObservingDB()
-        self.view.addBackground(imageName: "mixed2")
+       // self.view.addBackground(imageName: "mixed2")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -224,7 +224,7 @@ class TutorsTableViewController: UITableViewController {
                 let moreInfoVC = segue.destination as! MoreInfoViewController
                 
                 moreInfoVC.UID = UID
-                moreInfoVC.destinationUser = destinationUser
+                moreInfoVC.destUser = destinationUser
         default:
             break
         }

@@ -23,7 +23,7 @@ struct User {
     
     let languages: [String]
     let availableDays: [String]
-    let preferredSubjects: [Bool]
+    let preferredSubjects: [String]
     
     let availabilityInfo: String
 
@@ -49,7 +49,7 @@ struct User {
     init(userData:FIRUser) {
         uid = userData.uid
         name = ""
-        age = 10
+        age = 0
         description = userData.description
         isTutor = false
         languages = [""]
@@ -57,7 +57,7 @@ struct User {
         availableDays = [String]()
         school = ""
         phone = ""
-        preferredSubjects = [Bool]()
+        preferredSubjects = [String]()
         availabilityInfo = ""
 
         latitude = 0
@@ -137,10 +137,10 @@ struct User {
         } else {
             phone = ""
         }
-        if let userSubject = snapshotValue?["preferredSubject"] as? [Bool] {
+        if let userSubject = snapshotValue?["preferredSubject"] as? [String] {
             preferredSubjects = userSubject
         } else {
-            preferredSubjects = [false, false, false]
+            preferredSubjects = ["None"]
         }
         
         if let userAvailability = snapshotValue?["availabilityInfo"] as? String {
@@ -168,7 +168,7 @@ struct User {
         
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [Bool], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat) {
         self.uid = uid
         self.email = email
         self.address = address

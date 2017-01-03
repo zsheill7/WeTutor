@@ -25,6 +25,7 @@
 		C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B51E1982BA004A794C /* RequestViewController.swift */; };
 		C838A8BC1E19C47E004A794C /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C838A8BB1E19C47E004A794C /* Map.storyboard */; };
 		C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8BD1E19C4E1004A794C /* MapViewController.swift */; };
+		C838A9481E1B46EC004A794C /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C838A9471E1B46EC004A794C /* UserCell.xib */; };
 		C86ACAF21E0E238300F6695E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ACAF11E0E238200F6695E /* LoginViewController.swift */; };
 		C86BCCBC1E12F6CA007D24F9 /* cells in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB61E12F6CA007D24F9 /* cells */; };
 		C86BCCBD1E12F6CA007D24F9 /* controllers in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB71E12F6CA007D24F9 /* controllers */; };
@@ -124,6 +125,7 @@
 		C838A8B51E1982BA004A794C /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		C838A8BB1E19C47E004A794C /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		C838A8BD1E19C4E1004A794C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C838A9471E1B46EC004A794C /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		C86ACAF11E0E238200F6695E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C86BCCB61E12F6CA007D24F9 /* cells */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cells; path = SwiftForms/cells; sourceTree = "<group>"; };
 		C86BCCB71E12F6CA007D24F9 /* controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = controllers; path = SwiftForms/controllers; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 		C87984AD1E0C7F4C003EB7A1 /* Xib Files */ = {
 			isa = PBXGroup;
 			children = (
+				C838A9471E1B46EC004A794C /* UserCell.xib */,
 				C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */,
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 			);
@@ -584,6 +587,7 @@
 				C86BCCC01E12F6CA007D24F9 /* Info.plist in Resources */,
 				96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */,
 				C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */,
+				C838A9481E1B46EC004A794C /* UserCell.xib in Resources */,
 				C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */,
 				C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */,
 				C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */,

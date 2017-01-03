@@ -274,10 +274,12 @@ class TutorSignUpViewControllerOne : FormViewController {
             guard let option = value as? Int else { return "" }
             switch option {
             case 0:
-                return "Math"
+                return "No Preference"
             case 1:
-                return "Reading or writing"
+                return "Math"
             case 2:
+                return "Reading or writing"
+            case 3:
                 return "Science"
             
                 
@@ -285,6 +287,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                 return ""
             }
         }
+        row.value = 0 as AnyObject
         
         
         

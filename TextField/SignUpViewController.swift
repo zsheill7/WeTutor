@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
     let kInfoTitle = "Info"
     let kSubtitle = "You've just displayed this awesome Pop Up View"
     let blueColor: Int! = 0x22B573
-    
+    //let user = FIRAuth.auth()?.currentUser
     var ref: FIRDatabaseReference!
     
     func displayAlert(title: String, message: String) {
@@ -132,25 +132,20 @@ class SignUpViewController: UIViewController {
         } else if passwordField.text != confirmPasswordField.text {
             self.displayAlert(title: "Passwords Do Not Match", message: "Please re-enter passwords")
         } else {
-            FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
-                if error == nil {
+            /*FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in*/
+         FriendSystem.system.createAccount(emailField.text!, password: passwordField.text!) { (success) in
+                if success {
                     print("You have successfully signed up")
                     
-                    self.ref = FIRDatabase.database().reference()
-                    self.ref.child("users").child((user?.uid)!).setValue(
-                        ["name": self.nameField.text])
-                    let userDefaults = UserDefaults.standard
-                    userDefaults.setValue(self.emailField.text!, forKey: "email")
-                    userDefaults.setValue(self.passwordField.text!, forKey: "password")
-                    userDefaults.setValue(self.nameField.text!, forKey: "name")
+                    
                     
                     self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
                     
                     
                 } else {
-                    self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
+                    self.displayAlert(title: "Unable to Sign Up", message: "Please try again later.")
                 }
-            })
+            }
         }
     }
     

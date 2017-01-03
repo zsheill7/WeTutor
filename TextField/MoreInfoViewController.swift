@@ -7,16 +7,18 @@ import CoreLocation
 
 class MoreInfoViewController: UIViewController {
     
-    var destinationUser: User!
+    var destUser: User!
     
     @IBOutlet var backgroundColoredViews: [UIView]!
     @IBOutlet var headingLabels: [UILabel]!
     
    // @IBOutlet weak var name: UILabel!
     
+    
    
     @IBOutlet weak var basicInfoLabel: UILabel!
    
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var preferencesLabel: UILabel!
    
     @IBOutlet weak var availabilityLabel: UILabel!
@@ -35,10 +37,12 @@ class MoreInfoViewController: UIViewController {
             UserDefaults.standard.set(newValue, forKey: "shouldHideWeatherInfo")
         }
     }
+    var availableDaysString = ""
+    var preferredSubjectsString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.view.addBackground(imageName: "mixed2")
        
         
         
@@ -50,13 +54,31 @@ class MoreInfoViewController: UIViewController {
         }
         
         // Set the kerning to 1 to increase spacing between letters
+       
+        for (index, subject) in destUser.preferredSubjects.enumerated() {
+            if index != (destUser.preferredSubjects.count - 1) {
+                preferredSubjectsString += "\(subject), "
+            } else {
+                preferredSubjectsString += "\(subject)"
+            }
+        }
+        
+        for (index, day) in destUser.availableDays.enumerated() {
+            if index != (destUser.availableDays.count - 1) {
+                preferredSubjectsString += "\(day), "
+            } else {
+                preferredSubjectsString += "\(day)"
+            }
+        }
+        
         headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }
         
-        basicInfoLabel.text = "\(destinationUser.name) \nAge: \(destinationUser.age) \nSchool: \(destinationUser.school)\nPhone: \(destinationUser.phone)\nemail:\(destinationUser.email)"
-       title = destinationUser.name
-         descriptionLabel.text = destinationUser.description
-        preferencesLabel.text = "Preferred Subjects: \(destinationUser.preferredSubjects)"
-        availabilityLabel.text = "Available Days: \(destinationUser.availableDays)\n\(destinationUser.availabilityInfo)"
+        basicInfoLabel.text = "Age: \(destUser.age) \nSchool: \(destUser.school)\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
+      // title = destUser.name
+         descriptionLabel.text = destUser.description
+        preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
+        availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
+        nameLabel.text = "\(destUser.name)"
        /*whatToSeeLabel.text = vacationSpot.whatToSee
        
         userRatingLabel.text = String(repeating: "★", count: vacationSpot.userRating)*/
@@ -84,7 +106,7 @@ class MoreInfoViewController: UIViewController {
     
     func updateWeatherInfoViews(hideWeatherInfo shouldHideWeatherInfo: Bool, animated: Bool) {
         let newButtonTitle = shouldHideWeatherInfo ? "Show" : "Hide"
-        weatherHideOrShowButton.setTitle(newButtonTitle, for: UIControlState())
+       // weatherHideOrShowButton.setTitle(newButtonTitle, for: UIControlState())
         
         if animated {
             UIView.animate(withDuration: 0.3, animations: {
@@ -104,8 +126,8 @@ class MoreInfoViewController: UIViewController {
                 let mapViewController = navigationController.topViewController as? MapViewController else {
                     fatalError("Unexpected view hierarchy")
             }
-            mapViewController.locationToShow =             CLLocationCoordinate2DMake(CLLocationDegrees(destinationUser.latitude), CLLocationDegrees(destinationUser.longitude))
-            mapViewController.title = destinationUser.name
+            mapViewController.locationToShow =             CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude))
+            mapViewController.title = destUser.name
         /*case "presentRatingViewController":
             guard let navigationController = segue.destination as? UINavigationController,
                 let ratingViewController = navigationController.topViewController as? RatingViewController else {
