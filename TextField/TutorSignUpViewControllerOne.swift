@@ -263,8 +263,51 @@ class TutorSignUpViewControllerOne : FormViewController {
         
         section3.rows.append(row)
         
-        row = FormRowDescriptor(tag: Static.birthday, type: .date, title: "Birthday")
-        row.configuration.cell.showsInputToolbar = true
+        /*row = FormRowDescriptor(tag: Static.birthday, type: .date, title: "Birthday")
+        row.configuration.cell.showsInputToolbar = true*/
+        
+        row = FormRowDescriptor(tag: Static.subjects, type: .picker, title: "Grade")
+        row.configuration.selection.options = ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] as [Int]) as [AnyObject]
+        row.configuration.selection.allowsMultipleSelection = true
+        row.configuration.selection.optionTitleClosure = { value in
+            guard let option = value as? Int else { return "" }
+            switch option {
+            case 0:
+                return "Kindergarten"
+            case 1:
+                return "1st grade"
+            case 2:
+                return "2nd grade"
+            case 3:
+                return "3rd grade"
+            case 4:
+                return "4th grade"
+            case 5:
+                return "5th grade"
+            case 6:
+                return "6th grade"
+            case 7:
+                return "7th grade"
+            case 8:
+                return "8th grade"
+            case 9:
+                return "9th grade"
+            case 10:
+                return "10th grade"
+            case 11:
+                return "11th grade"
+            case 12:
+                return "12th grade"
+            case 13:
+                return "College"
+                
+                
+            default:
+                return ""
+            }
+        }
+        row.value = 0 as AnyObject
+        
         section3.rows.append(row)
         
         row = FormRowDescriptor(tag: Static.subjects, type: .picker, title: "Preferred Subject")
@@ -314,7 +357,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             let schoolName = self.form.sections[1].rows[0].value,
             let phone    = self.form.sections[1].rows[1].value,
             let gender    = self.form.sections[2].rows[0].value,
-            let birthday    = self.form.sections[2].rows[1].value,
+            let grade    = self.form.sections[2].rows[1].value,
             let preferredSubject = self.form.sections[2].rows[2].value,
             let description = self.form.sections[3].rows[0].value {
             
@@ -323,7 +366,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             
                 let userDefaults = UserDefaults.standard
                 print(schoolName)
-                print(birthday)
+            
                 print(description)
             
                 
@@ -338,7 +381,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                                                             "schoolName": schoolName,
                                                             "phone": phone,
                                                             "gender": gender,
-                                                                      "birthday": String(describing: birthday),
+                                                                      "grade": grade,
                                                                       "preferredSubject": preferredSubject,
                                                         "description": description,
                                                         "email": email,

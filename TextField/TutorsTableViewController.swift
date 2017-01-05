@@ -183,7 +183,7 @@ class TutorsTableViewController: UITableViewController {
                 self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
             //let userChannelRef = child(user.uid).setValue(["username": username])
             let userChannelRef = self.userRef.child((user!.uid))
-            userChannelRef.child("channels").setValue([uuid: channelItem["tutorName"]!])
+            userChannelRef.child("channels").child(uuid).setValue(channelItem["tutorName"]!)
                 //self.ref.child("users/\(userID)/channels/\(uuid)").setValue(channelItem["tutorName"]!)
                 //.setValue(uuid)
                 //self.ref.child("users/\(user.uid)/channels")
