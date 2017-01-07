@@ -146,6 +146,7 @@ class MoreInfoViewController: UIViewController {
                 let mapViewController = navigationController.topViewController as? MapViewController else {
                     fatalError("Unexpected view hierarchy")
             }
+            print( CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude)))
             mapViewController.locationToShow =             CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude))
             mapViewController.title = destUser.name
         /*case "presentRatingViewController":

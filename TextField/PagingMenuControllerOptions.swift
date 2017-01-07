@@ -16,6 +16,20 @@ struct MenuItemOrganization: MenuItemViewCustomizable {}
 struct MenuItemRequest: MenuItemViewCustomizable {}
 
 struct PagingMenuOptions1: PagingMenuControllerCustomizable {
+    
+    /*!
+        @code
+     
+     func displayAlert(title: String, message: String) {
+     SCLAlertView().showInfo(title, subTitle: message)
+     
+     }
+     
+     @endcode
+     
+ 
+     */
+    
     let usersViewController = UsersViewController.instantiateFromStoryboard()
    // let calendarViewController = CalendarViewController.instantiateFromStoryboard()
     let chatViewController = ChannelListViewController.instantiateFromStoryboard()

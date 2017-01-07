@@ -37,6 +37,8 @@ extension UIView {
     }
 }
 
+/* @enum This class connects with the FriendSystem class to create user accounts */
+
 class SignUpViewController: UIViewController {
     private var nameField: TextField!
     private var emailField: ErrorTextField!
@@ -155,13 +157,15 @@ class SignUpViewController: UIViewController {
     }
     
     /// Prepares the resign responder button.
-    /*private func prepareResignResponderButton() {
+    /*
+    private func prepareResignResponderButton() {
         let btn = RaisedButton(title: "Resign", titleColor: Color.blue.base)
     
         btn.addTarget(self, action: #selector(handleResignResponderButton(button:)), for: .touchUpInside)
         
         view.layout(btn).width(100).height(constant).top(24).right(24)
-    }*/
+    }
+    */
     private func prepareNextButton() {
         /*let btn = UIButton()
         btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
