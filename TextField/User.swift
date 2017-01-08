@@ -15,7 +15,7 @@ struct User {
     let email:String
     let name:String
     let isTutor: Bool
-    let age: Int
+
     let description: String
     let phone: String
     let address:String
@@ -32,11 +32,12 @@ struct User {
     let longitude: CGFloat
     
     let channels: [String: String]
+    let weekDayString: String
     /*
      
      uid
      name
-     age
+     grade
      description
      isTutor
      languages
@@ -49,7 +50,7 @@ struct User {
     init(userData:FIRUser) {
         uid = userData.uid
         name = ""
-        age = 0
+    
         description = userData.description
         isTutor = false
         languages = [""]
@@ -63,6 +64,7 @@ struct User {
         latitude = 0
         longitude = 0
         channels = [String:String]()
+        weekDayString = ""
         if let mail = userData.providerData.first?.email {
             email = mail
         } else {
@@ -87,7 +89,7 @@ struct User {
            email = ""
         }
         
-        if let userAddress = snapshotValue?["address"] as? String {
+        if let userAddress = snapshotValue?["zipcode"] as? String {
             address = userAddress
         } else {
             address  = ""
@@ -123,15 +125,15 @@ struct User {
             availableDays = [String]()
         }
         
-        if let userSchool = snapshotValue?["school"] as? String {
+        if let userSchool = snapshotValue?["schoolName"] as? String {
             school = userSchool
         } else {
             school = ""
         }
-        if let userAge = snapshotValue?["age"] as? Int {
-            age = userAge
+        if let userGrade = snapshotValue?["grade"] as? String {
+            grade = userGrade
         } else {
-            age = 0
+            grade = ""
         }
         if let userPhone = snapshotValue?["phone"] as? String {
             phone = userPhone
@@ -166,20 +168,25 @@ struct User {
         } else {
             channels = [String:String]()
         }
-        if let userGrade = snapshotValue?["grade"] as? String {
+        if let userWeekDayString = snapshotValue?["weekDayString"] as? String {
+            weekDayString = userWeekDayString
+        } else {
+            weekDayString = ""
+        }
+        /*if let userGrade = snapshotValue?["grade"] as? String {
             grade = userGrade
         } else {
             grade = ""
-        }
+        }*/
         
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, age: Int, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String, weekDayString: String) {
         self.uid = uid
         self.email = email
         self.address = address
         self.name = name
-        self.age = age
+        self.grade = grade
         self.description = description
         self.isTutor = isTutor
         self.languages = languages
@@ -191,6 +198,7 @@ struct User {
         self.availabilityInfo = availabilityInfo
         self.latitude = latitude
         self.longitude = longitude
-        self.grade = grade
+        self.weekDayString = weekDayString
+        //self.grade = grade
     }
 }

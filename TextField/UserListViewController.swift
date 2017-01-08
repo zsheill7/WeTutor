@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class UserListViewController: UIViewController {
     
@@ -14,6 +15,11 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     
     
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,20 +61,40 @@ extension UserListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell")
+    // var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell")
  
-        /*var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
         if cell == nil {
             tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
  
         }
         
         // Modify cell
-        cell!.emailLabel.text = FriendSystem.system.userList[indexPath.row].email
         
-        cell!.setFunction {
-            let id = FriendSystem.system.userList[indexPath.row].id
-            FriendSystem.system.sendRequestToUser(id!)
+        
+        
+       
+        print(FriendSystem.system.userList[indexPath.row].name)
+        // Modify cell
+        cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
+        cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"
+        cell!.gradeLabel.text = "Grade: \(FriendSystem.system.userList[indexPath.row].grade)"
+        
+        /*cell!.setAddFriendFunction {
+            print(FriendSystem.system.userList[indexPath.row])
+            let id = FriendSystem.system.userList[indexPath.row].uid
+            print(id)
+            FriendSystem.system.sendRequestToUser(id)
+            self.displayAlert(title: "Success!", message: "Friend Request Sent")
+        }
+        cell!.setChatFunction {
+            self.createChannel()
+        }
+        cell!.setInfoFunction {
+            let tutor = FriendSystem.system.userList[indexPath.row]
+            self.UID = tutor.uid
+            self.destinationUser = tutor
+            self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
         }*/
         
         // Return cell

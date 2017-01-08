@@ -267,46 +267,46 @@ class TutorSignUpViewControllerOne : FormViewController {
         row.configuration.cell.showsInputToolbar = true*/
         
         row = FormRowDescriptor(tag: Static.subjects, type: .picker, title: "Grade")
-        row.configuration.selection.options = ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] as [Int]) as [AnyObject]
+        row.configuration.selection.options = (["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "College"] as [String]) as [AnyObject]
         row.configuration.selection.allowsMultipleSelection = true
         row.configuration.selection.optionTitleClosure = { value in
-            guard let option = value as? Int else { return "" }
-            switch option {
-            case 0:
+            guard let option = value as? String else { return "" }
+            return option
+            /*switch option {
+            case "Kindergarten":
                 return "Kindergarten"
-            case 1:
+            case "1st grade":
                 return "1st grade"
-            case 2:
+            case "2nd grade":
                 return "2nd grade"
-            case 3:
+            case "3rd grade":
                 return "3rd grade"
-            case 4:
+            case "4th grade":
                 return "4th grade"
-            case 5:
+            case "5th grade":
                 return "5th grade"
-            case 6:
+            case "6th grade":
                 return "6th grade"
-            case 7:
+            case "7th grade":
                 return "7th grade"
-            case 8:
+            case "8th grade":
                 return "8th grade"
-            case 9:
+            case "9th grade":
                 return "9th grade"
-            case 10:
+            case "10th grade":
                 return "10th grade"
-            case 11:
+            case "11th grade":
                 return "11th grade"
-            case 12:
+            case "12th grade":
                 return "12th grade"
             case 13:
-                return "College"
+                return "College"*/
                 
                 
-            default:
-                return ""
-            }
+            
+            
         }
-        row.value = 0 as AnyObject
+        row.value = "Kindergarten" as AnyObject
         
         section3.rows.append(row)
         
@@ -366,28 +366,43 @@ class TutorSignUpViewControllerOne : FormViewController {
             
                 let userDefaults = UserDefaults.standard
                 print(schoolName)
-            
+                print(grade)
                 print(description)
             
+            let user = FIRAuth.auth()?.currentUser
+            
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                print("got snapshot")
                 
-            
-            
-                if let email = userDefaults.value(forKey: "email"),
-                    let password = userDefaults.value(forKey: "password"),
-                    let name = userDefaults.value(forKey: "name"),
-                    let user = FIRAuth.auth()?.currentUser {
-                    
-                    self.ref.child("users").child(user.uid).setValue(["zipcode": zipcode,
-                                                            "schoolName": schoolName,
-                                                            "phone": phone,
-                                                            "gender": gender,
-                                                                      "grade": grade,
-                                                                      "preferredSubject": preferredSubject,
-                                                        "description": description,
-                                                        "email": email,
-                                                        "password": password,
-                                                        "name": name], withCompletionBlock: { (error, ref) in
-                       if error == nil {
+                let value = snapshot.value as? NSDictionary
+                print(value?["name"] as? String)
+                print(value?["password"] as? String)
+                print(value?["email"] as? String)
+                if let name = value?["name"] as? String,
+                let password = value?["password"] as? String,
+                    let email = value?["email"] as? String {
+                        
+                        
+                   /* if let email = userDefaults.value(forKey: "email"),
+                        let password = userDefaults.value(forKey: "password"),
+                        let name = userDefaults.value(forKey: "name"),
+                        let user = FIRAuth.auth()?.currentUser {*/
+                        
+                self.ref.child("users").child(userID!).setValue(["zipcode": zipcode,
+                      "schoolName": schoolName,
+                      "phone": phone,
+                      "gender": gender,
+                      "grade": grade,
+                      "preferredSubject": preferredSubject,
+                      "description": description,
+                      "email": email,
+                      "password": password,
+                      "name": name], withCompletionBlock: { (error, ref) in
+                        print("before error nil")
+                        if error == nil {
+                            print("error=nil")
                             var geocoder = CLGeocoder()
                             geocoder.geocodeAddressString(zipcode as! String) { placemarks, error in
                                 if error != nil {
@@ -397,18 +412,27 @@ class TutorSignUpViewControllerOne : FormViewController {
                                         let location = placemark.location
                                         let latitude = location?.coordinate.latitude
                                         let longitude = location?.coordinate.longitude
-                                        self.ref.child("users/\(user.uid)/latitude").setValue(latitude)
-                                        self.ref.child("users/\(user.uid)/longitude").setValue(longitude)
+                                        self.ref.child("users/\(user?.uid)/latitude").setValue(latitude)
+                                        self.ref.child("users/\(user?.uid)/longitude").setValue(longitude)
                                     }
                                 }
                             }
-                        
+                            
                             self.performSegue(withIdentifier: "toSecondVC", sender: self)
-                       } else {
+                        } else /*if error != nil*/{
                             self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
-                       }
-                    })
-                }
+                        }
+                }) //self.ref.child("users").child(userID!).observeSingleEvent
+            } //if let zipcode = self.form.sections[0].rows[0].value,
+                //let schoolName = self.form.sections[1].rows[0].value,
+
+            
+            // ...
+        }) { (error) in
+            self.displayAlert(title: "Error", message: error.localizedDescription)
+        }
+    
+            
             
             
             

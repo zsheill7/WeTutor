@@ -74,7 +74,7 @@ class MoreInfoViewController: UIViewController {
         
         headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }
         
-        basicInfoLabel.text = "Age: \(destUser.age) \nSchool: \(destUser.school)\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
+        basicInfoLabel.text = "Age: \(destUser.grade) \nSchool: \(destUser.school)\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
       // title = destUser.name
          descriptionLabel.text = destUser.description
         preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"

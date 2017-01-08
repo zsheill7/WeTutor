@@ -71,13 +71,15 @@ class FriendSystem {
      - parameter completion: What to do when the block has finished running. The success variable 
      indicates whether or not the signup was a success
      */
-    func createAccount(_ email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
+    func createAccount(_ email: String, password: String, name: String, completion: @escaping (_ success: Bool) -> Void) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             
             if (error == nil) {
                 // Success
                 var userInfo = [String: AnyObject]()
-                userInfo = ["email": user!.email! as AnyObject]
+                userInfo = ["email": user!.email! as AnyObject,
+                            "password": password as AnyObject,
+                            "name": name as AnyObject]
                 self.CURRENT_USER_REF.setValue(userInfo)
                 completion(true)
             } else {
@@ -144,18 +146,28 @@ class FriendSystem {
     // MARK: - All users
     /** The list of all users */
     var userList = [User]()
-    /** Adds a user observer. The completion function will run every time this list changes, allowing you  
+    /** Adds a user observer. The completion function will run every time this list changes, allowing you
      to update your UI. */
     func addUserObserver(_ update: @escaping () -> Void) {
-        FriendSystem.system.USER_REF.observe(FIRDataEventType.value, with: { (snapshot) in
+        /*FriendSystem.system.*/USER_REF.observe(FIRDataEventType.value, with: { (snapshot) in
             self.userList.removeAll()
             for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                let value = snapshot.value as? NSDictionary
+                let value = child.value as? [String: AnyObject]
+                //print(value)
                 let email = value?["email"] as? String
+                let description = value?["description"] as? String
+                //let name = value?["name"] as? String
+                let password = value?["password"] as? String
+                
+                if email != nil {
+                    print("email:" + email!)
+                }
+                //print("name:" + name!)
                 // let email = snapshot.childSnapshot(forPath: "email").value as! String
                
-                if email != FIRAuth.auth()?.currentUser?.email! {
-                    print(User(snapshot: snapshot))
+                if email != FIRAuth.auth()?.currentUser?.email! && description != nil{
+                 print(User(snapshot: child))
+                    print("here in if email")
                     self.userList.append(User(snapshot: child))
                 }
             }

@@ -50,6 +50,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
   
     var ref: FIRDatabaseReference!
     
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +61,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
         
         
         ref = FIRDatabase.database().reference()
-        form +++
+        form
             /*Section() {
                 var header = HeaderFooterView<EurekaLogoViewNib>(.nibFile(name: "EurekaSectionHeader", bundle: nil))
                 header.onSetupView = { (view, section) -> () in
@@ -75,11 +76,11 @@ class TutorSignUpViewControllerTwo : FormViewController {
                 }
                 $0.header = header
             }*/
-             Section("Available Days")
+             +++ Section("Available Days")
             
             
             
-            <<< WeekDayRow(){
+            <<< WeekDayRow("Available Days"){
                 $0.value = [.monday, .wednesday, .friday]
                 
             }
@@ -124,8 +125,17 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     
                     //let availableDays: [Bool] = row
-                    let row1: TextRow? = self.form.rowBy(tag: "Available Days")
+                    let row1: WeekDayRow? = self.form.rowBy(tag: "Available Days")
                     let daysValue = row1?.value
+                    
+                   //
+                    var weekDayString = ""
+                    let weekDayCell = WeekDayCell()
+                    if daysValue != nil {
+                        weekDayString = weekDayCell.getStringFromArray(daysValue!)
+                        print("daysValue: " + weekDayString)
+                    }
+                    
                     
                     let row2: TextRow? = self.form.rowBy(tag: "Availability Notes")
                     let availabilityInfo = row2?.value
@@ -157,15 +167,15 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     }
 
                     print(languages)
-                    print(daysValue)
+             
                     
-                    userDefaults.setValue(daysValue, forKey: "availableDays")
+                    userDefaults.setValue(weekDayString, forKey: "availableDays")
                     userDefaults.setValue(languages, forKey: "languages")
                     userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
                     userDefaults.synchronize()
                     
                     if let user = FIRAuth.auth()?.currentUser {
-                        self.ref.child("users/\(user.uid)/availableDays").setValue(daysValue)
+                        self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
                         self.ref.child("users/\(user.uid)/languages").setValue(languages)
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
                         

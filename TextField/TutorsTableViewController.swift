@@ -74,10 +74,7 @@ class TutorsTableViewController: UITableViewController {
         
         
         
-        observeChannels()
-        dbRef = FIRDatabase.database().reference().child("users")
-        userRef = FIRDatabase.database().reference().child("users")
-        startObservingDB()
+       
        // self.view.addBackground(imageName: "mixed2")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -90,6 +87,11 @@ class TutorsTableViewController: UITableViewController {
         FriendSystem.system.addUserObserver { () in
             self.tableView.reloadData()
         }
+        
+        observeChannels()
+        dbRef = FIRDatabase.database().reference().child("users")
+        userRef = FIRDatabase.database().reference().child("users")
+        startObservingDB()
         
         
     }
@@ -218,7 +220,10 @@ class TutorsTableViewController: UITableViewController {
             tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
             cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
         }
-        print(FriendSystem.system.userList[indexPath.row].name)
+        print("Name: \(FriendSystem.system.userList[indexPath.row].name)")
+        print("School: \(FriendSystem.system.userList[indexPath.row].school)")
+         print("Email: \(FriendSystem.system.userList[indexPath.row].email)")
+        print(FriendSystem.system.userList[indexPath.row].grade)
         // Modify cell
         cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
         cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"

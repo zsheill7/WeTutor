@@ -1,31 +1,65 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="D0O-0T-CPl">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D0O-0T-CPl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
         <scene sceneID="JZF-aa-q2I">
             <objects>
-                <viewController id="DiH-Za-hfG" customClass="MapViewController" customModule="VacationSpots" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DiH-Za-hfG" customClass="MapViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cgc-2J-RP8"/>
-                        <viewControllerLayoutGuide type="bottom" id="IRh-Kd-R4t"/>
+                        <viewControllerLayoutGuide type="top" id="gnf-KA-0xj"/>
+                        <viewControllerLayoutGuide type="bottom" id="O1A-Of-FDA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7f1-MH-wzd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="view" contentMode="scaleToFill" id="nFL-Dm-JiT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gMn-zd-0qU">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gb2-Ye-HAf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-A3-VMy">
+                                <rect key="frame" x="234" y="619" width="125" height="29"/>
+                                <segments>
+                                    <segment title="Car"/>
+                                    <segment title="Walking"/>
+                                </segments>
+                            </segmentedControl>
+                            <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSG-FI-GWn">
+                                <rect key="frame" x="325" y="141" width="34" height="34"/>
+                                <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="0tT-ng-fzV"/>
+                                    <constraint firstAttribute="height" constant="34" id="gzh-Hl-GHW"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="direction"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showDirection:" destination="DiH-Za-hfG" eventType="touchUpInside" id="dqS-D4-KZw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="gMn-zd-0qU" firstAttribute="top" secondItem="cgc-2J-RP8" secondAttribute="bottom" id="Gkf-0j-TGs"/>
-                            <constraint firstItem="gMn-zd-0qU" firstAttribute="leading" secondItem="7f1-MH-wzd" secondAttribute="leading" id="NTi-ov-0nl"/>
-                            <constraint firstItem="IRh-Kd-R4t" firstAttribute="top" secondItem="gMn-zd-0qU" secondAttribute="bottom" id="TCz-tu-cFg"/>
-                            <constraint firstAttribute="trailing" secondItem="gMn-zd-0qU" secondAttribute="trailing" id="hGD-wx-eii"/>
+                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="7XM-sm-4mK"/>
+                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="BQt-A3-VMy" secondAttribute="bottom" constant="20" id="Fm4-vy-fO9"/>
+                            <constraint firstItem="aSG-FI-GWn" firstAttribute="top" secondItem="gnf-KA-0xj" secondAttribute="bottom" constant="77" id="JiL-Gk-SNM"/>
+                            <constraint firstItem="BQt-A3-VMy" firstAttribute="trailing" secondItem="nFL-Dm-JiT" secondAttribute="trailingMargin" id="Kn6-d3-KRw"/>
+                            <constraint firstItem="gb2-Ye-HAf" firstAttribute="leading" secondItem="nFL-Dm-JiT" secondAttribute="leading" id="UDg-pX-UO8"/>
+                            <constraint firstItem="gb2-Ye-HAf" firstAttribute="top" secondItem="gnf-KA-0xj" secondAttribute="bottom" id="UUP-KI-ZDd"/>
+                            <constraint firstAttribute="trailing" secondItem="gb2-Ye-HAf" secondAttribute="trailing" id="id4-fd-yHk"/>
+                            <constraint firstItem="aSG-FI-GWn" firstAttribute="trailing" secondItem="nFL-Dm-JiT" secondAttribute="trailingMargin" id="w6W-9L-LlI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DRN-bd-oZm">
@@ -36,22 +70,22 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="gMn-zd-0qU" id="gzl-Pr-B1u"/>
+                        <outlet property="mapView" destination="gb2-Ye-HAf" id="Vlm-UU-wVF"/>
+                        <outlet property="segmentedControl" destination="BQt-A3-VMy" id="YNr-xT-cW9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hab-yE-QHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="452" y="-80"/>
+            <point key="canvasLocation" x="1144.8" y="-89.505247376311857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ucs-al-b82">
             <objects>
                 <navigationController id="D0O-0T-CPl" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Gbp-Zo-9X0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Gbp-Zo-9X0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.30980392159999998" green="0.71764705880000002" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.30980392159999998" green="0.71764705880000002" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="DiH-Za-hfG" kind="relationship" relationship="rootViewController" id="LYZ-p8-3Qd"/>
@@ -62,4 +96,7 @@
             <point key="canvasLocation" x="33" y="-80"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="direction" width="40" height="40"/>
+    </resources>
 </document>

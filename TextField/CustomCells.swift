@@ -102,6 +102,34 @@ public class WeekDayCell : Cell<Set<WeekDay>>, CellType {
         }
     }
     
+   func getStringFromArray(_ array: Set<WeekDay>) -> String {
+        var weekDayString = ""
+        for weekDay in array {
+            switch weekDay{
+            case .sunday:
+                weekDayString.append("Sunday, ")
+            case .monday:
+                weekDayString.append("Monday, ")
+            case .tuesday:
+                weekDayString.append("Tuesday, ")
+            case .wednesday:
+                weekDayString.append("Wednesday, ")
+            case .thursday:
+                weekDayString.append("Thursday, ")
+            case .friday:
+                weekDayString.append("Friday, ")
+            default:
+                weekDayString.append("Saturday, ")
+            }
+            
+        }
+        weekDayString = weekDayString.substring(to: weekDayString.index(before: weekDayString.endIndex))
+    
+        return weekDayString
+    }
+    
+    
+    
     private func dayTapped(_ button: UIButton, day: WeekDay){
         button.isSelected = !button.isSelected
         if button.isSelected{

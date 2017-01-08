@@ -135,7 +135,7 @@ class SignUpViewController: UIViewController {
             self.displayAlert(title: "Passwords Do Not Match", message: "Please re-enter passwords")
         } else {
             /*FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in*/
-         FriendSystem.system.createAccount(emailField.text!, password: passwordField.text!) { (success) in
+            FriendSystem.system.createAccount(emailField.text!, password: passwordField.text!, name: nameField.text!) { (success) in
                 if success {
                     print("You have successfully signed up")
                     
