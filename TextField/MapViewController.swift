@@ -147,7 +147,11 @@ class MapViewController: UIViewController {
             
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+            print("in map")
         }
+        
+        directionRequest.transportType = MKDirectionsTransportType.automobile
+        directionRequest.transportType = currentTransportType
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

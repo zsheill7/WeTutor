@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/ChannelListViewController.swift"
-            timestampString = "505933508.526515"
+            timestampString = "505934118.098213"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "observeChannels()"
             landmarkType = "7">
          </BreakpointContent>

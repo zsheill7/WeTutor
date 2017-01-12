@@ -141,7 +141,7 @@ class TutorsTableViewController: UITableViewController {
         
         
     }
-    func createChannel(otherUser: String) {
+    /*func createChannel(otherUser: String) {
         print("in create channel")
         let userDefaults = UserDefaults.standard
         
@@ -190,7 +190,7 @@ class TutorsTableViewController: UITableViewController {
             newChannelRef.setValue(channelItem)
             let userID = FIRAuth.auth()?.currentUser?.uid
             let userChannelRef = self.userRef.child(userID!).child("channels")
-            userChannelRef.setValue(self.channelRef)
+            userChannelRef.setValue(channelItem)
             /*userChannelRef.child("tutorName").setValue(self.tutorName)
             userChannelRef.child("tuteeName").setValue(tuteeName)*/
                 self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
@@ -199,6 +199,50 @@ class TutorsTableViewController: UITableViewController {
 
         })
         
+        
+    }*/
+    func createChannel(otherUser: String) {
+        
+        
+        
+        /*let userDefaults = UserDefaults.standard
+         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+         let userName = userDefaults.value(forKey: "name") as? String {
+         }
+         }*/
+        let userDefaults = UserDefaults.standard
+        let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
+        
+        if let userID = FIRAuth.auth()?.currentUser?.uid {
+            
+            if isTutor == true {
+                tutorName = userID
+                tuteeName = otherUser
+            } else {
+                
+            }
+        } else {
+            tutorName = "Chat"
+            tuteeName = "Chat"
+        }
+        
+        let newChannelRef = channelRef.childByAutoId()
+        let channelItem = [
+            "tutorName": tutorName,
+            "tuteeName": tuteeName
+        ]
+        newChannelRef.setValue(channelItem)
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = userRef.child(userID!).child("channels")
+        
+        userChannelRef.child("tutorName").setValue(tutorName)
+        userChannelRef.child("tuteeName").setValue(tuteeName)
+        
+        let uuid = UUID().uuidString
+        self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
+        
+       
+        self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
         
     }
     
