@@ -47,9 +47,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 18)!]
         
+        
         let userDefaults = UserDefaults.standard
         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
-            let hasLanguages = userDefaults.value(forKey: "languages") as? [String]{
+            let hasLanguages = userDefaults.value(forKey: "languages") as? [String],
+            let uid = FIRAuth.auth()?.currentUser?.uid {
             if isTutor == true {
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                 let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController

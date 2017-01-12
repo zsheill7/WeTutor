@@ -20,4 +20,5 @@ use_frameworks!
  pod 'SCLAlertView'
  pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
  pod 'SwiftForms'
+ pod 'NVActivityIndicatorView'
 end

@@ -129,7 +129,9 @@ class TutorsTableViewController: UITableViewController {
     }
 
     @IBAction func createNewChat(_ sender: Any) {
-        createChannel()
+        if let uid = (sender as AnyObject).accessibilityIdentifier {
+            createChannel(otherUser: uid!)
+        }
        
         
         
@@ -139,7 +141,8 @@ class TutorsTableViewController: UITableViewController {
         
         
     }
-    func createChannel() {
+    func createChannel(otherUser: String) {
+        print("in create channel")
         let userDefaults = UserDefaults.standard
         
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -149,16 +152,19 @@ class TutorsTableViewController: UITableViewController {
         
         ref = FIRDatabase.database().reference()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            let userObject = User(snapshot: snapshot )
             
+            print("in child observesingleevent")
+            let userObject = User(snapshot: snapshot )
+            print(userObject)
             let value = snapshot.value as? NSDictionary
             let isTutor = userObject.isTutor
             
             if isTutor != nil {
+                print("tutor != nil")
                 
                     if isTutor == true {
-                        self.tutorName = userObject.name
-                        self.tuteeName = ""
+                        self.tutorName = userID!
+                        self.tuteeName = otherUser
                     } else {
                         
                     }
@@ -172,23 +178,21 @@ class TutorsTableViewController: UITableViewController {
             
         
                 let uuid = UUID().uuidString
-            print(uuid)
-            print(user?.uid)
-                let newChannelRef = self.channelRef.child(uuid)
-                let channelItem = [
-                    "tutorName": self.tutorName,
-                    "tuteeName": self.tuteeName
-                ]
-            print(channelItem["tutorName"]!)
-            print(user!.uid)
-                newChannelRef.setValue(channelItem)
-                self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
-            //let userChannelRef = child(user.uid).setValue(["username": username])
-            let userChannelRef = self.userRef.child((user!.uid))
-            userChannelRef.child("channels").child(uuid).setValue(channelItem["tutorName"]!)
-                //self.ref.child("users/\(userID)/channels/\(uuid)").setValue(channelItem["tutorName"]!)
-                //.setValue(uuid)
-                //self.ref.child("users/\(user.uid)/channels")
+            let channelItem = [
+                "tutorName": self.tutorName,
+                "tuteeName": self.tuteeName
+            ]
+           
+            self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
+          
+            let newChannelRef = self.channelRef.childByAutoId()
+            
+            newChannelRef.setValue(channelItem)
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            let userChannelRef = self.userRef.child(userID!).child("channels")
+            userChannelRef.setValue(self.channelRef)
+            /*userChannelRef.child("tutorName").setValue(self.tutorName)
+            userChannelRef.child("tuteeName").setValue(tuteeName)*/
                 self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
 
             
@@ -228,6 +232,8 @@ class TutorsTableViewController: UITableViewController {
         cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
         cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"
         cell!.gradeLabel.text = "Grade: \(FriendSystem.system.userList[indexPath.row].grade)"
+        cell!.chatButton.accessibilityIdentifier = FriendSystem.system.userList[indexPath.row].uid
+        
         
         cell!.setAddFriendFunction {
             print(FriendSystem.system.userList[indexPath.row])
@@ -237,7 +243,7 @@ class TutorsTableViewController: UITableViewController {
             self.displayAlert(title: "Success!", message: "Friend Request Sent")
         }
         cell!.setChatFunction {
-            self.createChannel()
+            self.createChannel(otherUser: FriendSystem.system.userList[indexPath.row].uid)
         }
         cell!.setInfoFunction {
             let tutor = FriendSystem.system.userList[indexPath.row]

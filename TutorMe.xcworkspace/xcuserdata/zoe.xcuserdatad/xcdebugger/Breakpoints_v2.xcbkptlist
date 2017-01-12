@@ -41,22 +41,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TextField/TutorsTableViewController.swift"
-            timestampString = "505544040.588205"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "createChannel()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/ChatViewController.swift"
             timestampString = "504838306.530473"
             startingColumnNumber = "9223372036854775807"
@@ -106,13 +90,109 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/ChannelListViewController.swift"
-            timestampString = "505623272.715784"
+            timestampString = "505933508.526515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "observeChannels()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TextField/TutorSignUpViewControllerOne.swift"
+            timestampString = "505899233.454889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "loadForm()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TutorMe.TutorSignUpViewControllerOne.((loadForm in _A3A221EFE4D1079071B5267A04C4E1ED) () -&gt; ()).(closure #4).(closure #1)"
+                  moduleName = "TutorMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zoe/Documents/Xcode%20projects/TutorMe/TextField/TutorSignUpViewControllerOne.swift"
+                  timestampString = "505899066.445525"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "406"
+                  endingLineNumber = "406"
+                  offsetFromSymbolStart = "9839">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TutorMe.TutorSignUpViewControllerOne.((loadForm in _A3A221EFE4D1079071B5267A04C4E1ED) () -&gt; ()).(closure #4).(closure #1).(closure #1)"
+                  moduleName = "TutorMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zoe/Documents/Xcode%20projects/TutorMe/TextField/TutorSignUpViewControllerOne.swift"
+                  timestampString = "505899066.450854"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "407"
+                  endingLineNumber = "407"
+                  offsetFromSymbolStart = "80">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TextField/TutorSignUpViewControllerOne.swift"
+            timestampString = "505899233.454889"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "loadForm()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TutorMe.TutorSignUpViewControllerOne.((loadForm in _A3A221EFE4D1079071B5267A04C4E1ED) () -&gt; ()).(closure #4).(closure #1).(closure #1)"
+                  moduleName = "TutorMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zoe/Documents/Xcode%20projects/TutorMe/TextField/TutorSignUpViewControllerOne.swift"
+                  timestampString = "505899164.759884"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "411"
+                  endingLineNumber = "411"
+                  offsetFromSymbolStart = "651">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TutorMe.TutorSignUpViewControllerOne.((loadForm in _A3A221EFE4D1079071B5267A04C4E1ED) () -&gt; ()).(closure #4).(closure #1).(closure #1).(closure #1)"
+                  moduleName = "TutorMe"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zoe/Documents/Xcode%20projects/TutorMe/TextField/TutorSignUpViewControllerOne.swift"
+                  timestampString = "505899164.761503"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "412"
+                  endingLineNumber = "412"
+                  offsetFromSymbolStart = "61">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

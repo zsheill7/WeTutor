@@ -15,6 +15,7 @@ import SCLAlertView
 import Firebase
 import FirebaseDatabase
 import CoreLocation
+import NVActivityIndicatorView
 
 private enum MenuSection {
     case all(content: AllContent)
@@ -142,6 +143,11 @@ class TutorSignUpViewControllerOne : FormViewController {
         
     }
     
+    let cols = 4
+    let rows = 8
+    var cellWidth = 2
+    var cellHeight = 2
+    
     struct Static {
         static let nameTag = "name"
         static let passwordTag = "password"
@@ -171,6 +177,9 @@ class TutorSignUpViewControllerOne : FormViewController {
         super.viewDidLoad()
         
         //initializeForm()
+        
+        cellWidth = Int(self.view.frame.width / CGFloat(cols))
+        cellHeight = Int(self.view.frame.height / CGFloat(rows))
         
         self.view.addBackground(imageName: "mixed2")
         
@@ -380,16 +389,37 @@ class TutorSignUpViewControllerOne : FormViewController {
                 print(value?["name"] as? String)
                 print(value?["password"] as? String)
                 print(value?["email"] as? String)
+                print(value?["isTutor"] as? Bool)
                 if let name = value?["name"] as? String,
                 let password = value?["password"] as? String,
-                    let email = value?["email"] as? String {
+                    let email = value?["email"] as? String,
+                    let isTutor = value?["isTutor"] as? Bool{
                         
                         
                    /* if let email = userDefaults.value(forKey: "email"),
                         let password = userDefaults.value(forKey: "password"),
                         let name = userDefaults.value(forKey: "name"),
                         let user = FIRAuth.auth()?.currentUser {*/
-                        
+                    let x = Int(self.view.center.x)
+                    let y = Int(self.view.center.y)
+                    let frame = CGRect(x: x, y: y, width: self.cellWidth, height: self.cellHeight)
+                    
+                    let activityIndicatorView = NVActivityIndicatorView(frame: frame,
+                                                                        type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.lineScale.rawValue) )
+                    let animationTypeLabel = UILabel(frame: frame)
+                    
+                    animationTypeLabel.text = "Loading..."
+                    animationTypeLabel.sizeToFit()
+                    animationTypeLabel.textColor = UIColor.white
+                    animationTypeLabel.frame.origin.x += 5
+                    animationTypeLabel.frame.origin.y += CGFloat(self.cellHeight) - animationTypeLabel.frame.size.height
+                    
+                    activityIndicatorView.padding = 20
+                    self.view.addSubview(activityIndicatorView)
+                    self.view.addSubview(animationTypeLabel)
+                    activityIndicatorView.startAnimating()
+
+                    
                 self.ref.child("users").child(userID!).setValue(["zipcode": zipcode,
                       "schoolName": schoolName,
                       "phone": phone,
@@ -399,6 +429,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                       "description": description,
                       "email": email,
                       "password": password,
+                      "isTutor": isTutor,
                       "name": name], withCompletionBlock: { (error, ref) in
                         print("before error nil")
                         if error == nil {
@@ -412,12 +443,12 @@ class TutorSignUpViewControllerOne : FormViewController {
                                         let location = placemark.location
                                         let latitude = location?.coordinate.latitude
                                         let longitude = location?.coordinate.longitude
-                                        self.ref.child("users/\(user?.uid)/latitude").setValue(latitude)
-                                        self.ref.child("users/\(user?.uid)/longitude").setValue(longitude)
+                                        self.ref.child("users/\(userID!)/latitude").setValue(latitude)
+                                        self.ref.child("users/\(userID!)/longitude").setValue(longitude)
                                     }
                                 }
                             }
-                            
+                            activityIndicatorView.stopAnimating()
                             self.performSegue(withIdentifier: "toSecondVC", sender: self)
                         } else /*if error != nil*/{
                             self.displayAlert(title: "Error", message: (error?.localizedDescription)!)

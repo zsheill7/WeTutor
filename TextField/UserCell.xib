@@ -102,11 +102,14 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="y9D-q8-mkZ" firstAttribute="leading" secondItem="FOj-Lm-Pml" secondAttribute="trailing" id="Fie-eC-Lsj"/>
                                     <constraint firstItem="OVg-pG-xRs" firstAttribute="width" secondItem="GsY-BT-eGh" secondAttribute="width" id="Ps8-R3-cau"/>
+                                    <constraint firstAttribute="trailing" secondItem="y9D-q8-mkZ" secondAttribute="trailing" id="V9q-nG-lKH"/>
                                     <constraint firstItem="FOj-Lm-Pml" firstAttribute="width" secondItem="GsY-BT-eGh" secondAttribute="width" id="gaG-V7-qHC"/>
                                     <constraint firstItem="FOj-Lm-Pml" firstAttribute="height" secondItem="GsY-BT-eGh" secondAttribute="height" id="iX5-ya-cWS"/>
                                     <constraint firstItem="OVg-pG-xRs" firstAttribute="height" secondItem="GsY-BT-eGh" secondAttribute="height" id="pd9-CA-vrT"/>
                                     <constraint firstItem="GsY-BT-eGh" firstAttribute="height" secondItem="fPm-23-gmj" secondAttribute="height" id="rfS-dB-MvW"/>
+                                    <constraint firstItem="y9D-q8-mkZ" firstAttribute="leading" secondItem="FOj-Lm-Pml" secondAttribute="trailing" id="w2d-HR-azW"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoQ-dY-m4R">

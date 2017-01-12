@@ -56,6 +56,7 @@ PODS:
   - Material (2.4.1):
     - Material/Core (= 2.4.1)
   - Material/Core (2.4.1)
+  - NVActivityIndicatorView (3.1)
   - PagingMenuController (1.4.0)
   - RZTransitions (1.2.1)
   - SCLAlertView (0.7.0)
@@ -73,6 +74,7 @@ DEPENDENCIES:
   - FSCalendar
   - JSQMessagesViewController
   - Material (~> 2.0)
+  - NVActivityIndicatorView
   - PagingMenuController
   - RZTransitions
   - SCLAlertView
@@ -119,12 +121,13 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Material: bdf4386e3600537077c2667764292f8dd581e541
+  NVActivityIndicatorView: 9f47e8a4affb860ef729aeec99b1550219e6c233
   PagingMenuController: 79a9ce7472839d9afd0a6b879af6132822644a47
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftForms: 3f3dbaa79fe54eb1ccd0aca8d0cd1e38eb00537e
 
-PODFILE CHECKSUM: 0165e6b1b72f93069c27f1dd1360d9ba2c679069
+PODFILE CHECKSUM: 1e21b817aa582e704b8f9ebdfb3f46447ac40326
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.2.0.beta.3

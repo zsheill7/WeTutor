@@ -26,22 +26,21 @@ class TutorOrTuteeViewController: UIViewController {
     var centerY: CGFloat = 0
     
     
-    var ref: FIRDatabaseReference!
-    var user: FIRUser!
+    var userRef: FIRDatabaseReference!
+    var userUID = ""
     
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let tempUser = FIRAuth.auth()?.currentUser {
-            user = tempUser
-        } else {
-            // No user is signed in.
-            // ...
-        }
+        
         
         self.view.addBackground(imageName: "mixed2")
         
-        ref = FIRDatabase.database().reference()
+        userRef = FIRDatabase.database().reference().child("users")
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            userUID = FIRAuth.auth()!.currentUser!.uid
+        }
+        
         
         centerX = CGFloat(self.view.frame.width / 2)
         centerY = CGFloat(self.view.frame.height / 2)
@@ -124,7 +123,7 @@ class TutorOrTuteeViewController: UIViewController {
     
        @IBAction func studentTapped(_ sender: Any) {
         print("tapped")
-        self.ref.child("users/\(user.uid)/isTutor").setValue(false)
+        self.userRef.child("\(userUID)/isTutor").setValue(false)
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(false, forKey: "isTutor")
         userDefaults.synchronize()
@@ -134,7 +133,7 @@ class TutorOrTuteeViewController: UIViewController {
     }
     @IBAction func tutorTapped(_ sender: Any) {
         print("tapped")
-        self.ref.child("users/\(user.uid)/isTutor").setValue(true)
+        self.userRef.child("\(userUID)/isTutor").setValue(true)
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(true, forKey: "isTutor")
         
