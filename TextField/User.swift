@@ -31,7 +31,7 @@ struct User {
     let latitude: CGFloat
     let longitude: CGFloat
     
-    let channels: [String: [String: String]]
+    var channels: [Channel]
     let weekDayString: String
     let friends: [String: Bool]
     /*
@@ -64,7 +64,7 @@ struct User {
         grade = ""
         latitude = 0
         longitude = 0
-        channels = [String: [String: String]]()
+        channels = [Channel]()
         weekDayString = ""
         if let mail = userData.providerData.first?.email {
             email = mail
@@ -77,7 +77,23 @@ struct User {
     init (snapshot:FIRDataSnapshot) {
         
         let snapshotValue = snapshot.value as? NSDictionary
+        let channelSnapshot = snapshot.childSnapshot(forPath: "channels")
+       // let channelValue = channelChild.value as? NSDictionary
         
+        channels = [Channel]()
+       
+        for channel in channelSnapshot.children.allObjects as! [FIRDataSnapshot] {
+            let channelValue = channel.value as? NSDictionary
+            let id = channel.key
+            let name = "Chat"
+            if let tutorName = channelValue?["tutorName"] as? String,
+                let tuteeName = channelValue?["tuteeName"] as? String {
+            
+                let tempChannel = Channel(id: id, name: name, tutorName: tutorName, tuteeName: tuteeName)
+                channels.append(tempChannel)
+            }
+        }
+       
         
         if let userUID = snapshot.key as? String {
             uid = userUID
@@ -165,11 +181,11 @@ struct User {
         } else {
             longitude = 0
         }
-        if let userChannels = snapshotValue?["channels"] as? [String: [String: String]] {
+        /*if let userChannels = snapshotValue?["channels"] as? [String: [String: String]] {
             channels = userChannels
         } else {
             channels = [String: [String: String]]()
-        }
+        }*/
         if let userWeekDayString = snapshotValue?["weekDayString"] as? String {
             weekDayString = userWeekDayString
         } else {
@@ -188,7 +204,7 @@ struct User {
         
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String: [String: String]], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String, weekDayString: String, friends: [String: Bool]) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [Channel], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String, weekDayString: String, friends: [String: Bool]) {
         self.uid = uid
         self.email = email
         self.address = address

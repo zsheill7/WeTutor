@@ -155,25 +155,26 @@ class TutorsTableViewController: UITableViewController {
             channelRef.observe(FIRDataEventType.value, with: { (snapshot) in
                 print("in observe")
                 let value = snapshot.value as? [String : AnyObject] ?? [:]
-                let tuteeName = value["tuteeName"] as? String
-                let tutorName = value["tutorName"] as? String
-                if (userID == tuteeName  && uid == tutorName) ||
-                    (userID == tutorName && uid == tuteeName) {
-                    self.newChannel = Channel(id: snapshot.key, name: "Chat")
-                    let userDefaults = UserDefaults.standard
-                     finishedObserve = true
-                    if let userName = userDefaults.value(forKey: "name") as? String {
+                if let tuteeName = value["tuteeName"] as? String,
+                    let tutorName = value["tutorName"] as? String {
+                    if (userID == tuteeName  && uid == tutorName) ||
+                        (userID == tutorName && uid == tuteeName) {
+                        self.newChannel = Channel(id: snapshot.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                        let userDefaults = UserDefaults.standard
+                         finishedObserve = true
+                        if let userName = userDefaults.value(forKey: "name") as? String {
+                            
+                            print(" if let userName = userDefaults.value(forKey: ) as? String {")
+                           
+                            self.senderDisplayName = userID
+                        } else {
+                            self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+                        }
                         
-                        print(" if let userName = userDefaults.value(forKey: ) as? String {")
-                       
-                        self.senderDisplayName = userID
-                    } else {
-                        self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+                        
+                        self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
+                        
                     }
-                    
-                    
-                    self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
-                    
                 }
                 
             })
@@ -289,7 +290,7 @@ class TutorsTableViewController: UITableViewController {
 
         
         let uuid = UUID().uuidString
-        self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
+        self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!, tutorName: tutorName, tuteeName: tuteeName)
         if let userName = userDefaults.value(forKey: "name") as? String {
         
             self.senderDisplayName = userID
@@ -438,7 +439,7 @@ class TutorsTableViewController: UITableViewController {
                 
                 
                 if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {
-                    self.channels.append(Channel(id: id, name: name))
+                    self.channels.append(Channel(id: id, name: name, tutorName: channelData["tutorName"] as! String, tuteeName: channelData["tuteeName"] as! String))
                     self.tableView.reloadData()
                 } else {
                     print("Error! Could not decode channel data")
