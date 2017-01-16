@@ -31,8 +31,9 @@ struct User {
     let latitude: CGFloat
     let longitude: CGFloat
     
-    let channels: [String: String]
+    let channels: [String: [String: String]]
     let weekDayString: String
+    let friends: [String: Bool]
     /*
      
      uid
@@ -63,13 +64,14 @@ struct User {
         grade = ""
         latitude = 0
         longitude = 0
-        channels = [String:String]()
+        channels = [String: [String: String]]()
         weekDayString = ""
         if let mail = userData.providerData.first?.email {
             email = mail
         } else {
             email = ""
         }
+        friends =  [String: Bool]()
     }
     
     init (snapshot:FIRDataSnapshot) {
@@ -163,7 +165,7 @@ struct User {
         } else {
             longitude = 0
         }
-        if let userChannels = snapshotValue?["channels"] as? [String:String] {
+        if let userChannels = snapshotValue?["channels"] as? [String: [String: String]] {
             channels = userChannels
         } else {
             channels = [String:String]()
@@ -173,6 +175,11 @@ struct User {
         } else {
             weekDayString = ""
         }
+        if let userFriends = snapshotValue?["friends"] as? [String:Bool] {
+            friends = userFriends
+        } else {
+            friends = [String:Bool]()
+        }
         /*if let userGrade = snapshotValue?["grade"] as? String {
             grade = userGrade
         } else {
@@ -181,7 +188,7 @@ struct User {
         
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String:String], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String, weekDayString: String) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [String: [String: String]], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String, weekDayString: String, friends: [String: Bool]) {
         self.uid = uid
         self.email = email
         self.address = address
@@ -200,5 +207,6 @@ struct User {
         self.longitude = longitude
         self.weekDayString = weekDayString
         //self.grade = grade
+        self.friends = friends
     }
 }

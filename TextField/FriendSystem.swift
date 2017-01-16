@@ -9,11 +9,16 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import SCLAlertView
 
 class FriendSystem {
     
     static let system = FriendSystem()
-    
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
+
     // MARK: - Firebase references
     /** The base Firebase reference */
     let BASE_REF = FIRDatabase.database().reference()
@@ -84,7 +89,7 @@ class FriendSystem {
                 completion(true)
             } else {
                 // Failure
-                print(error?.localizedDescription)
+                self.displayAlert(title: "Unable to Sign Up", message: (error?.localizedDescription)!)
                 completion(false)
             }
             

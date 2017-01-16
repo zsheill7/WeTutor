@@ -145,7 +145,7 @@ class SignUpViewController: UIViewController {
                     
                     
                 } else {
-                    self.displayAlert(title: "Unable to Sign Up", message: "Please try again later"/*error.localizedDescription*/)
+                    //self.displayAlert(title: "Unable to Sign Up", message: "Please try again later"/*error.localizedDescription*/)
                 }
             }
         }

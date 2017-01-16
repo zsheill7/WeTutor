@@ -96,12 +96,15 @@ class TutorsTableViewController: UITableViewController {
         
     }
     func startObservingDB () {
-        
-        dbRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+        userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
             var newUsers = [User]()
             for user in snapshot.children {
+                
                 let userObject = User(snapshot: user as! FIRDataSnapshot)
-                newUsers.append(userObject)
+                if userObject.uid != currentUserUID {
+                    newUsers.append(userObject)
+                }
             }
             self.tutors = newUsers
             self.tableView.reloadData()
@@ -129,9 +132,57 @@ class TutorsTableViewController: UITableViewController {
     }
 
     @IBAction func createNewChat(_ sender: Any) {
-        if let uid = (sender as AnyObject).accessibilityIdentifier {
+        /*if let uid = (sender as AnyObject).accessibilityIdentifier {
+            
             createChannel(otherUser: uid!)
+        }*/
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        print("create new Chat")
+        /*channelRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let username = value?["username"] as? String ?? ""
+            let user = User.init(username: username)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }*/
+        var finishedObserve = false
+        
+        if let uid = (sender as AnyObject).accessibilityIdentifier {
+            print(uid)
+            channelRef.observe(FIRDataEventType.value, with: { (snapshot) in
+                print("in observe")
+                let value = snapshot.value as? [String : AnyObject] ?? [:]
+                let tuteeName = value["tuteeName"] as? String
+                let tutorName = value["tutorName"] as? String
+                if (userID == tuteeName  && uid == tutorName) ||
+                    (userID == tutorName && uid == tuteeName) {
+                    self.newChannel = Channel(id: snapshot.key, name: "Chat")
+                    let userDefaults = UserDefaults.standard
+                     finishedObserve = true
+                    if let userName = userDefaults.value(forKey: "name") as? String {
+                        
+                        print(" if let userName = userDefaults.value(forKey: ) as? String {")
+                       
+                        self.senderDisplayName = userID
+                    } else {
+                        self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+                    }
+                    
+                    
+                    self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
+                    
+                }
+                
+            })
+            if finishedObserve == false {
+                print("finishedObserve == false")
+                createChannel(otherUser: uid!)
+            }
         }
+        
        
         
         
@@ -234,17 +285,32 @@ class TutorsTableViewController: UITableViewController {
         newChannelRef.setValue(channelItem)
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
-        
-        userChannelRef.child("tutorName").setValue(tutorName)
-        userChannelRef.child("tuteeName").setValue(tuteeName)
+       
+
         
         let uuid = UUID().uuidString
         self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
+        if let userName = userDefaults.value(forKey: "name") as? String {
         
-       
+            self.senderDisplayName = userID
+        } else {
+            self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+        }
+        
+        
+        
+
+        
+        userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
+        userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
+        
+        FriendSystem.system.acceptFriendRequest(otherUser)
+        
         self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
         
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 161.0
@@ -268,10 +334,10 @@ class TutorsTableViewController: UITableViewController {
             tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
             cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
         }
-        print("Name: \(FriendSystem.system.userList[indexPath.row].name)")
+        /*print("Name: \(FriendSystem.system.userList[indexPath.row].name)")
         print("School: \(FriendSystem.system.userList[indexPath.row].school)")
          print("Email: \(FriendSystem.system.userList[indexPath.row].email)")
-        print(FriendSystem.system.userList[indexPath.row].grade)
+        print(FriendSystem.system.userList[indexPath.row].grade)*/
         // Modify cell
         cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
         cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"

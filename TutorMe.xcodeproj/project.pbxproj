@@ -37,10 +37,6 @@
 		C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC41E12F8DE007D24F9 /* ImagePickerController.swift */; };
 		C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */; };
 		C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */; };
-		C86BCCEA1E1371AF007D24F9 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE51E1371AF007D24F9 /* Channel.swift */; };
-		C86BCCEC1E1371AF007D24F9 /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE71E1371AF007D24F9 /* ChannelListViewController.swift */; };
-		C86BCCED1E1371AF007D24F9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE81E1371AF007D24F9 /* ChatViewController.swift */; };
-		C86BCCEE1E1371AF007D24F9 /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCE91E1371AF007D24F9 /* CreateChannelCell.swift */; };
 		C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */; };
 		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
 		C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984841E0C763F003EB7A1 /* PagingMenuController.swift */; };
@@ -67,7 +63,11 @@
 		C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */; };
 		C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */; };
 		C88FFC811E0DEFAC00E7972C /* TuteeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */; };
+		C890A09C1E27FDDC007DE45D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A0981E27FDDC007DE45D /* ChatViewController.swift */; };
+		C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */; };
+		C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A09B1E27FDDC007DE45D /* Channel.swift */; };
 		C89C0B571E15E85F00D00E5D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89C0B561E15E85F00D00E5D /* SettingsViewController.swift */; };
+		C8CAA93C1E28955F008DCDF6 /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CAA93B1E28955F008DCDF6 /* ChannelListViewController.swift */; };
 		C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */; };
 		C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88321E0DB144003775C2 /* FSCalendar.m */; };
 		C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88331E0DB144003775C2 /* FSCalendar+Deprecated.m */; };
@@ -139,10 +139,6 @@
 		C86BCCC41E12F8DE007D24F9 /* ImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatLabelTextField.swift; path = TextField/FloatLabelTextField.swift; sourceTree = SOURCE_ROOT; };
-		C86BCCE51E1371AF007D24F9 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/Channel.swift"; sourceTree = "<group>"; };
-		C86BCCE71E1371AF007D24F9 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
-		C86BCCE81E1371AF007D24F9 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
-		C86BCCE91E1371AF007D24F9 /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateChannelCell.swift; path = "../../../Downloads/ChatChatFirebaseTutorial-finished/ChatChat/CreateChannelCell.swift"; sourceTree = "<group>"; };
 		C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
 		C87984841E0C763F003EB7A1 /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
@@ -169,8 +165,12 @@
 		C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerOne.swift; sourceTree = "<group>"; };
 		C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaSectionHeader.xib; sourceTree = "<group>"; };
 		C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeTableViewController.swift; sourceTree = "<group>"; };
+		C890A0981E27FDDC007DE45D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
+		C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateChannelCell.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/CreateChannelCell.swift"; sourceTree = "<group>"; };
+		C890A09B1E27FDDC007DE45D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/Channel.swift"; sourceTree = "<group>"; };
 		C89C0B561E15E85F00D00E5D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C89C0B581E1643F300D00E5D /* TutorMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TutorMe.entitlements; sourceTree = SOURCE_ROOT; };
+		C8CAA93B1E28955F008DCDF6 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../../Downloads/Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
 		C8EE882E1E0DB08C003775C2 /* TutorMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TutorMe-Bridging-Header.h"; sourceTree = "<group>"; };
 		C8EE88311E0DB144003775C2 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendar.h; path = FSCalendar/FSCalendar.h; sourceTree = "<group>"; };
@@ -365,10 +365,10 @@
 		C86BCCE41E136E58007D24F9 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				C86BCCE51E1371AF007D24F9 /* Channel.swift */,
-				C86BCCE71E1371AF007D24F9 /* ChannelListViewController.swift */,
-				C86BCCE81E1371AF007D24F9 /* ChatViewController.swift */,
-				C86BCCE91E1371AF007D24F9 /* CreateChannelCell.swift */,
+				C890A0981E27FDDC007DE45D /* ChatViewController.swift */,
+				C8CAA93B1E28955F008DCDF6 /* ChannelListViewController.swift */,
+				C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */,
+				C890A09B1E27FDDC007DE45D /* Channel.swift */,
 			);
 			name = Chat;
 			path = ../../../Eureka/Example;
@@ -659,22 +659,22 @@
 				C82800DE1E0EFDAF00329B7D /* UIImageExtensions.swift in Sources */,
 				C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */,
 				C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */,
-				C86BCCEA1E1371AF007D24F9 /* Channel.swift in Sources */,
 				C8EE88591E0DB144003775C2 /* FSCalendarConstants.m in Sources */,
 				C8EE88541E0DB144003775C2 /* FSCalendarAppearance.m in Sources */,
 				C8EE88581E0DB144003775C2 /* FSCalendarCollectionViewLayout.m in Sources */,
 				C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */,
 				C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */,
+				C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */,
 				C8EE88561E0DB144003775C2 /* FSCalendarCell.m in Sources */,
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
+				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
 				C8EE88631E0DB256003775C2 /* CalendarViewController.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
-				C86BCCEE1E1371AF007D24F9 /* CreateChannelCell.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,
 				C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */,
@@ -689,7 +689,6 @@
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
 				C8EE88531E0DB144003775C2 /* FSCalendarAnimator.m in Sources */,
-				C86BCCEC1E1371AF007D24F9 /* ChannelListViewController.swift in Sources */,
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C86BCCBF1E12F6CA007D24F9 /* FormErrorType.swift in Sources */,
 				C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */,
@@ -703,7 +702,9 @@
 				C87984991E0C763F003EB7A1 /* RootViewController.swift in Sources */,
 				C87984A41E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift in Sources */,
 				C87984971E0C763F003EB7A1 /* PagingMenuControllerOptions.swift in Sources */,
+				C8CAA93C1E28955F008DCDF6 /* ChannelListViewController.swift in Sources */,
 				C879849A1E0C763F003EB7A1 /* OrganizationsViewController.swift in Sources */,
+				C890A09C1E27FDDC007DE45D /* ChatViewController.swift in Sources */,
 				C827B4C81E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift in Sources */,
 				C879849C1E0C763F003EB7A1 /* GistsViewController.swift in Sources */,
 				C87984A61E0C76A5003EB7A1 /* Pagable.swift in Sources */,
@@ -712,7 +713,6 @@
 				C8EE88551E0DB144003775C2 /* FSCalendarCalculator.m in Sources */,
 				C87984A51E0C76A5003EB7A1 /* MenuViewCustomizable.swift in Sources */,
 				C87984961E0C763F003EB7A1 /* PagingViewController.swift in Sources */,
-				C86BCCED1E1371AF007D24F9 /* ChatViewController.swift in Sources */,
 				96090AE81D9CDD2E00709CA6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
