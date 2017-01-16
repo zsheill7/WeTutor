@@ -168,7 +168,7 @@ struct User {
         if let userChannels = snapshotValue?["channels"] as? [String: [String: String]] {
             channels = userChannels
         } else {
-            channels = [String:String]()
+            channels = [String: [String: String]]()
         }
         if let userWeekDayString = snapshotValue?["weekDayString"] as? String {
             weekDayString = userWeekDayString
