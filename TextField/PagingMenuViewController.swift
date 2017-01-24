@@ -127,17 +127,21 @@ class PagingMenuViewController: UIViewController {
         pagingMenuController.onMove = { state in
             switch state {
             case let .willMoveController(menuController, previousMenuController):
-                print(previousMenuController)
-                print(menuController)
+                print("")
+                //print(previousMenuController)
+                //print(menuController)
             case let .didMoveController(menuController, previousMenuController):
-                print(previousMenuController)
-                print(menuController)
+                print("")
+               // print(previousMenuController)
+                //print(menuController)
             case let .willMoveItem(menuItemView, previousMenuItemView):
-                print(previousMenuItemView)
-                print(menuItemView)
+                print("")
+               // print(previousMenuItemView)
+               // print(menuItemView)
             case let .didMoveItem(menuItemView, previousMenuItemView):
-                print(previousMenuItemView)
-                print(menuItemView)
+                print("")
+               // print(previousMenuItemView)
+               // print(menuItemView)
             }
         }
     }

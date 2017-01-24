@@ -277,16 +277,13 @@ class TutorsTableViewController: UITableViewController {
             tutorName = "Chat"
             tuteeName = "Chat"
         }
-        
-        let newChannelRef = channelRef.childByAutoId()
+
         let channelItem = [
             "tutorName": tutorName,
             "tuteeName": tuteeName
         ]
-        newChannelRef.setValue(channelItem)
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        let userChannelRef = userRef.child(userID!).child("channels")
-       
+               let userID = FIRAuth.auth()?.currentUser?.uid
+        
 
         
         let uuid = UUID().uuidString
@@ -298,10 +295,10 @@ class TutorsTableViewController: UITableViewController {
             self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
         }
         
-        
-        
 
-        
+        let userChannelRef = userRef.child(userID!).child("channels")
+        let newChannelRef = channelRef.child(uuid)
+        newChannelRef.setValue(channelItem)
         userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
         userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
         
@@ -414,37 +411,39 @@ class TutorsTableViewController: UITableViewController {
         // channels being written to the Firebase DB
         var tutorOrTutee = "tutorName"
         channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in
-            let channelData = snapshot.value as! Dictionary<String, AnyObject>
-            let id = snapshot.key
-            var ref: FIRDatabaseReference!
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            ref = FIRDatabase.database().reference()
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let userObject = User(snapshot: snapshot )
-                
-                let value = snapshot.value as? NSDictionary
-                let isTutor = userObject.isTutor
-                
-                if isTutor != nil {
-                    if isTutor == true {
-                        tutorOrTutee = "tuteeName"
-                    } else {
-                        tutorOrTutee = "tutorName"
+            if let channelData = snapshot.value as? Dictionary<String, AnyObject> {
+                let id = snapshot.key
+                var ref: FIRDatabaseReference!
+                let userID = FIRAuth.auth()?.currentUser?.uid
+                ref = FIRDatabase.database().reference()
+                ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    // Get user value
+                    let userObject = User(snapshot: snapshot )
+                    
+                    let value = snapshot.value as? NSDictionary
+                    let isTutor = userObject.isTutor
+                    
+                    if isTutor != nil {
+                        if isTutor == true {
+                            tutorOrTutee = "tuteeName"
+                        } else {
+                            tutorOrTutee = "tutorName"
+                        }
                     }
-                }
-                else {
-                    // no highscore exists
-                }
+                    else {
+                        // no highscore exists
+                    }
+                    
+                    
+                    if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {
+                        self.channels.append(Channel(id: id, name: "Chat", tutorName: channelData["tutorName"] as! String, tuteeName: channelData["tuteeName"] as! String))
+                        self.tableView.reloadData()
+                    } else {
+                        print("Error! Could not decode channel data")
+                    }
+                })
+            }
                 
-                
-                if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {
-                    self.channels.append(Channel(id: id, name: name, tutorName: channelData["tutorName"] as! String, tuteeName: channelData["tuteeName"] as! String))
-                    self.tableView.reloadData()
-                } else {
-                    print("Error! Could not decode channel data")
-                }
-            })
         })
     }
 

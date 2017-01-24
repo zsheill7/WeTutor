@@ -61,9 +61,11 @@ class FriendSystem {
     /** Gets the User object for the specified user id */
     func getUser(_ userID: String, completion: @escaping (User) -> Void) {
         USER_REF.child(userID).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-            let email = snapshot.childSnapshot(forPath: "email").value as! String
-            let id = snapshot.key
-            completion(User(snapshot: snapshot))
+            if let email = snapshot.childSnapshot(forPath: "email").value as? String {
+            
+                let id = snapshot.key
+                completion(User(snapshot: snapshot))
+            }
         })
     }
     
