@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                // self.present(viewController, animated: true, completion: nil)
             }
         }
-        /*let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = FIRAuth.auth()?.currentUser?.uid
         var ref: FIRDatabaseReference!
         
         ref = FIRDatabase.database().reference()
@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // ...
         }) { (error) in
             print(error.localizedDescription)
-        }*/
+        }
         
         
     }
