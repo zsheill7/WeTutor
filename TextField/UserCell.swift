@@ -1,10 +1,7 @@
-//
-//  UserCell.swift
-//  FirebaseFriendRequest
-//
-//  Created by Kiran Kunigiri on 7/11/16.
-//  Copyright © 2016 Kiran. All rights reserved.
-//
+/*
+ * Copyright (c) 2017 Zoe Sheill
+ *
+ */
 
 import UIKit
 

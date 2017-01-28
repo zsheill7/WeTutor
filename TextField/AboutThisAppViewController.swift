@@ -3,7 +3,7 @@
 //  TutorMe
 //
 //  Created by Zoe on 12/24/16.
-//  Copyright © 2016 CosmicMind. All rights reserved.
+//  Copyright © 2017 Zoe Sheill. All rights reserved.
 //
 
 import UIKit
