@@ -1,10 +1,9 @@
-//
-//  DataController.swift
-//  FirebaseFriendRequest
-//
-//  Created by Kiran Kunigiri on 7/10/16.
-//  Copyright © 2016 Kiran. All rights reserved.
-//
+/*
+ * Copyright (C) 2017, Zoe Sheill.
+ * All rights reserved.
+ *
+ */
+
 
 import Foundation
 import Firebase
@@ -20,23 +19,23 @@ class FriendSystem {
     }
 
     // MARK: - Firebase references
-    /** The base Firebase reference */
+
     let BASE_REF = FIRDatabase.database().reference()
-    /* The user Firebase reference */
+
     let USER_REF = FIRDatabase.database().reference().child("users")
     
-    /** The Firebase reference to the current user tree */
+
     var CURRENT_USER_REF: FIRDatabaseReference {
         let id = FIRAuth.auth()?.currentUser!.uid
         return USER_REF.child("\(id!)")
     }
     
-    /** The Firebase reference to the current user's friend tree */
+
     var CURRENT_USER_FRIENDS_REF: FIRDatabaseReference {
         return CURRENT_USER_REF.child("friends")
     }
     
-    /** The Firebase reference to the current user's friend request tree */
+    /** Gets the current user's active friend requests **/
     var CURRENT_USER_REQUESTS_REF: FIRDatabaseReference {
         return CURRENT_USER_REF.child("requests")
     }
@@ -48,7 +47,7 @@ class FriendSystem {
     }
 
     
-    /** Gets the current User object for the specified user id */
+    /** Gets the current User object for the user id */
     func getCurrentUser(_ completion: @escaping (User) -> Void) {
         CURRENT_USER_REF.observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -101,7 +100,7 @@ class FriendSystem {
     /**
      Logs in an account with the specified email and password
      
-     - parameter completion: What to do when the block has finished running. The success variable
+     - parameter completion: The success variable
      indicates whether or not the login was a success
      */
     
@@ -191,8 +190,7 @@ class FriendSystem {
     // MARK: - All friends
     /** The list of all friends of the current user. */
     var friendList = [User]()
-    /** Adds a friend observer. The completion function will run every time this list changes, allowing you
-     to update your UI. */
+  
     func addFriendObserver(_ update: @escaping () -> Void) {
         CURRENT_USER_FRIENDS_REF.observe(FIRDataEventType.value, with: { (snapshot) in
             self.friendList.removeAll()

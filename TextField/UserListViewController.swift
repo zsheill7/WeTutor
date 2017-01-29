@@ -1,10 +1,9 @@
-//
-//  UserListViewController.swift
-//  FirebaseFriendRequest
-//
-//  Created by Kiran Kunigiri on 7/8/16.
-//  Copyright © 2016 Kiran. All rights reserved.
-//
+/*
+ * Copyright (C) 2017, Zoe Sheill.
+ * All rights reserved.
+ *
+ */
+
 
 import UIKit
 import SCLAlertView

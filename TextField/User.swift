@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseDatabase
+import CoreLocation
 
 struct User {
     let uid:String
@@ -28,8 +29,10 @@ struct User {
     let availabilityInfo: String
     let grade: String
     
-    let latitude: CGFloat
-    let longitude: CGFloat
+    let latitude: Double
+    let longitude: Double
+    let coordinate: CLLocation
+    var distanceFromUser: Double
     
     var channels: [Channel]
     let weekDayString: String
@@ -48,7 +51,7 @@ struct User {
  
  */
     
-    init(userData:FIRUser) {
+   /* init(userData:FIRUser) {
         uid = userData.uid
         name = ""
     
@@ -72,7 +75,8 @@ struct User {
             email = ""
         }
         friends =  [String: Bool]()
-    }
+        coordinate
+    }*/
     
     init (snapshot:FIRDataSnapshot) {
         
@@ -171,12 +175,12 @@ struct User {
         }
         
         
-        if let userLatitude = snapshotValue?["latitude"] as? CGFloat {
+        if let userLatitude = snapshotValue?["latitude"] as? Double {
             latitude = userLatitude
         } else {
             latitude = 0
         }
-        if let userLongitude = snapshotValue?["longitude"] as? CGFloat {
+        if let userLongitude = snapshotValue?["longitude"] as? Double {
             longitude = userLongitude
         } else {
             longitude = 0
@@ -196,15 +200,16 @@ struct User {
         } else {
             friends = [String:Bool]()
         }
-        /*if let userGrade = snapshotValue?["grade"] as? String {
+                /*if let userGrade = snapshotValue?["grade"] as? String {
             grade = userGrade
         } else {
             grade = ""
         }*/
-        
+        coordinate = CLLocation()
+        distanceFromUser = Double()
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [Channel], availabilityInfo: String, latitude: CGFloat, longitude: CGFloat, grade: String, weekDayString: String, friends: [String: Bool]) {
+    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [Channel], availabilityInfo: String, latitude: Double, longitude: Double, grade: String, weekDayString: String, friends: [String: Bool], coordinate: CLLocation, distanceFromUser: Double) {
         self.uid = uid
         self.email = email
         self.address = address
@@ -224,5 +229,7 @@ struct User {
         self.weekDayString = weekDayString
         //self.grade = grade
         self.friends = friends
+        self.coordinate = coordinate
+        self.distanceFromUser = distanceFromUser
     }
 }

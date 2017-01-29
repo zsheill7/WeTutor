@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 - 2016, Zoe Sheill>.
+ * Copyright (C) 2017, Zoe Sheill.
  * All rights reserved.
  *
 */

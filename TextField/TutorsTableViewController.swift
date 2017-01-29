@@ -102,6 +102,8 @@ class TutorsTableViewController: UITableViewController {
             for user in snapshot.children {
                 
                 let userObject = User(snapshot: user as! FIRDataSnapshot)
+                let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
+                userObject.coordinate = coordinate
                 if userObject.uid != currentUserUID {
                     newUsers.append(userObject)
                 }
