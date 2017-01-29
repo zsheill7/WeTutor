@@ -31,7 +31,7 @@ struct User {
     
     let latitude: Double
     let longitude: Double
-    let coordinate: CLLocation
+    var coordinate: CLLocation
     var distanceFromUser: Double
     
     var channels: [Channel]

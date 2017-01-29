@@ -139,7 +139,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     let row2: TextRow? = self.form.rowBy(tag: "Availability Notes")
                     let availabilityInfo = row2?.value
-                    row2?.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.5)
+                    row2?.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.7)
                     
                     var firstLanguage = ""
                     if let row3 = self.form.rowBy(tag: "First Language") as? TextRow? {
@@ -204,7 +204,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
     }
 }
 

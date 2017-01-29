@@ -34,7 +34,7 @@ class TutorTableViewCell: UITableViewCell {
 }
 
 
-class TutorsTableViewController: UITableViewController {
+class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     var dbRef: FIRDatabaseReference!
     var tutors = [User]()
@@ -42,6 +42,7 @@ class TutorsTableViewController: UITableViewController {
     var senderDisplayName: String?
     var newChannel: Channel?
     var destinationUser: User!
+    var currentUser: User?
     
     private var channelRefHandle: FIRDatabaseHandle?
     private var channels: [Channel] = []
@@ -82,7 +83,7 @@ class TutorsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         FriendSystem.system.getCurrentUser { (user) in
-            //self.usernameLabel.text = user.email
+           self.currentUser = user
         }
         FriendSystem.system.addUserObserver { () in
             self.tableView.reloadData()
@@ -96,23 +97,36 @@ class TutorsTableViewController: UITableViewController {
         
     }
     func startObservingDB () {
-        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
-        userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
-            var newUsers = [User]()
-            for user in snapshot.children {
-                
-                let userObject = User(snapshot: user as! FIRDataSnapshot)
-                let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
-                userObject.coordinate = coordinate
-                if userObject.uid != currentUserUID {
-                    newUsers.append(userObject)
+        
+        if currentUser != nil {
+            let userCoordinate = currentUser!.coordinate
+            let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+            
+            userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+                var newUsers = [User]()
+                for user in snapshot.children {
+                    
+                    var userObject = User(snapshot: user as! FIRDataSnapshot)
+                    let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
+                    userObject.coordinate = coordinate
+                    
+                    let distanceBetween = coordinate.distance(from: userCoordinate)
+                    userObject.distanceFromUser = distanceBetween
+                    if distanceBetween <= 50000 {
+                        if userObject.uid != currentUserUID {
+                            newUsers.append(userObject)
+                        }
+                    }
                 }
+                
+                
+                
+                self.tutors = newUsers
+                self.tableView.reloadData()
+            }) { (error: Error) in
+                print("inside error")
+                print(error)
             }
-            self.tutors = newUsers
-            self.tableView.reloadData()
-        }) { (error: Error) in
-            print("inside error")
-            print(error)
         }
     }
     override func didReceiveMemoryWarning() {
@@ -448,6 +462,35 @@ class TutorsTableViewController: UITableViewController {
                 
         })
     }
+    /* EmptyDataSet */
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "No Users to Display"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "There are no nearby users at this time.  Please try again later."
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "placeholder_kickstarter")
+    }
+/*
+ func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
+ let str = "Add Grokkleglob"
+ let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+ return NSAttributedString(string: str, attributes: attrs)
+ }
+ 
+ func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
+ let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
+ ac.addAction(UIAlertAction(title: "Hurray", style: .default))
+ present(ac, animated: true)
+ }*/
 
     /*
     // Override to support conditional editing of the table view.

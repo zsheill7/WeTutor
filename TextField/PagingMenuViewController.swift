@@ -171,7 +171,7 @@ class PagingMenuViewController: UIViewController {
                 self.modalTransitionStyle = .flipHorizontal
                 let storyboard = UIStoryboard(name: "AboutThisApp", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "aboutThisAppVC") as! AboutThisAppViewController
-                controller.modalTransitionStyle = .flipHorizontal
+               // controller.modalTransitionStyle = .flipHorizontal
                 self.present(controller, animated: true, completion: nil)
                 //self.performSegue(withIdentifier: "toAboutThisApp", sender: self)
             } else if indexPath == 1 {
