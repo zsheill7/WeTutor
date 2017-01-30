@@ -175,7 +175,10 @@ class PagingMenuViewController: UIViewController {
                 self.present(controller, animated: true, completion: nil)
                 //self.performSegue(withIdentifier: "toAboutThisApp", sender: self)
             } else if indexPath == 1 {
-                
+                let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! AboutThisAppViewController
+                self.present(controller, animated: true, completion: nil)
+
             } else if indexPath == 2 {
                 try! FIRAuth.auth()!.signOut()
                 let userDefaults = UserDefaults.standard
