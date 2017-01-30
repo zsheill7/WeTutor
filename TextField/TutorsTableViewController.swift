@@ -364,7 +364,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             let id = FriendSystem.system.userList[indexPath.row].uid
             print(id)
             FriendSystem.system.sendRequestToUser(id)
-            self.displayAlert(title: "Success!", message: "Friend Request Sent")
+            self.displayAlert(title: "Success!", message: "Contact Request Sent")
         }
         cell!.setChatFunction {
             self.createChannel(otherUser: FriendSystem.system.userList[indexPath.row].uid)

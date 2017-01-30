@@ -13,6 +13,13 @@
 		96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */; };
 		96090AF21D9CDD2E00709CA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */; };
 		C81DA37A1E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3781E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m */; };
+		C81DA3C71E3FB86900CB15A8 /* MoreSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3C61E3FB86900CB15A8 /* MoreSettingsTableViewController.swift */; };
+		C81DA3CD1E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3C81E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift */; };
+		C81DA3CE1E3FB8A600CB15A8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */; };
+		C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */; };
+		C81DA3D01E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3CB1E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift */; };
+		C81DA3D11E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3CC1E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift */; };
+		C81DA3D41E3FB94F00CB15A8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81DA3D31E3FB94F00CB15A8 /* Settings.storyboard */; };
 		C827B4C81E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */; };
 		C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800D91E0EFD8B00329B7D /* StringExtensions.swift */; };
 		C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800DB1E0EFD9700329B7D /* UIColorExtensions.swift */; };
@@ -116,6 +123,13 @@
 		C5875EC10C650ED442BE78C5 /* Pods-TutorMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TutorMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TutorMe/Pods-TutorMe.debug.xcconfig"; sourceTree = "<group>"; };
 		C81DA3781E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		C81DA3791E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		C81DA3C61E3FB86900CB15A8 /* MoreSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MoreSettingsTableViewController.swift; path = "../../MIBandApp-master/ParseStarterProject-Swift/ParseStarterProject/MoreSettingsTableViewController.swift"; sourceTree = "<group>"; };
+		C81DA3C81E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInstrumentsTableViewController.swift; sourceTree = "<group>"; };
+		C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableViewController.swift; sourceTree = "<group>"; };
+		C81DA3CB1E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeSettingsTableViewController.swift; sourceTree = "<group>"; };
+		C81DA3CC1E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockerSettingsTableViewController.swift; sourceTree = "<group>"; };
+		C81DA3D31E3FB94F00CB15A8 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerTwo.swift; sourceTree = "<group>"; };
 		C82800D91E0EFD8B00329B7D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C82800DB1E0EFD9700329B7D /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -260,9 +274,13 @@
 				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
 				C89C0B581E1643F300D00E5D /* TutorMe.entitlements */,
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
+				C81DA3D31E3FB94F00CB15A8 /* Settings.storyboard */,
+				C81DA3D21E3FB8B100CB15A8 /* Settings */,
 				C8EE882D1E0DB050003775C2 /* Calendar */,
 				C86BCCE41E136E58007D24F9 /* Chat */,
+				C81DA3C61E3FB86900CB15A8 /* MoreSettingsTableViewController.swift */,
 				C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */,
+				C838A9471E1B46EC004A794C /* UserCell.xib */,
 				C87984AD1E0C7F4C003EB7A1 /* Xib Files */,
 				C87984A81E0C76DD003EB7A1 /* Paging Menu View Controller */,
 				C87984471E0B9760003EB7A1 /* Custom Row and Cell */,
@@ -298,6 +316,18 @@
 				C81DA3791E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.h */,
 			);
 			name = "Empty Data Set";
+			sourceTree = "<group>";
+		};
+		C81DA3D21E3FB8B100CB15A8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C81DA3C81E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift */,
+				C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */,
+				C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */,
+				C81DA3CB1E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift */,
+				C81DA3CC1E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		C827B53D1E11DF2C00BDFD50 /* About This App */ = {
@@ -464,7 +494,6 @@
 		C87984AD1E0C7F4C003EB7A1 /* Xib Files */ = {
 			isa = PBXGroup;
 			children = (
-				C838A9471E1B46EC004A794C /* UserCell.xib */,
 				C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */,
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 			);
@@ -592,6 +621,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C86BCCBC1E12F6CA007D24F9 /* cells in Resources */,
+				C81DA3D41E3FB94F00CB15A8 /* Settings.storyboard in Resources */,
 				C87984B11E0CC00A003EB7A1 /* Tutor.storyboard in Resources */,
 				C838A8BC1E19C47E004A794C /* Map.storyboard in Resources */,
 				C88498C01E0B51A0000C4675 /* Main.storyboard in Resources */,
@@ -679,6 +709,8 @@
 				C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */,
 				C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */,
 				C8EE88561E0DB144003775C2 /* FSCalendarCell.m in Sources */,
+				C81DA3CE1E3FB8A600CB15A8 /* SettingsTableViewController.swift in Sources */,
+				C81DA3D01E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift in Sources */,
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
@@ -687,6 +719,7 @@
 				C8EE88631E0DB256003775C2 /* CalendarViewController.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
+				C81DA3D11E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,
@@ -703,11 +736,14 @@
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
 				C8EE88531E0DB144003775C2 /* FSCalendarAnimator.m in Sources */,
+				C81DA3CD1E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift in Sources */,
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
+				C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */,
 				C86BCCBF1E12F6CA007D24F9 /* FormErrorType.swift in Sources */,
 				C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */,
 				C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */,
 				C8EE885C1E0DB144003775C2 /* FSCalendarExtensions.m in Sources */,
+				C81DA3C71E3FB86900CB15A8 /* MoreSettingsTableViewController.swift in Sources */,
 				C879849D1E0C763F003EB7A1 /* UsersViewController.swift in Sources */,
 				C87984941E0C763F003EB7A1 /* MenuItemView.swift in Sources */,
 				C879849E1E0C763F003EB7A1 /* PagingMenuViewController.swift in Sources */,
