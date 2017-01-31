@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Parse
+
 
 class SettingsInstrumentsTableViewController: UITableViewController {
     
-    var user = PFUser.currentUser()
+    var user = FIRAuth.auth()?.currentUser
     var cellTag: Int = 1
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +22,12 @@ class SettingsInstrumentsTableViewController: UITableViewController {
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
         if (cellTag == 1) {
@@ -41,8 +41,8 @@ class SettingsInstrumentsTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         
         //print(concertInstrumentsList[indexPath.row])
         
@@ -62,12 +62,12 @@ class SettingsInstrumentsTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
         
         let indexPath = tableView.indexPathForSelectedRow!
-        let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+        let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
         let cellText:String = currentCell.textLabel!.text!
         
         if (cellTag == 1) {

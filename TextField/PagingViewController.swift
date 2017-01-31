@@ -9,8 +9,8 @@
 import UIKit
 
 open class PagingViewController: UIViewController {
-    public let controllers: [UIViewController]
-    public internal(set) var currentViewController: UIViewController!
+    open let controllers: [UIViewController]
+    open internal(set) var currentViewController: UIViewController!
     public fileprivate(set) var visibleControllers = [UIViewController]()
     
     internal let contentScrollView: UIScrollView = {
@@ -92,9 +92,9 @@ open class PagingViewController: UIViewController {
     fileprivate func constructPagingViewControllers() {
         for (index, controller) in controllers.enumerated() {
             // construct three child view controllers at a maximum, previous(optional), current and next(optional)
-            if !shouldLoad(page: index) {
+            if !shouldLoad(index) {
                 // remove unnecessary child view controllers
-                if isVisible(controller: controller) {
+                if isVisible(controller) {
                     controller.willMove(toParentViewController: nil)
                     controller.view!.removeFromSuperview()
                     controller.removeFromParentViewController()
@@ -105,7 +105,7 @@ open class PagingViewController: UIViewController {
             }
             
             // ignore if it's already added
-            if isVisible(controller: controller) {
+            if isVisible(controller) {
                 continue
             }
             
@@ -130,7 +130,7 @@ open class PagingViewController: UIViewController {
         NSLayoutConstraint.deactivate(contentScrollView.constraints)
         
         for (index, controller) in controllers.enumerated() {
-            if !shouldLoad(page: index) {
+            if !shouldLoad(index) {
                 continue
             }
             
@@ -255,7 +255,7 @@ extension PagingViewController {
 // MARK: Page Control
 
 extension PagingViewController {
-    fileprivate func shouldLoad(page: Int) -> Bool {
+    fileprivate func shouldLoad(_ page: Int) -> Bool {
         switch (options.menuControllerSet, options.lazyLoadingPage) {
         case (.single, _),
              (_, .one):
@@ -275,7 +275,7 @@ extension PagingViewController {
         return true
     }
     
-    fileprivate func isVisible(controller: UIViewController) -> Bool {
+    fileprivate func isVisible(_ controller: UIViewController) -> Bool {
         return self.childViewControllers.contains(controller)
     }
     

@@ -86,7 +86,7 @@ class MoreInfoViewController: UIViewController {
         
     }
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
@@ -113,7 +113,7 @@ class MoreInfoViewController: UIViewController {
         let id = destUser.uid
         print(id)
         FriendSystem.system.sendRequestToUser(id)
-        self.displayAlert(title: "Success!", message: "Friend Request Sent")
+        self.displayAlert("Success!", message: "Friend Request Sent")
     }
     
     

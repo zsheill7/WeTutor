@@ -13,12 +13,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var calendar: FSCalendar!
    // @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
-    private let formatter: DateFormatter = {
+    fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
-    private let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
+    fileprivate let gregorian: Calendar! = Calendar(identifier:Calendar.Identifier.gregorian)
     
     class func instantiateFromStoryboard() -> CalendarViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)

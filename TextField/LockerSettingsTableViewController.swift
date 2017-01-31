@@ -7,26 +7,26 @@
 //
 
 import UIKit
-import Parse
+
 class LockerSettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var lockerNumberField: UITextField!
     @IBOutlet weak var lockerComboField: UITextField!
     
-    var user = PFUser.currentUser()
+    var user = FIRAuth.auth()?.currentUser
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
         if #available(iOS 8.0, *) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
             
-            alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 
                 //self.dismissViewControllerAnimated(true, completion: nil)
                 
             })))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         } else {
             print("error")
         }
@@ -55,7 +55,7 @@ class LockerSettingsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func changeLockerPressed(sender: AnyObject) {
+    @IBAction func changeLockerPressed(_ sender: AnyObject) {
         if lockerComboField?.text != nil && lockerNumberField?.text != nil {
             
             

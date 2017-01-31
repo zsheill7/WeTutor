@@ -9,9 +9,9 @@
 import UIKit
 
 open class MenuItemView: UIView {
-    lazy public var titleLabel: UILabel = self.initLabel()
-    lazy public var descriptionLabel: UILabel = self.initLabel()
-    lazy public var menuImageView: UIImageView = {
+    lazy open var titleLabel: UILabel = self.initLabel()
+    lazy open var descriptionLabel: UILabel = self.initLabel()
+    lazy open var menuImageView: UIImageView = {
         $0.isUserInteractionEnabled = true
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -23,7 +23,7 @@ open class MenuItemView: UIView {
             addSubview(customView)
         }
     }
-    public internal(set) var isSelected: Bool = false {
+    open internal(set) var isSelected: Bool = false {
         didSet {
             if case .roundRect = menuOptions.focusMode {
                 backgroundColor = UIColor.clear

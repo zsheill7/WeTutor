@@ -15,7 +15,7 @@ import SCLAlertView
 
 
 extension UIView {
-    func addBackground(imageName: String) {
+    func addBackground(_ imageName: String) {
         // screen width and height:
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
@@ -40,22 +40,22 @@ extension UIView {
 /* @enum This class connects with the FriendSystem class to create user accounts */
 
 class SignUpViewController: UIViewController {
-    private var nameField: TextField!
-    private var emailField: ErrorTextField!
-    private var passwordField: TextField!
-    private var confirmPasswordField: TextField!
+    fileprivate var nameField: TextField!
+    fileprivate var emailField: ErrorTextField!
+    fileprivate var passwordField: TextField!
+    fileprivate var confirmPasswordField: TextField!
     let kInfoTitle = "Info"
     let kSubtitle = "You've just displayed this awesome Pop Up View"
     let blueColor: Int! = 0x22B573
     //let user = FIRAuth.auth()?.currentUser
     var ref: FIRDatabaseReference!
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
 
     }
     /// A constant to layout the textFields.
-    private let constant: CGFloat = 32
+    fileprivate let constant: CGFloat = 32
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
         )*/
         /*UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-        self.view.addBackground(imageName: "mixed2")
+        self.view.addBackground("mixed2")
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
@@ -124,15 +124,15 @@ class SignUpViewController: UIViewController {
     
     func createAccount() {
         if emailField.text == "" || nameField.text == "" || passwordField.text == "" || confirmPasswordField.text == "" {
-            displayAlert(title: "Error", message: "Please complete all fields")
+            displayAlert("Error", message: "Please complete all fields")
             
         } else if emailField.text?.isEmail() == false{
-            displayAlert(title: "Error", message: "\"\(emailField.text!)\" is not a valid email address")
+            displayAlert("Error", message: "\"\(emailField.text!)\" is not a valid email address")
         
         } else if passwordField.text!.characters.count < 6 {
-            self.displayAlert(title: "Not Long Enough", message: "Please enter a password that is 6 or more characters")
+            self.displayAlert("Not Long Enough", message: "Please enter a password that is 6 or more characters")
         } else if passwordField.text != confirmPasswordField.text {
-            self.displayAlert(title: "Passwords Do Not Match", message: "Please re-enter passwords")
+            self.displayAlert("Passwords Do Not Match", message: "Please re-enter passwords")
         } else {
             /*FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in*/
             FriendSystem.system.createAccount(emailField.text!, password: passwordField.text!, name: nameField.text!) { (success) in
@@ -166,7 +166,7 @@ class SignUpViewController: UIViewController {
         view.layout(btn).width(100).height(constant).top(24).right(24)
     }
     */
-    private func prepareNextButton() {
+    fileprivate func prepareNextButton() {
         /*let btn = UIButton()
         btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
         let btn = RaisedButton(title: "Sign Up", titleColor: Color.grey.lighten3)
@@ -177,7 +177,7 @@ class SignUpViewController: UIViewController {
         
         view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()    }
     
-    private func prepareForgotPasswordButton() {
+    fileprivate func prepareForgotPasswordButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
@@ -190,7 +190,7 @@ class SignUpViewController: UIViewController {
         
         view.layout(btn).width(150).height(constant).top(15 * constant).centerHorizontally()    }
     
-    private func prepareLoginButton() {
+    fileprivate func prepareLoginButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
@@ -206,23 +206,23 @@ class SignUpViewController: UIViewController {
     
     //
     @objc
-    internal func handleResignResponderButton(button: UIButton) {
+    internal func handleResignResponderButton(_ button: UIButton) {
         nameField?.resignFirstResponder()
         emailField?.resignFirstResponder()
         passwordField?.resignFirstResponder()
         confirmPasswordField?.resignFirstResponder()
 
     }
-    internal func handleNextButton(button: UIButton) {
+    internal func handleNextButton(_ button: UIButton) {
        createAccount()
         
     }
-    internal func handleForgotPasswordButton(button: UIButton) {
+    internal func handleForgotPasswordButton(_ button: UIButton) {
         //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
         print("hello")
         createForgotPasswordAlert()
     }
-    internal func handleLogInButton(button: UIButton) {
+    internal func handleLogInButton(_ button: UIButton) {
         //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "loginNC") as! UINavigationController
@@ -287,7 +287,7 @@ class SignUpViewController: UIViewController {
         
     }
     
-    private func prepareNameField() {
+    fileprivate func prepareNameField() {
         nameField = TextField()
         //nameField.addBackground(imageName: "Rectangle 8")
         //nameField.background = UIImage(named: "Rectangle 8")
@@ -304,7 +304,7 @@ class SignUpViewController: UIViewController {
         view.layout(nameField).top(4 * constant).horizontally(left: constant, right: constant)
     }
     
-    private func prepareEmailField() {
+    fileprivate func prepareEmailField() {
         emailField = ErrorTextField(frame: CGRect(x: constant, y: 6 * constant, width: view.width - (2 * constant), height: constant))
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
@@ -328,7 +328,7 @@ class SignUpViewController: UIViewController {
         view.addSubview(emailField)
     }
     
-    private func preparePasswordField() {
+    fileprivate func preparePasswordField() {
         passwordField = TextField()
         passwordField.placeholder = "Password"
         //passwordField.detail = "At least 8 characters"
@@ -349,7 +349,7 @@ class SignUpViewController: UIViewController {
         view.layout(passwordField).top(8 * constant).horizontally(left: constant, right: constant)
     }
     
-    private func prepareConfirmPasswordField() {
+    fileprivate func prepareConfirmPasswordField() {
         confirmPasswordField = TextField()
         confirmPasswordField.placeholder = "Confirm Password"
         confirmPasswordField.detail = "At least 6 characters"
@@ -404,15 +404,15 @@ extension UIViewController: TextFieldDelegate {
         return true
     }
     
-    public func textField(textField: UITextField, didChange text: String?) {
+    public func textField(_ textField: UITextField, didChange text: String?) {
         //print("did change", text ?? "")
     }
     
-    public func textField(textField: UITextField, willClear text: String?) {
+    public func textField(_ textField: UITextField, willClear text: String?) {
         print("will clear", text ?? "")
     }
     
-    public func textField(textField: UITextField, didClear text: String?) {
+    public func textField(_ textField: UITextField, didClear text: String?) {
         print("did clear", text ?? "")
     }
 }

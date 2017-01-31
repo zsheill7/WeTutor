@@ -7,25 +7,25 @@
 //
 
 import UIKit
-import Parse
+
 
 class ChangePasswordTableViewController: UITableViewController {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var user = PFUser.currentUser()
+    var user = FIRAuth.auth()?.currentUser
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
         if #available(iOS 8.0, *) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
             
-            alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                 
                 //self.dismissViewControllerAnimated(true, completion: nil)
                 
             })))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         } else {
             print("error")
         }
@@ -40,7 +40,7 @@ class ChangePasswordTableViewController: UITableViewController {
     
     @IBOutlet weak var newPasswordField: UITextField!
     
-    @IBAction func confirmButton(sender: AnyObject) {
+    @IBAction func confirmButton(_ sender: AnyObject) {
         
         
         
@@ -56,32 +56,32 @@ class ChangePasswordTableViewController: UITableViewController {
             self.displayAlert("Old Password is Incorrect", message: "Please re-enter passwords")
         }else {
             
-            activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+            activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             activityIndicator.center = self.view.center
             activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
             view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
-            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             
             user!.password = newPasswordField.text!
             
             user!.saveInBackground()
             
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            UIApplication.shared.endIgnoringInteractionEvents()
             activityIndicator.stopAnimating()
             
             if #available(iOS 8.0, *) {
-                let alert = UIAlertController(title: "Success!", message: "Your password has been changed", preferredStyle: UIAlertControllerStyle.Alert)
+                let alert = UIAlertController(title: "Success!", message: "Your password has been changed", preferredStyle: UIAlertControllerStyle.alert)
                 
-                alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+                alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                     
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    self.performSegueWithIdentifier("passToSettings", sender: self)
+                    self.dismiss(animated: true, completion: nil)
+                    self.performSegue(withIdentifier: "passToSettings", sender: self)
                     
                 })))
                 
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
             } else {
                 print("error")
             }
@@ -89,7 +89,7 @@ class ChangePasswordTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let headerView = view as! UITableViewHeaderFooterView
         headerView.textLabel!.textColor = UIColor(red: 151.0/255, green: 193.0/255, blue: 100.0/255, alpha: 1)
         

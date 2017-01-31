@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
 
 
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }

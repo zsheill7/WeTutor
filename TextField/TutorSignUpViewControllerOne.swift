@@ -138,7 +138,7 @@ class TutorSignUpViewController: FormViewController {
 class TutorSignUpViewControllerOne : FormViewController {
     var ref: FIRDatabaseReference!
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
@@ -434,7 +434,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                         print("before error nil")
                         if error == nil {
                             print("error=nil")
-                            var geocoder = CLGeocoder()
+                            let geocoder = CLGeocoder()
                             geocoder.geocodeAddressString(zipcode as! String) { placemarks, error in
                                 if error != nil {
                                     print(error?.localizedDescription ?? "")
@@ -451,7 +451,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                             activityIndicatorView.stopAnimating()
                             self.performSegue(withIdentifier: "toSecondVC", sender: self)
                         } else /*if error != nil*/{
-                            self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
+                            self.displayAlert("Error", message: (error?.localizedDescription)!)
                         }
                 }) //self.ref.child("users").child(userID!).observeSingleEvent
             } //if let zipcode = self.form.sections[0].rows[0].value,
@@ -460,7 +460,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             
             // ...
         }) { (error) in
-            self.displayAlert(title: "Error", message: error.localizedDescription)
+            self.displayAlert("Error", message: error.localizedDescription)
         }
     
             
@@ -468,7 +468,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             
             
            } else {
-                self.displayAlert(title: "Error", message: "Please fill out every section.")
+                self.displayAlert("Error", message: "Please fill out every section.")
             }
             
             

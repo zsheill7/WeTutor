@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
-        var navigationBarAppearance = UINavigationBar.appearance()
+        let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.barTintColor = UIColor(netHex: 0x51679F)
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 18)!]

@@ -42,7 +42,7 @@ open class PagingMenuController: UIViewController {
             pagingViewController.didMove(toParentViewController: self)
         }
     }
-    public var onMove: ((MenuMoveState) -> Void)? {
+    open var onMove: ((MenuMoveState) -> Void)? {
         didSet {
             guard let menuView = menuView else { return }
             

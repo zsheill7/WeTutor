@@ -44,13 +44,13 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     var destinationUser: User!
     var currentUser: User?
     
-    private var channelRefHandle: FIRDatabaseHandle?
-    private var channels: [Channel] = []
+    fileprivate var channelRefHandle: FIRDatabaseHandle?
+    fileprivate var channels: [Channel] = []
     var tutorName: String = "Chat"
     var tuteeName: String = "Chat"
     var UID: String = ""
     
-    private lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
+    fileprivate lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
     
     deinit {
         if let refHandle = channelRefHandle {
@@ -58,7 +58,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         }
     }
 
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
@@ -196,7 +196,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             })
             if finishedObserve == false {
                 print("finishedObserve == false")
-                createChannel(otherUser: uid!)
+                createChannel(uid!)
             }
         }
         
@@ -269,7 +269,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         
     }*/
-    func createChannel(otherUser: String) {
+    func createChannel(_ otherUser: String) {
         
         
         
@@ -364,10 +364,10 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             let id = FriendSystem.system.userList[indexPath.row].uid
             print(id)
             FriendSystem.system.sendRequestToUser(id)
-            self.displayAlert(title: "Success!", message: "Contact Request Sent")
+            self.displayAlert("Success!", message: "Contact Request Sent")
         }
         cell!.setChatFunction {
-            self.createChannel(otherUser: FriendSystem.system.userList[indexPath.row].uid)
+            self.createChannel(FriendSystem.system.userList[indexPath.row].uid)
         }
         cell!.setInfoFunction {
             let tutor = FriendSystem.system.userList[indexPath.row]
@@ -422,7 +422,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
     
-    private func observeChannels() {
+    fileprivate func observeChannels() {
         // We can use the observe method to listen for new
         // channels being written to the Firebase DB
         var tutorOrTutee = "tutorName"

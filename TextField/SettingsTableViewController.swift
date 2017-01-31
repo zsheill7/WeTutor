@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Parse
+
 
 extension UIColor {
 
@@ -47,22 +47,22 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var ensemble: UILabel!
     
-    var user = PFUser.currentUser()
+    var user = FIRAuth.auth()?.currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("test1")
-        if let marchingInst = PFUser.currentUser()!["marchingInstrument"] as? String {
+        if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
             print("test2")
             self.marchingInst.text! = marchingInst
         }
         
-        if let concertInst = PFUser.currentUser()!["concertInstrument"] as? String {
+        if let concertInst = FIRAuth.auth()?.currentUser!["concertInstrument"] as? String {
             print("test2")
             self.concertInst.text! = concertInst
         }
-        if let concertBandType = PFUser.currentUser()!["concertBandType"] as? String {
+        if let concertBandType = FIRAuth.auth()?.currentUser!["concertBandType"] as? String {
             print("test2")
             self.ensemble.text! = concertBandType
         }
@@ -76,19 +76,19 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
      
         
-        if let marchingInst = PFUser.currentUser()!["marchingInstrument"] as? String {
+        if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
             
             self.marchingInst.text! = marchingInst
         }
         
-        if let concertInst = PFUser.currentUser()!["concertInstrument"] as? String {
+        if let concertInst = FIRAuth.auth()?.currentUser!["concertInstrument"] as? String {
 
             self.concertInst.text! = concertInst
         }
-        if let concertBandType = PFUser.currentUser()!["concertBandType"] as? String {
+        if let concertBandType = FIRAuth.auth()?.currentUser!["concertBandType"] as? String {
             print("test3")
             self.ensemble.text! = concertBandType
         }
@@ -97,21 +97,21 @@ class SettingsTableViewController: UITableViewController {
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_one" {
-            let tableVC: SettingsInstrumentsTableViewController = segue.destinationViewController as! SettingsInstrumentsTableViewController
+            let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
             
             tableVC.cellTag = 1
             tableVC.title = "Marching Instrument"
             
         } else if segue.identifier == "segue_two" {
-            let tableVC: SettingsInstrumentsTableViewController = segue.destinationViewController as! SettingsInstrumentsTableViewController
+            let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
             
             tableVC.cellTag = 2
             tableVC.title = "Concert Instrument"
             
         } else if segue.identifier == "segue_three" {
-            let tableVC: SettingsInstrumentsTableViewController = segue.destinationViewController as! SettingsInstrumentsTableViewController
+            let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
             
             tableVC.cellTag = 3
             tableVC.title = "Concert Band"
@@ -119,7 +119,7 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func deleteAccountButtonPressed(sender: AnyObject) {
+    @IBAction func deleteAccountButtonPressed(_ sender: AnyObject) {
         deleteAccountPressed()
     }
     
@@ -127,7 +127,7 @@ class SettingsTableViewController: UITableViewController {
  
         
     
-            let alert = UIAlertController(title: "Are you sure you want to delete your account?", message: "All saved settings will be lost", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Are you sure you want to delete your account?", message: "All saved settings will be lost", preferredStyle: UIAlertControllerStyle.alert)
             
             alert.addAction((UIAlertAction(title: "Delete Account", style: .Destructive, handler: { (action) -> Void in
                 self.user?.deleteInBackgroundWithBlock({ (success, error) in
@@ -139,21 +139,21 @@ class SettingsTableViewController: UITableViewController {
                 
                 
             })))
-            alert.addAction((UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) -> Void in
+            alert.addAction((UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
                
                 
             })))
             
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
        
 
     }
     
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
+    @IBAction func logoutButtonPressed(_ sender: AnyObject) {
         logoutPressed()
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 && indexPath.row == 2 {
             logoutPressed()
         } else if indexPath.section == 3 && indexPath.row == 0 {
@@ -164,17 +164,17 @@ class SettingsTableViewController: UITableViewController {
         
         
     
-        let alert = UIAlertController(title: "Logout", message: "Do you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Logout", message: "Do you want to log out?", preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction((UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             
-            self.activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+            self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
             self.activityIndicator.center = self.view.center
             self.activityIndicator.hidesWhenStopped = true
-            self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
             self.view.addSubview(self.activityIndicator)
             self.activityIndicator.startAnimating()
-            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             
             PFUser.logOutInBackgroundWithBlock({ (error) in
                 if error != nil {
@@ -185,28 +185,28 @@ class SettingsTableViewController: UITableViewController {
             })
             
             let initialStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginNC = initialStoryboard.instantiateViewControllerWithIdentifier("loginNC")
+            let loginNC = initialStoryboard.instantiateViewController(withIdentifier: "loginNC")
             
             self.activityIndicator.stopAnimating()
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            UIApplication.shared.endIgnoringInteractionEvents()
             
-            self.presentViewController(loginNC, animated: true, completion: nil)
+            self.present(loginNC, animated: true, completion: nil)
         
 
         })))
-        alert.addAction((UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) -> Void in
+        alert.addAction((UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
             
         })))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 && indexPath.row == 1 {
             return 0.0
         }
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return super.tableView(tableView, heightForRowAt: indexPath)
     }
 
     /*override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

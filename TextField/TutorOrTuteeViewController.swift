@@ -85,7 +85,7 @@ class TutorOrTuteeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     func changeBall() {
-         var isBall = false
+         let isBall = false
         let animation = CABasicAnimation()
         let halfWidth = ballView.frame.width / 2
         let cornerRadius: CGFloat = isBall ? halfWidth : 10
@@ -102,7 +102,7 @@ class TutorOrTuteeViewController: UIViewController {
         ballView.layer.add(animation, forKey: "radius")
     }
     func changeBall2() {
-        var isBall = false
+        let isBall = false
         let animation = CABasicAnimation()
         let halfWidth = ballView2.frame.width / 2
         let cornerRadius: CGFloat = isBall ? halfWidth : 10

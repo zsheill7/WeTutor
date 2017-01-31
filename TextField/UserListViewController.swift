@@ -14,7 +14,7 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
@@ -62,7 +62,7 @@ extension UserListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     // var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell")
  
-        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
         if cell == nil {
             tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
  

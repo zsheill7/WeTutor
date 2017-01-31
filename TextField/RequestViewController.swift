@@ -12,7 +12,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tableView: UITableView!
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
@@ -80,7 +80,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell!.setAddFriendFunction {
             let id = FriendSystem.system.requestList[indexPath.row].uid
             FriendSystem.system.acceptFriendRequest(id)
-            self.displayAlert(title: "Success!", message: "Friend Request Accepted")
+            self.displayAlert("Success!", message: "Friend Request Accepted")
         }
         /*cell!.setChatFunction {
          self.createChannel()

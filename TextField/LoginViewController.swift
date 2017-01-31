@@ -17,22 +17,22 @@ import SCLAlertView
 
 
 class LoginViewController: UIViewController {
-    private var nameField: TextField!
-    private var emailField: ErrorTextField!
-    private var passwordField: TextField!
-    private var confirmPasswordField: TextField!
+    fileprivate var nameField: TextField!
+    fileprivate var emailField: ErrorTextField!
+    fileprivate var passwordField: TextField!
+    fileprivate var confirmPasswordField: TextField!
     let kInfoTitle = "Info"
     let kSubtitle = "You've just displayed this awesome Pop Up View"
     let blueColor: Int! = 0x22B573
     
     var ref: FIRDatabaseReference!
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
     /// A constant to layout the textFields.
-    private let constant: CGFloat = 32
+    fileprivate let constant: CGFloat = 32
     let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -135,7 +135,7 @@ class LoginViewController: UIViewController {
     }
     func logIn() {
         if self.emailField.text == "" || self.passwordField.text == "" {
-            self.displayAlert(title: "Error", message: "Please enter an email and password.")
+            self.displayAlert("Error", message: "Please enter an email and password.")
         } else {
             FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                 if error == nil {
@@ -180,13 +180,13 @@ class LoginViewController: UIViewController {
                         
                         // ...
                     }) { (error) in
-                        self.displayAlert(title: "Error", message: error.localizedDescription)
+                        self.displayAlert("Error", message: error.localizedDescription)
                         
                     }
                     
 
                 } else {
-                    self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
+                    self.displayAlert("Error", message: (error?.localizedDescription)!)
                 }
                 /*if error != nil {
                     print(error?.localizedDescription)
@@ -221,7 +221,7 @@ class LoginViewController: UIViewController {
      
      view.layout(btn).width(100).height(constant).top(24).right(24)
      }*/
-    private func prepareNextButton() {
+    fileprivate func prepareNextButton() {
         /*let btn = UIButton()
          btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
         let btn = RaisedButton(title: "Log In", titleColor: Color.grey.lighten3)
@@ -232,7 +232,7 @@ class LoginViewController: UIViewController {
         
         view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()    }
     
-    private func prepareForgotPasswordButton() {
+    fileprivate func prepareForgotPasswordButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
@@ -245,7 +245,7 @@ class LoginViewController: UIViewController {
         
         view.layout(btn).width(150).height(constant).top(15 * constant).centerHorizontally()    }
     
-    private func prepareSignupButton() {
+    fileprivate func prepareSignupButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
@@ -261,23 +261,23 @@ class LoginViewController: UIViewController {
     
     //
     @objc
-    internal func handleResignResponderButton(button: UIButton) {
+    internal func handleResignResponderButton(_ button: UIButton) {
         nameField?.resignFirstResponder()
         emailField?.resignFirstResponder()
         passwordField?.resignFirstResponder()
         confirmPasswordField?.resignFirstResponder()
         
     }
-    internal func handleNextButton(button: UIButton) {
+    internal func handleNextButton(_ button: UIButton) {
         logIn()
         
     }
-    internal func handleForgotPasswordButton(button: UIButton) {
+    internal func handleForgotPasswordButton(_ button: UIButton) {
         //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
         print("hello")
         createForgotPasswordAlert()
     }
-    internal func handleSignUpButton(button: UIButton) {
+    internal func handleSignUpButton(_ button: UIButton) {
         //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "signupNC") as! UINavigationController
@@ -384,7 +384,7 @@ class LoginViewController: UIViewController {
         view.layout(nameField).top(4 * constant).horizontally(left: constant, right: constant)
     }*/
     
-    private func prepareEmailField() {
+    fileprivate func prepareEmailField() {
         emailField = ErrorTextField(frame: CGRect(x: constant, y: 6 * constant, width: view.width - (2 * constant), height: constant))
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
@@ -408,7 +408,7 @@ class LoginViewController: UIViewController {
         view.addSubview(emailField)
     }
     
-    private func preparePasswordField() {
+    fileprivate func preparePasswordField() {
         passwordField = TextField()
         passwordField.placeholder = "Password"
         //passwordField.detail = "At least 8 characters"

@@ -29,10 +29,10 @@ import Eureka
 open class ImagePickerController : UIImagePickerController, TypedRowControllerType, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     /// The row that pushed or presented this controller
-    public var row: RowOf<UIImage>!
+    open var row: RowOf<UIImage>!
     
     /// A closure to be called when the controller disappears.
-    public var onDismissCallback : ((UIViewController) -> ())?
+    open var onDismissCallback : ((UIViewController) -> ())?
     
     open override func viewDidLoad() {
         super.viewDidLoad()

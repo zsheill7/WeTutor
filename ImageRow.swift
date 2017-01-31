@@ -72,7 +72,7 @@ open class _ImageRow<Cell: CellType>: SelectorRow<Cell, ImagePickerController> w
     open internal(set) var imageURL: URL?
     open var clearAction = ImageClearAction.yes(style: .destructive)
     
-    private var _sourceType: UIImagePickerControllerSourceType = .camera
+    fileprivate var _sourceType: UIImagePickerControllerSourceType = .camera
     
     public required init(tag: String?) {
         sourceTypes = .All

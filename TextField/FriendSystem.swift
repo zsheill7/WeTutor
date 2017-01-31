@@ -13,7 +13,7 @@ import SCLAlertView
 class FriendSystem {
     
     static let system = FriendSystem()
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
@@ -90,7 +90,7 @@ class FriendSystem {
                 completion(true)
             } else {
                 // Failure
-                self.displayAlert(title: "Unable to Sign Up", message: (error?.localizedDescription)!)
+                self.displayAlert("Unable to Sign Up", message: (error?.localizedDescription)!)
                 completion(false)
             }
             
