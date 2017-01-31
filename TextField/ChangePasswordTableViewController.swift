@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 class ChangePasswordTableViewController: UITableViewController {
     

@@ -173,7 +173,7 @@ class SignUpViewController: UIViewController {
         btn.backgroundColor = UIColor.titleBlue().lighten(byPercentage: 0.08)
         
         
-        btn.addTarget(self, action: #selector(handleNextButton(button:)), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(handleNextButton(_:)), for: .touchUpInside)
         
         view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()    }
     
@@ -186,7 +186,7 @@ class SignUpViewController: UIViewController {
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         //btn.title = "Forgot Password?"
         btn.setTitle("Forgot Password?", for: UIControlState.normal)
-        btn.addTarget(self, action: #selector(handleForgotPasswordButton(button:)), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(handleForgotPasswordButton(_:)), for: .touchUpInside)
         
         view.layout(btn).width(150).height(constant).top(15 * constant).centerHorizontally()    }
     
@@ -199,7 +199,7 @@ class SignUpViewController: UIViewController {
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         
         btn.setTitle("Already Registered? Log In", for: UIControlState.normal)
-        btn.addTarget(self, action: #selector(handleLogInButton(button:)), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(handleLogInButton(_:)), for: .touchUpInside)
         
         view.layout(btn).width(210).height(constant).top(16 * constant).centerHorizontally()    }
 
@@ -339,7 +339,7 @@ class SignUpViewController: UIViewController {
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
         let leftView = UIImageView()
-         leftView.image = UIImage(named: "Lock-104")?.imageResize(sizeChange: CGSize(width: 27, height: 27))
+         leftView.image = UIImage(named: "Lock-104")?.imageResize(CGSize(width: 27, height: 27))
         
         passwordField.leftView = leftView
         passwordField.leftViewMode = .always
@@ -360,7 +360,7 @@ class SignUpViewController: UIViewController {
         confirmPasswordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
         let leftView = UIImageView()
-        leftView.image = UIImage(named: "Lock-104")?.imageResize(sizeChange: CGSize(width: 27, height: 27))
+        leftView.image = UIImage(named: "Lock-104")?.imageResize(CGSize(width: 27, height: 27))
         
         confirmPasswordField.leftView = leftView
         confirmPasswordField.leftViewMode = .always

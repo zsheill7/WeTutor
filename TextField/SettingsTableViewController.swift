@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 extension UIColor {
 
@@ -129,13 +129,18 @@ class SettingsTableViewController: UITableViewController {
     
             let alert = UIAlertController(title: "Are you sure you want to delete your account?", message: "All saved settings will be lost", preferredStyle: UIAlertControllerStyle.alert)
             
-            alert.addAction((UIAlertAction(title: "Delete Account", style: .Destructive, handler: { (action) -> Void in
-                self.user?.deleteInBackgroundWithBlock({ (success, error) in
-                    PFUser.logOut()
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let createAccountNC = mainStoryboard.instantiateViewControllerWithIdentifier("createAccountNC")
-                    self.presentViewController(createAccountNC, animated: true, completion: nil)
-                })
+            alert.addAction((UIAlertAction(title: "Delete Account", style: .destructive, handler: { (action) -> Void in
+                let user = FIRAuth.auth()?.currentUser
+                
+                user?.delete { error in
+                    if error != nil {
+                        // An error happened.
+                    } else {
+                        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                        let createAccountNC = mainStoryboard.instantiateViewController(withIdentifier: "initialNC")
+                        self.present(createAccountNC, animated: true, completion: nil)
+                    }
+                }
                 
                 
             })))
@@ -176,13 +181,7 @@ class SettingsTableViewController: UITableViewController {
             self.activityIndicator.startAnimating()
             UIApplication.shared.beginIgnoringInteractionEvents()
             
-            PFUser.logOutInBackgroundWithBlock({ (error) in
-                if error != nil {
-                    print(error)
-                } else {
-                    print("success")
-                }
-            })
+            try! FIRAuth.auth()!.signOut()
             
             let initialStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let loginNC = initialStoryboard.instantiateViewController(withIdentifier: "loginNC")
