@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SCLAlertView
 
 class LockerSettingsTableViewController: UITableViewController {
 
@@ -16,34 +17,19 @@ class LockerSettingsTableViewController: UITableViewController {
     
     var user = FIRAuth.auth()?.currentUser
     
-    func displayAlert(_ title: String, message: String) {
-        
-        if #available(iOS 8.0, *) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                
-                //self.dismissViewControllerAnimated(true, completion: nil)
-                
-            })))
-            
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            print("error")
-        }
-        
-        
-        
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let userLockerNumber = user!["lockerNumber"] as? String {
+        /*if let userLockerNumber = user!["lockerNumber"] as? String {
             lockerNumberField.text = userLockerNumber
         }
         if let userLockerCombo = user!["lockerCombo"] as? String {
             lockerComboField.text = userLockerCombo
-        }
+        }*/
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -57,7 +43,7 @@ class LockerSettingsTableViewController: UITableViewController {
     }
     
     @IBAction func changeLockerPressed(_ sender: AnyObject) {
-        if lockerComboField?.text != nil && lockerNumberField?.text != nil {
+       /* if lockerComboField?.text != nil && lockerNumberField?.text != nil {
             
             
             user!.setObject(lockerNumberField.text!, forKey: "lockerNumber")
@@ -69,7 +55,7 @@ class LockerSettingsTableViewController: UITableViewController {
             displayAlert("Field(s) Empty", message: "Please enter your locker number and combination")
             
         }
-        
+        */
     }
  
     

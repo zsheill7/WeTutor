@@ -8,30 +8,16 @@
 
 import UIKit
 import Firebase
+import SCLAlertView
 
 class ChangePasswordTableViewController: UITableViewController {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     var user = FIRAuth.auth()?.currentUser
     
-    func displayAlert(_ title: String, message: String) {
-        
-        if #available(iOS 8.0, *) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                
-                //self.dismissViewControllerAnimated(true, completion: nil)
-                
-            })))
-            
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            print("error")
-        }
-        
-        
-        
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+
     }
     
     @IBOutlet weak var confirmPasswordField: UITextField!
@@ -44,16 +30,16 @@ class ChangePasswordTableViewController: UITableViewController {
         
         
         
-        if oldPasswordField.text == "" || newPasswordField.text == "" || confirmPasswordField.text == "" {
+       /* if oldPasswordField.text == "" || newPasswordField.text == "" || confirmPasswordField.text == "" {
             
-            displayAlert("Error", message: "Please enter your old and new passwords")
+            displayAlert(title: "Error", message: "Please enter your old and new passwords")
             
         } else if newPasswordField.text!.characters.count < 5 {
-            self.displayAlert("Not Long Enough", message: "Please enter a password that is 5 or more characters")
+            self.displayAlert(title: "Not Long Enough", message: "Please enter a password that is 5 or more characters")
         } else if newPasswordField.text != confirmPasswordField.text {
-            self.displayAlert("Passwords Do Not Match", message: "Please re-enter passwords")
+            self.displayAlert(title: "Passwords Do Not Match", message: "Please re-enter passwords")
         } else if user!.password == oldPasswordField.text {
-            self.displayAlert("Old Password is Incorrect", message: "Please re-enter passwords")
+            self.displayAlert(title: "Old Password is Incorrect", message: "Please re-enter passwords")
         }else {
             
             activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -85,7 +71,7 @@ class ChangePasswordTableViewController: UITableViewController {
             } else {
                 print("error")
             }
-        }
+        }*/
     }
     
     

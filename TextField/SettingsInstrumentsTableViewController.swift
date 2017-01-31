@@ -30,13 +30,13 @@ class SettingsInstrumentsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        if (cellTag == 1) {
+        /*if (cellTag == 1) {
             return marchingInstrumentsList.count
         } else if (cellTag == 2) {
             return concertInstrumentsList.count
         } else if (cellTag == 3) {
             return bandTypesList.count
-        }
+        }*/
         return 0
     }
     
@@ -46,7 +46,7 @@ class SettingsInstrumentsTableViewController: UITableViewController {
         
         //print(concertInstrumentsList[indexPath.row])
         
-        if (cellTag == 1) {
+       /* if (cellTag == 1) {
             cell.textLabel?.text = String(marchingInstrumentsList[indexPath.row])
             return cell
         }
@@ -58,13 +58,13 @@ class SettingsInstrumentsTableViewController: UITableViewController {
             return cell
         }
         
-        cell.textLabel?.text = ""
+        cell.textLabel?.text = ""*/
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+        /*tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
         
         let indexPath = tableView.indexPathForSelectedRow!
         let currentCell = tableView.cellForRow(at: indexPath)! as UITableViewCell
@@ -85,7 +85,7 @@ class SettingsInstrumentsTableViewController: UITableViewController {
         else if (cellTag == 3) {
             user!.setObject(cellText, forKey: "ensemble")
         }
-        user!.saveInBackground()
+        user!.saveInBackground()*/
         
     }
 

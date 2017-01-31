@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SCLAlertView
 
 class BarcodeSettingsTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -82,7 +83,7 @@ class BarcodeSettingsTableViewController: UITableViewController, UIImagePickerCo
             present(alertController, animated: true, completion: nil)
             
         } else {
-            displayAlert( "Software Update Needed", message: "Please update to iOS8 or later or contact an admin")
+            displayAlert( title: "Software Update Needed", message: "Please update to iOS8 or later or contact an admin")
         }
         
         

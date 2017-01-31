@@ -176,7 +176,7 @@ class PagingMenuViewController: UIViewController {
                 //self.performSegue(withIdentifier: "toAboutThisApp", sender: self)
             } else if indexPath == 1 {
                 let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! AboutThisAppViewController
+                let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! UINavigationController
                 self.present(controller, animated: true, completion: nil)
 
             } else if indexPath == 2 {
