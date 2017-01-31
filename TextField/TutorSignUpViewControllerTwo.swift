@@ -54,7 +54,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView?.addBackground(imageName: "mixed2")
+        self.tableView?.addBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         let availabilityInfo: String = ""
         var languages: [String] = [String]()

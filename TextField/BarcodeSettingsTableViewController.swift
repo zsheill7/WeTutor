@@ -17,24 +17,9 @@ class BarcodeSettingsTableViewController: UITableViewController, UIImagePickerCo
     
     @IBOutlet weak var barcodeImage: UIImageView!
     
-    func displayAlert(_ title: String, message: String) {
-        
-        if #available(iOS 8.0, *) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                
-                //self.dismissViewControllerAnimated(true, completion: nil)
-                
-            })))
-            
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            print("error")
-        }
-        
-        
-        
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +33,7 @@ class BarcodeSettingsTableViewController: UITableViewController, UIImagePickerCo
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let imageFile = user!["barcode"] {
+       /* if let imageFile = user!["barcode"] {
             
             imageFile.getDataInBackgroundWithBlock({ (data, error) in
                 if let downloadedImage = UIImage(data: data!) {
@@ -57,7 +42,7 @@ class BarcodeSettingsTableViewController: UITableViewController, UIImagePickerCo
                 print("inside block 1")
                 
             })
-        }
+        }*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,7 +95,7 @@ class BarcodeSettingsTableViewController: UITableViewController, UIImagePickerCo
         
         
         let imageData = UIImageJPEGRepresentation(image, 0.5)
-        if picker == pickedBarcodeImage {
+        /*if picker == pickedBarcodeImage {
             if let imageFile = PFFile(name: "image.png", data: imageData!) {
                 user!["barcode"] = imageFile
                 
@@ -141,7 +126,7 @@ class BarcodeSettingsTableViewController: UITableViewController, UIImagePickerCo
             } else {
                 print("Couldn't create imagefile")
             }
-        }
+        }*/
     }
 
     // MARK: - Table view data source

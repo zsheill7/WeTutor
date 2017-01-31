@@ -34,7 +34,7 @@ class TutorOrTuteeViewController: UIViewController {
         super.viewDidLoad()
         
         
-        self.view.addBackground(imageName: "mixed2")
+        self.view.addBackground("mixed2")
         
         userRef = FIRDatabase.database().reference().child("users")
         if FIRAuth.auth()?.currentUser?.uid != nil {

@@ -52,7 +52,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("test1")
+        /*print("test1")
         if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
             print("test2")
             self.marchingInst.text! = marchingInst
@@ -65,7 +65,7 @@ class SettingsTableViewController: UITableViewController {
         if let concertBandType = FIRAuth.auth()?.currentUser!["concertBandType"] as? String {
             print("test2")
             self.ensemble.text! = concertBandType
-        }
+        }*/
         /*marchingInstCell.tag = 1
         concertInstCell.tag = 2
         ensembleTypeCell.tag = 3*/
@@ -79,7 +79,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
      
         
-        if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
+       /* if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
             
             self.marchingInst.text! = marchingInst
         }
@@ -91,7 +91,7 @@ class SettingsTableViewController: UITableViewController {
         if let concertBandType = FIRAuth.auth()?.currentUser!["concertBandType"] as? String {
             print("test3")
             self.ensemble.text! = concertBandType
-        }
+        }*/
         
         
     }

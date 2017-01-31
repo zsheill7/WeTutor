@@ -18,7 +18,7 @@ class AboutThisAppViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         self.view.addBackground(imageName: "mixed2")
+         self.view.addBackground("mixed2")
         let userDefaults = UserDefaults.standard
         if let tempIsTutor = userDefaults.value(forKey: "isTutor") as? Bool {
             currentUserIsTutor = tempIsTutor
