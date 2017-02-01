@@ -61,7 +61,7 @@ class AboutThisAppViewController: UIViewController {
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "signupNC") as! UINavigationController
-            controller.modalTransitionStyle = .crossDissolve
+            //controller.modalTransitionStyle = .crossDissolve
             self.present(controller, animated: true, completion: nil)
         }
 
