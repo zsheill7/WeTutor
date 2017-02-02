@@ -16,8 +16,6 @@
 		C81DA3CD1E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3C81E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift */; };
 		C81DA3CE1E3FB8A600CB15A8 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */; };
 		C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */; };
-		C81DA3D01E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3CB1E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift */; };
-		C81DA3D11E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81DA3CC1E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift */; };
 		C81DA3D41E3FB94F00CB15A8 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81DA3D31E3FB94F00CB15A8 /* Settings.storyboard */; };
 		C827B4C81E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */; };
 		C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800D91E0EFD8B00329B7D /* StringExtensions.swift */; };
@@ -127,8 +125,6 @@
 		C81DA3C81E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsInstrumentsTableViewController.swift; sourceTree = "<group>"; };
 		C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableViewController.swift; sourceTree = "<group>"; };
-		C81DA3CB1E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeSettingsTableViewController.swift; sourceTree = "<group>"; };
-		C81DA3CC1E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockerSettingsTableViewController.swift; sourceTree = "<group>"; };
 		C81DA3D31E3FB94F00CB15A8 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerTwo.swift; sourceTree = "<group>"; };
 		C82800D91E0EFD8B00329B7D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -276,7 +272,6 @@
 				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
 				C89C0B581E1643F300D00E5D /* TutorMe.entitlements */,
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
-				C81DA3D21E3FB8B100CB15A8 /* Settings */,
 				C8EE882D1E0DB050003775C2 /* Calendar */,
 				C86BCCE41E136E58007D24F9 /* Chat */,
 				C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */,
@@ -286,6 +281,8 @@
 				C87984471E0B9760003EB7A1 /* Custom Row and Cell */,
 				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
+				C81DA3D21E3FB8B100CB15A8 /* Settings */,
+				C8C5DE3B1E41892E008CCFDB /* Settings */,
 				C827B53D1E11DF2C00BDFD50 /* About This App */,
 				C838A8BA1E1982C1004A794C /* Friend System */,
 				C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */,
@@ -324,8 +321,6 @@
 				C81DA3C81E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift */,
 				C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */,
 				C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */,
-				C81DA3CB1E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift */,
-				C81DA3CC1E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -376,10 +371,7 @@
 				C838A8BD1E19C4E1004A794C /* MapViewController.swift */,
 				C86ACAF11E0E238200F6695E /* LoginViewController.swift */,
 				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
-				C89C0B561E15E85F00D00E5D /* SettingsViewController.swift */,
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
-				C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */,
-				C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */,
 			);
 			name = "In Main Storyboard";
 			sourceTree = "<group>";
@@ -501,6 +493,16 @@
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 			);
 			name = "Xib Files";
+			sourceTree = "<group>";
+		};
+		C8C5DE3B1E41892E008CCFDB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				C89C0B561E15E85F00D00E5D /* SettingsViewController.swift */,
+				C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */,
+				C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		C8EE882D1E0DB050003775C2 /* Calendar */ = {
@@ -713,7 +715,6 @@
 				C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */,
 				C8EE88561E0DB144003775C2 /* FSCalendarCell.m in Sources */,
 				C81DA3CE1E3FB8A600CB15A8 /* SettingsTableViewController.swift in Sources */,
-				C81DA3D01E3FB8A600CB15A8 /* BarcodeSettingsTableViewController.swift in Sources */,
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
@@ -722,7 +723,6 @@
 				C8EE88631E0DB256003775C2 /* CalendarViewController.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
-				C81DA3D11E3FB8A600CB15A8 /* LockerSettingsTableViewController.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,

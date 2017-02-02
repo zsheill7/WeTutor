@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +15,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="settingsVC" title="settingsVC" id="kwH-he-b6V" customClass="SettingsTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="NSB-js-aNq">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -53,7 +54,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="2i8-VA-hgS" kind="show" id="ytx-fj-WXl"/>
+                                            <segue destination="UCB-IP-TOz" kind="show" identifier="segue_one" id="kHU-jl-fgz">
+                                                <segue key="commit" inheritsFrom="parent" id="tKu-Qt-L9c"/>
+                                                <segue key="preview" inheritsFrom="commit" id="aOI-hL-5Zr"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="2gH-cM-KEd">
@@ -89,7 +93,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="3S6-mz-NR0" kind="show" identifier="toAvailabilityNC" id="hQE-uh-zJI"/>
+                                            <segue destination="FcA-lg-Nyd" kind="show" identifier="segue_two" id="g7h-PM-4ql">
+                                                <segue key="commit" inheritsFrom="parent" id="r1m-4J-WFP"/>
+                                                <segue key="preview" inheritsFrom="commit" id="daB-ta-YXH"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Rd4-5s-Keq">
@@ -277,6 +284,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="deleteAccountButtonPressed:" destination="kwH-he-b6V" eventType="touchUpInside" id="6go-ja-yIQ"/>
+                                                        <action selector="saveChanges:" destination="kwH-he-b6V" eventType="touchUpInside" id="7a0-ZA-veb"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -302,9 +310,6 @@
                                                     <state key="normal" title="Delete Account">
                                                         <color key="titleColor" red="0.77922272682189941" green="0.13638857007026672" blue="0.13663701713085175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
-                                                    <connections>
-                                                        <action selector="deleteAccountButtonPressed:" destination="kwH-he-b6V" eventType="touchUpInside" id="hzV-WI-IuY"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -321,8 +326,14 @@
                             <outlet property="delegate" destination="kwH-he-b6V" id="G28-UG-aUr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3EU-xf-z6O"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationItem key="navigationItem" title="Settings" id="KkQ-aq-ZJF">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="HBJ-bL-PtA">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="kwH-he-b6V" id="fq8-yD-w3d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="concertInst" destination="iAa-ko-T07" id="E4p-R4-nIk"/>
@@ -336,14 +347,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2hx-Xo-JAc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103.2" y="1353.3733133433284"/>
+            <point key="canvasLocation" x="1225" y="1290"/>
         </scene>
         <!--Change Password Table View Controller-->
         <scene sceneID="y0F-S7-snM">
             <objects>
                 <tableViewController id="XLS-DV-ZF6" customClass="ChangePasswordTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="q8Y-xN-FUE">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -479,7 +490,7 @@
                 <navigationController storyboardIdentifier="settingsNC" automaticallyAdjustsScrollViewInsets="NO" id="bJy-nV-q35" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8zX-Ok-P0z">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8zX-Ok-P0z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -608,7 +619,7 @@
             <objects>
                 <tableViewController id="qF4-EA-OE3" customClass="BarcodeSettingsTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="4" id="0Cw-DS-pIa">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -685,7 +696,7 @@
         <!--TutorSignUpViewControllerOne-->
         <scene sceneID="E25-eQ-97D">
             <objects>
-                <tableViewController title="TutorSignUpViewControllerOne" id="UCB-IP-TOz" customClass="SettingsBasicInfoTableViewController" sceneMemberID="viewController">
+                <tableViewController title="TutorSignUpViewControllerOne" id="UCB-IP-TOz" customClass="SettingsBasicInfoTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ehV-E5-7mZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -711,12 +722,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7X-is-uRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2950" y="1182"/>
+            <point key="canvasLocation" x="2110" y="1154"/>
         </scene>
         <!--TutorSignUpViewControllerTwo-->
         <scene sceneID="fuq-Tz-Kuy">
             <objects>
-                <viewController title="TutorSignUpViewControllerTwo" id="FcA-lg-Nyd" customClass="TutorSignUpViewControllerTwo" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TutorSignUpViewControllerTwo" id="FcA-lg-Nyd" customClass="SettingsAvailabilityTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gX1-tL-K1i"/>
                         <viewControllerLayoutGuide type="bottom" id="J9Y-E1-pIE"/>
@@ -730,43 +741,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVA-xv-TVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2990" y="1847"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8xT-FH-N6b">
-            <objects>
-                <navigationController storyboardIdentifier="TutorSignUpViewControllerOneNC" automaticallyAdjustsScrollViewInsets="NO" id="2i8-VA-hgS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8Jd-Lb-Y51">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UCB-IP-TOz" kind="relationship" relationship="rootViewController" id="wN4-H4-b9s"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Gr7-IL-C4U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2009" y="1181"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="VNY-zt-j62">
-            <objects>
-                <navigationController storyboardIdentifier="TutorSignUpViewControllerTwoNC" automaticallyAdjustsScrollViewInsets="NO" id="3S6-mz-NR0" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nk6-ty-UkE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="FcA-lg-Nyd" kind="relationship" relationship="rootViewController" id="qBV-ep-3dF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pI3-hB-EIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2073" y="1848"/>
+            <point key="canvasLocation" x="2145" y="1822"/>
         </scene>
     </scenes>
     <resources>
@@ -776,6 +751,8 @@
         <image name="placeholder5" width="600" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XQ1-MU-krj"/>
+        <segue reference="0kU-8n-A4p"/>
+        <segue reference="g7h-PM-4ql"/>
+        <segue reference="kHU-jl-fgz"/>
     </inferredMetricsTieBreakers>
 </document>

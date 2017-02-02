@@ -74,7 +74,7 @@ private enum MenuSection {
 }
 
 
-class TutorSignUpViewController: FormViewController {
+/*class TutorSignUpViewController: FormViewController {
 
     
     override func viewDidLoad() {
@@ -99,10 +99,11 @@ class TutorSignUpViewController: FormViewController {
     }
     */
 
-}
+}*/
 
-class TutorSignUpViewControllerOne : FormViewController {
+class SettingsBasicInfoTableViewController : FormViewController {
     var ref: FIRDatabaseReference!
+    var currentUser: User?
     
     func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)

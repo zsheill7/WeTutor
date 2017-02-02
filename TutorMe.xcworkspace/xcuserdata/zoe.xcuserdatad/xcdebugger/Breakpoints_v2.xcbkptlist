@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/TutorSignUpViewControllerTwo.swift"
-            timestampString = "505600031.532605"
+            timestampString = "507610901.818978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/TutorSignUpViewControllerOne.swift"
-            timestampString = "505899233.454889"
+            timestampString = "507610901.818978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "loadForm()"
             landmarkType = "7">
             <Locations>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/TutorSignUpViewControllerOne.swift"
-            timestampString = "505899233.454889"
+            timestampString = "507610901.818978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "loadForm()"
             landmarkType = "7">
             <Locations>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/SettingsTableViewController.swift"
-            timestampString = "507529150.284645"
+            timestampString = "507673391.022439"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
             landmarkName = "deleteAccountPressed()"
             landmarkType = "7">
          </BreakpointContent>

@@ -40,13 +40,14 @@ import Firebase
 
 
 
-class TutorSignUpViewControllerTwo : FormViewController {
+class SettingsAvailabilityTableViewController : FormViewController {
     
     let firstLanguages = ["English", "Spanish", "French", "Chinese", "Other"]
     let secondLanguages = ["None", "English", "Spanish", "French", "Chinese", "Other"]
 
   
     var ref: FIRDatabaseReference!
+    var currentUser: User?
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -213,7 +214,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
 
 
 
-class EurekaLogoViewNib: UIView {
+/*class EurekaLogoViewNib: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -238,3 +239,4 @@ class EurekaLogoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+*/

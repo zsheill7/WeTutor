@@ -47,10 +47,23 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var ensemble: UILabel!
     
-    var user = FIRAuth.auth()?.currentUser
+    var userID = FIRAuth.auth()?.currentUser?.uid
+    var ref: FIRDatabaseReference!
+    var currentUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = FIRDatabase.database().reference()
+        
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            self.currentUser = User.init(snapshot: snapshot)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
         
         /*print("test1")
         if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
@@ -69,6 +82,8 @@ class SettingsTableViewController: UITableViewController {
         /*marchingInstCell.tag = 1
         concertInstCell.tag = 2
         ensembleTypeCell.tag = 3*/
+        
+        
         
         var frame: CGRect = table.frame;
         frame.size.height = table.contentSize.height
@@ -99,28 +114,53 @@ class SettingsTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_one" {
-            let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
+            /*let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
             
             tableVC.cellTag = 1
-            tableVC.title = "Marching Instrument"
+          
+            tableVC.title = "Marching Instrument"*/
+            
+            let tableVC: SettingsBasicInfoTableViewController = segue.destination as! SettingsBasicInfoTableViewController
+            
+            tableVC.currentUser = currentUser
+            
+            tableVC.title = "Basic Info"
             
         } else if segue.identifier == "segue_two" {
-            let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
+            /*let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
             
             tableVC.cellTag = 2
-            tableVC.title = "Concert Instrument"
+            tableVC.title = "Concert Instrument"*/
+            let tableVC: SettingsAvailabilityTableViewController = segue.destination as! SettingsAvailabilityTableViewController
+            
+            tableVC.currentUser = currentUser
+            
+            tableVC.title = "Availability"
             
         } else if segue.identifier == "segue_three" {
-            let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
+            /*let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
             
             tableVC.cellTag = 3
-            tableVC.title = "Concert Band"
+            tableVC.title = "Concert Band"*/
             
         }
     }
     
     @IBAction func deleteAccountButtonPressed(_ sender: AnyObject) {
         deleteAccountPressed()
+    }
+    @IBAction func backButtonPressed(_ sender: Any) {
+        goBackToConsole()
+    }
+    
+    @IBAction func saveChanges(_ sender: Any) {
+        goBackToConsole()
+        
+    }
+    func goBackToConsole() {
+        let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
     }
     
    func deleteAccountPressed() {
@@ -162,6 +202,8 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.section == 2 && indexPath.row == 2 {
             logoutPressed()
         } else if indexPath.section == 3 && indexPath.row == 0 {
+            goBackToConsole()
+        } else if indexPath.section == 4 && indexPath.row == 0 {
             deleteAccountPressed()
         }
     }

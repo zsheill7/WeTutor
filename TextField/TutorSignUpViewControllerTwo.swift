@@ -213,7 +213,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
 
 
 
-class EurekaLogoViewNib: UIView {
+/*class EurekaLogoViewNib: UIView {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -237,4 +237,4 @@ class EurekaLogoView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
+}*/
