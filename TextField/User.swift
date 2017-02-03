@@ -22,7 +22,7 @@ struct User {
     let address:String
     let school: String
     
-    let languages: [String]
+    var languages: [String]
     let availableDays: [String]
     let preferredSubjects: [String]
     
@@ -135,8 +135,14 @@ struct User {
             isTutor = false
         }
         
-        if let userLanguages = snapshotValue?["languages"] as? [String] {
-            languages = userLanguages
+        if let userLanguages = snapshotValue?["languages"] as? [String:String] {
+            languages = [""]
+            print("userLanguages")
+            print(userLanguages)
+            for value in userLanguages.values {
+                print(value)
+                languages.append(value)
+            }
         } else {
             languages = [""]
         }

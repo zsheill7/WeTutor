@@ -52,6 +52,9 @@ class SettingsAvailabilityTableViewController : FormViewController {
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("currentUser?.availabilityInfo")
+        print(currentUser?.availabilityInfo)
+        
         
         self.tableView?.addBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
@@ -89,6 +92,9 @@ class SettingsAvailabilityTableViewController : FormViewController {
             <<< TextAreaRow("Availability Notes") {
                 $0.placeholder = "I'm available Sundays, but only after 3:00."
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 70)
+                
+                
+                $0.value = currentUser?.availabilityInfo
             }
             
             +++ Section("Languages")
@@ -97,19 +103,26 @@ class SettingsAvailabilityTableViewController : FormViewController {
                         row.title = "First Language"
                         row.options = firstLanguages
                         
-                        row.value = row.options[0]
+                        //row.value = row.options[0]
+                        row.value = currentUser?.languages[0]
                     }
                     <<< PickerInlineRow<String>("Second Language") { (row : PickerInlineRow<String>) -> Void in
                         row.title = row.tag
                         row.options = secondLanguages
                         
-                        row.value = row.options[0]
+                        //row.value = row.options[0]
+                        if currentUser?.languages != nil && (currentUser?.languages.count)! > 1 {
+                            row.value = currentUser?.languages[1]
+                        }
                     }
                     <<< PickerInlineRow<String>("Third Language") { (row : PickerInlineRow<String>) -> Void in
                         row.title = row.tag
                         row.options = secondLanguages
                         
-                        row.value = row.options[0]
+                        //row.value = row.options[0]
+                        if currentUser?.languages != nil && (currentUser?.languages.count)! > 1 {
+                            row.value = currentUser?.languages[2]
+                        }
                 }
         
             +++ Section()

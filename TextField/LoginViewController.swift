@@ -157,6 +157,7 @@ class LoginViewController: UIViewController {
                         let userDefaults = UserDefaults.standard
                         
                         userDefaults.setValue(isTutor, forKey: "isTutor")
+                        userDefaults.setValue(languages, forKey: "languages")
                         
                         userDefaults.synchronize()
 

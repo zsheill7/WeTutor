@@ -76,7 +76,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
         cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"
         cell!.gradeLabel.text = "Grade: \(FriendSystem.system.userList[indexPath.row].grade)"
-        cell!.chatButton.removeFromSuperview()
+        //cell!.chatButton.removeFromSuperview()
         cell!.setAddFriendFunction {
             let id = FriendSystem.system.requestList[indexPath.row].uid
             FriendSystem.system.acceptFriendRequest(id)

@@ -53,12 +53,20 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         ref = FIRDatabase.database().reference()
+        print("userID")
+        print(userID)
+        print(ref.child("users").child(userID!))
         
-        ref = FIRDatabase.database().reference()
-        
+       
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
-            self.currentUser = User.init(snapshot: snapshot)
+            print("inside observeSingleEvent")
+            let value = snapshot.value as? NSDictionary
+            let username = value?["email"] as? String ?? ""
+            print(username)
+            self.currentUser = User(snapshot: snapshot)
+            print(self.currentUser)
             
             // ...
         }) { (error) in

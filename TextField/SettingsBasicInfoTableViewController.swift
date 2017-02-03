@@ -142,9 +142,11 @@ class SettingsBasicInfoTableViewController : FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("currentUser?.phone as AnyObject?")
+        print(currentUser?.phone as AnyObject?)
         //initializeForm()
         
+        self.loadForm()
         cellWidth = Int(self.view.frame.width / CGFloat(cols))
         cellHeight = Int(self.view.frame.height / CGFloat(rows))
         
@@ -204,16 +206,22 @@ class SettingsBasicInfoTableViewController : FormViewController {
         
         row = FormRowDescriptor(tag: Static.zipcodeTag, type: .text, title: "Zip Code")
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. 98040" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
+        row.value = currentUser?.address as AnyObject?
         section1.rows.append(row)
         
         let section2 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.schoolTag, type: .url, title: "School Name")
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Mercer Island High School" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
+        print(currentUser?.school as AnyObject?)
+        row.value = currentUser?.school as AnyObject?
+        print("row.value")
+        print(row.value)
         section2.rows.append(row)
         
         row = FormRowDescriptor(tag: Static.phoneTag, type: .phone, title: "Phone")
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. 13069242633" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
+        row.value = currentUser?.phone as AnyObject?
         section2.rows.append(row)
         
         let section3 = FormSectionDescriptor(headerTitle: "An example header title", footerTitle: nil)
@@ -282,16 +290,17 @@ class SettingsBasicInfoTableViewController : FormViewController {
             
             
         }
-        row.value = "Kindergarten" as AnyObject
-        
+        //row.value = "Kindergarten" as AnyObject
+        row.value = currentUser?.grade as AnyObject?
         section3.rows.append(row)
         
         row = FormRowDescriptor(tag: Static.subjects, type: .picker, title: "Preferred Subject")
-        row.configuration.selection.options = ([0, 1, 2] as [Int]) as [AnyObject]
+        row.configuration.selection.options = (["No Preference", "Math", "Reading or writing", "Science"] as [String]) as [AnyObject]
         row.configuration.selection.allowsMultipleSelection = true
         row.configuration.selection.optionTitleClosure = { value in
-            guard let option = value as? Int else { return "" }
-            switch option {
+            guard let option = value as? String else { return "" }
+            return option
+            /*switch option {
             case 0:
                 return "No Preference"
             case 1:
@@ -300,13 +309,12 @@ class SettingsBasicInfoTableViewController : FormViewController {
                 return "Reading or writing"
             case 3:
                 return "Science"
-            
+            */
                 
-            default:
-                return ""
-            }
+           
         }
-        row.value = 0 as AnyObject
+        //row.value = 0 as AnyObject
+        row.value = currentUser?.preferredSubjects[0] as AnyObject?
         
         
         
@@ -320,6 +328,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
        // row.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.5)
         
         row.configuration.cell.appearance = ["tintColor" : UIColor.red]
+        row.value = currentUser?.description as AnyObject?
         section4.rows.append(row)
         
         let section5 = FormSectionDescriptor(headerTitle: " ", footerTitle: nil)
