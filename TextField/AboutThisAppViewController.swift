@@ -50,12 +50,12 @@ class AboutThisAppViewController: UIViewController {
             if currentUserIsTutor == true {
                 let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-                controller.modalTransitionStyle = .flipHorizontal
+                //controller.modalTransitionStyle = .flipHorizontal
                 self.present(controller, animated: true, completion: nil)
             } else {
                 let storyboard = UIStoryboard(name: "Tutee", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
-                controller.modalTransitionStyle = .flipHorizontal
+               // controller.modalTransitionStyle = .flipHorizontal
                 self.present(controller, animated: true, completion: nil)
             }
         } else {

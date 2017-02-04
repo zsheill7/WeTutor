@@ -175,6 +175,11 @@ class SettingsBasicInfoTableViewController : FormViewController {
     
     // MARK: Private interface
     
+    func goBackToSettings() {
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
+    }
     
     fileprivate func loadForm() {
         
@@ -396,7 +401,37 @@ class SettingsBasicInfoTableViewController : FormViewController {
                     activityIndicatorView.startAnimating()
 
                     
-                self.ref.child("users").child(userID!).setValue(["zipcode": zipcode,
+                    self.ref.child("users/\(userID!)/zipcode").setValue(zipcode)
+                    self.ref.child("users/\(userID!)/schoolName").setValue(schoolName)
+                    self.ref.child("users/\(userID!)/phone").setValue(phone)
+                    self.ref.child("users/\(userID!)/gender").setValue(gender)
+                    self.ref.child("users/\(userID!)/grade").setValue(grade)
+                    self.ref.child("users/\(userID!)/preferredSubject").setValue(preferredSubject)
+                    self.ref.child("users/\(userID!)/description").setValue(description)
+                    /*self.ref.child("users/\(userID!)/").setValue()
+                    self.ref.child("users/\(userID!)/").setValue()
+                    self.ref.child("users/\(userID!)/").setValue()*/
+                    
+                    let geocoder = CLGeocoder()
+                    geocoder.geocodeAddressString(zipcode as! String) { placemarks, error in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "")
+                        } else {
+                            for placemark in placemarks! {
+                                let location = placemark.location
+                                let latitude = location?.coordinate.latitude
+                                let longitude = location?.coordinate.longitude
+                                self.ref.child("users/\(userID!)/latitude").setValue(latitude)
+                                self.ref.child("users/\(userID!)/longitude").setValue(longitude)
+                            }
+                        }
+                    }
+                    activityIndicatorView.stopAnimating()
+                    //self.performSegue(withIdentifier: "toSecondVC", sender: self)
+                    self.displayAlert("Success!", message: "Your settings have been updated")
+                    self.goBackToSettings()
+                    
+                /*self.ref.child("users").child(userID!).setValue(["zipcode": zipcode,
                       "schoolName": schoolName,
                       "phone": phone,
                       "gender": gender,
@@ -410,26 +445,11 @@ class SettingsBasicInfoTableViewController : FormViewController {
                         print("before error nil")
                         if error == nil {
                             print("error=nil")
-                            let geocoder = CLGeocoder()
-                            geocoder.geocodeAddressString(zipcode as! String) { placemarks, error in
-                                if error != nil {
-                                    print(error?.localizedDescription ?? "")
-                                } else {
-                                    for placemark in placemarks! {
-                                        let location = placemark.location
-                                        let latitude = location?.coordinate.latitude
-                                        let longitude = location?.coordinate.longitude
-                                        self.ref.child("users/\(userID!)/latitude").setValue(latitude)
-                                        self.ref.child("users/\(userID!)/longitude").setValue(longitude)
-                                    }
-                                }
-                            }
-                            activityIndicatorView.stopAnimating()
-                            self.performSegue(withIdentifier: "toSecondVC", sender: self)
+                            
                         } else /*if error != nil*/{
                             self.displayAlert("Error", message: (error?.localizedDescription)!)
                         }
-                }) //self.ref.child("users").child(userID!).observeSingleEvent
+                }) *///self.ref.child("users").child(userID!).observeSingleEvent
             } //if let zipcode = self.form.sections[0].rows[0].value,
                 //let schoolName = self.form.sections[1].rows[0].value,
 

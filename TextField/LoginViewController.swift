@@ -152,12 +152,15 @@ class LoginViewController: UIViewController {
                         let value = snapshot.value as? NSDictionary
                         let languages = userObject.languages
                         let isTutor = userObject.isTutor
+                        let description = userObject.description
+                        
                         print(languages)
                         print(isTutor)
                         let userDefaults = UserDefaults.standard
                         
                         userDefaults.setValue(isTutor, forKey: "isTutor")
                         userDefaults.setValue(languages, forKey: "languages")
+                        userDefaults.setValue(description, forKey: "description")
                         
                         userDefaults.synchronize()
 

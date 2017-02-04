@@ -25,12 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let userDefaults = UserDefaults.standard
         print(userDefaults.value(forKey: "isTutor") as? Bool)
-        print(userDefaults.value(forKey: "languages") as? [String])
+       // print(userDefaults.value(forKey: "languages") as? [String])
+        print(userDefaults.value(forKey: "description") as? String)
         print(FIRAuth.auth()?.currentUser?.uid)
         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
-            let hasLanguages = userDefaults.value(forKey: "languages") as? [String],
+            //let hasLanguages = userDefaults.value(forKey: "languages") as? [String],
+            let hasDescription = userDefaults.value(forKey: "description") as? String,
             let uid = FIRAuth.auth()?.currentUser?.uid {
-            /*if isTutor == true {
+        if isTutor == true {
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                 let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
                 window?.rootViewController = viewController
@@ -40,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
                 window?.rootViewController = viewController
                // self.present(viewController, animated: true, completion: nil)
-            }*/
+            }
         }
         /*let userID = FIRAuth.auth()?.currentUser?.uid
         var ref: FIRDatabaseReference!

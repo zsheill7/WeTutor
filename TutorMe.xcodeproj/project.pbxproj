@@ -71,7 +71,6 @@
 		C890A09C1E27FDDC007DE45D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A0981E27FDDC007DE45D /* ChatViewController.swift */; };
 		C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */; };
 		C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A09B1E27FDDC007DE45D /* Channel.swift */; };
-		C89C0B571E15E85F00D00E5D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89C0B561E15E85F00D00E5D /* SettingsViewController.swift */; };
 		C8BD683E1E36F4FC0028EC37 /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */; };
 		C8C5DE391E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */; };
 		C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */; };
@@ -181,7 +180,6 @@
 		C890A0981E27FDDC007DE45D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
 		C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateChannelCell.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/CreateChannelCell.swift"; sourceTree = "<group>"; };
 		C890A09B1E27FDDC007DE45D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/Channel.swift"; sourceTree = "<group>"; };
-		C89C0B561E15E85F00D00E5D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C89C0B581E1643F300D00E5D /* TutorMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TutorMe.entitlements; sourceTree = SOURCE_ROOT; };
 		C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
 		C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBasicInfoTableViewController.swift; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
 				C81DA3D21E3FB8B100CB15A8 /* Settings */,
-				C8C5DE3B1E41892E008CCFDB /* Settings */,
 				C827B53D1E11DF2C00BDFD50 /* About This App */,
 				C838A8BA1E1982C1004A794C /* Friend System */,
 				C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */,
@@ -321,6 +318,8 @@
 				C81DA3C81E3FB8A600CB15A8 /* SettingsInstrumentsTableViewController.swift */,
 				C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */,
 				C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */,
+				C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */,
+				C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -493,16 +492,6 @@
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 			);
 			name = "Xib Files";
-			sourceTree = "<group>";
-		};
-		C8C5DE3B1E41892E008CCFDB /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				C89C0B561E15E85F00D00E5D /* SettingsViewController.swift */,
-				C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */,
-				C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */,
-			);
-			name = Settings;
 			sourceTree = "<group>";
 		};
 		C8EE882D1E0DB050003775C2 /* Calendar */ = {
@@ -728,7 +717,6 @@
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,
 				C8C5DE391E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift in Sources */,
 				C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */,
-				C89C0B571E15E85F00D00E5D /* SettingsViewController.swift in Sources */,
 				C86ACAF21E0E238300F6695E /* LoginViewController.swift in Sources */,
 				C838A94A1E1B6E32004A794C /* UserCell.swift in Sources */,
 				C8EE885E1E0DB144003775C2 /* FSCalendarScopeHandle.m in Sources */,

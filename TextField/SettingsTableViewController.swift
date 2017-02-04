@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import SCLAlertView
+
 
 extension UIColor {
 
@@ -57,7 +59,7 @@ class SettingsTableViewController: UITableViewController {
         print("userID")
         print(userID)
         print(ref.child("users").child(userID!))
-        
+        self.tableView?.addBackground("mixed2")
        
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -171,9 +173,21 @@ class SettingsTableViewController: UITableViewController {
         self.present(controller, animated: true, completion: nil)
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
+    }
+    
    func deleteAccountPressed() {
  
-        
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("Delete Account", target:self, selector:#selector(SettingsTableViewController.logOut))
+        alertView.addButton("Cancel") {
+            print("Second button tapped")
+        }
+
     
             let alert = UIAlertController(title: "Are you sure you want to delete your account?", message: "All saved settings will be lost", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -207,19 +221,26 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 && indexPath.row == 2 {
+        if indexPath.section == 1 && indexPath.row == 1 {
             logoutPressed()
-        } else if indexPath.section == 3 && indexPath.row == 0 {
+        } else if indexPath.section == 1 && indexPath.row == 0 {
             goBackToConsole()
-        } else if indexPath.section == 4 && indexPath.row == 0 {
+        } else if indexPath.section == 2 && indexPath.row == 0 {
             deleteAccountPressed()
         }
     }
     func logoutPressed() {
         
-        
-    
-        let alert = UIAlertController(title: "Logout", message: "Do you want to log out?", preferredStyle: UIAlertControllerStyle.alert)
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("OK", target:self, selector:#selector(SettingsTableViewController.logOut))
+        alertView.addButton("Cancel") {
+            print("Second button tapped")
+        }
+        alertView.showInfo("Logout", subTitle: "Do you want to log out?")
+        /*let alert = UIAlertController(title: "Logout", message: "Do you want to log out?", preferredStyle: UIAlertControllerStyle.alert)
         
         alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             
@@ -247,7 +268,26 @@ class SettingsTableViewController: UITableViewController {
             
         })))
         
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)*/
+    }
+    func logOut() {
+        self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        try! FIRAuth.auth()!.signOut()
+        
+        let initialStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginNC = initialStoryboard.instantiateViewController(withIdentifier: "loginNC")
+        
+        self.activityIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+        
+        self.present(loginNC, animated: true, completion: nil)
     }
     
     

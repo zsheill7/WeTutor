@@ -39,6 +39,8 @@ import Firebase
 //MARK: Custom Cells Example
 
 
+import SCLAlertView
+import Firebase
 
 class SettingsAvailabilityTableViewController : FormViewController {
     
@@ -48,6 +50,11 @@ class SettingsAvailabilityTableViewController : FormViewController {
   
     var ref: FIRDatabaseReference!
     var currentUser: User?
+    
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -191,7 +198,9 @@ class SettingsAvailabilityTableViewController : FormViewController {
                         self.ref.child("users/\(user.uid)/languages").setValue(languages)
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
                         
-                        self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
+                        //self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
+                        self.displayAlert(title: "Success!", message: "Your settings have been updated")
+                        self.goBackToSettings()
                     
                     } else {
                         // No user is signed in.
@@ -217,6 +226,12 @@ class SettingsAvailabilityTableViewController : FormViewController {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
+    }
+    
+    func goBackToSettings() {
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
     }
 }
 
