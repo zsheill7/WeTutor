@@ -281,6 +281,13 @@ class SettingsTableViewController: UITableViewController {
         
         try! FIRAuth.auth()!.signOut()
         
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "isTutor")
+        userDefaults.removeObject(forKey: "languages")
+        userDefaults.removeObject(forKey: "description")
+        
+        userDefaults.synchronize()
+        
         let initialStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginNC = initialStoryboard.instantiateViewController(withIdentifier: "loginNC")
         

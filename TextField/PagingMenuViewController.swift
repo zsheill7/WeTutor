@@ -182,7 +182,10 @@ class PagingMenuViewController: UIViewController {
             } else if indexPath == 2 {
                 try! FIRAuth.auth()!.signOut()
                 let userDefaults = UserDefaults.standard
-                userDefaults.setValue(nil, forKey: "isTutor")
+                userDefaults.removeObject(forKey: "isTutor")
+                userDefaults.removeObject(forKey: "languages")
+                userDefaults.removeObject(forKey: "description")
+               
                 userDefaults.synchronize()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "signupNC") as! UINavigationController
