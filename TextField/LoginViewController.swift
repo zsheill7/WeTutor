@@ -364,7 +364,7 @@ class LoginViewController: UIViewController {
         /*_ = alert.addButton("Cancel") {
          print("Second button tapped")
          }*/
-        _ = alert.showEdit("Reset Password", subTitle:"Please enter your email for a password reset link.")
+        _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
         //emailButton.backgroundColor = UIColor.alertViewBlue()
         //closeButton.backgroundColor = UIColor.alertViewBlue()
         //emailTextField.borderColor = UIColor.alertViewBlue()

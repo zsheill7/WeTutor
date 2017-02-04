@@ -224,9 +224,9 @@ class SettingsAvailabilityTableViewController : FormViewController {
         _ = navigationController?.popViewController(animated: true)
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
-    }
+    }*/
     
     func goBackToSettings() {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)

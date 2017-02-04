@@ -153,9 +153,9 @@ class SettingsBasicInfoTableViewController : FormViewController {
         self.view.addBackground("mixed2")
         
     }
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    /*override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
-    }
+    }*/
     
     // MARK: Actions
     
