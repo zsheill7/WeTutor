@@ -14,6 +14,7 @@ use_frameworks!
  pod 'Firebase/Core’
  pod 'Firebase/Database’
  pod 'Firebase/Auth’
+ pod 'Firebase/Messaging’
  pod 'Firebase/Storage’
  pod 'FSCalendar'
  pod 'JSQMessagesViewController'
