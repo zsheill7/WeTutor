@@ -163,19 +163,31 @@ class FriendSystem {
                 let email = value?["email"] as? String
                 let description = value?["description"] as? String
                 //let name = value?["name"] as? String
-                let password = value?["password"] as? String
+                //let password = value?["password"] as? String
+                let isTutor = value?["isTutor"] as? Bool
                 
-                if email != nil {
-                    print("email:" + email!)
+                let userDefaults = UserDefaults.standard
+                if let currentUserIsTutor = userDefaults.value(forKey: "isTutor") as? Bool {
+                    if email != nil {
+                        print("email:" + email!)
+                    }
+                    //print("name:" + name!)
+                    // let email = snapshot.childSnapshot(forPath: "email").value as! String
+                    
+                    if email != FIRAuth.auth()?.currentUser?.email! && description != nil{
+                        if (currentUserIsTutor == true && isTutor == false) ||
+                            (currentUserIsTutor == false && isTutor == true) {
+                            //print(User(snapshot: child))
+                            print("here in if email")
+                            self.userList.append(User(snapshot: child))
+                        }
+                    }
                 }
-                //print("name:" + name!)
-                // let email = snapshot.childSnapshot(forPath: "email").value as! String
-               
-                if email != FIRAuth.auth()?.currentUser?.email! && description != nil{
-                 print(User(snapshot: child))
-                    print("here in if email")
-                    self.userList.append(User(snapshot: child))
+                else {
+                    // no highscore exists
                 }
+                
+                
             }
             update()
         })

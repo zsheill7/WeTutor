@@ -129,7 +129,7 @@ class TutorOrTuteeViewController: UIViewController {
         userDefaults.synchronize()
  
         
-        self.performSegue(withIdentifier: "toTuteeSignUpVC", sender: self)
+        self.performSegue(withIdentifier: "toTutorSignUpVC", sender: self)
     }
     @IBAction func tutorTapped(_ sender: Any) {
         print("tapped")

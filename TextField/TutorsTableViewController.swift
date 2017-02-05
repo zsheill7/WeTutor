@@ -99,6 +99,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     func startObservingDB () {
         
         if currentUser != nil {
+            
             let userCoordinate = currentUser!.coordinate
             let currentUserUID = FIRAuth.auth()?.currentUser?.uid
             
@@ -108,21 +109,25 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
                     
                     var userObject = User(snapshot: user as! FIRDataSnapshot)
                     let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
+                    let isTutor = userObject.isTutor
                     userObject.coordinate = coordinate
                     
                     let distanceBetween = coordinate.distance(from: userCoordinate)
                     userObject.distanceFromUser = distanceBetween
                     if distanceBetween <= 50000 {
-                        if userObject.uid != currentUserUID {
-                            newUsers.append(userObject)
+                        if (self.currentUser?.isTutor == true && isTutor == false) ||
+                            (self.currentUser?.isTutor == false && isTutor == true) {
+                            if userObject.uid != currentUserUID {
+                                newUsers.append(userObject)
+                            }
                         }
                     }
                 }
-                
-                
-                
-                self.tutors = newUsers
-                self.tableView.reloadData()
+                    
+                    
+                    
+                    self.tutors = newUsers
+                    self.tableView.reloadData()
             }) { (error: Error) in
                 print("inside error")
                 print(error)
@@ -287,7 +292,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
                 tutorName = userID
                 tuteeName = otherUser
             } else {
-                
+                tutorName = otherUser
+                tuteeName = userID
             }
         } else {
             tutorName = "Chat"
