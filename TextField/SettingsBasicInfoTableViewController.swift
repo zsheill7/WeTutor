@@ -229,7 +229,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
         row.value = currentUser?.phone as AnyObject?
         section2.rows.append(row)
         
-        let section3 = FormSectionDescriptor(headerTitle: "An example header title", footerTitle: nil)
+        let section3 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.gender, type: .picker, title: "Gender")
         row.configuration.cell.showsInputToolbar = true

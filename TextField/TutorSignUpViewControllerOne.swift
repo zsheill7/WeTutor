@@ -215,7 +215,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. 13069242633" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
         section2.rows.append(row)
         
-        let section3 = FormSectionDescriptor(headerTitle: "An example header title", footerTitle: nil)
+        let section3 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.gender, type: .picker, title: "Gender")
         row.configuration.cell.showsInputToolbar = true
