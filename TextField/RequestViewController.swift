@@ -8,7 +8,7 @@
 import UIKit
 import SCLAlertView
 
-class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -90,6 +90,25 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell!
         
     }
+    
+    /* MARK: EmptyDataSet */
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "No Contacts to Display"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        let str = "When someone sends you a contact request, it will appear here."
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "placeholder_kickstarter")
+}
+
 }
 
 /*extension RequestViewController: UITableViewDataSource {

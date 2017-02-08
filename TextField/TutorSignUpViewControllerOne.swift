@@ -198,7 +198,9 @@ class TutorSignUpViewControllerOne : FormViewController {
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Ortuño" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
         section2.rows.append(row)*/
         
-        let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
+        
+        let section1 = FormSectionDescriptor(headerTitle: "  ", footerTitle: nil)
+        let section15 = FormSectionDescriptor(headerTitle: "  ", footerTitle: nil)
 
         
         row = FormRowDescriptor(tag: Static.zipcodeTag, type: .text, title: "Zip Code")
@@ -215,7 +217,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. 13069242633" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
         section2.rows.append(row)
         
-        let section3 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
+        let section3 = FormSectionDescriptor(headerTitle: " ", footerTitle: nil)
         
         row = FormRowDescriptor(tag: Static.gender, type: .picker, title: "Gender")
         row.configuration.cell.showsInputToolbar = true
@@ -442,7 +444,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         }
         section5.rows.append(row)
         
-        form.sections = [section1, section2, section3, section4, section5]
+        form.sections = [section1, section15, section2, section3, section4, section5]
         
         self.form = form
     }
