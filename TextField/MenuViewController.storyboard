@@ -285,7 +285,7 @@
             <objects>
                 <navigationController storyboardIdentifier="chatNC" automaticallyAdjustsScrollViewInsets="NO" id="jjT-IL-3Rh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="00J-m5-9yb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="00J-m5-9yb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -434,7 +434,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fn3-tA-TXj">
                                                         <rect key="frame" x="0.0" y="395" width="320" height="20.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View in Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-tr-nAs">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8Q-tr-nAs">
                                                                 <rect key="frame" x="0.0" y="0.0" width="110" height="20.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="110" id="Fr2-it-44M"/>
