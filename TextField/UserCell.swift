@@ -10,7 +10,7 @@ class UserCell: UITableViewCell {
     
    
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var chatButton: UIButton!
+  //  @IBOutlet weak var chatButton: UIButton!
     
     @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var addFriendButton: UIButton!
@@ -27,9 +27,9 @@ class UserCell: UITableViewCell {
         addFriendFunc()
     }
     
-    @IBAction func chatTapped(_ sender: Any) {
+ /*   @IBAction func chatTapped(_ sender: Any) {
         chatFunc()
-    }
+    }*/
     
     @IBAction func moreInfoTapped(_ sender: Any) {
         moreInfoFunc()
@@ -38,10 +38,10 @@ class UserCell: UITableViewCell {
         self.addFriendFunc = function
         
     }
-    func setChatFunction(_ function: @escaping () -> Void) {
+  /*  func setChatFunction(_ function: @escaping () -> Void) {
         self.chatFunc = function
         
-    }
+    }*/
     func setInfoFunction(_ function: @escaping () -> Void) {
         self.moreInfoFunc = function
         

@@ -144,6 +144,7 @@ class MapViewController: UIViewController {
             self.currentRoute = route
             self.mapView.removeOverlays(self.mapView.overlays)
             self.mapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
+            self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
             
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)

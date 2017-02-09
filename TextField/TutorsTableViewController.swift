@@ -124,8 +124,6 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
                     }
                 }
                     
-                    
-                    
                     self.tutors = newUsers
                     self.tableView.reloadData()
             }) { (error: Error) in
@@ -362,19 +360,20 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
         cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"
         cell!.gradeLabel.text = "Grade: \(FriendSystem.system.userList[indexPath.row].grade)"
-        cell!.chatButton.accessibilityIdentifier = FriendSystem.system.userList[indexPath.row].uid
+       // cell!.chatButton.accessibilityIdentifier = FriendSystem.system.userList[indexPath.row].uid
         
         
         cell!.setAddFriendFunction {
             print(FriendSystem.system.userList[indexPath.row])
             let id = FriendSystem.system.userList[indexPath.row].uid
             print(id)
-            FriendSystem.system.sendRequestToUser(id)
-            self.displayAlert("Success!", message: "Contact Request Sent")
+            //FriendSystem.system.sendRequestToUser(id)
+            FriendSystem.system.acceptFriendRequest(id)
+            self.displayAlert("Success!", message: "Contact Added")
         }
-        cell!.setChatFunction {
+      /*  cell!.setChatFunction {
             self.createChannel(FriendSystem.system.userList[indexPath.row].uid)
-        }
+        }*/
         cell!.setInfoFunction {
             let tutor = FriendSystem.system.userList[indexPath.row]
             self.UID = tutor.uid

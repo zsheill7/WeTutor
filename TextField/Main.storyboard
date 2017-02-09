@@ -182,6 +182,31 @@
             </objects>
             <point key="canvasLocation" x="2303" y="178"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="pSB-pr-bRx">
+            <objects>
+                <viewController id="chb-QL-KSf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M7L-Ed-GIO"/>
+                        <viewControllerLayoutGuide type="bottom" id="b4Y-lj-GB0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ECp-MI-0pB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuW-L5-DP0">
+                                <rect key="frame" x="62" y="155" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Chat Filled-100 (1)"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bpI-L7-KXe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3396" y="339"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="5l0-M8-h6n">
             <objects>
@@ -255,6 +280,9 @@
             <point key="canvasLocation" x="86" y="1887"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Chat Filled-100 (1)" width="100" height="100"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UNl-nb-Bdv"/>
     </inferredMetricsTieBreakers>
