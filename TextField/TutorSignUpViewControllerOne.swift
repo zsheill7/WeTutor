@@ -331,12 +331,12 @@ class TutorSignUpViewControllerOne : FormViewController {
             self.view.endEditing(true)
            // self.form.validateForm()
            if let zipcode = self.form.sections[0].rows[0].value,
-            let schoolName = self.form.sections[1].rows[0].value,
-            let phone    = self.form.sections[1].rows[1].value,
-            let gender    = self.form.sections[2].rows[0].value,
-            let grade    = self.form.sections[2].rows[1].value,
-            let preferredSubject = self.form.sections[2].rows[2].value,
-            let description = self.form.sections[3].rows[0].value {
+            let schoolName = self.form.sections[2].rows[0].value,
+            let phone    = self.form.sections[2].rows[1].value,
+            let gender    = self.form.sections[3].rows[0].value,
+            let grade    = self.form.sections[3].rows[1].value,
+            let preferredSubject = self.form.sections[3].rows[2].value,
+            let description = self.form.sections[4].rows[0].value {
             
                 self.ref = FIRDatabase.database().reference()
             

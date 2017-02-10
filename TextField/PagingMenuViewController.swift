@@ -153,7 +153,7 @@ class PagingMenuViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x51679F)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "TutorMe", items: items as [AnyObject])
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "WeTutor", items: items as [AnyObject])
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor.flatSkyBlue

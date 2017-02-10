@@ -164,19 +164,15 @@ class LoginViewController: UIViewController {
                         
                         userDefaults.synchronize()
 
-                        if languages != nil && isTutor != nil {
+                        if description != nil && isTutor != nil {
                             print("in neither are nil")
-                            if isTutor == true {
+                            
                                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                                 let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
                                 //window?.rootViewController = viewController
                                 self.present(viewController, animated: true, completion: nil)
-                            } else {
-                                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
-                                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
-                                //window?.rootViewController = viewController
-                                self.present(viewController, animated: true, completion: nil)
-                            }
+                                                   } else {
+                            self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
                         } else {
                             self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
                         }
