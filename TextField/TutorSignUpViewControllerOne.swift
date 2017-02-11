@@ -330,13 +330,13 @@ class TutorSignUpViewControllerOne : FormViewController {
         row.configuration.button.didSelectClosure = { _ in
             self.view.endEditing(true)
            // self.form.validateForm()
-           if let zipcode = self.form.sections[0].rows[0].value,
+           if let zipcode = self.form.sections[0].rows[0].value as? String,
             let schoolName = self.form.sections[2].rows[0].value,
             let phone    = self.form.sections[2].rows[1].value,
             let gender    = self.form.sections[3].rows[0].value,
             let grade    = self.form.sections[3].rows[1].value,
             let preferredSubject = self.form.sections[3].rows[2].value,
-            let description = self.form.sections[4].rows[0].value {
+            let description = self.form.sections[4].rows[0].value as? String {
             
                 self.ref = FIRDatabase.database().reference()
             
