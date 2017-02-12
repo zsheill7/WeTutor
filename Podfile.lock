@@ -5,19 +5,19 @@ PODS:
     - ChameleonFramework/Default
   - DZNEmptyDataSet (1.8.1)
   - Eureka (2.0.0-beta.1)
-  - Firebase/Auth (3.11.1):
+  - Firebase/Auth (3.12.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.0)
-  - Firebase/Core (3.11.1):
+  - Firebase/Core (3.12.0):
     - FirebaseAnalytics (= 3.6.0)
     - FirebaseCore (= 3.4.7)
-  - Firebase/Database (3.11.1):
+  - Firebase/Database (3.12.0):
     - Firebase/Core
     - FirebaseDatabase (= 3.1.1)
-  - Firebase/Messaging (3.11.1):
+  - Firebase/Messaging (3.12.0):
     - Firebase/Core
     - FirebaseMessaging (= 1.2.1)
-  - Firebase/Storage (3.11.1):
+  - Firebase/Storage (3.12.0):
     - Firebase/Core
     - FirebaseStorage (= 1.0.5)
   - FirebaseAnalytics (3.6.0):
@@ -46,7 +46,7 @@ PODS:
   - FirebaseStorage (1.0.5):
     - FirebaseAnalytics (~> 3.5)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FSCalendar (2.7.0)
+  - FSCalendar (2.7.1)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
@@ -66,10 +66,10 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
-  - Material (2.4.11):
-    - Material/Core (= 2.4.11)
-  - Material/Core (2.4.11)
-  - NVActivityIndicatorView (3.2)
+  - Material (2.4.16):
+    - Material/Core (= 2.4.16)
+  - Material/Core (2.4.16)
+  - NVActivityIndicatorView (3.4)
   - PagingMenuController (2.2.0)
   - RZTransitions (1.2.1)
   - SCLAlertView (0.7.0)
@@ -122,7 +122,7 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
-  Firebase: 53b2343db1ebfa3eb16bdb4318b8bb65360b2220
+  Firebase: 8e99eb1ff553ad5bcc6072cc3d925bb89c1244d6
   FirebaseAnalytics: 9c67af0ebeb8d2146c9b4ea2616439affa947b58
   FirebaseAuth: b436e4ecebe068bf8e8c6e4e29de5756ffe7ee24
   FirebaseCore: 46afaf2c2e0419ea7d3acfb08cf26a461a75fe85
@@ -130,15 +130,15 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FirebaseMessaging: acf66347e43c5637c697060c3001d25c809a4131
   FirebaseStorage: 5738284835edb57f0e81d4ae5832bb17c1e4b5fa
-  FSCalendar: 4957703ebd99b4fd0bfd46bf3e3c6465c0a25482
+  FSCalendar: cfc95384cb0d648ad7c1957649ea74d6c26bb0de
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  Material: 09b50565d8f824bd74881eba12d7c549b41f510d
-  NVActivityIndicatorView: 28942c18ced111a6a3ce5e6f5b27d9d40116d639
+  Material: 84645fb4c9409c3db76bd7c8e1fd00dc4a76c144
+  NVActivityIndicatorView: 5754be63ceecd1df8af37d3c088d81872feeb8b8
   PagingMenuController: 6176618987bb170096664f2da097313e45ed9c31
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
