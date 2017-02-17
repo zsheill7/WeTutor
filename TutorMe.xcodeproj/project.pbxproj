@@ -180,7 +180,6 @@
 		C890A0981E27FDDC007DE45D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
 		C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateChannelCell.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/CreateChannelCell.swift"; sourceTree = "<group>"; };
 		C890A09B1E27FDDC007DE45D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/Channel.swift"; sourceTree = "<group>"; };
-		C89C0B581E1643F300D00E5D /* TutorMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TutorMe.entitlements; sourceTree = SOURCE_ROOT; };
 		C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
 		C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBasicInfoTableViewController.swift; sourceTree = "<group>"; };
 		C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAvailabilityTableViewController.swift; sourceTree = "<group>"; };
@@ -268,7 +267,6 @@
 			isa = PBXGroup;
 			children = (
 				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
-				C89C0B581E1643F300D00E5D /* TutorMe.entitlements */,
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
 				C8EE882D1E0DB050003775C2 /* Calendar */,
 				C86BCCE41E136E58007D24F9 /* Chat */,
@@ -874,16 +872,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = TutorMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HNK7ZEMZ36;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TextField/TutorMe-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Debug;
 		};
@@ -893,15 +893,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = TutorMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HNK7ZEMZ36;
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TextField/TutorMe-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 3.0.1;
 			};
 			name = Release;
 		};

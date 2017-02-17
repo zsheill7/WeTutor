@@ -47,7 +47,11 @@ class LoginViewController: UIViewController {
          )*/
         /*UIGraphicsBeginImageContext(self.view.frame.size)
          UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-        self.view.addBackground("mixed2")
+       self.view.addBackground("book.png")
+      //  self.view.addBackground("mixed2")
+        //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+       // backgroundImage.image = UIImage(named: "book.png")
+        //self.view.insertSubview(backgroundImage, at: 0)
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
          
@@ -236,20 +240,20 @@ class LoginViewController: UIViewController {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
-        btn.setTitleColor(UIColor.darkGray, for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(UIColor.flatBlue, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         //btn.title = "Forgot Password?"
-        btn.setTitle("Forgot Password?", for: UIControlState.normal)
+        btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_ :)), for: .touchUpInside)
         
-        view.layout(btn).width(150).height(constant).top(15 * constant).centerHorizontally()    }
+        view.layout(btn).width(200).height(constant).top(15 * constant).centerHorizontally()    }
     
     fileprivate func prepareSignupButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
-        btn.setTitleColor(UIColor.darkGray, for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(UIColor.flatBlue, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         
@@ -389,6 +393,11 @@ class LoginViewController: UIViewController {
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
         emailField.isClearIconButtonEnabled = true
+        emailField.textColor = UIColor.white
+        emailField.tintColor = UIColor.white
+        emailField.placeholderNormalColor = UIColor.white
+        emailField.dividerColor = UIColor.white
+        emailField.leftViewNormalColor = UIColor.white
         emailField.delegate = self
         
         let leftView = UIImageView()
@@ -414,7 +423,8 @@ class LoginViewController: UIViewController {
         //passwordField.detail = "At least 8 characters"
         passwordField.clearButtonMode = .whileEditing
         passwordField.isVisibilityIconButtonEnabled = true
-        
+        passwordField.placeholderNormalColor = UIColor.white
+        passwordField.dividerColor = UIColor.white
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         

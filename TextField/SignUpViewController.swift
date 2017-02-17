@@ -24,7 +24,7 @@ extension UIView {
         
         //let rect = CGRect(origin: CGPoint(x: -newWidth / 2,y : 0), size: CGSize(width: newWidth, height: height * 1.75))
         //let rect = CGRect(origin: CGPoint(x: -newWidth / 2 + 400,y : 0), size: CGSize(width: newWidth, height: height * 2))
-        let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 100,y : 0), size: CGSize(width: newWidth, height: height * 1.7))
+        let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 100,y : 150), size: CGSize(width: newWidth, height: height * 1.7))
         
         let imageViewBackground = UIImageView(frame: rect)
         imageViewBackground.image = UIImage(named: imageName)
@@ -68,7 +68,8 @@ class SignUpViewController: UIViewController {
         )*/
         /*UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-        self.view.addBackground("mixed2")
+        //self.view.addBackground("mixed2")
+        self.view.addBackground("book.png")
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
@@ -181,20 +182,20 @@ class SignUpViewController: UIViewController {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
-        btn.setTitleColor(UIColor.darkGray, for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(UIColor.flatBlue, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         //btn.title = "Forgot Password?"
-        btn.setTitle("Forgot Password?", for: UIControlState.normal)
+        btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_:)), for: .touchUpInside)
         
-        view.layout(btn).width(150).height(constant).top(15 * constant).centerHorizontally()    }
+        view.layout(btn).width(200).height(constant).top(15 * constant).centerHorizontally()    }
     
     fileprivate func prepareLoginButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
-        btn.setTitleColor(UIColor.darkGray, for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(UIColor.flatBlue, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         
@@ -294,7 +295,11 @@ class SignUpViewController: UIViewController {
         nameField.placeholder = "Name"
         //nameField.detail = "Your given name"
         nameField.isClearIconButtonEnabled = true
-        
+        nameField.placeholderNormalColor = UIColor.white
+        nameField.dividerColor = UIColor.white
+        nameField.leftViewNormalColor = UIColor.white
+        nameField.textColor = UIColor.white
+        nameField.tintColor = UIColor.white
         let leftView = UIImageView()
         leftView.image = Icon.star
         
@@ -309,6 +314,12 @@ class SignUpViewController: UIViewController {
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
         emailField.isClearIconButtonEnabled = true
+        emailField.placeholderNormalColor = UIColor.white
+        emailField.dividerColor = UIColor.white
+        emailField.leftViewNormalColor = UIColor.white
+        emailField.textColor = UIColor.white
+        emailField.tintColor = UIColor.white
+        
         emailField.delegate = self
         
         let leftView = UIImageView()
@@ -334,7 +345,11 @@ class SignUpViewController: UIViewController {
         //passwordField.detail = "At least 8 characters"
         passwordField.clearButtonMode = .whileEditing
         passwordField.isVisibilityIconButtonEnabled = true
-        
+        passwordField.placeholderNormalColor = UIColor.white
+        passwordField.dividerColor = UIColor.white
+        passwordField.leftViewNormalColor = UIColor.white
+         passwordField.textColor = UIColor.white
+         passwordField.tintColor = UIColor.white
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
@@ -355,7 +370,11 @@ class SignUpViewController: UIViewController {
         confirmPasswordField.detail = "At least 6 characters"
         confirmPasswordField.clearButtonMode = .whileEditing
         confirmPasswordField.isVisibilityIconButtonEnabled = true
-        
+        confirmPasswordField.placeholderNormalColor = UIColor.white
+        confirmPasswordField.dividerColor = UIColor.white
+        confirmPasswordField.leftViewNormalColor = UIColor.white
+        confirmPasswordField.textColor = UIColor.white
+        confirmPasswordField.tintColor = UIColor.white
         // Setting the visibilityIconButton color.
         confirmPasswordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         

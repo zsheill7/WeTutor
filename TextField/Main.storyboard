@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JuP-Ut-oE6" id="ZYN-Rb-q9Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
@@ -212,7 +212,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginNC" automaticallyAdjustsScrollViewInsets="NO" id="1kV-iB-SjC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TX5-wN-JVX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TX5-wN-JVX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -230,7 +230,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signupNC" automaticallyAdjustsScrollViewInsets="NO" id="eDQ-NE-3k0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="maU-b1-d8V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maU-b1-d8V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -248,7 +248,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerOneNC" automaticallyAdjustsScrollViewInsets="NO" id="r5a-IX-An8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ks-9t-bVe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ks-9t-bVe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -266,7 +266,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerTwoNC" automaticallyAdjustsScrollViewInsets="NO" id="aTv-SR-QJN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jOj-rE-hEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jOj-rE-hEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -284,6 +284,6 @@
         <image name="Chat Filled-100 (1)" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UNl-nb-Bdv"/>
+        <segue reference="OLB-7F-WMk"/>
     </inferredMetricsTieBreakers>
 </document>
