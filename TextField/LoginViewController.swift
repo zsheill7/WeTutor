@@ -14,8 +14,6 @@ import SCLAlertView
 
 
 
-
-
 class LoginViewController: UIViewController {
     fileprivate var nameField: TextField!
     fileprivate var emailField: ErrorTextField!
@@ -35,6 +33,8 @@ class LoginViewController: UIViewController {
     fileprivate let constant: CGFloat = 32
     let userDefaults = UserDefaults.standard
     
+    let lightGrayColor = UIColor.lightGray.lighten(byPercentage: 0.1)!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,11 +47,11 @@ class LoginViewController: UIViewController {
          )*/
         /*UIGraphicsBeginImageContext(self.view.frame.size)
          UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-       self.view.addBackground("book.png")
+      // self.view.addBackground("book.png")
       //  self.view.addBackground("mixed2")
-        //let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-       // backgroundImage.image = UIImage(named: "book.png")
-        //self.view.insertSubview(backgroundImage, at: 0)
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "backgroundfullblur64")
+        self.view.insertSubview(backgroundImage, at: 0)
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
          
@@ -229,7 +229,7 @@ class LoginViewController: UIViewController {
         /*let btn = UIButton()
          btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
         let btn = RaisedButton(title: "Log In", titleColor: Color.grey.lighten3)
-         btn.backgroundColor = UIColor.titleBlue().lighten(byPercentage: 0.08)
+         btn.backgroundColor = UIColor(netHex: 0x51679F)//UIColor.titleBlue().lighten(byPercentage: 0.08)
         
         
         btn.addTarget(self, action: #selector(handleNextButton(_ :)), for: .touchUpInside)
@@ -241,7 +241,7 @@ class LoginViewController: UIViewController {
         
         let btn: UIButton! = UIButton()
         btn.setTitleColor(UIColor.white, for: .normal)
-        btn.setTitleColor(UIColor.flatBlue, for: .highlighted)
+        btn.setTitleColor(lightGrayColor, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         //btn.title = "Forgot Password?"
         btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
@@ -254,7 +254,7 @@ class LoginViewController: UIViewController {
         
         let btn: UIButton! = UIButton()
         btn.setTitleColor(UIColor.white, for: .normal)
-        btn.setTitleColor(UIColor.flatBlue, for: .highlighted)
+        btn.setTitleColor(lightGrayColor, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         
         btn.setTitle("Sign Up for an Account", for: UIControlState.normal)
@@ -429,7 +429,7 @@ class LoginViewController: UIViewController {
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
         let leftView = UIImageView()
-        leftView.image = UIImage(named: "Lock-104")?.imageResize(CGSize(width: 27, height: 27))
+        leftView.image = UIImage(named: "Lock white")?.imageResize(CGSize(width: 27, height: 27))
         
         passwordField.leftView = leftView
         passwordField.leftViewMode = .always
