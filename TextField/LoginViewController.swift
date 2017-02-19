@@ -50,7 +50,7 @@ class LoginViewController: UIViewController {
       // self.view.addBackground("book.png")
       //  self.view.addBackground("mixed2")
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-         backgroundImage.image = UIImage(named: "fullbackgroundblur75")
+        backgroundImage.image = UIImage(named: "fullbackgroundtransculentlogin")
         self.view.insertSubview(backgroundImage, at: 0)
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!

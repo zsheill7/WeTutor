@@ -151,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="TutorMe" id="zUo-dI-Ll5"/>
+                    <navigationItem key="navigationItem" title="WeTutor" id="zUo-dI-Ll5"/>
                     <connections>
                         <segue destination="f1O-17-5Nh" kind="show" identifier="goToTutorOrTutee" id="OLB-7F-WMk"/>
                     </connections>
@@ -173,7 +173,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="TutorMe" id="xwO-Sm-AOc"/>
+                    <navigationItem key="navigationItem" title="WeTutor" id="xwO-Sm-AOc"/>
                     <connections>
                         <segue destination="f1O-17-5Nh" kind="show" identifier="toTutorOrTuteeVC" id="UNl-nb-Bdv"/>
                     </connections>
@@ -284,6 +284,6 @@
         <image name="Chat Filled-100 (1)" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OLB-7F-WMk"/>
+        <segue reference="UNl-nb-Bdv"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController {
         //self.view.addBackground("book.png")
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "fullbackgroundblur75")
+        backgroundImage.image = UIImage(named: "fullbackgroundtransculent4")
         self.view.insertSubview(backgroundImage, at: 0)
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -302,9 +302,14 @@ class SignUpViewController: UIViewController {
         nameField.isClearIconButtonEnabled = true
         nameField.placeholderNormalColor = UIColor.white
         nameField.dividerColor = UIColor.white
+        nameField.dividerNormalColor = UIColor.white
         nameField.leftViewNormalColor = UIColor.white
         nameField.textColor = UIColor.white
         nameField.tintColor = UIColor.white
+        nameField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        nameField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        nameField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        
         let leftView = UIImageView()
         leftView.image = Icon.star
         
@@ -324,6 +329,9 @@ class SignUpViewController: UIViewController {
         emailField.leftViewNormalColor = UIColor.white
         emailField.textColor = UIColor.white
         emailField.tintColor = UIColor.white
+        emailField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        emailField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        emailField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         
         emailField.delegate = self
         
@@ -355,6 +363,11 @@ class SignUpViewController: UIViewController {
         passwordField.leftViewNormalColor = UIColor.white
          passwordField.textColor = UIColor.white
          passwordField.tintColor = UIColor.white
+        
+        passwordField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        passwordField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        passwordField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        
         // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
@@ -380,8 +393,12 @@ class SignUpViewController: UIViewController {
         confirmPasswordField.leftViewNormalColor = UIColor.white
         confirmPasswordField.textColor = UIColor.white
         confirmPasswordField.tintColor = UIColor.white
-        confirmPasswordField.detailColor = UIColor.lightGray.lighten(byPercentage: 0.1)!
+        confirmPasswordField.detailColor = UIColor.lightGray.lighten(byPercentage: 0.5)!
      
+        confirmPasswordField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        confirmPasswordField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        confirmPasswordField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
+        
         // Setting the visibilityIconButton color.
         confirmPasswordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
