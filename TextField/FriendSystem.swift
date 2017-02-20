@@ -174,12 +174,14 @@ class FriendSystem {
                     //print("name:" + name!)
                     // let email = snapshot.childSnapshot(forPath: "email").value as! String
                     
-                    if email != FIRAuth.auth()?.currentUser?.email! && description != nil{
+                    if email != FIRAuth.auth()?.currentUser?.email! && description != nil {
                         if (currentUserIsTutor == true && isTutor == false) ||
                             (currentUserIsTutor == false && isTutor == true) {
                             //print(User(snapshot: child))
                             print("here in if email")
                             self.userList.append(User(snapshot: child))
+                            print("going through 1")
+                            
                         }
                     }
                 }

@@ -35,6 +35,27 @@ extension UIView {
         self.addSubview(imageViewBackground)
         self.sendSubview(toBack: imageViewBackground)
     }
+    
+    func addBlueBackground(_ imageName: String) {
+        // screen width and height:
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        
+        let newWidth = height * 2.0
+        
+        //let rect = CGRect(origin: CGPoint(x: -newWidth / 2,y : 0), size: CGSize(width: newWidth, height: height * 1.75))
+        //let rect = CGRect(origin: CGPoint(x: -newWidth / 2 + 400,y : 0), size: CGSize(width: newWidth, height: height * 2))
+        let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 10,y : 0), size: CGSize(width: newWidth, height: height * 1.7))
+        
+        let imageViewBackground = UIImageView(frame: rect)
+        imageViewBackground.image = UIImage(named: imageName)
+        
+        // you can change the content mode:
+        imageViewBackground.contentMode = UIViewContentMode.scaleAspectFill
+        
+        self.addSubview(imageViewBackground)
+        self.sendSubview(toBack: imageViewBackground)
+    }
 }
 
 /* @enum This class connects with the FriendSystem class to create user accounts */
@@ -69,7 +90,7 @@ class SignUpViewController: UIViewController {
         )*/
         /*UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-        //self.view.addBackground("mixed2")
+        //self.view.addBlueBackground("mixed2")
         self.view.addBackground("book.png")
         
         /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)

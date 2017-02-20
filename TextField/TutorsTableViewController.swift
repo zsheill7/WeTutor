@@ -76,10 +76,12 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         
        
-       // self.view.addBackground(imageName: "mixed2")
+        // self.view.addBackground(imageName: "mixed2")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
+        dbRef = FIRDatabase.database().reference().child("users")
+        userRef = FIRDatabase.database().reference().child("users")
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         FriendSystem.system.getCurrentUser { (user) in
@@ -91,8 +93,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         }
         
         //observeChannels()
-        dbRef = FIRDatabase.database().reference().child("users")
-        userRef = FIRDatabase.database().reference().child("users")
+        
         //startObservingDB()
         
         
