@@ -113,7 +113,7 @@ class PagingMenuViewController: UIViewController {
         super.viewDidLoad()
         print("here")
         let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 0) as IndexPath)
-        self.view.addBackground("mixed2")
+        self.view.addBlueBackground("mixed2")
         self.view.backgroundColor = UIColor.flatBlue
         options = sectionType?.options
         

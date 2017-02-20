@@ -59,7 +59,7 @@ class SettingsTableViewController: UITableViewController {
         print("userID")
         print(userID)
         print(ref.child("users").child(userID!))
-        self.tableView?.addBackground("mixed2")
+        self.tableView?.addBlueBackground("mixed2")
        
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
