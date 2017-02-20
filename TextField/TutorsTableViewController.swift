@@ -85,14 +85,15 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         FriendSystem.system.getCurrentUser { (user) in
            self.currentUser = user
         }
+        
         FriendSystem.system.addUserObserver { () in
             self.tableView.reloadData()
         }
         
-        observeChannels()
+        //observeChannels()
         dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
-        startObservingDB()
+        //startObservingDB()
         
         
     }

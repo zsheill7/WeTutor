@@ -47,11 +47,11 @@ class LoginViewController: UIViewController {
          )*/
         /*UIGraphicsBeginImageContext(self.view.frame.size)
          UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-      // self.view.addBackground("book.png")
+      self.view.addBackground("book.png")
       //  self.view.addBackground("mixed2")
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+       /* let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "fullbackgroundtransculentlogin")
-        self.view.insertSubview(backgroundImage, at: 0)
+        self.view.insertSubview(backgroundImage, at: 0)*/
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
          
@@ -397,6 +397,7 @@ class LoginViewController: UIViewController {
         emailField.tintColor = UIColor.white
         emailField.placeholderNormalColor = UIColor.white
         emailField.dividerColor = UIColor.white
+        emailField.dividerNormalColor = UIColor.white
         emailField.leftViewNormalColor = UIColor.white
         emailField.delegate = self
         
@@ -426,6 +427,7 @@ class LoginViewController: UIViewController {
         passwordField.placeholderNormalColor = UIColor.white
         passwordField.dividerColor = UIColor.white
         // Setting the visibilityIconButton color.
+        passwordField.dividerNormalColor = UIColor.white
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
         let leftView = UIImageView()

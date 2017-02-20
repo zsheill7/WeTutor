@@ -70,11 +70,11 @@ class SignUpViewController: UIViewController {
         /*UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
         //self.view.addBackground("mixed2")
-        //self.view.addBackground("book.png")
+        self.view.addBackground("book.png")
         
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "fullbackgroundtransculent4")
-        self.view.insertSubview(backgroundImage, at: 0)
+        self.view.insertSubview(backgroundImage, at: 0)*/
         //self.view.backgroundColor = UIColor.newSkyBlue()
         /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
@@ -326,6 +326,7 @@ class SignUpViewController: UIViewController {
         emailField.isClearIconButtonEnabled = true
         emailField.placeholderNormalColor = UIColor.white
         emailField.dividerColor = UIColor.white
+        emailField.dividerNormalColor = UIColor.white
         emailField.leftViewNormalColor = UIColor.white
         emailField.textColor = UIColor.white
         emailField.tintColor = UIColor.white
@@ -360,6 +361,7 @@ class SignUpViewController: UIViewController {
         passwordField.isVisibilityIconButtonEnabled = true
         passwordField.placeholderNormalColor = UIColor.white
         passwordField.dividerColor = UIColor.white
+        passwordField.dividerNormalColor = UIColor.white
         passwordField.leftViewNormalColor = UIColor.white
          passwordField.textColor = UIColor.white
          passwordField.tintColor = UIColor.white
@@ -394,7 +396,7 @@ class SignUpViewController: UIViewController {
         confirmPasswordField.textColor = UIColor.white
         confirmPasswordField.tintColor = UIColor.white
         confirmPasswordField.detailColor = UIColor.lightGray.lighten(byPercentage: 0.5)!
-     
+        confirmPasswordField.dividerNormalColor = UIColor.white
         confirmPasswordField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         confirmPasswordField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         confirmPasswordField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!

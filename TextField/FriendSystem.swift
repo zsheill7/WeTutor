@@ -71,7 +71,7 @@ class FriendSystem {
     
     
     // MARK: - Account Related
-    
+
     /**
      Creates a new user account with the specified email and password
      - parameter completion: What to do when the block has finished running. The success variable 
@@ -141,10 +141,10 @@ class FriendSystem {
     
     /** Accepts a friend request from the user with the specified id */
     func acceptFriendRequest(_ userID: String) {
-        CURRENT_USER_REF.child("requests").child(userID).removeValue()
+       // CURRENT_USER_REF.child("requests").child(userID).removeValue()
         CURRENT_USER_REF.child("friends").child(userID).setValue(true)
         USER_REF.child(userID).child("friends").child(CURRENT_USER_ID).setValue(true)
-        USER_REF.child(userID).child("requests").child(CURRENT_USER_ID).removeValue()
+       // USER_REF.child(userID).child("requests").child(CURRENT_USER_ID).removeValue()
     }
     
     
