@@ -1,9 +1,5 @@
 //
-//  RootViewController.swift
-//  PagingMenuControllerDemo
-//
-//  Created by Yusuke Kita on 5/10/15.
-//  Copyright (c) 2015 kitasuke. All rights reserved.
+
 //
 
 import UIKit
@@ -35,7 +31,9 @@ private enum Section {
     
     var options: PagingMenuControllerCustomizable {
         let options: PagingMenuControllerCustomizable
-        switch self {
+        options = PagingMenuOptions1()
+        return options
+        /*switch self {
         case .all(let content):
             switch content {
             case .standard:
@@ -58,7 +56,7 @@ private enum Section {
                 options = PagingMenuOptions6()
             }
         }
-        return options
+        return options*/
     }
 }
 

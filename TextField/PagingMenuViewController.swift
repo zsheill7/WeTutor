@@ -55,7 +55,9 @@ private enum MenuSection {
     
     var options: PagingMenuControllerCustomizable {
         let options: PagingMenuControllerCustomizable
-        switch self {
+         options = PagingMenuOptions1()
+        return options
+        /*switch self {
         case .all(let content):
             switch content {
             case .standard:
@@ -78,7 +80,7 @@ private enum MenuSection {
                 options = PagingMenuOptions6()
             }
         }
-        return options
+        return options*/
     }
 }
 
@@ -90,10 +92,11 @@ class PagingMenuViewController: UIViewController {
     
     struct MenuItem1: MenuItemViewCustomizable {}
     struct MenuItem2: MenuItemViewCustomizable {}
+    struct MenuItem3: MenuItemViewCustomizable {}
     
     struct MenuOptions: MenuViewCustomizable {
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItem1(), MenuItem2()]
+            return [MenuItem1(), MenuItem2(), MenuItem3()]
         }
     }
     
@@ -102,7 +105,7 @@ class PagingMenuViewController: UIViewController {
     
     struct PagingMenuOptions: PagingMenuControllerCustomizable {
         var componentType: ComponentType {
-            return .all(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController()])
+            return .all(menuOptions: MenuOptions(), pagingControllers: [UIViewController(), UIViewController(), UIViewController()])
         }
     }
     

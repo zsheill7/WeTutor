@@ -46,7 +46,9 @@ private enum MenuSection {
     
     var options: PagingMenuControllerCustomizable {
         let options: PagingMenuControllerCustomizable
-        switch self {
+        options = PagingMenuOptions1()
+        return options
+        /*switch self {
         case .all(let content):
             switch content {
             case .standard:
@@ -69,7 +71,7 @@ private enum MenuSection {
                 options = PagingMenuOptions6()
             }
         }
-        return options
+        return options*/
     }
 }
 

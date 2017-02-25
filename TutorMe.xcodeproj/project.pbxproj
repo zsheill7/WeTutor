@@ -266,24 +266,21 @@
 		96090AE61D9CDD2E00709CA6 /* TutorMe */ = {
 			isa = PBXGroup;
 			children = (
-				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
-				C8EE882D1E0DB050003775C2 /* Calendar */,
 				C86BCCE41E136E58007D24F9 /* Chat */,
-				C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */,
-				C838A9471E1B46EC004A794C /* UserCell.xib */,
 				C87984AD1E0C7F4C003EB7A1 /* Xib Files */,
-				C87984A81E0C76DD003EB7A1 /* Paging Menu View Controller */,
 				C87984471E0B9760003EB7A1 /* Custom Row and Cell */,
 				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
+				C87984A81E0C76DD003EB7A1 /* Paging Menu View Controller */,
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
 				C81DA3D21E3FB8B100CB15A8 /* Settings */,
 				C827B53D1E11DF2C00BDFD50 /* About This App */,
 				C838A8BA1E1982C1004A794C /* Friend System */,
 				C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */,
-				C8EE88621E0DB256003775C2 /* CalendarViewController.swift */,
 				96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */,
 				C82800DF1E0EFDEB00329B7D /* Extensions */,
+				C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */,
+				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
 				C86BCCC11E12F6D6007D24F9 /* SwiftForms */,
 			);
 			name = TutorMe;
@@ -345,7 +342,11 @@
 			children = (
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
 				C838A9491E1B6E32004A794C /* UserCell.swift */,
-				C87984A91E0C7782003EB7A1 /* Pages of Tutor Menu */,
+				C879848C1E0C763F003EB7A1 /* OrganizationsViewController.swift */,
+				C879848D1E0C763F003EB7A1 /* RepositoriesViewController.swift */,
+				C879848E1E0C763F003EB7A1 /* GistsViewController.swift */,
+				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
+				C8EE88621E0DB256003775C2 /* CalendarViewController.swift */,
 			);
 			name = "In Tutor Storyboard";
 			sourceTree = "<group>";
@@ -456,31 +457,12 @@
 				C87984891E0C763F003EB7A1 /* PagingMenuControllerOptions.swift */,
 				C879848B1E0C763F003EB7A1 /* RootViewController.swift */,
 				C87984901E0C763F003EB7A1 /* PagingMenuViewController.swift */,
-				C87984AA1E0C77B6003EB7A1 /* Protocols */,
-			);
-			name = "Paging Menu View Controller";
-			sourceTree = "<group>";
-		};
-		C87984A91E0C7782003EB7A1 /* Pages of Tutor Menu */ = {
-			isa = PBXGroup;
-			children = (
-				C879848C1E0C763F003EB7A1 /* OrganizationsViewController.swift */,
-				C879848D1E0C763F003EB7A1 /* RepositoriesViewController.swift */,
-				C879848E1E0C763F003EB7A1 /* GistsViewController.swift */,
-				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
-			);
-			name = "Pages of Tutor Menu";
-			sourceTree = "<group>";
-		};
-		C87984AA1E0C77B6003EB7A1 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
 				C87984A01E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift */,
 				C87984A11E0C76A5003EB7A1 /* MenuViewCustomizable.swift */,
 				C87984A21E0C76A5003EB7A1 /* Pagable.swift */,
 				C87984A31E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift */,
 			);
-			name = Protocols;
+			name = "Paging Menu View Controller";
 			sourceTree = "<group>";
 		};
 		C87984AD1E0C7F4C003EB7A1 /* Xib Files */ = {
@@ -488,15 +470,9 @@
 			children = (
 				C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */,
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
+				C838A9471E1B46EC004A794C /* UserCell.xib */,
 			);
 			name = "Xib Files";
-			sourceTree = "<group>";
-		};
-		C8EE882D1E0DB050003775C2 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Calendar;
 			sourceTree = "<group>";
 		};
 		C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */ = {

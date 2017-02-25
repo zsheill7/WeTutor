@@ -18,6 +18,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    
     fileprivate let gregorian: Calendar! = Calendar(identifier:Calendar.Identifier.gregorian)
     
     class func instantiateFromStoryboard() -> CalendarViewController {
