@@ -57,6 +57,7 @@ class MapViewController: UIViewController {
     let status = CLLocationManager.authorizationStatus()
     
     if status == CLAuthorizationStatus.authorizedWhenInUse {
+        print("authorized")
         mapView.showsUserLocation = true
     }
     
@@ -65,6 +66,7 @@ class MapViewController: UIViewController {
         mapView.setCenter(locationToShow, animated: true)
     } else {
         //self.displayAlert(title: "", message: "This address may not be ")
+        print("location to show = nil")
     }
 
     let zoomRegion = MKCoordinateRegionMakeWithDistance(locationToShow, 15000, 15000)
@@ -106,7 +108,7 @@ class MapViewController: UIViewController {
     
     @IBAction func showDirection(_ sender: Any) {
     
-        
+        print("inside showDirection")
         switch segmentedControl.selectedSegmentIndex {
         case 0: currentTransportType = MKDirectionsTransportType.automobile
         case 1: currentTransportType = MKDirectionsTransportType.walking

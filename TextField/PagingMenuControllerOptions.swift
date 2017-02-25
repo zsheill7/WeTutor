@@ -1,16 +1,10 @@
-//
-//  PagingMenuControllerOptions.swift
-//  PagingMenuControllerDemo
-//
-//  Created by Yusuke Kita on 6/9/16.
-//  Copyright © 2016 kitasuke. All rights reserved.
-//
 
 import Foundation
 import PagingMenuController
 
 struct MenuItemUsers: MenuItemViewCustomizable {}
 struct MenuItemRepository: MenuItemViewCustomizable {}
+struct MenuItemCalendar: MenuItemViewCustomizable {}
 struct MenuItemChat: MenuItemViewCustomizable {}
 struct MenuItemOrganization: MenuItemViewCustomizable {}
 //struct MenuItemRequest: MenuItemViewCustomizable {}
@@ -31,13 +25,13 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
      */
     
     let usersViewController = UsersViewController.instantiateFromStoryboard()
-   // let calendarViewController = CalendarViewController.instantiateFromStoryboard()
+    let calendarViewController = CalendarViewController.instantiateFromStoryboard()
     let chatViewController = ChannelListViewController.instantiateFromStoryboard()
    // let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
     //let requestViewController = RequestViewController.instantiateFromStoryboard()
     
     var componentType: ComponentType {
-        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, chatViewController /*organizationsViewController,*/ /*requestViewController*/])
+        return .all(menuOptions: MenuOptions(), pagingControllers: [usersViewController, chatViewController, calendarViewController/*organizationsViewController,*/ /*requestViewController*/])
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .all
@@ -55,7 +49,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return 60
         }
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [MenuItemUsers(), /*MenuItemRepository(),*/ MenuItemChat()/*, MenuItemOrganization()*//*, MenuItemRequest()*/]
+            return [MenuItemUsers(), MenuItemCalendar(), MenuItemChat()/*, MenuItemOrganization()*//*, MenuItemRequest()*/]
         }
     }
     
@@ -77,14 +71,14 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return .text(title: title)
         }
     }
-    /*struct MenuItemRepository: MenuItemViewCustomizable {
+    struct MenuItemCalendar: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Calendar")
             let description = MenuItemText(text: String(describing: self))
             //return .multilineText(title: title, description: description)
             return .text(title: title)
         }
-    }*/
+    }
     struct MenuItemChat: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Chat")
