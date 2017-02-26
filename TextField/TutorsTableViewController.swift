@@ -116,7 +116,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
                     
                     let distanceBetween = coordinate.distance(from: userCoordinate)
                     userObject.distanceFromUser = distanceBetween
-                    if distanceBetween <= 50000 {
+                    if distanceBetween <= 50000  {
                         if (self.currentUser?.isTutor == true && isTutor == false) ||
                             (self.currentUser?.isTutor == false && isTutor == true) {
                             if userObject.uid != currentUserUID {

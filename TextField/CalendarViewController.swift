@@ -22,8 +22,10 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     fileprivate let gregorian: Calendar! = Calendar(identifier:Calendar.Identifier.gregorian)
     
     class func instantiateFromStoryboard() -> CalendarViewController {
-        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! CalendarViewController
+       let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+        /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! TutorsTableViewController*/
     }
 
     func minimumDate(for calendar: FSCalendar) -> Date {

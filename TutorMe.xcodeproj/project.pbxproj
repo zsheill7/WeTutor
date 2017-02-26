@@ -269,16 +269,17 @@
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
 				C86BCCE41E136E58007D24F9 /* Chat */,
 				C87984AD1E0C7F4C003EB7A1 /* Xib Files */,
-				C87984471E0B9760003EB7A1 /* Custom Row and Cell */,
-				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
-				C87984A81E0C76DD003EB7A1 /* Paging Menu View Controller */,
+				C8338AF71E620DEC00202E3A /* Storyboards */,
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
+				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
+				C87984A81E0C76DD003EB7A1 /* In Paging Menu */,
 				C81DA3D21E3FB8B100CB15A8 /* Settings */,
 				C827B53D1E11DF2C00BDFD50 /* About This App */,
 				C838A8BA1E1982C1004A794C /* Friend System */,
 				C88FFC801E0DEFAC00E7972C /* TuteeTableViewController.swift */,
 				96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */,
 				C82800DF1E0EFDEB00329B7D /* Extensions */,
+				C87984471E0B9760003EB7A1 /* Custom Row and Cell */,
 				C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */,
 				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
 				C86BCCC11E12F6D6007D24F9 /* SwiftForms */,
@@ -354,6 +355,21 @@
 		C82800E71E107B7D00329B7D /* In Main Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				96090AE91D9CDD2E00709CA6 /* SignUpViewController.swift */,
+				C86ACAF11E0E238200F6695E /* LoginViewController.swift */,
+				C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */,
+				C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */,
+				C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */,
+				C838A8BD1E19C4E1004A794C /* MapViewController.swift */,
+				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
+				C87984B41E0D01FB003EB7A1 /* User.swift */,
+			);
+			name = "In Main Storyboard";
+			sourceTree = "<group>";
+		};
+		C8338AF71E620DEC00202E3A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
 				C88498BF1E0B51A0000C4675 /* Main.storyboard */,
 				C87984B01E0CC00A003EB7A1 /* Tutor.storyboard */,
 				C838A8BB1E19C47E004A794C /* Map.storyboard */,
@@ -362,16 +378,8 @@
 				C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */,
 				C82800E01E0F4F7600329B7D /* Tutee.storyboard */,
 				96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */,
-				C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */,
-				C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */,
-				C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */,
-				96090AE91D9CDD2E00709CA6 /* SignUpViewController.swift */,
-				C838A8BD1E19C4E1004A794C /* MapViewController.swift */,
-				C86ACAF11E0E238200F6695E /* LoginViewController.swift */,
-				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
-				C87984B41E0D01FB003EB7A1 /* User.swift */,
 			);
-			name = "In Main Storyboard";
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 		C838A8BA1E1982C1004A794C /* Friend System */ = {
@@ -447,7 +455,7 @@
 			path = ../../Eureka/ExampleUITests;
 			sourceTree = "<group>";
 		};
-		C87984A81E0C76DD003EB7A1 /* Paging Menu View Controller */ = {
+		C87984A81E0C76DD003EB7A1 /* In Paging Menu */ = {
 			isa = PBXGroup;
 			children = (
 				C87984841E0C763F003EB7A1 /* PagingMenuController.swift */,
@@ -462,7 +470,7 @@
 				C87984A21E0C76A5003EB7A1 /* Pagable.swift */,
 				C87984A31E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift */,
 			);
-			name = "Paging Menu View Controller";
+			name = "In Paging Menu";
 			sourceTree = "<group>";
 		};
 		C87984AD1E0C7F4C003EB7A1 /* Xib Files */ = {

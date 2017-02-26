@@ -150,6 +150,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         cellHeight = Int(self.view.frame.height / CGFloat(rows))
         
         self.view.addBlueBackground("mixed2")
+        //self.view.addBackground("book.png")
         
     }
    /* override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
