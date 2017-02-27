@@ -98,6 +98,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         
     }
+    
+    
     func startObservingDB () {
         
         if currentUser != nil {
@@ -485,6 +487,10 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
         return UIImage(named: "placeholder_kickstarter")
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
 /*
  func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {

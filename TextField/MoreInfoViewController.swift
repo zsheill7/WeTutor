@@ -14,7 +14,9 @@ class MoreInfoViewController: UIViewController {
     @IBOutlet var headingLabels: [UILabel]!
     
    // @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var callButton: UIButton!
     
+    @IBOutlet weak var textButton: UIButton!
     var indexPathRow: Int!
    
     @IBOutlet weak var basicInfoLabel: UILabel!
@@ -25,9 +27,10 @@ class MoreInfoViewController: UIViewController {
     @IBOutlet weak var availabilityLabel: UILabel!
 
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var userRatingLabel: UILabel!
-    @IBOutlet weak var weatherHideOrShowButton: UIButton!
+
     @IBOutlet weak var submitRatingButton: UIButton!
+    
+    
     
      var UID: String!
     var shouldHideWeatherInfoSetting: Bool {
@@ -44,7 +47,8 @@ class MoreInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.addBackground(imageName: "mixed2")
-       
+       callButton.contentMode = .scaleAspectFit
+       textButton.contentMode = .scaleAspectFit
         
         
         updateWeatherInfoViews(hideWeatherInfo: shouldHideWeatherInfoSetting, animated: false)
@@ -108,6 +112,31 @@ class MoreInfoViewController: UIViewController {
         updateWeatherInfoViews(hideWeatherInfo: shouldHideWeatherInfo, animated: true)
         shouldHideWeatherInfoSetting = shouldHideWeatherInfo
     }
+    
+    @IBAction func callNumber(_ sender: Any) {
+        let phoneNumber = destUser.phone
+        print("inside call number")
+        if let url = URL(string: "tel://"+"\(phoneNumber)")  {
+            print("inside if let url1")
+            if (UIApplication.shared.canOpenURL(url)) {
+                print("inside if let url2")
+                UIApplication.shared.openURL(url)
+            }
+        } else {
+             self.displayAlert("Unable to Connect", message: "This phone number is not in service")
+        }
+    }
+    
+    @IBAction func textNumber(_ sender: Any) {
+         let phoneNumber = destUser.phone
+        
+        if let url = URL(string: "sms:+\(phoneNumber)") {
+            UIApplication.shared.openURL(url)
+        } else {
+            self.displayAlert("Unable to Connect", message: "This phone number is not in service")
+        }
+    }
+    
     
     func addFriendFunction() {
         let id = destUser.uid
