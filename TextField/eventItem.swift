@@ -20,7 +20,7 @@ struct eventItem {
     
     let labelFont = UIFont(name: "HelveticaNeue-Bold", size: 18)
     //let attributes :Dictionary = [NSFontAttributeName : labelFont]
-    let formatter = NSDateFormatter()
+    let formatter = DateFormatter()
     
     
     
@@ -35,23 +35,23 @@ struct eventItem {
         self.objectID = objectID
         
         
-        formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+       // formatter.dateStyle = DateFormatter.Style.LongStyle
+       // formatter.timeStyle = DateFormatter.Style.ShortStyle
     }
     
     var isOverdue: Bool {
-        return (NSDate().compare(self.date) == NSComparisonResult.OrderedDescending)
+        return (NSDate().compare(self.date as Date) == ComparisonResult.orderedDescending)
     }
     
     func toString() -> String {
-        let dateString = formatter.stringFromDate(date)
+        let dateString = formatter.string(from: date as Date)
         
         let eventString: String = title + "\n" + dateString + "\n" + description + "\n" + instrument
         return eventString
     }
     
     func getDateString() -> String {
-        let dateString = formatter.stringFromDate(date)
+        let dateString = formatter.string(from: date as Date)
         
         return dateString
     }

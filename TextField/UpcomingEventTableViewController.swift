@@ -9,6 +9,48 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SCLAlertView
+
+struct properties {
+    static let pickerEvents = [
+        ["title" : "Log In as a Member", "color" : UIColor.buttonBlue()],
+        ["title" : "About This App", "color": UIColor.buttonBlue()],
+        ["title" : "Contact Us", "color" : UIColor.buttonBlue()],
+        
+        ]
+    static let memberPickerEvents = [
+        ["title" : "Settings", "color" : UIColor.buttonBlue()],
+        ["title" : "About This App", "color": UIColor.buttonBlue()],
+        ["title" : "Contact Us", "color" : UIColor.buttonBlue()],
+        
+        ]
+}
+
+enum UIUserInterfaceIdiom : Int
+{
+    case Unspecified
+    case Phone
+    case Pad
+}
+
+struct ScreenSize
+{
+    static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
+    static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
+    static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+}
+
+struct DeviceType
+{
+    static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
+    static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
+    static let IS_IPHONE_6          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
+    static let IS_IPHONE_6P         = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
+    static let IS_IPAD              = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
+    static let IS_IPAD_PRO          = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1366.0
+}
+
 
 var eventList = [eventItem]()
 
@@ -24,19 +66,25 @@ extension UIViewController {
     }
     
 }
-class EventTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDataSource, FSCalendarDelegate {
+class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDataSource, FSCalendarDelegate {
+    /*@available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }*/
+
     
     @IBOutlet weak var nagivationItem: UINavigationItem!
     @IBOutlet weak var table: UITableView!
   
 
+   let dateFormatter = DateFormatter()
    
     
     var instruments:[String] = []
     var ensembles:[String] = []
     var events = [eventItem]()
     
-    var user = PFUser.currentUser()
+    var user = FIRAuth.auth()?.currentUser
 
     var refresher: UIRefreshControl!
     var detailVC: DetailViewController? = nil
@@ -58,11 +106,14 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2015/01/01")!
+        return self.dateFormatter.date(from: "2015/01/01")!
+        
+        
+    
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2016/10/31")!
+        return self.dateFormatter.date(from: "2016/10/31")!
     }
 
     
@@ -75,20 +126,21 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         dateFormatter.dateFormat = "YYYY/MM/DD"
         //animateTable()
-        let installation = PFInstallation.currentInstallation()
+      //  let installation = PFInstallation.currentInstallation()
         
-        if PFUser.currentUser()?.username != nil {
+        /*if User.currentUser()?.username != nil {
             if installation["marchingInstrument"] == nil {
                 print("here3")
                 /* installation.addObject(PFUser.currentUser()!["marchingInstrument"], forKey: "channels")*/
-                installation.setObject(PFUser.currentUser()!["concertInstrument"], forKey: "concertInstrument")
-                installation.setObject(PFUser.currentUser()!["marchingInstrument"], forKey: "marchingInstrument")
+                installation.setObject(User.currentUser()!["concertInstrument"], forKey: "concertInstrument")
+                installation.setObject(User.currentUser()!["marchingInstrument"], forKey: "marchingInstrument")
                 //installation["concertInstrument"] = [PFUser.currentUser()!["concertInstrument"]]
                 //print(installation.objectId)
                 installation.saveInBackground()
             }
-        }
+        }*/
         
         
         print("here2")
@@ -114,15 +166,16 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
         
         
-        let notificationType = UIApplication.sharedApplication().currentUserNotificationSettings()!.types
-        if notificationType == UIUserNotificationType.None {
+       /* let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
+        if notificationType == UIUserNotificationType.none {
             let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        
             UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-            UIApplication.sharedApplication().registerForRemoteNotifications()
+            UIApplication.shared.registerForRemoteNotifications()
         }else{
             // Push notifications are enabled in setting by user.
             
-        }
+        }*/
         
         
         
@@ -130,27 +183,31 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
        
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher.addTarget(self, action: #selector(EventTableViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        refresher.addTarget(self, action:  #selector(UpcomingEventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
+       
         table.addSubview(refresher)
         refresher.endRefreshing()
        // self.hideKeyboardWhenTappedAround()
         navigationItem.hidesBackButton = true
         
-        var isAdmin = user!["isAdmin"] as! Bool
+        //var isAdmin = user!["isAdmin"] as! Bool
         
-        reloadTableData()
+        //TrakTableData()
 
         
         pickerFrame = CGRect(x: ((self.view.frame.width - picker.frame.size.width) - 10), y: 70, width: 200, height: 160)
         
-        createPicker()
+        //createPicker()
         
         self.view.endEditing(true)
         
         
     }
-    func refresh(sender:AnyObject) {
-        reloadTableData()
+    /*func refresh(sender:AnyObject) {
+       // reloadTableData()
+    }*/
+    func refresh(_ sender: AnyObject) {
+        
     }
     
     /*func reloadTableData() {
@@ -348,10 +405,10 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func addEvent(sender: AnyObject) {
         
         
-        if let isSectionLeader = user!["isSectionLeader"] as? Bool {
+       /* if let isSectionLeader = user!["isSectionLeader"] as? Bool {
             if isSectionLeader == true {
                 let segueString = "sectionLeaderAdd"
-                self.performSegueWithIdentifier(segueString, sender: self)
+                self.performSegue(withIdentifier: segueString, sender: self)
                 
             } else if let isAdmin = user!["isAdmin"] as? Bool {
                 if isAdmin == true {
@@ -364,7 +421,7 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
                 
             }
-        }
+        }*/
         
         
         
@@ -376,7 +433,7 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
    
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         table.reloadData()
     }
 
@@ -386,14 +443,17 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "eventCell") as! eventCell
-        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! eventCell
+
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath as IndexPath) as! eventCell
         
         //print(eventList[indexPath.row])
         cell.eventTitle.text = events[indexPath.row].title + " ~ " + events[indexPath.row].instrument
@@ -402,16 +462,22 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         
         return cell
+
     }
+    
     
     
    /* func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }*/
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    
+ 
+    
+    func tableView(tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
         if !(DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO) {
-            self.performSegueWithIdentifier("showDetail", sender: self)
+            self.performSegue(withIdentifier: "showDetail", sender: self)
         }
     }
     
@@ -420,7 +486,7 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+        /*
         print("in delete")
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
@@ -547,26 +613,26 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
             //NSUserDefaults.standardUserDefaults().setObject(eventList, forKey: "eventList")
             table.reloadData()
             }
-        }
+        }*/
     }
     
     
     
     @IBAction func pickerSelect(sender: UIBarButtonItem) {
-        picker.hidden ? openPicker() : closePicker()
+        picker.isHidden ? openPicker() : closePicker()
     }
     
     
-    func createPicker()
+   /* func createPicker()
     {
         picker.frame = self.pickerFrame!
         picker.alpha = 0
-        picker.hidden = true
-        picker.userInteractionEnabled = true
+        picker.isHidden = true
+        picker.isUserInteractionEnabled = true
         
         var offset = 18
         
-        for (index, event) in properties.memberPickerEvents.enumerate()
+        for (index, event) in memberPickerEvents.enumerate()
         {
             let button = UIButton()
             
@@ -588,13 +654,13 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         view.addSubview(picker)
         
-    }
+    }*/
     
     func openPicker()
     {
-        self.picker.hidden = false
+        self.picker.isHidden = false
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3) {
             self.picker.frame = self.pickerFrame!
             self.picker.alpha = 1
         }
@@ -602,13 +668,13 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func closePicker()
     {
-        UIView.animateWithDuration(0.3,
+        UIView.animate(withDuration: 0.3,
                                    animations: {
                                     self.picker.frame = self.pickerFrame!
                                     self.picker.alpha = 0
             },
                                    completion: { finished in
-                                    self.picker.hidden = true
+                                    self.picker.isHidden = true
             }
         )
     }
@@ -619,26 +685,26 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
         if sender.tag == 0 {
             print("here")
             
-            self.performSegueWithIdentifier("goToSettings", sender: self)
+            self.performSegue(withIdentifier: "goToSettings", sender: self)
         } else if sender.tag == 1 {
             
             
-                       self.performSegueWithIdentifier("goToAboutUs", sender: self)
+                       self.performSegue(withIdentifier: "goToAboutUs", sender: self)
         } else if sender.tag == 2 {
             
-                       self.performSegueWithIdentifier("toEmailVC", sender: self)
+                       self.performSegue(withIdentifier: "toEmailVC", sender: self)
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         closePicker()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             
             
-            let detailNC = segue.destinationViewController as! UINavigationController
+            let detailNC = segue.destination as! UINavigationController
             let detailVC = detailNC.topViewController as! DetailViewController
             if let indexPath = self.table.indexPathForSelectedRow {
                 detailVC.eventTitleText = events[indexPath.row].title
@@ -665,7 +731,7 @@ class EventTableViewController: UIViewController, UITableViewDelegate, UITableVi
         var delayCounter = 0
         
         for cell in cells {
-            UIView.animateWithDuration(1.75, delay: Double(delayCounter), usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
+            UIView.animate(withDuration: 1.75, delay: Double(delayCounter), usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 cell.transform = CGAffineTransform.init()
                 }, completion: nil)
             delayCounter += 1

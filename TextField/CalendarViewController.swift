@@ -21,9 +21,11 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     fileprivate let gregorian: Calendar! = Calendar(identifier:Calendar.Identifier.gregorian)
     
-    class func instantiateFromStoryboard() -> CalendarViewController {
+    class func instantiateFromStoryboard() -> UpcomingEventTableViewController {
        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+        return storyboard.instantiateViewController(withIdentifier: "UpcomingEventViewController") as! UpcomingEventTableViewController
+        
+
         /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! TutorsTableViewController*/
     }

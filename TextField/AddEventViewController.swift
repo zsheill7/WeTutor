@@ -47,7 +47,7 @@ class AddEventTableViewController: UITableViewController, UIPickerViewDataSource
     
     var activityIndicator = UIActivityIndicatorView()
     
-    let formatter = DateFormatter()
+    //let formatter = DateFormatter()
     
 
     let user = FIRAuth.auth()?.currentUser
