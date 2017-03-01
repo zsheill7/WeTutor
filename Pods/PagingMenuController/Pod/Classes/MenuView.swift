@@ -9,10 +9,10 @@
 import UIKit
 
 open class MenuView: UIScrollView {
-    open fileprivate(set) var currentMenuItemView: MenuItemView!
+    public fileprivate(set) var currentMenuItemView: MenuItemView!
     
-    weak internal var viewDelegate: PagingMenuControllerDelegate?
     internal fileprivate(set) var menuItemViews = [MenuItemView]()
+    internal var onMove: ((MenuMoveState) -> Void)?
     
     fileprivate var menuOptions: MenuViewCustomizable!
     fileprivate var sortedMenuItemViews = [MenuItemView]()
@@ -56,7 +56,13 @@ open class MenuView: UIScrollView {
         }
     }
     fileprivate var centerOfScreenWidth: CGFloat {
-        return menuItemViews[currentPage].frame.midX - UIApplication.shared.keyWindow!.bounds.width / 2
+        let screenWidth: CGFloat
+        if let width = UIApplication.shared.keyWindow?.bounds.width {
+            screenWidth = width
+        } else {
+            screenWidth = UIScreen.main.bounds.width
+        }
+        return menuItemViews[currentPage].frame.midX - screenWidth / 2
     }
     fileprivate var contentOffsetXForCurrentPage: CGFloat {
         guard menuItemCount > MinimumSupportedViewCount else { return 0.0 }
@@ -109,7 +115,7 @@ open class MenuView: UIScrollView {
         
         if let previousMenuItemView = previousMenuItemView,
             page != previousPage {
-            viewDelegate?.willMove(toMenuItem: menuItemView, fromMenuItem: previousMenuItemView)
+            onMove?(.willMoveItem(to: menuItemView, from: previousMenuItemView))
         }
         
         update(currentPage: page)
@@ -140,7 +146,7 @@ open class MenuView: UIScrollView {
             
             if let previousMenuItemView = previousMenuItemView,
                 page != previousPage {
-                self!.viewDelegate?.didMove(toMenuItem: self!.currentMenuItemView, fromMenuItem: previousMenuItemView)
+                self!.onMove?(.didMoveItem(to: self!.currentMenuItemView, from: previousMenuItemView))
             }
         }
     }
@@ -164,6 +170,7 @@ open class MenuView: UIScrollView {
         showsVerticalScrollIndicator = false
         bounces = menuViewBounces
         isScrollEnabled = menuViewScrollEnabled
+        isDirectionalLockEnabled = true
         decelerationRate = menuOptions.deceleratingRate
         scrollsToTop = false
         translatesAutoresizingMaskIntoConstraints = false
@@ -182,11 +189,15 @@ open class MenuView: UIScrollView {
     }
     
     fileprivate func layoutContentView() {
-        let viewsDictionary = ["contentView": contentView, "scrollView": self]
-        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[contentView]|", options: [], metrics: nil, views: viewsDictionary)
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[contentView(==scrollView)]|", options: [], metrics: nil, views: viewsDictionary)
-        
-        NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
+        // H:|[contentView]|
+        // V:|[contentView(==scrollView)]|
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.heightAnchor.constraint(equalTo: heightAnchor)
+            ])
     }
 
     fileprivate func constructMenuItemViews(_ menuOptions: MenuViewCustomizable) {
@@ -227,22 +238,24 @@ open class MenuView: UIScrollView {
         NSLayoutConstraint.deactivate(contentView.constraints)
         
         for (index, menuItemView) in sortedMenuItemViews.enumerated() {
-            let visualFormat: String;
-            var viewsDicrionary = ["menuItemView": menuItemView]
             if index == 0 {
-                visualFormat = "H:|[menuItemView]"
+                // H:|[menuItemView]
+                menuItemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
             } else  {
-                viewsDicrionary["previousMenuItemView"] = sortedMenuItemViews[index - 1]
-                if index == menuItemCount - 1 {
-                    visualFormat = "H:[previousMenuItemView][menuItemView]|"
-                } else {
-                    visualFormat = "H:[previousMenuItemView][menuItemView]"
+                if index == sortedMenuItemViews.count - 1 {
+                    // H:[menuItemView]|
+                    menuItemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
                 }
+                // H:[previousMenuItemView][menuItemView]
+                let previousMenuItemView = sortedMenuItemViews[index - 1]
+                previousMenuItemView.trailingAnchor.constraint(equalTo: menuItemView.leadingAnchor, constant: 0).isActive = true
             }
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: visualFormat, options: [], metrics: nil, views: viewsDicrionary)
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[menuItemView]|", options: [], metrics: nil, views: viewsDicrionary)
             
-            NSLayoutConstraint.activate(horizontalConstraints + verticalConstraints)
+            // V:|[menuItemView]|
+            NSLayoutConstraint.activate([
+                menuItemView.topAnchor.constraint(equalTo: contentView.topAnchor),
+                menuItemView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+                ])
         }
         
         setNeedsLayout()
@@ -301,8 +314,8 @@ open class MenuView: UIScrollView {
         default: return
         }
         
-        let firstMenuView = menuItemViews.first!
-        let lastMenuView = menuItemViews.last!
+        guard let firstMenuView = menuItemViews.first,
+            let lastMenuView = menuItemViews.last else { return }
         
         var inset = contentInset
         let halfWidth = frame.width / 2
@@ -345,7 +358,7 @@ extension MenuView: Pagable {
     }
 }
 
-extension MenuView: ViewCleanable {
+extension MenuView {
     func cleanup() {
         contentView.removeFromSuperview()
         switch menuOptions.focusMode {
@@ -363,14 +376,14 @@ extension MenuView: ViewCleanable {
     }
 }
 
-extension MenuView: MenuItemMultipliable {
+extension MenuView {
     var menuItemCount: Int {
         switch menuOptions.displayMode {
         case .infinite: return menuOptions.itemsOptions.count * menuOptions.dummyItemViewsSet
         default: return menuOptions.itemsOptions.count
         }
     }
-    func rawPage(_ page: Int) -> Int {
+    fileprivate func rawPage(_ page: Int) -> Int {
         let startIndex = currentPage - menuItemCount / 2
         return (startIndex + page + menuItemCount) % menuItemCount
     }

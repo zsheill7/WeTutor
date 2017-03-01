@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DZNEmptyDataSet.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Eureka.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -59,6 +64,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>NVActivityIndicatorView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>PagingMenuController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,17 +102,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B8379874409110063485120C406BF47</key>
+		<key>1265F3A8419C9D08DA5D7B149E81A532</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
+		<key>13F01900E74E05EF37E4823CB5ACD529</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1B85874CCDEEC5903571AB787E8CEF0A</key>
+		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,32 +127,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>50BFC5280D31597717C0B4C2148D9287</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6ADB3656BDFD85FB77E0CAB44BFF61E6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>76BD4592010354D6C23D6ECCA20D83A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A58EDFA306E1B8A45A46566EB60BA9D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>A52524E727A97710A55D0EDA55BB7CFE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B433E43619D3A8E5E2C426233E1CAA4C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B74547F19963765EC084650FC3851784</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BA77A20E06C94BEDDC8D18AB4FDBDB37</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,7 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7563D5AE176C43B7EFA77306E3C43C9</key>
+		<key>C5A2DB7A84B7B78E359870D2E1B24AA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,7 +177,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EE774F234E810C0DD8263855D7A1A166</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEB98B212F041E1095E94342BD9C8102</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F51C38A6560B2502BF5A27CE56EAF2F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>

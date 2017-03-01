@@ -31,44 +31,44 @@
 import UIKit
 
 extension UIViewController {
-	/**
-	A convenience property that provides access to the MenuController.
-	This is the recommended method of accessing the MenuController
-	through child UIViewControllers.
-	*/
-	public var menuController: MenuController? {
-		var viewController: UIViewController? = self
-		while nil != viewController {
-			if viewController is MenuController {
-				return viewController as? MenuController
-			}
-			viewController = viewController?.parent
-		}
-		return nil
-	}
+    /**
+     A convenience property that provides access to the MenuController.
+     This is the recommended method of accessing the MenuController
+     through child UIViewControllers.
+     */
+    public var menuController: MenuController? {
+        var viewController: UIViewController? = self
+        while nil != viewController {
+            if viewController is MenuController {
+                return viewController as? MenuController
+            }
+            viewController = viewController?.parent
+        }
+        return nil
+    }
 }
 
 open class MenuController: RootController {
-	/// Reference to the MenuView.
+    /// Reference to the MenuView.
     @IBInspectable
     open let menu = Menu()
-	
-	open override func layoutSubviews() {
-		super.layoutSubviews()
-		rootViewController.view.frame = view.bounds
-	}
-	
-	/**
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        rootViewController.view.frame = view.bounds
+    }
+    
+    /**
      Prepares the view instance when intialized. When subclassing,
      it is recommended to override the prepare method
      to initialize property values and other setup operations.
      The super.prepare method should always be called immediately
      when subclassing.
      */
-	open override func prepare() {
-		super.prepare()
-		prepareMenu()
-	}
+    open override func prepare() {
+        super.prepare()
+        prepareMenu()
+    }
 }
 
 extension MenuController {
