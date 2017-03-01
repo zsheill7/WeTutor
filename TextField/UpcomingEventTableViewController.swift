@@ -104,7 +104,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     class func instantiateFromStoryboard() -> UpcomingEventTableViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "UpcomingEventTableViewControllerxr") as! UpcomingEventTableViewController
+        return storyboard.instantiateViewController(withIdentifier: "UpcomingEventTableViewController") as! UpcomingEventTableViewController
         /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
          return storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! TutorsTableViewController*/
     }

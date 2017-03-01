@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -753,7 +754,7 @@
             </objects>
             <point key="canvasLocation" x="2692" y="824"/>
         </scene>
-        <!--Upcoming Events-->
+        <!--Data Source-->
         <scene sceneID="l2Q-oM-xcp">
             <objects>
                 <viewController storyboardIdentifier="UpcomingEventViewController" automaticallyAdjustsScrollViewInsets="NO" id="o9H-0G-0M8" customClass="UpcomingEventTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -766,14 +767,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bhN-UQ-8Hd">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="290" width="375" height="328"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" id="cS9-co-TNa" customClass="eventCell" customModule="TutorMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1" width="414" height="120"/>
+                                        <rect key="frame" x="0.0" y="1" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cS9-co-TNa" id="HMb-om-sH1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlU-kv-ll9">
@@ -815,13 +816,27 @@
                                     <outlet property="delegate" destination="o9H-0G-0M8" id="KHT-lb-bWO"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ES-SN-orX" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="64" width="375" height="218"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9ES-SN-orX" secondAttribute="height" multiplier="375:218" id="VMY-JN-v2D"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="o9H-0G-0M8" id="2dL-1U-PLs"/>
+                                    <outlet property="delegate" destination="o9H-0G-0M8" id="l1x-Ni-3Lz"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="JlQ-Ab-l64" firstAttribute="top" secondItem="bhN-UQ-8Hd" secondAttribute="bottom" id="2Ls-JV-FZ1"/>
-                            <constraint firstItem="bhN-UQ-8Hd" firstAttribute="top" secondItem="gNE-Gj-SHO" secondAttribute="bottom" id="OTF-j4-yfb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bhN-UQ-8Hd" secondAttribute="trailing" constant="-20" id="y5M-n5-HzZ"/>
-                            <constraint firstItem="bhN-UQ-8Hd" firstAttribute="leading" secondItem="5fA-HR-5dw" secondAttribute="leadingMargin" constant="-20" id="z9y-pm-Ffx"/>
+                            <constraint firstItem="bhN-UQ-8Hd" firstAttribute="top" secondItem="9ES-SN-orX" secondAttribute="bottom" constant="8" id="HcY-xc-87V"/>
+                            <constraint firstItem="9ES-SN-orX" firstAttribute="top" secondItem="gNE-Gj-SHO" secondAttribute="bottom" id="PNF-OM-310"/>
+                            <constraint firstItem="JlQ-Ab-l64" firstAttribute="top" secondItem="bhN-UQ-8Hd" secondAttribute="bottom" id="T22-TH-0ce"/>
+                            <constraint firstAttribute="trailing" secondItem="bhN-UQ-8Hd" secondAttribute="trailing" id="Ufc-N6-dEZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9ES-SN-orX" secondAttribute="trailing" constant="16" id="peW-k7-aaT"/>
+                            <constraint firstItem="bhN-UQ-8Hd" firstAttribute="leading" secondItem="5fA-HR-5dw" secondAttribute="leading" id="xtp-DC-ii6"/>
+                            <constraint firstItem="9ES-SN-orX" firstAttribute="leading" secondItem="5fA-HR-5dw" secondAttribute="leadingMargin" constant="16" id="yUy-ak-DyR"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -850,7 +865,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjq-bt-aFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1502" y="940"/>
+            <point key="canvasLocation" x="1501.5999999999999" y="939.58020989505258"/>
         </scene>
     </scenes>
     <resources>
