@@ -77,8 +77,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     @IBOutlet weak var table: UITableView!
   
 
-   let dateFormatter = DateFormatter()
-   
+  // let dateFormatter = DateFormatter()
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
     
     var instruments:[String] = []
     var ensembles:[String] = []
@@ -98,22 +102,22 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var activityIndicator = UIActivityIndicatorView()
     
     
-    class func instantiateFromStoryboard() -> CalendarViewController {
+    class func instantiateFromStoryboard() -> UpcomingEventTableViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+        return storyboard.instantiateViewController(withIdentifier: "UpcomingEventTableViewControllerxr") as! UpcomingEventTableViewController
         /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
          return storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! TutorsTableViewController*/
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return self.dateFormatter.date(from: "2015/01/01")!
+        return self.formatter.date(from: "2015/01/01")!
         
         
     
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.dateFormatter.date(from: "2016/10/31")!
+        return self.formatter.date(from: "2016/10/31")!
     }
 
     
@@ -126,7 +130,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         dateFormatter.dateFormat = "YYYY/MM/DD"
+         //dateFormatter.dateFormat = "YYYY/MM/DD"
         //animateTable()
       //  let installation = PFInstallation.currentInstallation()
         
