@@ -41,12 +41,15 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             /*return .standard(widthMode: .flexible, centerItem: false, scrollingMode: .pagingEnabled)*/
             return .segmentedControl
         }
+        
         var focusMode: MenuFocusMode {
             return .underline(height: 3, color: UIColor.blue, horizontalPadding: 10, verticalPadding: 0)
         }
+        
         var height: CGFloat {
             return 60
         }
+        
         var itemsOptions: [MenuItemViewCustomizable] {
             return [MenuItemUsers(), MenuItemChat(), /*MenuItemCalendar()*//*, MenuItemOrganization()*//*, MenuItemRequest()*/]
         }
