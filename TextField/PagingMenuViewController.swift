@@ -149,12 +149,19 @@ class PagingMenuViewController: UIViewController {
         }
     }
     
+    func addEvent() {
+        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "addEventNC") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     func createDropdown() {
         let items = ["About This App", "Settings", "Log Out"]
    
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x51679F)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addEvent))
         
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "WeTutor", items: items as [AnyObject])
         menuView.cellHeight = 50

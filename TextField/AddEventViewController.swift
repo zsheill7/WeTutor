@@ -19,8 +19,6 @@ extension NSDate
         dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
         let d = dateStringFormatter.date(from: dateString)!
         return NSDate(timeInterval:0, since:d)
-        
-     
     }
 }
 

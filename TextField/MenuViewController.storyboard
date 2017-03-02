@@ -597,6 +597,27 @@
             </objects>
             <point key="canvasLocation" x="1248" y="707"/>
         </scene>
+        <!--Native Event View Controller-->
+        <scene sceneID="h3M-zq-RnK">
+            <objects>
+                <viewController storyboardIdentifier="NativeEventViewController" id="9IE-oX-SF6" customClass="NativeEventViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F9z-kK-Gba"/>
+                        <viewControllerLayoutGuide type="bottom" id="GjX-LZ-XrM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QhL-Vh-qF9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MeE-12-hV2">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="sEt-31-s2x"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEp-VQ-Lrt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3325.5999999999999" y="400.74962518740631"/>
+        </scene>
         <!--Request View Controller-->
         <scene sceneID="jNs-U0-UTc">
             <objects>
@@ -736,7 +757,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oes-7q-Czu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3514" y="822"/>
+            <point key="canvasLocation" x="4452" y="821.73913043478262"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X1D-pW-B4K">
@@ -752,7 +773,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HNU-3K-7Vm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2692" y="824"/>
+            <point key="canvasLocation" x="3631.1999999999998" y="823.53823088455783"/>
         </scene>
         <!--Data Source-->
         <scene sceneID="l2Q-oM-xcp">
@@ -866,6 +887,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjq-bt-aFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1501.5999999999999" y="939.58020989505258"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WWm-e3-vKv">
+            <objects>
+                <navigationController storyboardIdentifier="addEventNC" automaticallyAdjustsScrollViewInsets="NO" id="okV-md-W0h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JQH-5Q-QeE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9IE-oX-SF6" kind="relationship" relationship="rootViewController" id="0nJ-Pk-9Kh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f7C-PG-p49" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2384.8000000000002" y="400.74962518740631"/>
         </scene>
     </scenes>
     <resources>

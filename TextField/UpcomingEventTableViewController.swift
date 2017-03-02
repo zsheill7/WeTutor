@@ -670,6 +670,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    
+    
     func closePicker()
     {
         UIView.animate(withDuration: 0.3,
