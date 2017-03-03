@@ -3,7 +3,6 @@
 //  ParseBandApp
 //
 //  Created by Zoe Sheill on 7/18/16.
-//  Copyright © 2016 Parse. All rights reserved.
 //
 
 import UIKit

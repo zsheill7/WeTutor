@@ -2,8 +2,6 @@
 //  PagingViewController.swift
 //  PagingMenuController
 //
-//  Created by Yusuke Kita on 6/3/16.
-//  Copyright (c) 2016 kitasuke. All rights reserved.
 //
 
 import UIKit

@@ -2,8 +2,6 @@
 //  PagingMenuControllerCustomizable.swift
 //  PagingMenuController
 //
-//  Created by Yusuke Kita on 5/23/16.
-//  Copyright (c) 2015 kitasuke. All rights reserved.
 //
 
 import Foundation

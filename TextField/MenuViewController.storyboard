@@ -610,9 +610,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MeE-12-hV2">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="sEt-31-s2x"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="MeE-12-hV2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iEp-VQ-Lrt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

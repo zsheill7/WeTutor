@@ -3,7 +3,7 @@
 //  TutorMe
 //
 //  Created by Zoe on 3/2/17.
-//  Copyright © 2017 CosmicMind. All rights reserved.
+//  Copyright © 2017 Zoe Sheill. All rights reserved.
 //
 
 import UIKit
@@ -29,7 +29,7 @@ class NativeEventViewController : FormViewController {
         
         initializeForm()
        // navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: "Back", target: self, action: #selector(performSegueBack))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(performSegueBack))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(performSegueBack))
         
         //self.navigationItem.leftBarButtonItem?.target = self
         //self.navigationItem.leftBarButtonItem?.action = #selector(NativeEventFormViewController.cancelTapped(_:))
@@ -198,9 +198,9 @@ class NativeEventViewController : FormViewController {
   
     
     func performSegueBack() {
-        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "UpcomingEventViewController") as! UpcomingEventTableViewController
-        self.present(controller, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController()//instantiateViewController(withIdentifier: "UpcomingEventViewController") as! UpcomingEventTableViewController
+        self.present(controller!, animated: true, completion: nil)
     }
     
     
