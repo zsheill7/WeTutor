@@ -11,8 +11,7 @@ import RZTransitions
 import FirebaseAuth
 import Firebase
 import SCLAlertView
-
-
+import FBSDKCoreKit
 
 extension UIView {
     func addBackground(_ imageName: String) {
@@ -93,6 +92,11 @@ class SignUpViewController: UIViewController {
         //self.view.addBlueBackground("mixed2")
         self.view.addBackground("book.png")
         
+        
+        let loginButton = FBSDKLoginButton()
+        loginButton.delegate = self
+        
+        
         /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "fullbackgroundtransculent4")
         self.view.insertSubview(backgroundImage, at: 0)*/
@@ -147,6 +151,26 @@ class SignUpViewController: UIViewController {
             // ...
         }
 
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        // ...
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            // ...
+            if let error = error {
+                // ...
+                return
+            }
+        }
+        
+        
     }
     
     

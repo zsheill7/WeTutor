@@ -79,6 +79,7 @@
 		C8BD683E1E36F4FC0028EC37 /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */; };
 		C8C5DE391E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */; };
 		C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */; };
+		C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */; };
 		C8D9B8271E688BDF00EBDEA5 /* NativeEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */; };
 		C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */; };
 		C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88321E0DB144003775C2 /* FSCalendar.m */; };
@@ -194,6 +195,7 @@
 		C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
 		C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBasicInfoTableViewController.swift; sourceTree = "<group>"; };
 		C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAvailabilityTableViewController.swift; sourceTree = "<group>"; };
+		C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventViewController.swift; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
 		C8EE882E1E0DB08C003775C2 /* TutorMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TutorMe-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */,
 				18B5C49AFA2A076AD1009440 /* Pods_TutorMe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B62CCD5A010F1F7EC99019 /* Pods_TextField.framework */,
+				C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */,
 				E32F40C5AE612C64AD0FDBC9 /* Pods_TutorMe.framework */,
 			);
 			name = Frameworks;
@@ -883,6 +887,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HNK7ZEMZ36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"\"$(SRCROOT)/../../FacebookSDK/FBSDKLoginKit.framework\"",
+				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -905,6 +914,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HNK7ZEMZ36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

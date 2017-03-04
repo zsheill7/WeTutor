@@ -296,8 +296,24 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         
         // Get the event at the row selected and display its title
-        cell.textLabel!.text = self.eventsList[indexPath.row].title
+        let title = self.eventsList[indexPath.row].title
+        let dateString = String(describing: self.eventsList[indexPath.row].startDate)
+       // cell.detailTextLabel?.text = String(describing: self.eventsList[indexPath.row].startDate)
+        cell.textLabel?.attributedText = makeAttributedString(title: title, subtitle: dateString)
+
         return cell
+    }
+    
+    func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
+        let titleAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .headline), NSForegroundColorAttributeName: UIColor.purple]
+        let subtitleAttributes = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: .subheadline)]
+        
+        let titleString = NSMutableAttributedString(string: "\(title)\n", attributes: titleAttributes)
+        let subtitleString = NSAttributedString(string: subtitle, attributes: subtitleAttributes)
+        
+        titleString.append(subtitleString)
+        
+        return titleString
     }
     
     
