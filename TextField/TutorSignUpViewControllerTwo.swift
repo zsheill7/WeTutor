@@ -6,16 +6,7 @@ import Eureka
 import CoreLocation
 import FirebaseDatabase
 import Firebase
-//MARK: HomeViewController
 
-
-//MARK: Emoji
-
-
-//Mark: RowsExampleViewController
-
-
-//MARK: Custom Cells Example
 
 
 
@@ -39,20 +30,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
         
         ref = FIRDatabase.database().reference()
         form
-            /*Section() {
-                var header = HeaderFooterView<EurekaLogoViewNib>(.nibFile(name: "EurekaSectionHeader", bundle: nil))
-                header.onSetupView = { (view, section) -> () in
-                    view.imageView.alpha = 0;
-                    UIView.animate(withDuration: 2.0, animations: { [weak view] in
-                        view?.imageView.alpha = 1
-                    })
-                    view.layer.transform = CATransform3DMakeScale(0.9, 0.9, 1)
-                    UIView.animate(withDuration: 1.0, animations: { [weak view] in
-                        view?.layer.transform = CATransform3DIdentity
-                    })
-                }
-                $0.header = header
-            }*/
+           
              +++ Section("Available Days")
             
             
@@ -185,35 +163,8 @@ class TutorSignUpViewControllerTwo : FormViewController {
     }*/
 }
 
-//MARK: Field row customization Example
-
-
-//MARK: HiddenRowsExample
 
 
 
-/*class EurekaLogoViewNib: UIView {
-    
-    @IBOutlet weak var imageView: UIImageView!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-}
 
-class EurekaLogoView: UIView {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        let imageView = UIImageView(image: UIImage(named: "Eureka"))
-        imageView.frame = CGRect(x: 0, y: 0, width: 320, height: 130)
-        imageView.autoresizingMask = .flexibleWidth
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: 130)
-        imageView.contentMode = .scaleAspectFit
-        self.addSubview(imageView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}*/
+

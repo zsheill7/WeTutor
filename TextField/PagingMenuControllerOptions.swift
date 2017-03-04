@@ -68,7 +68,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     struct MenuItemUsers: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Tutors")
-            let description = MenuItemText(text: "")
+           // let description = MenuItemText(text: "")
             //return .multilineText(title: title, description: description)
             return .text(title: title)
         }
@@ -76,7 +76,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     struct MenuItemCalendar: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Calendar")
-            let description = MenuItemText(text: String(describing: self))
+           // let description = MenuItemText(text: String(describing: self))
             //return .multilineText(title: title, description: description)
             return .text(title: title)
         }
@@ -84,7 +84,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     struct MenuItemChat: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
             let title = MenuItemText(text: "Chat")
-            let description = MenuItemText(text: String(describing: self))
+          //  let description = MenuItemText(text: String(describing: self))
             //return .multilineText(title: title, description: description)
             return .text(title: title)
         }

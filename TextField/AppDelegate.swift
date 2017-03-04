@@ -10,6 +10,7 @@ import FirebaseDatabase
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -99,6 +100,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }*/
         
         
+    }
+    
+    func application(application: UIApplication,
+                     openURL url: NSURL,
+                     sourceApplication: String?,
+                     annotation: AnyObject?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(
+            application,
+            open: url as URL!,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
     }
     
     //let ref = Firebase(url:"https://tutorme-e7292.firebaseio.com/users")

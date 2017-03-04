@@ -12,6 +12,7 @@ import FirebaseAuth
 import Firebase
 import SCLAlertView
 import FBSDKCoreKit
+import FBSDKLoginKit
 
 extension UIView {
     func addBackground(_ imageName: String) {
@@ -59,7 +60,17 @@ extension UIView {
 
 /* @enum This class connects with the FriendSystem class to create user accounts */
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
+    /**
+     Sent to the delegate when the button was used to login.
+     - Parameter loginButton: the sender
+     - Parameter result: The results of the login
+     - Parameter error: The error (if any) from the login
+     */
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+    }
+
     fileprivate var nameField: TextField!
     fileprivate var emailField: ErrorTextField!
     fileprivate var passwordField: TextField!
@@ -93,9 +104,18 @@ class SignUpViewController: UIViewController {
         self.view.addBackground("book.png")
         
         
-        let loginButton = FBSDKLoginButton()
-        loginButton.delegate = self
-        
+        if (FBSDKAccessToken.current() != nil)
+        {
+            // User is already logged in, do work such as go to next view controller.
+        }
+        else
+        {
+            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            self.view.addSubview(loginView)
+            loginView.center = self.view.center
+            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.delegate = self
+        }
         
         /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "fullbackgroundtransculent4")
@@ -153,27 +173,73 @@ class SignUpViewController: UIViewController {
 
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError?) {
+    /*func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError?) {
         if let error = error {
             print(error.localizedDescription)
             return
         }
         // ...
         
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            // ...
-            if let error = error {
-                // ...
-                return
-            }
+        
+        
+    }*/
+    //MARK: Facebook SDK Default Signin
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
+        
+        if ((error) != nil)
+        {
+            // Process error
         }
-        
-        
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                // ...
+                if let error = error {
+                    // ...
+                    return
+                }
+            }
+            /*// If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }*/
+        }
     }
     
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+    }
     
+   /* func returnUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                let userName : NSString = result["name"] as! NSString
+                print("User Name is: \(userName)")
+                let userEmail : NSString = result.value(forKey: "email") as! NSString
+                print("User Email is: \(userEmail)")
+            }
+        })
+    }
+    */
     func createAccount() {
         if emailField.text == "" || nameField.text == "" || passwordField.text == "" || confirmPasswordField.text == "" {
             displayAlert("Error", message: "Please complete all fields")
@@ -218,6 +284,8 @@ class SignUpViewController: UIViewController {
         view.layout(btn).width(100).height(constant).top(24).right(24)
     }
     */
+    
+    //MARK: Uses Material library and Chameleon for colors
     fileprivate func prepareNextButton() {
         /*let btn = UIButton()
         btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
@@ -257,6 +325,8 @@ class SignUpViewController: UIViewController {
 
     
     //
+    
+    //MARK: Material button functions
     @objc
     internal func handleResignResponderButton(_ button: UIButton) {
         nameField?.resignFirstResponder()
@@ -283,6 +353,8 @@ class SignUpViewController: UIViewController {
         
         //createForgotPasswordAlert()
     }
+    
+    //MARK: Creates a popup SCLAlertView for retrieving password
     
     func createForgotPasswordAlert() {
         /*let alertView = SCLAlertView()

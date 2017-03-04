@@ -33,14 +33,7 @@ class MoreInfoViewController: UIViewController {
     
     
      var UID: String!
-    var shouldHideWeatherInfoSetting: Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "shouldHideWeatherInfo")
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "shouldHideWeatherInfo")
-        }
-    }
+    
     var availableDaysString = ""
     var preferredSubjectsString = ""
     
@@ -51,9 +44,7 @@ class MoreInfoViewController: UIViewController {
        textButton.contentMode = .scaleAspectFit
         
         
-        updateWeatherInfoViews(hideWeatherInfo: shouldHideWeatherInfoSetting, animated: false)
-       
-        // Clear background colors from labels and buttons
+              // Clear background colors from labels and buttons
         for view in backgroundColoredViews {
             view.backgroundColor = UIColor.clear
         }
@@ -79,14 +70,11 @@ class MoreInfoViewController: UIViewController {
         headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }
         
         basicInfoLabel.text = "Age: \(destUser.grade) \nSchool: \(destUser.school)\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
-      // title = destUser.name
+        // title = destUser.name
          descriptionLabel.text = destUser.description
         preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
         availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
         nameLabel.text = "\(destUser.name)"
-       /*whatToSeeLabel.text = vacationSpot.whatToSee
-       
-        userRatingLabel.text = String(repeating: "★", count: vacationSpot.userRating)*/
         
     }
     
@@ -98,20 +86,9 @@ class MoreInfoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       /* let currentUserRating = UserDefaults.standard.integer(forKey: "currentUserRating-\(vacationSpot.identifier)")*/
-        
-        /*if currentUserRating > 0 {
-            submitRatingButton.setTitle("Update Rating (\(currentUserRating))", for: UIControlState())
-        } else {
-            submitRatingButton.setTitle("Submit Rating", for: UIControlState())
-        }*/
+       
     }
     
-    @IBAction func weatherHideOrShowButtonTapped(_ sender: UIButton) {
-        let shouldHideWeatherInfo = sender.titleLabel!.text! == "Hide"
-        updateWeatherInfoViews(hideWeatherInfo: shouldHideWeatherInfo, animated: true)
-        shouldHideWeatherInfoSetting = shouldHideWeatherInfo
-    }
     
     @IBAction func callNumber(_ sender: Any) {
         let phoneNumber = destUser.phone
@@ -147,18 +124,6 @@ class MoreInfoViewController: UIViewController {
     
     
     
-    func updateWeatherInfoViews(hideWeatherInfo shouldHideWeatherInfo: Bool, animated: Bool) {
-        let newButtonTitle = shouldHideWeatherInfo ? "Show" : "Hide"
-       // weatherHideOrShowButton.setTitle(newButtonTitle, for: UIControlState())
-        
-        if animated {
-            UIView.animate(withDuration: 0.3, animations: {
-              //  self.descriptionLabel.isHidden = shouldHideWeatherInfo
-            })
-        } else {
-         //   descriptionLabel.isHidden = shouldHideWeatherInfo
-        }
-    }
     
     @IBAction func addFriendTapped(_ sender: Any) {
         addFriendFunction()
@@ -178,22 +143,11 @@ class MoreInfoViewController: UIViewController {
             print( CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude)))
             mapViewController.locationToShow =             CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude))
             mapViewController.title = destUser.name
-        /*case "presentRatingViewController":
-            guard let navigationController = segue.destination as? UINavigationController,
-                let ratingViewController = navigationController.topViewController as? RatingViewController else {
-                    fatalError("Unexpected view hierarchy")
-            }
-            ratingViewController.vacationSpot = vacationSpot*/
+       
         default:
             fatalError("Unhandled Segue: \(segue.identifier!)")
         }
     }
 }
 
-// MARK: - SFSafariViewControllerDelegate
 
-/*extension SpotInfoViewController: SFSafariViewControllerDelegate {
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-}*/

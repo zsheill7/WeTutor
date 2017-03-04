@@ -6,17 +6,15 @@ import SCLAlertView
 
 class MapViewController: UIViewController {
 
-  var locationToShow: CLLocationCoordinate2D!
+    var locationToShow: CLLocationCoordinate2D!
 
-  @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView!
     
     @IBOutlet var segmentedControl:UISegmentedControl!
     
     var currentRoute:MKRoute?
-    
     let locationManager = CLLocationManager()
     var currentPlacemark:CLPlacemark?
-    
     var currentTransportType = MKDirectionsTransportType.automobile
 
 
@@ -118,7 +116,6 @@ class MapViewController: UIViewController {
                 if let routeError = routeError {
                     print("Error: \(routeError)")
                 }
-                
                 return
             }
             

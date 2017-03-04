@@ -150,13 +150,7 @@ class PagingMenuViewController: UIViewController  {
         }
     }
     
-    func addEvent() {
-        /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "addEventNC") as! UINavigationController
-        self.present(controller, animated: true, completion: nil)
-        */
-        
-    }
+    
     
     func createDropdown() {
         let items = ["About This App", "Settings", "Log Out"]

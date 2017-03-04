@@ -103,37 +103,7 @@ class LoginViewController: UIViewController {
             // ...
         }
     }
-    /*func createAccount() {
-        if emailField.text == "" || nameField.text == "" || passwordField.text == "" || confirmPasswordField.text == "" {
-            displayAlert(title: "Error", message: "Please complete all fields")
-            
-        } else if emailField.text?.isEmail() == false{
-            displayAlert(title: "Error", message: "\"\(emailField.text!)\" is not a valid email address")
-            
-        } else if passwordField.text!.characters.count < 5 {
-            self.displayAlert(title: "Not Long Enough", message: "Please enter a password that is 5 or more characters")
-        } else if passwordField.text != confirmPasswordField.text {
-            self.displayAlert(title: "Passwords Do Not Match", message: "Please re-enter passwords")
-        } else {
-            FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in
-                if error == nil {
-                    print("You have successfully signed up")
-                    
-                    self.ref = FIRDatabase.database().reference()
-                    self.ref.child("users").child((user?.uid)!).setValue(
-                        ["name": self.nameField.text])
-                    
-                    
-                    self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
-                    
-                    
-                } else {
-                    self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
-                }
-            })
-        }
-    }*/
-    
+       
     func instantiateNextVC() {
         
     }
@@ -153,7 +123,7 @@ class LoginViewController: UIViewController {
                         let userObject = User(snapshot: snapshot )
 
                         
-                        let value = snapshot.value as? NSDictionary
+                      //  let value = snapshot.value as? NSDictionary
                         let languages = userObject.languages
                         let isTutor = userObject.isTutor
                         let description = userObject.description
@@ -168,7 +138,7 @@ class LoginViewController: UIViewController {
                         
                         userDefaults.synchronize()
 
-                        if description.characters.count > 0 && isTutor != nil {
+                        if description.characters.count > 0{
                             print("in neither are nil")
                             
                                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
@@ -338,7 +308,7 @@ class LoginViewController: UIViewController {
                     SCLAlertView().showInfo("Error", subTitle: "Please enter a valid email.")
                 } else {
                     FIRAuth.auth()?.sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
-                        var title = ""
+                       var title = ""
                         var message = ""
                         
                         if error != nil {
@@ -371,22 +341,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    /*private func prepareNameField() {
-        nameField = TextField()
-        //nameField.addBackground(imageName: "Rectangle 8")
-        //nameField.background = UIImage(named: "Rectangle 8")
-        nameField.placeholder = "Name"
-        //nameField.detail = "Your given name"
-        nameField.isClearIconButtonEnabled = true
-        
-        let leftView = UIImageView()
-        leftView.image = Icon.star
-        
-        nameField.leftView = leftView
-        nameField.leftViewMode = .always
-        
-        view.layout(nameField).top(4 * constant).horizontally(left: constant, right: constant)
-    }*/
     
     fileprivate func prepareEmailField() {
         emailField = ErrorTextField(frame: CGRect(x: constant, y: 6 * constant, width: view.width - (2 * constant), height: constant))
@@ -443,27 +397,6 @@ class LoginViewController: UIViewController {
         view.layout(passwordField).top(8 * constant).horizontally(left: constant, right: constant)
     }
     
-    /*private func prepareConfirmPasswordField() {
-        confirmPasswordField = TextField()
-        confirmPasswordField.placeholder = "Confirm Password"
-        confirmPasswordField.detail = "At least 5 characters"
-        confirmPasswordField.clearButtonMode = .whileEditing
-        confirmPasswordField.isVisibilityIconButtonEnabled = true
-        
-        // Setting the visibilityIconButton color.
-        confirmPasswordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
-        
-        let leftView = UIImageView()
-        leftView.image = UIImage(named: "Lock-104")?.imageResize(sizeChange: CGSize(width: 27, height: 27))
-        
-        confirmPasswordField.leftView = leftView
-        confirmPasswordField.leftViewMode = .always
-        confirmPasswordField.leftViewNormalColor = .brown
-        confirmPasswordField.leftViewActiveColor = .green
-        
-        
-        view.layout(confirmPasswordField).top(10 * constant).horizontally(left: constant, right: constant)
-    }*/
 }
 
 

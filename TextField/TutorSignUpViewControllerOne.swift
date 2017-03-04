@@ -181,24 +181,6 @@ class TutorSignUpViewControllerOne : FormViewController {
         
         var row = FormRowDescriptor(tag: Static.emailTag, type: .email, title: "Email")
         
-        /*let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
-        
-        
-        row.configuration.cell.appearance = ["textField.placeholder" : "john@gmail.com" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section1.rows.append(row)
-        
-        row = FormRowDescriptor(tag: Static.passwordTag, type: .password, title: "Password")
-        row.configuration.cell.appearance = ["textField.placeholder" : "Enter password" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section1.rows.append(row)
-        
-         
-        row = FormRowDescriptor(tag: Static.nameTag, type: .name, title: "First Name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Miguel Ángel" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section2.rows.append(row)
-        
-        row = FormRowDescriptor(tag: Static.lastNameTag, type: .name, title: "Last Name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Ortuño" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section2.rows.append(row)*/
         
         
         let section1 = FormSectionDescriptor(headerTitle: "  ", footerTitle: nil)

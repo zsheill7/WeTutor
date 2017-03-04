@@ -45,14 +45,12 @@ struct eventItem {
     
     func toString() -> String {
         let dateString = formatter.string(from: date as Date)
-        
         let eventString: String = title + "\n" + dateString + "\n" + description + "\n" + instrument
         return eventString
     }
     
     func getDateString() -> String {
         let dateString = formatter.string(from: date as Date)
-        
         return dateString
     }
 }

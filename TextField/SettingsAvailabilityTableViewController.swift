@@ -14,8 +14,6 @@ import Firebase
 //Mark: RowsExampleViewController
 
 
-//MARK: Custom Cells Example
-
 
 import SCLAlertView
 import Firebase

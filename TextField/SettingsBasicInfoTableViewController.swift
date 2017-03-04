@@ -48,60 +48,12 @@ private enum MenuSection {
         let options: PagingMenuControllerCustomizable
         options = PagingMenuOptions1()
         return options
-        /*switch self {
-        case .all(let content):
-            switch content {
-            case .standard:
-                options = PagingMenuOptions1()
-            case .segmentedControl:
-                options = PagingMenuOptions2()
-            case .infinite:
-                options = PagingMenuOptions3()
-            }
-        case .menuView(let content):
-            switch content {
-            case .underline:
-                options = PagingMenuOptions4()
-            case .roundRect:
-                options = PagingMenuOptions5()
-            }
-        case .menuController(let content):
-            switch content {
-            case .standard:
-                options = PagingMenuOptions6()
-            }
-        }
-        return options*/
+        
     }
 }
 
 
-/*class TutorSignUpViewController: FormViewController {
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}*/
 
 class SettingsBasicInfoTableViewController : FormViewController {
     var ref: FIRDatabaseReference!
@@ -189,25 +141,6 @@ class SettingsBasicInfoTableViewController : FormViewController {
         
         var row = FormRowDescriptor(tag: Static.emailTag, type: .email, title: "Email")
         
-        /*let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
-        
-        
-        row.configuration.cell.appearance = ["textField.placeholder" : "john@gmail.com" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section1.rows.append(row)
-        
-        row = FormRowDescriptor(tag: Static.passwordTag, type: .password, title: "Password")
-        row.configuration.cell.appearance = ["textField.placeholder" : "Enter password" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section1.rows.append(row)
-        
-         
-        row = FormRowDescriptor(tag: Static.nameTag, type: .name, title: "First Name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Miguel Ángel" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section2.rows.append(row)
-        
-        row = FormRowDescriptor(tag: Static.lastNameTag, type: .name, title: "Last Name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Ortuño" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        section2.rows.append(row)*/
-        
         let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
 
         
@@ -220,7 +153,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
         
         row = FormRowDescriptor(tag: Static.schoolTag, type: .url, title: "School Name")
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Mercer Island High School" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        print(currentUser?.school as AnyObject?)
+        print(currentUser?.school as AnyObject? ?? "")
         row.value = currentUser?.school as AnyObject?
         print("row.value")
         print(row.value)
@@ -323,13 +256,8 @@ class SettingsBasicInfoTableViewController : FormViewController {
         //row.value = 0 as AnyObject
         row.value = currentUser?.preferredSubjects[0] as AnyObject?
         
-        
-        
         section3.rows.append(row)
 
-        
-       
-        
         let section4 = FormSectionDescriptor(headerTitle: "Description", footerTitle: nil)
         row = FormRowDescriptor(tag: Static.textView, type: .multilineText, title: "About Me")
        // row.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.5)
@@ -369,9 +297,9 @@ class SettingsBasicInfoTableViewController : FormViewController {
                 print("got snapshot")
                 
                 let value = snapshot.value as? NSDictionary
-                print(value?["name"] as? String)
-                print(value?["password"] as? String)
-                print(value?["email"] as? String)
+                print(value?["name"] as? String ?? "")
+                print(value?["password"] as? String ?? "")
+                print(value?["email"] as? String ?? "")
                 print(value?["isTutor"] as? Bool)
                 if let name = value?["name"] as? String,
                 let password = value?["password"] as? String,
@@ -433,25 +361,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
                     self.displayAlert("Success!", message: "Your settings have been updated")
                     self.goBackToSettings()
                     
-                /*self.ref.child("users").child(userID!).setValue(["zipcode": zipcode,
-                      "schoolName": schoolName,
-                      "phone": phone,
-                      "gender": gender,
-                      "grade": grade,
-                      "preferredSubject": preferredSubject,
-                      "description": description,
-                      "email": email,
-                      "password": password,
-                      "isTutor": isTutor,
-                      "name": name], withCompletionBlock: { (error, ref) in
-                        print("before error nil")
-                        if error == nil {
-                            print("error=nil")
-                            
-                        } else /*if error != nil*/{
-                            self.displayAlert("Error", message: (error?.localizedDescription)!)
-                        }
-                }) *///self.ref.child("users").child(userID!).observeSingleEvent
+                //self.ref.child("users").child(userID!).observeSingleEvent
             } //if let zipcode = self.form.sections[0].rows[0].value,
                 //let schoolName = self.form.sections[1].rows[0].value,
 
