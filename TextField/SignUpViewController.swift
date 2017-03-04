@@ -149,6 +149,7 @@ class SignUpViewController: UIViewController {
 
     }
     
+    
     func createAccount() {
         if emailField.text == "" || nameField.text == "" || passwordField.text == "" || confirmPasswordField.text == "" {
             displayAlert("Error", message: "Please complete all fields")

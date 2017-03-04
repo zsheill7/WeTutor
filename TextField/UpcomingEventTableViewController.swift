@@ -57,6 +57,7 @@ struct DeviceType
 var eventList = [eventItem]()
 
 
+
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -77,7 +78,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     
-
+    var eventStore: EKEventStore!
     
     @IBOutlet weak var nagivationItem: UINavigationItem!
     //@IBOutlet weak var table: UITableView!
@@ -92,6 +93,17 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    
+    
+    @IBAction func addEvent(_ sender: Any) {
+        let addController = EKEventEditViewController()
+        
+        // Set addController's event store to the current event store
+        addController.eventStore = eventStore!
+        addController.editViewDelegate = self
+        self.present(addController, animated: true, completion: nil)
+        
+    }
     
     
     
@@ -221,7 +233,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }*/
     
         // EKEventStore instance associated with the current Calendar application
-    var eventStore: EKEventStore!
+    
     
     // Default calendar associated with the above event store
     var defaultCalendar: EKCalendar!
@@ -230,7 +242,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var eventsList: [EKEvent] = []
     
     // Used to add events to Calendar
-    @IBOutlet weak var addButton: UIBarButtonItem!
+   // @IBOutlet weak var addButton: UIBarButtonItem!
     
     
     //MARK: -
@@ -239,10 +251,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the event store
-        self.eventStore = EKEventStore()
+        eventStore = EKEventStore()
         // Initialize the events list
         // The Add button is initially disabled
-        self.addButton.isEnabled = false
+      //  self.addButton.isEnabled = false
     }
     
     
@@ -313,7 +325,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     // Prompt the user for access to their Calendar
     private func requestCalendarAccess() {
-        self.eventStore.requestAccess(to: .event) {[weak self] granted, error in
+        eventStore.requestAccess(to: .event) {[weak self] granted, error in
             if granted {
                 // Let's ensure that our code will be executed from the main queue
                 DispatchQueue.main.async {
@@ -328,9 +340,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     // This method is called when the user has granted permission to Calendar
     private func accessGrantedForCalendar() {
         // Let's get the default calendar associated with our event store
-        self.defaultCalendar = self.eventStore.defaultCalendarForNewEvents
+        self.defaultCalendar = eventStore.defaultCalendarForNewEvents
         // Enable the Add button
-        self.addButton.isEnabled = true
+       // self.addButton.isEnabled = true
         // Fetch all events happening in the next 24 hours and put them into eventsList
         self.eventsList = self.fetchEvents()
         // Update the UI with the above events
@@ -355,12 +367,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let calendarArray: [EKCalendar] = [self.defaultCalendar]
         
         // Create the predicate
-        let predicate = self.eventStore.predicateForEvents(withStart: startDate,
+        let predicate = eventStore.predicateForEvents(withStart: startDate,
                                                            end: endDate,
                                                            calendars: calendarArray)
         
         // Fetch all events that match the predicate
-        let events = self.eventStore.events(matching: predicate)
+        let events = eventStore.events(matching: predicate)
         
         return events
     }
@@ -376,7 +388,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let addController = EKEventEditViewController()
         
         // Set addController's event store to the current event store
-        addController.eventStore = self.eventStore!
+        addController.eventStore = eventStore!
         addController.editViewDelegate = self
         self.present(addController, animated: true, completion: nil)
     }

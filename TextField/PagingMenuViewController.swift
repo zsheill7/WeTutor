@@ -86,7 +86,8 @@ private enum MenuSection {
 
 
 
-class PagingMenuViewController: UIViewController, EKEventEditViewDelegate  {
+class PagingMenuViewController: UIViewController  {
+    
     var options: PagingMenuControllerCustomizable!
     var menuView: BTNavigationDropdownMenu!
     
@@ -154,12 +155,7 @@ class PagingMenuViewController: UIViewController, EKEventEditViewDelegate  {
         let controller = storyboard.instantiateViewController(withIdentifier: "addEventNC") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
         */
-        let addController = EKEventEditViewController()
         
-        // Set addController's event store to the current event store
-        addController.eventStore = self.eventStore!
-        addController.editViewDelegate = self
-        self.present(addController, animated: true, completion: nil)
     }
     
     func createDropdown() {
