@@ -9,6 +9,8 @@ import PagingMenuController
 import BTNavigationDropdownMenu
 import FirebaseAuth
 import Firebase
+import EventKit
+import EventKitUI
 
 extension UIApplication {
     class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
@@ -84,7 +86,7 @@ private enum MenuSection {
 
 
 
-class PagingMenuViewController: UIViewController {
+class PagingMenuViewController: UIViewController, EKEventEditViewDelegate  {
     var options: PagingMenuControllerCustomizable!
     var menuView: BTNavigationDropdownMenu!
     
@@ -148,9 +150,16 @@ class PagingMenuViewController: UIViewController {
     }
     
     func addEvent() {
-        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "addEventNC") as! UINavigationController
         self.present(controller, animated: true, completion: nil)
+        */
+        let addController = EKEventEditViewController()
+        
+        // Set addController's event store to the current event store
+        addController.eventStore = self.eventStore!
+        addController.editViewDelegate = self
+        self.present(addController, animated: true, completion: nil)
     }
     
     func createDropdown() {

@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SCLAlertView
+import EventKit
+import EventKitUI
 
 struct properties {
     static let pickerEvents = [
@@ -66,23 +68,33 @@ extension UIViewController {
     }
     
 }
-class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDataSource, FSCalendarDelegate {
+class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDataSource, FSCalendarDelegate, EKEventEditViewDelegate {
     /*@available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         <#code#>
     }*/
+    
+    
+    
+    
 
     
     @IBOutlet weak var nagivationItem: UINavigationItem!
-    @IBOutlet weak var table: UITableView!
+    //@IBOutlet weak var table: UITableView!
   
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    
   // let dateFormatter = DateFormatter()
     fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         return formatter
     }()
+    
+    
+    
     
     var instruments:[String] = []
     var ensembles:[String] = []
@@ -128,7 +140,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }
     
     
-    override func viewDidLoad() {
+    /*override func viewDidLoad() {
         super.viewDidLoad()
          //dateFormatter.dateFormat = "YYYY/MM/DD"
         //animateTable()
@@ -206,503 +218,197 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.view.endEditing(true)
         
         
-    }
-    /*func refresh(sender:AnyObject) {
-       // reloadTableData()
-    }*/
-    func refresh(_ sender: AnyObject) {
-        
-    }
-    
-    /*func reloadTableData() {
-        print("inside reload table")
-        let query1 = PFUser.query()
-        
-        if let split = self.splitViewController {
-            let controllers = split.viewControllers
-            self.detailVC = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
-        
-        query1?.findObjectsInBackgroundWithBlock({ (objects, error) in
-            if objects != nil {
-                self.events.removeAll(keepCapacity: true)
-                
-            }
-            
-            if let isAdmin = self.user!["isAdmin"] as? Bool {
-            
-                let marchingQuery = PFQuery(className: "Event")
-                
-                
-                let userInstrument = PFUser.currentUser()!["marchingInstrument"] as! String
-           
-                
-                
-                if isAdmin == false  {
-                    marchingQuery.whereKey("instrument", equalTo: userInstrument)
-                    marchingQuery.whereKey("ensemble", equalTo: "Marching Band")
-                
-                
-                marchingQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
-                    
-                    if let objects = objects {
-                        print("inside if let objects")
-                        
-                        for object in objects {
-                            //seeing if the ensemble is "Marching Band"
-                            
-                            //print((object["instrument"] as! String) + userInstrument)
-                            
-                            
-                            //let ensembleCount = object["ensemble"].count
-                            
-                            var instrumentMatch = false
-                            self.instruments = object["instrument"] as! [String]
-                            let instrumentCount = self.instruments.count
-                            
-                            var instrumentMatchIndex = 0
-                            
-                            if  instrumentCount > 1 {
-                                for (index, instrumentString) in self.instruments.enumerate() {
-                                    if instrumentString == userInstrument {
-                                        instrumentMatch = true
-                                        instrumentMatchIndex = index
-                                    }
-                                }
-                            }
-                            
-                            var eventInstrument = ""
-                            if isAdmin == false{
-                                eventInstrument = self.instruments[instrumentMatchIndex]
-                            } else {
-                                
-                            }
-                      
-                           
-                            let newEvent: eventItem = eventItem(title: object["title"] as! String, date: object["date"] as! NSDate, description: object["description"] as! String, instrument: self.instruments[instrumentMatchIndex] , ensemble: "Marching Band", willRepeat: object["willRepeat"] as! Bool, UUID: object["UUID"] as! String, objectID: object.objectId!)
-                            
-                            
-                            self.events.append(newEvent)
-                            
-                            self.table.reloadData()
-                            
-                        }
-                    }
-                }) } else {
-                    
-                    marchingQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
-                        
-                        if let objects = objects {
-                            
-                            for object in objects {
-                                
-                                self.instruments = object["instrument"] as! [String]
-                                
-                                let newEvent: eventItem = eventItem(title: object["title"] as! String, date: object["date"] as! NSDate, description: object["description"] as! String, instrument: self.instruments[0] , ensemble: "Marching Band", willRepeat: object["willRepeat"] as! Bool, UUID: object["UUID"] as! String, objectID: object.objectId!)
-                                
-                                
-                                self.events.append(newEvent)
-                                
-                                self.table.reloadData()
-                                
-                            }
-                        }
-                    })
-                }
-            }
-            
-            let concertQuery = PFQuery(className: "Event")
-            
-            let userConcertInstrument = PFUser.currentUser()!["concertInstrument"] as! String
-            
-            if let isAdmin = self.user!["isAdmin"] as? Bool {
-                
-                if isAdmin == false  {
-                    concertQuery.whereKey("instrument", equalTo: userConcertInstrument)
-                    concertQuery.whereKey("ensemble", notEqualTo: "Marching Band")
-                
-                
-                concertQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
-                    
-                    if let objects = objects {
-                        
-                        for object in objects {
-                            //seeing if the ensemble is "Marching Band"
-                            
-                            //print((object["instrument"] as! String) + userInstrument)
-                            
-                        
-                            
-                           
-                            
-                            var instrumentMatch = false
-                            var ensembleMatch = false
-                            self.instruments = object["instrument"] as! [String]
-                            self.ensembles = object["ensemble"] as! [String]
-                            let instrumentCount = self.instruments.count
-                            let ensembleCount = self.ensembles.count
-                            
-                            var instrumentMatchIndex = 0
-                            var ensembleMatchIndex = 0
-                            let userInstrument = PFUser.currentUser()!["marchingInstrument"] as! String
-                            let userEnsemble = PFUser.currentUser()!["concertBandType"] as! String
-                            
-                            if  instrumentCount > 1 {
-                                for (index, instrumentString) in self.instruments.enumerate() {
-                                    if instrumentString == userInstrument {
-                                        instrumentMatch = true
-                                        instrumentMatchIndex = index
-                                    }
-                                }
-                            }
-                            
-                            if ensembleCount > 1 {
-                                for (index, ensembleString) in self.ensembles.enumerate() {
-                                    if ensembleString == userEnsemble {
-                                        ensembleMatch = true
-                                        ensembleMatchIndex = index
-                                    }
-                                }
-                            }
-                            
-                            let newEvent: eventItem = eventItem(title: object["title"] as! String, date: object["date"] as! NSDate, description: object["description"] as! String, instrument: self.instruments[instrumentMatchIndex], ensemble: self.ensembles[ensembleMatchIndex], willRepeat: object["willRepeat"] as! Bool, UUID: object["UUID"] as! String, objectID: object.objectId!)
-                            
-                            self.events.append(newEvent)
-                            
-                            self.events = self.events.sort({$0.date.compare($1.date) == .OrderedAscending})
-                            self.table.reloadData()
-                            
-                            
-                        }
-                    }
-                }) } else {
-                    concertQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
-                        
-                        if let objects = objects {
-                            
-                            for object in objects {
-                                
-                                self.instruments = object["instrument"] as! [String]
-                                
-                                let newEvent: eventItem = eventItem(title: object["title"] as! String, date: object["date"] as! NSDate, description: object["description"] as! String, instrument: self.instruments[0] , ensemble: "Marching Band", willRepeat: object["willRepeat"] as! Bool, UUID: object["UUID"] as! String, objectID: object.objectId!)
-                                
-                                
-                                self.events.append(newEvent)
-                                
-                                self.table.reloadData()
-                                
-                            }
-                        }
-                    })
-                }
-            }
-            
-            
-            
-            
-        })
-
-        refresher.endRefreshing()
     }*/
     
- 
-    @IBAction func addEvent(sender: AnyObject) {
-        
-        
-       /* if let isSectionLeader = user!["isSectionLeader"] as? Bool {
-            if isSectionLeader == true {
-                let segueString = "sectionLeaderAdd"
-                self.performSegue(withIdentifier: segueString, sender: self)
-                
-            } else if let isAdmin = user!["isAdmin"] as? Bool {
-                if isAdmin == true {
-                    let segueString = "adminAdd"
-                    self.performSegueWithIdentifier(segueString, sender: self)
-                    
-                } else {
-                    self.displayAlert("Permission Required", message: "You need to be a section leader or administrator to add events")
-                    
-                }
-                
-            }
-        }*/
-        
-        
-        
-        
-        
-        
-        
-        
+        // EKEventStore instance associated with the current Calendar application
+    var eventStore: EKEventStore!
+    
+    // Default calendar associated with the above event store
+    var defaultCalendar: EKCalendar!
+    
+    // Array of all events happening within the next 24 hours
+    var eventsList: [EKEvent] = []
+    
+    // Used to add events to Calendar
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    
+    //MARK: -
+    //MARK: View lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Initialize the event store
+        self.eventStore = EKEventStore()
+        // Initialize the events list
+        // The Add button is initially disabled
+        self.addButton.isEnabled = false
     }
     
-   
+    
     override func viewDidAppear(_ animated: Bool) {
-        table.reloadData()
-    }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.viewDidAppear(animated)
+        // Check whether we are authorized to access Calendar
+        self.checkEventStoreAccessForCalendar()
     }
     
-
+    
+    // This method is called when the user selects an event in the table view. It configures the destination
+    // event view controller with this event.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEventViewController" {
+            // Configure the destination event view controller
+            let eventViewController = segue.destination as! EKEventViewController
+            // Fetch the index path associated with the selected event
+            let indexPath = self.tableView.indexPathForSelectedRow
+            // Set the view controller to display the selected event
+            eventViewController.event = self.eventsList[(indexPath?.row)!]
+            
+            // Allow event editing
+            eventViewController.allowsEditing = true
+        }
+    }
+    
+    
+    //MARK: -
+    //MARK: Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return self.eventsList.count
     }
     
-
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath as IndexPath) as! eventCell
         
-        //print(eventList[indexPath.row])
-        cell.eventTitle.text = events[indexPath.row].title + " ~ " + events[indexPath.row].instrument
-        cell.eventDate.text = events[indexPath.row].getDateString()
-        cell.eventDescription.text = events[indexPath.row].description
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         
-        
+        // Get the event at the row selected and display its title
+        cell.textLabel!.text = self.eventsList[indexPath.row].title
         return cell
+    }
+    
+    
+    //MARK: -
+    //MARK: Access Calendar
+    
+    // Check the authorization status of our application for Calendar
+    private func checkEventStoreAccessForCalendar() {
+        let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
+        
+        switch status {
+        // Update our UI if the user has granted access to their Calendar
+        case .authorized: self.accessGrantedForCalendar()
+        // Prompt the user for access to Calendar if there is no definitive answer
+        case .notDetermined: self.requestCalendarAccess()
+        // Display a message if the user has denied or restricted access to Calendar
+        case .denied, .restricted:
+            let alertController = UIAlertController(title: "Privacy Warning", message: "Permission was not granted for Calendar", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: {action in})
+            alertController.addAction(defaultAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    // Prompt the user for access to their Calendar
+    private func requestCalendarAccess() {
+        self.eventStore.requestAccess(to: .event) {[weak self] granted, error in
+            if granted {
+                // Let's ensure that our code will be executed from the main queue
+                DispatchQueue.main.async {
+                    // The user has granted access to their Calendar; let's populate our UI with all events occuring in the next 24 hours.
+                    self?.accessGrantedForCalendar()
+                }
+            }
+        }
+    }
+    
+    
+    // This method is called when the user has granted permission to Calendar
+    private func accessGrantedForCalendar() {
+        // Let's get the default calendar associated with our event store
+        self.defaultCalendar = self.eventStore.defaultCalendarForNewEvents
+        // Enable the Add button
+        self.addButton.isEnabled = true
+        // Fetch all events happening in the next 24 hours and put them into eventsList
+        self.eventsList = self.fetchEvents()
+        // Update the UI with the above events
+        self.tableView.reloadData()
+    }
+    
+    
+    //MARK: -
+    //MARK: Fetch events
+    
+    // Fetch all events happening in the next 24 hours
+    private func fetchEvents() -> [EKEvent] {
+        let startDate = Date()
+        
+        //Create the end date components
+        var tomorrowDateComponents = DateComponents()
+        tomorrowDateComponents.day = 1
+        
+        let endDate = Calendar.current.date(byAdding: tomorrowDateComponents,
+                                            to: startDate)!
+        // We will only search the default calendar for our events
+        let calendarArray: [EKCalendar] = [self.defaultCalendar]
+        
+        // Create the predicate
+        let predicate = self.eventStore.predicateForEvents(withStart: startDate,
+                                                           end: endDate,
+                                                           calendars: calendarArray)
+        
+        // Fetch all events that match the predicate
+        let events = self.eventStore.events(matching: predicate)
+        
+        return events
+    }
+    
+    
+    //MARK: -
+    //MARK: Add a new event
+    
+    // Display an event edit view controller when the user taps the "+" button.
+    // A new event is added to Calendar when the user taps the "Done" button in the above view controller.
+    func addEvent() {
+        // Create an instance of EKEventEditViewController
+        let addController = EKEventEditViewController()
+        
+        // Set addController's event store to the current event store
+        addController.eventStore = self.eventStore!
+        addController.editViewDelegate = self
+        self.present(addController, animated: true, completion: nil)
+    }
+    
+    
+    //MARK: -
+    //MARK: EKEventEditViewDelegate
+    
+    // Overriding EKEventEditViewDelegate method to update event store according to user actions.
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+        // Dismiss the modal view controller
+        self.dismiss(animated: true) {[weak self] in
+            if action != .canceled {
+                DispatchQueue.main.async {
+                    // Re-fetch all events happening in the next 24 hours
+                    self?.eventsList = self!.fetchEvents()
+                    // Update the UI with the above events
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    
+    // Set the calendar edited by EKEventEditViewController to our chosen calendar - the default calendar.
+    func eventEditViewControllerDefaultCalendar(forNewEvents controller: EKEventEditViewController) -> EKCalendar {
+        return self.defaultCalendar
+    }
+    
+}
 
-    }
-    
-    
-    
-   /* func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }*/
-    
-    
-    
- 
-    
-    func tableView(tableView: UITableView, didSelectRowAt indexPath: NSIndexPath) {
-        if !(DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO) {
-            self.performSegue(withIdentifier: "showDetail", sender: self)
-        }
-    }
-    
-
-    
-    
-   
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        /*
-        print("in delete")
-        
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            
-            if user!["isSectionLeader"] as! Bool == false && user!["isAdmin"] as! Bool == false {
-                displayAlert("Unable to Delete", message: "You must be a section leader or admin to delete events")
-            } else {
-            
-            activityIndicator = UIActivityIndicatorView(frame: self.view.frame)
-            activityIndicator.backgroundColor = UIColor(white: 1, alpha: 0.5)
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-            
-            print("in else")
-    
-                /*let postACL: ParseACL  = ParseACL(PFUser.currentUser())
-                postACL.setPublicReadAccess(true);
-                postACL.setPublicWriteAccess(true);*/
-                
-            if events[indexPath.row].willRepeat == false {
-                
-                view.addSubview(activityIndicator)
-                activityIndicator.startAnimating()
-                UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-                print("near query")
-                let query = PFQuery(className: "Event")
-                query.whereKey("objectId", equalTo: events[indexPath.row].objectID)
-                query.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) in
-                    if error == nil {
-                        print("in query")
-                        print(objects!.count)
-                        for object in objects! {
-                            print("in objects")
-                            object.deleteInBackgroundWithBlock({ (success, error) in
-                                if (success) {
-                                    print("success")
-                                    self.events.removeAtIndex(indexPath.row)
-                                    self.table.reloadData()
-                                    self.reloadTableData()
-                                } else {
-                                    print("unable to delete")
-                                }
-                            })
-                        }
-                    } else {
-                        print(error)
-                    }
-                })
-                
-                
-                
-               //
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                self.activityIndicator.stopAnimating()
-            } else /*if events[indexPath.row].willRepeat == true*/{
-                let alert = UIAlertController(title: "Delete Repeating Events", message: "Do you want to only delete this event or delete all events in this series?", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Just this event", style: UIAlertActionStyle.Default, handler: { (action) in
-                    
-                    self.view.addSubview(self.activityIndicator)
-                    self.activityIndicator.startAnimating()
-                    UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-                    
-                    let query = PFQuery(className: "Event")
-                    
-                    query.whereKey("objectId", equalTo: self.events[indexPath.row].objectID)
-                    query.findObjectsInBackgroundWithBlock({ (objects, error) in
-                        if error == nil {
-                            for object in objects! {
-                                object.deleteInBackground()
-                            }
-                        } else {
-                            print(error)
-                        }
-                    })
-                    self.events.removeAtIndex(indexPath.row)
-                    self.table.reloadData()
-                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                    self.activityIndicator.stopAnimating()
-                }))
-                alert.addAction(UIAlertAction(title: "All events in series", style: UIAlertActionStyle.Default, handler: { (action) in
-                    
-                    self.view.addSubview(self.activityIndicator)
-                    self.activityIndicator.startAnimating()
-                    UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-                    
-                    let query = PFQuery(className: "Event")
-                    let currentUUID = self.events[indexPath.row].UUID
-                    
-                    query.whereKey("UUID", equalTo: currentUUID)
-                    query.findObjectsInBackgroundWithBlock({ (objects, error) in
-                        if error == nil {
-                            for object in objects! {
-                                object.deleteInBackground()
-                            }
-                            
-                            
-                            UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                            self.activityIndicator.stopAnimating()
-                        } else {
-                            print(error)
-                        }
-                    })
-                    
-                    for event in self.events {
-                        if event.UUID == currentUUID {
-                            self.events.removeAtIndex(self.events.indexOf({ (event) -> Bool in
-                                return true
-                            })!)
-                        }
-                    }
-                    //self.reloadTableData()
-                    self.table.reloadData()
-                    
-                }))
-                alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) in
-                    
-                }))
-                self.presentViewController(alert, animated: true, completion: nil)
-            
-            }
-            
-            
-            //NSUserDefaults.standardUserDefaults().setObject(eventList, forKey: "eventList")
-            table.reloadData()
-            }
-        }*/
-    }
-    
-    
-    
-    @IBAction func pickerSelect(sender: UIBarButtonItem) {
-        picker.isHidden ? openPicker() : closePicker()
-    }
-    
-    
-   /* func createPicker()
-    {
-        picker.frame = self.pickerFrame!
-        picker.alpha = 0
-        picker.isHidden = true
-        picker.isUserInteractionEnabled = true
-        
-        var offset = 18
-        
-        for (index, event) in memberPickerEvents.enumerate()
-        {
-            let button = UIButton()
-            
-            button.frame = CGRect(x: 0, y: offset, width: 200, height: 40)
-            button.setTitleColor(event["color"] as? UIColor, forState: .Normal)
-            button.setTitleColor(UIColor.blueColor(), forState: .Highlighted)
-            button.setTitle(event["title"] as? String, forState: .Normal)
-            button.tag = index
-            
-            button.userInteractionEnabled = true
-            
-            button.addTarget(self, action: #selector(BarcodeTableViewController.pickerButtonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-            
-            picker.addSubview(button)
-            
-            
-            offset += 44
-            
-        }
-        view.addSubview(picker)
-        
-    }*/
-    
-    func openPicker()
-    {
-        self.picker.isHidden = false
-        
-        UIView.animate(withDuration: 0.3) {
-            self.picker.frame = self.pickerFrame!
-            self.picker.alpha = 1
-        }
-    }
-    
-    
-    
-    func closePicker()
-    {
-        UIView.animate(withDuration: 0.3,
-                                   animations: {
-                                    self.picker.frame = self.pickerFrame!
-                                    self.picker.alpha = 0
-            },
-                                   completion: { finished in
-                                    self.picker.isHidden = true
-            }
-        )
-    }
-    
-    func pickerButtonTapped(sender: UIButton!) {
-        
-        closePicker()
-        if sender.tag == 0 {
-            print("here")
-            
-            self.performSegue(withIdentifier: "goToSettings", sender: self)
-        } else if sender.tag == 1 {
-            
-            
-                       self.performSegue(withIdentifier: "goToAboutUs", sender: self)
-        } else if sender.tag == 2 {
-            
-                       self.performSegue(withIdentifier: "toEmailVC", sender: self)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+   /* override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         closePicker()
     }
     
@@ -743,8 +449,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             delayCounter += 1
         }
         
-    }
+    }*/
 
 
 
-}
+
