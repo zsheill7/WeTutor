@@ -15,7 +15,7 @@ let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImage {
     
-    func loadImageUsingCacheWithUrlString(_ urlString: String) {
+    /*func loadImageUsingCacheWithUrlString(_ urlString: String) {
         
         self.image = nil
         
@@ -45,7 +45,7 @@ extension UIImage {
             })
             
         }).resume()
-    }
+    }*/
     func imageResize (_ sizeChange:CGSize)-> UIImage{
         
         let hasAlpha = true

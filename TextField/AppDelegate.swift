@@ -49,6 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfilePictureViewController") as! UIViewController
+        window?.rootViewController = viewController*/
+
+        
         // iOS 10 support
         if #available(iOS 10.0, *) {
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]

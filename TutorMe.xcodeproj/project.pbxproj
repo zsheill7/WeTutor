@@ -99,6 +99,7 @@
 		C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */; };
 		C8F668CC1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */; };
 		C8F668CE1E6D31D500D9DC53 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CD1E6D31D500D9DC53 /* Message.swift */; };
+		C8F668D01E6DC4AC00D9DC53 /* UserCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -232,6 +233,7 @@
 		C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePictureViewController+handlers.swift"; sourceTree = "<group>"; };
 		C8F668CD1E6D31D500D9DC53 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = "../../Xcode projects/TutorMe/TextField/Message.swift"; sourceTree = "<group>"; };
+		C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellTwo.swift; sourceTree = "<group>"; };
 		E32F40C5AE612C64AD0FDBC9 /* Pods_TutorMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TutorMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -359,6 +361,7 @@
 			children = (
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
 				C838A9491E1B6E32004A794C /* UserCell.swift */,
+				C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */,
 				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
 				C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */,
 			);
@@ -716,6 +719,7 @@
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
 				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
+				C8F668D01E6DC4AC00D9DC53 /* UserCellTwo.swift in Sources */,
 				C8338B391E63DFC300202E3A /* eventItem.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
 				C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */,

@@ -14,6 +14,14 @@ import SCLAlertView
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+let animalImageNames = ["Crab Icon.jpg", "Doge Icon.jpg", "Penguin Icon.jpg",
+                        "Owl Icon.jpg", "Dino Icon.jpg", "Flamingo Icon.jpg"]
+let subjectImageNames = ["japanese": "Japanese Icon.jpg", "spanish":  "Spanish Icon.jpg",
+                        "chinese": "Chinese Icon.jpg", "german": "German Icon.jpg",
+                        "french": "French Icon.jpg", "latin": "Latin Icon.jpg",
+                        "chemistry": "Chemistry Icon.jpg", "math": "Math Icon.jpg",
+                        "physics": "Phys Icon.jpg", "biology": "Bio Icon.jpg"]
+
 extension UIView {
     func addBackground(_ imageName: String) {
         // screen width and height:
@@ -215,9 +223,12 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                 } else {
                     if (user != nil) {
                         let uid = user?.uid as String!
+                        let animalIndex =  Int(arc4random_uniform(6) + 1)
+                        let profileImage = UIImage(named: animalImageNames[animalIndex])
                         
                         let userInfo = ["name": user?.displayName, "email": user?.email]
                         FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
+                        self.setProfileImage(profileImage: profileImage!)
                         self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
                     }
                 }
@@ -240,6 +251,39 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
              {
              // Do work
              }*/
+        }
+        
+    }
+    
+    func setProfileImage(profileImage: UIImage) {
+        let imageName = UUID().uuidString
+        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
+        
+        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+        let usersRef = FIRDatabase.database().reference().child("users")
+        
+       
+        if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+            
+            storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    
+                    if currentUserUID != nil {
+                        usersRef.child(currentUserUID!).child("profileImageURL").setValue(profileImageUrl)
+                        print("set image")
+                    }
+                    //let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
+                    //self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                }
+            })
+        } else {
+            "if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) { returned false"
         }
         
     }

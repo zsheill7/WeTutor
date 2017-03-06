@@ -150,7 +150,13 @@ class LoginViewController: UIViewController {
                         
                         // ...
                     }) { (error) in
-                        self.displayAlert("Error", message: error.localizedDescription)
+                        let noInternetError = "Network error (such as timeout, interrupted connection or unreachable host) has occurred."
+                        var errorMessage = error.localizedDescription
+                        if error.localizedDescription == noInternetError {
+                            errorMessage = "Please check your internet connection and try again later."
+                        }
+                        
+                        self.displayAlert("Unable to Log In", message: errorMessage)
                         
                     }
                     

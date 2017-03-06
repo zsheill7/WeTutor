@@ -40,7 +40,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changePhoto)))
         imageView.isUserInteractionEnabled = true
         
         return imageView
@@ -55,7 +55,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
     }
     
-    func fetchCurrentUser() {
+    /*func fetchCurrentUser() {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
@@ -87,7 +87,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
             }
             
         }, withCancel: nil)
-    }
+    }*/
 
     
     
@@ -99,9 +99,9 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
             let value = snapshot.value as? NSDictionary
             let profile = value?["profileImageURL"]
            // let user = User.init(username: username)
-            if profile != nil {
+            if let newProfile = profile as? Data {
                 
-                if let downloadedImage = UIImage(data: profile!) {
+                if let downloadedImage = UIImage(data: newProfile as! Data) {
                     self.profileImage.image = downloadedImage
                 }
                 print("inside block 1")
@@ -138,7 +138,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
             /*contentViewColor: UIColor.alertViewBlue()*/)
         let alert = SCLAlertView(appearance: appearance)
-        let emailTextField = alert.addTextField("Email")
+        //let emailTextField = alert.addTextField("Email")
         
         /*_ = alert.addButton("Show Name") {
          print("Text value: \(txt.text)")
@@ -147,24 +147,24 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         
         
         let choosePhotoButton = alert.addButton("Choose From Photo Library") {
-            self.pickedBarcodeImage.delegate = self
-            self.pickedBarcodeImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            self.pickedBarcodeImage.allowsEditing = false
+            self.pickedProfileImage.delegate = self
+            self.pickedProfileImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.pickedProfileImage.allowsEditing = false
             
-            self.present(self.pickedBarcodeImage, animated: true, completion: nil)
+            self.present(self.pickedProfileImage, animated: true, completion: nil)
         }
         
         let takePhotoButton = alert.addButton("Take Photo") {
             
-            self.pickedBarcodeImage.delegate = self
-            self.pickedBarcodeImage.sourceType = UIImagePickerControllerSourceType.camera
-            self.pickedBarcodeImage.allowsEditing = false
+            self.pickedProfileImage.delegate = self
+            self.pickedProfileImage.sourceType = UIImagePickerControllerSourceType.camera
+            self.pickedProfileImage.allowsEditing = false
             
-            self.present(self.pickedBarcodeImage, animated: true, completion: nil)
+            self.present(self.pickedProfileImage, animated: true, completion: nil)
             
             
-            SCLAlertView().showInfo("Error", subTitle: "Please enter a valid email.")
-            SCLAlertView().showInfo("Success!", subTitle: "Password reset email sent.")
+            /*SCLAlertView().showInfo("Error", subTitle: "Please enter a valid email.")
+            SCLAlertView().showInfo("Success!", subTitle: "Password reset email sent.")*/
             
         }
         let closeButton = alert.addButton("Cancel") {

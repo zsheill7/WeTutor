@@ -90,7 +90,15 @@ class FriendSystem {
                 completion(true)
             } else {
                 // Failure
-                self.displayAlert("Unable to Sign Up", message: (error?.localizedDescription)!)
+                print("error?.localizedDescription111")
+                print(error?.localizedDescription)
+                let noInternetError = "Network error (such as timeout, interrupted connection or unreachable host) has occurred."
+                var errorMessage = error?.localizedDescription
+                if error?.localizedDescription == noInternetError {
+                    errorMessage = "Please check your internet connection and try again later."
+                }
+                
+                self.displayAlert("Unable to Sign Up", message: (errorMessage)!)
                 completion(false)
             }
             
