@@ -37,6 +37,7 @@ struct User {
     var channels: [Channel]
     let weekDayString: String
     let friends: [String: Bool]
+    var profileImageUrl: String?
     /*
      
      uid
@@ -205,6 +206,12 @@ struct User {
             friends = userFriends
         } else {
             friends = [String:Bool]()
+        }
+        
+        if let profileImage = snapshotValue?["profileImageURL"] as? String {
+            self.profileImageUrl = profileImage
+        } else {
+            self.profileImageUrl = ""
         }
                 /*if let userGrade = snapshotValue?["grade"] as? String {
             grade = userGrade

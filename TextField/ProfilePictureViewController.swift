@@ -3,7 +3,6 @@
 //  TutorMe
 //
 //  Created by Zoe on 3/5/17.
-//  Copyright © 2017 CosmicMind. All rights reserved.
 //
 
 import UIKit
@@ -11,22 +10,22 @@ import SCLAlertView
 import FirebaseDatabase
 import FirebaseAuth
 
-class ProfilePictureViewController: UIViewController {
+class ProfilePictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var user = FIRAuth.auth()?.currentUser
     
-    let pickedBarcodeImage = UIImagePickerController()
+    let pickedProfileImage = UIImagePickerController()
     
-    @IBOutlet weak var barcodeImage: UIImageView!
+    @IBOutlet weak var profileImage: UIImageView!
     
     func displayAlert(title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
     }
     
-    
+    let ref = FIRDatabase.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addSubview(profileImageView)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,8 +34,87 @@ class ProfilePictureViewController: UIViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if let imageFile = user!["barcode"] {
+    lazy var profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "blue icon")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfileImageView)))
+        imageView.isUserInteractionEnabled = true
+        
+        return imageView
+    }()
+    
+    func setupProfileImageView() {
+        //need x, y, width, height constraints
+        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        //profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+    }
+    
+    func fetchCurrentUser() {
+        FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                let userID = FIRAuth.auth()?.currentUser?.uid
+                ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    // Get user value
+                    let value = snapshot.value as? NSDictionary
+                    let profileImageURL = value?["profileImageURL"] as? String ?? ""
+                   // let user = User.init(username: username)
+                    
+                    // ...
+                    if profileImageURL  != nil {
+                        cell.profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+                //if you use this setter, your app will crash if your class properties don't exactly match up with the firebase dictionary keys
+                user.setValuesForKeys(dictionary)
+                self.users.append(user)
+                
+                //this will crash because of background thread, so lets use dispatch_async to fix
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+                
+                //                user.name = dictionary["name"]
+            }
+            
+        }, withCancel: nil)
+    }
+
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let profile = value?["profileImageURL"]
+           // let user = User.init(username: username)
+            if profile != nil {
+                
+                if let downloadedImage = UIImage(data: profile!) {
+                    self.profileImage.image = downloadedImage
+                }
+                print("inside block 1")
+                
+            }
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+        /*if let imageFile = user!["barcode"] {
             
             imageFile.getDataInBackgroundWithBlock({ (data, error) in
                 if let downloadedImage = UIImage(data: data!) {
@@ -45,7 +123,7 @@ class ProfilePictureViewController: UIViewController {
                 print("inside block 1")
                 
             })
-        }
+        }*/
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,7 +131,61 @@ class ProfilePictureViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func changePhoto(sender: AnyObject) {
+    func changePhoto() {
+
+        
+        
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
+            /*contentViewColor: UIColor.alertViewBlue()*/)
+        let alert = SCLAlertView(appearance: appearance)
+        let emailTextField = alert.addTextField("Email")
+        
+        /*_ = alert.addButton("Show Name") {
+         print("Text value: \(txt.text)")
+         }*/
+        
+        
+        
+        let choosePhotoButton = alert.addButton("Choose From Photo Library") {
+            self.pickedBarcodeImage.delegate = self
+            self.pickedBarcodeImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            self.pickedBarcodeImage.allowsEditing = false
+            
+            self.present(self.pickedBarcodeImage, animated: true, completion: nil)
+        }
+        
+        let takePhotoButton = alert.addButton("Take Photo") {
+            
+            self.pickedBarcodeImage.delegate = self
+            self.pickedBarcodeImage.sourceType = UIImagePickerControllerSourceType.camera
+            self.pickedBarcodeImage.allowsEditing = false
+            
+            self.present(self.pickedBarcodeImage, animated: true, completion: nil)
+            
+            
+            SCLAlertView().showInfo("Error", subTitle: "Please enter a valid email.")
+            SCLAlertView().showInfo("Success!", subTitle: "Password reset email sent.")
+            
+        }
+        let closeButton = alert.addButton("Cancel") {
+            print("close")
+            
+        }
+        
+        //presentViewController(alertController, animated: true, completion: nil)
+        
+        /*_ = alert.addButton("Cancel") {
+         print("Second button tapped")
+         }*/
+        _ = alert.showInfo("Change Profile Photo", subTitle:"")
+        //emailButton.backgroundColor = UIColor.alertViewBlue()
+        //closeButton.backgroundColor = UIColor.alertViewBlue()
+        //emailTextField.borderColor = UIColor.alertViewBlue()
+        
+    }
+    
+    
+    /*@IBAction func changePhoto(sender: AnyObject) {
         if #available(iOS 8.0, *) {
             let alertController = UIAlertController(title: "Choose Photo", message: "", preferredStyle: .ActionSheet)
             let choosePhoto = UIAlertAction(title: "Choose from Photo Library", style: .Default) { (_) in
@@ -89,10 +221,10 @@ class ProfilePictureViewController: UIViewController {
         }
         
         
-    }
+    }*/
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    /*func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.dismiss(animated: true, completion: nil)
         
         
         
@@ -130,7 +262,7 @@ class ProfilePictureViewController: UIViewController {
                 print("Couldn't create imagefile")
             }
         }
-    }
+    }*/
 
 
 }
