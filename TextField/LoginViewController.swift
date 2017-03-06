@@ -81,15 +81,11 @@ class LoginViewController: UIViewController {
                 let value = snapshot.value as? NSDictionary
                 let isTutor = value?["isTutor"] as? Bool
                 if isTutor != nil {
-                    if isTutor == true {
-                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuVC") as! PagingMenuViewController
-                        self.present(viewController, animated: true, completion: nil)
-                    } else {
-                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
-                        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuVC") as! PagingMenuViewController
-                        self.present(viewController, animated: true, completion: nil)
-                    }
+                    
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuVC") as! PagingMenuViewController
+                    self.present(viewController, animated: true, completion: nil)
+                   
                 }
                 
                 // ...

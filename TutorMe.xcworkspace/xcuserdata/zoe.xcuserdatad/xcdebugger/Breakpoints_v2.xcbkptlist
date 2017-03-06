@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/LoginViewController.swift"
-            timestampString = "509096195.198033"
+            timestampString = "510443072.023332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "logIn()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/MoreInfoViewController.swift"
-            timestampString = "509777127.046354"
+            timestampString = "510387854.219725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/TutorSignUpViewControllerOne.swift"
-            timestampString = "509742862.736982"
+            timestampString = "510387854.219725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "loadForm()"
             landmarkType = "7">
             <Locations>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TextField/TutorSignUpViewControllerOne.swift"
-            timestampString = "509742862.736982"
+            timestampString = "510387854.219725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "383"
-            endingLineNumber = "383"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
             landmarkName = "loadForm()"
             landmarkType = "7">
             <Locations>
@@ -287,6 +287,20 @@
             endingLineNumber = "300"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TextField/ProfilePictureViewController.swift"
+            timestampString = "510455527.125796"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

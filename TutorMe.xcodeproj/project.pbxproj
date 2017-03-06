@@ -94,6 +94,9 @@
 		C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE884E1E0DB144003775C2 /* FSCalendarStickyHeader.m */; };
 		C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88501E0DB144003775C2 /* FSCalendarWeekdayView.m */; };
 		C8F668C31E6B479F00D9DC53 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */; };
+		C8F668C51E6B85E400D9DC53 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */; };
+		C8F668C71E6CB14000D9DC53 /* UserCellTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8F668C61E6CB14000D9DC53 /* UserCellTwo.xib */; };
+		C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -222,6 +225,9 @@
 		C8EE884F1E0DB144003775C2 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendarWeekdayView.h; path = FSCalendar/FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		C8EE88501E0DB144003775C2 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSCalendarWeekdayView.m; path = FSCalendar/FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		C8F668C61E6CB14000D9DC53 /* UserCellTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCellTwo.xib; sourceTree = "<group>"; };
+		C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		E32F40C5AE612C64AD0FDBC9 /* Pods_TutorMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TutorMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -350,6 +356,7 @@
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
 				C838A9491E1B6E32004A794C /* UserCell.swift */,
 				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
+				C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */,
 			);
 			name = "In Tutor Storyboard";
 			sourceTree = "<group>";
@@ -371,6 +378,7 @@
 				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
 				C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */,
+				C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */,
 			);
 			name = "In Main Storyboard";
 			sourceTree = "<group>";
@@ -487,6 +495,7 @@
 				C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */,
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 				C838A9471E1B46EC004A794C /* UserCell.xib */,
+				C8F668C61E6CB14000D9DC53 /* UserCellTwo.xib */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -619,6 +628,7 @@
 				C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */,
 				C838A9481E1B46EC004A794C /* UserCell.xib in Resources */,
 				C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */,
+				C8F668C71E6CB14000D9DC53 /* UserCellTwo.xib in Resources */,
 				C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */,
 				C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */,
 			);
@@ -701,6 +711,7 @@
 				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
 				C8338B391E63DFC300202E3A /* eventItem.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
+				C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
@@ -715,6 +726,7 @@
 				C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */,
 				C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */,
 				C81DA37A1E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m in Sources */,
+				C8F668C51E6B85E400D9DC53 /* CalendarViewController.swift in Sources */,
 				C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */,
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,

@@ -67,10 +67,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
      - Parameter result: The results of the login
      - Parameter error: The error (if any) from the login
      */
-    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        
-    }
-
+   
     fileprivate var nameField: TextField!
     fileprivate var emailField: ErrorTextField!
     fileprivate var passwordField: TextField!
@@ -106,13 +103,20 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if (FBSDKAccessToken.current() != nil)
         {
-            // User is already logged in, do work such as go to next view controller.
+            // User is already logged in     
+            print("(FBSDKAccessToken.current() != nil)")
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuVC") as! PagingMenuViewController
+            self.present(viewController, animated: true, completion: nil)
+
         }
         else
         {
+            print("create loginView")
             let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
-            loginView.center = self.view.center
+            let yValue = self.view.frame.height * 0.80
+            loginView.center = CGPoint(x: self.view.frame.width / 2, y: yValue)
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
         }
@@ -186,34 +190,61 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     }*/
     //MARK: Facebook SDK Default Signin
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User Logged In")
         
         if ((error) != nil)
         {
             // Process error
+            print("error1")
+            print(error)
         }
         else if result.isCancelled {
             // Handle cancellations
+            print("result was cancelled")
+            
         }
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            
+            print("after let credential")
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                 // ...
                 if let error = error {
                     // ...
                     return
+                } else {
+                    if (user != nil) {
+                        let uid = user?.uid as String!
+                        
+                        let userInfo = ["name": user?.displayName, "email": user?.email]
+                        FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
+                        self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
+                    }
                 }
             }
-            /*// If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
+            
+            /*FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
+                if (user != nil) {
+                    let uid = user?.uid as String!
+                    
+                    let userInfo = ["name": user?.displayName, "email": user?.email]
+                    FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
+                    self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
+                }
+                
             }*/
+            
+            /*// If you ask for multiple permissions at once, you
+             // should check if specific permissions missing
+             if result.grantedPermissions.contains("email")
+             {
+             // Do work
+             }*/
         }
+        
     }
+    
+  
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
