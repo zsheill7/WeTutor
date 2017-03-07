@@ -30,6 +30,7 @@ class MoreInfoViewController: UIViewController {
 
     @IBOutlet weak var submitRatingButton: UIButton!
     
+    @IBOutlet weak var profileImage: UIImageView!
     
     
      var UID: String!
@@ -51,7 +52,7 @@ class MoreInfoViewController: UIViewController {
         
         // Set the kerning to 1 to increase spacing between letters
        
-        for (index, subject) in destUser.preferredSubjects.enumerated() {
+       /* for (index, subject) in destUser.preferredSubjects.enumerated() {
             if index != (destUser.preferredSubjects.count - 1) {
                 preferredSubjectsString += "\(subject), "
             } else {
@@ -74,7 +75,7 @@ class MoreInfoViewController: UIViewController {
          descriptionLabel.text = destUser.description
         preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
         availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
-        nameLabel.text = "\(destUser.name)"
+        nameLabel.text = "\(destUser.name)"*/
         
     }
     

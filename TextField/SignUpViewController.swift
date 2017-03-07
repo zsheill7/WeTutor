@@ -149,6 +149,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         prepareNextButton()
         prepareForgotPasswordButton()
         prepareLoginButton()
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     func alreadySignedIn() {
@@ -225,7 +227,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                         let uid = user?.uid as String!
                         let animalIndex =  Int(arc4random_uniform(6) + 1)
                         let profileImage = UIImage(named: animalImageNames[animalIndex])
-                        
+                        print(profileImage)
                         let userInfo = ["name": user?.displayName, "email": user?.email]
                         FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
                         self.setProfileImage(profileImage: profileImage!)

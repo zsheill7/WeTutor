@@ -36,6 +36,7 @@
 		C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8BD1E19C4E1004A794C /* MapViewController.swift */; };
 		C838A9481E1B46EC004A794C /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C838A9471E1B46EC004A794C /* UserCell.xib */; };
 		C838A94A1E1B6E32004A794C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A9491E1B6E32004A794C /* UserCell.swift */; };
+		C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */; };
 		C86ACAF21E0E238300F6695E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ACAF11E0E238200F6695E /* LoginViewController.swift */; };
 		C86BCCBC1E12F6CA007D24F9 /* cells in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB61E12F6CA007D24F9 /* cells */; };
 		C86BCCBD1E12F6CA007D24F9 /* controllers in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB71E12F6CA007D24F9 /* controllers */; };
@@ -100,6 +101,7 @@
 		C8F668CC1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */; };
 		C8F668CE1E6D31D500D9DC53 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CD1E6D31D500D9DC53 /* Message.swift */; };
 		C8F668D01E6DC4AC00D9DC53 /* UserCellTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */; };
+		C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -152,6 +154,7 @@
 		C838A8BD1E19C4E1004A794C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C838A9471E1B46EC004A794C /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		C838A9491E1B6E32004A794C /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		C86ACAF11E0E238200F6695E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C86BCCB61E12F6CA007D24F9 /* cells */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cells; path = SwiftForms/cells; sourceTree = "<group>"; };
 		C86BCCB71E12F6CA007D24F9 /* controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = controllers; path = SwiftForms/controllers; sourceTree = "<group>"; };
@@ -234,6 +237,7 @@
 		C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePictureViewController+handlers.swift"; sourceTree = "<group>"; };
 		C8F668CD1E6D31D500D9DC53 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = "../../Xcode projects/TutorMe/TextField/Message.swift"; sourceTree = "<group>"; };
 		C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellTwo.swift; sourceTree = "<group>"; };
+		C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		E32F40C5AE612C64AD0FDBC9 /* Pods_TutorMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TutorMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -352,6 +356,8 @@
 				C82800D91E0EFD8B00329B7D /* StringExtensions.swift */,
 				C82800DB1E0EFD9700329B7D /* UIColorExtensions.swift */,
 				C82800DD1E0EFDAF00329B7D /* UIImageExtensions.swift */,
+				C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */,
+				C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
 				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
+				C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */,
 				C8F668D01E6DC4AC00D9DC53 /* UserCellTwo.swift in Sources */,
 				C8338B391E63DFC300202E3A /* eventItem.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
@@ -739,6 +746,7 @@
 				C81DA37A1E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m in Sources */,
 				C8F668C51E6B85E400D9DC53 /* CalendarViewController.swift in Sources */,
 				C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */,
+				C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */,
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
 				C8EE88531E0DB144003775C2 /* FSCalendarAnimator.m in Sources */,

@@ -7,8 +7,7 @@
 
 import UIKit
 import SCLAlertView
-import FirebaseDatabase
-import FirebaseAuth
+import Firebase
 
 class ProfilePictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -102,10 +101,14 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
             if let newProfile = profile as? Data {
                 
                 if let downloadedImage = UIImage(data: newProfile as! Data) {
-                    self.profileImage.image = downloadedImage
+                   // self.profileImage.image = downloadedImage
+                    self.profileImage.loadImageUsingCacheWithUrlString(profile as! String)
+              
                 }
                 print("inside block 1")
                 
+            } else {
+                print("if let newProfile = profile as? Data { returned false")
             }
             
             // ...

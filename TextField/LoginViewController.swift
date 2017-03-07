@@ -69,6 +69,8 @@ class LoginViewController: UIViewController {
         prepareNextButton()
         prepareForgotPasswordButton()
         prepareSignupButton()
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     func alreadySignedIn() {
