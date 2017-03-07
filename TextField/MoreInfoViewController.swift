@@ -32,6 +32,11 @@ class MoreInfoViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBOutlet weak var subjectsLabel: UILabel!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+   // @IBOutlet weak var weekDayView: UIScrollView!
     
      var UID: String!
     
@@ -49,6 +54,19 @@ class MoreInfoViewController: UIViewController {
         for view in backgroundColoredViews {
             view.backgroundColor = UIColor.clear
         }
+        
+        
+       /* form
+            
+            +++ Section("Available Days")
+            
+            
+            
+            <<< WeekDayRow("Available Days"){
+                $0.value = [.monday, .wednesday, .friday]
+                
+        }*/
+        
         
         // Set the kerning to 1 to increase spacing between letters
        
@@ -89,6 +107,8 @@ class MoreInfoViewController: UIViewController {
         
        
     }
+    
+
     
     
     @IBAction func callNumber(_ sender: Any) {

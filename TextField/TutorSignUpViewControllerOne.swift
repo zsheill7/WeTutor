@@ -140,6 +140,15 @@ class TutorSignUpViewControllerOne : FormViewController {
         self.loadForm()
     }
     
+    override func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -150,6 +159,8 @@ class TutorSignUpViewControllerOne : FormViewController {
         
         self.view.addBlueBackground("mixed2")
         //self.view.addBackground("book.png")
+        
+        self.hideKeyboardWhenTappedAround()
         
     }
    /* override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

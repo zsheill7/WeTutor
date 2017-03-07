@@ -16,12 +16,22 @@ class TutorSignUpViewControllerTwo : FormViewController {
     let secondLanguages = ["None", "English", "Spanish", "French", "Chinese", "Other"]
 
   
+    override func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     var ref: FIRDatabaseReference!
     
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
         self.tableView?.addBlueBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         let availabilityInfo: String = ""

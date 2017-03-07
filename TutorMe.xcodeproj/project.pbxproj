@@ -37,6 +37,7 @@
 		C838A9481E1B46EC004A794C /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C838A9471E1B46EC004A794C /* UserCell.xib */; };
 		C838A94A1E1B6E32004A794C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A9491E1B6E32004A794C /* UserCell.swift */; };
 		C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */; };
+		C84F18031E6F129300EC54BF /* WeekDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18021E6F129300EC54BF /* WeekDaysCell.swift */; };
 		C86ACAF21E0E238300F6695E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86ACAF11E0E238200F6695E /* LoginViewController.swift */; };
 		C86BCCBC1E12F6CA007D24F9 /* cells in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB61E12F6CA007D24F9 /* cells */; };
 		C86BCCBD1E12F6CA007D24F9 /* controllers in Resources */ = {isa = PBXBuildFile; fileRef = C86BCCB71E12F6CA007D24F9 /* controllers */; };
@@ -155,6 +156,7 @@
 		C838A9471E1B46EC004A794C /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		C838A9491E1B6E32004A794C /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		C84F18021E6F129300EC54BF /* WeekDaysCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDaysCell.swift; sourceTree = "<group>"; };
 		C86ACAF11E0E238200F6695E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C86BCCB61E12F6CA007D24F9 /* cells */ = {isa = PBXFileReference; lastKnownFileType = folder; name = cells; path = SwiftForms/cells; sourceTree = "<group>"; };
 		C86BCCB71E12F6CA007D24F9 /* controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = controllers; path = SwiftForms/controllers; sourceTree = "<group>"; };
@@ -366,8 +368,6 @@
 			isa = PBXGroup;
 			children = (
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
-				C838A9491E1B6E32004A794C /* UserCell.swift */,
-				C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */,
 				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
 				C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */,
 			);
@@ -511,6 +511,9 @@
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 				C838A9471E1B46EC004A794C /* UserCell.xib */,
 				C8F668C61E6CB14000D9DC53 /* UserCellTwo.xib */,
+				C84F18021E6F129300EC54BF /* WeekDaysCell.swift */,
+				C838A9491E1B6E32004A794C /* UserCell.swift */,
+				C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				C8F668CE1E6D31D500D9DC53 /* Message.swift in Sources */,
 				C87984971E0C763F003EB7A1 /* PagingMenuControllerOptions.swift in Sources */,
 				C8BD683E1E36F4FC0028EC37 /* ChannelListViewController.swift in Sources */,
+				C84F18031E6F129300EC54BF /* WeekDaysCell.swift in Sources */,
 				C890A09C1E27FDDC007DE45D /* ChatViewController.swift in Sources */,
 				C827B4C81E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift in Sources */,
 				C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */,
