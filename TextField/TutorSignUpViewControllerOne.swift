@@ -190,7 +190,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         
         let form = FormDescriptor(title: "Example Form")
         
-        var row = FormRowDescriptor(tag: Static.emailTag, type: .email, title: "Email")
+        var row = FormRowDescriptor(tag: Static.emailTag, type: .name, title: "Email")
         
         
         
@@ -204,7 +204,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         
         let section2 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
-        row = FormRowDescriptor(tag: Static.schoolTag, type: .url, title: "School Name")
+        row = FormRowDescriptor(tag: Static.schoolTag, type: .name, title: "School Name")
         row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Mercer Island High School" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
         section2.rows.append(row)
         

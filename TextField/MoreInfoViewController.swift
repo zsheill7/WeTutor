@@ -36,12 +36,21 @@ class MoreInfoViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var containerView: UIView!
    // @IBOutlet weak var weekDayView: UIScrollView!
     
      var UID: String!
     
     var availableDaysString = ""
     var preferredSubjectsString = ""
+    
+    func loadFromNibNamed(nibNamed: String, bundle : Bundle? = nil) -> UIView? {
+        return UINib(
+            nibName: nibNamed,
+            bundle: bundle
+            ).instantiate(withOwner: nil, options: nil)[0] as? UIView
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +63,11 @@ class MoreInfoViewController: UIViewController {
         for view in backgroundColoredViews {
             view.backgroundColor = UIColor.clear
         }
+       /* let viewFromNib: UIView? = Bundle.main.loadNibNamed("NibName",
+                                                            owner: nil,
+                                                            options: nil)?.first
         
-        
+       containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDaysCell*/
        /* form
             
             +++ Section("Available Days")
@@ -156,18 +168,20 @@ class MoreInfoViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case "presentMapViewController":
-            guard let navigationController = segue.destination as? UINavigationController,
-                let mapViewController = navigationController.topViewController as? MapViewController else {
-                    fatalError("Unexpected view hierarchy")
+        if segue.identifier != nil {
+            switch segue.identifier! {
+            case "presentMapViewController":
+                guard let navigationController = segue.destination as? UINavigationController,
+                    let mapViewController = navigationController.topViewController as? MapViewController else {
+                        fatalError("Unexpected view hierarchy")
+                }
+                print( CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude)))
+                mapViewController.locationToShow =             CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude))
+                mapViewController.title = destUser.name
+           
+            default:
+                fatalError("Unhandled Segue: \(segue.identifier!)")
             }
-            print( CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude)))
-            mapViewController.locationToShow =             CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude))
-            mapViewController.title = destUser.name
-       
-        default:
-            fatalError("Unhandled Segue: \(segue.identifier!)")
         }
     }
 }
