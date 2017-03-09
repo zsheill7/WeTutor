@@ -11,6 +11,6 @@
 	<key>IssueFilterStyle</key>
 	<string>ShowActiveSchemeOnly</string>
 	<key>LiveSourceIssuesEnabled</key>
-	<true/>
+	<false/>
 </dict>
 </plist>

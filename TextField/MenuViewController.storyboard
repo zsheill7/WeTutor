@@ -20,9 +20,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="lML-7H-Vko">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="Cell" rowHeight="161" id="wY2-HC-tDQ" customClass="UserCellTwo" customModule="TutorMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="161"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="161"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wY2-HC-tDQ" id="2rA-PJ-Y0K">
                                     <rect key="frame" x="0.0" y="0.0" width="308" height="160"/>
@@ -94,6 +99,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="dropdownView" destination="lML-7H-Vko" id="5VT-9U-nmE"/>
                         <segue destination="ciN-Cm-s6F" kind="show" identifier="toChatVC" id="YE7-Xe-CKl"/>
                         <segue destination="6W2-gH-bYd" kind="show" identifier="toMoreInfoVC" id="9V9-0u-1OV"/>
                     </connections>
@@ -928,7 +934,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjq-bt-aFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1249" y="994"/>
+            <point key="canvasLocation" x="1353" y="1017"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WWm-e3-vKv">

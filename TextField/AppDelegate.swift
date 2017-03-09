@@ -11,6 +11,7 @@ import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
 import FBSDKCoreKit
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,13 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        DropDown.startListeningToKeyboard()
+        
        /* let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfilePictureViewController") as! UIViewController
         window?.rootViewController = viewController*/
 
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "MoreInfoViewControllerTest") as! UIViewController
-        window?.rootViewController = viewController
+        window?.rootViewController = viewController*/
        
         
         // iOS 10 support

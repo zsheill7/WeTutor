@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import CoreLocation
 import SCLAlertView
+import DropDown
 
 class TutorTableViewCell: UITableViewCell {
     
@@ -44,6 +45,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     var destinationUser: User!
     var currentUser: User?
     
+    @IBOutlet weak var dropdownView: UIView?
+    
     fileprivate var channelRefHandle: FIRDatabaseHandle?
     fileprivate var channels: [Channel] = []
     var tutorName: String = "Chat"
@@ -68,21 +71,48 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! TutorsTableViewController
     }
     
-    
+    var dropDown: DropDown?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dbRef = FIRDatabase.database().reference().child("users")
+        userRef = FIRDatabase.database().reference().child("users")
+
+        
+        dropDown = DropDown()
+        
+        // The view to which the drop down will appear on
+        dropDown?.anchorView = dropdownView // UIView or UIBarButtonItem
+        dropDown?.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+            guard let cell = cell as? SubjectCell else { return }
+            
+            // Setup your custom UI components
+            cell.subjectLabel.text = subjectNames[index]
+            cell.subjectImage.image = subjectImages[index]
+        }
+        // The list of items to display. Can be changed dynamically
+        dropDown?.dataSource = subjectNames//preferredSubj
+        dropDown?.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
+        dropDown?.show()
         
         
+        /*let query = userRef.queryOrdered(byChild: "preferredSubject").queryEqualToValue(true)
+        query.observeEventType(.value, withBlock: { (snapshot) in
+            for childSnapshot in snapshot.children {
+                print(childSnapshot)
+            }
+        })
         
+        
+        dropDown?.selectionAction = { [unowned self] (index: Int, item: String) in
+            print("Selected item: \(item) at index: \(index)")
+        }*/
        
         // self.view.addBackground(imageName: "mixed2")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        dbRef = FIRDatabase.database().reference().child("users")
-        userRef = FIRDatabase.database().reference().child("users")
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+                // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         FriendSystem.system.getCurrentUser { (user) in
            self.currentUser = user

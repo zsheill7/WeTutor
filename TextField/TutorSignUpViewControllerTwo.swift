@@ -95,10 +95,14 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                    //
                     var weekDayString = ""
+                    var weekDayArray:[Bool] = []
                     let weekDayCell = WeekDayCell()
                     if daysValue != nil {
                         weekDayString = weekDayCell.getStringFromArray(daysValue!)
+                        weekDayArray = weekDayCell.getBoolArrayFromArray(daysValue!)
                         print("daysValue: " + weekDayString)
+                    } else {
+                        print( "if daysValue == nil" )
                     }
                     
                     
@@ -141,6 +145,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     if let user = FIRAuth.auth()?.currentUser {
                         self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
+                        self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
                         self.ref.child("users/\(user.uid)/languages").setValue(languages)
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
                         

@@ -23,4 +23,5 @@ use_frameworks!
  pod 'SwiftForms'
  pod 'NVActivityIndicatorView'
  pod 'DZNEmptyDataSet'
+ pod 'DropDown'
 end

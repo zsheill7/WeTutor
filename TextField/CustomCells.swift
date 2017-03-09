@@ -43,6 +43,8 @@ open class WeekDayCell : Cell<Set<WeekDay>>, CellType {
     @IBOutlet var fridayButton: UIButton!
     @IBOutlet var saturdayButton: UIButton!
         //higg
+    
+   
     open override func setup() {
         height = { 60 }
         row.title = nil
@@ -126,6 +128,32 @@ open class WeekDayCell : Cell<Set<WeekDay>>, CellType {
         weekDayString = weekDayString.substring(to: weekDayString.index(before: weekDayString.endIndex))
     
         return weekDayString
+    }
+    
+    func getBoolArrayFromArray(_ array: Set<WeekDay>) -> [Bool] {
+        var weekDayArray: [Bool] = [false,false,false,false,false,false,false]
+        for weekDay in array {
+            switch weekDay{
+            case .sunday:
+                weekDayArray[0] = true
+            case .monday:
+                weekDayArray[1] = true
+            case .tuesday:
+                weekDayArray[2] = true
+            case .wednesday:
+                weekDayArray[3] = true
+            case .thursday:
+                weekDayArray[4] = true
+            case .friday:
+                weekDayArray[5] = true
+            default:
+                weekDayArray[6] = true
+            }
+            
+        }
+        //weekDayString = weekDayString.substring(to: weekDayString.index(before: weekDayString.endIndex))
+        
+        return weekDayArray
     }
     
     
