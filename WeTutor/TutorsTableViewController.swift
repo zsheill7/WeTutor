@@ -45,7 +45,11 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     var destinationUser: User!
     var currentUser: User?
     
-    @IBOutlet weak var dropdownView: UIView?
+   // @IBOutlet weak var dropdownView: UIView!
+    
+    @IBOutlet weak var dropdownButton: UIButton!
+    
+   
     
     fileprivate var channelRefHandle: FIRDatabaseHandle?
     fileprivate var channels: [Channel] = []
@@ -82,17 +86,23 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         dropDown = DropDown()
         
         // The view to which the drop down will appear on
-        dropDown?.anchorView = dropdownView // UIView or UIBarButtonItem
+        dropDown?.anchorView = dropdownButton // UIView or UIBarButtonItem
         dropDown?.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? SubjectCell else { return }
             
             // Setup your custom UI components
-            cell.subjectLabel.text = subjectNames[index]
-            cell.subjectImage.image = subjectImages[index]
+            let currentSubject = subjectNames[index]
+            cell.subjectLabel.text = currentSubject
+            let imageName: String = subjectImageNames[currentSubject]!
+            cell.subjectImage.image = UIImage(named: "\(imageName)")
         }
         // The list of items to display. Can be changed dynamically
         dropDown?.dataSource = subjectNames//preferredSubj
         dropDown?.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
+        dropDown?.selectionAction = { [unowned self] (index, item) in
+            self.dropdownButton.setTitle(item, for: .normal)
+        }
+        
         dropDown?.show()
         
         
@@ -367,7 +377,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 161.0
     }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellTwo {
        /* let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserCell
         
         print("in cell for row")
@@ -381,10 +391,10 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
 
         return cell*/
         // Create cell
-        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellTwo
         if cell == nil {
-            tableView.register(UINib(nibName: "UserCell", bundle: nil), forCellReuseIdentifier: "UserCell")
-            cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell
+            tableView.register(UINib(nibName: "UserCellTwo", bundle: nil), forCellReuseIdentifier: "UserCell")
+            cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellTwo
         }
         /*print("Name: \(FriendSystem.system.userList[indexPath.row].name)")
         print("School: \(FriendSystem.system.userList[indexPath.row].school)")

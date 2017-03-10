@@ -3,6 +3,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - DropDown (2)
   - DZNEmptyDataSet (1.8.1)
   - Eureka (2.0.0-beta.1)
   - Firebase/Auth (3.12.0):
@@ -79,6 +80,7 @@ PODS:
 DEPENDENCIES:
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - DropDown
   - DZNEmptyDataSet
   - Eureka (~> 2.0.0-beta.1)
   - Firebase/Auth
@@ -120,6 +122,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
   Firebase: 8e99eb1ff553ad5bcc6072cc3d925bb89c1244d6
@@ -145,6 +148,6 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftForms: 3f3dbaa79fe54eb1ccd0aca8d0cd1e38eb00537e
 
-PODFILE CHECKSUM: 1240da31198bb015a2068f99e75305fb0fde9001
+PODFILE CHECKSUM: 414b1a6ebc524cff88fe68a8c461b32a6405f5f8
 
-COCOAPODS: 1.2.0.beta.3
+COCOAPODS: 1.2.0
