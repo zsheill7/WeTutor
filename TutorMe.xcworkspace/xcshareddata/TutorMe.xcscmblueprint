@@ -11,7 +11,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3F0D8117-F391-4A0C-A0A8-E81E849FA78D",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "ACF8F1237734A49D241FCB4D91E095D2B03F97FD" : "MIBandApp-master\/",
-    "6AC4C831A6FEC85A592DA9ADF4B00F1BCAC48185" : "TutorMe\/",
+    "6AC4C831A6FEC85A592DA9ADF4B00F1BCAC48185" : "WeTutor\/",
     "34C8B44AE0F4A64E1A449DEFB5BACF72F7207D76" : "TutorMe\/Pods\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "TutorMe",

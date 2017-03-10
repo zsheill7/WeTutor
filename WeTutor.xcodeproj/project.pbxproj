@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18B5C49AFA2A076AD1009440 /* Pods_TutorMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F40C5AE612C64AD0FDBC9 /* Pods_TutorMe.framework */; };
+		18B5C49AFA2A076AD1009440 /* Pods_WeTutor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F40C5AE612C64AD0FDBC9 /* Pods_WeTutor.framework */; };
 		96090AE81D9CDD2E00709CA6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */; };
 		96090AEA1D9CDD2E00709CA6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96090AE91D9CDD2E00709CA6 /* SignUpViewController.swift */; };
 		96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */; };
@@ -125,16 +125,16 @@
 
 /* Begin PBXFileReference section */
 		2C0795EA5FC191C95C70C6CF /* Pods-TextField.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextField.release.xcconfig"; path = "Pods/Target Support Files/Pods-TextField/Pods-TextField.release.xcconfig"; sourceTree = "<group>"; };
-		4E890B62C5C4984F8E35F824 /* Pods-TutorMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TutorMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-TutorMe/Pods-TutorMe.release.xcconfig"; sourceTree = "<group>"; };
+		4E890B62C5C4984F8E35F824 /* Pods-WeTutor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeTutor.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor.release.xcconfig"; sourceTree = "<group>"; };
 		928FC51B6AE8ACDCE5CB3BE0 /* Pods-TextField.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TextField.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TextField/Pods-TextField.debug.xcconfig"; sourceTree = "<group>"; };
-		96090AE41D9CDD2E00709CA6 /* TutorMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TutorMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		96090AE41D9CDD2E00709CA6 /* WeTutor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeTutor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96090AE91D9CDD2E00709CA6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		96090AEE1D9CDD2E00709CA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96090AF11D9CDD2E00709CA6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96090AF31D9CDD2E00709CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B62CCD5A010F1F7EC99019 /* Pods_TextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5875EC10C650ED442BE78C5 /* Pods-TutorMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TutorMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TutorMe/Pods-TutorMe.debug.xcconfig"; sourceTree = "<group>"; };
+		C5875EC10C650ED442BE78C5 /* Pods-WeTutor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeTutor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor.debug.xcconfig"; sourceTree = "<group>"; };
 		C81DA3781E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		C81DA3791E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 		C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventViewController.swift; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
-		C8EE882E1E0DB08C003775C2 /* TutorMe-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TutorMe-Bridging-Header.h"; sourceTree = "<group>"; };
+		C8EE882E1E0DB08C003775C2 /* WeTutor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeTutor-Bridging-Header.h"; sourceTree = "<group>"; };
 		C8EE88311E0DB144003775C2 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendar.h; path = FSCalendar/FSCalendar.h; sourceTree = "<group>"; };
 		C8EE88321E0DB144003775C2 /* FSCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSCalendar.m; path = FSCalendar/FSCalendar.m; sourceTree = "<group>"; };
 		C8EE88331E0DB144003775C2 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FSCalendar+Deprecated.m"; path = "FSCalendar/FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
@@ -247,10 +247,10 @@
 		C8F668C61E6CB14000D9DC53 /* UserCellTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCellTwo.xib; sourceTree = "<group>"; };
 		C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePictureViewController+handlers.swift"; sourceTree = "<group>"; };
-		C8F668CD1E6D31D500D9DC53 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = "../../Xcode projects/TutorMe/WeTutor/Message.swift"; sourceTree = "<group>"; };
+		C8F668CD1E6D31D500D9DC53 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = "../../Xcode projects/WeTutor/WeTutor/Message.swift"; sourceTree = "<group>"; };
 		C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellTwo.swift; sourceTree = "<group>"; };
 		C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
-		E32F40C5AE612C64AD0FDBC9 /* Pods_TutorMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TutorMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E32F40C5AE612C64AD0FDBC9 /* Pods_WeTutor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeTutor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,7 +260,7 @@
 			files = (
 				C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */,
 				C8F668C31E6B479F00D9DC53 /* FBSDKCoreKit.framework in Frameworks */,
-				18B5C49AFA2A076AD1009440 /* Pods_TutorMe.framework in Frameworks */,
+				18B5C49AFA2A076AD1009440 /* Pods_WeTutor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +273,7 @@
 				B8B62CCD5A010F1F7EC99019 /* Pods_TextField.framework */,
 				C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */,
 				C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */,
-				E32F40C5AE612C64AD0FDBC9 /* Pods_TutorMe.framework */,
+				E32F40C5AE612C64AD0FDBC9 /* Pods_WeTutor.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -281,7 +281,7 @@
 		96090ADB1D9CDD2E00709CA6 = {
 			isa = PBXGroup;
 			children = (
-				96090AE61D9CDD2E00709CA6 /* TutorMe */,
+				96090AE61D9CDD2E00709CA6 /* WeTutor */,
 				C879844F1E0B9781003EB7A1 /* UITests */,
 				96090AE51D9CDD2E00709CA6 /* Products */,
 				C87984B21E0D013A003EB7A1 /* GoogleService-Info.plist */,
@@ -294,12 +294,12 @@
 		96090AE51D9CDD2E00709CA6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				96090AE41D9CDD2E00709CA6 /* TutorMe.app */,
+				96090AE41D9CDD2E00709CA6 /* WeTutor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		96090AE61D9CDD2E00709CA6 /* TutorMe */ = {
+		96090AE61D9CDD2E00709CA6 /* WeTutor */ = {
 			isa = PBXGroup;
 			children = (
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
@@ -319,7 +319,6 @@
 				C81DA3771E3E897200CB15A8 /* Empty Data Set */,
 				C86BCCC11E12F6D6007D24F9 /* SwiftForms */,
 			);
-			name = TutorMe;
 			path = WeTutor;
 			sourceTree = "<group>";
 		};
@@ -328,8 +327,8 @@
 			children = (
 				928FC51B6AE8ACDCE5CB3BE0 /* Pods-TextField.debug.xcconfig */,
 				2C0795EA5FC191C95C70C6CF /* Pods-TextField.release.xcconfig */,
-				C5875EC10C650ED442BE78C5 /* Pods-TutorMe.debug.xcconfig */,
-				4E890B62C5C4984F8E35F824 /* Pods-TutorMe.release.xcconfig */,
+				C5875EC10C650ED442BE78C5 /* Pods-WeTutor.debug.xcconfig */,
+				4E890B62C5C4984F8E35F824 /* Pods-WeTutor.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -536,7 +535,7 @@
 		C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */ = {
 			isa = PBXGroup;
 			children = (
-				C8EE882E1E0DB08C003775C2 /* TutorMe-Bridging-Header.h */,
+				C8EE882E1E0DB08C003775C2 /* WeTutor-Bridging-Header.h */,
 				C8EE88311E0DB144003775C2 /* FSCalendar.h */,
 				C8EE88321E0DB144003775C2 /* FSCalendar.m */,
 				C8EE88331E0DB144003775C2 /* FSCalendar+Deprecated.m */,
@@ -576,9 +575,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		96090AE31D9CDD2E00709CA6 /* TutorMe */ = {
+		96090AE31D9CDD2E00709CA6 /* WeTutor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "TutorMe" */;
+			buildConfigurationList = 96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "WeTutor" */;
 			buildPhases = (
 				6099C8DF19EA89AE80F6B37F /* [CP] Check Pods Manifest.lock */,
 				96090AE01D9CDD2E00709CA6 /* Sources */,
@@ -592,9 +591,9 @@
 			);
 			dependencies = (
 			);
-			name = TutorMe;
+			name = WeTutor;
 			productName = WeTutor;
-			productReference = 96090AE41D9CDD2E00709CA6 /* TutorMe.app */;
+			productReference = 96090AE41D9CDD2E00709CA6 /* WeTutor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -623,7 +622,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "TutorMe" */;
+			buildConfigurationList = 96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "WeTutor" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -636,7 +635,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				96090AE31D9CDD2E00709CA6 /* TutorMe */,
+				96090AE31D9CDD2E00709CA6 /* WeTutor */,
 			);
 		};
 /* End PBXProject section */
@@ -684,7 +683,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TutorMe/Pods-TutorMe-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6099C8DF19EA89AE80F6B37F /* [CP] Check Pods Manifest.lock */ = {
@@ -714,7 +713,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TutorMe/Pods-TutorMe-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WeTutor/Pods-WeTutor-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -916,7 +915,7 @@
 		};
 		96090AF71D9CDD2E00709CA6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5875EC10C650ED442BE78C5 /* Pods-TutorMe.debug.xcconfig */;
+			baseConfigurationReference = C5875EC10C650ED442BE78C5 /* Pods-WeTutor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_MODULES = YES;
@@ -932,9 +931,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WeTutor.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/TutorMe-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/WeTutor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -943,7 +942,7 @@
 		};
 		96090AF81D9CDD2E00709CA6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E890B62C5C4984F8E35F824 /* Pods-TutorMe.release.xcconfig */;
+			baseConfigurationReference = 4E890B62C5C4984F8E35F824 /* Pods-WeTutor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_MODULES = YES;
@@ -959,9 +958,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WeTutor.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/TutorMe-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/WeTutor-Bridging-Header.h";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -970,7 +969,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "TutorMe" */ = {
+		96090ADF1D9CDD2E00709CA6 /* Build configuration list for PBXProject "WeTutor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96090AF41D9CDD2E00709CA6 /* Debug */,
@@ -979,7 +978,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "TutorMe" */ = {
+		96090AF61D9CDD2E00709CA6 /* Build configuration list for PBXNativeTarget "WeTutor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				96090AF71D9CDD2E00709CA6 /* Debug */,

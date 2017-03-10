@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "96090AE31D9CDD2E00709CA6"
-               BuildableName = "TutorMe.app"
-               BlueprintName = "TutorMe"
-               ReferencedContainer = "container:TutorMe.xcodeproj">
+               BuildableName = "WeTutor.app"
+               BlueprintName = "WeTutor"
+               ReferencedContainer = "container:WeTutor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96090AE31D9CDD2E00709CA6"
-            BuildableName = "TutorMe.app"
-            BlueprintName = "TutorMe"
-            ReferencedContainer = "container:TutorMe.xcodeproj">
+            BuildableName = "WeTutor.app"
+            BlueprintName = "WeTutor"
+            ReferencedContainer = "container:WeTutor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96090AE31D9CDD2E00709CA6"
-            BuildableName = "TutorMe.app"
-            BlueprintName = "TutorMe"
-            ReferencedContainer = "container:TutorMe.xcodeproj">
+            BuildableName = "WeTutor.app"
+            BlueprintName = "WeTutor"
+            ReferencedContainer = "container:WeTutor.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "96090AE31D9CDD2E00709CA6"
-            BuildableName = "TutorMe.app"
-            BlueprintName = "TutorMe"
-            ReferencedContainer = "container:TutorMe.xcodeproj">
+            BuildableName = "WeTutor.app"
+            BlueprintName = "WeTutor"
+            ReferencedContainer = "container:WeTutor.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
