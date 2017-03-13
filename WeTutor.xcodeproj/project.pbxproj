@@ -78,44 +78,6 @@
 		C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */; };
 		C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */; };
 		C8D9B8271E688BDF00EBDEA5 /* NativeEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */; };
-		C8E47F0C1E75D221009351C8 /* ButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EE81E75D221009351C8 /* ButtonRow.swift */; };
-		C8E47F0D1E75D221009351C8 /* ButtonRowWithPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EE91E75D221009351C8 /* ButtonRowWithPresent.swift */; };
-		C8E47F0E1E75D221009351C8 /* CheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EEA1E75D221009351C8 /* CheckRow.swift */; };
-		C8E47F0F1E75D221009351C8 /* DateFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EEC1E75D221009351C8 /* DateFieldRow.swift */; };
-		C8E47F111E75D221009351C8 /* DecimalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EEE1E75D221009351C8 /* DecimalFormatter.swift */; };
-		C8E47F121E75D221009351C8 /* FieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EEF1E75D221009351C8 /* FieldRow.swift */; };
-		C8E47F131E75D221009351C8 /* GenericMultipleSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EF01E75D221009351C8 /* GenericMultipleSelectorRow.swift */; };
-		C8E47F141E75D221009351C8 /* OptionsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EF11E75D221009351C8 /* OptionsRow.swift */; };
-		C8E47F151E75D221009351C8 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EF21E75D221009351C8 /* Protocols.swift */; };
-		C8E47F171E75D221009351C8 /* MultipleSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EF51E75D221009351C8 /* MultipleSelectorViewController.swift */; };
-		C8E47F181E75D221009351C8 /* SelectorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EF61E75D221009351C8 /* SelectorAlertController.swift */; };
-		C8E47F191E75D221009351C8 /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EF71E75D221009351C8 /* SelectorViewController.swift */; };
-		C8E47F1C1E75D221009351C8 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EFA1E75D221009351C8 /* DateRow.swift */; };
-		C8E47F1E1E75D221009351C8 /* LabelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47EFC1E75D221009351C8 /* LabelRow.swift */; };
-		C8E47F231E75D221009351C8 /* PopoverSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47F011E75D221009351C8 /* PopoverSelectorRow.swift */; };
-		C8E47F241E75D221009351C8 /* PushRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47F021E75D221009351C8 /* PushRow.swift */; };
-		C8E47F251E75D221009351C8 /* SegmentedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47F031E75D221009351C8 /* SegmentedRow.swift */; };
-		C8E47F291E75D221009351C8 /* SwitchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47F081E75D221009351C8 /* SwitchRow.swift */; };
-		C8E47F2A1E75D221009351C8 /* TextAreaRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47F091E75D221009351C8 /* TextAreaRow.swift */; };
-		C8E820E51E7539BB0039F613 /* BaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D11E7539BB0039F613 /* BaseRow.swift */; };
-		C8E820E61E7539BB0039F613 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D21E7539BB0039F613 /* Cell.swift */; };
-		C8E820E71E7539BB0039F613 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D31E7539BB0039F613 /* CellType.swift */; };
-		C8E820E91E7539BB0039F613 /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D51E7539BB0039F613 /* Form.swift */; };
-		C8E820EA1E7539BB0039F613 /* HeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D61E7539BB0039F613 /* HeaderFooterView.swift */; };
-		C8E820EB1E7539BB0039F613 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D71E7539BB0039F613 /* Helpers.swift */; };
-		C8E820EC1E7539BB0039F613 /* InlineRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D81E7539BB0039F613 /* InlineRowType.swift */; };
-		C8E820ED1E7539BB0039F613 /* NavigationAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820D91E7539BB0039F613 /* NavigationAccessoryView.swift */; };
-		C8E820EE1E7539BB0039F613 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820DA1E7539BB0039F613 /* Operators.swift */; };
-		C8E820EF1E7539BB0039F613 /* PresenterRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820DB1E7539BB0039F613 /* PresenterRowType.swift */; };
-		C8E820F01E7539BB0039F613 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820DC1E7539BB0039F613 /* Row.swift */; };
-		C8E820F11E7539BB0039F613 /* RowControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820DD1E7539BB0039F613 /* RowControllerType.swift */; };
-		C8E820F21E7539BB0039F613 /* RowProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820DE1E7539BB0039F613 /* RowProtocols.swift */; };
-		C8E820F31E7539BB0039F613 /* RowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820DF1E7539BB0039F613 /* RowType.swift */; };
-		C8E820F41E7539BB0039F613 /* SelectableRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820E01E7539BB0039F613 /* SelectableRowType.swift */; };
-		C8E820F51E7539BB0039F613 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820E11E7539BB0039F613 /* Section.swift */; };
-		C8E820F61E7539BB0039F613 /* SelectableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820E21E7539BB0039F613 /* SelectableSection.swift */; };
-		C8E820F71E7539BB0039F613 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820E31E7539BB0039F613 /* Validation.swift */; };
-		C8E820F91E7539F80039F613 /* ActionSheetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E820F81E7539F80039F613 /* ActionSheetRow.swift */; };
 		C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */; };
 		C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88321E0DB144003775C2 /* FSCalendar.m */; };
 		C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88331E0DB144003775C2 /* FSCalendar+Deprecated.m */; };
@@ -235,44 +197,6 @@
 		C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAvailabilityTableViewController.swift; sourceTree = "<group>"; };
 		C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventViewController.swift; sourceTree = "<group>"; };
-		C8E47EE81E75D221009351C8 /* ButtonRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRow.swift; sourceTree = "<group>"; };
-		C8E47EE91E75D221009351C8 /* ButtonRowWithPresent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRowWithPresent.swift; sourceTree = "<group>"; };
-		C8E47EEA1E75D221009351C8 /* CheckRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckRow.swift; sourceTree = "<group>"; };
-		C8E47EEC1E75D221009351C8 /* DateFieldRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFieldRow.swift; sourceTree = "<group>"; };
-		C8E47EEE1E75D221009351C8 /* DecimalFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecimalFormatter.swift; sourceTree = "<group>"; };
-		C8E47EEF1E75D221009351C8 /* FieldRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldRow.swift; sourceTree = "<group>"; };
-		C8E47EF01E75D221009351C8 /* GenericMultipleSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericMultipleSelectorRow.swift; sourceTree = "<group>"; };
-		C8E47EF11E75D221009351C8 /* OptionsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsRow.swift; sourceTree = "<group>"; };
-		C8E47EF21E75D221009351C8 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
-		C8E47EF51E75D221009351C8 /* MultipleSelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSelectorViewController.swift; sourceTree = "<group>"; };
-		C8E47EF61E75D221009351C8 /* SelectorAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorAlertController.swift; sourceTree = "<group>"; };
-		C8E47EF71E75D221009351C8 /* SelectorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
-		C8E47EFA1E75D221009351C8 /* DateRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateRow.swift; sourceTree = "<group>"; };
-		C8E47EFC1E75D221009351C8 /* LabelRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelRow.swift; sourceTree = "<group>"; };
-		C8E47F011E75D221009351C8 /* PopoverSelectorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverSelectorRow.swift; sourceTree = "<group>"; };
-		C8E47F021E75D221009351C8 /* PushRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushRow.swift; sourceTree = "<group>"; };
-		C8E47F031E75D221009351C8 /* SegmentedRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedRow.swift; sourceTree = "<group>"; };
-		C8E47F081E75D221009351C8 /* SwitchRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchRow.swift; sourceTree = "<group>"; };
-		C8E47F091E75D221009351C8 /* TextAreaRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAreaRow.swift; sourceTree = "<group>"; };
-		C8E820D11E7539BB0039F613 /* BaseRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BaseRow.swift; sourceTree = "<group>"; };
-		C8E820D21E7539BB0039F613 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Cell.swift; sourceTree = "<group>"; };
-		C8E820D31E7539BB0039F613 /* CellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CellType.swift; sourceTree = "<group>"; };
-		C8E820D51E7539BB0039F613 /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
-		C8E820D61E7539BB0039F613 /* HeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderFooterView.swift; sourceTree = "<group>"; };
-		C8E820D71E7539BB0039F613 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		C8E820D81E7539BB0039F613 /* InlineRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InlineRowType.swift; sourceTree = "<group>"; };
-		C8E820D91E7539BB0039F613 /* NavigationAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationAccessoryView.swift; sourceTree = "<group>"; };
-		C8E820DA1E7539BB0039F613 /* Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
-		C8E820DB1E7539BB0039F613 /* PresenterRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterRowType.swift; sourceTree = "<group>"; };
-		C8E820DC1E7539BB0039F613 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
-		C8E820DD1E7539BB0039F613 /* RowControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowControllerType.swift; sourceTree = "<group>"; };
-		C8E820DE1E7539BB0039F613 /* RowProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowProtocols.swift; sourceTree = "<group>"; };
-		C8E820DF1E7539BB0039F613 /* RowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowType.swift; sourceTree = "<group>"; };
-		C8E820E01E7539BB0039F613 /* SelectableRowType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableRowType.swift; sourceTree = "<group>"; };
-		C8E820E11E7539BB0039F613 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		C8E820E21E7539BB0039F613 /* SelectableSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableSection.swift; sourceTree = "<group>"; };
-		C8E820E31E7539BB0039F613 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
-		C8E820F81E7539F80039F613 /* ActionSheetRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionSheetRow.swift; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
 		C8EE882E1E0DB08C003775C2 /* WeTutor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeTutor-Bridging-Header.h"; sourceTree = "<group>"; };
 		C8EE88311E0DB144003775C2 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendar.h; path = FSCalendar/FSCalendar.h; sourceTree = "<group>"; };
@@ -371,8 +295,6 @@
 				C86BCCE41E136E58007D24F9 /* Chat */,
 				C87984AD1E0C7F4C003EB7A1 /* Xib Files */,
 				C8338AF71E620DEC00202E3A /* Storyboards */,
-				C8E820E41E7539BB0039F613 /* Core */,
-				C8E47EE51E75D221009351C8 /* Rows */,
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
 				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
 				C87984A81E0C76DD003EB7A1 /* In Paging Menu */,
@@ -585,83 +507,6 @@
 			name = "Xib Files";
 			sourceTree = "<group>";
 		};
-		C8E47EE51E75D221009351C8 /* Rows */ = {
-			isa = PBXGroup;
-			children = (
-				C8E47EE81E75D221009351C8 /* ButtonRow.swift */,
-				C8E47EE91E75D221009351C8 /* ButtonRowWithPresent.swift */,
-				C8E47EEA1E75D221009351C8 /* CheckRow.swift */,
-				C8E47EEB1E75D221009351C8 /* Common */,
-				C8E47EF41E75D221009351C8 /* Controllers */,
-				C8E47EFA1E75D221009351C8 /* DateRow.swift */,
-				C8E47EFC1E75D221009351C8 /* LabelRow.swift */,
-				C8E47F011E75D221009351C8 /* PopoverSelectorRow.swift */,
-				C8E47F021E75D221009351C8 /* PushRow.swift */,
-				C8E47F031E75D221009351C8 /* SegmentedRow.swift */,
-				C8E47F041E75D221009351C8 /* SelectableRows */,
-				C8E47F081E75D221009351C8 /* SwitchRow.swift */,
-				C8E47F091E75D221009351C8 /* TextAreaRow.swift */,
-			);
-			path = Rows;
-			sourceTree = "<group>";
-		};
-		C8E47EEB1E75D221009351C8 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				C8E47EEC1E75D221009351C8 /* DateFieldRow.swift */,
-				C8E47EEE1E75D221009351C8 /* DecimalFormatter.swift */,
-				C8E47EEF1E75D221009351C8 /* FieldRow.swift */,
-				C8E47EF01E75D221009351C8 /* GenericMultipleSelectorRow.swift */,
-				C8E47EF11E75D221009351C8 /* OptionsRow.swift */,
-				C8E47EF21E75D221009351C8 /* Protocols.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		C8E47EF41E75D221009351C8 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				C8E47EF51E75D221009351C8 /* MultipleSelectorViewController.swift */,
-				C8E47EF61E75D221009351C8 /* SelectorAlertController.swift */,
-				C8E47EF71E75D221009351C8 /* SelectorViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		C8E47F041E75D221009351C8 /* SelectableRows */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SelectableRows;
-			sourceTree = "<group>";
-		};
-		C8E820E41E7539BB0039F613 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				C8E820F81E7539F80039F613 /* ActionSheetRow.swift */,
-				C8E820D11E7539BB0039F613 /* BaseRow.swift */,
-				C8E820D21E7539BB0039F613 /* Cell.swift */,
-				C8E820D31E7539BB0039F613 /* CellType.swift */,
-				C8E820D51E7539BB0039F613 /* Form.swift */,
-				C8E820D61E7539BB0039F613 /* HeaderFooterView.swift */,
-				C8E820D71E7539BB0039F613 /* Helpers.swift */,
-				C8E820D81E7539BB0039F613 /* InlineRowType.swift */,
-				C8E820D91E7539BB0039F613 /* NavigationAccessoryView.swift */,
-				C8E820DA1E7539BB0039F613 /* Operators.swift */,
-				C8E820DB1E7539BB0039F613 /* PresenterRowType.swift */,
-				C8E820DC1E7539BB0039F613 /* Row.swift */,
-				C8E820DD1E7539BB0039F613 /* RowControllerType.swift */,
-				C8E820DE1E7539BB0039F613 /* RowProtocols.swift */,
-				C8E820DF1E7539BB0039F613 /* RowType.swift */,
-				C8E820E01E7539BB0039F613 /* SelectableRowType.swift */,
-				C8E820E11E7539BB0039F613 /* Section.swift */,
-				C8E820E21E7539BB0039F613 /* SelectableSection.swift */,
-				C8E820E31E7539BB0039F613 /* Validation.swift */,
-			);
-			name = Core;
-			path = "../../../../Downloads/Eureka-master 3/Source/Core";
-			sourceTree = "<group>";
-		};
 		C8EE88611E0DB162003775C2 /* Calendar Obj-C Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,56 +694,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8E47F241E75D221009351C8 /* PushRow.swift in Sources */,
 				C84F180F1E71434C00EC54BF /* SubjectCell.swift in Sources */,
 				96090AEA1D9CDD2E00709CA6 /* SignUpViewController.swift in Sources */,
 				C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */,
 				C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */,
 				C82800DE1E0EFDAF00329B7D /* UIImageExtensions.swift in Sources */,
 				C8F668CC1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift in Sources */,
-				C8E820F61E7539BB0039F613 /* SelectableSection.swift in Sources */,
 				C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */,
 				C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */,
 				C8EE88591E0DB144003775C2 /* FSCalendarConstants.m in Sources */,
 				C8EE88541E0DB144003775C2 /* FSCalendarAppearance.m in Sources */,
-				C8E820EB1E7539BB0039F613 /* Helpers.swift in Sources */,
-				C8E820F21E7539BB0039F613 /* RowProtocols.swift in Sources */,
 				C8EE88581E0DB144003775C2 /* FSCalendarCollectionViewLayout.m in Sources */,
 				C8338B3A1E63DFC300202E3A /* eventCell.swift in Sources */,
 				C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */,
 				C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */,
-				C8E47F291E75D221009351C8 /* SwitchRow.swift in Sources */,
-				C8E47F181E75D221009351C8 /* SelectorAlertController.swift in Sources */,
 				C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */,
 				C8EE88561E0DB144003775C2 /* FSCalendarCell.m in Sources */,
 				C81DA3CE1E3FB8A600CB15A8 /* SettingsTableViewController.swift in Sources */,
-				C8E820EF1E7539BB0039F613 /* PresenterRowType.swift in Sources */,
-				C8E47F0E1E75D221009351C8 /* CheckRow.swift in Sources */,
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
-				C8E47F2A1E75D221009351C8 /* TextAreaRow.swift in Sources */,
-				C8E820F51E7539BB0039F613 /* Section.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
-				C8E820E61E7539BB0039F613 /* Cell.swift in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
 				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
-				C8E820E71E7539BB0039F613 /* CellType.swift in Sources */,
-				C8E820EA1E7539BB0039F613 /* HeaderFooterView.swift in Sources */,
 				C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */,
 				C8F668D01E6DC4AC00D9DC53 /* UserCellTwo.swift in Sources */,
 				C8338B391E63DFC300202E3A /* eventItem.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
 				C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */,
-				C8E47F0F1E75D221009351C8 /* DateFieldRow.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
-				C8E47F1C1E75D221009351C8 /* DateRow.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
-				C8E47F111E75D221009351C8 /* DecimalFormatter.swift in Sources */,
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,
 				C8C5DE391E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift in Sources */,
-				C8E47F141E75D221009351C8 /* OptionsRow.swift in Sources */,
-				C8E47F1E1E75D221009351C8 /* LabelRow.swift in Sources */,
 				C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */,
 				C86ACAF21E0E238300F6695E /* LoginViewController.swift in Sources */,
 				C838A94A1E1B6E32004A794C /* UserCell.swift in Sources */,
@@ -910,60 +737,40 @@
 				C81DA37A1E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m in Sources */,
 				C8F668C51E6B85E400D9DC53 /* CalendarViewController.swift in Sources */,
 				C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */,
-				C8E820F91E7539F80039F613 /* ActionSheetRow.swift in Sources */,
-				C8E47F251E75D221009351C8 /* SegmentedRow.swift in Sources */,
 				C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */,
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
 				C8EE88531E0DB144003775C2 /* FSCalendarAnimator.m in Sources */,
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */,
-				C8E820F41E7539BB0039F613 /* SelectableRowType.swift in Sources */,
 				C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */,
 				C8D9B8271E688BDF00EBDEA5 /* NativeEventViewController.swift in Sources */,
 				C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */,
 				C8EE885C1E0DB144003775C2 /* FSCalendarExtensions.m in Sources */,
 				C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */,
-				C8E47F231E75D221009351C8 /* PopoverSelectorRow.swift in Sources */,
 				C879849D1E0C763F003EB7A1 /* UsersViewController.swift in Sources */,
 				C87984941E0C763F003EB7A1 /* MenuItemView.swift in Sources */,
-				C8E47F121E75D221009351C8 /* FieldRow.swift in Sources */,
 				C879849E1E0C763F003EB7A1 /* PagingMenuViewController.swift in Sources */,
-				C8E820EC1E7539BB0039F613 /* InlineRowType.swift in Sources */,
-				C8E47F131E75D221009351C8 /* GenericMultipleSelectorRow.swift in Sources */,
 				C86BCCC31E12F8B3007D24F9 /* CustomCells.swift in Sources */,
-				C8E820EE1E7539BB0039F613 /* Operators.swift in Sources */,
-				C8E820E91E7539BB0039F613 /* Form.swift in Sources */,
-				C8E47F0C1E75D221009351C8 /* ButtonRow.swift in Sources */,
 				C8EE885D1E0DB144003775C2 /* FSCalendarHeaderView.m in Sources */,
-				C8E820F31E7539BB0039F613 /* RowType.swift in Sources */,
 				C87984991E0C763F003EB7A1 /* RootViewController.swift in Sources */,
-				C8E47F191E75D221009351C8 /* SelectorViewController.swift in Sources */,
 				C87984A41E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift in Sources */,
-				C8E47F151E75D221009351C8 /* Protocols.swift in Sources */,
-				C8E47F171E75D221009351C8 /* MultipleSelectorViewController.swift in Sources */,
 				C8F668CE1E6D31D500D9DC53 /* Message.swift in Sources */,
 				C87984971E0C763F003EB7A1 /* PagingMenuControllerOptions.swift in Sources */,
 				C8BD683E1E36F4FC0028EC37 /* ChannelListViewController.swift in Sources */,
 				C84F18031E6F129300EC54BF /* WeekDaysCell.swift in Sources */,
-				C8E820F11E7539BB0039F613 /* RowControllerType.swift in Sources */,
 				C890A09C1E27FDDC007DE45D /* ChatViewController.swift in Sources */,
-				C8E820ED1E7539BB0039F613 /* NavigationAccessoryView.swift in Sources */,
 				C827B4C81E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift in Sources */,
-				C8E47F0D1E75D221009351C8 /* ButtonRowWithPresent.swift in Sources */,
 				C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */,
 				C87984A61E0C76A5003EB7A1 /* Pagable.swift in Sources */,
 				C87984B51E0D01FB003EB7A1 /* User.swift in Sources */,
 				C838A8B81E1982BA004A794C /* FriendViewController.swift in Sources */,
 				C84F180B1E70D58000EC54BF /* UniversalVariables.swift in Sources */,
-				C8E820F71E7539BB0039F613 /* Validation.swift in Sources */,
 				C84F18091E708A9300EC54BF /* WeekDaysCellTwo.swift in Sources */,
 				C8EE88551E0DB144003775C2 /* FSCalendarCalculator.m in Sources */,
 				C87984A51E0C76A5003EB7A1 /* MenuViewCustomizable.swift in Sources */,
 				C87984961E0C763F003EB7A1 /* PagingViewController.swift in Sources */,
 				96090AE81D9CDD2E00709CA6 /* AppDelegate.swift in Sources */,
-				C8E820F01E7539BB0039F613 /* Row.swift in Sources */,
-				C8E820E51E7539BB0039F613 /* BaseRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Eureka
+import Eureka
 import Material
 //import ChameleonFramework
 import SCLAlertView
@@ -89,7 +89,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         self.loadForm()
     }
     

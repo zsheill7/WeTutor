@@ -9,7 +9,7 @@ import UIKit
 import SCLAlertView
 import Firebase
 
-class ProfilePictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfilePictureViewController: UIViewController, UIImagePickerControllerDelegate {
 
     var user = FIRAuth.auth()?.currentUser
     

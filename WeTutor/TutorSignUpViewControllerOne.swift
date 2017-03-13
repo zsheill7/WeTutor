@@ -150,7 +150,92 @@ class TutorSignUpViewControllerOne : FormViewController {
     typealias Emoji = String
 
     override func viewDidLoad() {
-
+        form +++
+            
+            Section("")
+            
+            
+            <<< ZipCodeRow() {
+                $0.title = "ZipCodeRow"
+                $0.placeholder = "90210"
+            }
+            
+            <<< TextRow() {
+                $0.title = "School Name"
+                $0.placeholder = "Mercer Island High School"
+            }
+            
+            <<< PhoneRow() {
+                $0.title = "PhoneRow (disabled)"
+                $0.value = "+598 9898983510"
+                $0.disabled = true
+            }
+            
+            +++ Section("")
+            
+            <<< PickerInputRow<String>("Picker Input Row"){
+                $0.title = "Gender"
+                $0.options = ["Male", "Female", "Other"]
+                
+                $0.value = $0.options.first
+            }
+            
+            
+            <<< PushRow<Emoji>() {
+                $0.title = "Grade"
+                $0.options = gradeLevels
+                $0.value = gradeLevels[0]
+                $0.selectorTitle = "Choose your grade level"
+                }.onPresent { from, to in
+                    to.sectionKeyForValue = { option in
+                        guard let option = value as? String else { return "" }
+                        return option
+                        }
+                        
+                        <<< PushRow<Emoji>() {
+                            $0.title = "Preferred Subject"
+                            $0.options = subjectNames
+                            $0.value = gradeLevels[0]
+                            $0.selectorTitle = "Choose your preferred subject(s)"
+                            }.onPresent { from, to in
+                                to.sectionKeyForValue = { option in
+                                    guard let option = value as? String else { return "" }
+                                    return option
+                                }
+                        }
+                        
+                        <<< PushRow<Emoji>() {
+                            $0.title = "Preferred Subject"
+                            $0.options = subjectNames
+                            $0.value = subjectNames[0]
+                            $0.selectorTitle = "Choose your preferred subject(s)"
+                            }.onPresent { from, to in
+                                to.sectionKeyForValue = { option in
+                                    switch option {
+                                    case "English", "History": return "Humanities"
+                                    case "Math", "Chemistry", "Physics", "Biology": return "STEM"
+                                    case "Spanish", "French", "Chinese", "German", "Latin": return "Languages"
+                                    default: return ""
+                                    }
+                                    }
+                                    
+                                    +++ Section("")
+                                    <<< TextAreaRow("Description") {
+                                        $0.placeholder = "Tell us about yourself"
+                                        $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
+                                }
+                                
+                                
+                                
+                                
+                                
+                                /* cellWidth = Int(self.view.frame.width / CGFloat(cols))
+                                 cellHeight = Int(self.view.frame.height / CGFloat(rows))*/
+                                
+                                self.view.addBlueBackground("mixed2")
+                                //self.view.addBackground("book.png")
+                                
+                                self.hideKeyboardWhenTappedAround()
     }
     
    
