@@ -59,6 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "MoreInfoViewControllerTest") as! UIViewController
         window?.rootViewController = viewController*/
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerTwoNC") as! UINavigationController
+        window?.rootViewController = viewController
+        
        
         
         // iOS 10 support

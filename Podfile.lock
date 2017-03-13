@@ -55,7 +55,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GTMSessionFetcher/Core (1.1.8)
+  - GTMSessionFetcher/Core (1.1.9)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
@@ -74,7 +74,7 @@ DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DropDown
   - DZNEmptyDataSet
-  - Eureka (~> 2.0.0-beta.1)
+  - Eureka
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -126,7 +126,7 @@ SPEC CHECKSUMS:
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   FSCalendar: 574388d70778c22719eed9341653e1743b345573
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Material: 00ae261fa04dd3f3f8584d07e44ac658fa1bc6fd
@@ -137,6 +137,6 @@ SPEC CHECKSUMS:
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-PODFILE CHECKSUM: 162ab2098885011fc8b3d9932eb1e03cfea535e6
+PODFILE CHECKSUM: 7cefb7ddb62c963c1e841c522439b877dc2436d3
 
 COCOAPODS: 1.2.0

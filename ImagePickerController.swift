@@ -26,7 +26,7 @@ import Foundation
 import Eureka
 
 /// Selector Controller used to pick an image
-open class ImagePickerController : UIImagePickerController, TypedRowControllerType, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+open class ImagePickerController : UIImagePickerController, TypedRowControllerType, UIImagePickerControllerDelegate{
     
     /// The row that pushed or presented this controller
     open var row: RowOf<UIImage>!

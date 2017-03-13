@@ -90,21 +90,107 @@ class SettingsBasicInfoTableViewController : FormViewController {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-        self.loadForm()
+
     }
-    
+    func goBackToSettings() {
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! UINavigationController
+        self.present(controller, animated: true, completion: nil)
+    }
+       typealias Emoji = String
     override func viewDidLoad() {
         super.viewDidLoad()
         print("currentUser?.phone as AnyObject?")
         print(currentUser?.phone as AnyObject?)
         //initializeForm()
         
-        self.loadForm()
+ 
         cellWidth = Int(self.view.frame.width / CGFloat(cols))
         cellHeight = Int(self.view.frame.height / CGFloat(rows))
         
         self.view.addBlueBackground("mixed2")
         
+     
+        
+ 
+        form +++
+            
+            Section()
+            
+            
+            <<< ZipCodeRow() {
+                $0.title = "ZipCodeRow"
+                $0.placeholder = "90210"
+            }
+            
+            <<< TextRow() {
+                $0.title = "School Name"
+                $0.placeholder = "Mercer Island High School"
+            }
+            
+            <<< PhoneRow() {
+                $0.title = "PhoneRow (disabled)"
+                $0.value = "+598 9898983510"
+                $0.disabled = true
+            }
+            
+            +++ Section()
+            
+            <<< PickerInputRow<String>("Picker Input Row"){
+                $0.title = "Gender"
+                $0.options = ["Male", "Female", "Other"]
+                
+                $0.value = $0.options.first
+            }
+            
+            
+            <<< PushRow<Emoji>() {
+                $0.title = "Grade"
+                $0.options = gradeLevels
+                $0.value = gradeLevels[0]
+                $0.selectorTitle = "Choose your grade level"
+                }.onPresent { from, to in
+                    to.sectionKeyForValue = { option in
+                        guard let value = option as? String else { return "" }
+                        return value
+                    }
+            }
+            
+            
+            <<< PushRow<Emoji>() {
+                $0.title = "Preferred Subject"
+                $0.options = subjectNames
+                $0.value = subjectNames[0]
+                $0.selectorTitle = "Choose your preferred subject(s)"
+                }.onPresent { from, to in
+                    to.sectionKeyForValue = { option in
+                        switch option {
+                        case "English", "History": return "Humanities"
+                        case "Math", "Chemistry", "Physics", "Biology": return "STEM"
+                        case "Spanish", "French", "Chinese", "German", "Latin": return "Languages"
+                        default: return ""
+                        }
+                    }
+            }
+            +++ Section()
+            
+            <<< TextAreaRow("Description") {
+                $0.placeholder = "Tell us about yourself"
+                $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
+        }
+            
+            
+            
+            
+            
+            /* cellWidth = Int(self.view.frame.width / CGFloat(cols))
+             cellHeight = Int(self.view.frame.height / CGFloat(rows))*/
+            
+
+            //self.view.addBackground("book.png")
+            
+            self.hideKeyboardWhenTappedAround()
+        }
     }
     /*override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
@@ -112,7 +198,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
     
     // MARK: Actions
     
-    func submit(_: UIBarButtonItem!) {
+    /*func submit(_: UIBarButtonItem!) {
         
         let message = self.form.formValues().description
         
@@ -124,77 +210,13 @@ class SettingsBasicInfoTableViewController : FormViewController {
         alertController.addAction(cancel)
         
         self.present(alertController, animated: true, completion: nil)
-    }
+    }*/
     
     // MARK: Private interface
     
-    func goBackToSettings() {
-        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! UINavigationController
-        self.present(controller, animated: true, completion: nil)
-    }
-    
-    fileprivate func loadForm() {
-        
-        let form = FormDescriptor(title: "Example Form")
-        
-        var row = FormRowDescriptor(tag: Static.emailTag, type: .email, title: "Email")
-        
-        let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
 
-        
-        row = FormRowDescriptor(tag: Static.zipcodeTag, type: .text, title: "Zip Code")
-        row.configuration.cell.appearance = ["textField.placeholder" : "e.g. 98040" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        row.value = currentUser?.address as AnyObject?
-        section1.rows.append(row)
-        
-        let section2 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
-        
-        row = FormRowDescriptor(tag: Static.schoolTag, type: .url, title: "School Name")
-        row.configuration.cell.appearance = ["textField.placeholder" : "e.g. Mercer Island High School" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        print(currentUser?.school as AnyObject? ?? "")
-        row.value = currentUser?.school as AnyObject?
-        print("row.value")
-        print(row.value)
-        section2.rows.append(row)
-        
-        row = FormRowDescriptor(tag: Static.phoneTag, type: .phone, title: "Phone")
-        row.configuration.cell.appearance = ["textField.placeholder" : "e.g. 13069242633" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
-        row.value = currentUser?.phone as AnyObject?
-        section2.rows.append(row)
-        
-        let section3 = FormSectionDescriptor(headerTitle: "", footerTitle: nil)
-        
-        row = FormRowDescriptor(tag: Static.gender, type: .picker, title: "Gender")
-        row.configuration.cell.showsInputToolbar = true
-        row.configuration.selection.options = (["F", "M", "U"] as [String]) as [AnyObject]
-        row.configuration.selection.optionTitleClosure = { value in
-            guard let option = value as? String else { return "" }
-            switch option {
-            case "F":
-                return "Female"
-            case "M":
-                return "Male"
-            case "U":
-                return "Other/I'd rather not say"
-            default:
-                return ""
-            }
-        }
-        
-        row.value = "F" as AnyObject
-        
-        section3.rows.append(row)
-        
-        /*row = FormRowDescriptor(tag: Static.birthday, type: .date, title: "Birthday")
-        row.configuration.cell.showsInputToolbar = true*/
-        
-        row = FormRowDescriptor(tag: Static.subjects, type: .picker, title: "Grade")
-        row.configuration.selection.options = (["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "College"] as [String]) as [AnyObject]
-        row.configuration.selection.allowsMultipleSelection = true
-        row.configuration.selection.optionTitleClosure = { value in
-            guard let option = value as? String else { return "" }
-            return option
+    
+    /*
             /*switch option {
             case "Kindergarten":
                 return "Kindergarten"
@@ -230,7 +252,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
             
         }
         //row.value = "Kindergarten" as AnyObject
-        row.value = currentUser?.grade as AnyObject?
+        /*row.value = currentUser?.grade as AnyObject?
         section3.rows.append(row)
         
         row = FormRowDescriptor(tag: Static.subjects, type: .picker, title: "Preferred Subject")
@@ -385,8 +407,8 @@ class SettingsBasicInfoTableViewController : FormViewController {
         form.sections = [section1, section2, section3, section4, section5]
         
         self.form = form
-    }
+    }*/
 }
 
 
-
+*/

@@ -49,7 +49,7 @@
 		C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */; };
 		C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */; };
 		C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */; };
-		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
+		C87983981E0B90F0003EB7A1 /* WeekDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDayCell.xib */; };
 		C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984841E0C763F003EB7A1 /* PagingMenuController.swift */; };
 		C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984851E0C763F003EB7A1 /* MenuView.swift */; };
 		C87984941E0C763F003EB7A1 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984861E0C763F003EB7A1 /* MenuItemView.swift */; };
@@ -78,6 +78,7 @@
 		C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */; };
 		C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */; };
 		C8D9B8271E688BDF00EBDEA5 /* NativeEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */; };
+		C8E47F2C1E7636D7009351C8 /* Unused.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47F2B1E7636D7009351C8 /* Unused.swift */; };
 		C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */; };
 		C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88321E0DB144003775C2 /* FSCalendar.m */; };
 		C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88331E0DB144003775C2 /* FSCalendar+Deprecated.m */; };
@@ -168,7 +169,7 @@
 		C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatLabelTextField.swift; path = WeTutor/FloatLabelTextField.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
-		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
+		C87983971E0B90F0003EB7A1 /* WeekDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDayCell.xib; sourceTree = "<group>"; };
 		C87984841E0C763F003EB7A1 /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
 		C87984851E0C763F003EB7A1 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C87984861E0C763F003EB7A1 /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 		C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAvailabilityTableViewController.swift; sourceTree = "<group>"; };
 		C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeEventViewController.swift; sourceTree = "<group>"; };
+		C8E47F2B1E7636D7009351C8 /* Unused.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unused.swift; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
 		C8EE882E1E0DB08C003775C2 /* WeTutor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeTutor-Bridging-Header.h"; sourceTree = "<group>"; };
 		C8EE88311E0DB144003775C2 /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendar.h; path = FSCalendar/FSCalendar.h; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */,
 				C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */,
 				C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */,
+				C8E47F2B1E7636D7009351C8 /* Unused.swift */,
 			);
 			name = "In Main Storyboard";
 			sourceTree = "<group>";
@@ -492,7 +495,7 @@
 		C87984AD1E0C7F4C003EB7A1 /* Xib Files */ = {
 			isa = PBXGroup;
 			children = (
-				C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */,
+				C87983971E0B90F0003EB7A1 /* WeekDayCell.xib */,
 				C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */,
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 				C838A9471E1B46EC004A794C /* UserCell.xib */,
@@ -632,7 +635,7 @@
 				C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */,
 				C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */,
 				C838A9481E1B46EC004A794C /* UserCell.xib in Resources */,
-				C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */,
+				C87983981E0B90F0003EB7A1 /* WeekDayCell.xib in Resources */,
 				C8F668C71E6CB14000D9DC53 /* UserCellTwo.xib in Resources */,
 				C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */,
 				C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */,
@@ -717,6 +720,7 @@
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
 				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
 				C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */,
+				C8E47F2C1E7636D7009351C8 /* Unused.swift in Sources */,
 				C8F668D01E6DC4AC00D9DC53 /* UserCellTwo.swift in Sources */,
 				C8338B391E63DFC300202E3A /* eventItem.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
