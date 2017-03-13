@@ -6,16 +6,17 @@
 //
 
 import UIKit
-//import Eureka
+import Eureka
 import Material
 //import ChameleonFramework
-import SwiftForms
+//import SwiftForms
 import SCLAlertView
 import Firebase
 import FirebaseDatabase
 import CoreLocation
 import NVActivityIndicatorView
 
+var gradeLevels = ["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "College"]
 private enum MenuSection {
     case all(content: AllContent)
     case menuView(content: MenuViewContent)
@@ -135,10 +136,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         static let textView = "textview"
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.loadForm()
-    }
+   
     
     override func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -149,27 +147,21 @@ class TutorSignUpViewControllerOne : FormViewController {
         view.endEditing(true)
     }
     
+    typealias Emoji = String
+
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //initializeForm()
-        
-        cellWidth = Int(self.view.frame.width / CGFloat(cols))
-        cellHeight = Int(self.view.frame.height / CGFloat(rows))
-        
-        self.view.addBlueBackground("mixed2")
-        //self.view.addBackground("book.png")
-        
-        self.hideKeyboardWhenTappedAround()
-        
+
     }
+    
+   
+}
    /* override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
     }*/
     
     // MARK: Actions
     
-    func submit(_: UIBarButtonItem!) {
+    /*func submit(_: UIBarButtonItem!) {
         
         let message = self.form.formValues().description
         
@@ -318,12 +310,17 @@ class TutorSignUpViewControllerOne : FormViewController {
         row.configuration.cell.appearance = ["tintColor" : UIColor.red]
         section4.rows.append(row)
         
+        
         let section5 = FormSectionDescriptor(headerTitle: " ", footerTitle: nil)
         
         //row.configuration.cell.appearance = ["textField.placeholder" : "This will be a part of your profile. Tell us about yourself. What are your extracurriculars?  Do you have experience with working with children?" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
+        
         row = FormRowDescriptor(tag: Static.button, type: .button, title: "Continue")
+        
         row.configuration.button.didSelectClosure = { _ in
             self.view.endEditing(true)
+            print("finished")
+            
            // self.form.validateForm()
            if let zipcode = self.form.sections[0].rows[0].value as? String,
             let schoolName = self.form.sections[2].rows[0].value,
@@ -358,8 +355,8 @@ class TutorSignUpViewControllerOne : FormViewController {
                 let password = value?["password"] as? String,
                     let email = value?["email"] as? String,
                     let isTutor = value?["isTutor"] as? Bool{
-                        
-                        
+                    
+                    
                    /* if let email = userDefaults.value(forKey: "email"),
                         let password = userDefaults.value(forKey: "password"),
                         let name = userDefaults.value(forKey: "name"),
@@ -431,9 +428,9 @@ class TutorSignUpViewControllerOne : FormViewController {
             
             
             
-           } else {
+        } else {
                 self.displayAlert("Error", message: "Please fill out every section.")
-            }
+        }
             
             
         }
@@ -442,8 +439,8 @@ class TutorSignUpViewControllerOne : FormViewController {
         form.sections = [section1, section15, section2, section3, section4, section5]
         
         self.form = form
-    }
-}
+    }*/
+
 
 
 

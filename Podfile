@@ -20,7 +20,6 @@ use_frameworks!
  pod 'JSQMessagesViewController'
  pod 'SCLAlertView'
  pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
- pod 'SwiftForms'
  pod 'NVActivityIndicatorView'
  pod 'DZNEmptyDataSet'
  pod 'DropDown'

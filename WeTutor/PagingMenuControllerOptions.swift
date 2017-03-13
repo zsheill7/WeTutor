@@ -67,6 +67,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     
     struct MenuItemUsers: MenuItemViewCustomizable {
         var displayMode: MenuItemDisplayMode {
+            
             let title = MenuItemText(text: "Tutors")
            // let description = MenuItemText(text: "")
             //return .multilineText(title: title, description: description)

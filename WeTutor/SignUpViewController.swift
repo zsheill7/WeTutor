@@ -214,11 +214,12 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // ...
                 if let error = error {
                     // ...
+                     self.displayAlert("Error", message: "Unable to access your account.")
                     return
                 } else {
                     if (user != nil) {
                         let uid = user?.uid as String!
-                        let animalIndex =  Int(arc4random_uniform(6) + 1)
+                        let animalIndex =  Int(arc4random_uniform(6))
                         let profileImage = UIImage(named: animalImageNames[animalIndex])
                         print(profileImage)
                         let userInfo = ["name": user?.displayName, "email": user?.email]

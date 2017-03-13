@@ -10,7 +10,6 @@ import UIKit
 //import Eureka
 import Material
 //import ChameleonFramework
-import SwiftForms
 import SCLAlertView
 import Firebase
 import FirebaseDatabase
