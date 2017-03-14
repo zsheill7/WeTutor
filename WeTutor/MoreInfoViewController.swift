@@ -63,11 +63,12 @@ class MoreInfoViewController: UIViewController {
         for view in backgroundColoredViews {
             view.backgroundColor = UIColor.clear
         }
-       /* let viewFromNib: UIView? = Bundle.main.loadNibNamed("NibName",
+        let viewFromNib: UIView? = Bundle.main.loadNibNamed("NibName",
                                                             owner: nil,
-                                                            options: nil)?.first
+                                                            options: nil)?.first as! UIView?
         
-       containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDaysCell*/
+      // containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDayCell
+        
        /* form
             
             +++ Section("Available Days")
@@ -82,7 +83,7 @@ class MoreInfoViewController: UIViewController {
         
         // Set the kerning to 1 to increase spacing between letters
        
-       /* for (index, subject) in destUser.preferredSubjects.enumerated() {
+        for (index, subject) in destUser.preferredSubjects.enumerated() {
             if index != (destUser.preferredSubjects.count - 1) {
                 preferredSubjectsString += "\(subject), "
             } else {
@@ -105,7 +106,7 @@ class MoreInfoViewController: UIViewController {
          descriptionLabel.text = destUser.description
         preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
         availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
-        nameLabel.text = "\(destUser.name)"*/
+        nameLabel.text = "\(destUser.name)"
         
     }
     
