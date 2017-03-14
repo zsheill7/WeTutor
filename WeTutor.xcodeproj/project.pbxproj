@@ -49,7 +49,7 @@
 		C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */; };
 		C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */; };
 		C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */; };
-		C87983981E0B90F0003EB7A1 /* WeekDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDayCell.xib */; };
+		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
 		C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984841E0C763F003EB7A1 /* PagingMenuController.swift */; };
 		C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984851E0C763F003EB7A1 /* MenuView.swift */; };
 		C87984941E0C763F003EB7A1 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984861E0C763F003EB7A1 /* MenuItemView.swift */; };
@@ -169,7 +169,7 @@
 		C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatLabelTextField.swift; path = WeTutor/FloatLabelTextField.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
-		C87983971E0B90F0003EB7A1 /* WeekDayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDayCell.xib; sourceTree = "<group>"; };
+		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
 		C87984841E0C763F003EB7A1 /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
 		C87984851E0C763F003EB7A1 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		C87984861E0C763F003EB7A1 /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
@@ -294,10 +294,10 @@
 			isa = PBXGroup;
 			children = (
 				96090AE71D9CDD2E00709CA6 /* AppDelegate.swift */,
-				C86BCCE41E136E58007D24F9 /* Chat */,
 				C87984AD1E0C7F4C003EB7A1 /* Xib Files */,
 				C8338AF71E620DEC00202E3A /* Storyboards */,
 				C82800E71E107B7D00329B7D /* In Main Storyboard */,
+				C86BCCE41E136E58007D24F9 /* Chat */,
 				C82800E61E107AC900329B7D /* In Tutor Storyboard */,
 				C87984A81E0C76DD003EB7A1 /* In Paging Menu */,
 				C81DA3D21E3FB8B100CB15A8 /* Settings */,
@@ -495,7 +495,7 @@
 		C87984AD1E0C7F4C003EB7A1 /* Xib Files */ = {
 			isa = PBXGroup;
 			children = (
-				C87983971E0B90F0003EB7A1 /* WeekDayCell.xib */,
+				C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */,
 				C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */,
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 				C838A9471E1B46EC004A794C /* UserCell.xib */,
@@ -635,7 +635,7 @@
 				C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */,
 				C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */,
 				C838A9481E1B46EC004A794C /* UserCell.xib in Resources */,
-				C87983981E0B90F0003EB7A1 /* WeekDayCell.xib in Resources */,
+				C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */,
 				C8F668C71E6CB14000D9DC53 /* UserCellTwo.xib in Resources */,
 				C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */,
 				C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */,

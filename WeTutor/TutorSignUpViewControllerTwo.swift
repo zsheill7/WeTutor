@@ -16,10 +16,10 @@ class TutorSignUpViewControllerTwo : FormViewController {
     let secondLanguages = ["None", "English", "Spanish", "French", "Chinese", "Other"]
 
   
-    override func hideKeyboardWhenTappedAround() {
+    /*override func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-    }
+    }*/
     
     override func dismissKeyboard() {
         view.endEditing(true)
@@ -31,17 +31,25 @@ class TutorSignUpViewControllerTwo : FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideKeyboardWhenTappedAround()
-        self.tableView?.addBlueBackground("mixed2")
+       // self.hideKeyboardWhenTappedAround()
+       // self.tableView?.addBlueBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
+        self.view.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
+        ref = FIRDatabase.database().reference()
+        
+        self.loadForm()
+        
+  
+    }
+    
+    func loadForm() {
+        
         let availabilityInfo: String = ""
         var languages: [String] = [String]()
         
-        
-        ref = FIRDatabase.database().reference()
         form
-           
-             +++ Section("Available Days")
+            
+            +++ Section("Available Days")
             
             
             
@@ -51,7 +59,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
             }
             
             +++ Section("More Info on Availability (optional)")
-
+            
             <<< TextAreaRow("Availability Notes") {
                 $0.placeholder = "I'm available Sundays, but only after 3:00."
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 70)
@@ -59,25 +67,27 @@ class TutorSignUpViewControllerTwo : FormViewController {
             
             +++ Section("Languages")
             
-                    <<< PickerInlineRow<String>("First Language") { (row : PickerInlineRow<String>) -> Void in
-                        row.title = "First Language"
-                        row.options = firstLanguages
-                        
-                        row.value = row.options[0]
-                    }
-                    <<< PickerInlineRow<String>("Second Language") { (row : PickerInlineRow<String>) -> Void in
-                        row.title = row.tag
-                        row.options = secondLanguages
-                        
-                        row.value = row.options[0]
-                    }
-                    <<< PickerInlineRow<String>("Third Language") { (row : PickerInlineRow<String>) -> Void in
-                        row.title = row.tag
-                        row.options = secondLanguages
-                        
-                        row.value = row.options[0]
-                }
-        
+            <<< PickerInlineRow<String>("First Language") { (row : PickerInlineRow<String>) -> Void in
+                row.title = "First Language"
+                row.options = firstLanguages
+                
+                row.value = row.options[0]
+            }
+            <<< PickerInlineRow<String>("Second Language") { (row : PickerInlineRow<String>) -> Void in
+                row.title = row.tag
+                row.options = secondLanguages
+                
+                row.value = row.options[0]
+            }
+            <<< PickerInlineRow<String>("Third Language") { (row : PickerInlineRow<String>) -> Void in
+                row.title = row.tag
+                row.options = secondLanguages
+                
+                row.value = row.options[0]
+            }
+            
+            
+            
             +++ Section()
             <<< ButtonRow() {
                 $0.title = "Finish"
@@ -93,7 +103,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     let row1: WeekDayRow? = self.form.rowBy(tag: "Available Days")
                     let daysValue = row1?.value
                     
-                   //
+                    //
                     var weekDayString = ""
                     var weekDayArray:[Bool] = []
                     let weekDayCell = WeekDayCell()
@@ -117,7 +127,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         firstLanguage = "English"
                     }
                     
-                   
+                    
                     print(firstLanguage)
                     let row4: TextRow? = self.form.rowBy(tag: "Second Language")
                     let secondLanguage = row4?.value
@@ -134,9 +144,9 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     if thirdLanguage != "None" && thirdLanguage != nil{
                         languages.append(thirdLanguage!)
                     }
-
+                    
                     print(languages)
-             
+                    
                     
                     userDefaults.setValue(weekDayString, forKey: "availableDays")
                     userDefaults.setValue(languages, forKey: "languages")
@@ -150,25 +160,34 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
                         
                         self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
-                    
+                        
                     } else {
                         // No user is signed in.
                         // ...
                     }
-        
+                    
                     
                     
         }
-        
-    
 
-        
-
-
-        
-        
     }
     
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+   /* override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    */
     func multipleSelectorDone(_ item:UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
     }

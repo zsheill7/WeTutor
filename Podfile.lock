@@ -74,7 +74,7 @@ DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DropDown
   - DZNEmptyDataSet
-  - Eureka
+  - Eureka (~> 2.0)
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -137,6 +137,6 @@ SPEC CHECKSUMS:
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-PODFILE CHECKSUM: 7cefb7ddb62c963c1e841c522439b877dc2436d3
+PODFILE CHECKSUM: 31033789ed5bc83f0e2b89c511f7eaab35cb6280
 
 COCOAPODS: 1.2.0

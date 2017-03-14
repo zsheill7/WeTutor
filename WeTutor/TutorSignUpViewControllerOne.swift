@@ -76,32 +76,7 @@ private enum MenuSection {
 }
 
 
-class TutorSignUpViewController: FormViewController {
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
 
 class TutorSignUpViewControllerOne : FormViewController {
     var ref: FIRDatabaseReference!
@@ -138,10 +113,10 @@ class TutorSignUpViewControllerOne : FormViewController {
     
    
     
-    override func hideKeyboardWhenTappedAround() {
+    /*override func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-    }
+    }*/
     
     override func dismissKeyboard() {
         view.endEditing(true)
@@ -151,10 +126,10 @@ class TutorSignUpViewControllerOne : FormViewController {
 
     override func viewDidLoad() {
         
-        navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
+       // navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         
         
-        self.loadForm()
+        
                         
                         
                 /* cellWidth = Int(self.view.frame.width / CGFloat(cols))
@@ -164,17 +139,18 @@ class TutorSignUpViewControllerOne : FormViewController {
                 //self.view.addBackground("Info Input Page (solid)")
                 //self.view.backgroundColor = UIColor(red:0.40, green:0.75, blue:0.80, alpha:1.0)
         self.view.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
+        self.loadForm()
         //self.view.backgroundColor = UIColor
         //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(byPercentage: 0.2)
                 //self.view.addBackground("book.png")
                 
-                self.hideKeyboardWhenTappedAround()
+              //  self.hideKeyboardWhenTappedAround()
     }
     
     func loadForm() {
-        form +++
+        form
             
-            Section(" ")
+            +++ Section(" ")
             
             
             <<< ZipCodeRow("zipcode") {
@@ -201,8 +177,15 @@ class TutorSignUpViewControllerOne : FormViewController {
                 $0.value = $0.options.first
             }
             
+            <<< PickerInlineRow<String>("grade") { (row : PickerInlineRow<String>) -> Void in
+                row.title = "First Language"
+                row.options = gradeLevels
+                
+                row.value = row.options[0]
+            }
+
             
-            <<< PushRow<Emoji>("grade") {
+            /*<<< PushRow<Emoji>("grade") {
                 $0.title = "Grade"
                 $0.options = gradeLevels
                 $0.value = gradeLevels[0]
@@ -212,10 +195,15 @@ class TutorSignUpViewControllerOne : FormViewController {
                         guard let value = option as? String else { return "" }
                         return value
                     }
+            }*/
+            <<< PickerInlineRow<String>("subject") { (row : PickerInlineRow<String>) -> Void in
+                row.title = "Preferred Subject"
+                row.options = subjectNames
+                
+                row.value = row.options[0]
             }
             
-            
-            <<< PushRow<Emoji>("subject") {
+            /*<<< PushRow<Emoji>("subject") {
                 $0.title = "Preferred Subject"
                 $0.options = subjectNames
                 $0.value = subjectNames[0]
@@ -229,7 +217,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                         default: return ""
                         }
                     }
-            }
+            }*/
             +++ Section(" ")
             
             <<< TextAreaRow("description") {
@@ -242,7 +230,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                 $0.title = "Continue"
                 }
                 .onCellSelection { cell, row in
-                    
+                    print("here0")
                     self.continueSelected()
                     
         }
@@ -379,7 +367,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                             willDisplayHeaderView view: UIView,
                             forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
-            view.backgroundView?.backgroundColor = UIColor(white: 1, alpha: 0)
+            view.backgroundView?.backgroundColor = UIColor(white: 1, alpha: 0.0)
             //view.textLabel.backgroundColor = UIColor.clearColor()
             //view.textLabel.textColor = UIColor.whiteColor()
         }
@@ -401,7 +389,21 @@ class TutorSignUpViewControllerOne : FormViewController {
         //cell.backgroundColor = UIColor(red:0.43, green:0.82, blue:0.83, alpha:1.0)
     }
    
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
+    
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }*/
     
     
    

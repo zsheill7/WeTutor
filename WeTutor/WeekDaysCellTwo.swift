@@ -6,9 +6,10 @@
 //  Copyright © 2017 CosmicMind. All rights reserved.
 //
 
+/*import Eureka
+import UIKit
 
-
-/*open class WeekDayCell : Cell<Set<WeekDay>>, CellType {
+open class WeekDayCell : Cell<Set<WeekDay>>, CellType {
     
     @IBOutlet var sundayButton: UIButton!
     @IBOutlet var mondayButton: UIButton!
@@ -156,7 +157,7 @@
 
 //MARK: WeekDayRow
 
-public final class WeekDayRow: Row<WeekDayCell>, RowType {
+/*public final class WeekDayRow: Row<WeekDayCell>, RowType {
     
     required public init(tag: String?) {
         super.init(tag: tag)
@@ -164,4 +165,4 @@ public final class WeekDayRow: Row<WeekDayCell>, RowType {
         cellProvider = CellProvider<WeekDayCell>(nibName: "WeekDaysCell")
     }
 }
-*/
+*/*/

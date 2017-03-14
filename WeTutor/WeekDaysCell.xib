@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="61" id="piA-L5-eiN" customClass="WeekDaysCell" customModule="TutorMe" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="61" id="piA-L5-eiN" customClass="WeekDayCell" customModule="WeTutor" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="382" height="61"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="piA-L5-eiN" id="Yr6-3E-keb">
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZAg-Me-yKR">
-                        <rect key="frame" x="8" y="0.0" width="51" height="60"/>
+                        <rect key="frame" x="8" y="0.0" width="51.5" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="S">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -33,7 +33,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjQ-Cw-7wH" userLabel="separator 1">
-                        <rect key="frame" x="59" y="10" width="1" height="40"/>
+                        <rect key="frame" x="59.5" y="10" width="1" height="40"/>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="K3N-3h-MZr"/>
@@ -41,7 +41,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3w-qP-kRZ">
-                        <rect key="frame" x="60" y="0.0" width="52" height="60"/>
+                        <rect key="frame" x="60.5" y="0.0" width="51.5" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="M">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -60,7 +60,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cPl-47-rS8">
-                        <rect key="frame" x="113" y="0.0" width="51" height="60"/>
+                        <rect key="frame" x="113" y="0.0" width="51.5" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="T">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -71,7 +71,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EiN-2p-Oig" userLabel="separator 3">
-                        <rect key="frame" x="164" y="10" width="1" height="40"/>
+                        <rect key="frame" x="164.5" y="10" width="1" height="40"/>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="EqQ-Te-SQd"/>
@@ -79,7 +79,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iC-Cl-RyI">
-                        <rect key="frame" x="165" y="0.0" width="52" height="60"/>
+                        <rect key="frame" x="165.5" y="0.0" width="51" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="W">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -90,7 +90,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRc-5e-QAH" userLabel="separator 4">
-                        <rect key="frame" x="217" y="10" width="1" height="40"/>
+                        <rect key="frame" x="216.5" y="10" width="1" height="40"/>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="Pxp-Ee-q5x"/>
@@ -98,7 +98,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTo-Ip-reh">
-                        <rect key="frame" x="218" y="0.0" width="51" height="60"/>
+                        <rect key="frame" x="217.5" y="0.0" width="51.5" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="T">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -117,7 +117,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjb-tu-QEo">
-                        <rect key="frame" x="270" y="0.0" width="52" height="60"/>
+                        <rect key="frame" x="270" y="0.0" width="51.5" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="F">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -128,7 +128,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7g-lu-boa" userLabel="separator 6">
-                        <rect key="frame" x="322" y="10" width="1" height="40"/>
+                        <rect key="frame" x="321.5" y="10" width="1" height="40"/>
                         <color key="backgroundColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="81t-Xh-wZT"/>
@@ -136,7 +136,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNf-b4-GYP">
-                        <rect key="frame" x="323" y="0.0" width="51" height="60"/>
+                        <rect key="frame" x="322.5" y="0.0" width="51.5" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <state key="normal" title="S">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>

@@ -156,6 +156,29 @@ open class WeekDayCell : Cell<Set<WeekDay>>, CellType {
         return weekDayArray
     }
     
+    func getWeekDaySetFromBoolArray(_ boolArray: [Bool]) -> [WeekDay] {
+        var weekDayArray: [WeekDay] = []
+        var weekDaySet: Set<WeekDay> = []
+        let defaultWeekDayArray: [WeekDay]  = [.monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday]
+        /*for (weekDay, index) in boolArray.enumerated() {
+            if boolArray[index] == true {
+                weekDaySet.append(defaultWeekDaySet[index])
+            }
+            
+        }*/
+        
+        for index in 0...boolArray.count {
+            if boolArray[index] == true {
+                //weekDaySet.insert(defaultWeekDaySet[index]))
+                weekDayArray.append(defaultWeekDayArray[index])
+            }
+        }
+        //weekDayString = weekDayString.substring(to: weekDayString.index(before: weekDayString.endIndex))
+        
+        //weekDaySet = weekDayArray
+        return weekDayArray
+    }
+    
     
     
     fileprivate func dayTapped(_ button: UIButton, day: WeekDay){
