@@ -25,6 +25,9 @@ extension UIColor {
     class func titleBlue() -> UIColor {
         return UIColor(netHex: 0x51679F)
     }
+    class func backgroundBlue() -> UIColor {
+        return UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
+    }
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")

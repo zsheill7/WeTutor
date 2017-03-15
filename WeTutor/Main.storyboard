@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eDQ-NE-3k0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eDQ-NE-3k0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,39 +8,27 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--TutorSignUpViewControllerOne-->
-        <scene sceneID="tbt-KE-e25">
+        <!--Sign Up-->
+        <scene sceneID="QuE-Ih-Eaa">
             <objects>
-                <tableViewController title="TutorSignUpViewControllerOne" id="Ezx-Lo-7mX" customClass="TutorSignUpViewControllerOne" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UQN-Ik-6HD">
+                <viewController storyboardIdentifier="TutorSignUpViewControllerOne" id="tvH-Az-yik" customClass="TutorSignUpViewControllerOne" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="74y-0f-SWh"/>
+                        <viewControllerLayoutGuide type="bottom" id="oQ5-gN-CiV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sg7-PQ-3od">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="0.4379126320422535" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" white="1" alpha="0.79935079225352113" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JuP-Ut-oE6">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JuP-Ut-oE6" id="ZYN-Rb-q9Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Ezx-Lo-7mX" id="fML-Ga-Mcq"/>
-                            <outlet property="delegate" destination="Ezx-Lo-7mX" id="e9j-N0-xIX"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="More Info" id="rse-7o-3yg"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sign Up" id="VJX-LX-BRm"/>
                     <connections>
-                        <segue destination="aTv-SR-QJN" kind="show" identifier="toSecondVC" id="7tx-zv-Ptr"/>
+                        <segue destination="aTv-SR-QJN" kind="show" identifier="toSecondVC" id="bL7-cN-6tJ"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h24-fb-nn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="juc-EF-d8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="1140"/>
+            <point key="canvasLocation" x="902" y="1138"/>
         </scene>
         <!--Tutor-->
         <scene sceneID="EQF-AC-2xd">
@@ -48,12 +36,12 @@
                 <viewControllerPlaceholder storyboardName="Tutor" id="X1N-CK-Yff" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mP-3f-mgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="553" y="2306"/>
+            <point key="canvasLocation" x="57" y="2877"/>
         </scene>
         <!--TutorSignUpViewControllerTwo-->
         <scene sceneID="hYI-Os-DTF">
             <objects>
-                <viewController title="TutorSignUpViewControllerTwo" id="zzC-Eo-xJr" customClass="TutorSignUpViewControllerTwo" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TutorSignUpViewControllerTwo" id="zzC-Eo-xJr" customClass="TutorSignUpViewControllerTwo" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KOM-6B-Eyq"/>
                         <viewControllerLayoutGuide type="bottom" id="EKB-uw-ZYv"/>
@@ -65,7 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="XzS-nZ-HaB"/>
                     <connections>
-                        <segue destination="X1N-CK-Yff" kind="show" identifier="toPagingMenuVC" id="i3U-JE-xa4"/>
+                        <segue destination="Qf2-ac-P5c" kind="show" identifier="toProfilePictureVC" id="zIY-4B-JeM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxT-O6-jMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -75,7 +63,7 @@
         <!--Tutor Or Tutee View Controller-->
         <scene sceneID="2OA-Hw-Woh">
             <objects>
-                <viewController id="f1O-17-5Nh" customClass="TutorOrTuteeViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f1O-17-5Nh" customClass="TutorOrTuteeViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MeE-ad-Wbd"/>
                         <viewControllerLayoutGuide type="bottom" id="ZPH-QJ-GJX"/>
@@ -141,7 +129,7 @@
         <!--SignUpViewController-->
         <scene sceneID="cG0-wP-MjU">
             <objects>
-                <viewController storyboardIdentifier="signupVC" title="SignUpViewController" id="f0J-JI-oTr" customClass="SignUpViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupVC" title="SignUpViewController" id="f0J-JI-oTr" customClass="SignUpViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GfZ-H1-YzK"/>
                         <viewControllerLayoutGuide type="bottom" id="s31-lQ-90V"/>
@@ -163,7 +151,7 @@
         <!--LoginViewController-->
         <scene sceneID="yMh-AR-mBf">
             <objects>
-                <viewController storyboardIdentifier="loginVC" title="LoginViewController" id="jKf-CE-eNp" customClass="LoginViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" title="LoginViewController" id="jKf-CE-eNp" customClass="LoginViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wuX-h5-GPh"/>
                         <viewControllerLayoutGuide type="bottom" id="PgL-oo-hZ6"/>
@@ -212,7 +200,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginNC" automaticallyAdjustsScrollViewInsets="NO" id="1kV-iB-SjC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TX5-wN-JVX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TX5-wN-JVX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -230,7 +218,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signupNC" automaticallyAdjustsScrollViewInsets="NO" id="eDQ-NE-3k0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maU-b1-d8V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="maU-b1-d8V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -248,13 +236,13 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerOneNC" automaticallyAdjustsScrollViewInsets="NO" id="r5a-IX-An8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ks-9t-bVe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ks-9t-bVe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ezx-Lo-7mX" kind="relationship" relationship="rootViewController" id="fdd-ML-l2N"/>
+                        <segue destination="tvH-Az-yik" kind="relationship" relationship="rootViewController" id="gVm-fk-dyO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIf-Es-uSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,7 +254,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerTwoNC" automaticallyAdjustsScrollViewInsets="NO" id="aTv-SR-QJN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jOj-rE-hEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jOj-rE-hEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -279,9 +267,45 @@
             </objects>
             <point key="canvasLocation" x="124" y="1881"/>
         </scene>
+        <!--Profile Picture View Controller-->
+        <scene sceneID="ef0-vi-Quu">
+            <objects>
+                <viewController storyboardIdentifier="ProfilePictureViewController" id="Qf2-ac-P5c" customClass="ProfilePictureViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZA4-O2-nk5"/>
+                        <viewControllerLayoutGuide type="bottom" id="rUs-2t-WPS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EVL-P7-6WC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Owl Icon-2" translatesAutoresizingMaskIntoConstraints="NO" id="ety-d6-7Ef">
+                                <rect key="frame" x="27" y="191" width="320" height="187"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="187" id="VQX-9n-OUe"/>
+                                    <constraint firstAttribute="height" constant="100" id="tYB-j3-MU9"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ety-d6-7Ef" firstAttribute="centerX" secondItem="EVL-P7-6WC" secondAttribute="centerX" id="33i-ZU-3An"/>
+                            <constraint firstItem="ety-d6-7Ef" firstAttribute="centerY" secondItem="EVL-P7-6WC" secondAttribute="centerY" id="Gav-bY-OAH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="profileImage" destination="ety-d6-7Ef" id="FxP-i9-U0x"/>
+                        <segue destination="X1N-CK-Yff" kind="show" identifier="toPagingMenuVC" id="NVR-V7-DSM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mXc-97-sZu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="2634"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Chat Filled-100 (1)" width="100" height="100"/>
+        <image name="Owl Icon-2" width="687" height="687"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UNl-nb-Bdv"/>

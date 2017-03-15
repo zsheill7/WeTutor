@@ -35,7 +35,8 @@ class TutorSignUpViewControllerTwo : FormViewController {
        // self.hideKeyboardWhenTappedAround()
        // self.tableView?.addBlueBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
-        self.tableView?.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
+        self.tableView?.backgroundColor = UIColor.backgroundBlue()
+        
         ref = FIRDatabase.database().reference()
         
         self.loadForm()
@@ -160,7 +161,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         self.ref.child("users/\(user.uid)/languages").setValue(languages)
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
                         
-                        self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
+                        self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
                         
                     } else {
                         // No user is signed in.

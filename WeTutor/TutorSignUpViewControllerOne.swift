@@ -138,7 +138,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                 //self.view.addBlueBackground("mixed2")
                 //self.view.addBackground("Info Input Page (solid)")
                 //self.view.backgroundColor = UIColor(red:0.40, green:0.75, blue:0.80, alpha:1.0)
-        self.tableView?.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
+        self.tableView?.backgroundColor = UIColor.backgroundBlue()
         self.loadForm()
         //self.view.backgroundColor = UIColor
         //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(byPercentage: 0.2)
@@ -150,25 +150,28 @@ class TutorSignUpViewControllerOne : FormViewController {
     func loadForm() {
         form
             
-            +++ Section(" ")
+            +++ Section()
             
             
             <<< ZipCodeRow("zipcode") {
                 $0.title = "Zipcode"
+                $0.tag = "zipcode"
                 $0.placeholder = "90210"
             }
             
             <<< TextRow("school") {
                 $0.title = "School Name"
+                $0.tag = "school"
                 $0.placeholder = "Mercer Island High School"
             }
             
             <<< PhoneRow("phone") {
                 $0.title = "Phone Number"
+                $0.tag = "phone"
                 $0.placeholder = "+598 9898983510"
             }
             
-            +++ Section(" ")
+            +++ Section()
             
             /*<<< PickerInputRow<String>("gender"){
                 $0.title = "Gender"
@@ -178,6 +181,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             }*/
             <<< PickerInlineRow<String>("gender") { (row : PickerInlineRow<String>) -> Void in
                 row.title = "Gender"
+                row.tag = "gender"
                 row.options = ["Male", "Female", "Other"]
                 
                 row.value = row.options[0]
@@ -185,6 +189,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             
             <<< PickerInlineRow<String>("grade") { (row : PickerInlineRow<String>) -> Void in
                 row.title = "First Language"
+                row.tag = "grade"
                 row.options = gradeLevels
                 
                 row.value = row.options[0]
@@ -204,6 +209,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             }*/
             <<< PickerInlineRow<String>("subject") { (row : PickerInlineRow<String>) -> Void in
                 row.title = "Preferred Subject"
+                row.tag = "subject"
                 row.options = subjectNames
                 
                 row.value = row.options[0]
@@ -224,11 +230,15 @@ class TutorSignUpViewControllerOne : FormViewController {
                         }
                     }
             }*/
+            
+           
             +++ Section()
+            
             
             <<< TextAreaRow("description") {
                 $0.placeholder = "Tell us about yourself"
-                $0.textAreaHeight = .fixed(cellHeight: 150)
+                $0.tag = "description"
+                $0.textAreaHeight = .dynamic(initialTextViewHeight: 70)
             }
             
             +++ Section()
@@ -240,27 +250,38 @@ class TutorSignUpViewControllerOne : FormViewController {
                     self.continueSelected()
                     
         }
+
         
 
     }
     
     func continueSelected() {
         print("here1")
-        let row1: TextRow? = self.form.rowBy(tag: "zipcode")
+        let row1: ZipCodeRow? = self.form.rowBy(tag: "zipcode")
         let zipcode = row1?.value
         
         let row2: TextRow? = self.form.rowBy(tag: "school")
         let school = row2?.value
-        let row3: TextRow? = self.form.rowBy(tag: "phone")
+        let row3: PhoneRow? = self.form.rowBy(tag: "phone")
         let phone = row3?.value
-        let row4: TextRow? = self.form.rowBy(tag: "gender")
+        let row4: PickerInlineRow<String>? = self.form.rowBy(tag: "gender")
         let gender = row4?.value
-        let row5: TextRow? = self.form.rowBy(tag: "grade")
+        let row5: PickerInlineRow<String>? = self.form.rowBy(tag: "grade")
         let grade = row5?.value
-        let row6: TextRow? = self.form.rowBy(tag: "subject")
+        let row6: PickerInlineRow<String>? = self.form.rowBy(tag: "subject")
         let subject = row6?.value
-        let row7: TextRow? = self.form.rowBy(tag: "description")
+        let row7: TextAreaRow? = self.form.rowBy(tag: "description")
         let description = row7?.value
+        
+        print(zipcode)
+        print(school)
+        print(phone)
+        print(gender)
+        print(grade)
+        print(subject)
+        print(description)
+        print()
+
         
         
         if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subject != nil {
@@ -350,7 +371,9 @@ class TutorSignUpViewControllerOne : FormViewController {
                                     self.displayAlert("Error", message: (error?.localizedDescription)!)
                                 }
                     }) //self.ref.child("users").child(userID!).observeSingleEvent
-                } //if let zipcode = self.form.sections[0].rows[0].value,
+                } else {
+                    self.displayAlert("You are not signed in", message: "Please log in again")
+                }//if let zipcode = self.form.sections[0].rows[0].value,
                 //let schoolName = self.form.sections[1].rows[0].value,
                 
                 
