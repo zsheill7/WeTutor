@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = viewController*/
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerTwoNC") as! UINavigationController
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerOneNC") as! UINavigationController
         window?.rootViewController = viewController
         
        

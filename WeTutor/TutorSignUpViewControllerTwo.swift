@@ -30,11 +30,12 @@ class TutorSignUpViewControllerTwo : FormViewController {
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         
        // self.hideKeyboardWhenTappedAround()
        // self.tableView?.addBlueBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
-        self.view.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
+        self.tableView?.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
         ref = FIRDatabase.database().reference()
         
         self.loadForm()
@@ -180,6 +181,12 @@ class TutorSignUpViewControllerTwo : FormViewController {
         return true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // <<< ---ADD THIS LINE
+        //
+        self.tableView?.tableFooterView = UIView()
+        
+    }
     
     /**
      * Called when the user click on the view (outside the UITextField).

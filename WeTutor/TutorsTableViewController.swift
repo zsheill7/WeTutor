@@ -396,6 +396,26 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             tableView.register(UINib(nibName: "UserCellTwo", bundle: nil), forCellReuseIdentifier: "UserCell")
             cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellTwo
         }
+        
+        var ref: FIRDatabaseReference!
+        
+        ref = FIRDatabase.database().reference()
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        /*ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let profileImageURL = value?["profileImageURL"] as? String ?? ""
+            // let user = User.init(username: username)
+            
+            // ...
+            if profileImageURL  != nil {
+                cell?.profileImageView.loadImageUsingCacheWithUrlString(profileImageURL)
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }*/
+
         /*print("Name: \(FriendSystem.system.userList[indexPath.row].name)")
         print("School: \(FriendSystem.system.userList[indexPath.row].school)")
          print("Email: \(FriendSystem.system.userList[indexPath.row].email)")
@@ -405,6 +425,9 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"
         cell!.gradeLabel.text = "Grade: \(FriendSystem.system.userList[indexPath.row].grade)"
        // cell!.chatButton.accessibilityIdentifier = FriendSystem.system.userList[indexPath.row].uid
+        
+        cell!.infoButton.contentMode = .scaleAspectFit
+        cell!.addFriendButton.contentMode = .scaleAspectFit
         
         
         cell!.setAddFriendFunction {

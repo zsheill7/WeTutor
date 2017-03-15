@@ -125,8 +125,8 @@ class TutorSignUpViewControllerOne : FormViewController {
     typealias Emoji = String
 
     override func viewDidLoad() {
-        
-       // navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
+        super.viewDidLoad()
+        navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         
         
         
@@ -138,7 +138,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                 //self.view.addBlueBackground("mixed2")
                 //self.view.addBackground("Info Input Page (solid)")
                 //self.view.backgroundColor = UIColor(red:0.40, green:0.75, blue:0.80, alpha:1.0)
-        self.view.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
+        self.tableView?.backgroundColor = UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
         self.loadForm()
         //self.view.backgroundColor = UIColor
         //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(byPercentage: 0.2)
@@ -170,11 +170,17 @@ class TutorSignUpViewControllerOne : FormViewController {
             
             +++ Section(" ")
             
-            <<< PickerInputRow<String>("gender"){
+            /*<<< PickerInputRow<String>("gender"){
                 $0.title = "Gender"
                 $0.options = ["Male", "Female", "Other"]
                 
                 $0.value = $0.options.first
+            }*/
+            <<< PickerInlineRow<String>("gender") { (row : PickerInlineRow<String>) -> Void in
+                row.title = "Gender"
+                row.options = ["Male", "Female", "Other"]
+                
+                row.value = row.options[0]
             }
             
             <<< PickerInlineRow<String>("grade") { (row : PickerInlineRow<String>) -> Void in
@@ -218,14 +224,14 @@ class TutorSignUpViewControllerOne : FormViewController {
                         }
                     }
             }*/
-            +++ Section(" ")
+            +++ Section()
             
             <<< TextAreaRow("description") {
                 $0.placeholder = "Tell us about yourself"
-                $0.textAreaHeight = .dynamic(initialTextViewHeight: 130)
+                $0.textAreaHeight = .fixed(cellHeight: 150)
             }
             
-            +++ Section(" ")
+            +++ Section()
             <<< ButtonRow() {
                 $0.title = "Continue"
                 }
@@ -376,7 +382,7 @@ class TutorSignUpViewControllerOne : FormViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // <<< ---ADD THIS LINE
         //
-        //self.tableView?.tableFooterView = UIView()
+        self.tableView?.tableFooterView = UIView()
         
     }
     
