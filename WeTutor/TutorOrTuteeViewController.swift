@@ -53,7 +53,7 @@ class TutorOrTuteeViewController: UIViewController {
         chooseLabel.layer.shadowColor = UIColor.black.cgColor
         chooseLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
         chooseLabel.layer.shadowOpacity = 0.4
-        chooseLabel.layer.shadowRadius = 5
+        chooseLabel.layer.shadowRadius = 2
         
        /* let pickOneLabel = UILabel()
         pickOneLabel.backgroundColor = UIColor.blue

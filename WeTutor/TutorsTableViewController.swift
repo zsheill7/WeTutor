@@ -392,7 +392,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 161.0
+        return 110
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellTwo {
        /* let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserCell
@@ -438,28 +438,35 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
          print("Email: \(FriendSystem.system.userList[indexPath.row].email)")
         print(FriendSystem.system.userList[indexPath.row].grade)*/
         // Modify cell
-        cell!.nameLabel.text = "Name: \(FriendSystem.system.userList[indexPath.row].name)"
-        cell!.schoolLabel.text = "School: \(FriendSystem.system.userList[indexPath.row].school)"
-        cell!.gradeLabel.text = "Grade: \(FriendSystem.system.userList[indexPath.row].grade)"
-       // cell!.chatButton.accessibilityIdentifier = FriendSystem.system.userList[indexPath.row].uid
+        let userAtRow = FriendSystem.system.userList[indexPath.row]
+        cell!.nameLabel.text = "Name: \(userAtRow.name)"
+        cell!.schoolLabel.text = "School: \(userAtRow.school)"
+        cell!.gradeLabel.text = "Grade: \(userAtRow.grade)"
+       // cell!.chatButton.accessibilityIdentifier = userAtRow.uid
         
+        print("Name: \(userAtRow.name)")
+        print(cell!.nameLabel.text)
         cell!.infoButton.contentMode = .scaleAspectFit
         cell!.addFriendButton.contentMode = .scaleAspectFit
         
-        
+        if userAtRow.profileImageUrl != nil {
+            if URL(string: userAtRow.profileImageUrl!) != nil {
+                cell!.profileImageView.loadImageUsingCacheWithUrlString(userAtRow.profileImageUrl!)
+            }
+        }
         cell!.setAddFriendFunction {
-            print(FriendSystem.system.userList[indexPath.row])
-            let id = FriendSystem.system.userList[indexPath.row].uid
+            print(userAtRow)
+            let id = userAtRow.uid
             print(id)
             //FriendSystem.system.sendRequestToUser(id)
             FriendSystem.system.acceptFriendRequest(id)
             self.displayAlert("Success!", message: "Contact Added")
         }
       /*  cell!.setChatFunction {
-            self.createChannel(FriendSystem.system.userList[indexPath.row].uid)
+            self.createChannel(userAtRow.uid)
         }*/
         cell!.setInfoFunction {
-            let tutor = FriendSystem.system.userList[indexPath.row]
+            let tutor = userAtRow
             self.UID = tutor.uid
             self.destinationUser = tutor
             self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)

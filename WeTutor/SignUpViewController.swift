@@ -258,8 +258,11 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         let currentUserUID = FIRAuth.auth()?.currentUser?.uid
         let usersRef = FIRDatabase.database().reference().child("users")
         
-       
+        print("func setProfileImage(profileImage: UIImage) {")
+        
         if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+            
+            print("if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {")
             
             storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                 

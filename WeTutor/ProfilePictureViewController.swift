@@ -27,8 +27,23 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         super.viewDidLoad()
         
         
-        view.addSubview(profileImageView)
         
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            let profile = value?["profileImageURL"]
+            // let user = User.init(username: username)
+            
+            self.profileImage.loadImageUsingCacheWithUrlString(profile as! String)
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        view.addSubview(profileImageView)
+
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -73,13 +88,13 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-    /*func fetchCurrentUser() {
+    func fetchCurrentUser() {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 
                 let userID = FIRAuth.auth()?.currentUser?.uid
-                ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     // Get user value
                     let value = snapshot.value as? NSDictionary
                     let profileImageURL = value?["profileImageURL"] as? String ?? ""
@@ -87,53 +102,26 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
                     
                     // ...
                     if profileImageURL  != nil {
-                        cell.profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
+                        self.profileImageView.loadImageUsingCacheWithUrlString(profileImageURL)
                     }
                 }) { (error) in
                     print(error.localizedDescription)
                 }
                 //if you use this setter, your app will crash if your class properties don't exactly match up with the firebase dictionary keys
-                user.setValuesForKeys(dictionary)
-                self.users.append(user)
+                self.user?.setValuesForKeys(dictionary)
                 
                 //this will crash because of background thread, so lets use dispatch_async to fix
-                DispatchQueue.main.async(execute: {
-                    self.tableView.reloadData()
-                })
                 
                 //                user.name = dictionary["name"]
             }
             
         }, withCancel: nil)
-    }*/
+    }
 
     
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let profile = value?["profileImageURL"]
-           // let user = User.init(username: username)
-            if let newProfile = profile as? Data {
-                
-                if let downloadedImage = UIImage(data: newProfile as! Data) {
-                   // self.profileImage.image = downloadedImage
-                    self.profileImage.loadImageUsingCacheWithUrlString(profile as! String)
-              
-                }
-                print("inside block 1")
-                
-            } else {
-                print("if let newProfile = profile as? Data { returned false")
-            }
-            
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }
         
         
         /*if let imageFile = user!["barcode"] {

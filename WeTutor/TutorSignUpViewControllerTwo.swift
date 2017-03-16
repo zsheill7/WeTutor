@@ -65,8 +65,14 @@ class TutorSignUpViewControllerTwo : FormViewController {
             <<< TextAreaRow("Availability Notes") {
                 $0.placeholder = "I'm available Sundays, but only after 3:00."
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 70)
-            }
+            }.cellSetup({ (cell, row) in
+                cell.backgroundColor = UIColor.clear
+               // row.backgroundColor = UIColor.clear
+                cell.textView.backgroundColor = UIColor.clear
+               
             
+            })
+    
             +++ Section("Languages")
             
             <<< PickerInlineRow<String>("First Language") { (row : PickerInlineRow<String>) -> Void in

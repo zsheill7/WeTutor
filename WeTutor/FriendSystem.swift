@@ -86,7 +86,17 @@ class FriendSystem {
                 userInfo = ["email": user!.email! as AnyObject,
                             "password": password as AnyObject,
                             "name": name as AnyObject]
+                
                 self.CURRENT_USER_REF.setValue(userInfo)
+               
+                let uid = user?.uid as String!
+                let animalIndex =  Int(arc4random_uniform(6))
+                let profileImage = UIImage(named: animalImageNames[animalIndex])
+                print(profileImage)
+               // let userInfo = ["name": user?.displayName, "email": user?.email]
+                //FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
+                self.setProfileImage(profileImage: profileImage!)
+                
                 completion(true)
             } else {
                 // Failure
@@ -104,6 +114,43 @@ class FriendSystem {
             
         })
     }
+        
+    func setProfileImage(profileImage: UIImage) {
+        print("inside setprofileimage")
+        let imageName = UUID().uuidString
+        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
+        
+        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+        let usersRef = FIRDatabase.database().reference().child("users")
+        
+        
+        if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+            print(" if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {")
+            storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    print(" if let profileImageUrl = metadata?.downloadURL()?.absoluteString {")
+                    if currentUserUID != nil {
+                        print("if currentUserUID != nil")
+                        print(profileImageUrl)
+                        usersRef.child(currentUserUID!).child("profileImageURL").setValue(profileImageUrl)
+                        print("set image")
+                    }
+                    //let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
+                    //self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                }
+            })
+        } else {
+            "if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) { returned false"
+        }
+        
+    }
+
     
     /**
      Logs in an account with the specified email and password

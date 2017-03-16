@@ -238,8 +238,13 @@ class TutorSignUpViewControllerOne : FormViewController {
             <<< TextAreaRow("description") {
                 $0.placeholder = "Tell us about yourself"
                 $0.tag = "description"
-                $0.textAreaHeight = .dynamic(initialTextViewHeight: 70)
-            }
+                $0.textAreaHeight = .dynamic(initialTextViewHeight: 90)
+                }.cellSetup({ (cell, row) in
+                    cell.backgroundColor = UIColor.clear
+                   
+                
+                    cell.textView.backgroundColor = UIColor.clear
+                })
             
             +++ Section()
             <<< ButtonRow() {
@@ -336,41 +341,35 @@ class TutorSignUpViewControllerOne : FormViewController {
                     self.view.addSubview(animationTypeLabel)
                     activityIndicatorView.startAnimating()
                     
+                    self.ref.child("users/\(userID!)/zipcode").setValue(zipcode)
+                    self.ref.child("users/\(userID!)/schoolName").setValue(school)
+                    self.ref.child("users/\(userID!)/phone").setValue(phone)
+                    self.ref.child("users/\(userID!)/gender").setValue(gender)
+                    self.ref.child("users/\(userID!)/grade").setValue(grade)
+                    self.ref.child("users/\(userID!)/preferredSubject").setValue(subject)
+                    self.ref.child("users/\(userID!)/description").setValue(description)
+              
                     
-                    self.ref.child("users").child(userID!).setValue(["zipcode": zipcode,
-                                                                     "schoolName": school,
-                                                                     "phone": phone,
-                                                                     "gender": gender,
-                                                                     "grade": grade,
-                                                                     "preferredSubject": subject,
-                                                                     "description": description,
-                                                                     "email": email,
-                                                                     "password": password,
-                                                                     "isTutor": isTutor,
-                             "name": name], withCompletionBlock: { (error, ref) in
-                                print("before error nil")
-                                if error == nil {
-                                    print("error=nil")
-                                    let geocoder = CLGeocoder()
-                                    geocoder.geocodeAddressString(zipcode!) { placemarks, error in
-                                        if error != nil {
-                                            print(error?.localizedDescription ?? "")
-                                        } else {
-                                            for placemark in placemarks! {
-                                                let location = placemark.location
-                                                let latitude = location?.coordinate.latitude
-                                                let longitude = location?.coordinate.longitude
-                                                self.ref.child("users/\(userID!)/latitude").setValue(latitude)
-                                                self.ref.child("users/\(userID!)/longitude").setValue(longitude)
-                                            }
-                                        }
-                                    }
-                                    activityIndicatorView.stopAnimating()
-                                    self.performSegue(withIdentifier: "toSecondVC", sender: self)
-                                } else /*if error != nil*/{
-                                    self.displayAlert("Error", message: (error?.localizedDescription)!)
-                                }
-                    }) //self.ref.child("users").child(userID!).observeSingleEvent
+                    
+                    print("error=nil")
+                    let geocoder = CLGeocoder()
+                    geocoder.geocodeAddressString(zipcode!) { placemarks, error in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "")
+                        } else {
+                            for placemark in placemarks! {
+                                let location = placemark.location
+                                let latitude = location?.coordinate.latitude
+                                let longitude = location?.coordinate.longitude
+                                self.ref.child("users/\(userID!)/latitude").setValue(latitude)
+                                self.ref.child("users/\(userID!)/longitude").setValue(longitude)
+                            }
+                        }
+                    }
+                    activityIndicatorView.stopAnimating()
+                    self.performSegue(withIdentifier: "toSecondVC", sender: self)
+                    
+                   
                 } else {
                     self.displayAlert("You are not signed in", message: "Please log in again")
                 }//if let zipcode = self.form.sections[0].rows[0].value,

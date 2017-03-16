@@ -7,16 +7,18 @@ import UIKit
 
 class UserCellTwo: UITableViewCell {
     
-    
-    
     @IBOutlet weak var nameLabel: UILabel!
-    //  @IBOutlet weak var chatButton: UIButton!
     
     @IBOutlet weak var schoolLabel: UILabel!
-    @IBOutlet weak var addFriendButton: UIButton!
+   
     @IBOutlet weak var gradeLabel: UILabel!
-    
+
     @IBOutlet weak var subjectLabel: UILabel!
+    //  @IBOutlet weak var chatButton: UIButton!
+    
+
+    @IBOutlet weak var addFriendButton: UIButton!
+  
     
  
     
