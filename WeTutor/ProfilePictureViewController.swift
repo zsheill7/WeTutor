@@ -11,6 +11,7 @@ import Firebase
 
 class ProfilePictureViewController: UIViewController, UIImagePickerControllerDelegate {
 
+    @IBOutlet weak var nextButton: UIButton!
     var user = FIRAuth.auth()?.currentUser
     
     let pickedProfileImage = UIImagePickerController()
@@ -24,7 +25,10 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     let ref = FIRDatabase.database().reference()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         view.addSubview(profileImageView)
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,10 +37,16 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
+    }
+    
     lazy var profileImageView: UIImageView = {
+        
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "blue icon")
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        imageView.image = UIImage(named: "Owl Icon-2")
+        imageView.translatesAutoresizingMaskIntoConstraints = true
         imageView.contentMode = .scaleAspectFill
         
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changePhoto)))
@@ -49,9 +59,18 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         //need x, y, width, height constraints
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        let widthConstraint = NSLayoutConstraint(item: profileImageView,
+                                                 attribute: .width,
+                                                 relatedBy: .equal,
+                                                 toItem: nil,
+                                                 attribute: .notAnAttribute,
+                                                 multiplier: 0.5,
+                                                 constant: 100)
+        self.view.addConstraints([widthConstraint])
+        profileImageView.width = 100
         //profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     /*func fetchCurrentUser() {

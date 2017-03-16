@@ -12,6 +12,7 @@ import FirebaseAuth
 import CoreLocation
 import SCLAlertView
 import DropDown
+import TwicketSegmentedControl
 
 class TutorTableViewCell: UITableViewCell {
     
@@ -32,6 +33,12 @@ class TutorTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+extension TutorsTableViewController: TwicketSegmentedControlDelegate {
+    func didSelect(_ segmentIndex: Int) {
+        print("Selected index: \(segmentIndex)")
+    }
 }
 
 
@@ -105,6 +112,16 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         dropDown?.show()
         
+        
+        
+        let titles = ["Tutors", "Students", "All"]
+        let frame = CGRect(x: 5, y: view.frame.height, width: view.frame.width - 10, height: 40)
+        
+        let segmentedControl = TwicketSegmentedControl(frame: frame)
+        segmentedControl.setSegmentItems(titles)
+        segmentedControl.delegate = self
+        
+        view.addSubview(segmentedControl)
         
         /*let query = userRef.queryOrdered(byChild: "preferredSubject").queryEqualToValue(true)
         query.observeEventType(.value, withBlock: { (snapshot) in

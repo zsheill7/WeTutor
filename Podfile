@@ -23,4 +23,5 @@ use_frameworks!
  pod 'NVActivityIndicatorView'
  pod 'DZNEmptyDataSet'
  pod 'DropDown'
+ pod ‘TwicketSegmentedControl’
 end

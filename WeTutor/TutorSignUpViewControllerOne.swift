@@ -135,7 +135,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                 /* cellWidth = Int(self.view.frame.width / CGFloat(cols))
                  cellHeight = Int(self.view.frame.height / CGFloat(rows))*/
                 
-                //self.view.addBlueBackground("mixed2")
+                //self.view?.backgroundColor = UIColor.backgroundBlue()
                 //self.view.addBackground("Info Input Page (solid)")
                 //self.view.backgroundColor = UIColor(red:0.40, green:0.75, blue:0.80, alpha:1.0)
         self.tableView?.backgroundColor = UIColor.backgroundBlue()
@@ -188,7 +188,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             }
             
             <<< PickerInlineRow<String>("grade") { (row : PickerInlineRow<String>) -> Void in
-                row.title = "First Language"
+                row.title = "Grade"
                 row.tag = "grade"
                 row.options = gradeLevels
                 

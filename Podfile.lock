@@ -68,6 +68,7 @@ PODS:
   - RZTransitions (1.2.1)
   - SCLAlertView (0.7.0)
   - Spring (1.0.3)
+  - TwicketSegmentedControl (0.1.2)
 
 DEPENDENCIES:
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - RZTransitions
   - SCLAlertView
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+  - TwicketSegmentedControl
 
 EXTERNAL SOURCES:
   BTNavigationDropdownMenu:
@@ -136,7 +138,8 @@ SPEC CHECKSUMS:
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: 31033789ed5bc83f0e2b89c511f7eaab35cb6280
+PODFILE CHECKSUM: cfb262e6e3ef650043b2629e4317b55f36498ec9
 
 COCOAPODS: 1.2.0

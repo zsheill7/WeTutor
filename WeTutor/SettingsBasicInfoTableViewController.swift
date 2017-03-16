@@ -108,7 +108,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
         cellWidth = Int(self.view.frame.width / CGFloat(cols))
         cellHeight = Int(self.view.frame.height / CGFloat(rows))
         
-        self.view.addBlueBackground("mixed2")
+        self.view?.backgroundColor = UIColor.backgroundBlue()
         
      
         

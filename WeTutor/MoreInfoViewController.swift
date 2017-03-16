@@ -63,7 +63,7 @@ class MoreInfoViewController: UIViewController {
         for view in backgroundColoredViews {
             view.backgroundColor = UIColor.clear
         }
-        let viewFromNib: UIView? = Bundle.main.loadNibNamed("NibName",
+        let viewFromNib: UIView? = Bundle.main.loadNibNamed("WeekDaysCellTwo",
                                                             owner: nil,
                                                             options: nil)?.first as! UIView?
         

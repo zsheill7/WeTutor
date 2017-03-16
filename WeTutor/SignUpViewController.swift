@@ -98,7 +98,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         )*/
         /*UIGraphicsBeginImageContext(self.view.frame.size)
         UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-        //self.view.addBlueBackground("mixed2")
+        //self.view?.backgroundColor = UIColor.backgroundBlue()
         self.view.addBackground("book.png")
         
         
