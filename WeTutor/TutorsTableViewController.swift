@@ -35,14 +35,8 @@ class TutorTableViewCell: UITableViewCell {
     
 }
 
-extension TutorsTableViewController: TwicketSegmentedControlDelegate {
-    func didSelect(_ segmentIndex: Int) {
-        print("Selected index: \(segmentIndex)")
-    }
-}
 
-
-class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, TwicketSegmentedControlDelegate {
 
     var dbRef: FIRDatabaseReference!
     var tutors = [User]()
@@ -56,7 +50,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     @IBOutlet weak var dropdownButton: UIButton!
     
-   
+
     
     fileprivate var channelRefHandle: FIRDatabaseHandle?
     fileprivate var channels: [Channel] = []
@@ -83,6 +77,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     }
     
     var dropDown: DropDown?
+    var segmentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,14 +109,10 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         
         
-        let titles = ["Tutors", "Students", "All"]
-        let frame = CGRect(x: 5, y: view.frame.height, width: view.frame.width - 10, height: 40)
+        let titles = ["Tutors", "Students", "Everyone"]
+        let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
         
-        let segmentedControl = TwicketSegmentedControl(frame: frame)
-        segmentedControl.setSegmentItems(titles)
-        segmentedControl.delegate = self
-        
-        view.addSubview(segmentedControl)
+       
         
         /*let query = userRef.queryOrdered(byChild: "preferredSubject").queryEqualToValue(true)
         query.observeEventType(.value, withBlock: { (snapshot) in
@@ -142,17 +133,50 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
                 // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         FriendSystem.system.getCurrentUser { (user) in
-           self.currentUser = user
+            self.currentUser = user
         }
         
         FriendSystem.system.addUserObserver { () in
+            for user in FriendSystem.system.userList {
+                if user.isTutor == true {
+                    self.finalUserList.append(user)
+                    
+                }
+            }
+
             self.tableView.reloadData()
         }
+        
+        
+        
+        
+        let segmentedControl = TwicketSegmentedControl(frame: frame)
+        segmentedControl.setSegmentItems(titles)
+  
+        segmentedControl.delegate = self
+        
+        view.addSubview(segmentedControl)
+        
+                print("finalUserList.count")
+        print(finalUserList.count)
+       
+        tableView.reloadData()
+        
+        if (currentUser?.isTutor) == true {
+            segmentedControl.move(to: 1)
+        }
+        
+        
         
         //observeChannels()
         
         //startObservingDB()
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
         
     }
     
@@ -193,6 +217,42 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             }
         }
     }
+    
+    var finalUserList = [User]()
+    
+    func didSelect(_ segmentIndex: Int) {
+        self.segmentIndex = segmentIndex
+        switch segmentIndex {
+        case 0: //tutors
+            finalUserList = [User]()
+            for user in FriendSystem.system.userList {
+                if user.isTutor == true {
+                    finalUserList.append(user)
+                    
+                }
+            }
+            tableView.reloadData()
+        case 1: //students
+            finalUserList = [User]()
+            for user in FriendSystem.system.userList {
+                if user.isTutor != true {
+                    finalUserList.append(user)
+                }
+            }
+            tableView.reloadData()
+        case 2: //everyone
+         
+            finalUserList = FriendSystem.system.userList
+            tableView.reloadData()
+        default:
+           
+            finalUserList = FriendSystem.system.userList
+            tableView.reloadData()
+        }
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -208,7 +268,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //return tutors.count
-        return FriendSystem.system.userList.count
+        
+        return finalUserList.count
     }
 
     @IBAction func createNewChat(_ sender: Any) {
@@ -269,70 +330,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-    }
-    /*func createChannel(otherUser: String) {
-        print("in create channel")
-        let userDefaults = UserDefaults.standard
-        
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        print(userID)
-        var ref: FIRDatabaseReference!
-        let user = FIRAuth.auth()?.currentUser
-        
-        ref = FIRDatabase.database().reference()
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            print("in child observesingleevent")
-            let userObject = User(snapshot: snapshot )
-            print(userObject)
-            let value = snapshot.value as? NSDictionary
-            let isTutor = userObject.isTutor
-            
-            if isTutor != nil {
-                print("tutor != nil")
-                
-                    if isTutor == true {
-                        self.tutorName = userID!
-                        self.tuteeName = otherUser
-                    } else {
-                        
-                    }
-            } else {
-                self.tutorName = "Chat"
-                self.tuteeName = "Chat"
-            }
-         
-            print("Tutor Name: " + self.tutorName)
-            print("Tutee Name: " + self.tuteeName)
-            
-        
-                let uuid = UUID().uuidString
-            let channelItem = [
-                "tutorName": self.tutorName,
-                "tuteeName": self.tuteeName
-            ]
-           
-            self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
-          
-            let newChannelRef = self.channelRef.childByAutoId()
-            
-            newChannelRef.setValue(channelItem)
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            let userChannelRef = self.userRef.child(userID!).child("channels")
-            userChannelRef.setValue(channelItem)
-            /*userChannelRef.child("tutorName").setValue(self.tutorName)
-            userChannelRef.child("tuteeName").setValue(tuteeName)*/
-                self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
-
-            
-
-        })
-        
-        
-    }*/
+    
+    
     func createChannel(_ otherUser: String) {
         
         
@@ -438,7 +437,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
          print("Email: \(FriendSystem.system.userList[indexPath.row].email)")
         print(FriendSystem.system.userList[indexPath.row].grade)*/
         // Modify cell
-        let userAtRow = FriendSystem.system.userList[indexPath.row]
+        //let userAtRow = FriendSystem.system.userList[indexPath.row]
+        let userAtRow = finalUserList[indexPath.row]
         cell!.nameLabel.text = "Name: \(userAtRow.name)"
         cell!.schoolLabel.text = "School: \(userAtRow.school)"
         cell!.gradeLabel.text = "Grade: \(userAtRow.grade)"
@@ -450,7 +450,9 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         cell!.addFriendButton.contentMode = .scaleAspectFit
         
         if userAtRow.profileImageUrl != nil {
+            print("if userAtRow.profileImageUrl != nil {")
             if URL(string: userAtRow.profileImageUrl!) != nil {
+                print("if URL(string: userAtRow.profileImageUrl!) != nil {")
                 cell!.profileImageView.loadImageUsingCacheWithUrlString(userAtRow.profileImageUrl!)
             }
         }

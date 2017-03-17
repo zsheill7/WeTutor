@@ -221,28 +221,25 @@ class FriendSystem {
                 //let password = value?["password"] as? String
                 let isTutor = value?["isTutor"] as? Bool
                 
-                let userDefaults = UserDefaults.standard
-                if let currentUserIsTutor = userDefaults.value(forKey: "isTutor") as? Bool {
-                    if email != nil {
+                //let userDefaults = UserDefaults.standard
+                if email != nil {
                         print("email:" + email!)
-                    }
-                    //print("name:" + name!)
-                    // let email = snapshot.childSnapshot(forPath: "email").value as! String
-                    
-                    if email != FIRAuth.auth()?.currentUser?.email! && description != nil {
-                        if (currentUserIsTutor == true && isTutor == false) ||
-                            (currentUserIsTutor == false && isTutor == true) {
-                            //print(User(snapshot: child))
-                            print("here in if email")
-                            self.userList.append(User(snapshot: child))
-                            print("going through 1")
-                            
-                        }
-                    }
                 }
-                else {
-                    // no highscore exists
+                //print("name:" + name!)
+                // let email = snapshot.childSnapshot(forPath: "email").value as! String
+                
+                if email != FIRAuth.auth()?.currentUser?.email! && description != nil {
+                    /*if (currentUserIsTutor == true && isTutor == false) ||
+                        (currentUserIsTutor == false && isTutor == true) {*/
+                        //print(User(snapshot: child))
+                        print("here in if email")
+                        self.userList.append(User(snapshot: child))
+                        print("going through 1")
+                        
+                    //}
                 }
+                
+               
                 
                 
             }
