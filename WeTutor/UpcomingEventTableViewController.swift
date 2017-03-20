@@ -115,7 +115,15 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var events = [eventItem]()
     var willRepeat = false
     
+    
     var currentUserIsTutor = false
+    
+    var iterationStatus = ""
+    
+    var tutorName: String = ""
+    var tuteeName: String = ""
+    var tutorOrTutee = "tutorName"
+   // var currentUserIsTutor = false
     
     class func instantiateFromStoryboard() -> UpcomingEventTableViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
@@ -255,7 +263,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     
-    func loadCalendar() {
+    /*func loadCalendar() {
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
@@ -282,11 +290,19 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 
             }
         })
+    }*/
+    
+    func loadCalendar(_ calendarId: String) -> EKCalendar {
+        if let calendar = eventStore.calendar(withIdentifier: calendarId) {
+            return calendar
+        }
     }
     
     func loadAllCalendars() {
         let friendList = FriendSystem.system.friendList
         //let destUserID = destUser.uid
+        let channelRef = FIRDatabase.database().reference().child("channels")
+        
         channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
             if snapshot.exists() {
@@ -303,38 +319,50 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                             
                             //print(" if let channel = snapshot.value as? [String: String] {")
                             //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
-                            
-                            if self.currentUserIsTutor == false {
-                                if let tuteeName = channelDict["tuteeName"] as? String,
-                                    let  tutorName = channelDict["tutorName"] as? String{
-                                    if tuteeName == FIRAuth.auth()?.currentUser?.uid {
-                                        print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
-                                        
-                                        if tutorName == destUserID {
-                                            self.iterationStatus = "done"
-                                            print("perform segue channel")
-                                            print(channel)
-                                            let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
-                                            self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
-                                            break
+                            for destUser in friendList {
+                                let destUserID = destUser.uid
+                                if self.currentUserIsTutor == false {
+                                    if let tuteeName = channelDict["tuteeName"] as? String,
+                                        let  tutorName = channelDict["tutorName"] as? String{
+                                        if tuteeName == FIRAuth.auth()?.currentUser?.uid {
+                                            print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                            
+                                            if tutorName == destUserID {
+                                                self.iterationStatus = "done"
+                                                print("perform segue channel")
+                                                print(channel)
+                                                let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                                if let calendarId = channelDict["calendarId"] as? String {
+                                                    if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {
+                                                        self.calendars.append(loadedCalendar)
+                                                    }
+                                                }
+                                                self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                                break
+                                            }
                                         }
                                     }
-                                }
-                                
-                            } else if self.currentUserIsTutor == true {
-                                if let tuteeName = channelDict["tuteeName"] as? String,
-                                    let  tutorName = channelDict["tutorName"] as? String{
-                                    if tutorName == FIRAuth.auth()?.currentUser?.uid {
-                                        print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
-                                        if tuteeName == destUserID {
-                                            self.iterationStatus = "done"
-                                            print("perform segue channel2")
-                                            print(channel)
-                                            let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
-                                            self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
-                                            break
-                                        }
-                                    } //if channelDict["tutorName"]
+                                    
+                                } else if self.currentUserIsTutor == true {
+                                    if let tuteeName = channelDict["tuteeName"] as? String,
+                                        let  tutorName = channelDict["tutorName"] as? String{
+                                        if tutorName == FIRAuth.auth()?.currentUser?.uid {
+                                            print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                            if tuteeName == destUserID {
+                                                self.iterationStatus = "done"
+                                                print("perform segue channel")
+                                                print(channel)
+                                                let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                                if let calendarId = channelDict["calendarId"] as? String {
+                                                    if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {
+                                                        self.calendars.append(loadedCalendar)
+                                                    }
+                                                }
+                                                self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                                break
+                                            }
+                                        } //if channelDict["tutorName"]
+                                    }
                                 }
                             }
                             
@@ -344,7 +372,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 
             } //if snapshot.exists() {
             
-            let uuid = UUID().uuidString
+            /*let uuid = UUID().uuidString
             if self.iterationStatus == "inProcess" {
                 if self.tutorOrTutee == "tuteeName" {
                     let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
@@ -371,7 +399,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     self.performSegue(withIdentifier: "toChatVC", sender: channel)
                     
                 }
-            }
+            }*/
         })
 
     }
@@ -381,7 +409,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
-        let channelRef = FIRDatabase.database().reference()
+        let channelRef = FIRDatabase.database().reference().child("channels")
         
         let eventStore = EKEventStore()
         
