@@ -253,8 +253,127 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    
+    
     func loadCalendar() {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = userRef.child(userID!).child("channels")
         
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let userObject = User(snapshot: snapshot )
+            
+            self.currentUser = userObject
+            
+            let value = snapshot.value as? NSDictionary
+            
+            for channel in userObject.channels {
+                
+                let calendarId = channel.calendarId
+                if let newCalendar = self.eventStore.calendar(withIdentifier: calendarId)
+                {
+                    self.calendars.append(newCalendar)
+                    
+                } else {
+                    self.createCalendar(channel.id)
+                }
+                //self.channels.append(channel)
+                self.tableView.reloadData()
+                
+            }
+        })
+    }
+    
+    func loadAllCalendars() {
+        let friendList = FriendSystem.system.friendList
+        //let destUserID = destUser.uid
+        channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
+            if snapshot.exists() {
+                print(" if snapshot.exists() {")
+                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                    print("typeofall")
+                    print(type(of: allChannels))
+                    print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
+                    self.iterationStatus = "inProcess"
+                    for channel in allChannels {
+                        
+                        if let channelDict = channel.value as? Dictionary<String, AnyObject> {
+                            
+                            
+                            //print(" if let channel = snapshot.value as? [String: String] {")
+                            //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                            
+                            if self.currentUserIsTutor == false {
+                                if let tuteeName = channelDict["tuteeName"] as? String,
+                                    let  tutorName = channelDict["tutorName"] as? String{
+                                    if tuteeName == FIRAuth.auth()?.currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                        
+                                        if tutorName == destUserID {
+                                            self.iterationStatus = "done"
+                                            print("perform segue channel")
+                                            print(channel)
+                                            let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                            self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                            break
+                                        }
+                                    }
+                                }
+                                
+                            } else if self.currentUserIsTutor == true {
+                                if let tuteeName = channelDict["tuteeName"] as? String,
+                                    let  tutorName = channelDict["tutorName"] as? String{
+                                    if tutorName == FIRAuth.auth()?.currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                        if tuteeName == destUserID {
+                                            self.iterationStatus = "done"
+                                            print("perform segue channel2")
+                                            print(channel)
+                                            let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                            self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                            break
+                                        }
+                                    } //if channelDict["tutorName"]
+                                }
+                            }
+                            
+                        }
+                    } //for channel in allChannels {
+                }
+                
+            } //if snapshot.exists() {
+            
+            let uuid = UUID().uuidString
+            if self.iterationStatus == "inProcess" {
+                if self.tutorOrTutee == "tuteeName" {
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+                    print("if tutorOrTutee == tuteeName {")
+                    print("iterationStatus")
+                    print(self.iterationStatus)
+                    
+                    self.createChannel(otherUser: destUserID)
+                    print("if self.iterationStatus == inProcess1 {")
+                    print("perform segue channel3")
+                    print(channel)
+                    
+                    self.performSegue(withIdentifier: "toChatVC", sender: channel)
+                    
+                    
+                } else if self.tutorOrTutee == "tutorName" {
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
+                    print("if tutorOrTutee == tutorName {")
+                    
+                    print("if self.iterationStatus == inProcess2 {")
+                    self.createChannel(otherUser: destUserID)
+                    print("perform segue channel4")
+                    print(channel)
+                    self.performSegue(withIdentifier: "toChatVC", sender: channel)
+                    
+                }
+            }
+        })
+
     }
     
     func createCalendar(_ channelId: String) {

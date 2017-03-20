@@ -366,6 +366,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             tuteeName = "Chat"
         }
         
+        
         let newCalendarId = createCalendar()
 
         let channelItem = [
@@ -390,16 +391,20 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         let userChannelRef = userRef.child(userID!).child("channels")
         let newChannelRef = channelRef.child(uuid)
         newChannelRef.setValue(channelItem)
+        
+        //This sets the channel item in the child "channels"
         userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
         userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
         userChannelRef.child(uuid).child("calendarId").setValue(newCalendarId)
         
+        //This adds the other user as a "friend" child to the current user ref and vice versa
         FriendSystem.system.acceptFriendRequest(otherUser)
         
         self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
         
     }
     
+    //This function creates a new calendar identifier to add to a newly created channel
     func createCalendar() -> String {
         
         let userID = FIRAuth.auth()?.currentUser?.uid

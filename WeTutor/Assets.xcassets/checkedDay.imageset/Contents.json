@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "checked icon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "checkedDay.png",
       "scale" : "2x"
     },
     {
