@@ -97,25 +97,25 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }
     
     
-    
-    
     var instruments:[String] = []
     var ensembles:[String] = []
-    var events = [eventItem]()
-    
-    var user = FIRAuth.auth()?.currentUser
 
     var refresher: UIRefreshControl!
     var detailVC: DetailViewController? = nil
-
     let picker = UIImageView(image: UIImage(named: "Custom Picker View 2"))
-    
     var pickerFrame: CGRect?
-    
-    var willRepeat = false
-    
     var activityIndicator = UIActivityIndicatorView()
     
+    
+    let userRef = FIRDatabase.database().reference().child("users")
+    var currentUserUID = FIRAuth.auth()?.currentUser?.uid
+    var currentUser: User?
+    var calendars = [EKCalendar()]
+    
+    var events = [eventItem]()
+    var willRepeat = false
+    
+    var currentUserIsTutor = false
     
     class func instantiateFromStoryboard() -> UpcomingEventTableViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
@@ -143,85 +143,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }
     
     
-    /*override func viewDidLoad() {
-        super.viewDidLoad()
-         //dateFormatter.dateFormat = "YYYY/MM/DD"
-        //animateTable()
-      //  let installation = PFInstallation.currentInstallation()
-        
-        /*if User.currentUser()?.username != nil {
-            if installation["marchingInstrument"] == nil {
-                print("here3")
-                /* installation.addObject(PFUser.currentUser()!["marchingInstrument"], forKey: "channels")*/
-                installation.setObject(User.currentUser()!["concertInstrument"], forKey: "concertInstrument")
-                installation.setObject(User.currentUser()!["marchingInstrument"], forKey: "marchingInstrument")
-                //installation["concertInstrument"] = [PFUser.currentUser()!["concertInstrument"]]
-                //print(installation.objectId)
-                installation.saveInBackground()
-            }
-        }*/
-        
-        
-        print("here2")
-        /*if PFUser.currentUser()?.username != nil {
-            print("here3")
-           /* installation.addObject(PFUser.currentUser()!["marchingInstrument"], forKey: "channels")*/
-            installation.setObject(PFUser.currentUser()!["concertInstrument"], forKey: "concertInstrument")
-            installation.setObject(PFUser.currentUser()!["marchingInstrument"], forKey: "marchingInstrument")
-            //installation["concertInstrument"] = [PFUser.currentUser()!["concertInstrument"]]
-            //print(installation.objectId)
-            installation.saveInBackground()
-            print("here")
-            //print(installation["concertInstrument"])
-            PFCloud.callFunctionInBackground("iospush", withParameters: ["message" : "test2", "marchingInstrument": "Alto Saxophone", "concertInstrument": "Flute", "isMarching": "true"]) { (response: AnyObject?, error) in
-                if error == nil {
-                    print("Retrieved")
-                    print(installation["concertInstrument"])
-                } else {
-                    print(error)
-                }
-            }
-        }*/
-
-        
-        
-       /* let notificationType = UIApplication.shared.currentUserNotificationSettings!.types
-        if notificationType == UIUserNotificationType.none {
-            let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        
-            UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-            UIApplication.shared.registerForRemoteNotifications()
-        }else{
-            // Push notifications are enabled in setting by user.
-            
-        }*/
-        
-        
-        
-        self.dismissKeyboard()
-       
-        refresher = UIRefreshControl()
-        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresher.addTarget(self, action:  #selector(UpcomingEventTableViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-       
-        table.addSubview(refresher)
-        refresher.endRefreshing()
-       // self.hideKeyboardWhenTappedAround()
-        navigationItem.hidesBackButton = true
-        
-        //var isAdmin = user!["isAdmin"] as! Bool
-        
-        //TrakTableData()
-
-        
-        pickerFrame = CGRect(x: ((self.view.frame.width - picker.frame.size.width) - 10), y: 70, width: 200, height: 160)
-        
-        //createPicker()
-        
-        self.view.endEditing(true)
-        
-        
-    }*/
+   
     
         // EKEventStore instance associated with the current Calendar application
     
@@ -272,6 +194,108 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // The Add button is initially disabled
       //  self.addButton.isEnabled = false
     }
+    
+    
+    fileprivate func observeChannels() {
+        // We can use the observe method to listen for new
+        // channels being written to the Firebase DB
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = userRef.child(userID!).child("channels")
+        
+        print("inside observeChannels)")
+        for friend in FriendSystem.system.friendList {
+            print("for friend in FriendSystem.system.friendList")
+            var ref: FIRDatabaseReference!
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            ref = FIRDatabase.database().reference()
+            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let userObject = User(snapshot: snapshot )
+                
+                self.currentUser = userObject
+                
+                let value = snapshot.value as? NSDictionary
+                let isTutor = userObject.isTutor
+                if isTutor != nil {
+                    if isTutor == true {
+                        self.currentUserIsTutor = true
+                        //self.tutorOrTutee = "tuteeName"
+                    } else {
+                        self.currentUserIsTutor = false
+                       // self.tutorOrTutee = "tutorName"
+                    }
+                }
+                else {
+                    // no highscore exists
+                }
+                let email = userObject.email
+                //print(email)
+                //print("userObject.channels")
+                //print( userObject.channels)
+                
+                
+                for channel in userObject.channels {
+                    
+                    let calendarId = channel.calendarId
+                    if let newCalendar = self.eventStore.calendar(withIdentifier: calendarId)
+                    {
+                        self.calendars.append(newCalendar)
+                        
+                    } else {
+                        self.createCalendar(channel.id)
+                    }
+                    //self.channels.append(channel)
+                    self.tableView.reloadData()
+                    
+                }
+            })
+        }
+    }
+    
+    func loadCalendar() {
+        
+    }
+    
+    func createCalendar(_ channelId: String) {
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = userRef.child(userID!).child("channels")
+        
+        let channelRef = FIRDatabase.database().reference()
+        
+        let eventStore = EKEventStore()
+        
+        // Use Event Store to create a new calendar instance
+        // Configure its title
+        var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
+        
+       // newCalendar.calendarIdentifier = identifier
+        
+        
+        // Probably want to prevent someone from saving a calendar
+        // if they don't type in a name...
+        newCalendar.title = "Events"
+        
+        
+        // Access list of available sources from the Event Store
+        let sourcesInEventStore = eventStore.sources
+        
+        // Filter the available sources and select the "Local" source to assign to the new calendar's
+        // source property
+        newCalendar.source = sourcesInEventStore.filter{
+            (source: EKSource) -> Bool in
+            source.sourceType.rawValue == EKSourceType.local.rawValue
+            }.first!
+        
+        channelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
+        userChannelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
+        
+        self.calendars.append(newCalendar)
+        
+    }
+    
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -451,49 +475,6 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }
     
 }
-
-   /* override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        closePicker()
-    }
-    
-     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            
-            
-            let detailNC = segue.destination as! UINavigationController
-            let detailVC = detailNC.topViewController as! DetailViewController
-            if let indexPath = self.table.indexPathForSelectedRow {
-                detailVC.eventTitleText = events[indexPath.row].title
-                detailVC.dateText = events[indexPath.row].getDateString()
-                detailVC.eventDescriptionText = events[indexPath.row].description
-                detailVC.instrumentText = events[indexPath.row].instrument
-            }
-        }
-        
-        
-    }
-    
-    func animateTable() {
-        table.reloadData()
-        
-        let cells = table.visibleCells
-        
-        let tableViewHeight = table.bounds.size.height
-        
-        for cell in cells {
-            cell.transform = CGAffineTransform(a: tableViewHeight, b: tableViewHeight, c: tableViewHeight, d: tableViewHeight, tx: 0, ty: tableViewHeight)
-        }
-        
-        var delayCounter = 0
-        
-        for cell in cells {
-            UIView.animate(withDuration: 1.75, delay: Double(delayCounter), usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                cell.transform = CGAffineTransform.init()
-                }, completion: nil)
-            delayCounter += 1
-        }
-        
-    }*/
 
 
 

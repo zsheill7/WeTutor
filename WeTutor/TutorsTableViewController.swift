@@ -13,6 +13,7 @@ import CoreLocation
 import SCLAlertView
 import DropDown
 import TwicketSegmentedControl
+import EventKit
 
 class TutorTableViewCell: UITableViewCell {
     
@@ -50,7 +51,11 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     @IBOutlet weak var dropdownButton: UIButton!
     
+    @IBAction func pressedShowDropdown(_ sender: Any) {
+        dropDown.show()
+    }
 
+    
     
     fileprivate var channelRefHandle: FIRDatabaseHandle?
     fileprivate var channels: [Channel] = []
@@ -76,7 +81,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! TutorsTableViewController
     }
     
-    var dropDown: DropDown?
+    var dropDown: DropDown = DropDown()
     var segmentIndex = 0
     
     override func viewDidLoad() {
@@ -84,54 +89,11 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
 
-        
-        dropDown = DropDown()
-        
-        // The view to which the drop down will appear on
-        dropDown?.anchorView = dropdownButton // UIView or UIBarButtonItem
-        dropDown?.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
-            guard let cell = cell as? SubjectCell else { return }
-            
-            // Setup your custom UI components
-            let currentSubject = subjectNames[index]
-            cell.subjectLabel.text = currentSubject
-            let imageName: String = subjectImageNames[currentSubject]!
-            cell.subjectImage.image = UIImage(named: "\(imageName)")
-        }
-        // The list of items to display. Can be changed dynamically
-        dropDown?.dataSource = subjectNames//preferredSubj
-        dropDown?.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
-        dropDown?.selectionAction = { [unowned self] (index, item) in
-            self.dropdownButton.setTitle(item, for: .normal)
-        }
-        
-        dropDown?.show()
-        
-        
+        setupDropDown()
         
         let titles = ["Tutors", "Students", "Everyone"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
-        
-       
-        
-        /*let query = userRef.queryOrdered(byChild: "preferredSubject").queryEqualToValue(true)
-        query.observeEventType(.value, withBlock: { (snapshot) in
-            for childSnapshot in snapshot.children {
-                print(childSnapshot)
-            }
-        })
-        
-        
-        dropDown?.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
-        }*/
-       
-        // self.view.addBackground(imageName: "mixed2")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-                // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         FriendSystem.system.getCurrentUser { (user) in
             self.currentUser = user
         }
@@ -146,10 +108,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
 
             self.tableView.reloadData()
         }
-        
-        
-        
-        
+
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)
   
@@ -175,10 +134,42 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
     }
     
+   
+    
+    func setupDropDown() {
+        
+        
+        // The view to which the drop down will appear on
+        dropDown.anchorView = dropdownButton // UIView or UIBarButtonItem
+        dropDown.bottomOffset = CGPoint(x: 0, y: 20)
+        dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
+            guard let cell = cell as? SubjectCell else { return }
+            
+            // Setup your custom UI components
+            let currentSubject = subjectNames[index]
+            cell.subjectLabel.text = currentSubject
+            if let imageName: String = subjectImageNames[currentSubject] {
+                cell.subjectImage.image = UIImage(named: "\(imageName)-1")
+            }
+        }
+        // The list of items to display. Can be changed dynamically
+        dropDown.dataSource = subjectNames//preferredSubj
+        dropDown.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
+        dropDown.selectionAction = { [unowned self] (index, item) in
+            self.dropdownButton.setTitle(item, for: .normal)
+            
+            self.filterBySubject(item)
+        }
+        
+       
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
         
     }
+    
+
     
     
     func startObservingDB () {
@@ -250,6 +241,23 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             tableView.reloadData()
         }
         
+    }
+    
+    func filterBySubject(_ segmentItem: String) {
+        if segmentItem == "All Subjects" {
+            self.didSelect(dropDown.indexForSelectedRow!)
+        } else {
+            finalUserList = [User]()
+            for user in FriendSystem.system.userList {
+                for subject in user.preferredSubjects {
+                    if subject == segmentItem {
+                        finalUserList.append(user)
+                    }
+                }
+            }
+            tableView.reloadData()
+        }
+
     }
     
     
@@ -357,10 +365,13 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             tutorName = "Chat"
             tuteeName = "Chat"
         }
+        
+        let newCalendarId = createCalendar()
 
         let channelItem = [
             "tutorName": tutorName,
-            "tuteeName": tuteeName
+            "tuteeName": tuteeName,
+            "calendarId": newCalendarId
         ]
                let userID = FIRAuth.auth()?.currentUser?.uid
         
@@ -381,10 +392,50 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         newChannelRef.setValue(channelItem)
         userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
         userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
+        userChannelRef.child(uuid).child("calendarId").setValue(newCalendarId)
         
         FriendSystem.system.acceptFriendRequest(otherUser)
         
         self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
+        
+    }
+    
+    func createCalendar() -> String {
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = userRef.child(userID!).child("channels")
+        
+        let channelRef = FIRDatabase.database().reference()
+        
+        let eventStore = EKEventStore()
+        
+        // Use Event Store to create a new calendar instance
+        // Configure its title
+        var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
+        
+        // newCalendar.calendarIdentifier = identifier
+        
+        
+        // Probably want to prevent someone from saving a calendar
+        // if they don't type in a name...
+        newCalendar.title = "Events"
+        
+        
+        // Access list of available sources from the Event Store
+        let sourcesInEventStore = eventStore.sources
+        
+        // Filter the available sources and select the "Local" source to assign to the new calendar's
+        // source property
+        newCalendar.source = sourcesInEventStore.filter{
+            (source: EKSource) -> Bool in
+            source.sourceType.rawValue == EKSourceType.local.rawValue
+            }.first!
+        
+        //channelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
+        //userChannelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
+        
+        //self.calendars.append(newCalendar)
+        return newCalendar.calendarIdentifier
         
     }
     
@@ -394,18 +445,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         return 110
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellTwo {
-       /* let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UserCell
+      
         
-        print("in cell for row")
-        let tutor = tutors[indexPath.row]
-        cell.nameLabel?.text = tutor.name
-        cell.schoolLabel?.text = tutor.school
-        cell.gradeLabel?.text = "Age:" + String(tutor.age)
-        cell.accessoryType = .detailDisclosureButton
-        
-        // Configure the cell...
-
-        return cell*/
         // Create cell
         var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellTwo
         if cell == nil {
@@ -418,24 +459,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         ref = FIRDatabase.database().reference()
         
         let userID = FIRAuth.auth()?.currentUser?.uid
-        /*ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let profileImageURL = value?["profileImageURL"] as? String ?? ""
-            // let user = User.init(username: username)
-            
-            // ...
-            if profileImageURL  != nil {
-                cell?.profileImageView.loadImageUsingCacheWithUrlString(profileImageURL)
-            }
-        }) { (error) in
-            print(error.localizedDescription)
-        }*/
-
-        /*print("Name: \(FriendSystem.system.userList[indexPath.row].name)")
-        print("School: \(FriendSystem.system.userList[indexPath.row].school)")
-         print("Email: \(FriendSystem.system.userList[indexPath.row].email)")
-        print(FriendSystem.system.userList[indexPath.row].grade)*/
+        
+       
         // Modify cell
         //let userAtRow = FriendSystem.system.userList[indexPath.row]
         let userAtRow = finalUserList[indexPath.row]
@@ -443,6 +468,11 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         cell!.schoolLabel.text = "School: \(userAtRow.school)"
         cell!.gradeLabel.text = "Grade: \(userAtRow.grade)"
        // cell!.chatButton.accessibilityIdentifier = userAtRow.uid
+        
+        
+        let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
+        cell!.subjectLabel.text = "Subjects: \(subjectsString)"
+        
         
         print("Name: \(userAtRow.name)")
         print(cell!.nameLabel.text)

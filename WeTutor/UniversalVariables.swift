@@ -16,4 +16,4 @@ let subjectImageNames = ["Japanese": "Japanese Icon.jpg", "Spanish":  "Spanish I
                          "Chemistry": "Chemistry Icon.jpg", "Math": "Math Icon.jpg",
                          "Physics": "Phys Icon.jpg", "Biology": "Bio Icon.jpg"]
 
-let subjectNames = ["Math" /*"English"*//*, "History"*/, "Chemistry", "Physics", "Biology", "Spanish", "French", "Chinese", "German", "Latin"]
+let subjectNames = ["All Subjects", "Math" /*"English"*//*, "History"*/, "Chemistry", "Physics", "Biology", "Spanish", "French", "Chinese", "German", "Latin"]

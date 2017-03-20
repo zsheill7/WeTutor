@@ -150,7 +150,7 @@ class TutorSignUpViewControllerOne : FormViewController {
     func loadForm() {
         form
             
-            +++ Section()
+            +++ Section("Basic Info")
             
             
             <<< ZipCodeRow("zipcode") {
@@ -168,7 +168,7 @@ class TutorSignUpViewControllerOne : FormViewController {
             <<< PhoneRow("phone") {
                 $0.title = "Phone Number"
                 $0.tag = "phone"
-                $0.placeholder = "+598 9898983510"
+                $0.placeholder = "12062752633"
             }
             
             +++ Section()
@@ -207,13 +207,24 @@ class TutorSignUpViewControllerOne : FormViewController {
                         return value
                     }
             }*/
-            <<< PickerInlineRow<String>("subject") { (row : PickerInlineRow<String>) -> Void in
+            /*<<< PickerInlineRow<String>("subject") { (row : PickerInlineRow<String>) -> Void in
                 row.title = "Preferred Subject"
                 row.tag = "subject"
                 row.options = subjectNames
                 
                 row.value = row.options[0]
+            }*/
+            <<< MultipleSelectorRow<Emoji>("subject") {
+                $0.title = "Preferred Subject"
+                $0.tag = "subject"
+                $0.options = subjectNames
+                $0.value = ["Math"]
+                }
+                .onPresent { from, to in
+                    to.view.backgroundColor = UIColor.backgroundBlue()
+                    to.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: from, action: #selector(self.multipleSelectorDone(_:)))
             }
+
             
             /*<<< PushRow<Emoji>("subject") {
                 $0.title = "Preferred Subject"
@@ -232,11 +243,11 @@ class TutorSignUpViewControllerOne : FormViewController {
             }*/
             
            
-            +++ Section()
+            +++ Section("Biography")
             
             
             <<< TextAreaRow("description") {
-                $0.placeholder = "Tell us about yourself"
+                $0.placeholder = "Tell us a bit about yourself. This will appear on your profile."
                 $0.tag = "description"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 90)
                 }.cellSetup({ (cell, row) in
@@ -255,9 +266,15 @@ class TutorSignUpViewControllerOne : FormViewController {
                     self.continueSelected()
                     
         }
+        
+        
 
         
 
+    }
+    
+    func multipleSelectorDone(_ item:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func continueSelected() {
@@ -273,8 +290,13 @@ class TutorSignUpViewControllerOne : FormViewController {
         let gender = row4?.value
         let row5: PickerInlineRow<String>? = self.form.rowBy(tag: "grade")
         let grade = row5?.value
-        let row6: PickerInlineRow<String>? = self.form.rowBy(tag: "subject")
+        let row6: MultipleSelectorRow<Emoji>? = self.form.rowBy(tag: "subject")
         let subject = row6?.value
+        
+        var subjectArray: [String]?
+        if subject != nil {
+            subjectArray = Array(subject!)
+        }
         let row7: TextAreaRow? = self.form.rowBy(tag: "description")
         let description = row7?.value
         
@@ -289,7 +311,7 @@ class TutorSignUpViewControllerOne : FormViewController {
 
         
         
-        if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subject != nil {
+        if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subjectArray != nil {
             
             self.ref = FIRDatabase.database().reference()
             
@@ -346,7 +368,7 @@ class TutorSignUpViewControllerOne : FormViewController {
                     self.ref.child("users/\(userID!)/phone").setValue(phone)
                     self.ref.child("users/\(userID!)/gender").setValue(gender)
                     self.ref.child("users/\(userID!)/grade").setValue(grade)
-                    self.ref.child("users/\(userID!)/preferredSubject").setValue(subject)
+                    self.ref.child("users/\(userID!)/preferredSubject").setValue(subjectArray)
                     self.ref.child("users/\(userID!)/description").setValue(description)
               
                     
@@ -408,10 +430,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         
     }
     
-    func multipleSelectorDone(_ item:UIBarButtonItem) {
-        _ = navigationController?.popViewController(animated: true)
-    }
-    
+   
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.6)
         //cell.backgroundColor = UIColor(red:0.43, green:0.82, blue:0.83, alpha:1.0)
