@@ -329,7 +329,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             })
             if finishedObserve == false {
                 print("finishedObserve == false")
-                createChannel(uid!)
+               createChannel(uid!)
             }
         }
         
@@ -413,18 +413,18 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         let channelRef = FIRDatabase.database().reference()
         
         let eventStore = EKEventStore()
+        //let initCalendar = EKCalendar()
+        //let eventCalendar = initCalendar.calendar
         
         // Use Event Store to create a new calendar instance
         // Configure its title
         var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
         
+        //var newCalendar = eventStore.calendar
         // newCalendar.calendarIdentifier = identifier
-        
-        
         // Probably want to prevent someone from saving a calendar
         // if they don't type in a name...
         newCalendar.title = "Events"
-        
         
         // Access list of available sources from the Event Store
         let sourcesInEventStore = eventStore.sources
@@ -443,12 +443,11 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         return newCalendar.calendarIdentifier
         
     }
-    
-    
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellTwo {
       
         

@@ -110,7 +110,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     let userRef = FIRDatabase.database().reference().child("users")
     var currentUserUID = FIRAuth.auth()?.currentUser?.uid
     var currentUser: User?
-    var calendars = [EKCalendar()]
+    var calendars: [EKCalendar] = []
     
     var events = [eventItem]()
     var willRepeat = false
@@ -157,7 +157,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     // Default calendar associated with the above event store
-    var defaultCalendar: EKCalendar!
+    //var defaultCalendar: EKCalendar!
     
     // Array of all events happening within the next 24 hours
     var eventsList: [EKEvent] = []
@@ -172,7 +172,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the event store
-        eventStore = EKEventStore()
+       /* eventStore = EKEventStore()
+        
         
         var titles : [String] = []
         var startDates : [NSDate] = []
@@ -197,7 +198,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     endDates.append(event.endDate as NSDate)
                 }
             }
-        }
+        }*/
+        loadAllCalendars()
         // Initialize the events list
         // The Add button is initially disabled
       //  self.addButton.isEnabled = false
@@ -292,10 +294,13 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         })
     }*/
     
+    
+    // TODO: handle returning the default EKCalendar
     func loadCalendar(_ calendarId: String) -> EKCalendar {
         if let calendar = eventStore.calendar(withIdentifier: calendarId) {
             return calendar
         }
+        return EKCalendar()
     }
     
     func loadAllCalendars() {
@@ -336,6 +341,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                     if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {
                                                         self.calendars.append(loadedCalendar)
                                                     }
+                                                } else {
+                                                    // TODO: Handle nil case or default EKCalendar
                                                 }
                                                 self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
                                                 break
@@ -403,7 +410,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         })
 
     }
-    
+ 
     func createCalendar(_ channelId: String) {
         
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -417,13 +424,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // Configure its title
         var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
         
-       // newCalendar.calendarIdentifier = identifier
-        
-        
+        // newCalendar.calendarIdentifier = identifier
         // Probably want to prevent someone from saving a calendar
         // if they don't type in a name...
         newCalendar.title = "Events"
-        
         
         // Access list of available sources from the Event Store
         let sourcesInEventStore = eventStore.sources
@@ -441,14 +445,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.calendars.append(newCalendar)
         
     }
-    
-    
+ 
+
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Check whether we are authorized to access Calendar
-        self.checkEventStoreAccessForCalendar()
+       // self.checkEventStoreAccessForCalendar()
     }
     
     
@@ -508,7 +512,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: Access Calendar
     
     // Check the authorization status of our application for Calendar
-    private func checkEventStoreAccessForCalendar() {
+    /*private func checkEventStoreAccessForCalendar() {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         
         switch status {
@@ -551,13 +555,13 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // Update the UI with the above events
         self.tableView.reloadData()
     }
-    
+    */
     
     //MARK: -
     //MARK: Fetch events
     
     // Fetch all events happening in the next 24 hours
-    private func fetchEvents() -> [EKEvent] {
+   /* private func fetchEvents() -> [EKEvent] {
         let startDate = Date()
         
         //Create the end date components
@@ -578,7 +582,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let events = eventStore.events(matching: predicate)
         
         return events
-    }
+    }*/
     
     
     //MARK: -
@@ -607,7 +611,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             if action != .canceled {
                 DispatchQueue.main.async {
                     // Re-fetch all events happening in the next 24 hours
-                    self?.eventsList = self!.fetchEvents()
+                    //self?.eventsList = self!.fetchEvents()
                     // Update the UI with the above events
                     self?.tableView.reloadData()
                 }
@@ -615,11 +619,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    //var default​Calendar​For​New​Events:​ EKCalendar
     
     // Set the calendar edited by EKEventEditViewController to our chosen calendar - the default calendar.
-    func eventEditViewControllerDefaultCalendar(forNewEvents controller: EKEventEditViewController) -> EKCalendar {
-        return self.defaultCalendar
-    }
+    /*func eventEditViewControllerDefaultCalendar(forNewEvents controller: EKEventEditViewController) -> EKCalendar {
+        return eventStore.calendar(withIdentifier: "")!
+    }*/
     
 }
 

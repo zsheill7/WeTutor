@@ -9,7 +9,7 @@ import Material
 import ChameleonFramework
 import RZTransitions
 import FirebaseAuth
-import Firebase
+import FirebaseDatabase
 import SCLAlertView
 
 
