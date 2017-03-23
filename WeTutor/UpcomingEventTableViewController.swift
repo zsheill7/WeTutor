@@ -157,7 +157,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     // Default calendar associated with the above event store
-    //var defaultCalendar: EKCalendar!
+    var defaultCalendar: EKCalendar!
     
     // Array of all events happening within the next 24 hours
     var eventsList: [EKEvent] = []
@@ -172,37 +172,53 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the event store
-       /* eventStore = EKEventStore()
+       eventStore = EKEventStore()
         
         
-        var titles : [String] = []
-        var startDates : [NSDate] = []
-        var endDates : [NSDate] = []
         
-        //let eventStore = EKEventStore()
-        let calendars = eventStore.calendars(for: .event)
         
-        for calendar in calendars {
-            if calendar.title == "Work" {
-                
-                let oneMonthAgo = NSDate(timeIntervalSinceNow: -30*24*3600)
-                let oneMonthAfter = NSDate(timeIntervalSinceNow: +30*24*3600)
-                
-                let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo as Date, end: oneMonthAfter as Date, calendars: [calendar])
-                
-                var events = eventStore.events(matching: predicate)
-                
-                for event in events {
-                    titles.append(event.title)
-                    startDates.append(event.startDate as NSDate)
-                    endDates.append(event.endDate as NSDate)
-                }
-            }
-        }*/
-        loadAllCalendars()
+        FriendSystem.system.getCurrentUser { (user) in
+            //self.usernameLabel.text = user.email
+        }
+        
+        FriendSystem.system.addFriendObserver {
+            self.loadAllCalendars()
+            self.displayAllCalendars()
+            self.tableView.reloadData()
+            //self.observeChannels()
+            
+        }
+        
+       // let calendars = eventStore.calendars(for: .event)
+        
+        
+        
         // Initialize the events list
         // The Add button is initially disabled
       //  self.addButton.isEnabled = false
+    }
+    
+    func displayAllCalendars() {
+        var titles : [String] = []
+        var startDates : [NSDate] = []
+        var endDates : [NSDate] = []
+        for calendar in calendars {
+            //  if calendar.title == "Work" {
+            print("for calendar in calendars {")
+            let oneMonthAgo = NSDate(timeIntervalSinceNow: -30*24*3600)
+            let oneMonthAfter = NSDate(timeIntervalSinceNow: +30*24*3600)
+            
+            let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo as Date, end: oneMonthAfter as Date, calendars: [calendar])
+            
+            var events = eventStore.events(matching: predicate)
+            
+            for event in events {
+                titles.append(event.title)
+                startDates.append(event.startDate as NSDate)
+                endDates.append(event.endDate as NSDate)
+            }
+            // }
+        }
     }
     
     
@@ -296,15 +312,18 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     // TODO: handle returning the default EKCalendar
-    func loadCalendar(_ calendarId: String) -> EKCalendar {
+    /*func loadCalendar(_ calendarId: String) -> EKCalendar {
         if let calendar = eventStore.calendar(withIdentifier: calendarId) {
             return calendar
         }
         return EKCalendar()
     }
-    
+    */
     func loadAllCalendars() {
+        print("loadAllCalendars()")
         let friendList = FriendSystem.system.friendList
+        print("friendList.count \(friendList.count)")
+        print(friendList.count)
         //let destUserID = destUser.uid
         let channelRef = FIRDatabase.database().reference().child("channels")
         
@@ -321,14 +340,16 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                         
                         if let channelDict = channel.value as? Dictionary<String, AnyObject> {
                             
-                            
+                            print(" if let channelDict = channel.value as? Dictionary<String, AnyObject> {")
                             //print(" if let channel = snapshot.value as? [String: String] {")
                             //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
                             for destUser in friendList {
                                 let destUserID = destUser.uid
                                 if self.currentUserIsTutor == false {
+                                    print("if self.currentUserIsTutor == false {")
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
+                                        print(" let  tutorName = channelDict[tutorName] as? String{")
                                         if tuteeName == FIRAuth.auth()?.currentUser?.uid {
                                             print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
                                             
@@ -336,23 +357,30 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 self.iterationStatus = "done"
                                                 print("perform segue channel")
                                                 print(channel)
-                                                let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                               // let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
                                                 if let calendarId = channelDict["calendarId"] as? String {
-                                                    if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {
-                                                        self.calendars.append(loadedCalendar)
-                                                    }
+                                                    print(" if let calendarId = channelDict[calendarId] as? String {")
+                                                        if let loadedCalendar = self.eventStore.calendar(withIdentifier: calendarId) {
+                                                           
+                                                        
+                                                            print("if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {")
+                                                            self.calendars.append(loadedCalendar)
+                                                        }
+                                                    
                                                 } else {
                                                     // TODO: Handle nil case or default EKCalendar
                                                 }
-                                                self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                               
                                                 break
                                             }
                                         }
                                     }
                                     
                                 } else if self.currentUserIsTutor == true {
+                                    print("if self.currentUserIsTutor == true {")
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
+                                         print(" let  tutorName = channelDict[tutorName] as? String{")
                                         if tutorName == FIRAuth.auth()?.currentUser?.uid {
                                             print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
                                             if tuteeName == destUserID {
@@ -361,12 +389,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 print(channel)
                                                 let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
                                                 if let calendarId = channelDict["calendarId"] as? String {
-                                                    if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {
+                                                    if let loadedCalendar = self.eventStore.calendar(withIdentifier: calendarId) {
+                                                        
+                                                        
+                                                        print("if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {")
                                                         self.calendars.append(loadedCalendar)
                                                     }
                                                 }
-                                                self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
-                                                break
+                                              break
                                             }
                                         } //if channelDict["tutorName"]
                                     }
@@ -422,7 +452,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         // Use Event Store to create a new calendar instance
         // Configure its title
-        var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
+        var newCalendar = EKCalendar(for: .event, eventStore: self.eventStore)
         
         // newCalendar.calendarIdentifier = identifier
         // Probably want to prevent someone from saving a calendar
@@ -452,7 +482,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Check whether we are authorized to access Calendar
-       // self.checkEventStoreAccessForCalendar()
+        self.checkEventStoreAccessForCalendar()
     }
     
     
@@ -512,7 +542,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: Access Calendar
     
     // Check the authorization status of our application for Calendar
-    /*private func checkEventStoreAccessForCalendar() {
+    private func checkEventStoreAccessForCalendar() {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         
         switch status {
@@ -547,7 +577,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     // This method is called when the user has granted permission to Calendar
     private func accessGrantedForCalendar() {
         // Let's get the default calendar associated with our event store
-        self.defaultCalendar = eventStore.defaultCalendarForNewEvents
+        self.defaultCalendar = EKCalendar(for: .event, eventStore: self.eventStore)
         // Enable the Add button
        // self.addButton.isEnabled = true
         // Fetch all events happening in the next 24 hours and put them into eventsList
@@ -555,13 +585,13 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // Update the UI with the above events
         self.tableView.reloadData()
     }
-    */
+    
     
     //MARK: -
     //MARK: Fetch events
     
     // Fetch all events happening in the next 24 hours
-   /* private func fetchEvents() -> [EKEvent] {
+private func fetchEvents() -> [EKEvent] {
         let startDate = Date()
         
         //Create the end date components
@@ -582,7 +612,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let events = eventStore.events(matching: predicate)
         
         return events
-    }*/
+    }
     
     
     //MARK: -

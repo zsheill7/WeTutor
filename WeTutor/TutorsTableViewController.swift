@@ -400,7 +400,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         //This adds the other user as a "friend" child to the current user ref and vice versa
         FriendSystem.system.acceptFriendRequest(otherUser)
         
-        self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
+       // self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
         
     }
     
@@ -496,6 +496,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             print(id)
             //FriendSystem.system.sendRequestToUser(id)
             FriendSystem.system.acceptFriendRequest(id)
+             self.createChannel(userAtRow.uid)
             self.displayAlert("Success!", message: "Contact Added")
         }
       /*  cell!.setChatFunction {
