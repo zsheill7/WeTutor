@@ -179,6 +179,7 @@
                     <navigationItem key="navigationItem" title="WeTutor" id="xwO-Sm-AOc"/>
                     <connections>
                         <segue destination="f1O-17-5Nh" kind="show" identifier="toTutorOrTuteeVC" id="UNl-nb-Bdv"/>
+                        <segue destination="X1N-CK-Yff" kind="show" identifier="toPagingMenuVC" id="yHJ-Ym-rSV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R0P-Lz-3eU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -215,7 +216,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginNC" automaticallyAdjustsScrollViewInsets="NO" id="1kV-iB-SjC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TX5-wN-JVX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TX5-wN-JVX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -233,7 +234,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signupNC" automaticallyAdjustsScrollViewInsets="NO" id="eDQ-NE-3k0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="maU-b1-d8V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maU-b1-d8V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -251,7 +252,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerOneNC" automaticallyAdjustsScrollViewInsets="NO" id="r5a-IX-An8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ks-9t-bVe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ks-9t-bVe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -269,7 +270,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerTwoNC" automaticallyAdjustsScrollViewInsets="NO" id="aTv-SR-QJN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jOj-rE-hEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jOj-rE-hEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -338,6 +339,7 @@
         <image name="Owl Icon-2" width="687" height="687"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OLB-7F-WMk"/>
+        <segue reference="yHJ-Ym-rSV"/>
+        <segue reference="UNl-nb-Bdv"/>
     </inferredMetricsTieBreakers>
 </document>

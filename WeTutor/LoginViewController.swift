@@ -146,7 +146,7 @@ class LoginViewController: UIViewController {
                             
                             //self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
                         } else {
-                            self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                            self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
                         }
                         
                         

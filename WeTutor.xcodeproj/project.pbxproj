@@ -588,7 +588,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = HNK7ZEMZ36;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -894,7 +894,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = HNK7ZEMZ36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -905,8 +905,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.WeTutor.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wetutor.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "91d27e79-1850-435d-bc05-75946f9e43d4";
+				PROVISIONING_PROFILE_SPECIFIER = WeTutor;
 				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/WeTutor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0.1;
@@ -921,7 +923,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = HNK7ZEMZ36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -932,8 +934,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.WeTutor.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wetutor.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "91d27e79-1850-435d-bc05-75946f9e43d4";
+				PROVISIONING_PROFILE_SPECIFIER = WeTutor;
 				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/WeTutor-Bridging-Header.h";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = 1;
