@@ -23,6 +23,8 @@
 		C82800E11E0F4F7600329B7D /* Tutee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82800E01E0F4F7600329B7D /* Tutee.storyboard */; };
 		C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */; };
 		C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */; };
+		C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BEE171E8608D6008C77AC /* Unused.storyboard */; };
+		C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */; };
 		C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AF91E629D4500202E3A /* AddEventViewController.swift */; };
 		C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */; };
 		C8338B391E63DFC300202E3A /* eventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* eventItem.swift */; };
@@ -143,6 +145,8 @@
 		C82800E01E0F4F7600329B7D /* Tutee.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutee.storyboard; sourceTree = "<group>"; };
 		C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutThisApp.storyboard; sourceTree = "<group>"; };
 		C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutThisAppViewController.swift; sourceTree = "<group>"; };
+		C82BEE171E8608D6008C77AC /* Unused.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Unused.storyboard; sourceTree = "<group>"; };
+		C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityTableViewController.swift; sourceTree = "<group>"; };
 		C8338AF91E629D4500202E3A /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventTableViewController.swift; sourceTree = "<group>"; };
 		C8338B371E63DFC300202E3A /* eventItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventItem.swift; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */,
 				C82800E01E0F4F7600329B7D /* Tutee.storyboard */,
 				96090AF01D9CDD2E00709CA6 /* LaunchScreen.storyboard */,
+				C82BEE171E8608D6008C77AC /* Unused.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -429,8 +434,8 @@
 			children = (
 				C890A0981E27FDDC007DE45D /* ChatViewController.swift */,
 				C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */,
-				C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */,
 				C890A09B1E27FDDC007DE45D /* Channel.swift */,
+				C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */,
 				C8F668CD1E6D31D500D9DC53 /* Message.swift */,
 			);
 			name = Chat;
@@ -488,6 +493,7 @@
 				C87984A11E0C76A5003EB7A1 /* MenuViewCustomizable.swift */,
 				C87984A21E0C76A5003EB7A1 /* Pagable.swift */,
 				C87984A31E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift */,
+				C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */,
 			);
 			name = "In Paging Menu";
 			sourceTree = "<group>";
@@ -629,6 +635,7 @@
 				C88498C01E0B51A0000C4675 /* Main.storyboard in Resources */,
 				C87984AF1E0C8138003EB7A1 /* MenuViewController.storyboard in Resources */,
 				96090AF21D9CDD2E00709CA6 /* LaunchScreen.storyboard in Resources */,
+				C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */,
 				C84F180D1E713CF700EC54BF /* SubjectCell.xib in Resources */,
 				C82800E11E0F4F7600329B7D /* Tutee.storyboard in Resources */,
 				96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */,
@@ -717,6 +724,7 @@
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
+				C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
 				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
 				C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */,

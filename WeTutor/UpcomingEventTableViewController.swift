@@ -112,7 +112,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var currentUser: User?
     var calendars: [EKCalendar] = []
     
-    var events = [eventItem]()
+   // var events = [eventItem]()
     var willRepeat = false
     
     
@@ -195,14 +195,17 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         // Initialize the events list
         // The Add button is initially disabled
-      //  self.addButton.isEnabled = false
+        //  self.addButton.isEnabled = false
     }
     
+    var events: [EKEvent] = [EKEvent]()
     func displayAllCalendars() {
-        var titles : [String] = []
+        print("in display all calendars")
+        /*var titles : [String] = []
         var startDates : [NSDate] = []
-        var endDates : [NSDate] = []
+        var endDates : [NSDate] = []*/
         for calendar in calendars {
+            print(" in for calendar")
             //  if calendar.title == "Work" {
             print("for calendar in calendars {")
             let oneMonthAgo = NSDate(timeIntervalSinceNow: -30*24*3600)
@@ -213,9 +216,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             var events = eventStore.events(matching: predicate)
             
             for event in events {
-                titles.append(event.title)
+                self.events.append(event)
+                print("self.events.append(event)" + String(events.count))
+                
+                /*titles.append(event.title)
                 startDates.append(event.startDate as NSDate)
-                endDates.append(event.endDate as NSDate)
+                endDates.append(event.endDate as NSDate)*/
             }
             // }
         }
@@ -401,11 +407,16 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                         } //if channelDict["tutorName"]
                                     }
                                 }
-                            }
+                            } //for destUser in friendList
                             
                         }
+                        self.displayAllCalendars()
+                        self.tableView.reloadData()
                     } //for channel in allChannels {
+                    
                 }
+                
+                
                 
             } //if snapshot.exists() {
             
@@ -507,7 +518,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.eventsList.count
+        return self.events.count
     }
     
     
@@ -517,8 +528,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         
         // Get the event at the row selected and display its title
-        let title = self.eventsList[indexPath.row].title
-        let dateString = String(describing: self.eventsList[indexPath.row].startDate)
+        let title = self.events[indexPath.row].title
+        let dateString = String(describing: self.events[indexPath.row].startDate)
        // cell.detailTextLabel?.text = String(describing: self.eventsList[indexPath.row].startDate)
         cell.textLabel?.attributedText = makeAttributedString(title: title, subtitle: dateString)
 
@@ -591,7 +602,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: Fetch events
     
     // Fetch all events happening in the next 24 hours
-private func fetchEvents() -> [EKEvent] {
+    private func fetchEvents() -> [EKEvent] {
         let startDate = Date()
         
         //Create the end date components

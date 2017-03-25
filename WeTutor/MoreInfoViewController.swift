@@ -6,7 +6,7 @@ import Eureka
 import CoreLocation
 import SCLAlertView
 
-class MoreInfoViewController: UIViewController {
+class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     var destUser: User!
     
@@ -33,8 +33,10 @@ class MoreInfoViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var subjectsLabel: UILabel!
+   
+
+    @IBOutlet weak var fullPageScrollView: UIScrollView!
     
-    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var containerView: UIView!
    // @IBOutlet weak var weekDayView: UIScrollView!
@@ -63,10 +65,12 @@ class MoreInfoViewController: UIViewController {
         for view in backgroundColoredViews {
             view.backgroundColor = UIColor.clear
         }
+        
         let viewFromNib: UIView? = Bundle.main.loadNibNamed("WeekDaysCellTwo",
                                                             owner: nil,
                                                             options: nil)?.first as! UIView?
-        
+        fullPageScrollView.delegate = self
+        fullPageScrollView.isDirectionalLockEnabled = true
       // containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDayCell
         
        /* form
@@ -80,6 +84,9 @@ class MoreInfoViewController: UIViewController {
                 
         }*/
         
+        //let backView = UIView(frame: self.tableView.bounds)
+        
+       // self.fullPageScrollView.addBackground("Info Input Page (w-stripes)")
         
         // Set the kerning to 1 to increase spacing between letters
        
@@ -109,6 +116,8 @@ class MoreInfoViewController: UIViewController {
         nameLabel.text = "\(destUser.name)"
         
     }
+    
+    
     
     func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
@@ -166,6 +175,14 @@ class MoreInfoViewController: UIViewController {
     @IBAction func chatTapped(_ sender: Any) {
     }
     
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x>0 {
+            scrollView.contentOffset.x = 0
+        }
+       // scrollView.bounces = (scrollView.contentOffset.y > 100)
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -329,7 +329,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             })
             if finishedObserve == false {
                 print("finishedObserve == false")
-               createChannel(uid!)
+               //createChannel(uid!)
             }
         }
         
@@ -340,7 +340,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     
     
-    func createChannel(_ otherUser: String) {
+    func createChannel(_ otherUser: User) {
         
         
         
@@ -356,9 +356,9 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             
             if isTutor == true {
                 tutorName = userID
-                tuteeName = otherUser
+                tuteeName = otherUser.uid
             } else {
-                tutorName = otherUser
+                tutorName = otherUser.uid
                 tuteeName = userID
             }
         } else {
@@ -367,14 +367,16 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         }
         
         
-        let newCalendarId = createCalendar()
+        
+        let newCalendarId = createCalendar(destUser: otherUser)
 
         let channelItem = [
             "tutorName": tutorName,
             "tuteeName": tuteeName,
             "calendarId": newCalendarId
         ]
-               let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
         
 
         
@@ -398,14 +400,14 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         userChannelRef.child(uuid).child("calendarId").setValue(newCalendarId)
         
         //This adds the other user as a "friend" child to the current user ref and vice versa
-        FriendSystem.system.acceptFriendRequest(otherUser)
+        FriendSystem.system.acceptFriendRequest(otherUser.uid)
         
        // self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
         
     }
     
     //This function creates a new calendar identifier to add to a newly created channel
-    func createCalendar() -> String {
+    func createCalendar(destUser: User) -> String {
         
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
@@ -424,7 +426,11 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         // newCalendar.calendarIdentifier = identifier
         // Probably want to prevent someone from saving a calendar
         // if they don't type in a name...
-        newCalendar.title = "Events"
+      
+        if currentUser != nil {
+            newCalendar.title = "Events (\(destUser.name) & \(currentUser!.name))"
+        }
+        
         
         // Access list of available sources from the Event Store
         let sourcesInEventStore = eventStore.sources
@@ -440,6 +446,14 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         //userChannelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
         
         //self.calendars.append(newCalendar)
+        
+        do {
+            try eventStore.saveCalendar(newCalendar, commit: true)
+            //UserDefaults.standardUserDefaults().setObject(newCalendar.calendarIdentifier, forKey: "EventTrackerPrimaryCalendar")
+        } catch {
+          //  displayAlert("Unab", message: <#T##String#>)
+        }
+        
         return newCalendar.calendarIdentifier
         
     }
@@ -462,13 +476,26 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         ref = FIRDatabase.database().reference()
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        
+       
        
         // Modify cell
         //let userAtRow = FriendSystem.system.userList[indexPath.row]
         let userAtRow = finalUserList[indexPath.row]
-        cell!.nameLabel.text = "Name: \(userAtRow.name)"
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        if userAtRow.profileImageUrl != nil {
+            print("if userAtRow.profileImageUrl != nil {")
+            if URL(string: userAtRow.profileImageUrl!) != nil {
+                print("if URL(string: userAtRow.profileImageUrl!) != nil {")
+                cell!.profileImageView.loadImageUsingCacheWithUrlString(userAtRow.profileImageUrl!)
+            } else {
+                cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon-2")
+            }
+        } else {
+            cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon-2")
+        }
+        
+        cell!.nameLabel.text = "\(userAtRow.name)"
         cell!.schoolLabel.text = "School: \(userAtRow.school)"
         cell!.gradeLabel.text = "Grade: \(userAtRow.grade)"
        // cell!.chatButton.accessibilityIdentifier = userAtRow.uid
@@ -483,20 +510,14 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         cell!.infoButton.contentMode = .scaleAspectFit
         cell!.addFriendButton.contentMode = .scaleAspectFit
         
-        if userAtRow.profileImageUrl != nil {
-            print("if userAtRow.profileImageUrl != nil {")
-            if URL(string: userAtRow.profileImageUrl!) != nil {
-                print("if URL(string: userAtRow.profileImageUrl!) != nil {")
-                cell!.profileImageView.loadImageUsingCacheWithUrlString(userAtRow.profileImageUrl!)
-            }
-        }
+        
         cell!.setAddFriendFunction {
             print(userAtRow)
             let id = userAtRow.uid
             print(id)
             //FriendSystem.system.sendRequestToUser(id)
             FriendSystem.system.acceptFriendRequest(id)
-             self.createChannel(userAtRow.uid)
+             self.createChannel(userAtRow)
             self.displayAlert("Success!", message: "Contact Added")
         }
       /*  cell!.setChatFunction {
