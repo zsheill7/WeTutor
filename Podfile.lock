@@ -1,4 +1,5 @@
 PODS:
+  - ASHorizontalScrollView (1.5.1)
   - BTNavigationDropdownMenu (0.4.1)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
@@ -71,6 +72,7 @@ PODS:
   - TwicketSegmentedControl (0.1.2)
 
 DEPENDENCIES:
+  - ASHorizontalScrollView (~> 1.5.1)
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - DropDown
@@ -113,6 +115,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  ASHorizontalScrollView: 9c98b9226509540075b6398c92f68fb474bea7e9
   BTNavigationDropdownMenu: '093f3cbfad1572f2c222bdf8d17584d1e13380d4'
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
@@ -140,6 +143,6 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: cfb262e6e3ef650043b2629e4317b55f36498ec9
+PODFILE CHECKSUM: bf6ea23c03d618e43415d1e61b62cd167c96d4ce
 
 COCOAPODS: 1.2.0

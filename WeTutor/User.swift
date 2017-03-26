@@ -23,7 +23,8 @@ struct User {
     let school: String
     
     var languages: [String]
-    let availableDays: [String]
+    let availableDaysStringArray: [String]
+    let availableDaysArray: [Bool]
     let preferredSubjects: [String]
     
     let availabilityInfo: String
@@ -148,10 +149,16 @@ struct User {
             languages = [""]
         }
         
-        if let userAvailableDays = snapshotValue?["availableDays"] as? [String] {
-            availableDays = userAvailableDays
+        if let availableDaysArray = snapshotValue?["availableDaysArray"] as? [Bool] {
+            self.availableDaysArray = availableDaysArray
         } else {
-            availableDays = [String]()
+            availableDaysArray = [Bool]()
+        }
+        
+        if let availableDaysStringArray = snapshotValue?["availableDays"] as? [String] {
+            self.availableDaysStringArray = availableDaysStringArray
+        } else {
+            availableDaysStringArray = [String]()
         }
         
         if let userSchool = snapshotValue?["schoolName"] as? String {
@@ -222,7 +229,7 @@ struct User {
         distanceFromUser = Double()
     }
     
-    init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDays: [String], phone: String, preferredSubjects: [String], channels: [Channel], availabilityInfo: String, latitude: Double, longitude: Double, grade: String, weekDayString: String, friends: [String: Bool], coordinate: CLLocation, distanceFromUser: Double) {
+    /*init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDaysArray: [Bool], phone: String, preferredSubjects: [String], channels: [Channel], availabilityInfo: String, latitude: Double, longitude: Double, grade: String, weekDayString: String, friends: [String: Bool], coordinate: CLLocation, distanceFromUser: Double) {
         self.uid = uid
         self.email = email
         self.address = address
@@ -231,7 +238,7 @@ struct User {
         self.description = description
         self.isTutor = isTutor
         self.languages = languages
-        self.availableDays = availableDays
+        self.availableDaysArray =  availableDaysArray
         self.school = school
         self.phone = phone
         self.preferredSubjects = preferredSubjects
@@ -244,5 +251,5 @@ struct User {
         self.friends = friends
         self.coordinate = coordinate
         self.distanceFromUser = distanceFromUser
-    }
+    }*/
 }

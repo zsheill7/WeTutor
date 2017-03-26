@@ -159,7 +159,7 @@ open class WeekDayCell : Cell<Set<WeekDay>>, CellType {
     func getWeekDaySetFromBoolArray(_ boolArray: [Bool]) -> [WeekDay] {
         var weekDayArray: [WeekDay] = []
         var weekDaySet: Set<WeekDay> = []
-        let defaultWeekDayArray: [WeekDay]  = [.monday, .tuesday, .wednesday, .thursday, .friday, .saturday, .sunday]
+        let defaultWeekDayArray: [WeekDay]  = [ .sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
         /*for (weekDay, index) in boolArray.enumerated() {
             if boolArray[index] == true {
                 weekDaySet.append(defaultWeekDaySet[index])
@@ -167,8 +167,8 @@ open class WeekDayCell : Cell<Set<WeekDay>>, CellType {
             
         }*/
         
-        for index in 0...boolArray.count {
-            if boolArray[index] == true {
+        for (index, element) in boolArray.enumerated() {
+        if boolArray[index] == true {
                 //weekDaySet.insert(defaultWeekDaySet[index]))
                 weekDayArray.append(defaultWeekDayArray[index])
             }

@@ -5,6 +5,7 @@ import SafariServices
 import Eureka
 import CoreLocation
 import SCLAlertView
+import ASHorizontalScrollView
 
 class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
@@ -22,9 +23,9 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var basicInfoLabel: UILabel!
    
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var preferencesLabel: UILabel!
+ //   @IBOutlet weak var preferencesLabel: UILabel!
    
-    @IBOutlet weak var availabilityLabel: UILabel!
+    //@IBOutlet weak var availabilityLabel: UILabel!
 
     @IBOutlet weak var descriptionLabel: UILabel!
 
@@ -34,6 +35,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var subjectsLabel: UILabel!
    
+    @IBOutlet weak var subjectView: UIView!
 
     @IBOutlet weak var fullPageScrollView: UIScrollView!
     
@@ -57,9 +59,12 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.addBackground(imageName: "mixed2")
+        
+        
        callButton.contentMode = .scaleAspectFit
        textButton.contentMode = .scaleAspectFit
         
+        self.containerView.isUserInteractionEnabled = false
         
               // Clear background colors from labels and buttons
         for view in backgroundColoredViews {
@@ -71,6 +76,10 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                                                             options: nil)?.first as! UIView?
         fullPageScrollView.delegate = self
         fullPageScrollView.isDirectionalLockEnabled = true
+        
+        self.loadHorizontalScrollView()
+        
+        
       // containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDayCell
         
        /* form
@@ -98,8 +107,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             }
         }
         
-        for (index, day) in destUser.availableDays.enumerated() {
-            if index != (destUser.availableDays.count - 1) {
+        for (index, day) in destUser.availableDaysStringArray.enumerated() {
+            if index != (destUser.availableDaysStringArray.count - 1) {
                 preferredSubjectsString += "\(day), "
             } else {
                 preferredSubjectsString += "\(day)"
@@ -111,10 +120,47 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         basicInfoLabel.text = "Age: \(destUser.grade) \nSchool: \(destUser.school)\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
         // title = destUser.name
          descriptionLabel.text = destUser.description
-        preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
-        availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
+      //  preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
+        //availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
         nameLabel.text = "\(destUser.name)"
         
+    }
+    
+    func loadHorizontalScrollView() {
+        let horizontalScrollView:ASHorizontalScrollView = ASHorizontalScrollView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 60))
+        //for iPhone 5s and lower versions in portrait
+        horizontalScrollView.marginSettings_320 = MarginSettings(leftMargin: 10, miniMarginBetweenItems: 5, miniAppearWidthOfLastItem: 20)
+        //for iPhone 4s and lower versions in landscape
+        horizontalScrollView.marginSettings_480 = MarginSettings(leftMargin: 10, miniMarginBetweenItems: 5, miniAppearWidthOfLastItem: 20)
+        // for iPhone 6 plus and 6s plus in portrait
+        horizontalScrollView.marginSettings_414 = MarginSettings(leftMargin: 10, miniMarginBetweenItems: 5, miniAppearWidthOfLastItem: 20)
+        // for iPhone 6 plus and 6s plus in landscape
+        horizontalScrollView.marginSettings_736 = MarginSettings(leftMargin: 10, miniMarginBetweenItems: 10, miniAppearWidthOfLastItem: 30)
+        //for all other screen sizes that doesn't set here, it would use defaultMarginSettings instead
+        horizontalScrollView.defaultMarginSettings = MarginSettings(leftMargin: 10, miniMarginBetweenItems: 10, miniAppearWidthOfLastItem: 20)
+        horizontalScrollView.shouldCenterSubViews = true
+        horizontalScrollView.marginSettings_414?.miniMarginBetweenItems = 10
+        horizontalScrollView.uniformItemSize = CGSize(width: 60, height: 60)
+        //this must be called after changing any size or margin property of this class to get acurrate margin
+        horizontalScrollView.setItemsMarginOnce()
+        for index in 0...destUser.preferredSubjects.count - 1 {
+            print("for index in 1...subjectNames.count{")
+            let imageView = UIImageView()
+            let imageName = destUser.preferredSubjects[index]
+            if let subjectImageName = subjectImageNames[imageName] {
+                if let buttonImage = UIImage(named: subjectImageName) {
+                    //button.setImage(buttonImage, for: .normal)
+                    imageView.image = buttonImage
+                }
+            }
+            
+           // button.backgroundColor = UIColor.blue
+            horizontalScrollView.addItem(imageView)
+        }
+        _ = horizontalScrollView.centerSubviews()
+        
+        subjectView.addSubview(horizontalScrollView)
+    
     }
     
     
@@ -196,6 +242,10 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                 print( CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude)))
                 mapViewController.locationToShow =             CLLocationCoordinate2DMake(CLLocationDegrees(destUser.latitude), CLLocationDegrees(destUser.longitude))
                 mapViewController.title = destUser.name
+            case "embedAvailability":
+                if let vc = segue.destination as? AvailabilityTableViewController {
+                    vc.destUser = destUser
+                }
            
             default:
                 fatalError("Unhandled Segue: \(segue.identifier!)")

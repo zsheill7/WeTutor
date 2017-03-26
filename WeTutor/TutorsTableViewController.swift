@@ -149,7 +149,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             let currentSubject = subjectNames[index]
             cell.subjectLabel.text = currentSubject
             if let imageName: String = subjectImageNames[currentSubject] {
-                cell.subjectImage.image = UIImage(named: "\(imageName)-1")
+                cell.subjectImage.image = UIImage(named: "\(imageName)")
             }
         }
         // The list of items to display. Can be changed dynamically
@@ -489,10 +489,10 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
                 print("if URL(string: userAtRow.profileImageUrl!) != nil {")
                 cell!.profileImageView.loadImageUsingCacheWithUrlString(userAtRow.profileImageUrl!)
             } else {
-                cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon-2")
+                cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon")
             }
         } else {
-            cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon-2")
+            cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon")
         }
         
         cell!.nameLabel.text = "\(userAtRow.name)"

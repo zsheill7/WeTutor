@@ -24,4 +24,5 @@ use_frameworks!
  pod 'DZNEmptyDataSet'
  pod 'DropDown'
  pod ‘TwicketSegmentedControl’
+ pod 'ASHorizontalScrollView', '~> 1.5.1'
 end
