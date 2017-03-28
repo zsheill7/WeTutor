@@ -369,7 +369,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                         if let loadedCalendar = self.eventStore.calendar(withIdentifier: calendarId) {
                                                            
                                                         
-                                                            print("if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {")
+                                                            print("if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar { calid\(calendarId)")
                                                             self.calendars.append(loadedCalendar)
                                                         }
                                                     
@@ -398,7 +398,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                     if let loadedCalendar = self.eventStore.calendar(withIdentifier: calendarId) {
                                                         
                                                         
-                                                        print("if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar {")
+                                                        print("if let loadedCalendar = self.loadCalendar(calendarId) as? EKCalendar { calid\(calendarId)")
                                                         self.calendars.append(loadedCalendar)
                                                     }
                                                 }

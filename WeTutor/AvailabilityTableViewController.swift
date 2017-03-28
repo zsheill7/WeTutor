@@ -18,6 +18,7 @@ class AvailabilityTableViewController: FormViewController{
         super.viewDidLoad()
         self.tableView?.backgroundColor = UIColor.white
         self.loadForm()
+        self.view.isUserInteractionEnabled = false
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
