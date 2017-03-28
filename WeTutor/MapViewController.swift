@@ -23,7 +23,9 @@ class MapViewController: UIViewController {
         SCLAlertView().showInfo(title, subTitle: message)
         
     }
-
+//test commit
+    var test = 0
+    
   override func viewDidLoad() {
     super.viewDidLoad()
 
