@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Cosmos.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DZNEmptyDataSet.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -117,12 +122,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0B8A86BE9293C722CA58263AC10E4E54</key>
+		<key>20265799B00F1C11C66A4AD8347F3140</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>3778B8C2CC3D0E1D353FFFB9A1120B81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>39DB93A2597A083A39DFA0564E21B230</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,17 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4FDC533A4360A68ABDCE852F04B30927</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5168099F2EBFC99A707C03C9EADE01A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62432F16547AF248731E9534DAD20936</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>66999B369725F139E14141D7702B955F</key>
+		<key>62D94B18FBE8D24F56F62B6E6E07BD76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,11 +177,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6DEB6A39AAD6F560D1D5BECFEEF7EC46</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>7314180BE9DF7EC9AED878748EC34864</key>
 		<dict>
 			<key>primary</key>
@@ -187,12 +192,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8C26291C90C3BC8582097E9962E46F7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A52524E727A97710A55D0EDA55BB7CFE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B581E79B7BE1D7E020600C5C144C54E0</key>
+		<key>B94E6839924BBC639B8901709FE5C406</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -217,12 +227,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D11EA75D66ECF15D17012420BECC67AB</key>
+		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
+		<key>D8C244B618F1C80D0424A40294D3B597</key>
 		<dict>
 			<key>primary</key>
 			<true/>

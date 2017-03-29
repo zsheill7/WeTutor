@@ -39,6 +39,12 @@ struct User {
     let weekDayString: String
     let friends: [String: Bool]
     var profileImageUrl: String?
+    
+    var rating: Double //user rating from 1 to 5
+    var gpa: Double //from 0.0 to 4.0
+    var hourlyPrice: Double
+    
+    
     /*
      
      uid
@@ -220,10 +226,26 @@ struct User {
         } else {
             self.profileImageUrl = ""
         }
-                /*if let userGrade = snapshotValue?["grade"] as? String {
-            grade = userGrade
+       
+        if let rating = snapshotValue?["rating"] as? Double {
+            self.rating = rating
         } else {
-            grade = ""
+            self.rating = 0.0
+        }
+        if let gpa = snapshotValue?["gpa"] as? Double {
+            self.gpa = gpa
+        } else {
+            self.gpa = 0.0
+        }
+        if let hourlyPrice = snapshotValue?["hourlyPrice"] as? Double {
+            self.hourlyPrice = hourlyPrice
+        } else {
+            self.hourlyPrice = 0.0
+        }
+                /*if let  = snapshotValue?[""] as? String {
+         
+        } else {
+         
         }*/
         coordinate = CLLocation()
         distanceFromUser = Double()

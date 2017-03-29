@@ -4,6 +4,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Cosmos (8.0.2)
   - DropDown (2)
   - DZNEmptyDataSet (1.8.1)
   - Eureka (2.0.1)
@@ -75,6 +76,7 @@ DEPENDENCIES:
   - ASHorizontalScrollView (~> 1.5.1)
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - Cosmos (~> 8.0)
   - DropDown
   - DZNEmptyDataSet
   - Eureka (~> 2.0)
@@ -118,6 +120,7 @@ SPEC CHECKSUMS:
   ASHorizontalScrollView: 9c98b9226509540075b6398c92f68fb474bea7e9
   BTNavigationDropdownMenu: '093f3cbfad1572f2c222bdf8d17584d1e13380d4'
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Cosmos: 007c0b8e33a85e5363911bdd933571bbe221f7ef
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Eureka: ae837bb1dfae0c07bc1bda7aeef87876eeb537c2
@@ -143,6 +146,6 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: bf6ea23c03d618e43415d1e61b62cd167c96d4ce
+PODFILE CHECKSUM: d98df68afee882f7123c6accc57f93c41421dacb
 
 COCOAPODS: 1.2.0

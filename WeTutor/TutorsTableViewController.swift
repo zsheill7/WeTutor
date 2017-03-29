@@ -462,14 +462,14 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         return 110
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellTwo {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellThree {
       
         
         // Create cell
-        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellTwo
+        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
         if cell == nil {
-            tableView.register(UINib(nibName: "UserCellTwo", bundle: nil), forCellReuseIdentifier: "UserCell")
-            cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellTwo
+            tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "UserCell")
+            cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
         }
         
         var ref: FIRDatabaseReference!
@@ -483,7 +483,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         let userAtRow = finalUserList[indexPath.row]
         
         let userID = FIRAuth.auth()?.currentUser?.uid
-        if userAtRow.profileImageUrl != nil {
+        /*if userAtRow.profileImageUrl != nil {
             print("if userAtRow.profileImageUrl != nil {")
             if URL(string: userAtRow.profileImageUrl!) != nil {
                 print("if URL(string: userAtRow.profileImageUrl!) != nil {")
@@ -493,16 +493,25 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             }
         } else {
             cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon")
-        }
+        }*/
         
         cell!.nameLabel.text = "\(userAtRow.name)"
-        cell!.schoolLabel.text = "School: \(userAtRow.school)"
-        cell!.gradeLabel.text = "Grade: \(userAtRow.grade)"
+        cell!.schoolLabel.text = "\(userAtRow.school)"
+        cell!.gradeLabel.text = "Grade \(userAtRow.grade)"
+        
+        if userAtRow.gpa != nil && userAtRow.gpa > 0 {
+            let gpaString = String(format: "%.1f", userAtRow.gpa)
+            cell!.gpaLabel.text = gpaString
+        }
+        if userAtRow.hourlyPrice != nil && userAtRow.hourlyPrice > 0 {
+            let hourlyPriceString = String(format: "%.2f", userAtRow.hourlyPrice)
+            cell!.hourlyPrice.text = hourlyPriceString
+        }
        // cell!.chatButton.accessibilityIdentifier = userAtRow.uid
         
         
         let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
-        cell!.subjectLabel.text = "Subjects: \(subjectsString)"
+        cell!.subjectLabel.text = "\(subjectsString)"
         
         
         print("Name: \(userAtRow.name)")

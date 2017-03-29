@@ -4,25 +4,27 @@
  */
 
 import UIKit
+import Cosmos
 
-
-class UserCellTwo: UITableViewCell {
+class UserCellThree: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var schoolLabel: UILabel!
-   
+    
     @IBOutlet weak var gradeLabel: UILabel!
-
+    
     @IBOutlet weak var subjectLabel: UILabel!
     //  @IBOutlet weak var chatButton: UIButton!
     
-
-    @IBOutlet weak var addFriendButton: UIButton!
-  
+    @IBOutlet weak var hourlyPrice: UILabel!
     
-   
- 
+    @IBOutlet weak var addFriendButton: UIButton!
+    
+    
+    @IBOutlet weak var userRating: CosmosView!
+    
+    @IBOutlet weak var gpaLabel: UILabel!
     
     @IBOutlet weak var infoButton: UIButton!
     
@@ -33,10 +35,10 @@ class UserCellTwo: UITableViewCell {
     var moreInfoFunc: (() -> (Void))!
     
     /*required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        infoButton.contentMode = .scaleAspectFit
-        addFriendButton.contentMode = .scaleAspectFit
-    }*/
+     super.init(coder: aDecoder)
+     infoButton.contentMode = .scaleAspectFit
+     addFriendButton.contentMode = .scaleAspectFit
+     }*/
     
     @IBAction func addFriendTapped(_ sender: Any) {
         addFriendFunc()
@@ -48,9 +50,9 @@ class UserCellTwo: UITableViewCell {
      }*/
     
     @IBAction func moreInfoTapped(_ sender: Any) {
-         moreInfoFunc()
+        moreInfoFunc()
     }
-   
+    
     func setAddFriendFunction(_ function: @escaping () -> Void) {
         self.addFriendFunc = function
         

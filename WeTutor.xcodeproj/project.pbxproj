@@ -51,6 +51,8 @@
 		C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */; };
 		C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */; };
 		C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */; };
+		C87237FD1E8C10E100C5A641 /* UserCellThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87237FC1E8C10E100C5A641 /* UserCellThree.xib */; };
+		C87237FF1E8C163A00C5A641 /* UserCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87237FE1E8C163900C5A641 /* UserCellThree.swift */; };
 		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
 		C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984841E0C763F003EB7A1 /* PagingMenuController.swift */; };
 		C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984851E0C763F003EB7A1 /* MenuView.swift */; };
@@ -173,6 +175,8 @@
 		C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatLabelTextField.swift; path = WeTutor/FloatLabelTextField.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
+		C87237FC1E8C10E100C5A641 /* UserCellThree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCellThree.xib; sourceTree = "<group>"; };
+		C87237FE1E8C163900C5A641 /* UserCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellThree.swift; sourceTree = "<group>"; };
 		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
 		C87984841E0C763F003EB7A1 /* PagingMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuController.swift; sourceTree = "<group>"; };
 		C87984851E0C763F003EB7A1 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -506,10 +510,12 @@
 				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
 				C838A9471E1B46EC004A794C /* UserCell.xib */,
 				C8F668C61E6CB14000D9DC53 /* UserCellTwo.xib */,
+				C87237FC1E8C10E100C5A641 /* UserCellThree.xib */,
 				C84F180C1E713CF700EC54BF /* SubjectCell.xib */,
 				C84F18021E6F129300EC54BF /* WeekDaysCell.swift */,
 				C838A9491E1B6E32004A794C /* UserCell.swift */,
 				C8F668CF1E6DC4AC00D9DC53 /* UserCellTwo.swift */,
+				C87237FE1E8C163900C5A641 /* UserCellThree.swift */,
 				C84F18081E708A9300EC54BF /* WeekDaysCellTwo.swift */,
 				C84F180E1E71434C00EC54BF /* SubjectCell.swift */,
 			);
@@ -634,6 +640,7 @@
 				C838A8BC1E19C47E004A794C /* Map.storyboard in Resources */,
 				C88498C01E0B51A0000C4675 /* Main.storyboard in Resources */,
 				C87984AF1E0C8138003EB7A1 /* MenuViewController.storyboard in Resources */,
+				C87237FD1E8C10E100C5A641 /* UserCellThree.xib in Resources */,
 				96090AF21D9CDD2E00709CA6 /* LaunchScreen.storyboard in Resources */,
 				C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */,
 				C84F180D1E713CF700EC54BF /* SubjectCell.xib in Resources */,
@@ -709,6 +716,7 @@
 				C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */,
 				C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */,
 				C82800DE1E0EFDAF00329B7D /* UIImageExtensions.swift in Sources */,
+				C87237FF1E8C163A00C5A641 /* UserCellThree.swift in Sources */,
 				C8F668CC1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift in Sources */,
 				C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */,
 				C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */,
