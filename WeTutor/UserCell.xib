@@ -9,11 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCell" customModule="WeTutor" customModuleProvider="target">
-            <connections>
-                <outlet property="nameLabel" destination="MXC-BH-T6u" id="zfc-3n-gUq"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserCell" customModule="WeTutor" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="161" id="4fn-4T-5JP" customClass="UserCell" customModule="WeTutor" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="539" height="161"/>
@@ -65,7 +61,7 @@
                                         </constraints>
                                         <state key="normal" title="Add" image="Add User Male-100 (1)"/>
                                         <connections>
-                                            <action selector="addFriendTapped:" destination="-1" eventType="touchUpInside" id="EBD-HE-Zf1"/>
+                                            <action selector="addFriendTapped:" destination="4fn-4T-5JP" eventType="touchUpInside" id="zvn-Ft-5kF"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKV-Kw-eYk">
@@ -78,7 +74,6 @@
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOj-Lm-Pml">
                                         <rect key="frame" x="443" y="0.0" width="40" height="40"/>
                                         <connections>
-                                            <action selector="chatTapped:" destination="-1" eventType="touchUpInside" id="PJb-EU-BB3"/>
                                             <action selector="moreInfoTapped:" destination="4fn-4T-5JP" eventType="touchUpInside" id="FI3-ci-KGw"/>
                                         </connections>
                                     </button>
@@ -118,6 +113,7 @@
                 <outlet property="addFriendButton" destination="GsY-BT-eGh" id="W7q-fc-iwh"/>
                 <outlet property="gradeLabel" destination="JoQ-dY-m4R" id="7vl-yx-EAm"/>
                 <outlet property="infoButton" destination="FOj-Lm-Pml" id="lH0-1G-b7j"/>
+                <outlet property="nameLabel" destination="MXC-BH-T6u" id="sss-Fs-Q14"/>
                 <outlet property="schoolLabel" destination="fPm-23-gmj" id="bCh-QZ-v9Y"/>
             </connections>
             <point key="canvasLocation" x="317.5" y="427.5"/>

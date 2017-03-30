@@ -114,7 +114,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         segmentedControl.setSegmentItems(titles)
   
         segmentedControl.delegate = self
-        segmentedControl.backgroundColor = UIColor.backgroundBlue()
+        segmentedControl.sliderBackgroundColor = UIColor.flatBlue
         view.addSubview(segmentedControl)
         
                 print("finalUserList.count")
@@ -142,7 +142,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         // The view to which the drop down will appear on
         dropDown.anchorView = dropdownButton // UIView or UIBarButtonItem
-        dropDown.bottomOffset = CGPoint(x: 0, y: 15)
+        dropDown.bottomOffset = CGPoint(x: 0, y: 10)
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? SubjectCell else { return }
             
@@ -154,7 +154,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             }
         }
         // The list of items to display. Can be changed dynamically
-        dropDown.backgroundColor = UIColor.backgroundBlue()
+       // dropDown.backgroundColor = UIColor.backgroundBlue()
         dropDown.dataSource = subjectNames//preferredSubj
         dropDown.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
         dropDown.selectionAction = { [unowned self] (index, item) in

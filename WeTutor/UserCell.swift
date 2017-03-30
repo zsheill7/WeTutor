@@ -17,9 +17,8 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var gradeLabel: UILabel!
     
     @IBOutlet weak var infoButton: UIButton!*/
-    
     @IBOutlet weak var nameLabel: UILabel!
-    
+        
     @IBOutlet weak var schoolLabel: UILabel!
     
     @IBOutlet weak var gradeLabel: UILabel!
@@ -36,6 +35,7 @@ class UserCell: UITableViewCell {
     @IBAction func addFriendTapped(_ sender: Any) {
         addFriendFunc()
     }
+   
     
  /*   @IBAction func chatTapped(_ sender: Any) {
         chatFunc()
