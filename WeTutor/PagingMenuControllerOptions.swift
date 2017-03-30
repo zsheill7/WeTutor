@@ -42,9 +42,13 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return .segmentedControl
         }
         
-        var focusMode: MenuFocusMode {
+       /* var focusMode: MenuFocusMode {
             return .underline(height: 3, color: UIColor.blue, horizontalPadding: 10, verticalPadding: 0)
+        }*/
+        var focusMode: MenuFocusMode {
+            return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGray.lighten(byPercentage: 0.1)!)
         }
+
         
         var height: CGFloat {
             return 60

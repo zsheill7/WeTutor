@@ -91,6 +91,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
 
         setupDropDown()
         
+        self.tableView.backgroundColor = UIColor.backgroundBlue()
         let titles = ["Tutors", "Students", "Everyone"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
 
@@ -113,7 +114,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         segmentedControl.setSegmentItems(titles)
   
         segmentedControl.delegate = self
-        
+        segmentedControl.backgroundColor = UIColor.backgroundBlue()
         view.addSubview(segmentedControl)
         
                 print("finalUserList.count")
@@ -141,7 +142,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         // The view to which the drop down will appear on
         dropDown.anchorView = dropdownButton // UIView or UIBarButtonItem
-        dropDown.bottomOffset = CGPoint(x: 0, y: 20)
+        dropDown.bottomOffset = CGPoint(x: 0, y: 15)
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? SubjectCell else { return }
             
@@ -153,6 +154,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             }
         }
         // The list of items to display. Can be changed dynamically
+        dropDown.backgroundColor = UIColor.backgroundBlue()
         dropDown.dataSource = subjectNames//preferredSubj
         dropDown.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
         dropDown.selectionAction = { [unowned self] (index, item) in
@@ -459,18 +461,18 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 150
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellThree {
       
         
         // Create cell
-        var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
-        if cell == nil {
+        //var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
+        
             tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "UserCell")
-            cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
-        }
+           var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
+        
         
         var ref: FIRDatabaseReference!
         
@@ -495,9 +497,17 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
             cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon")
         }*/
         
+        //cell!.layer.cornerRadius = 10
+        cell?.contentView.backgroundColor = UIColor.clear
+        
+               
+        
+        //let colorIndex = Int(arc4random_uniform(5))
+        //cell!.colorView.backgroundColor = colors[indexPath.row % 5]
+        
         cell!.nameLabel.text = "\(userAtRow.name)"
         cell!.schoolLabel.text = "\(userAtRow.school)"
-        cell!.gradeLabel.text = "Grade \(userAtRow.grade)"
+        cell!.gradeLabel.text = "\(userAtRow.grade)"
         
         if userAtRow.gpa != nil && userAtRow.gpa > 0 {
             let gpaString = String(format: "%.1f", userAtRow.gpa)
@@ -505,13 +515,19 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         }
         if userAtRow.hourlyPrice != nil && userAtRow.hourlyPrice > 0 {
             let hourlyPriceString = String(format: "%.2f", userAtRow.hourlyPrice)
-            cell!.hourlyPrice.text = hourlyPriceString
+            cell!.hourlyPriceLabel.text = hourlyPriceString
         }
        // cell!.chatButton.accessibilityIdentifier = userAtRow.uid
         
         
         let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
-        cell!.subjectLabel.text = "\(subjectsString)"
+        //print(subjectsString)
+        
+        if subjectsString != nil && cell!.subjectLabel != nil{
+            cell!.subjectLabel.text = "\(subjectsString)"
+        } else {
+           // cell!.subjectLabel.text = ""
+        }
         
         
         print("Name: \(userAtRow.name)")

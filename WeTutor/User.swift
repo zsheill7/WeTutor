@@ -57,6 +57,28 @@ struct User {
      availableDays
      school
  
+     var languages: [String]
+     let availableDaysStringArray: [String]
+     let availableDaysArray: [Bool]
+     let preferredSubjects: [String]
+     
+     let availabilityInfo: String
+     let grade: String
+     
+     let latitude: Double
+     let longitude: Double
+     var coordinate: CLLocation
+     var distanceFromUser: Double
+     
+     var channels: [Channel]
+     let weekDayString: String
+     let friends: [String: Bool]
+     var profileImageUrl: String?
+     
+     var rating: Double //user rating from 1 to 5
+     var gpa: Double //from 0.0 to 4.0
+     var hourlyPrice: Double
+
  */
     
    /* init(userData:FIRUser) {

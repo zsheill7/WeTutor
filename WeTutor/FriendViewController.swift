@@ -4,7 +4,7 @@
  *
  */
 
-
+/*
 import UIKit
 
 class FriendViewController: UIViewController {
@@ -52,3 +52,4 @@ extension FriendViewController: UITableViewDataSource {
     }
     
 }
+*/
