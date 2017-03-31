@@ -65,8 +65,14 @@ class UserCellThree: UITableViewCell {
 
     @IBOutlet weak var addFriendButton2: UIButton!*/
     
+    var bounds = UIScreen.main.bounds
+    var width = bounds.size.width
+    var height = bounds.size.height
+    
     override func awakeFromNib() {
         var cellHeight = 135
+        
+        
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: Int(self.frame.size.width - 40), height: cellHeight))
         
         whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])

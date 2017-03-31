@@ -37,7 +37,10 @@ class TutorTableViewCell: UITableViewCell {
 }
 
 
-class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, TwicketSegmentedControlDelegate {
+class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, TwicketSegmentedControlDelegate, UITableViewDelegate, UITableViewDataSource {
+   
+    
+   
 
     var dbRef: FIRDatabaseReference!
     var tutors = [User]()
@@ -47,6 +50,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     var destinationUser: User!
     var currentUser: User?
     
+    @IBOutlet weak var tableView: UITableView!
    // @IBOutlet weak var dropdownView: UIView!
     
     @IBOutlet weak var dropdownButton: UIButton!
@@ -91,10 +95,23 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
 
         setupDropDown()
         
-        self.tableView.backgroundColor = UIColor.backgroundBlue()
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        self.tableView.backgroundColor = UIColor.clear//clearbackgroundBlue()
+        
+        
         let titles = ["Tutors", "Students", "Everyone"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
 
+        self.view.backgroundColor = UIColor.backgroundBlue()
+        /*let backgroundImageView = UIImageView(image: UIImage(named:"background")!)
+        
+       let screenWidth = self.view.frame.width
+        backgroundImageView.frame = CGRect(x: 0,y: 0, width: screenWidth, height: backgroundImageView.height)
+        self.view.backgroundColor = UIColor(patternImage: backgroundImageView)*/
+        
+        self.view.addBackground()
         FriendSystem.system.getCurrentUser { (user) in
             self.currentUser = user
         }
@@ -115,6 +132,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
   
         segmentedControl.delegate = self
         segmentedControl.sliderBackgroundColor = UIColor.flatBlue
+        segmentedControl.backgroundColor = UIColor.clear
         view.addSubview(segmentedControl)
         
                 print("finalUserList.count")
@@ -270,12 +288,12 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //return tutors.count
         
@@ -460,11 +478,18 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UserCellThree {
+    
+   /* @available(iOS 2.0, *)
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }*/
+
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         
         // Create cell
@@ -560,7 +585,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
     }
     
     
-    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         /*let tutor = tutors[indexPath.row]
         UID = tutor.uid
         destinationUser = tutor
@@ -597,8 +622,8 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         
         
     }
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.0)
     }
     
     fileprivate func observeChannels() {
@@ -659,7 +684,7 @@ class TutorsTableViewController: UITableViewController, DZNEmptyDataSetSource, D
         return UIImage(named: "placeholder_kickstarter")
     }
     
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
     }
 /*

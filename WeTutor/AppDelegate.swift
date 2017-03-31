@@ -23,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         
         let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.barTintColor = UIColor(netHex: 0x51679F)
+        navigationBarAppearance.barTintColor = UIColor(netHex: /*0x51679F*/0x959595)
         navigationBarAppearance.tintColor = UIColor.white
         navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 18)!]
+       UIApplication.shared.statusBarStyle = .lightContent
         
         
         let userDefaults = UserDefaults.standard
@@ -51,7 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         DropDown.startListeningToKeyboard()
-       // DropDown.appearance().selectionBackgroundColor = UIColor.flatBlue
+        
+              // DropDown.appearance().selectionBackgroundColor = UIColor.flatBlue
        // DropDown.appearance().backgroundColor = UIColor.flatBlue
         
        /* let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)

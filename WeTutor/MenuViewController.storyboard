@@ -12,10 +12,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tutors Table View Controller-->
+        <scene sceneID="VXV-M5-kZ3">
+            <objects>
+                <viewController storyboardIdentifier="UsersViewController" id="Q8f-n6-kgu" customClass="TutorsTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z0u-Mh-GNY"/>
+                        <viewControllerLayoutGuide type="bottom" id="JdY-zI-tuY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3EE-co-1CN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J4U-jX-tMO">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="140" id="qI1-hk-8gR" customClass="UserCellThree" customModule="WeTutor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qI1-hk-8gR" id="3aB-AJ-dKe">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="UserCell"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBg-ci-Mac">
+                                <rect key="frame" x="22" y="46" width="330" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="MGG-Ad-0Wq"/>
+                                </constraints>
+                                <state key="normal" title="Filter by Subject">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedShowDropdown:" destination="yyO-L0-Yel" eventType="touchUpInside" id="WyA-SB-Swy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J4U-jX-tMO" firstAttribute="leading" secondItem="3EE-co-1CN" secondAttribute="leading" id="BWj-cR-1VT"/>
+                            <constraint firstAttribute="trailing" secondItem="J4U-jX-tMO" secondAttribute="trailing" id="DsR-nI-8dp"/>
+                            <constraint firstItem="QBg-ci-Mac" firstAttribute="centerX" secondItem="3EE-co-1CN" secondAttribute="centerX" id="WZX-f0-1l7"/>
+                            <constraint firstItem="JdY-zI-tuY" firstAttribute="top" secondItem="J4U-jX-tMO" secondAttribute="bottom" id="XhP-nu-wZx"/>
+                            <constraint firstItem="QBg-ci-Mac" firstAttribute="top" secondItem="Z0u-Mh-GNY" secondAttribute="bottom" constant="45" id="oVQ-uR-M0g"/>
+                            <constraint firstItem="J4U-jX-tMO" firstAttribute="top" secondItem="QBg-ci-Mac" secondAttribute="bottom" constant="10" id="t0r-QD-7Xt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="J4U-jX-tMO" id="lNF-T4-Ksc"/>
+                        <segue destination="Kz5-hQ-YSe" kind="show" identifier="toMoreInfoVC" id="RP0-ob-Csi"/>
+                        <segue destination="ciN-Cm-s6F" kind="show" identifier="toChatVC" id="9UM-xc-NC9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ULb-gq-avH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-378.39999999999998" y="139.880059970015"/>
+        </scene>
         <!--Users-->
         <scene sceneID="oMf-iY-GmE">
             <objects>
-                <tableViewController storyboardIdentifier="UsersViewController" title="Users" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yyO-L0-Yel" customClass="TutorsTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Users" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yyO-L0-Yel" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" id="DJ1-XQ-3NQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,13 +128,11 @@
                     </tableView>
                     <connections>
                         <outlet property="dropdownButton" destination="yCI-Hr-1fz" id="Ixn-lX-S1e"/>
-                        <segue destination="ciN-Cm-s6F" kind="show" identifier="toChatVC" id="YE7-Xe-CKl"/>
-                        <segue destination="Kz5-hQ-YSe" kind="show" identifier="toMoreInfoVC" id="fA9-ZO-YUL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFC-QL-LLE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496.80000000000001" y="138.98050974512745"/>
+            <point key="canvasLocation" x="343" y="0.0"/>
         </scene>
         <!--Organizations-->
         <scene sceneID="wNb-zT-Rn0">
@@ -165,7 +224,7 @@
                                     </segue>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExistingChannel" textLabel="Fyu-NV-FYD" style="IBUITableViewCellStyleDefault" id="f89-14-Pzh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatUserCell" textLabel="Fyu-NV-FYD" style="IBUITableViewCellStyleDefault" id="f89-14-Pzh" customClass="ChatUserCell" customModule="WeTutor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f89-14-Pzh" id="qV1-t2-2Md">
@@ -840,7 +899,7 @@
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fvg-Sx-GjA">
-                                                                <rect key="frame" x="44" y="0.0" width="50" height="50"/>
+                                                                <rect key="frame" x="45" y="0.0" width="50" height="50"/>
                                                                 <color key="backgroundColor" red="0.58881118880000005" green="1" blue="0.58881118880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Fvg-Sx-GjA" secondAttribute="height" multiplier="1:1" id="hso-yx-bUo"/>
@@ -905,13 +964,13 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Friend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XR5-PQ-zhc">
-                                                                <rect key="frame" x="118" y="0.0" width="99" height="30"/>
+                                                                <rect key="frame" x="118" y="0.0" width="98" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFZ-2g-MRw">
-                                                                <rect key="frame" x="217" y="0.0" width="98" height="30"/>
+                                                                <rect key="frame" x="216" y="0.0" width="99" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1045,6 +1104,6 @@
         <image name="telephonebook" width="74" height="74"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YE7-Xe-CKl"/>
+        <segue reference="ssn-N4-XFi"/>
     </inferredMetricsTieBreakers>
 </document>

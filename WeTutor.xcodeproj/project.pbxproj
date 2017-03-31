@@ -38,6 +38,7 @@
 		C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8BD1E19C4E1004A794C /* MapViewController.swift */; };
 		C838A9481E1B46EC004A794C /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C838A9471E1B46EC004A794C /* UserCell.xib */; };
 		C838A94A1E1B6E32004A794C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A9491E1B6E32004A794C /* UserCell.swift */; };
+		C83A5E581E8ED58500716C89 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A5E571E8ED58500716C89 /* ChatUserCell.swift */; };
 		C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */; };
 		C84F18031E6F129300EC54BF /* WeekDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18021E6F129300EC54BF /* WeekDaysCell.swift */; };
 		C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */; };
@@ -160,6 +161,7 @@
 		C838A8BD1E19C4E1004A794C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C838A9471E1B46EC004A794C /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		C838A9491E1B6E32004A794C /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		C83A5E571E8ED58500716C89 /* ChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
 		C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		C84F18021E6F129300EC54BF /* WeekDaysCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDaysCell.swift; sourceTree = "<group>"; };
 		C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCellTwo.xib; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				C87237FE1E8C163900C5A641 /* UserCellThree.swift */,
 				C84F18081E708A9300EC54BF /* WeekDaysCellTwo.swift */,
 				C84F180E1E71434C00EC54BF /* SubjectCell.swift */,
+				C83A5E571E8ED58500716C89 /* ChatUserCell.swift */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				C8EE88591E0DB144003775C2 /* FSCalendarConstants.m in Sources */,
 				C8EE88541E0DB144003775C2 /* FSCalendarAppearance.m in Sources */,
 				C8EE88581E0DB144003775C2 /* FSCalendarCollectionViewLayout.m in Sources */,
+				C83A5E581E8ED58500716C89 /* ChatUserCell.swift in Sources */,
 				C8338B3A1E63DFC300202E3A /* eventCell.swift in Sources */,
 				C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */,
 				C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */,

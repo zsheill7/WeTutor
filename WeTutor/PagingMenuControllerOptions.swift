@@ -46,7 +46,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return .underline(height: 3, color: UIColor.blue, horizontalPadding: 10, verticalPadding: 0)
         }*/
         var focusMode: MenuFocusMode {
-            return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.lightGray.lighten(byPercentage: 0.2)!)
+            return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.white/*UIColor.lightGray.lighten(byPercentage: 0.2)!*/)
         }
 
         

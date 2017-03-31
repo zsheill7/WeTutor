@@ -26,6 +26,21 @@ extension UIView {
             bundle: bundle
             ).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
+    
+    func addBackground() {
+        // screen width and height:
+        let width = UIScreen.main.bounds.size.width
+        //let height = UIScreen.mainScreen().bounds.size.height
+        let backgroundImage = UIImage(named: "background")
+
+        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: (backgroundImage?.height)!))
+        imageViewBackground.image = backgroundImage
+        // you can change the content mode:
+        imageViewBackground.contentMode = UIViewContentMode.scaleAspectFill
+        
+        self.addSubview(imageViewBackground)
+        self.sendSubview(toBack: imageViewBackground)
+    }
 }
 
 extension UIView {
