@@ -331,7 +331,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if success {
                     print("You have successfully signed up")
                     
-                    
+                                       
                     
                     self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
                     

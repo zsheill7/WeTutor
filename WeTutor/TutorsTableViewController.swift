@@ -14,6 +14,7 @@ import SCLAlertView
 import DropDown
 import TwicketSegmentedControl
 import EventKit
+import FirebaseAnalytics
 
 class TutorTableViewCell: UITableViewCell {
     
@@ -162,7 +163,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         // The view to which the drop down will appear on
         dropdownButton.layer.cornerRadius = 16
         dropdownButton.layer.width = view.frame.width - 10
-        dropdownButton.layer.backgroundColor = UIColor(netHex: 0x33A3A5).cgColor//UIColor.titleBlue().cgColor
+        dropdownButton.layer.backgroundColor = UIColor.sliderGreen().cgColor//UIColor.titleBlue().cgColor
         dropDown.anchorView = dropdownButton // UIView or UIBarButtonItem
         dropDown.bottomOffset = CGPoint(x: 0, y: 20)
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
@@ -670,6 +671,18 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 
         })
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height {
+            FIRAnalytics.logEvent(withName: "scrolled_to_bottom", parameters: [
+                "current_user": currentUser.uid as NSObject,
+                "current_user_is_tutor": currentUser.isTutor as NSObject
+                ])
+        }
+    }
     /* EmptyDataSet */
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
@@ -686,6 +699,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
         return UIImage(named: "placeholder_kickstarter")
+    }
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {

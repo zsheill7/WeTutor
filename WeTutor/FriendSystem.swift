@@ -98,6 +98,13 @@ class FriendSystem {
                 self.setProfileImage(profileImage: profileImage!)
                 
                 completion(true)
+                
+                FIRAnalytics.logEvent(withName: "create_account", parameters: [
+                    "succeeded": "true",
+                    "userUID": user?.uid as NSObject,
+                    "email": user?.email as NSObject
+                    ])
+
             } else {
                 // Failure
                 print("error?.localizedDescription111")
@@ -108,6 +115,12 @@ class FriendSystem {
                     errorMessage = "Please check your internet connection and try again later."
                 }
                 
+                FIRAnalytics.logEvent(withName: "create_account", parameters: [
+                    "succeeded": "false",
+                    "userUID": user?.uid as NSObject,
+                    "email": user?.email as NSObject
+                    ])
+                
                 self.displayAlert("Unable to Sign Up", message: (errorMessage)!)
                 completion(false)
             }
@@ -117,6 +130,7 @@ class FriendSystem {
         
     func setProfileImage(profileImage: UIImage) {
         print("inside setprofileimage")
+        FIRAnalytics.setUserPropertyString("true", forName: "did_set_profile_image")
         let imageName = UUID().uuidString
         let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
         
@@ -130,6 +144,12 @@ class FriendSystem {
                 
                 if error != nil {
                     print(error)
+                    
+                    FIRAnalytics.logEvent(withName: "set_profile_image", parameters: [
+                        "succeeded": "false",
+                        "userUID": user?.uid as NSObject,
+                        "email": user?.email as NSObject
+                        ])
                     return
                 }
                 
@@ -141,6 +161,11 @@ class FriendSystem {
                         usersRef.child(currentUserUID!).child("profileImageURL").setValue(profileImageUrl)
                         print("set image")
                     }
+                    FIRAnalytics.logEvent(withName: "set_profile_image", parameters: [
+                        "succeeded": "true",
+                        "userUID": user?.uid as NSObject,
+                        "email": user?.email as NSObject
+                        ])
                     //let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
                     //self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
                 }
@@ -177,6 +202,10 @@ class FriendSystem {
     /** Logs out an account */
     func logoutAccount() {
         try! FIRAuth.auth()?.signOut()
+        
+        FIRAnalytics.logEvent(withName: "logged_out", parameters: [
+            "current_user": CURRENT_USER_ID as NSObject,
+        ])
     }
     
     
@@ -192,6 +221,11 @@ class FriendSystem {
     func removeFriend(_ userID: String) {
         CURRENT_USER_REF.child("friends").child(userID).removeValue()
         USER_REF.child(userID).child("friends").child(CURRENT_USER_ID).removeValue()
+        
+        FIRAnalytics.logEvent(withName: "friend_removed", parameters: [
+            "current_user": CURRENT_USER_ID as NSObject,
+            "other_user": userID as NSObject
+            ])
     }
     
     /** Accepts a friend request from the user with the specified id */
@@ -199,6 +233,11 @@ class FriendSystem {
        // CURRENT_USER_REF.child("requests").child(userID).removeValue()
         CURRENT_USER_REF.child("friends").child(userID).setValue(true)
         USER_REF.child(userID).child("friends").child(CURRENT_USER_ID).setValue(true)
+        
+        FIRAnalytics.logEvent(withName: "friend_added", parameters: [
+            "current_user": CURRENT_USER_ID as NSObject,
+            "other_user": userID as NSObject
+            ])
        // USER_REF.child(userID).child("requests").child(CURRENT_USER_ID).removeValue()
     }
     

@@ -30,10 +30,13 @@ extension UIColor {
     }
     
     class func sliderGreen() -> UIColor {
-        return UIColor(netHex: 0x2E9D9F)
+        //return UIColor(netHex: 0x2E9D9F)
+         //return UIColor(netHex: 0x36C9CC) //brighter blue
+        return UIColor(netHex: 0x6CCED0)
     }
     class func pagingMenuGray() -> UIColor {
-        return UIColor,lightGray.lighten(byPercentage: 0.2)
+       // return UIColor.lightGray.lighten(byPercentage: 0.2)!
+        return UIColor.titleBlue()
     }
     
     

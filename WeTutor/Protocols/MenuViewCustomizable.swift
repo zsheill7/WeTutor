@@ -23,10 +23,10 @@ public protocol MenuViewCustomizable {
 
 public extension MenuViewCustomizable {
     var backgroundColor: UIColor {
-        return UIColor.sliderGreen()//UIColor(netHex: 0x95C2CC)UIColor.titleBlue()
+        return UIColor.pagingMenuGray()//UIColor(netHex: 0x95C2CC)UIColor.titleBlue()
     }
     var selectedBackgroundColor: UIColor {
-        return UIColor.sliderGreen()//UIColor(netHex: 0x95C2CC)UIColor.titleBlue()
+        return UIColor.pagingMenuGray()//UIColor(netHex: 0x95C2CC)UIColor.titleBlue()
     }
     
     var height: CGFloat {
@@ -45,7 +45,7 @@ public extension MenuViewCustomizable {
         return .standard(widthMode: .flexible, centerItem: false, scrollingMode: .pagingEnabled)
     }
     var focusMode: MenuFocusMode {
-        return .underline(height: 3, color: UIColor.blue, horizontalPadding: 0, verticalPadding: 0)
+        return .underline(height: 3, color: UIColor.sliderGreen(), horizontalPadding: 0, verticalPadding: 0)
     }
     var dummyItemViewsSet: Int {
         return 3

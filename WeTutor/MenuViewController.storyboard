@@ -59,7 +59,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QBg-ci-Mac" secondAttribute="trailing" constant="5" id="Abk-qL-dDJ"/>
                             <constraint firstItem="QBg-ci-Mac" firstAttribute="leading" secondItem="3EE-co-1CN" secondAttribute="leadingMargin" constant="5" id="BSC-li-mjZ"/>
                             <constraint firstItem="J4U-jX-tMO" firstAttribute="leading" secondItem="3EE-co-1CN" secondAttribute="leading" id="BWj-cR-1VT"/>
-                            <constraint firstItem="J4U-jX-tMO" firstAttribute="top" secondItem="QBg-ci-Mac" secondAttribute="bottom" constant="7" id="D0Z-gj-cDW"/>
+                            <constraint firstItem="J4U-jX-tMO" firstAttribute="top" secondItem="QBg-ci-Mac" secondAttribute="bottom" constant="4" id="D0Z-gj-cDW"/>
                             <constraint firstAttribute="trailing" secondItem="J4U-jX-tMO" secondAttribute="trailing" id="DsR-nI-8dp"/>
                             <constraint firstItem="QBg-ci-Mac" firstAttribute="centerX" secondItem="3EE-co-1CN" secondAttribute="centerX" id="WZX-f0-1l7"/>
                             <constraint firstItem="JdY-zI-tuY" firstAttribute="top" secondItem="J4U-jX-tMO" secondAttribute="bottom" id="XhP-nu-wZx"/>
@@ -899,7 +899,7 @@
                                                         <rect key="frame" x="0.0" y="537" width="335" height="50"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2BS-2N-uXg">
-                                                                <rect key="frame" x="0.0" y="0.0" width="26" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="27" height="50"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fvg-Sx-GjA">
@@ -922,7 +922,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tU4-Du-M3q">
-                                                                <rect key="frame" x="211" y="0.0" width="12" height="50"/>
+                                                                <rect key="frame" x="210" y="0.0" width="13" height="50"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrA-tk-H6N" userLabel="Contact">
@@ -937,7 +937,7 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ED-Lz-Lmj">
-                                                                <rect key="frame" x="309" y="0.0" width="26" height="50"/>
+                                                                <rect key="frame" x="308" y="0.0" width="27" height="50"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             </view>
                                                         </subviews>
@@ -962,13 +962,13 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhz-nB-Mkf">
-                                                                <rect key="frame" x="20" y="0.0" width="99" height="30"/>
+                                                                <rect key="frame" x="20" y="0.0" width="98" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Friend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XR5-PQ-zhc">
-                                                                <rect key="frame" x="119" y="0.0" width="98" height="30"/>
+                                                                <rect key="frame" x="118" y="0.0" width="99" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>

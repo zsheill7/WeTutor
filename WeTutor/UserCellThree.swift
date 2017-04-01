@@ -72,14 +72,17 @@ class UserCellThree: UITableViewCell {
         let width = screenBounds.size.width
         let height = screenBounds.size.height
         let cellHeight = 135
-        
+        let cornerRadius:CGFloat = 5
         hourlyPriceLabel.textAlignment = .center
+        
+        infoButton.contentMode = .scaleAspectFit
+        addFriendButton.contentMode = .scaleAspectFit
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight))
         
         ratingView.isUserInteractionEnabled = false 
         whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
         whiteRoundedView.layer.masksToBounds = false
-        whiteRoundedView.layer.cornerRadius = 5
+        whiteRoundedView.layer.cornerRadius = cornerRadius
         whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
         whiteRoundedView.layer.shadowOpacity = 0.2
         
@@ -93,7 +96,7 @@ class UserCellThree: UITableViewCell {
         
         colorsCount += 1
         
-        leftColorView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 3)
+        leftColorView.roundCorners(corners: [.topLeft, .bottomLeft], radius: cornerRadius)
         whiteRoundedView.addSubview(leftColorView)
         
         self.contentView.alpha = 0

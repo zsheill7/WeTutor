@@ -73,11 +73,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeTutor/UserCellThree.swift"
-            timestampString = "512718381.439082"
+            timestampString = "512757847.3704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
