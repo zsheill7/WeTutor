@@ -33,7 +33,7 @@ extension UIView {
         //let height = UIScreen.mainScreen().bounds.size.height
         let backgroundImage = UIImage(named: "background")
 
-        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: (backgroundImage?.height)!))
+        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: -50, width: width, height: (backgroundImage?.height)!))
         imageViewBackground.image = backgroundImage
         // you can change the content mode:
         imageViewBackground.contentMode = UIViewContentMode.scaleAspectFill

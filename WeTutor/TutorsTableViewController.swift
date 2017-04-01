@@ -55,10 +55,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     @IBOutlet weak var dropdownButton: UIButton!
     
+    
+
     @IBAction func pressedShowDropdown(_ sender: Any) {
         dropDown.show()
     }
-
     
     
     fileprivate var channelRefHandle: FIRDatabaseHandle?
@@ -131,7 +132,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         segmentedControl.setSegmentItems(titles)
   
         segmentedControl.delegate = self
-        segmentedControl.sliderBackgroundColor = UIColor.flatBlue
+        segmentedControl.sliderBackgroundColor = UIColor.sliderGreen()//UIColor.flatBlue
         segmentedControl.backgroundColor = UIColor.clear
         view.addSubview(segmentedControl)
         
@@ -159,8 +160,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         
         // The view to which the drop down will appear on
+        dropdownButton.layer.cornerRadius = 16
+        dropdownButton.layer.width = view.frame.width - 10
+        dropdownButton.layer.backgroundColor = UIColor(netHex: 0x33A3A5).cgColor//UIColor.titleBlue().cgColor
         dropDown.anchorView = dropdownButton // UIView or UIBarButtonItem
-        dropDown.bottomOffset = CGPoint(x: 0, y: 10)
+        dropDown.bottomOffset = CGPoint(x: 0, y: 20)
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? SubjectCell else { return }
             

@@ -23,14 +23,14 @@ public protocol MenuViewCustomizable {
 
 public extension MenuViewCustomizable {
     var backgroundColor: UIColor {
-        return UIColor.titleBlue()
+        return UIColor.sliderGreen()//UIColor(netHex: 0x95C2CC)UIColor.titleBlue()
     }
     var selectedBackgroundColor: UIColor {
-        return UIColor.white
+        return UIColor.sliderGreen()//UIColor(netHex: 0x95C2CC)UIColor.titleBlue()
     }
     
     var height: CGFloat {
-        return 40
+        return 30
     }
     var animationDuration: TimeInterval {
         return 0.3

@@ -28,7 +28,7 @@ public extension PagingMenuControllerCustomizable {
         return true
     }
     var backgroundColor: UIColor {
-        return UIColor.clear
+        return UIColor.pagingMenuGray()//UIColor(netHex: 0x95C2CC)
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .three

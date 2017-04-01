@@ -48,7 +48,7 @@ class UserCellThree: UITableViewCell {
     
     @IBOutlet weak var schoolLabel: UILabel!
     
-    @IBOutlet weak var hourlyPriceLabel: UILabel!
+    @IBOutlet weak var hourlyPriceLabel: UITextField!
     
     @IBOutlet weak var gpaLabel: UILabel!
     
@@ -73,12 +73,13 @@ class UserCellThree: UITableViewCell {
         let height = screenBounds.size.height
         let cellHeight = 135
         
-        
+        hourlyPriceLabel.textAlignment = .center
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight))
         
+        ratingView.isUserInteractionEnabled = false 
         whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
         whiteRoundedView.layer.masksToBounds = false
-        whiteRoundedView.layer.cornerRadius = 3.0
+        whiteRoundedView.layer.cornerRadius = 5
         whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
         whiteRoundedView.layer.shadowOpacity = 0.2
         

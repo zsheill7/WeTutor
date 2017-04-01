@@ -157,7 +157,7 @@ class PagingMenuViewController: UIViewController  {
    
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x51679F)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+//UIColor(netHex: 0x95C2CC)       self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
       //  self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addEvent))
         
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "WeTutor", items: items as [AnyObject])
@@ -168,7 +168,8 @@ class PagingMenuViewController: UIViewController  {
         menuView.cellTextLabelColor = UIColor.white
         menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
         menuView.cellTextLabelAlignment = .left // .Center // .Right // .Left
-        menuView.arrowPadding = 15
+        menuView.arrowImage = UIImage(named: "Settings Filled-25")
+        menuView.arrowPadding = 25
         menuView.animationDuration = 0.5
         menuView.maskBackgroundColor = UIColor.black
         menuView.maskBackgroundOpacity = 0.3

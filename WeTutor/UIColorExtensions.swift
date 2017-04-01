@@ -28,6 +28,15 @@ extension UIColor {
     class func backgroundBlue() -> UIColor {
         return UIColor(red:0.70, green:0.87, blue:0.88, alpha:1.0)
     }
+    
+    class func sliderGreen() -> UIColor {
+        return UIColor(netHex: 0x2E9D9F)
+    }
+    class func pagingMenuGray() -> UIColor {
+        return UIColor,lightGray.lighten(byPercentage: 0.2)
+    }
+    
+    
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")

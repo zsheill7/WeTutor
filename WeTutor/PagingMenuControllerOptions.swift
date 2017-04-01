@@ -51,7 +51,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
 
         
         var height: CGFloat {
-            return 50
+            return 40
         }
         
         var itemsOptions: [MenuItemViewCustomizable] {
