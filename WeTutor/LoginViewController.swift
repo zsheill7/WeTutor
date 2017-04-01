@@ -11,7 +11,7 @@ import RZTransitions
 import FirebaseAuth
 import FirebaseDatabase
 import SCLAlertView
-
+import FirebaseAnalytics
 
 
 class LoginViewController: UIViewController {
@@ -136,6 +136,12 @@ class LoginViewController: UIViewController {
                         
                         userDefaults.synchronize()
 
+                        
+                        FIRAnalytics.logEvent(withName: "logged_in", parameters: [
+                            "name": userObject.name as NSObject,
+                            "is_tutor": userObject.isTutor as NSObject
+                            ])
+                        
                         if description.characters.count > 0{
                             print("in neither are nil")
                             

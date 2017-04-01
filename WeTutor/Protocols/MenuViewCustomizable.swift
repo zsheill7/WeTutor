@@ -23,11 +23,12 @@ public protocol MenuViewCustomizable {
 
 public extension MenuViewCustomizable {
     var backgroundColor: UIColor {
-        return UIColor.backgroundBlue()
+        return UIColor.titleBlue()
     }
     var selectedBackgroundColor: UIColor {
         return UIColor.white
     }
+    
     var height: CGFloat {
         return 40
     }

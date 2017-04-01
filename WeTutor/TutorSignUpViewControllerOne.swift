@@ -15,6 +15,7 @@ import Firebase
 import FirebaseDatabase
 import CoreLocation
 import NVActivityIndicatorView
+import FirebaseAnalytics
 
 var gradeLevels = ["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "College"]
 private enum MenuSection {
@@ -371,8 +372,15 @@ class TutorSignUpViewControllerOne : FormViewController {
                     self.ref.child("users/\(userID!)/preferredSubject").setValue(subjectArray)
                     self.ref.child("users/\(userID!)/description").setValue(description)
               
+                    FIRAnalytics.setUserPropertyString(school, forName: "school")
+                    FIRAnalytics.setUserPropertyString(gender, forName: "gender")
+                    FIRAnalytics.setUserPropertyString(grade, forName: "grade")
                     
-                    
+                    for subject in subjectArray! {
+                        FIRAnalytics.setUserPropertyString(subject, forName: "preferred_subject")
+                    }
+                   
+                        
                     print("error=nil")
                     let geocoder = CLGeocoder()
                     geocoder.geocodeAddressString(zipcode!) { placemarks, error in

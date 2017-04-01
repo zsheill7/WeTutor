@@ -5,10 +5,8 @@ import UIKit
 import Eureka
 import CoreLocation
 import FirebaseDatabase
-import Firebase
-
-
-
+import FirebaseAnalytics
+import FirebaseAuth
 
 class TutorSignUpViewControllerTwo : FormViewController {
     
@@ -145,15 +143,24 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     if firstLanguage != "None" {
                         languages.append(firstLanguage)
+                        FIRAnalytics.setUserPropertyString(firstLanguage, forName: "first_language")
                     }
                     if secondLanguage != "None" && secondLanguage != nil{
                         languages.append(secondLanguage!)
+                        FIRAnalytics.setUserPropertyString(secondLanguage, forName: "second_language")
                     }
                     if thirdLanguage != "None" && thirdLanguage != nil{
                         languages.append(thirdLanguage!)
+                        FIRAnalytics.setUserPropertyString(thirdLanguage, forName: "third_language")
                     }
                     
                     print(languages)
+                    
+                    for i in 0...6 {
+                        FIRAnalytics.setUserPropertyString("\(weekDayArray[i])", forName: "\(weekdays[i])_available")
+                    }
+                    FIRAnalytics.setUserPropertyString(availabilityInfo, forName: "availability_info")
+                    
                     
                     
                     userDefaults.setValue(weekDayString, forKey: "availableDays")

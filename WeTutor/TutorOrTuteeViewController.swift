@@ -9,8 +9,9 @@ import UIKit
 import Material
 import Spring
 import ChameleonFramework
-import Firebase
 import FirebaseDatabase
+import FirebaseAnalytics
+import FirebaseAuth
 
 class TutorOrTuteeViewController: UIViewController {
 
@@ -185,9 +186,11 @@ class TutorOrTuteeViewController: UIViewController {
         print("tapped")
         self.userRef.child("\(userUID)/isTutor").setValue(false)
         let userDefaults = UserDefaults.standard
+        
         userDefaults.setValue(false, forKey: "isTutor")
         userDefaults.synchronize()
  
+        FIRAnalytics.setUserPropertyString("false", forName: "is_tutor")
         
         self.performSegue(withIdentifier: "toTutorSignUpVC", sender: self)
     }
@@ -198,7 +201,8 @@ class TutorOrTuteeViewController: UIViewController {
         userDefaults.setValue(true, forKey: "isTutor")
         
         userDefaults.synchronize()
-        
+        FIRAnalytics.setUserPropertyString("true", forName: "is_tutor")
+
         self.performSegue(withIdentifier: "toTutorSignUpVC", sender: self)
     }
     

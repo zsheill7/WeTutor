@@ -65,15 +65,16 @@ class UserCellThree: UITableViewCell {
 
     @IBOutlet weak var addFriendButton2: UIButton!*/
     
-    var bounds = UIScreen.main.bounds
-    var width = bounds.size.width
-    var height = bounds.size.height
+    var screenBounds = UIScreen.main.bounds
+    
     
     override func awakeFromNib() {
-        var cellHeight = 135
+        let width = screenBounds.size.width
+        let height = screenBounds.size.height
+        let cellHeight = 135
         
         
-        let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: Int(self.frame.size.width - 40), height: cellHeight))
+        let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight))
         
         whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
         whiteRoundedView.layer.masksToBounds = false
@@ -85,6 +86,7 @@ class UserCellThree: UITableViewCell {
         //leftColorView.backgroundColor = colors[indexPath.row % 6]
         
         
+        
         leftColorView.layer.masksToBounds = true
         leftColorView.backgroundColor = colors[colorsCount % 5]
         
@@ -92,6 +94,11 @@ class UserCellThree: UITableViewCell {
         
         leftColorView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 3)
         whiteRoundedView.addSubview(leftColorView)
+        
+        self.contentView.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.contentView.alpha = 1
+        }
         self.contentView.addSubview(whiteRoundedView)
         self.contentView.sendSubview(toBack: whiteRoundedView)
 

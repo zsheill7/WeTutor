@@ -25,6 +25,7 @@
 		C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */; };
 		C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BEE171E8608D6008C77AC /* Unused.storyboard */; };
 		C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */; };
+		C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */; };
 		C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AF91E629D4500202E3A /* AddEventViewController.swift */; };
 		C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */; };
 		C8338B391E63DFC300202E3A /* eventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* eventItem.swift */; };
@@ -148,6 +149,7 @@
 		C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutThisAppViewController.swift; sourceTree = "<group>"; };
 		C82BEE171E8608D6008C77AC /* Unused.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Unused.storyboard; sourceTree = "<group>"; };
 		C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityTableViewController.swift; sourceTree = "<group>"; };
+		C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C8338AF91E629D4500202E3A /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventTableViewController.swift; sourceTree = "<group>"; };
 		C8338B371E63DFC300202E3A /* eventItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventItem.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */,
 				C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */,
 				C8F668C31E6B479F00D9DC53 /* FBSDKCoreKit.framework in Frameworks */,
 				18B5C49AFA2A076AD1009440 /* Pods_WeTutor.framework in Frameworks */,
@@ -267,6 +270,7 @@
 		45C0CE53565FE65B32BFB150 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */,
 				B8B62CCD5A010F1F7EC99019 /* Pods_TextField.framework */,
 				C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */,
 				C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */,
@@ -404,6 +408,19 @@
 			name = "In Main Storyboard";
 			sourceTree = "<group>";
 		};
+		C82C35F41E8F074A00DD17CD /* More */ = {
+			isa = PBXGroup;
+			children = (
+				C87984A21E0C76A5003EB7A1 /* Pagable.swift */,
+				C879848B1E0C763F003EB7A1 /* RootViewController.swift */,
+				C87984841E0C763F003EB7A1 /* PagingMenuController.swift */,
+				C87984851E0C763F003EB7A1 /* MenuView.swift */,
+				C87984861E0C763F003EB7A1 /* MenuItemView.swift */,
+				C87984881E0C763F003EB7A1 /* PagingViewController.swift */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
 		C8338AF71E620DEC00202E3A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,16 +501,11 @@
 		C87984A81E0C76DD003EB7A1 /* In Paging Menu */ = {
 			isa = PBXGroup;
 			children = (
-				C87984841E0C763F003EB7A1 /* PagingMenuController.swift */,
-				C87984851E0C763F003EB7A1 /* MenuView.swift */,
-				C87984861E0C763F003EB7A1 /* MenuItemView.swift */,
-				C87984881E0C763F003EB7A1 /* PagingViewController.swift */,
+				C82C35F41E8F074A00DD17CD /* More */,
 				C87984891E0C763F003EB7A1 /* PagingMenuControllerOptions.swift */,
-				C879848B1E0C763F003EB7A1 /* RootViewController.swift */,
 				C87984901E0C763F003EB7A1 /* PagingMenuViewController.swift */,
 				C87984A01E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift */,
 				C87984A11E0C76A5003EB7A1 /* MenuViewCustomizable.swift */,
-				C87984A21E0C76A5003EB7A1 /* Pagable.swift */,
 				C87984A31E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift */,
 				C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */,
 			);

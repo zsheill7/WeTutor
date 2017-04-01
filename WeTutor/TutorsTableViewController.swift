@@ -101,7 +101,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         self.tableView.backgroundColor = UIColor.clear//clearbackgroundBlue()
         
         
-        let titles = ["Tutors", "Students", "Everyone"]
+        let titles = ["Tutors", "Students"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
 
         self.view.backgroundColor = UIColor.backgroundBlue()
@@ -504,7 +504,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         ref = FIRDatabase.database().reference()
         
        
-       
+       //cell?.alpha = 0
         // Modify cell
         //let userAtRow = FriendSystem.system.userList[indexPath.row]
         let userAtRow = finalUserList[indexPath.row]

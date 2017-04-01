@@ -117,8 +117,8 @@ class PagingMenuViewController: UIViewController  {
         super.viewDidLoad()
         print("here")
         let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 0) as IndexPath)
-        self.view?.backgroundColor = UIColor.backgroundBlue()
-        self.view.backgroundColor = UIColor.flatBlue
+       // self.view?.backgroundColor = UIColor.clear
+        self.view.backgroundColor = UIColor.clear
         options = sectionType?.options
         
         createDropdown()

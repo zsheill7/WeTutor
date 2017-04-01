@@ -20,3 +20,5 @@ let subjectImageNames = ["Japanese": "Japanese Icon.jpg", "Spanish":  "Spanish I
 let subjectNames = ["All Subjects", "Math", "English", "History", "Chemistry", "Physics", "Biology", "Spanish", "French", "Chinese", "German", "Latin"]
 
 let colors = [UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.0), UIColor(red:0.56, green:0.27, blue:0.65, alpha:1.0), UIColor.flatBlue, UIColor(red:0.15, green:0.68, blue:0.41, alpha:1.0), UIColor(red:0.29, green:0.47, blue:0.75, alpha:1.0), UIColor.flatYellow]
+
+let weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
