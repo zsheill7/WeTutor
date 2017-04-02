@@ -139,7 +139,8 @@ class TutorSignUpViewControllerOne : FormViewController {
                 //self.view?.backgroundColor = UIColor.backgroundBlue()
                 //self.view.addBackground("Info Input Page (solid)")
                 //self.view.backgroundColor = UIColor(red:0.40, green:0.75, blue:0.80, alpha:1.0)
-        self.tableView?.backgroundColor = UIColor.backgroundBlue()
+        //self.tableView?.backgroundColor = UIColor.backgroundBlue()
+         self.view.addBackground()
         self.loadForm()
         //self.view.backgroundColor = UIColor
         //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(byPercentage: 0.2)
@@ -420,6 +421,7 @@ class TutorSignUpViewControllerOne : FormViewController {
         }
 
     }
+    
     
     func tableView(_ tableView: UITableView,
                             willDisplayHeaderView view: UIView,

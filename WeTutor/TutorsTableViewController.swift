@@ -99,6 +99,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        //self.tableView.opacity = 0
         
         //self.tableView.backgroundColor = UIColor.clear//clearbackgroundBlue()
         
@@ -106,14 +107,16 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         let titles = ["Tutors", "Students"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
 
-        self.view.backgroundColor = UIColor.backgroundBlue()
+        //self.view.backgroundColor = UIColor.backgroundBlue()
         /*let backgroundImageView = UIImageView(image: UIImage(named:"background")!)
         
        let screenWidth = self.view.frame.width
         backgroundImageView.frame = CGRect(x: 0,y: 0, width: screenWidth, height: backgroundImageView.height)
         self.view.backgroundColor = UIColor(patternImage: backgroundImageView)*/
         
+        //self.view.addBackground()
         self.view.addBackground()
+        self.tableView.addBackground()
         FriendSystem.system.getCurrentUser { (user) in
             self.currentUser = user
         }

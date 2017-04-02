@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--settingsVC-->
         <scene sceneID="Fng-ID-ga5">
             <objects>
-                <tableViewController storyboardIdentifier="settingsVC" title="settingsVC" id="kwH-he-b6V" customClass="SettingsTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="settingsVC" title="settingsVC" id="kwH-he-b6V" customClass="SettingsTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="NSB-js-aNq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -241,7 +241,7 @@
         <!--Change Password Table View Controller-->
         <scene sceneID="y0F-S7-snM">
             <objects>
-                <tableViewController id="XLS-DV-ZF6" customClass="ChangePasswordTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="XLS-DV-ZF6" customClass="ChangePasswordTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="q8Y-xN-FUE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +452,7 @@
         <!--Barcode-->
         <scene sceneID="BOv-9t-qgD">
             <objects>
-                <tableViewController id="EG1-mi-sTy" customClass="LockerSettingsTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="EG1-mi-sTy" customClass="LockerSettingsTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="4" id="UPa-3r-8wS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -563,7 +563,7 @@
         <!--Barcode-->
         <scene sceneID="xFV-qw-Nh5">
             <objects>
-                <tableViewController id="qF4-EA-OE3" customClass="BarcodeSettingsTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="qF4-EA-OE3" customClass="BarcodeSettingsTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="4" id="0Cw-DS-pIa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -642,7 +642,7 @@
         <!--TutorSignUpViewControllerOne-->
         <scene sceneID="E25-eQ-97D">
             <objects>
-                <tableViewController title="TutorSignUpViewControllerOne" id="UCB-IP-TOz" customClass="SettingsBasicInfoTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="TutorSignUpViewControllerOne" id="UCB-IP-TOz" customClass="SettingsBasicInfoTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ehV-E5-7mZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -673,7 +673,7 @@
         <!--TutorSignUpViewControllerTwo-->
         <scene sceneID="fuq-Tz-Kuy">
             <objects>
-                <viewController title="TutorSignUpViewControllerTwo" id="FcA-lg-Nyd" customClass="SettingsAvailabilityTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TutorSignUpViewControllerTwo" id="FcA-lg-Nyd" customClass="SettingsAvailabilityTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gX1-tL-K1i"/>
                         <viewControllerLayoutGuide type="bottom" id="J9Y-E1-pIE"/>
@@ -692,7 +692,7 @@
         <!--settingsVC-->
         <scene sceneID="Jgl-2s-P1U">
             <objects>
-                <tableViewController title="settingsVC" id="37D-Ep-RPl" customClass="SettingsTableViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="settingsVC" id="37D-Ep-RPl" customClass="SettingsTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="yOl-8a-GTk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

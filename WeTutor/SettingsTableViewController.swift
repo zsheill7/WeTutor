@@ -59,8 +59,9 @@ class SettingsTableViewController: UITableViewController {
         print("userID")
         print(userID)
         print(ref.child("users").child(userID!))
-        self.tableView?.addBlueBackground("mixed2")
+        //self.tableView?.addBlueBackground("mixed2")
        
+        self.view.addBackground()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             print("inside observeSingleEvent")
@@ -223,9 +224,9 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 1 {
             logoutPressed()
-        } else if indexPath.section == 1 && indexPath.row == 0 {
+        } /*else if indexPath.section == 1 && indexPath.row == 0 {
             goBackToConsole()
-        } else if indexPath.section == 2 && indexPath.row == 0 {
+        }*/ else if indexPath.section == 2 && indexPath.row == 0 {
             deleteAccountPressed()
         }
     }

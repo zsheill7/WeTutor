@@ -26,6 +26,7 @@
 		C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BEE171E8608D6008C77AC /* Unused.storyboard */; };
 		C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */; };
 		C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */; };
+		C82C35FA1E915BC500DD17CD /* TutorSignUpViewControllerThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */; };
 		C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AF91E629D4500202E3A /* AddEventViewController.swift */; };
 		C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */; };
 		C8338B391E63DFC300202E3A /* eventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* eventItem.swift */; };
@@ -150,6 +151,7 @@
 		C82BEE171E8608D6008C77AC /* Unused.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Unused.storyboard; sourceTree = "<group>"; };
 		C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityTableViewController.swift; sourceTree = "<group>"; };
 		C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerThree.swift; sourceTree = "<group>"; };
 		C8338AF91E629D4500202E3A /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventTableViewController.swift; sourceTree = "<group>"; };
 		C8338B371E63DFC300202E3A /* eventItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventItem.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */,
 				C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */,
 				C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */,
+				C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */,
 				C838A8BD1E19C4E1004A794C /* MapViewController.swift */,
 				C8338B371E63DFC300202E3A /* eventItem.swift */,
 				C8338B381E63DFC300202E3A /* eventCell.swift */,
@@ -765,6 +768,7 @@
 				C81DA37A1E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m in Sources */,
 				C8F668C51E6B85E400D9DC53 /* CalendarViewController.swift in Sources */,
 				C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */,
+				C82C35FA1E915BC500DD17CD /* TutorSignUpViewControllerThree.swift in Sources */,
 				C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */,
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
