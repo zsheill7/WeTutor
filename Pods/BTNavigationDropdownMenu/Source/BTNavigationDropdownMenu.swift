@@ -504,7 +504,7 @@ class BTConfiguration {
         let arrowImagePath = imageBundle?.path(forResource: "arrow_down_icon", ofType: "png")
 
         // Default values
-        self.menuTitleColor = UIColor.darkGray
+        self.menuTitleColor = UIColor.white
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.white
         self.arrowTintColor = UIColor.white

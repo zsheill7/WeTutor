@@ -100,9 +100,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        self.tableView.backgroundColor = UIColor.clear//clearbackgroundBlue()
+        //self.tableView.backgroundColor = UIColor.clear//clearbackgroundBlue()
         
-        
+       // self.tableView.addBackground()
         let titles = ["Tutors", "Students"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
 
@@ -494,6 +494,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }*/
 
     
+
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         
@@ -672,15 +674,20 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         })
     }
     
+    //If the user scrolls to the bottom of the tableView
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         if distanceFromBottom < height {
+            //log if the user scrolls to bottom
+            if currentUser != nil {
+                print("logged scroll to bottom")
             FIRAnalytics.logEvent(withName: "scrolled_to_bottom", parameters: [
-                "current_user": currentUser.uid as NSObject,
-                "current_user_is_tutor": currentUser.isTutor as NSObject
+                "current_user": currentUser!.uid as NSObject,
+                "current_user_is_tutor": currentUser!.isTutor as NSObject
                 ])
+            }
         }
     }
     /* EmptyDataSet */
@@ -700,7 +707,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
         return UIImage(named: "placeholder_kickstarter")
     }
-    }
+    
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false

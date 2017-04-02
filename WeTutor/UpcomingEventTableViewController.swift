@@ -638,6 +638,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // Set addController's event store to the current event store
         addController.eventStore = eventStore!
         addController.editViewDelegate = self
+        
+        //Add a new calendar event
+        FIRAnalytics.logEvent(withName: "added_calendar_event", parameters: [
+            "current_user": currentUserUID! as NSObject,
+            "current_user_is_tutor": currentUserIsTutor as NSObject
+            ])
         self.present(addController, animated: true, completion: nil)
     }
     
@@ -648,6 +654,13 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     // Overriding EKEventEditViewDelegate method to update event store according to user actions.
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
         // Dismiss the modal view controller
+        
+        //See if the user finished adding the calendar event
+        FIRAnalytics.logEvent(withName: "finished_added_calendar_event", parameters: [
+            "current_user": currentUserUID! as NSObject,
+            "current_user_is_tutor": currentUserIsTutor as NSObject
+        ])
+        
         self.dismiss(animated: true) {[weak self] in
             if action != .canceled {
                 DispatchQueue.main.async {

@@ -100,9 +100,9 @@ class FriendSystem {
                 completion(true)
                 
                 FIRAnalytics.logEvent(withName: "create_account", parameters: [
-                    "succeeded": "true",
-                    "userUID": user?.uid as NSObject,
-                    "email": user?.email as NSObject
+                    "succeeded": "true" as NSObject,
+                    "userUID": user!.uid as NSObject,
+                    "email": user!.email! as NSObject
                     ])
 
             } else {
@@ -116,9 +116,9 @@ class FriendSystem {
                 }
                 
                 FIRAnalytics.logEvent(withName: "create_account", parameters: [
-                    "succeeded": "false",
-                    "userUID": user?.uid as NSObject,
-                    "email": user?.email as NSObject
+                    "succeeded": "false" as NSObject,
+                    "userUID": user!.uid as NSObject,
+                    "email": user!.email! as NSObject
                     ])
                 
                 self.displayAlert("Unable to Sign Up", message: (errorMessage)!)
@@ -145,11 +145,12 @@ class FriendSystem {
                 if error != nil {
                     print(error)
                     
-                    FIRAnalytics.logEvent(withName: "set_profile_image", parameters: [
-                        "succeeded": "false",
-                        "userUID": user?.uid as NSObject,
-                        "email": user?.email as NSObject
-                        ])
+                    if currentUserUID != nil {
+                        FIRAnalytics.logEvent(withName: "set_profile_image", parameters: [
+                            "succeeded": "false" as NSObject,
+                            "userUID": currentUserUID! as NSObject
+                            ])
+                    }
                     return
                 }
                 
@@ -162,9 +163,8 @@ class FriendSystem {
                         print("set image")
                     }
                     FIRAnalytics.logEvent(withName: "set_profile_image", parameters: [
-                        "succeeded": "true",
-                        "userUID": user?.uid as NSObject,
-                        "email": user?.email as NSObject
+                        "succeeded": "true" as NSObject,
+                        "userUID": currentUserUID! as NSObject
                         ])
                     //let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
                     //self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])

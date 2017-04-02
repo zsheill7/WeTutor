@@ -380,6 +380,7 @@
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
 				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
 				C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */,
+				C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */,
 			);
 			name = "In Tutor Storyboard";
 			sourceTree = "<group>";
@@ -396,7 +397,6 @@
 				C8338B371E63DFC300202E3A /* eventItem.swift */,
 				C8338B381E63DFC300202E3A /* eventCell.swift */,
 				C8338AF91E629D4500202E3A /* AddEventViewController.swift */,
-				C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */,
 				C8338B3B1E63E2C400202E3A /* DetailViewController.swift */,
 				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
@@ -929,7 +929,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wetutor.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -958,7 +958,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wetutor.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
