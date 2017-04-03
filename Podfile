@@ -26,4 +26,5 @@ use_frameworks!
  pod ‘TwicketSegmentedControl’
  pod 'ASHorizontalScrollView', '~> 1.5.1'
  pod 'Cosmos', '~> 8.0'
+ pod 'Stripe'
 end

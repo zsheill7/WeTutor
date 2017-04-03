@@ -114,6 +114,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Stripe-Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TwicketSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -122,17 +132,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>20265799B00F1C11C66A4AD8347F3140</key>
+		<key>26E6C530CC5B06A16C2E8486A6971A2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>3778B8C2CC3D0E1D353FFFB9A1120B81</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>39DB93A2597A083A39DFA0564E21B230</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,6 +152,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>427441688F8AE98B745941D420E44B7C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4FDC533A4360A68ABDCE852F04B30927</key>
 		<dict>
 			<key>primary</key>
@@ -157,7 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>62D94B18FBE8D24F56F62B6E6E07BD76</key>
+		<key>5CE90D05D591C1FCBD633732395855E3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5F34B9D21D520F4EF28F5E00442CA603</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,7 +207,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8C26291C90C3BC8582097E9962E46F7D</key>
+		<key>841BA1DC84A18C8AD7C79AC6B309B3BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8EAAEF4CB2B3DBBC879A76678B1ABE45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,12 +222,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B94E6839924BBC639B8901709FE5C406</key>
+		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<key>C23C58D337CD75F95ECDA197D767E8A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -232,7 +252,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8C244B618F1C80D0424A40294D3B597</key>
+		<key>FB1C8CC5CC7EBE380620C4D7C153326A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -12,6 +12,7 @@ import FirebaseInstanceID
 import FirebaseMessaging
 import FBSDKCoreKit
 import DropDown
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         DropDown.startListeningToKeyboard()
         
+        
+        //Stripe payments
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_yov6ZvesIp3jqqP0lSplDmkF"
+        
+        STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.com.wetutor"
               // DropDown.appearance().selectionBackgroundColor = UIColor.flatBlue
        // DropDown.appearance().backgroundColor = UIColor.flatBlue
         
@@ -93,51 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
         }
         
-        application.registerForRemoteNotifications()        /*let userID = FIRAuth.auth()?.currentUser?.uid
-        var ref: FIRDatabaseReference!
-        
-        ref = FIRDatabase.database().reference()
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let userObject = User(snapshot: snapshot )
-            
-            let value = snapshot.value as? NSDictionary
-            let languages = userObject.languages
-            let isTutor = userObject.isTutor
-            
-            if languages != nil && isTutor != nil {
-                if isTutor == true {
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-                    self.window?.rootViewController = viewController
-                    //self.present(viewController, animated: true, completion: nil)
-                } else {
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
-                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
-                    self.window?.rootViewController = viewController
-                    // self.present(viewController, animated: true, completion: nil)
-                }
-            }
-            
-            
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }*/
-        
+        application.registerForRemoteNotifications()
         
     }
     
-    /*func application(application: UIApplication,
-                     openURL url: URL,
-                     sourceApplication: String?,
-                     annotation: Any?) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(
-            application,
-            open: url as URL!,
-            sourceApplication: sourceApplication,
-            annotation: annotation)
-    }*/
+    
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(

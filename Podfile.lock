@@ -70,6 +70,7 @@ PODS:
   - RZTransitions (1.2.1)
   - SCLAlertView (0.7.0)
   - Spring (1.0.3)
+  - Stripe (10.0.0)
   - TwicketSegmentedControl (0.1.2)
 
 DEPENDENCIES:
@@ -93,6 +94,7 @@ DEPENDENCIES:
   - RZTransitions
   - SCLAlertView
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+  - Stripe
   - TwicketSegmentedControl
 
 EXTERNAL SOURCES:
@@ -144,8 +146,9 @@ SPEC CHECKSUMS:
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  Stripe: abf87fc01f74a2143bba1b1798dd2e4d71fd2cb3
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: d98df68afee882f7123c6accc57f93c41421dacb
+PODFILE CHECKSUM: 6164808e53e1492cd00edbd1597f74414f154f98
 
 COCOAPODS: 1.2.0
