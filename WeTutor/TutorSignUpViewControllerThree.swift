@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseAnalytics
 import FirebaseAuth
 
-class TutorSignUpViewControllerTwo : FormViewController {
+class TutorSignUpViewControllerThree : FormViewController {
 
 
     override func dismissKeyboard() {

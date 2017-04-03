@@ -183,11 +183,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         FriendSystem.system.addFriendObserver {
             self.loadAllCalendars()
-            self.displayAllCalendars()
+            
             self.tableView.reloadData()
             //self.observeChannels()
             
         }
+        
         
        // let calendars = eventStore.calendars(for: .event)
         
@@ -200,12 +201,15 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     var events: [EKEvent] = [EKEvent]()
     func displayAllCalendars() {
+        self.events.removeAll()
         print("in display all calendars")
         /*var titles : [String] = []
         var startDates : [NSDate] = []
         var endDates : [NSDate] = []*/
+        
         for calendar in calendars {
             print(" in for calendar")
+            print(calendars.count)
             //  if calendar.title == "Work" {
             print("for calendar in calendars {")
             let oneMonthAgo = NSDate(timeIntervalSinceNow: -30*24*3600)
@@ -217,13 +221,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             
             for event in events {
                 self.events.append(event)
-                print("self.events.append(event)" + String(events.count))
+                print("events.count" + String(events.count))
+                 print("self.events.count" + String(self.events.count))
                 
                 /*titles.append(event.title)
                 startDates.append(event.startDate as NSDate)
                 endDates.append(event.endDate as NSDate)*/
-            }
-            // }
+            //}
+        }
         }
     }
     
@@ -266,7 +271,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 //print("userObject.channels")
                 //print( userObject.channels)
                 
-                
+                self.calendars.removeAll()
                 for channel in userObject.channels {
                     
                     let calendarId = channel.calendarId
@@ -410,7 +415,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                             } //for destUser in friendList
                             
                         }
-                        self.displayAllCalendars()
+                        //self.displayAllCalendars()
                         self.tableView.reloadData()
                     } //for channel in allChannels {
                     
@@ -419,7 +424,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 
                 
             } //if snapshot.exists() {
-            
+            self.displayAllCalendars()
             /*let uuid = UUID().uuidString
             if self.iterationStatus == "inProcess" {
                 if self.tutorOrTutee == "tuteeName" {
@@ -448,8 +453,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     
                 }
             }*/
+            
         })
-
+        
+        
     }
  
     func createCalendar(_ channelId: String) {
@@ -521,7 +528,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return self.events.count
     }
     
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -645,6 +654,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             "current_user_is_tutor": currentUserIsTutor as NSObject
             ])
         self.present(addController, animated: true, completion: nil)
+        tableView.reloadData()
     }
     
     

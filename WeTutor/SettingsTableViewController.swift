@@ -33,6 +33,12 @@ extension UIColor {
 
 class SettingsTableViewController: UITableViewController {
 
+    
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
+    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     @IBOutlet var table: UITableView!
@@ -193,17 +199,9 @@ class SettingsTableViewController: UITableViewController {
             let alert = UIAlertController(title: "Are you sure you want to delete your account?", message: "All saved settings will be lost", preferredStyle: UIAlertControllerStyle.alert)
             
             alert.addAction((UIAlertAction(title: "Delete Account", style: .destructive, handler: { (action) -> Void in
-                let user = FIRAuth.auth()?.currentUser
+               
                 
-                user?.delete { error in
-                    if error != nil {
-                        // An error happened.
-                    } else {
-                        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let createAccountNC = mainStoryboard.instantiateViewController(withIdentifier: "initialNC")
-                        self.present(createAccountNC, animated: true, completion: nil)
-                    }
-                }
+                self.deleteAccount()
                 
                 
             })))
@@ -215,6 +213,19 @@ class SettingsTableViewController: UITableViewController {
             self.present(alert, animated: true, completion: nil)
        
 
+    }
+    
+    func deleteAccount() {
+         let user = FIRAuth.auth()?.currentUser
+        user?.delete { error in
+            if error != nil {
+                // An error happened.
+            } else {
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let createAccountNC = mainStoryboard.instantiateViewController(withIdentifier: "initialNC")
+                self.present(createAccountNC, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func logoutButtonPressed(_ sender: AnyObject) {
