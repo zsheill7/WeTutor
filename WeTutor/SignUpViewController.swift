@@ -332,6 +332,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                     print("You have successfully signed up")
                     
                                        
+                    let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     
                     self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
                     

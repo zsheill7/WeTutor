@@ -105,13 +105,11 @@ class FriendSystem {
                     "email": user!.email! as NSObject
                     ])
                 
-                FIRAuth.auth()?.currentUser!.sendEmailVerificationWithCompletion({ (error) in
+                FIRAuth.auth()?.currentUser!.sendEmailVerification(completion: { (error) in
                 })
                 
                 
-                let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                
                 
                 print("This is a college email and user is created")
 

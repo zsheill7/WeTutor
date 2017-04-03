@@ -111,66 +111,78 @@ class LoginViewController: UIViewController {
         } else {
             FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                 if error == nil {
-                    if !user.emailVerified{
-                        let alertVC = UIAlertController(title: "Error", message: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email to \(self.txtUsername.text).", preferredStyle: .Alert)
-                        let alertActionOkay = UIAlertAction(title: "Okay", style: .Default) {
-                            (_) in
-                            user.sendEmailVerificationWithCompletion(nil)
-                        }
-                        let alertActionCancel = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+                    if !(user?.isEmailVerified)!{
                         
-                        alertVC.addAction(alertActionOkay)
-                        alertVC.addAction(alertActionCancel)
-                        self.presentViewController(alertVC, animated: true, completion: nil)
+                        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
+                            /*contentViewColor: UIColor.alertViewBlue()*/)
+                        let alert = SCLAlertView(appearance: appearance)
+                        let emailTextField = alert.addTextField("Email")
+                        
+                        let emailButton = alert.addButton("Okay") {
+                            if emailTextField.text != nil {
+                                if emailTextField.text?.isEmail() == false {
+                                    SCLAlertView().showInfo("Error", subTitle: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email to \(self.emailField.text!).")
+                                } else {
+                                    user?.sendEmailVerification(completion: nil)
+                                }
+                            }
+                        }
+                        let closeButton = alert.addButton("Cancel") {
+                            print("close")
+                        }
+                        
+
+                        _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
+  
                     } else {
                         print ("Email verified. Signing in...")
-                    }
-                    } else {
-                        var ref: FIRDatabaseReference!
-                        
-                        ref = FIRDatabase.database().reference()
-                        
-                        //let userID = FIRAuth.auth()?.currentUser?.uid
-                        ref.child("users").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                            // Get user value
-                            let userObject = User(snapshot: snapshot )
+                    
+                    //self.emailField.text!
+                    var ref: FIRDatabaseReference!
+                    
+                    ref = FIRDatabase.database().reference()
+                    
+                    //let userID = FIRAuth.auth()?.currentUser?.uid
+                    ref.child("users").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        // Get user value
+                        let userObject = User(snapshot: snapshot )
 
-                            
-                          //  let value = snapshot.value as? NSDictionary
-                            let languages = userObject.languages
-                            let isTutor = userObject.isTutor
-                            let description = userObject.description
-                            
-                            print(languages)
-                            print(isTutor)
-                            let userDefaults = UserDefaults.standard
-                            
-                            userDefaults.setValue(isTutor, forKey: "isTutor")
-                            userDefaults.setValue(languages, forKey: "languages")
-                            userDefaults.setValue(description, forKey: "description")
-                            
-                            userDefaults.synchronize()
-
-                            
-                            FIRAnalytics.logEvent(withName: "logged_in", parameters: [
-                                "name": userObject.name as NSObject,
-                                "is_tutor": userObject.isTutor as NSObject
-                                ])
-                            
-                            if description.characters.count > 0{
-                                print("in neither are nil")
-                                
-                                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-                                    //window?.rootViewController = viewController
-                                    self.present(viewController, animated: true, completion: nil)
-                                
-                                //self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
-                            } else {
-                                self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
-                            }
                         
+                      //  let value = snapshot.value as? NSDictionary
+                        let languages = userObject.languages
+                        let isTutor = userObject.isTutor
+                        let description = userObject.description
+                        
+                        print(languages)
+                        print(isTutor)
+                        let userDefaults = UserDefaults.standard
+                        
+                        userDefaults.setValue(isTutor, forKey: "isTutor")
+                        userDefaults.setValue(languages, forKey: "languages")
+                        userDefaults.setValue(description, forKey: "description")
+                        
+                        userDefaults.synchronize()
+
+                        
+                        FIRAnalytics.logEvent(withName: "logged_in", parameters: [
+                            "name": userObject.name as NSObject,
+                            "is_tutor": userObject.isTutor as NSObject
+                            ])
+                        
+                        if description.characters.count > 0{
+                            print("in neither are nil")
+                            
+                                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                                //window?.rootViewController = viewController
+                                self.present(viewController, animated: true, completion: nil)
+                            
+                            //self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                        } else {
+                            self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
                         }
+                        
+                        
                         // ...
                     }) { (error) in
                         let noInternetError = "Network error (such as timeout, interrupted connection or unreachable host) has occurred."
@@ -182,6 +194,7 @@ class LoginViewController: UIViewController {
                         self.displayAlert("Unable to Log In", message: errorMessage)
                         
                     }
+                  }
                     
 
                 } else {
@@ -208,8 +221,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    
-
     
     /// Programmatic update for the textField as it rotates.
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
