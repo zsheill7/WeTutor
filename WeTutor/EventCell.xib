@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="EventCell" id="OFA-vm-86F" customClass="EventCell" customModule="WeTutor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="396" height="84"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="t5v-fx-kkl">
+                    <rect key="frame" x="14" y="12" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="2Tc-rg-vKH"/>
+                        <constraint firstAttribute="height" constant="60" id="VeK-Ws-ELd"/>
+                        <constraint firstAttribute="width" secondItem="t5v-fx-kkl" secondAttribute="height" multiplier="1:1" id="tPQ-V9-u6N"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="OCT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nxV-hY-Dmy">
+                    <rect key="frame" x="25" y="9" width="34" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="HcR-fC-BE8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xoq-fc-eH1">
+                    <rect key="frame" x="25" y="38" width="34" height="27"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="27" id="ocj-1A-9ur"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h7G-xH-E7J">
+                    <rect key="frame" x="84" y="33" width="261" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Math Tutoring Session" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGF-lq-1X8">
+                            <rect key="frame" x="0.0" y="0.0" width="261" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="ERi-t6-bd8"/>
+                                <constraint firstAttribute="width" constant="261" id="Vyk-IZ-04O"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mercer Island Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-Wi-Hch">
+                            <rect key="frame" x="0.0" y="21" width="261" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.53743043660000001" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:45-3:45 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaC-gx-wcn">
+                            <rect key="frame" x="0.0" y="40.5" width="261" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.53743043664383561" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="DaC-gx-wcn" firstAttribute="centerY" secondItem="h7G-xH-E7J" secondAttribute="centerY" id="Fax-gH-KLY"/>
+                        <constraint firstItem="DaC-gx-wcn" firstAttribute="top" secondItem="h7G-xH-E7J" secondAttribute="top" id="O2q-sJ-hgE"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Xoq-fc-eH1" firstAttribute="centerX" secondItem="t5v-fx-kkl" secondAttribute="centerX" id="LMC-tb-O7C"/>
+                <constraint firstItem="nxV-hY-Dmy" firstAttribute="centerX" secondItem="t5v-fx-kkl" secondAttribute="centerX" id="X6D-TM-vh6"/>
+                <constraint firstItem="h7G-xH-E7J" firstAttribute="leading" secondItem="t5v-fx-kkl" secondAttribute="trailing" constant="12" id="a3A-Me-P1p"/>
+                <constraint firstItem="t5v-fx-kkl" firstAttribute="centerY" secondItem="OFA-vm-86F" secondAttribute="centerY" id="g9P-JK-fNe"/>
+                <constraint firstItem="t5v-fx-kkl" firstAttribute="leading" secondItem="OFA-vm-86F" secondAttribute="leading" constant="14" id="lHV-aG-T33"/>
+                <constraint firstItem="t5v-fx-kkl" firstAttribute="top" secondItem="nxV-hY-Dmy" secondAttribute="bottom" constant="-21" id="q0k-Z4-OOe"/>
+                <constraint firstItem="h7G-xH-E7J" firstAttribute="centerY" secondItem="t5v-fx-kkl" secondAttribute="centerY" id="u9D-uG-qHz"/>
+                <constraint firstItem="Xoq-fc-eH1" firstAttribute="centerY" secondItem="t5v-fx-kkl" secondAttribute="centerY" constant="9" id="xR4-H8-nA0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="calendarDateLabel" destination="Xoq-fc-eH1" id="SXJ-pZ-Buz"/>
+                <outlet property="calendarIcon" destination="t5v-fx-kkl" id="Nsk-E2-c1j"/>
+                <outlet property="calendarMonthLabel" destination="nxV-hY-Dmy" id="OT0-RL-E6y"/>
+                <outlet property="eventDate" destination="DaC-gx-wcn" id="7Cs-IC-41K"/>
+                <outlet property="eventDescription" destination="MLH-Wi-Hch" id="90k-Dt-C0K"/>
+                <outlet property="eventTitle" destination="tGF-lq-1X8" id="wye-ZM-MuP"/>
+            </connections>
+            <point key="canvasLocation" x="112" y="-238"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="calendarIcon" width="240" height="213"/>
+    </resources>
+</document>

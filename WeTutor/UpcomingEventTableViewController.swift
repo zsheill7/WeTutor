@@ -55,17 +55,13 @@ struct DeviceType
 }
 
 
-var eventList = [eventItem]()
+//var eventList = [eventItem]()
 
 
 
 
 class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FSCalendarDataSource, FSCalendarDelegate, EKEventEditViewDelegate {
-    /*@available(iOS 2.0, *)
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }*/
-    
+  
     
     
     
@@ -115,6 +111,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
    // var events = [eventItem]()
     var willRepeat = false
     
+    @IBOutlet weak var calendarView: FSCalendar!
     
     var currentUserIsTutor = false
     
@@ -130,6 +127,32 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return storyboard.instantiateViewController(withIdentifier: "UpcomingEventTableViewController") as! UpcomingEventTableViewController
         /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
          return storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! TutorsTableViewController*/
+    }
+    var datesWithEvent:[NSDate] = []
+    
+    func calendar(calendar: FSCalendar, hasEventForDate date: NSDate) -> Bool {
+        for event in self.events {
+            datesWithEvent.append(event.startDate as NSDate)
+            /*let order = Calendar.current.compare(event.startDate, to: date as Date, toGranularity: .day)
+            if order == ComparisonResult.orderedSame {
+                let unitFlags: NSCalendar.Unit = [.day, .month, .year]
+                let calendar2: Calendar = Calendar.current
+                let components: DateComponents = calendar2.components(unitFlags, fromDate: event.startDate)
+                datesWithEvent.append(calendar2.dateComponents(components)!)
+            }*/
+        }
+        return datesWithEvent.contains(date)
+    }
+    
+    func calendar(calendar: FSCalendar, numberOfEventsForDate date: NSDate) -> Int {
+        /*for event in self.events {
+            let order = Calendar.current.compare(event.startDate!, to: date, toGranularity: .day)
+           
+            return event.numb
+            
+        }*/
+        return self.events.count
+        //return 0
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
@@ -160,7 +183,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var defaultCalendar: EKCalendar!
     
     // Array of all events happening within the next 24 hours
-    var eventsList: [EKEvent] = []
+    //var eventsList: [EKEvent] = []
     
     // Used to add events to Calendar
    // @IBOutlet weak var addButton: UIBarButtonItem!
@@ -175,7 +198,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
        eventStore = EKEventStore()
         
         
-        
+        self.initializeDateFormatter()
         
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
@@ -232,6 +255,11 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    /*func addEventsToCalendar() {
+        for event in self.events {
+            
+        }
+    }*/
     
     fileprivate func observeChannels() {
         // We can use the observe method to listen for new
@@ -514,7 +542,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             // Fetch the index path associated with the selected event
             let indexPath = self.tableView.indexPathForSelectedRow
             // Set the view controller to display the selected event
-            eventViewController.event = self.eventsList[(indexPath?.row)!]
+            eventViewController.event = self.events[(indexPath?.row)!]
             
             // Allow event editing
             eventViewController.allowsEditing = true
@@ -533,17 +561,45 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return 1
     }
     
+    let dateFormatter = DateFormatter()
+    
+    func initializeDateFormatter() {
+        dateFormatter.dateFormat = "EEE, dd MMM yyyy hh:mm:ss +zzzz"
+        dateFormatter.locale = Locale.init(identifier: "en_US")
+     //   let dateObj = dateFormatter.dateFromString(glGetString)
+        
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+    }
+ //   print("Dateobj: \(dateFormatter.stringFromDate(dateObj!))")
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        
+        let calendar = Calendar.current
+        let eventAtRow = self.events[indexPath.row]
+        tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell
         
         // Get the event at the row selected and display its title
-        let title = self.events[indexPath.row].title
-        let dateString = String(describing: self.events[indexPath.row].startDate)
-       // cell.detailTextLabel?.text = String(describing: self.eventsList[indexPath.row].startDate)
-        cell.textLabel?.attributedText = makeAttributedString(title: title, subtitle: dateString)
+        let title = eventAtRow.title
+        let startDateString = String(describing: eventAtRow.startDate)
+        let endDateString = String(describing: eventAtRow.endDate)
+        let location = String(describing: eventAtRow.location)
+        let calendarMonth = calendar.component(.month, from: eventAtRow.startDate)
+        let calendarDay = calendar.component(.day, from: eventAtRow.startDate)
+        
+        let formattedStartDateString = dateFormatter.string(from: eventAtRow.startDate)
+        let formattedEndDateString = dateFormatter.string(from: eventAtRow.endDate)
+        cell?.eventTitle.text = title
+        cell?.eventDate.text = formattedStartDateString + " - " + formattedEndDateString
+        cell?.eventDescription.text = location
+        cell?.calendarMonthLabel.text = months[calendarMonth]
+        cell?.calendarDateLabel.text = String(calendarDay)
+        
 
-        return cell
+        return cell!
     }
     
     func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
@@ -602,7 +658,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // Enable the Add button
        // self.addButton.isEnabled = true
         // Fetch all events happening in the next 24 hours and put them into eventsList
-        self.eventsList = self.fetchEvents()
+        self.events = self.fetchEvents()
         // Update the UI with the above events
         self.tableView.reloadData()
     }

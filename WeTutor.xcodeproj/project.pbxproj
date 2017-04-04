@@ -27,10 +27,11 @@
 		C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */; };
 		C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */; };
 		C82C35FA1E915BC500DD17CD /* TutorSignUpViewControllerThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */; };
+		C82C35FD1E93405A00DD17CD /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C82C35FC1E93405900DD17CD /* EventCell.xib */; };
 		C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AF91E629D4500202E3A /* AddEventViewController.swift */; };
 		C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */; };
 		C8338B391E63DFC300202E3A /* eventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* eventItem.swift */; };
-		C8338B3A1E63DFC300202E3A /* eventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B381E63DFC300202E3A /* eventCell.swift */; };
+		C8338B3A1E63DFC300202E3A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B381E63DFC300202E3A /* EventCell.swift */; };
 		C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B3B1E63E2C400202E3A /* DetailViewController.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
 		C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B31E1982BA004A794C /* UserListViewController.swift */; };
@@ -153,10 +154,11 @@
 		C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerThree.swift; sourceTree = "<group>"; };
 		C82C35FB1E9217B000DD17CD /* WeTutor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeTutor.entitlements; sourceTree = "<group>"; };
+		C82C35FC1E93405900DD17CD /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		C8338AF91E629D4500202E3A /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventTableViewController.swift; sourceTree = "<group>"; };
 		C8338B371E63DFC300202E3A /* eventItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventItem.swift; sourceTree = "<group>"; };
-		C8338B381E63DFC300202E3A /* eventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventCell.swift; sourceTree = "<group>"; };
+		C8338B381E63DFC300202E3A /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		C8338B3B1E63E2C400202E3A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
 		C838A8B31E1982BA004A794C /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
@@ -400,7 +402,7 @@
 				C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */,
 				C838A8BD1E19C4E1004A794C /* MapViewController.swift */,
 				C8338B371E63DFC300202E3A /* eventItem.swift */,
-				C8338B381E63DFC300202E3A /* eventCell.swift */,
+				C8338B381E63DFC300202E3A /* EventCell.swift */,
 				C8338AF91E629D4500202E3A /* AddEventViewController.swift */,
 				C8338B3B1E63E2C400202E3A /* DetailViewController.swift */,
 				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
@@ -526,6 +528,7 @@
 				C838A9471E1B46EC004A794C /* UserCell.xib */,
 				C87237FC1E8C10E100C5A641 /* UserCellThree.xib */,
 				C84F180C1E713CF700EC54BF /* SubjectCell.xib */,
+				C82C35FC1E93405900DD17CD /* EventCell.xib */,
 				C84F18021E6F129300EC54BF /* WeekDaysCell.swift */,
 				C838A9491E1B6E32004A794C /* UserCell.swift */,
 				C87237FE1E8C163900C5A641 /* UserCellThree.swift */,
@@ -668,6 +671,7 @@
 				C838A9481E1B46EC004A794C /* UserCell.xib in Resources */,
 				C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */,
 				C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */,
+				C82C35FD1E93405A00DD17CD /* EventCell.xib in Resources */,
 				C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -740,7 +744,7 @@
 				C8EE88541E0DB144003775C2 /* FSCalendarAppearance.m in Sources */,
 				C8EE88581E0DB144003775C2 /* FSCalendarCollectionViewLayout.m in Sources */,
 				C83A5E581E8ED58500716C89 /* ChatUserCell.swift in Sources */,
-				C8338B3A1E63DFC300202E3A /* eventCell.swift in Sources */,
+				C8338B3A1E63DFC300202E3A /* EventCell.swift in Sources */,
 				C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */,
 				C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */,
 				C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */,

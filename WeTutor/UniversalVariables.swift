@@ -22,3 +22,5 @@ let subjectNames = ["All Subjects", "Math", "English", "History", "Chemistry", "
 let colors = [UIColor(red:0.09, green:0.63, blue:0.52, alpha:1.0), UIColor(red:0.56, green:0.27, blue:0.65, alpha:1.0), UIColor.flatBlue, UIColor(red:0.15, green:0.68, blue:0.41, alpha:1.0), UIColor(red:0.29, green:0.47, blue:0.75, alpha:1.0), UIColor.flatYellow]
 
 let weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+
+let months = [1: "JAN", 2: "FEB", 3: "MAR", 4: "APR", 5: "MAY", 6: "JUN", 7: "JUL", 8: "AUG", 9: "SEP", 10: "OCT", 11: "NOV", 12: "DEC"]
