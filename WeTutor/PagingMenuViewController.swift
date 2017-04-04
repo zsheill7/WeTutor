@@ -11,6 +11,7 @@ import FirebaseAuth
 import Firebase
 import EventKit
 import EventKitUI
+import BubbleTransition
 
 extension UIApplication {
     class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
@@ -173,14 +174,16 @@ class PagingMenuViewController: UIViewController  {
         menuView.animationDuration = 0.5
         menuView.maskBackgroundColor = UIColor.black
         menuView.maskBackgroundOpacity = 0.3
+        menuView.menuTitleColor = UIColor.white
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             if indexPath == 0 {
                 self.modalTransitionStyle = .flipHorizontal
                 let storyboard = UIStoryboard(name: "AboutThisApp", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "aboutThisAppVC") as! AboutThisAppViewController
-               // controller.modalTransitionStyle = .flipHorizontal
-        
+                
+                             // controller.modalTransitionStyle = .flipHorizontal
+                controller.modalPresentationStyle = .custom
 
                 self.present(controller, animated: true, completion: nil)
                 //self.performSegue(withIdentifier: "toAboutThisApp", sender: self)
@@ -205,5 +208,21 @@ class PagingMenuViewController: UIViewController  {
         }
         
         self.navigationItem.titleView = menuView
+    }
+    
+    let transition = BubbleTransition()
+    
+    public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = CGPoint(x: self.view.frame.width / 2, y: 25)
+        transition.bubbleColor = (self.navigationController?.navigationBar.barTintColor)!
+        return transition
+    }
+    
+    public override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = CGPoint(x: self.view.frame.width / 2, y: 25)
+        transition.bubbleColor = (self.navigationController?.navigationBar.barTintColor)!
+        return transition
     }
 }

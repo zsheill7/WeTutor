@@ -8,7 +8,7 @@
 
 import UIKit
 
-class eventCell: UITableViewCell {
+class EventCell: UITableViewCell {
     
     @IBOutlet weak var eventTitle: UILabel!
   
@@ -16,4 +16,15 @@ class eventCell: UITableViewCell {
     
     @IBOutlet weak var eventDescription: UILabel!
     
+    @IBOutlet weak var calendarMonthLabel: UILabel!
+    
+    @IBOutlet weak var calendarDateLabel: UILabel!
+    
+    @IBOutlet weak var calendarIcon: UIImageView!
+    
+    override func awakeFromNib() {
+        if let calendarImage = UIImage(named: "calendarIcon") {
+            calendarIcon.image = calendarImage
+        }
+    }
 }

@@ -1,6 +1,7 @@
 PODS:
   - ASHorizontalScrollView (1.5.1)
   - BTNavigationDropdownMenu (0.4.1)
+  - BubbleTransition (2.0.1)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
@@ -76,6 +77,7 @@ PODS:
 DEPENDENCIES:
   - ASHorizontalScrollView (~> 1.5.1)
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
+  - BubbleTransition (~> 2.0.0)
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - Cosmos (~> 8.0)
   - DropDown
@@ -121,6 +123,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ASHorizontalScrollView: 9c98b9226509540075b6398c92f68fb474bea7e9
   BTNavigationDropdownMenu: '093f3cbfad1572f2c222bdf8d17584d1e13380d4'
+  BubbleTransition: bb24ed389ab672eecf3c87170d0a73f959a8e696
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   Cosmos: 007c0b8e33a85e5363911bdd933571bbe221f7ef
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
@@ -149,6 +152,6 @@ SPEC CHECKSUMS:
   Stripe: abf87fc01f74a2143bba1b1798dd2e4d71fd2cb3
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: 6164808e53e1492cd00edbd1597f74414f154f98
+PODFILE CHECKSUM: da55a2c82935bc1fe988526e00d36b8f33b832aa
 
 COCOAPODS: 1.2.0

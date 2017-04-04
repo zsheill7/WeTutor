@@ -377,6 +377,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    let lightPurpleColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
     
     fileprivate func prepareEmailField() {
         emailField = ErrorTextField(frame: CGRect(x: constant, y: 6 * constant, width: view.width - (2 * constant), height: constant))
@@ -390,7 +391,9 @@ class LoginViewController: UIViewController {
         emailField.dividerNormalColor = UIColor.white
         emailField.leftViewNormalColor = UIColor.white
         emailField.delegate = self
-        
+        emailField.dividerActiveColor = lightPurpleColor
+        emailField.leftViewActiveColor = lightPurpleColor
+        emailField.placeholderActiveColor =  lightPurpleColor
         let leftView = UIImageView()
         leftView.image = Icon.email
         
@@ -421,6 +424,11 @@ class LoginViewController: UIViewController {
          passwordField.textColor = UIColor.white
         passwordField.tintColor = UIColor.white
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
+        passwordField.dividerActiveColor = lightPurpleColor
+        passwordField.leftViewActiveColor = lightPurpleColor
+        passwordField.placeholderActiveColor =  lightPurpleColor
+    
+
         
         let leftView = UIImageView()
         leftView.image = UIImage(named: "Lock white")?.imageResize(CGSize(width: 27, height: 27))

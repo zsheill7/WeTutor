@@ -74,6 +74,8 @@ class UserCellThree: UITableViewCell {
         let cellHeight = 135
         let cornerRadius:CGFloat = 5
         hourlyPriceLabel.textAlignment = .center
+        hourlyPriceLabel.isUserInteractionEnabled = false
+        
         
         infoButton.contentMode = .scaleAspectFit
         addFriendButton.contentMode = .scaleAspectFit
@@ -88,6 +90,7 @@ class UserCellThree: UITableViewCell {
         
         let leftColorView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: cellHeight))
         //leftColorView.backgroundColor = colors[indexPath.row % 6]
+        
         
         
         

@@ -205,6 +205,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
         
         FriendSystem.system.addFriendObserver {
+            print("inside FriendSystem.system.addFriendObserver")
             self.loadAllCalendars()
             
             self.tableView.reloadData()
@@ -224,7 +225,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     var events: [EKEvent] = [EKEvent]()
     func displayAllCalendars() {
-        self.events.removeAll()
+        //self.events.removeAll()
         print("in display all calendars")
         /*var titles : [String] = []
         var startDates : [NSDate] = []
@@ -253,6 +254,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             //}
         }
         }
+        tableView.reloadData()
     }
     
     /*func addEventsToCalendar() {
@@ -411,7 +413,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                     // TODO: Handle nil case or default EKCalendar
                                                 }
                                                
-                                                break
+                                                
                                             }
                                         }
                                     }
@@ -436,7 +438,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                         self.calendars.append(loadedCalendar)
                                                     }
                                                 }
-                                              break
+                                              
                                             }
                                         } //if channelDict["tutorName"]
                                     }
