@@ -116,7 +116,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         //self.view.addBackground()
         self.view.addBackground()
-        self.tableView.addBackground()
+        self.tableView.backgroundColor = UIColor.clear
         FriendSystem.system.getCurrentUser { (user) in
             self.currentUser = user
         }

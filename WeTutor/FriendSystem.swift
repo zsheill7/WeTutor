@@ -123,11 +123,17 @@ class FriendSystem {
                     errorMessage = "Please check your internet connection and try again later."
                 }
                 
+                if user != nil && user!.uid != nil && user!.email != nil{
                 FIRAnalytics.logEvent(withName: "create_account", parameters: [
                     "succeeded": "false" as NSObject,
                     "userUID": user!.uid as NSObject,
                     "email": user!.email! as NSObject
                     ])
+                } else {
+                    FIRAnalytics.logEvent(withName: "create_account", parameters: [
+                        "succeeded": "false" as NSObject,
+                    ])
+                }
                 
                 self.displayAlert("Unable to Sign Up", message: (errorMessage)!)
                 completion(false)

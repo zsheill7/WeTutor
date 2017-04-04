@@ -116,23 +116,19 @@ class LoginViewController: UIViewController {
                         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
                             /*contentViewColor: UIColor.alertViewBlue()*/)
                         let alert = SCLAlertView(appearance: appearance)
-                        let emailTextField = alert.addTextField("Email")
+                       // let emailTextField = alert.addTextField("Email")
                         
                         let emailButton = alert.addButton("Okay") {
-                            if emailTextField.text != nil {
-                                if emailTextField.text?.isEmail() == false {
-                                    SCLAlertView().showInfo("Error", subTitle: "Sorry. Your email address has not yet been verified. Do you want us to send another verification email to \(self.emailField.text!).")
-                                } else {
-                                    user?.sendEmailVerification(completion: nil)
-                                }
-                            }
+                            
+                            user?.sendEmailVerification(completion: nil)
+                            
                         }
                         let closeButton = alert.addButton("Cancel") {
                             print("close")
                         }
                         
-
-                        _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
+                        _ = alert.showInfo("Error", subTitle: "Your email address has not yet been verified. Would you like us to send another verification email to \(self.emailField.text!)?")
+                       // _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
   
                     } else {
                         print ("Email verified. Signing in...")
