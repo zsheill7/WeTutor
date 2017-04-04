@@ -117,6 +117,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //self.view.addBackground()
         self.view.addBackground()
         self.tableView.backgroundColor = UIColor.clear
+        
         FriendSystem.system.getCurrentUser { (user) in
             self.currentUser = user
         }
@@ -145,9 +146,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
        
         tableView.reloadData()
         
-        if (currentUser?.isTutor) == true {
+        /*if (currentUser?.isTutor) == true {
             segmentedControl.move(to: 1)
-        }
+        }*/
         
         
         

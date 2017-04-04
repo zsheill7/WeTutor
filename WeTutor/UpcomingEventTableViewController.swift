@@ -241,53 +241,54 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let userChannelRef = userRef.child(userID!).child("channels")
         
         print("inside observeChannels)")
-        for friend in FriendSystem.system.friendList {
-            print("for friend in FriendSystem.system.friendList")
-            var ref: FIRDatabaseReference!
-            let userID = FIRAuth.auth()?.currentUser?.uid
-            ref = FIRDatabase.database().reference()
-            ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let userObject = User(snapshot: snapshot )
-                
-                self.currentUser = userObject
-                
-                let value = snapshot.value as? NSDictionary
-                let isTutor = userObject.isTutor
-                if isTutor != nil {
-                    if isTutor == true {
-                        self.currentUserIsTutor = true
-                        //self.tutorOrTutee = "tuteeName"
-                    } else {
-                        self.currentUserIsTutor = false
-                       // self.tutorOrTutee = "tutorName"
-                    }
+    
+        print("for friend in FriendSystem.system.friendList")
+        var ref: FIRDatabaseReference!
+        //let userID = FIRAuth.auth()?.currentUser?.uid
+        ref = FIRDatabase.database().reference()
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let userObject = User(snapshot: snapshot )
+            
+            self.currentUser = userObject
+            
+            let value = snapshot.value as? NSDictionary
+            let isTutor = userObject.isTutor
+            if isTutor != nil {
+                if isTutor == true {
+                    self.currentUserIsTutor = true
+                    //self.tutorOrTutee = "tuteeName"
+                } else {
+                    self.currentUserIsTutor = false
+                   // self.tutorOrTutee = "tutorName"
                 }
-                else {
-                    // no highscore exists
-                }
-                let email = userObject.email
-                //print(email)
-                //print("userObject.channels")
-                //print( userObject.channels)
+            }
+            else {
+                // no highscore exists
+            }
+            let email = userObject.email
+            //print(email)
+            //print("userObject.channels")
+            //print( userObject.channels)
+            
+            self.calendars.removeAll()
+            for channel in userObject.channels {
                 
-                self.calendars.removeAll()
-                for channel in userObject.channels {
+                let calendarId = channel.calendarId
+                if let newCalendar = self.eventStore.calendar(withIdentifier: calendarId)
+                {
+                    self.calendars.append(newCalendar)
                     
-                    let calendarId = channel.calendarId
-                    if let newCalendar = self.eventStore.calendar(withIdentifier: calendarId)
-                    {
-                        self.calendars.append(newCalendar)
-                        
-                    } else {
-                        self.createCalendar(channel.id)
-                    }
-                    //self.channels.append(channel)
-                    self.tableView.reloadData()
-                    
+                } else {
+                    self.createCalendar(channel.id)
                 }
-            })
-        }
+                //self.channels.append(channel)
+                
+                
+            }
+        })
+         self.tableView.reloadData()
+        
     }
     
     
@@ -681,6 +682,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 }
             }
         }
+        self.tableView.reloadData()
     }
     
     //var default​Calendar​For​New​Events:​ EKCalendar
