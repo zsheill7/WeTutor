@@ -163,13 +163,22 @@ class PagingMenuViewController: UIViewController  {
         let rightButtonImg = UIImage(named: "rightButtonCalendar-25")
         let rightButton = UIBarButtonItem(image: rightButtonImg, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openCalendar))
         self.navigationItem.rightBarButtonItem = rightButton
+        let logo = UIImage(named: "WeTutorHat")
+        let imageView = UIImageView(image:logo)
         
+        //self.navigationItem.contentView = imageView
         let leftButtonImg = UIImage(named: "leftButtonChat-25")
         let leftButton = UIBarButtonItem(image: leftButtonImg, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openChat))
         
         self.navigationItem.leftBarButtonItem = leftButton
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "WeTutor", items: items as [AnyObject])
+        
+       
+        self.navigationItem.titleView = imageView
+        
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view,
+                                            title: "WeTutor", items: items as [AnyObject])
+        
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor.flatSkyBlue
@@ -178,13 +187,15 @@ class PagingMenuViewController: UIViewController  {
         menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
         menuView.cellTextLabelAlignment = .left // .Center // .Right // .Left
         //menuView.arrowImage = UIImage(named: "Settings Filled-25")
-        //menuView.arrowImage = UIImage(named: "Menu 2 Filled-25")
-        menuView.arrowImage = UIImage(named: "More Filled-25")
+        menuView.arrowImage = UIImage(named: "Menu 2 Filled-25")
+       // menuView.arrowImage = UIImage(named: "More Filled-25")
         menuView.arrowPadding = 25
         menuView.animationDuration = 0.5
         menuView.maskBackgroundColor = UIColor.black
         menuView.maskBackgroundOpacity = 0.3
         menuView.menuTitleColor = UIColor.white
+        //menuView.backgroundColor = UIColor(patternImage: logo!)
+       // menuView.titleView.
        
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in

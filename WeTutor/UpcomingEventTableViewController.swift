@@ -54,6 +54,19 @@ struct DeviceType
     static let IS_IPAD_PRO          = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1366.0
 }
 
+extension Date {
+    func adding(months: Int) -> Date? {
+        let calendar = Calendar(identifier: .gregorian)
+        
+        var components = DateComponents()
+        components.calendar = calendar
+        components.timeZone = TimeZone(secondsFromGMT: 0)
+        components.month = months
+        
+        return calendar.date(byAdding: components, to: self)
+        
+    }
+}
 
 //var eventList = [eventItem]()
 
@@ -120,6 +133,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var tutorName: String = ""
     var tuteeName: String = ""
     var tutorOrTutee = "tutorName"
+    
+    let now = Date()
    // var currentUserIsTutor = false
     
     class func instantiateFromStoryboard() -> UpcomingEventTableViewController {
@@ -155,15 +170,20 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         //return 0
     }
     
+    
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2015/01/01")!
+        //return self.formatter.date(from: "2015/01/01")!
+        let sixMonthsAgo = now.adding(months: -6)
+        return sixMonthsAgo!
         
         
     
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return self.formatter.date(from: "2016/10/31")!
+        //return self.formatter.date(from: "2016/10/31")!
+        let sixMonthsFuture = now.adding(months: 6)
+        return sixMonthsFuture!
     }
 
     
@@ -200,6 +220,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         self.initializeDateFormatter()
         
+        self.view.addBackground()
+        self.tableView.backgroundColor = UIColor.white
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
@@ -537,7 +559,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     func setupCalendarAppearance() {
         self.calendarView.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
-        self.calendarView.select(self.formatter.date(from: "2015/10/10")!)
+        //self.calendarView.select(self.formatter.date(from: "2015/10/10")!)
         //        self.calendar.scope = .week
         self.calendarView.scopeGesture.isEnabled = true
         self.calendarView.appearance.headerTitleColor = UIColor.white
@@ -546,7 +568,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.calendarView.appearance.selectionColor = UIColor.white
         self.calendarView.appearance.titleSelectionColor = UIColor.red
         self.calendarView.appearance.todayColor = UIColor.red
-        self.calendarView.addBackground("calendar header bg")
+        self.calendarView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        //self.calendarView.opacity = 0.3
+        //self.calendarView.backgroundColor = UIColor(patternImage: UIImage(named:"calendar header bg")!)
       //  self.calendarView.appearance.
         //self.calendarView.appearance.headerTitleFont = [SGHelper themeFontNavBar];
         //self.calendarView.appearance.titleFont = [SGHelper themeFontWithSize:15];

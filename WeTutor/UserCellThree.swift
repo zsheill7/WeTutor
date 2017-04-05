@@ -79,6 +79,7 @@ class UserCellThree: UITableViewCell {
         
         infoButton.contentMode = .scaleAspectFit
         addFriendButton.contentMode = .scaleAspectFit
+        
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight))
         
         ratingView.isUserInteractionEnabled = false 
