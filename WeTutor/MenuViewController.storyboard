@@ -35,7 +35,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <accessibility key="accessibilityConfiguration" identifier="UserCell"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="UserCell">
+                                            <accessibilityTraits key="traits" none="YES"/>
+                                        </accessibility>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1074,6 +1076,6 @@
         <image name="telephonebook" width="74" height="74"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ssn-N4-XFi"/>
+        <segue reference="9UM-xc-NC9"/>
     </inferredMetricsTieBreakers>
 </document>

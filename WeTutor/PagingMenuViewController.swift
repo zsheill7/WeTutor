@@ -112,12 +112,12 @@ class PagingMenuViewController: UIViewController  {
     }
     
     
-    
+    var pagingMenuController: PagingMenuController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("here")
-        let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 0) as IndexPath)
+        let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 1) as IndexPath)
        // self.view?.backgroundColor = UIColor.clear
         self.view.backgroundColor = UIColor.clear
         options = sectionType?.options
@@ -126,10 +126,10 @@ class PagingMenuViewController: UIViewController  {
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        let pagingMenuController = self.childViewControllers.first as! PagingMenuController
+        pagingMenuController = self.childViewControllers.first as! PagingMenuController
         /*let pagingMenuController = UIApplication.topViewController(base: self) as! PagingMenuController*/
-        pagingMenuController.setup(options)
-        pagingMenuController.onMove = { state in
+        pagingMenuController?.setup(options)
+        pagingMenuController?.onMove = { state in
             switch state {
             case let .willMoveController(menuController, previousMenuController):
                 print("")
@@ -159,7 +159,15 @@ class PagingMenuViewController: UIViewController  {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x51679F)
 //UIColor(netHex: 0x95C2CC)       self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-      //  self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addEvent))
+        
+        let rightButtonImg = UIImage(named: "rightButtonCalendar-25")
+        let rightButton = UIBarButtonItem(image: rightButtonImg, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openCalendar))
+        self.navigationItem.rightBarButtonItem = rightButton
+        
+        let leftButtonImg = UIImage(named: "leftButtonChat-25")
+        let leftButton = UIBarButtonItem(image: leftButtonImg, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openChat))
+
+        self.navigationItem.leftBarButtonItem = leftButton
         
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "WeTutor", items: items as [AnyObject])
         menuView.cellHeight = 50
@@ -169,7 +177,9 @@ class PagingMenuViewController: UIViewController  {
         menuView.cellTextLabelColor = UIColor.white
         menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
         menuView.cellTextLabelAlignment = .left // .Center // .Right // .Left
-        menuView.arrowImage = UIImage(named: "Settings Filled-25")
+        //menuView.arrowImage = UIImage(named: "Settings Filled-25")
+        menuView.arrowImage = UIImage(named: "Menu 2-26")
+
         menuView.arrowPadding = 25
         menuView.animationDuration = 0.5
         menuView.maskBackgroundColor = UIColor.black
@@ -212,6 +222,13 @@ class PagingMenuViewController: UIViewController  {
     
     let transition = BubbleTransition()
     
+    func openChat() {
+        pagingMenuController?.move(toPage: 0, animated: true)
+    }
+    
+    func openCalendar() {
+        pagingMenuController?.move(toPage: 2, animated: true)
+    }
     public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = CGPoint(x: self.view.frame.width / 2, y: 25)

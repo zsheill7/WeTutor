@@ -95,6 +95,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
 
+        self.tableView.isEditing = false
+        self.tableView.allowsSelection = true
         setupDropDown()
         
         self.tableView.dataSource = self
@@ -491,7 +493,18 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         return 150
     }
     
-    
+    public func tableView(_ tableView: UITableView, didSelectRowAt
+        indexPath: IndexPath){
+        print("in did select")
+        //your code...
+        let userAtRow = finalUserList[indexPath.row]
+        
+        let tutor = userAtRow
+        self.UID = tutor.uid
+        self.destinationUser = tutor
+        self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+    }
+
  
 
     
@@ -591,12 +604,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         /*let tutor = tutors[indexPath.row]
         UID = tutor.uid
         destinationUser = tutor
         self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)*/
-    }
+    }*/
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
