@@ -69,7 +69,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     @IBOutlet weak var nagivationItem: UINavigationItem!
     //@IBOutlet weak var table: UITableView!
-  
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -196,7 +196,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         super.viewDidLoad()
         // Initialize the event store
        eventStore = EKEventStore()
-        
+        self.setupCalendarAppearance()
         
         self.initializeDateFormatter()
         
@@ -532,8 +532,37 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         super.viewDidAppear(animated)
         // Check whether we are authorized to access Calendar
         self.checkEventStoreAccessForCalendar()
+        
     }
     
+    func setupCalendarAppearance() {
+        self.calendarView.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]
+        self.calendarView.select(self.formatter.date(from: "2015/10/10")!)
+        //        self.calendar.scope = .week
+        self.calendarView.scopeGesture.isEnabled = true
+        self.calendarView.appearance.headerTitleColor = UIColor.white
+        //self.calendarView.appearance.titleDefaultColor = UIColor.white
+        self.calendarView.appearance.weekdayTextColor = UIColor.white
+        self.calendarView.appearance.selectionColor = UIColor.white
+        self.calendarView.appearance.titleSelectionColor = UIColor.red
+        self.calendarView.appearance.todayColor = UIColor.red
+        self.calendarView.addBackground("calendar header bg")
+      //  self.calendarView.appearance.
+        //self.calendarView.appearance.headerTitleFont = [SGHelper themeFontNavBar];
+        //self.calendarView.appearance.titleFont = [SGHelper themeFontWithSize:15];
+        //self.calendarView.appearance.weekdayFont = [SGHelper themeFontWithSize:15]
+    }
+    
+    /*func setupHeaderView() {
+        self.headerView.avatarButton setHidden:YES];
+        [self.headerView.subtitleLabel setHidden:YES];
+        self.headerView.subtitleLabel.text = [SGHelper localizedFormatDate:[NSDate date]];
+        [self.headerView setImage:[UIImage imageAtResourcePath:@"calendar header bg"] style:HeaderMaskStyleDark];
+    }*/
+    
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        NSLog("change page to \(self.formatter.string(from: calendar.currentPage))")
+    }
     
     // This method is called when the user selects an event in the table view. It configures the destination
     // event view controller with this event.
@@ -549,6 +578,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             // Allow event editing
             eventViewController.allowsEditing = true
         }
+    }
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calendarHeightConstraint.constant = bounds.height
+        view.layoutIfNeeded()
     }
     
     

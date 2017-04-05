@@ -105,7 +105,6 @@
 		C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE884E1E0DB144003775C2 /* FSCalendarStickyHeader.m */; };
 		C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88501E0DB144003775C2 /* FSCalendarWeekdayView.m */; };
 		C8F668C31E6B479F00D9DC53 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */; };
-		C8F668C51E6B85E400D9DC53 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */; };
 		C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */; };
 		C8F668CC1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */; };
 		C8F668CE1E6D31D500D9DC53 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CD1E6D31D500D9DC53 /* Message.swift */; };
@@ -249,7 +248,6 @@
 		C8EE884F1E0DB144003775C2 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendarWeekdayView.h; path = FSCalendar/FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		C8EE88501E0DB144003775C2 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSCalendarWeekdayView.m; path = FSCalendar/FSCalendarWeekdayView.m; sourceTree = "<group>"; };
 		C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePictureViewController+handlers.swift"; sourceTree = "<group>"; };
 		C8F668CD1E6D31D500D9DC53 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = "../../Xcode projects/WeTutor/WeTutor/Message.swift"; sourceTree = "<group>"; };
@@ -385,7 +383,6 @@
 			children = (
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
 				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
-				C8F668C41E6B85E400D9DC53 /* CalendarViewController.swift */,
 				C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */,
 			);
 			name = "In Tutor Storyboard";
@@ -775,7 +772,6 @@
 				C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */,
 				C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */,
 				C81DA37A1E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m in Sources */,
-				C8F668C51E6B85E400D9DC53 /* CalendarViewController.swift in Sources */,
 				C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */,
 				C82C35FA1E915BC500DD17CD /* TutorSignUpViewControllerThree.swift in Sources */,
 				C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */,

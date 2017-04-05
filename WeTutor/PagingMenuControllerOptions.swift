@@ -24,7 +24,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
      */
     
     let usersViewController = UsersViewController.instantiateFromStoryboard()
-    let calendarViewController = CalendarViewController.instantiateFromStoryboard()
+    let calendarViewController = UpcomingEventTableViewController.instantiateFromStoryboard()
     let chatViewController = ChannelListViewController.instantiateFromStoryboard()
    // let organizationsViewController = OrganizationsViewController.instantiateFromStoryboard()
     //let requestViewController = RequestViewController.instantiateFromStoryboard()

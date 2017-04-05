@@ -565,10 +565,10 @@
             </objects>
             <point key="canvasLocation" x="397" y="838"/>
         </scene>
-        <!--Upcoming Events-->
+        <!--Data Source-->
         <scene sceneID="l2Q-oM-xcp">
             <objects>
-                <viewController storyboardIdentifier="UpcomingEventViewController" automaticallyAdjustsScrollViewInsets="NO" id="o9H-0G-0M8" customClass="UpcomingEventTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpcomingEventTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="o9H-0G-0M8" customClass="UpcomingEventTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gNE-Gj-SHO"/>
                         <viewControllerLayoutGuide type="bottom" id="JlQ-Ab-l64"/>
@@ -578,15 +578,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IoV-pg-dyH" customClass="FSCalendar">
-                                <rect key="frame" x="16" y="72" width="343" height="173"/>
+                                <rect key="frame" x="16" y="72" width="343" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="173" id="51b-oS-IHD"/>
-                                    <constraint firstAttribute="width" secondItem="IoV-pg-dyH" secondAttribute="height" multiplier="343:173" id="quy-E7-hjH"/>
+                                    <constraint firstAttribute="height" constant="300" id="51b-oS-IHD"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="o9H-0G-0M8" id="bcP-xm-K9l"/>
+                                    <outlet property="delegate" destination="o9H-0G-0M8" id="TtV-EF-NGn"/>
+                                </connections>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bhN-UQ-8Hd">
-                                <rect key="frame" x="0.0" y="253" width="375" height="365"/>
+                                <rect key="frame" x="0.0" y="380" width="375" height="238"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <button key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kYb-0o-8RV">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -641,6 +644,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="calendarHeightConstraint" destination="51b-oS-IHD" id="3Yf-qN-M6I"/>
                         <outlet property="calendarView" destination="IoV-pg-dyH" id="NE6-Iz-vHe"/>
                         <outlet property="tableView" destination="bhN-UQ-8Hd" id="Ncq-NW-xdf"/>
                         <segue destination="XVT-N9-jpa" kind="showDetail" identifier="showDetail" id="PWj-8N-5wz">

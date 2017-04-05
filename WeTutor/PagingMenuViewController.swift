@@ -166,7 +166,7 @@ class PagingMenuViewController: UIViewController  {
         
         let leftButtonImg = UIImage(named: "leftButtonChat-25")
         let leftButton = UIBarButtonItem(image: leftButtonImg, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openChat))
-
+        
         self.navigationItem.leftBarButtonItem = leftButton
         
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "WeTutor", items: items as [AnyObject])
@@ -178,13 +178,14 @@ class PagingMenuViewController: UIViewController  {
         menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
         menuView.cellTextLabelAlignment = .left // .Center // .Right // .Left
         //menuView.arrowImage = UIImage(named: "Settings Filled-25")
-        menuView.arrowImage = UIImage(named: "Menu 2-26")
-
+        //menuView.arrowImage = UIImage(named: "Menu 2 Filled-25")
+        menuView.arrowImage = UIImage(named: "More Filled-25")
         menuView.arrowPadding = 25
         menuView.animationDuration = 0.5
         menuView.maskBackgroundColor = UIColor.black
         menuView.maskBackgroundOpacity = 0.3
         menuView.menuTitleColor = UIColor.white
+       
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             if indexPath == 0 {
