@@ -29,30 +29,7 @@ struct properties {
         ]
 }
 
-enum UIUserInterfaceIdiom : Int
-{
-    case Unspecified
-    case Phone
-    case Pad
-}
 
-struct ScreenSize
-{
-    static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
-    static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
-    static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
-    static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
-}
-
-struct DeviceType
-{
-    static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
-    static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
-    static let IS_IPHONE_6          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
-    static let IS_IPHONE_6P         = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
-    static let IS_IPAD              = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
-    static let IS_IPAD_PRO          = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1366.0
-}
 
 extension Date {
     func adding(months: Int) -> Date? {
@@ -80,7 +57,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     var eventStore: EKEventStore!
     
-    @IBOutlet weak var nagivationItem: UINavigationItem!
+   // @IBOutlet weak var nagivationItem: UINavigationItem!
     //@IBOutlet weak var table: UITableView!
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
@@ -221,7 +198,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.initializeDateFormatter()
         
         self.view.addBackground()
+        
         self.tableView.backgroundColor = UIColor.white
+       
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
@@ -568,7 +547,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.calendarView.appearance.selectionColor = UIColor.white
         self.calendarView.appearance.titleSelectionColor = UIColor.red
         self.calendarView.appearance.todayColor = UIColor.red
-        self.calendarView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        self.calendarView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         //self.calendarView.opacity = 0.3
         //self.calendarView.backgroundColor = UIColor(patternImage: UIImage(named:"calendar header bg")!)
       //  self.calendarView.appearance.

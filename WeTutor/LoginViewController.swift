@@ -239,8 +239,9 @@ class LoginViewController: UIViewController {
         
         
         btn.addTarget(self, action: #selector(handleNextButton(_ :)), for: .touchUpInside)
-        
-        view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()    }
+        view.layout(btn).top(13 * constant).horizontally(left: constant, right: constant)
+        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()    
+    }
     
     fileprivate func prepareForgotPasswordButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())

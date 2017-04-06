@@ -102,7 +102,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.addBackground("book.png")
         
         
-        if (FBSDKAccessToken.current() != nil)
+        /*if (FBSDKAccessToken.current() != nil)
         {
             // User is already logged in     
             print("(FBSDKAccessToken.current() != nil)")
@@ -121,7 +121,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
         }
-        
+        */
         /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "fullbackgroundtransculent4")
         self.view.insertSubview(backgroundImage, at: 0)*/
@@ -372,7 +372,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         btn.addTarget(self, action: #selector(handleNextButton(_:)), for: .touchUpInside)
         
-        view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()    }
+        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
+        view.layout(btn).top(13 * constant).horizontally(left: constant, right: constant)
+    }
     
     fileprivate func prepareForgotPasswordButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
