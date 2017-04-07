@@ -1,6 +1,6 @@
 //
 //  PagingMenuViewController.swift
-//  PagingMenuControllerDemo
+//  PagingMenuController
 //
 //
 

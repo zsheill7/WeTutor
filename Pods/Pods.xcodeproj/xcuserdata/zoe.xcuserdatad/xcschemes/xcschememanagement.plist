@@ -59,6 +59,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JSQMessagesViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -137,7 +142,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>045AD67305CF0DB61C40651038DB3CF9</key>
+		<key>0A6850ECFF10360DCED739B1539F0397</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>18D760D57DEF950E111166880F547C4C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,7 +182,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>517338C3EAAF2745FDB6CBF19716A50C</key>
+		<key>55643D3600A58DD928380919B48795AF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -192,11 +202,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7010B7F17A5E6938C6562E8A7637CA88</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>7314180BE9DF7EC9AED878748EC34864</key>
 		<dict>
 			<key>primary</key>
@@ -212,7 +217,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A3553503D701930B71E9BCB74D61EE2</key>
+		<key>96792F7D9425727C6E5761B69F49A67B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B86585B3BDDB1C6BD26FDB466FAE531</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -222,22 +232,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A8434128F36AC94723BB096D45C5B05E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A91DEB821D9993025CFCCF6C1A91A604</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C36CB2CB977A4E7D954935096D00A1ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C5A2DB7A84B7B78E359870D2E1B24AA7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C5AC6B2448A2EE9E05AC35F1B34C3342</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C66CC0627E2D13B26AF5576F89E59832</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -257,12 +272,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DE4150F4F41FB765CE3ED045A6E1C60B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F2CA72BD0DBC6B28DD0A5F632DAD07D9</key>
+		<key>DA89FCF4E1F74161FC45E07805477312</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -13,6 +13,7 @@ import FirebaseMessaging
 import FBSDKCoreKit
 import DropDown
 import Stripe
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -52,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        IQKeyboardManager.shared().isEnabled = true
         DropDown.startListeningToKeyboard()
         
         
@@ -150,6 +152,20 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         completionHandler()
     }
+    
+    /*func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        // Print full message.
+        print(userInfo)
+    }*/
 }
 // [END ios_10_message_handling]
 // [START ios_10_data_message_handling]

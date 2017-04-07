@@ -28,4 +28,5 @@ use_frameworks!
  pod 'Cosmos', '~> 8.0'
  pod 'BubbleTransition', '~> 2.0.0'
  pod 'Stripe'
+ pod 'IQKeyboardManager'
 end

@@ -59,6 +59,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
+  - IQKeyboardManager (4.0.8)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - FSCalendar
+  - IQKeyboardManager
   - JSQMessagesViewController
   - Material (~> 2.0)
   - NVActivityIndicatorView
@@ -140,6 +142,7 @@ SPEC CHECKSUMS:
   FSCalendar: 574388d70778c22719eed9341653e1743b345573
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Material: 00ae261fa04dd3f3f8584d07e44ac658fa1bc6fd
@@ -152,6 +155,6 @@ SPEC CHECKSUMS:
   Stripe: abf87fc01f74a2143bba1b1798dd2e4d71fd2cb3
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: da55a2c82935bc1fe988526e00d36b8f33b832aa
+PODFILE CHECKSUM: 67d7970b198ccf55c816c4adddbf8d8d7a1b576c
 
 COCOAPODS: 1.2.0

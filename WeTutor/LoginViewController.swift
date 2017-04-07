@@ -35,10 +35,15 @@ class LoginViewController: UIViewController {
     
     let lightGrayColor = UIColor.lightGray.lighten(byPercentage: 0.1)!
     
+    let screenHeight = UIScreen.main.bounds.size.height
+    //let screenHeight = Double(screenSize.height)
+    var IS_IPHONE = Bool()
+    var IS_IPAD  = Bool()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        IS_IPHONE = screenHeight <= CGFloat(1000.0)
+        IS_IPAD  = screenHeight > CGFloat(1000.0)
         
         /*self.view.backgroundColor = UIColor.init(
          gradientStyle: UIGradientStyle.leftToRight,
@@ -239,8 +244,12 @@ class LoginViewController: UIViewController {
         
         
         btn.addTarget(self, action: #selector(handleNextButton(_ :)), for: .touchUpInside)
-        view.layout(btn).top(13 * constant).horizontally(left: constant, right: constant)
-        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()    
+        var verticalMult: CGFloat = 13
+        
+        if IS_IPAD {
+            verticalMult = 11
+        }
+        view.layout(btn).top(verticalMult * constant).horizontally(left: constant, right: constant)        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
     }
     
     fileprivate func prepareForgotPasswordButton() {
@@ -254,7 +263,13 @@ class LoginViewController: UIViewController {
         btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_ :)), for: .touchUpInside)
         
-        view.layout(btn).width(200).height(constant).top(15 * constant).centerHorizontally()    }
+        var verticalMult: CGFloat = 15
+        if IS_IPAD {
+            verticalMult = 12.5
+        }
+        
+        view.layout(btn).width(200).height(constant).top(verticalMult * constant).centerHorizontally()
+    }
     
     fileprivate func prepareSignupButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
@@ -267,7 +282,13 @@ class LoginViewController: UIViewController {
         btn.setTitle("Sign Up for an Account", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleSignUpButton(_ :)), for: .touchUpInside)
         
-        view.layout(btn).width(210).height(constant).top(16 * constant).centerHorizontally()    }
+        var verticalMult: CGFloat = 16
+        if IS_IPAD {
+            verticalMult = 13.5
+        }
+        
+        view.layout(btn).width(210).height(constant).top(verticalMult * constant).centerHorizontally()
+    }
     
     
     //

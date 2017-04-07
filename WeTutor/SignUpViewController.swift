@@ -84,13 +84,23 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         SCLAlertView().showInfo(title, subTitle: message)
 
     }
+    
+   // let deviceType = UIDevice.current.deviceType
     /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
     
+    let screenHeight = UIScreen.main.bounds.size.height
+    //let screenHeight = Double(screenSize.height)
+    var IS_IPHONE = Bool()
+    var IS_IPAD  = Bool()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
+        IS_IPHONE = screenHeight <= CGFloat(1000.0)
+        IS_IPAD  = screenHeight > CGFloat(1000.0)
+       // if DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO {
+            
+      //  }
         /*self.view.backgroundColor = UIColor.init(
             gradientStyle: UIGradientStyle.leftToRight,
             withFrame: self.view.frame,
@@ -373,7 +383,12 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         btn.addTarget(self, action: #selector(handleNextButton(_:)), for: .touchUpInside)
         
         //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
-        view.layout(btn).top(13 * constant).horizontally(left: constant, right: constant)
+        var verticalMult: CGFloat = 13
+        
+        if IS_IPAD {
+            verticalMult = 11
+        }
+        view.layout(btn).top(verticalMult * constant).horizontally(left: constant, right: constant)
     }
     
     fileprivate func prepareForgotPasswordButton() {
@@ -387,7 +402,13 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_:)), for: .touchUpInside)
         
-        view.layout(btn).width(200).height(constant).top(15 * constant).centerHorizontally()    }
+        var verticalMult: CGFloat = 15
+        if IS_IPAD {
+            verticalMult = 12.5
+        }
+        
+        view.layout(btn).width(200).height(constant).top(verticalMult * constant).centerHorizontally()
+    }
     
     fileprivate func prepareLoginButton() {
         //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
@@ -400,7 +421,13 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         btn.setTitle("Already Registered? Log In", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleLogInButton(_:)), for: .touchUpInside)
         
-        view.layout(btn).width(210).height(constant).top(16 * constant).centerHorizontally()    }
+         var verticalMult: CGFloat = 16
+        if IS_IPAD {
+            verticalMult = 13.5
+        }
+
+        view.layout(btn).width(210).height(constant).top(verticalMult * constant).centerHorizontally()
+    }
 
     
     //
@@ -513,11 +540,23 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         nameField.leftView = leftView
         nameField.leftViewMode = .always
         
-        view.layout(nameField).top(4 * constant).horizontally(left: constant, right: constant)
+        var verticalMult: CGFloat = 4
+        
+        if IS_IPAD {
+            verticalMult = 3
+        }
+        
+        view.layout(nameField).top(verticalMult * constant).horizontally(left: constant, right: constant)
     }
     
     fileprivate func prepareEmailField() {
-        emailField = ErrorTextField(frame: CGRect(x: constant, y: 6 * constant, width: view.width - (2 * constant), height: constant))
+        var verticalMult: CGFloat = 6
+        
+        if IS_IPAD {
+            verticalMult = 5
+        }
+        
+        emailField = ErrorTextField(frame: CGRect(x: constant, y: verticalMult * constant, width: view.width - (2 * constant), height: constant))
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
         emailField.isClearIconButtonEnabled = true
@@ -578,7 +617,13 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         passwordField.leftViewNormalColor = .brown
         passwordField.leftViewActiveColor = .green
         
-        view.layout(passwordField).top(8 * constant).horizontally(left: constant, right: constant)
+        var verticalMult: CGFloat = 8
+        
+        if IS_IPAD {
+            verticalMult = 7
+        }
+        
+        view.layout(passwordField).top(verticalMult * constant).horizontally(left: constant, right: constant)
     }
     
     fileprivate func prepareConfirmPasswordField() {
@@ -609,8 +654,16 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         confirmPasswordField.leftViewNormalColor = .brown
         confirmPasswordField.leftViewActiveColor = .green
 
+        var verticalMult: CGFloat = 10
         
-        view.layout(confirmPasswordField).top(10 * constant).horizontally(left: constant, right: constant)
+        //let deviceType = UIDevice.current.deviceType
+        //let new = deviceType.IS_IPAD
+        print("\(screenHeight) screenHeight")
+        if IS_IPAD  {
+            print("if DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO {")
+            verticalMult = 9
+        }
+        view.layout(confirmPasswordField).top(verticalMult * constant).horizontally(left: constant, right: constant)
     }
 }
 
