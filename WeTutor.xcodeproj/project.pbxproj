@@ -30,7 +30,6 @@
 		C82C35FD1E93405A00DD17CD /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C82C35FC1E93405900DD17CD /* EventCell.xib */; };
 		C82C9E4F1E96ACCF0082901E /* DeviceStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C9E4E1E96ACCE0082901E /* DeviceStructs.swift */; };
 		C82C9E531E987FA30082901E /* AboutUsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C9E521E987FA10082901E /* AboutUsTableViewController.swift */; };
-		C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AF91E629D4500202E3A /* AddEventViewController.swift */; };
 		C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */; };
 		C8338B391E63DFC300202E3A /* eventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* eventItem.swift */; };
 		C8338B3A1E63DFC300202E3A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B381E63DFC300202E3A /* EventCell.swift */; };
@@ -57,6 +56,7 @@
 		C86BCCC71E12F8DE007D24F9 /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */; };
 		C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */; };
 		C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */; };
+		C86D41121E996CE9000C5B0F /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86D41111E996CE9000C5B0F /* AddEventViewController.swift */; };
 		C87237FD1E8C10E100C5A641 /* UserCellThree.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87237FC1E8C10E100C5A641 /* UserCellThree.xib */; };
 		C87237FF1E8C163A00C5A641 /* UserCellThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87237FE1E8C163900C5A641 /* UserCellThree.swift */; };
 		C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */; };
@@ -158,7 +158,6 @@
 		C82C35FC1E93405900DD17CD /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		C82C9E4E1E96ACCE0082901E /* DeviceStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceStructs.swift; sourceTree = "<group>"; };
 		C82C9E521E987FA10082901E /* AboutUsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsTableViewController.swift; sourceTree = "<group>"; };
-		C8338AF91E629D4500202E3A /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventTableViewController.swift; sourceTree = "<group>"; };
 		C8338B371E63DFC300202E3A /* eventItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventItem.swift; sourceTree = "<group>"; };
 		C8338B381E63DFC300202E3A /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		C86BCCC51E12F8DE007D24F9 /* ImageRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRow.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCD21E12FABD007D24F9 /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FloatLabelTextField.swift; path = WeTutor/FloatLabelTextField.swift; sourceTree = SOURCE_ROOT; };
 		C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
+		C86D41111E996CE9000C5B0F /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C87237FC1E8C10E100C5A641 /* UserCellThree.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCellThree.xib; sourceTree = "<group>"; };
 		C87237FE1E8C163900C5A641 /* UserCellThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCellThree.swift; sourceTree = "<group>"; };
 		C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCell.xib; sourceTree = "<group>"; };
@@ -364,6 +364,7 @@
 		C827B53D1E11DF2C00BDFD50 /* About This App */ = {
 			isa = PBXGroup;
 			children = (
+				C82C9E521E987FA10082901E /* AboutUsTableViewController.swift */,
 				C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */,
 			);
 			name = "About This App";
@@ -389,6 +390,7 @@
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
 				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
 				C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */,
+				C86D41111E996CE9000C5B0F /* AddEventViewController.swift */,
 			);
 			name = "In Tutor Storyboard";
 			sourceTree = "<group>";
@@ -405,7 +407,6 @@
 				C838A8BD1E19C4E1004A794C /* MapViewController.swift */,
 				C8338B371E63DFC300202E3A /* eventItem.swift */,
 				C8338B381E63DFC300202E3A /* EventCell.swift */,
-				C8338AF91E629D4500202E3A /* AddEventViewController.swift */,
 				C8338B3B1E63E2C400202E3A /* DetailViewController.swift */,
 				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
@@ -413,7 +414,6 @@
 				C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */,
 				C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */,
 				C8E47F2B1E7636D7009351C8 /* Unused.swift */,
-				C82C9E521E987FA10082901E /* AboutUsTableViewController.swift */,
 			);
 			name = "In Main Storyboard";
 			sourceTree = "<group>";
@@ -763,6 +763,7 @@
 				C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */,
 				C8E47F2C1E7636D7009351C8 /* Unused.swift in Sources */,
 				C8338B391E63DFC300202E3A /* eventItem.swift in Sources */,
+				C86D41121E996CE9000C5B0F /* AddEventViewController.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
 				C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
@@ -776,7 +777,6 @@
 				C8EE885E1E0DB144003775C2 /* FSCalendarScopeHandle.m in Sources */,
 				C87984A71E0C76A5003EB7A1 /* PagingMenuControllerCustomizable.swift in Sources */,
 				C8EE885B1E0DB144003775C2 /* FSCalendarDelegationProxy.m in Sources */,
-				C8338AFA1E629D4500202E3A /* AddEventViewController.swift in Sources */,
 				C86BCCF11E14E142007D24F9 /* MoreInfoViewController.swift in Sources */,
 				C81DA37A1E3E897C00CB15A8 /* UIScrollView+EmptyDataSet.m in Sources */,
 				C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */,

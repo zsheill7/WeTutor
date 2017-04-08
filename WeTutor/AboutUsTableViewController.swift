@@ -11,10 +11,17 @@ import MessageUI
 
 class AboutUsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
+    @IBAction func backButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+        //controller.modalTransitionStyle = .flipHorizontal
+        self.present(controller, animated: true, completion: nil)
+    }
     var currentUser: User?
     
+    
     func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
-        guard let url = URL(string : "itms-apps://itunes.apple.com/app/" + appId) else {
+        guard let url = URL(string : /*"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appId)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1"*/"itms-apps://itunes.apple.com/app/" + appId) else {
             completion(false)
             return
         }
@@ -43,7 +50,7 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    /*override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
@@ -51,7 +58,7 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
-    }
+    }*/
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
@@ -59,15 +66,17 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
         
         switch (section, row) {
             case (0, 0):
-                self.performSegue(withIdentifier: "aboutThisAppVC", sender: self)
+                self.performSegue(withIdentifier: "toAboutUs", sender: self)
             case (0, 1):
                 self.performSegue(withIdentifier: "toAcknowledgementsVC", sender: self)
             case (1, 0):
                 self.rateApp(appId: "id1202611809", completion: { (success) in
                     print(success)
                 })
+                tableView.deselectRow(at: indexPath, animated: true)
             case (1, 1):
                 self.shareApp()
+                tableView.deselectRow(at: indexPath, animated: true)
             case (1, 2):
                 self.performSegue(withIdentifier: "toFollowUsVC", sender: self)
             case (2, 0):
@@ -88,23 +97,37 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
         let activity = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
         present(activity, animated: true, completion: nil)
     }
+    func canSendText() -> Bool {
+        return MFMessageComposeViewController.canSendText()
+    }
     
     func sendFeedback() {
+        
         let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
+                mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
         mailComposerVC.setSubject("Feedback")
         mailComposerVC.setMessageBody("", isHTML: false)
+        mailComposerVC.navigationBar.tintColor = UIColor.white
+
         self.present(mailComposerVC, animated: true, completion: nil)
+        
     }
     
     func contactUs() {
         let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
-        mailComposerVC.setSubject("")
-        mailComposerVC.setMessageBody("", isHTML: false)
-        self.present(mailComposerVC, animated: true, completion: nil)
+        //if mailComposerVC.canSendMail() {
+            mailComposerVC.mailComposeDelegate = self
+            mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
+            mailComposerVC.setSubject("")
+            mailComposerVC.setMessageBody("", isHTML: false)
+            mailComposerVC.navigationBar.tintColor = UIColor.white
+            self.present(mailComposerVC, animated: true, completion: nil)
+       // }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

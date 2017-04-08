@@ -117,7 +117,7 @@ class PagingMenuViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("here")
-        let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 1) as IndexPath)
+        let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 0) as IndexPath)
        // self.view?.backgroundColor = UIColor.clear
         self.view.backgroundColor = UIColor.clear
         options = sectionType?.options
@@ -128,7 +128,11 @@ class PagingMenuViewController: UIViewController  {
         
         pagingMenuController = self.childViewControllers.first as! PagingMenuController
         /*let pagingMenuController = UIApplication.topViewController(base: self) as! PagingMenuController*/
+        
         pagingMenuController?.setup(options)
+        pagingMenuController?.move(toPage: 1, animated: false)
+       // pagingMenuController?.defaultPage
+        //pagingMenuController?.initial
         pagingMenuController?.onMove = { state in
             switch state {
             case let .willMoveController(menuController, previousMenuController):
@@ -158,11 +162,18 @@ class PagingMenuViewController: UIViewController  {
    
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(netHex: 0x51679F)
+        //self.navigationController?.title.font
 //UIColor(netHex: 0x95C2CC)       self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        //let navigationBarAppearance = self.navigationController?.navigationBar
+        
+        //navigationBarAppearance.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white, NSFontAttributeName: UIFont(name: "Helvetica-Light", size: 20)!]
         
         let rightButtonImg = UIImage(named: "rightButtonCalendar-25")
         let rightButton = UIBarButtonItem(image: rightButtonImg, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openCalendar))
         self.navigationItem.rightBarButtonItem = rightButton
+        
+        
         let logo = UIImage(named: "WeTutorHat")
         let imageView = UIImageView(image:logo)
         
@@ -184,7 +195,9 @@ class PagingMenuViewController: UIViewController  {
         menuView.cellSelectionColor = UIColor.flatSkyBlue
         menuView.shouldKeepSelectedCellColor = false
         menuView.cellTextLabelColor = UIColor.white
-        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
+        menuView.cellTextLabelFont = UIFont(name: "Helvetica-Light", size: 18)!//UIFont(name: "Avenir-Heavy", size: 17)
+        menuView.navigationBarTitleFont = UIFont(name: "Helvetica-Light", size: 20)!
+        
         menuView.cellTextLabelAlignment = .left // .Center // .Right // .Left
         //menuView.arrowImage = UIImage(named: "Settings Filled-25")
         menuView.arrowImage = UIImage(named: "Menu 2 Filled-25")
@@ -202,8 +215,8 @@ class PagingMenuViewController: UIViewController  {
             if indexPath == 0 {
                 self.modalTransitionStyle = .flipHorizontal
                 let storyboard = UIStoryboard(name: "AboutThisApp", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "aboutThisAppVC") as! AboutThisAppViewController
-                
+                let controller = storyboard.instantiateViewController(withIdentifier: "aboutUsNC") as! UINavigationController
+                //let controller = storyboard.instantiateViewController(withIdentifier: "AboutUsTableViewController") as! AboutUsTableViewController
                              // controller.modalTransitionStyle = .flipHorizontal
                 controller.modalPresentationStyle = .custom
 

@@ -401,7 +401,7 @@
                 <navigationController storyboardIdentifier="settingsNC" automaticallyAdjustsScrollViewInsets="NO" id="bJy-nV-q35" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="8zX-Ok-P0z">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8zX-Ok-P0z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

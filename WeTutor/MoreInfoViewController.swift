@@ -1,15 +1,19 @@
 
 
 import UIKit
-import SafariServices
 import Eureka
 import CoreLocation
 import SCLAlertView
 import ASHorizontalScrollView
+import FirebaseAnalytics
+import FirebaseAuth
+import FirebaseDatabase
+import EventKit
 
 class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     var destUser: User!
+    var currentUser: User!
     
     @IBOutlet var backgroundColoredViews: [UIView]!
     @IBOutlet var headingLabels: [UILabel]!
@@ -45,6 +49,21 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
    // @IBOutlet weak var weekDayView: UIScrollView!
     
      var UID: String!
+    var userRef = FIRDatabase.database().reference().child("users")
+    var senderDisplayName: String?
+    var newChannelTextField: UITextField?
+    var dbRef: FIRDatabaseReference!
+    var tutors = [User]()
+    fileprivate var channelRefHandle: FIRDatabaseHandle?
+    fileprivate var channels: [Channel] = []
+    var tutorName: String = ""
+    var tuteeName: String = ""
+    var tutorOrTutee = "tutorName"
+    var currentUserIsTutor = false
+    var iterationStatus = ""
+    var newChannel: Channel?
+    
+    fileprivate lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
     
     var availableDaysString = ""
     var preferredSubjectsString = ""
@@ -61,6 +80,10 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         //self.view.addBackground(imageName: "mixed2")
         
+        
+        FriendSystem.system.getCurrentUser { (user) in
+            self.currentUser = user
+        }
         
        callButton.contentMode = .scaleAspectFit
        textButton.contentMode = .scaleAspectFit
@@ -165,6 +188,238 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     }
     
+    func addFriend() {
+        print(destUser)
+        let id = destUser.uid
+        print(id)
+        //FriendSystem.system.sendRequestToUser(id)
+        FriendSystem.system.acceptFriendRequest(id)
+        self.createChannel(destUser)
+        //self.displayAlert("Success!", message: "Contact Added")
+    }
+    
+    func createChannel() {
+        
+        //self.performSegue(withIdentifier: "ShowChannel", sender: self)
+        
+        /*if (indexPath as NSIndexPath).section == Section1.currentChannelsSection.rawValue {*/
+        //
+        
+        //To see if a user started a chat with someone on their friends list
+        if currentUser != nil {
+            FIRAnalytics.logEvent(withName: "did_select_chat", parameters: [
+                "current_user": currentUser.uid as NSObject,
+                "current_user_is_tutor": currentUser.isTutor as NSObject
+                ])
+        }
+        
+  
+        let destUserID = destUser.uid
+        channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
+            if snapshot.exists() {
+                print(" if snapshot.exists() {")
+                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                    print("typeofall")
+                    print(type(of: allChannels))
+                    print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
+                    self.iterationStatus = "inProcess"
+                    for channel in allChannels {
+                        
+                        if let channelDict = channel.value as? Dictionary<String, AnyObject> {
+                            
+                            
+                            //print(" if let channel = snapshot.value as? [String: String] {")
+                            //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                            
+                            if self.currentUserIsTutor == false {
+                                if let tuteeName = channelDict["tuteeName"] as? String,
+                                    let  tutorName = channelDict["tutorName"] as? String{
+                                    if tuteeName == FIRAuth.auth()?.currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                        
+                                        if tutorName == destUserID {
+                                            self.iterationStatus = "done"
+                                            print("perform segue channel")
+                                            print(channel)
+                                            let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                            self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                            break
+                                        }
+                                    }
+                                }
+                                
+                            } else if self.currentUserIsTutor == true {
+                                if let tuteeName = channelDict["tuteeName"] as? String,
+                                    let  tutorName = channelDict["tutorName"] as? String{
+                                    if tutorName == FIRAuth.auth()?.currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                        if tuteeName == destUserID {
+                                            self.iterationStatus = "done"
+                                            print("perform segue channel2")
+                                            print(channel)
+                                            let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                            self.performSegue(withIdentifier: "toChatVC", sender: newChannel)
+                                            break
+                                        }
+                                    } //if channelDict["tutorName"]
+                                }
+                            }
+                            
+                        }
+                    } //for channel in allChannels {
+                }
+                
+            } //if snapshot.exists() {
+            
+            let uuid = UUID().uuidString
+            if self.iterationStatus == "inProcess" {
+                if self.tutorOrTutee == "tuteeName" {
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+                    print("if tutorOrTutee == tuteeName {")
+                    print("iterationStatus")
+                    print(self.iterationStatus)
+                    
+                    self.createChannel(self.destUser)
+                    print("if self.iterationStatus == inProcess1 {")
+                    print("perform segue channel3")
+                    print(channel)
+                    
+                    self.performSegue(withIdentifier: "toChatVC", sender: channel)
+                    
+                    
+                } else if self.tutorOrTutee == "tutorName" {
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
+                    print("if tutorOrTutee == tutorName {")
+                    
+                    print("if self.iterationStatus == inProcess2 {")
+                    self.createChannel(self.destUser)
+                    print("perform segue channel4")
+                    print(channel)
+                    self.performSegue(withIdentifier: "toChatVC", sender: channel)
+                    
+                }
+            }
+        })
+    }
+    
+    
+    func createChannel(_ otherUser: User) {
+        
+        
+        
+        /*let userDefaults = UserDefaults.standard
+         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+         let userName = userDefaults.value(forKey: "name") as? String {
+         }
+         }*/
+        let userDefaults = UserDefaults.standard
+        let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
+        
+        if let userID = FIRAuth.auth()?.currentUser?.uid {
+            
+            if isTutor == true {
+                tutorName = userID
+                tuteeName = otherUser.uid
+            } else {
+                tutorName = otherUser.uid
+                tuteeName = userID
+            }
+        } else {
+            tutorName = "Chat"
+            tuteeName = "Chat"
+        }
+        
+        
+        
+        let newCalendarId = createCalendar(destUser: otherUser)
+        
+        let channelItem = [
+            "tutorName": tutorName,
+            "tuteeName": tuteeName,
+            "calendarId": newCalendarId
+        ]
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        
+        
+        
+        let uuid = UUID().uuidString
+        self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!, tutorName: tutorName, tuteeName: tuteeName)
+        if let userName = userDefaults.value(forKey: "name") as? String {
+            
+            self.senderDisplayName = userID
+        } else {
+            self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+        }
+        
+        
+        let userChannelRef = userRef.child(userID!).child("channels")
+        let newChannelRef = channelRef.child(uuid)
+        newChannelRef.setValue(channelItem)
+        
+        //This sets the channel item in the child "channels"
+        userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
+        userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
+        userChannelRef.child(uuid).child("calendarId").setValue(newCalendarId)
+        
+        //This adds the other user as a "friend" child to the current user ref and vice versa
+        FriendSystem.system.acceptFriendRequest(otherUser.uid)
+        
+        // self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
+        
+    }
+    
+    func createCalendar(destUser: User) -> String {
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = userRef.child(userID!).child("channels")
+        
+        let channelRef = FIRDatabase.database().reference()
+        
+        let eventStore = EKEventStore()
+        //let initCalendar = EKCalendar()
+        //let eventCalendar = initCalendar.calendar
+        
+        // Use Event Store to create a new calendar instance
+        // Configure its title
+        var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
+        
+        //var newCalendar = eventStore.calendar
+        // newCalendar.calendarIdentifier = identifier
+        // Probably want to prevent someone from saving a calendar
+        // if they don't type in a name...
+        
+        if currentUser != nil {
+            newCalendar.title = "Events (\(destUser.name) & \(currentUser!.name))"
+        }
+        
+        
+        // Access list of available sources from the Event Store
+        let sourcesInEventStore = eventStore.sources
+        
+        // Filter the available sources and select the "Local" source to assign to the new calendar's
+        // source property
+        newCalendar.source = sourcesInEventStore.filter{
+            (source: EKSource) -> Bool in
+            source.sourceType.rawValue == EKSourceType.local.rawValue
+            }.first!
+        
+        //channelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
+        //userChannelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
+        
+        //self.calendars.append(newCalendar)
+        
+        do {
+            try eventStore.saveCalendar(newCalendar, commit: true)
+            //UserDefaults.standardUserDefaults().setObject(newCalendar.calendarIdentifier, forKey: "EventTrackerPrimaryCalendar")
+        } catch {
+            //  displayAlert("Unab", message: <#T##String#>)
+        }
+        
+        return newCalendar.calendarIdentifier
+        
+    }
     
     
     func displayAlert(_ title: String, message: String) {
@@ -221,6 +476,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func chatTapped(_ sender: Any) {
+        self.addFriend()
+        self.createChannel()
     }
     
     
@@ -248,7 +505,18 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                 if let vc = segue.destination as? AvailabilityTableViewController {
                     vc.destUser = destUser
                 }
-           
+            case "toChatVC":
+                if let channel = sender as? Channel {
+                    let chatVc = segue.destination as! ChatViewController
+                    
+                    print("senderdisplayName")
+                    print(senderDisplayName)
+                    print("channelRef1")
+                    print(channelRef.child(channel.id))
+                    chatVc.senderDisplayName = senderDisplayName!
+                    chatVc.channel = channel
+                    chatVc.channelRef = channelRef.child(channel.id)
+                }
             default:
                 fatalError("Unhandled Segue: \(segue.identifier!)")
             }

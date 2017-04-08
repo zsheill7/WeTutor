@@ -92,7 +92,7 @@ class UserCellThree: UITableViewCell {
         let leftColorView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: cellHeight))
         //leftColorView.backgroundColor = colors[indexPath.row % 6]
         
-        
+        self.isUserInteractionEnabled = true
         
         
         leftColorView.layer.masksToBounds = true

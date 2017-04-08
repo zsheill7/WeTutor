@@ -35,12 +35,13 @@ public struct MenuItemText {
     let selectedColor: UIColor
     let font: UIFont
     let selectedFont: UIFont
-    
+    //font: UIFont = UIFont(name: "Helvetica-Light", size: 18)!,
+   // selectedFont: UIFont(name: "Helvetica-Light", size: 16)!
     public init(text: String = "Menu",
                 color: UIColor = UIColor.white,
                 selectedColor: UIColor = UIColor.white,
-                font: UIFont = UIFont.systemFont(ofSize: 16),
-                selectedFont: UIFont = UIFont.systemFont(ofSize: 16)) {
+                font: UIFont = UIFont(name: "Helvetica-Light", size: 18)!,
+                selectedFont: UIFont = UIFont(name: "Helvetica-Light", size: 16)!) {
         self.text = text
         self.color = color
         self.selectedColor = selectedColor

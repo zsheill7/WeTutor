@@ -102,6 +102,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.isUserInteractionEnabled = true
+        
+        
         //self.tableView.opacity = 0
         
         //self.tableView.backgroundColor = UIColor.clear//clearbackgroundBlue()
@@ -494,16 +497,20 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         return 150
     }
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt
-        indexPath: IndexPath){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("in did select")
+        //tableView.deselectRow(at: indexPath, animated: true)
         //your code...
+        /*var selectedCell:UserCellThree = tableView.cellForRow(at: indexPath)! as! UserCellThree
+        selectedCell.contentView.backgroundColor = UIColor.clear*/
+        
         let userAtRow = finalUserList[indexPath.row]
         
         let tutor = userAtRow
         self.UID = tutor.uid
         self.destinationUser = tutor
         self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+        
     }
 
  
@@ -518,6 +525,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "UserCell")
            var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
         
+        /*let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.white
+        cell?.selectedBackgroundView = backgroundView*/
+        
+        cell?.selectionStyle = UITableViewCellSelectionStyle.none
         
         var ref: FIRDatabaseReference!
         
@@ -724,7 +736,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return true
     }
 /*
  func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {

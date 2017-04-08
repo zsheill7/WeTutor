@@ -19,7 +19,7 @@ public protocol PagingMenuControllerCustomizable {
 
 public extension PagingMenuControllerCustomizable {
     var defaultPage: Int {
-        return 0
+        return 1
     }
     var animationDuration: TimeInterval {
         return 0.3

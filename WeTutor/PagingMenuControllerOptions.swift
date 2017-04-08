@@ -49,6 +49,9 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
             return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.white/*UIColor.lightGray.lighten(byPercentage: 0.2)!*/)
         }*/
 
+        var defaultPage: Int {
+            return 1
+        }
         
         var height: CGFloat {
             return 0
