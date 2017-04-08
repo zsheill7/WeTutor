@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
     }
     /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
+    var horizConstant: CGFloat = 32
     let userDefaults = UserDefaults.standard
     
     let lightGrayColor = UIColor.lightGray.lighten(byPercentage: 0.1)!
@@ -45,6 +46,9 @@ class LoginViewController: UIViewController {
         IS_IPHONE = screenHeight <= CGFloat(1000.0)
         IS_IPAD  = screenHeight > CGFloat(1000.0)
         
+        if IS_IPAD {
+            horizConstant = 100
+        }
         /*self.view.backgroundColor = UIColor.init(
          gradientStyle: UIGradientStyle.leftToRight,
          withFrame: self.view.frame,
@@ -225,7 +229,7 @@ class LoginViewController: UIViewController {
     
     /// Programmatic update for the textField as it rotates.
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        emailField.width = view.height - 2 * constant
+        emailField.width = view.height - 2 * horizConstant
     }
     
     /// Prepares the resign responder button.
@@ -249,7 +253,7 @@ class LoginViewController: UIViewController {
         if IS_IPAD {
             verticalMult = 11
         }
-        view.layout(btn).top(verticalMult * constant).horizontally(left: constant, right: constant)        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
+        view.layout(btn).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
     }
     
     fileprivate func prepareForgotPasswordButton() {
@@ -402,7 +406,7 @@ class LoginViewController: UIViewController {
     let lightPurpleColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
     
     fileprivate func prepareEmailField() {
-        emailField = ErrorTextField(frame: CGRect(x: constant, y: 6 * constant, width: view.width - (2 * constant), height: constant))
+        emailField = ErrorTextField(frame: CGRect(x: horizConstant, y: 6 * constant, width: view.width - (2 * horizConstant), height: constant))
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
         emailField.isClearIconButtonEnabled = true
@@ -460,7 +464,7 @@ class LoginViewController: UIViewController {
         passwordField.leftViewNormalColor = .brown
         passwordField.leftViewActiveColor = .green
         
-        view.layout(passwordField).top(8 * constant).horizontally(left: constant, right: constant)
+        view.layout(passwordField).top(8 * constant).horizontally(left: horizConstant, right: horizConstant)
     }
     
 }

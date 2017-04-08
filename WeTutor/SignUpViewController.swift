@@ -21,11 +21,13 @@ extension UIView {
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
         
-        let newWidth = height * 2.0
+        let newWidth = height * 2.1
+        //let newWidth = height * 2.8
         
         //let rect = CGRect(origin: CGPoint(x: -newWidth / 2,y : 0), size: CGSize(width: newWidth, height: height * 1.75))
         //let rect = CGRect(origin: CGPoint(x: -newWidth / 2 + 400,y : 0), size: CGSize(width: newWidth, height: height * 2))
         let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 10,y : 90), size: CGSize(width: newWidth, height: height * 1.7))
+       // let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 5,y : 130), size: CGSize(width: newWidth, height: height * 1.7))
         
         let imageViewBackground = UIImageView(frame: rect)
         imageViewBackground.image = UIImage(named: imageName)
@@ -88,16 +90,30 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
    // let deviceType = UIDevice.current.deviceType
     /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
+    var horizConstant: CGFloat = 32
+    let device = UIDevice.current
     
     let screenHeight = UIScreen.main.bounds.size.height
     //let screenHeight = Double(screenSize.height)
     var IS_IPHONE = Bool()
     var IS_IPAD  = Bool()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        IS_IPHONE = screenHeight <= CGFloat(1000.0)
-        IS_IPAD  = screenHeight > CGFloat(1000.0)
+        /*IS_IPHONE = screenHeight <= CGFloat(1000.0)
+        IS_IPAD  = screenHeight > CGFloat(1000.0)*/
+        
+        IS_IPAD = device.userInterfaceIdiom == .pad
+        IS_IPHONE = device.userInterfaceIdiom == .phone
+        print("IS_IPAD " + String(IS_IPAD))
+        print("IS_IPHONE " + String(IS_IPHONE))
+        
+        if IS_IPAD {
+          horizConstant = 100
+        }
        // if DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO {
             
       //  }
@@ -385,10 +401,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
         var verticalMult: CGFloat = 13
         
-        if IS_IPAD {
-            verticalMult = 11
-        }
-        view.layout(btn).top(verticalMult * constant).horizontally(left: constant, right: constant)
+        
+        view.layout(btn).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
     
     fileprivate func prepareForgotPasswordButton() {
@@ -403,9 +417,10 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_:)), for: .touchUpInside)
         
         var verticalMult: CGFloat = 15
-        if IS_IPAD {
+        /*if IS_IPAD {
             verticalMult = 12.5
-        }
+        }*/
+    
         
         view.layout(btn).width(200).height(constant).top(verticalMult * constant).centerHorizontally()
     }
@@ -422,9 +437,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         btn.addTarget(self, action: #selector(handleLogInButton(_:)), for: .touchUpInside)
         
          var verticalMult: CGFloat = 16
-        if IS_IPAD {
-            verticalMult = 13.5
-        }
+        
 
         view.layout(btn).width(210).height(constant).top(verticalMult * constant).centerHorizontally()
     }
@@ -542,21 +555,21 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         var verticalMult: CGFloat = 4
         
-        if IS_IPAD {
+        /*if IS_IPAD {
             verticalMult = 3
-        }
+        }*/
         
-        view.layout(nameField).top(verticalMult * constant).horizontally(left: constant, right: constant)
+        view.layout(nameField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
     
     fileprivate func prepareEmailField() {
         var verticalMult: CGFloat = 6
         
-        if IS_IPAD {
+       /* if IS_IPAD {
             verticalMult = 5
-        }
+        }*/
         
-        emailField = ErrorTextField(frame: CGRect(x: constant, y: verticalMult * constant, width: view.width - (2 * constant), height: constant))
+        emailField = ErrorTextField(frame: CGRect(x: horizConstant, y: verticalMult * constant, width: view.width - (2 * horizConstant), height: constant))
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
         emailField.isClearIconButtonEnabled = true
@@ -619,11 +632,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         var verticalMult: CGFloat = 8
         
-        if IS_IPAD {
-            verticalMult = 7
-        }
         
-        view.layout(passwordField).top(verticalMult * constant).horizontally(left: constant, right: constant)
+        
+        view.layout(passwordField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
     
     fileprivate func prepareConfirmPasswordField() {
@@ -659,11 +670,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         //let deviceType = UIDevice.current.deviceType
         //let new = deviceType.IS_IPAD
         print("\(screenHeight) screenHeight")
-        if IS_IPAD  {
-            print("if DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO {")
-            verticalMult = 9
-        }
-        view.layout(confirmPasswordField).top(verticalMult * constant).horizontally(left: constant, right: constant)
+        
+        view.layout(confirmPasswordField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
 }
 

@@ -95,8 +95,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
 
-        self.tableView.isEditing = false
-        self.tableView.allowsSelection = true
+        //self.tableView.isEditing = false
+        //self.tableView.allowsSelection = true
+        
         setupDropDown()
         
         self.tableView.dataSource = self

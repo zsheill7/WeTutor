@@ -39,6 +39,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var fullPageScrollView: UIScrollView!
     
+    @IBOutlet weak var availabilityInfo: UILabel!
     
     @IBOutlet weak var containerView: UIView!
    // @IBOutlet weak var weekDayView: UIScrollView!
@@ -123,6 +124,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
       //  preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
         //availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
         nameLabel.text = "\(destUser.name)"
+        availabilityInfo.text = destUser.availabilityInfo
         
     }
     
