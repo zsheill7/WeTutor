@@ -332,10 +332,10 @@ class TutorSignUpViewControllerOne : FormViewController {
                 print("got snapshot")
                 
                 let value = snapshot.value as? NSDictionary
-                print(value?["name"] as? String)
-                print(value?["password"] as? String)
-                print(value?["email"] as? String)
-                print(value?["isTutor"] as? Bool)
+                print("value?[name] as? String \(value?["name"] as? String)")
+                print("value?[password] as? String \(value?["password"] as? String)")
+                print("value?[email] as? String \(value?["email"] as? String)")
+                print("value?[isTutor] as? String \(value?["isTutor"] as? Bool)")
                 if let name = value?["name"] as? String,
                     let password = value?["password"] as? String,
                     let email = value?["email"] as? String,

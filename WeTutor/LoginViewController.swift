@@ -120,7 +120,7 @@ class LoginViewController: UIViewController {
         } else {
             FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                 if error == nil {
-                    if !(user?.isEmailVerified)!{
+                    /*if !(user?.isEmailVerified)!{
                         
                         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
                             /*contentViewColor: UIColor.alertViewBlue()*/)
@@ -139,7 +139,7 @@ class LoginViewController: UIViewController {
                         _ = alert.showInfo("Error", subTitle: "Your email address has not yet been verified. Would you like us to send another verification email to \(self.emailField.text!)?")
                        // _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
   
-                    } else {
+                    } else {*/
                         print ("Email verified. Signing in...")
                     
                     //self.emailField.text!
@@ -177,14 +177,15 @@ class LoginViewController: UIViewController {
                         if description.characters.count > 0{
                             print("in neither are nil")
                             
-                                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                                /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "toPagingMenuVC") as! UINavigationController
                                 //window?.rootViewController = viewController
-                                self.present(viewController, animated: true, completion: nil)
+                                self.present(viewController, animated: true, completion: nil)*/
+                            self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
                             
                             //self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
                         } else {
-                            self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
+                            self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
                         }
                         
                         
@@ -199,7 +200,7 @@ class LoginViewController: UIViewController {
                         self.displayAlert("Unable to Log In", message: errorMessage)
                         
                     }
-                  }
+                 // }
                     
 
                 } else {

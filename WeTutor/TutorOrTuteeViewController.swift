@@ -35,8 +35,10 @@ class TutorOrTuteeViewController: UIViewController {
         super.viewDidLoad()
         
         
-        self.view?.backgroundColor = UIColor.backgroundBlue()
-        
+        //self.view?.backgroundColor = UIColor.backgroundBlue()
+       // self.view?.backgroundColor = UIColor(netHex: 0xEFEFF4)
+       // self.view?.addBackground("mixed2")
+        self.view.addBackground("book.png")
         userRef = FIRDatabase.database().reference().child("users")
         if FIRAuth.auth()?.currentUser?.uid != nil {
             userUID = FIRAuth.auth()!.currentUser!.uid
@@ -51,10 +53,11 @@ class TutorOrTuteeViewController: UIViewController {
         changeBall()
         changeBall2()
         
-        chooseLabel.layer.shadowColor = UIColor.black.cgColor
+        chooseLabel.font = UIFont(name: "Helvetica", size: 25)
+       /* chooseLabel.layer.shadowColor = UIColor.black.cgColor
         chooseLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        chooseLabel.layer.shadowOpacity = 0.2
-        chooseLabel.layer.shadowRadius = 2
+        chooseLabel.layer.shadowOpacity = 0.1
+        chooseLabel.layer.shadowRadius = 2*/
         
        /* let pickOneLabel = UILabel()
         pickOneLabel.backgroundColor = UIColor.blue
@@ -106,7 +109,7 @@ class TutorOrTuteeViewController: UIViewController {
         //ballView.position.x = selectedXself.ballView.position.x = CGFloat(self.view.frame.width / 2)
         ballView.curve = "easeIn"
         ballView.duration =  1.0
-        applyPlainShadow(view: ballView)
+        //applyPlainShadow(view: ballView)
         ballView.animate()
         
         self.ballView2.backgroundColor = /*UIColor(hex: "69DBFF")*/ UIColor.titleBlue()
@@ -121,7 +124,7 @@ class TutorOrTuteeViewController: UIViewController {
         ballView2.animation = "zoomIn"
         ballView2.curve = "easeIn"
         ballView2.duration =  1.0
-        applyPlainShadow(view: ballView2)
+        //applyPlainShadow(view: ballView2)
         ballView2.animate()
         
         
@@ -184,7 +187,7 @@ class TutorOrTuteeViewController: UIViewController {
     
        @IBAction func studentTapped(_ sender: Any) {
         print("tapped")
-        self.userRef.child("\(userUID)/isTutor").setValue(false)
+        self.userRef.child("\(userUID)").child("isTutor").setValue(false)
         let userDefaults = UserDefaults.standard
         
         userDefaults.setValue(false, forKey: "isTutor")
@@ -196,7 +199,7 @@ class TutorOrTuteeViewController: UIViewController {
     }
     @IBAction func tutorTapped(_ sender: Any) {
         print("tapped")
-        self.userRef.child("\(userUID)/isTutor").setValue(true)
+        self.userRef.child("\(userUID)").child("isTutor").setValue(true)
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(true, forKey: "isTutor")
         

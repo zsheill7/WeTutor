@@ -108,7 +108,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
                     print(error.localizedDescription)
                 }
                 //if you use this setter, your app will crash if your class properties don't exactly match up with the firebase dictionary keys
-                self.user?.setValuesForKeys(dictionary)
+                //self.user?.setValuesForKeys(dictionary)
                 
                 //this will crash because of background thread, so lets use dispatch_async to fix
                 

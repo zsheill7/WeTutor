@@ -128,6 +128,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         self.tableView.isUserInteractionEnabled = true
         
         //self.coachMarksController.dataSource = self
@@ -148,7 +150,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         self.view.backgroundColor = UIColor(patternImage: backgroundImageView)*/
         
         //self.view.addBackground()
-        self.view.addBackground()
+        
         self.tableView.backgroundColor = UIColor.clear
         
         FriendSystem.system.getCurrentUser { (user) in
@@ -166,6 +168,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
         }
 
+        if self.finalUserList.count != 0 {
+            self.view.addBackground()
+        }
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)
   
@@ -232,7 +237,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         if currentUser?.completedTutorial == false {
         
             self.coachMarksController.startOn(self)
-            self.userRef.child((currentUser?.uid)!).setValue(true)
+            self.userRef.child((currentUser?.uid)!).child("completedTutorial").setValue(true)
         }
     }
     

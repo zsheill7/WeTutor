@@ -33,7 +33,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
        // self.hideKeyboardWhenTappedAround()
        // self.tableView?.addBlueBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
-        self.tableView?.backgroundColor = UIColor.backgroundBlue()
+        //self.tableView?.addBackground()
         
         ref = FIRDatabase.database().reference()
         
