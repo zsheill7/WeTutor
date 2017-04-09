@@ -263,7 +263,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             
         }
     }*/
-    
+    var ref: FIRDatabaseReference!
     fileprivate func observeChannels() {
         // We can use the observe method to listen for new
         // channels being written to the Firebase DB
@@ -274,7 +274,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         print("inside observeChannels)")
     
         print("for friend in FriendSystem.system.friendList")
-        var ref: FIRDatabaseReference!
+        
         //let userID = FIRAuth.auth()?.currentUser?.uid
         ref = FIRDatabase.database().reference()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -324,7 +324,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     
-    /*func loadCalendar() {
+    func loadCalendar() {
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
@@ -351,7 +351,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 
             }
         })
-    }*/
+    }
     
     
     // TODO: handle returning the default EKCalendar
@@ -362,7 +362,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return EKCalendar()
     }
     */
-    /*func loadAllCalendars() {
+    func loadAllCalendars() {
         print("loadAllCalendars()")
         let friendList = FriendSystem.system.friendList
         print("friendList.count \(friendList.count)")
@@ -524,7 +524,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         self.calendars.append(newCalendar)
         
-    }*/
+    }
  
 
     

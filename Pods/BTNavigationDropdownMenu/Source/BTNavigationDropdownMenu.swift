@@ -175,7 +175,7 @@ open class BTNavigationDropdownMenu: UIView {
             return self.configuration.arrowImage
         }
         set(value) {
-            self.configuration.arrowImage = value.withRenderingMode(.alwaysOriginal)
+            self.configuration.arrowImage = value.withRenderingMode(.alwaysTemplate)
             self.menuArrow.image = self.configuration.arrowImage
         }
     }
@@ -275,7 +275,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuTitle.textAlignment = self.configuration.cellTextLabelAlignment
         self.menuButton.addSubview(self.menuTitle)
         
-        self.menuArrow = UIImageView(image: self.configuration.arrowImage.withRenderingMode(.alwaysOriginal))
+        self.menuArrow = UIImageView(image: self.configuration.arrowImage.withRenderingMode(.alwaysTemplate))
         self.menuButton.addSubview(self.menuArrow)
         
         let menuWrapperBounds = window.bounds
@@ -504,7 +504,7 @@ class BTConfiguration {
         let arrowImagePath = imageBundle?.path(forResource: "arrow_down_icon", ofType: "png")
 
         // Default values
-        self.menuTitleColor = UIColor.white
+        self.menuTitleColor = UIColor.darkGray
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.white
         self.arrowTintColor = UIColor.white

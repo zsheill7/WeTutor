@@ -9,19 +9,19 @@ PODS:
   - DropDown (2)
   - DZNEmptyDataSet (1.8.1)
   - Eureka (2.0.1)
-  - Firebase/Auth (3.14.0):
+  - Firebase/Auth (3.15.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
-  - Firebase/Core (3.14.0):
+  - Firebase/Core (3.15.0):
     - FirebaseAnalytics (= 3.7.0)
-    - FirebaseCore (= 3.5.1)
-  - Firebase/Database (3.14.0):
+    - FirebaseCore (= 3.5.2)
+  - Firebase/Database (3.15.0):
     - Firebase/Core
     - FirebaseDatabase (= 3.1.2)
-  - Firebase/Messaging (3.14.0):
+  - Firebase/Messaging (3.15.0):
     - Firebase/Core
     - FirebaseMessaging (= 1.2.2)
-  - Firebase/Storage (3.14.0):
+  - Firebase/Storage (3.15.0):
     - Firebase/Core
     - FirebaseStorage (= 1.1.0)
   - FirebaseAnalytics (3.7.0):
@@ -32,7 +32,7 @@ PODS:
     - FirebaseAnalytics (~> 3.7)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (3.5.1):
+  - FirebaseCore (3.5.2):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseDatabase (3.1.2):
     - FirebaseAnalytics (~> 3.7)
@@ -45,7 +45,7 @@ PODS:
   - FirebaseStorage (1.1.0):
     - FirebaseAnalytics (~> 3.7)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FSCalendar (2.7.3)
+  - FSCalendar (2.7.4)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -59,20 +59,23 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
-  - IQKeyboardManager (4.0.8)
+  - Instructions (0.5.0):
+    - Instructions/Core (= 0.5.0)
+  - Instructions/Core (0.5.0)
+  - IQKeyboardManager (4.0.9)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
-  - Material (2.5.2):
-    - Material/Core (= 2.5.2)
-  - Material/Core (2.5.2)
-  - NVActivityIndicatorView (3.5.1)
+  - Material (2.6.3):
+    - Material/Core (= 2.6.3)
+  - Material/Core (2.6.3)
+  - NVActivityIndicatorView (3.6.0)
   - PagingMenuController (2.2.0)
-  - Protobuf (3.2.0)
+  - Protobuf (3.2.1)
   - RZTransitions (1.2.1)
   - SCLAlertView (0.7.0)
   - Spring (1.0.3)
-  - Stripe (10.0.0)
+  - Stripe (10.0.1)
   - TwicketSegmentedControl (0.1.2)
 
 DEPENDENCIES:
@@ -90,6 +93,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - FSCalendar
+  - Instructions (from `https://github.com/ephread/Instructions.git`)
   - IQKeyboardManager
   - JSQMessagesViewController
   - Material (~> 2.0)
@@ -107,6 +111,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/PhamBaTho/BTNavigationDropdownMenu.git
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
+  Instructions:
+    :git: https://github.com/ephread/Instructions.git
   Spring:
     :branch: swift3
     :git: https://github.com/MengTo/Spring.git
@@ -118,8 +124,11 @@ CHECKOUT OPTIONS:
   ChameleonFramework:
     :commit: acc480fbe023c6e5fe40f68593f4a70a8c4c7ad5
     :git: https://github.com/ViccAlexander/Chameleon.git
+  Instructions:
+    :commit: e8b448d108908d9bb47f5d1b00f57fcc0d77e6f3
+    :git: https://github.com/ephread/Instructions.git
   Spring:
-    :commit: 3a9227c6e9157e7b47f5ac1ee5abab2a56b50002
+    :commit: 8201b5c93bd7ebdf4cd18160bcde1e6e88c2be64
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
@@ -131,30 +140,31 @@ SPEC CHECKSUMS:
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Eureka: ae837bb1dfae0c07bc1bda7aeef87876eeb537c2
-  Firebase: 85a581fb04e44f63ae9f4fbc8d6dabf4a4c18653
+  Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
-  FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
+  FirebaseCore: a024587e43778508700af8c6b1209f7c4516ba02
   FirebaseDatabase: 05c96d7b43a7368dc91c07791adb49683e1738d1
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FirebaseMessaging: df8267f378580a24174ce7861233aa11d5c90109
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
-  FSCalendar: 574388d70778c22719eed9341653e1743b345573
+  FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
-  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
+  Instructions: 6976f674ce788aefec475be6f18500572f1645d4
+  IQKeyboardManager: 322c7405df3eb5f7e50dede32ea937bf3d4364e0
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  Material: 00ae261fa04dd3f3f8584d07e44ac658fa1bc6fd
-  NVActivityIndicatorView: 075563b3547445ebcff840e3297ce9dd4a23731f
+  Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
+  NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
   PagingMenuController: 6176618987bb170096664f2da097313e45ed9c31
-  Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
+  Protobuf: 2ccbaf193f6c65adc67745453ca0c13234c32796
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
-  Stripe: abf87fc01f74a2143bba1b1798dd2e4d71fd2cb3
+  Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: 67d7970b198ccf55c816c4adddbf8d8d7a1b576c
+PODFILE CHECKSUM: c33f11bd8f8af3b1051099fa296f70c608f866fc
 
 COCOAPODS: 1.2.0

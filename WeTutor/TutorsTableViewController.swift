@@ -15,6 +15,14 @@ import DropDown
 import TwicketSegmentedControl
 import EventKit
 import FirebaseAnalytics
+import Instructions
+
+extension Array {
+    func doesContain<T where T : Equatable>(obj: T) -> Bool {
+        return self.filter({$0 as? T == obj}).count > 0
+    }
+}
+
 
 class TutorTableViewCell: UITableViewCell {
     
@@ -38,7 +46,19 @@ class TutorTableViewCell: UITableViewCell {
 }
 
 
-class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, TwicketSegmentedControlDelegate, UITableViewDelegate, UITableViewDataSource {
+struct CoachMarkInfo {
+    var title: String
+    var content: String
+    init(title: String, content: String) {
+        self.title = title
+        self.content = content
+    }
+}
+
+class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, TwicketSegmentedControlDelegate, UITableViewDelegate, UITableViewDataSource, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+    
+
+    
    
     
    
@@ -50,6 +70,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     var newChannel: Channel?
     var destinationUser: User!
     var currentUser: User?
+    
+    var finalUserList = [User]()
+    var finalUserUIDList = [String]()
     
     @IBOutlet weak var tableView: UITableView!
    // @IBOutlet weak var dropdownView: UIView!
@@ -90,9 +113,12 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     var dropDown: DropDown = DropDown()
     var segmentIndex = 0
     
+    let coachMarksController = CoachMarksController()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dbRef = FIRDatabase.database().reference().child("users")
+        //dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
 
         //self.tableView.isEditing = false
@@ -104,6 +130,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         self.tableView.delegate = self
         self.tableView.isUserInteractionEnabled = true
         
+        //self.coachMarksController.dataSource = self
         
         //self.tableView.opacity = 0
         
@@ -132,7 +159,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             for user in FriendSystem.system.userList {
                 if user.isTutor == true {
                     self.finalUserList.append(user)
-                    
+                    self.finalUserUIDList.append(user.uid)
                 }
             }
 
@@ -202,8 +229,18 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
         
+        if currentUser?.completedTutorial == false {
+        
+            self.coachMarksController.startOn(self)
+            self.userRef.child((currentUser?.uid)!).setValue(true)
+        }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.coachMarksController.stop(immediately: true)
+    }
 
     
     
@@ -244,13 +281,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
     }
     
-    var finalUserList = [User]()
+    
     
     func didSelect(_ segmentIndex: Int) {
         self.segmentIndex = segmentIndex
         switch segmentIndex {
         case 0: //tutors
-            finalUserList = [User]()
+            finalUserList.removeAll()
             for user in FriendSystem.system.userList {
                 if user.isTutor == true {
                     finalUserList.append(user)
@@ -259,7 +296,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             }
             tableView.reloadData()
         case 1: //students
-            finalUserList = [User]()
+            finalUserList.removeAll()
             for user in FriendSystem.system.userList {
                 if user.isTutor != true {
                     finalUserList.append(user)
@@ -313,6 +350,57 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //return tutors.count
         
         return finalUserList.count
+    }
+    
+    
+    let coachMarkArray = [CoachMark]()
+    
+    let coachMark1 = CoachMarkInfo(title: "Add a Friend", content: "Click this button to add this person to your contact list")
+    let coachMark2 = CoachMarkInfo(title: "Added Friend", content: "This circle will turn green if you have already added this person as a friend. ")
+   // let coachMark2 = CoachMarkInfo(title: "Added Friend", content: "This circle will turn green if you have already added this person as a friend. ")
+
+    
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 1
+    }
+    
+    
+    
+    /// Asks for the metadata of the coach mark that will be displayed in the
+    /// given nth place. All `CoachMark` metadata are optional or filled with
+    /// sensible defaults. You are not forced to provide the `cutoutPath`.
+    /// If you don't the coach mark will be dispayed at the bottom of the screen,
+    /// without an arrow.
+    ///
+    /// - Parameter coachMarksController: the coach mark controller requesting
+    ///                                   the information.
+    /// - Parameter coachMarkViewsForIndex: the index referring to the nth place.
+    ///
+    /// - Returns: the coach mark metadata.
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: self.dropdownButton)
+    }
+    
+    /// Asks for the views defining the coach mark that will be displayed in
+    /// the given nth place. The arrow view is optional. However, if you provide
+    /// one, you are responsible for supplying the proper arrow orientation.
+    /// The expected orientation is available through
+    /// `coachMark.arrowOrientation` and was computed beforehand.
+    ///
+    /// - Parameter coachMarksController: the coach mark controller requesting
+    ///                                   the information.
+    /// - Parameter coachMarkViewsForIndex: the index referring to the nth place.
+    /// - Parameter coachMark: the coach mark meta data.
+    ///
+    /// - Returns: a tuple packaging the body component and the arrow component.
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        coachViews.bodyView.hintLabel.text = "Hello! I'm a Coach Mark!"
+        coachViews.bodyView.nextLabel.text = "Ok!"
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
 
     @IBAction func createNewChat(_ sender: Any) {
@@ -522,6 +610,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         // Create cell
         //var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
         
+        
             tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "UserCell")
            var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
         
@@ -561,6 +650,27 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         //let colorIndex = Int(arc4random_uniform(5))
         //cell!.colorView.backgroundColor = colors[indexPath.row % 5]
+        
+       /* let friendInArray = finalUserUIDList.doesContain(obj: userAtRow.uid)
+        if friendInArray == true {
+            cell!.friendIndicatorView.backgroundColor = UIColor.green
+        } else {
+            cell!.friendIndicatorView.backgroundColor = UIColor.clear
+        }*/
+       /* if FriendSystem.system.friendList.contains(where: userAtRow) {
+            cell!.friendIndicatorView.backgroundColor = UIColor.green
+        } else {
+            cell!.friendIndicatorView.backgroundColor = UIColor.clear
+        }*/
+
+        
+        
+        /*if friendInArray {
+            cell!.friendIndicatorView.backgroundColor = UIColor.green
+        } else {
+             cell!.friendIndicatorView.backgroundColor = UIColor.clear
+        }*/
+
         
         cell!.nameLabel.text = "\(userAtRow.name)"
         cell!.schoolLabel.text = "\(userAtRow.school)"

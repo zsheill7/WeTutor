@@ -44,7 +44,7 @@ struct User {
     var gpa: Double //from 0.0 to 4.0
     var hourlyPrice: Double
     
-    
+    var completedTutorial: Bool
     /*
      
      uid
@@ -263,6 +263,12 @@ struct User {
             self.hourlyPrice = hourlyPrice
         } else {
             self.hourlyPrice = 0.0
+        }
+        
+        if let completedTutorial = snapshotValue?["completedTutorial"] as? Bool {
+            self.completedTutorial = completedTutorial
+        } else {
+            self.completedTutorial = Bool()
         }
                 /*if let  = snapshotValue?[""] as? String {
          

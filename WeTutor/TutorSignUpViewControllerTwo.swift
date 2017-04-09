@@ -173,6 +173,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
                         self.ref.child("users/\(user.uid)/languages").setValue(languages)
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
+                        self.ref.child("users/\(user.uid)/completedTutorial").setValue(false)
                         
                         self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
                         

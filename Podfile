@@ -29,4 +29,5 @@ use_frameworks!
  pod 'BubbleTransition', '~> 2.0.0'
  pod 'Stripe'
  pod 'IQKeyboardManager'
+ pod 'Instructions', :git => 'https://github.com/ephread/Instructions.git'
 end
