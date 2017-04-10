@@ -67,7 +67,7 @@ class SettingsTableViewController: UITableViewController {
         print(ref.child("users").child(userID!))
         //self.tableView?.addBlueBackground("mixed2")
        
-        self.view.addBackground()
+        //self.view.addBackground()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             print("inside observeSingleEvent")
@@ -130,37 +130,26 @@ class SettingsTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segue_one" {
-            /*let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
-            
-            tableVC.cellTag = 1
-          
-            tableVC.title = "Marching Instrument"*/
+        let segueId  = segue.identifier
+        if segueId == "toBasicInfo" {
             
             let tableVC: SettingsBasicInfoTableViewController = segue.destination as! SettingsBasicInfoTableViewController
             
             tableVC.currentUser = currentUser
             
             tableVC.title = "Basic Info"
+        } else if segueId == "toAvailability" {
             
-        } else if segue.identifier == "segue_two" {
-            /*let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
-            
-            tableVC.cellTag = 2
-            tableVC.title = "Concert Instrument"*/
             let tableVC: SettingsAvailabilityTableViewController = segue.destination as! SettingsAvailabilityTableViewController
             
             tableVC.currentUser = currentUser
             
             tableVC.title = "Availability"
-            
-        } else if segue.identifier == "segue_three" {
-            /*let tableVC: SettingsInstrumentsTableViewController = segue.destination as! SettingsInstrumentsTableViewController
-            
-            tableVC.cellTag = 3
-            tableVC.title = "Concert Band"*/
-            
+        } else if segueId == "toSelfProfileVC" {
+            let tableVC: SelfProfileViewController = segue.destination as! SelfProfileViewController
+            tableVC.currentUser = currentUser
         }
+        
     }
     
     @IBAction func deleteAccountButtonPressed(_ sender: AnyObject) {
@@ -233,12 +222,22 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.row == 1 {
+        
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
+            self.performSegue(withIdentifier: "toBasicInfo", sender: self)
+        case (0, 1):
+            self.performSegue(withIdentifier: "toAvailability", sender: self)
+        case (0, 3):
+            self.performSegue(withIdentifier: "toSelfProfileVC", sender: self)
+        case (1, 0):
+            self.performSegue(withIdentifier: "toChangePassword", sender: self)
+        case (1, 1):
             logoutPressed()
-        } /*else if indexPath.section == 1 && indexPath.row == 0 {
-            goBackToConsole()
-        }*/ else if indexPath.section == 2 && indexPath.row == 0 {
+        case (2, 0):
             deleteAccountPressed()
+        default:
+            break;
         }
     }
     func logoutPressed() {

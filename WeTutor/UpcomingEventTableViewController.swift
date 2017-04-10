@@ -59,7 +59,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
    // @IBOutlet weak var nagivationItem: UINavigationItem!
     //@IBOutlet weak var table: UITableView!
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+   // @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -152,14 +152,15 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         //return self.formatter.date(from: "2015/01/01")!
         let sixMonthsAgo = now.adding(months: -6)
         return sixMonthsAgo!
+        //return self.formatter.date(from: "2015/01/01")!
         
         
     
     }
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        //return self.formatter.date(from: "2016/10/31")!
-        let sixMonthsFuture = now.adding(months: 6)
+       // return self.formatter.date(from: "2016/10/31")!
+       let sixMonthsFuture = now.adding(months: 6)
         return sixMonthsFuture!
     }
 
@@ -189,18 +190,20 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: -
     //MARK: View lifecycle
     
+    @IBOutlet weak var calendarWidthConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the event store
+       // eventStore = EKEventStore()
        eventStore = EKEventStore()
         self.setupCalendarAppearance()
         
         self.initializeDateFormatter()
         
         self.view.addBackground()
-        
+        calendarWidthConstraint.constant = self.view.frame.size.width
         self.tableView.backgroundColor = UIColor.white
-       
+        self.calendarView.width = self.view.width + 20
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
@@ -582,10 +585,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             eventViewController.allowsEditing = true
         }
     }
-    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+    /*func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         calendarHeightConstraint.constant = bounds.height
         view.layoutIfNeeded()
-    }
+    }*/
     
     
     //MARK: -

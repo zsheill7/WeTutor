@@ -34,6 +34,7 @@
 		C8338B391E63DFC300202E3A /* eventItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* eventItem.swift */; };
 		C8338B3A1E63DFC300202E3A /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B381E63DFC300202E3A /* EventCell.swift */; };
 		C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B3B1E63E2C400202E3A /* DetailViewController.swift */; };
+		C837271B1E9C38A700EEEC61 /* SelfProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837271A1E9C38A700EEEC61 /* SelfProfileViewController.swift */; };
 		C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
 		C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B31E1982BA004A794C /* UserListViewController.swift */; };
@@ -164,6 +165,7 @@
 		C8338B371E63DFC300202E3A /* eventItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventItem.swift; sourceTree = "<group>"; };
 		C8338B381E63DFC300202E3A /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		C8338B3B1E63E2C400202E3A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C837271A1E9C38A700EEEC61 /* SelfProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfProfileViewController.swift; sourceTree = "<group>"; };
 		C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableView.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
 		C838A8B31E1982BA004A794C /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		C81DA3D21E3FB8B100CB15A8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				C837271A1E9C38A700EEEC61 /* SelfProfileViewController.swift */,
 				C81DA3C91E3FB8A600CB15A8 /* SettingsTableViewController.swift */,
 				C81DA3CA1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift */,
 				C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */,
@@ -814,6 +817,7 @@
 				C86BCCC31E12F8B3007D24F9 /* CustomCells.swift in Sources */,
 				C8EE885D1E0DB144003775C2 /* FSCalendarHeaderView.m in Sources */,
 				C87984991E0C763F003EB7A1 /* RootViewController.swift in Sources */,
+				C837271B1E9C38A700EEEC61 /* SelfProfileViewController.swift in Sources */,
 				C87984A41E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift in Sources */,
 				C8F668CE1E6D31D500D9DC53 /* Message.swift in Sources */,
 				C82C9E4F1E96ACCF0082901E /* DeviceStructs.swift in Sources */,
