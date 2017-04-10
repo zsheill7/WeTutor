@@ -30,7 +30,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     //let requestViewController = RequestViewController.instantiateFromStoryboard()
     
     var componentType: ComponentType {
-        return .all(menuOptions: MenuOptions(), pagingControllers: [ chatViewController, usersViewController/*, calendarViewController*//*organizationsViewController,*/ /*requestViewController*/])
+        return .all(menuOptions: MenuOptions(), pagingControllers: [ chatViewController, usersViewController, calendarViewController/*organizationsViewController,*/ /*requestViewController*/])
     }
     var lazyLoadingPage: LazyLoadingPage {
         return .all
@@ -58,7 +58,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
         }
         
         var itemsOptions: [MenuItemViewCustomizable] {
-            return [ MenuItemChat(),MenuItemUsers()/*,   MenuItemCalendar()*//*, MenuItemOrganization()*//*, MenuItemRequest()*/]
+            return [ MenuItemChat(),MenuItemUsers(),   MenuItemCalendar()/*, MenuItemOrganization()*//*, MenuItemRequest()*/]
         }
     }
     

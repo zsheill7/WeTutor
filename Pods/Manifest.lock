@@ -71,6 +71,7 @@ PODS:
   - Material/Core (2.6.3)
   - NVActivityIndicatorView (3.6.0)
   - PagingMenuController (2.2.0)
+  - Popover (1.0.5)
   - Protobuf (3.2.1)
   - RZTransitions (1.2.1)
   - SCLAlertView (0.7.0)
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - Material (~> 2.0)
   - NVActivityIndicatorView
   - PagingMenuController
+  - Popover
   - RZTransitions
   - SCLAlertView
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
@@ -158,6 +160,7 @@ SPEC CHECKSUMS:
   Material: af607a7ec0e9978ef85cf189a3d8ceeeb650400f
   NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
   PagingMenuController: 6176618987bb170096664f2da097313e45ed9c31
+  Popover: f31b0ef6f43192256e6fcf13a0ce10f01c803159
   Protobuf: 2ccbaf193f6c65adc67745453ca0c13234c32796
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
@@ -165,6 +168,6 @@ SPEC CHECKSUMS:
   Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: c33f11bd8f8af3b1051099fa296f70c608f866fc
+PODFILE CHECKSUM: 86a09a063546f0cc2446dd5f85a263126499759a
 
 COCOAPODS: 1.2.0

@@ -13,7 +13,7 @@ import Firebase
 import SCLAlertView
 import FBSDKCoreKit
 import FBSDKLoginKit
-
+import Popover
 
 extension UIView {
     func addBackground(_ imageName: String) {
@@ -161,6 +161,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         RZTransitionsManager.shared().defaultPresentDismissAnimationController = RZZoomAlphaAnimationController()
         RZTransitionsManager.shared().defaultPushPopAnimationController = RZCardSlideAnimationController()
         
+        prepareInfoButton()
         prepareNameField()
         prepareEmailField()
         preparePasswordField()
@@ -530,13 +531,14 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
+    
     fileprivate func prepareNameField() {
         nameField = TextField()
         //nameField.addBackground(imageName: "Rectangle 8")
         //nameField.background = UIImage(named: "Rectangle 8")
         nameField.placeholder = "Name"
         //nameField.detail = "Your given name"
-        nameField.isClearIconButtonEnabled = true
+        //nameField.isClearIconButtonEnabled = true
         nameField.placeholderNormalColor = UIColor.white
         nameField.dividerColor = UIColor.white
         nameField.dividerNormalColor = UIColor.white
@@ -553,13 +555,62 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         nameField.leftView = leftView
         nameField.leftViewMode = .always
         
+        
+        
         var verticalMult: CGFloat = 4
         
         /*if IS_IPAD {
             verticalMult = 3
         }*/
+        //view.layout(infoButton).width(25).height(25).top(verticalMult * constant).right(horizConstant - 10)
         
         view.layout(nameField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
+    }
+    let infoButton = UIButton()
+    
+    fileprivate var popover: Popover!
+    
+    func prepareInfoButton() {
+        
+        
+        infoButton.setImage(UIImage(named: "Info-25"), for: UIControlState.normal)
+        // infoButton.frame = CGRect(x: /*nameField.center.x + nameField.frame.size.width / 2*/nameField.frame.size.width, y: nameField.center.y, width: 30, height: 30)
+        infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        //self.view.addSubview(infoButton)
+        let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info-25"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(infoButtonTapped))//infoBarButtonItem
+
+    }
+    var texts = ["For parents: feel free to sign up with your child's name and your email account."]
+    func infoButtonTapped() {
+        
+        /*let stepsTextField = UITextField(frame: CGRect(x: self.view.frame.width - 25, y: 10, width: 200, height: 50))
+        stepsTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
+        stepsTextField.text = text
+        stepsTextField.isUserInteractionEnabled = false
+        let startPoint = CGPoint(x: self.view.frame.width - 25, y: 55)
+        let aView = UIView(frame: CGRect(x: self.view.frame.width, y: 10, width: 200, height: 50))
+        let label = UILabel()
+        label.backgroundColor = UIColor.white
+        label.text = text
+        label.textAlignment = NSTextAlignment.center
+        aView.addSubview(stepsTextField)
+        
+        //aView.titleLabel = text
+        let popover = Popover()
+        //popover.text? = text
+        popover.show(aView, point: startPoint)*/
+        self.popover = Popover()
+        let startPoint = CGPoint(x: self.view.frame.width - 25, y: 55)
+
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        //self.popover = Popover(options: self.popoverOptions)
+        
+        //self.popover.show(tableView, point: self.rightButtomButton)
+        popover.show(tableView, point: startPoint)
     }
     
     fileprivate func prepareEmailField() {
@@ -572,7 +623,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         emailField = ErrorTextField(frame: CGRect(x: horizConstant, y: verticalMult * constant, width: view.width - (2 * horizConstant), height: constant))
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
-        emailField.isClearIconButtonEnabled = true
+        //emailField.isClearIconButtonEnabled = true
         emailField.placeholderNormalColor = UIColor.white
         emailField.dividerColor = UIColor.white
         emailField.dividerNormalColor = UIColor.white
@@ -674,6 +725,35 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         view.layout(confirmPasswordField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
 }
+
+extension SignUpViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.popover.dismiss()
+    }
+}
+
+extension SignUpViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = self.texts[(indexPath as NSIndexPath).row]
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+}
+
 
 extension UIViewController: TextFieldDelegate {
     /// Executed when the 'return' key is pressed when using the emailField.
