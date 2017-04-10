@@ -656,12 +656,12 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //let colorIndex = Int(arc4random_uniform(5))
         //cell!.colorView.backgroundColor = colors[indexPath.row % 5]
         
-       /* let friendInArray = finalUserUIDList.doesContain(obj: userAtRow.uid)
+        let friendInArray = finalUserUIDList.doesContain(obj: userAtRow.uid)
         if friendInArray == true {
             cell!.friendIndicatorView.backgroundColor = UIColor.green
         } else {
             cell!.friendIndicatorView.backgroundColor = UIColor.clear
-        }*/
+        }
        /* if FriendSystem.system.friendList.contains(where: userAtRow) {
             cell!.friendIndicatorView.backgroundColor = UIColor.green
         } else {

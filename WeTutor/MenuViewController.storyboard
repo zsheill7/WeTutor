@@ -300,7 +300,7 @@
             <objects>
                 <navigationController storyboardIdentifier="chatNC" automaticallyAdjustsScrollViewInsets="NO" id="jjT-IL-3Rh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="00J-m5-9yb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="00J-m5-9yb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -524,7 +524,7 @@
         <scene sceneID="X1D-pW-B4K">
             <objects>
                 <navigationController id="XVT-N9-jpa" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="llK-Wk-1MO">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="llK-Wk-1MO">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -685,14 +685,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjq-bt-aFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1373.5999999999999" y="993.55322338830592"/>
+            <point key="canvasLocation" x="940" y="1039"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WWm-e3-vKv">
             <objects>
                 <navigationController storyboardIdentifier="addEventNC" automaticallyAdjustsScrollViewInsets="NO" id="okV-md-W0h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JQH-5Q-QeE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JQH-5Q-QeE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -931,6 +931,9 @@
                                                                     <constraint firstAttribute="width" secondItem="Fvg-Sx-GjA" secondAttribute="height" multiplier="1:1" id="hso-yx-bUo"/>
                                                                 </constraints>
                                                                 <state key="normal" title="View Map" image="map icon"/>
+                                                                <connections>
+                                                                    <action selector="openInMap:" destination="Kz5-hQ-YSe" eventType="touchUpInside" id="8Gz-Io-BZy"/>
+                                                                </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLA-hJ-4fB">
                                                                 <rect key="frame" x="111.5" y="0.0" width="13.5" height="50"/>

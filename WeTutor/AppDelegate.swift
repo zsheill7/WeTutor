@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(userDefaults.value(forKey: "description") as? String)
         print(FIRAuth.auth()?.currentUser?.uid)
         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
-            //let hasLanguages = userDefaults.value(forKey: "languages") as? [String],
+        
             let hasDescription = userDefaults.value(forKey: "description") as? String,
             let uid = FIRAuth.auth()?.currentUser?.uid {
         

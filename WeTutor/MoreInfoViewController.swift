@@ -469,7 +469,9 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
-    
+    @IBAction func openInMap(_ sender: Any) {
+        self.performSegue(withIdentifier: "presentMapViewController", sender: self)
+    }
     
     @IBAction func addFriendTapped(_ sender: Any) {
         addFriendFunction()

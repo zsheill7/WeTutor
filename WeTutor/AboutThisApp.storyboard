@@ -81,10 +81,10 @@ Please contact info@wetutor.com with any questions or concerns</string>
             </objects>
             <point key="canvasLocation" x="2716" y="494.30284857571218"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Follow Us Table View Controller-->
         <scene sceneID="9O4-1D-mxp">
             <objects>
-                <tableViewController storyboardIdentifier="Follow Us" id="us1-1O-268" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Follow Us" id="us1-1O-268" customClass="FollowUsTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SWo-yB-gv6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,18 +108,29 @@ Please contact info@wetutor.com with any questions or concerns</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgd-Ty-trJ">
-                                                    <rect key="frame" x="17" y="11.5" width="172" height="20"/>
+                                                    <rect key="frame" x="17" y="12" width="160" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="172" id="Q7k-t9-sEJ"/>
+                                                        <constraint firstAttribute="width" constant="160" id="Q7k-t9-sEJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="17"/>
                                                     <color key="textColor" red="0.19215686269999999" green="0.59607843140000005" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wetutorapp.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB8-RV-8rP">
+                                                    <rect key="frame" x="197" y="14" width="137" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="137" id="qa7-3m-DF5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.0" alpha="0.40496575342465752" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="xgd-Ty-trJ" firstAttribute="centerY" secondItem="X5c-yc-FiA" secondAttribute="centerY" id="RsU-rj-kQr"/>
-                                                <constraint firstItem="xgd-Ty-trJ" firstAttribute="leading" secondItem="X5c-yc-FiA" secondAttribute="leadingMargin" constant="9" id="Y3n-nI-jxQ"/>
+                                                <constraint firstItem="xgd-Ty-trJ" firstAttribute="leading" secondItem="X5c-yc-FiA" secondAttribute="leadingMargin" constant="9" id="UQs-AO-v9t"/>
+                                                <constraint firstItem="sB8-RV-8rP" firstAttribute="centerY" secondItem="X5c-yc-FiA" secondAttribute="centerY" id="p84-Td-Y1G"/>
+                                                <constraint firstItem="sB8-RV-8rP" firstAttribute="trailing" secondItem="X5c-yc-FiA" secondAttribute="trailingMargin" id="qdu-qd-VLY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -139,10 +150,21 @@ Please contact info@wetutor.com with any questions or concerns</string>
                                                     <color key="textColor" red="0.19215686269999999" green="0.59607843140000005" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook.com/wetutor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0A-3q-nTx">
+                                                    <rect key="frame" x="197" y="15" width="137" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="137" id="qb8-aM-eNB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.0" alpha="0.40496575340000002" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="T0A-3q-nTx" firstAttribute="centerY" secondItem="4Xa-8L-L9t" secondAttribute="centerY" id="UbO-Ji-O58"/>
                                                 <constraint firstItem="iyk-Pt-zj9" firstAttribute="centerY" secondItem="4Xa-8L-L9t" secondAttribute="centerY" id="Xyg-YO-Ipa"/>
                                                 <constraint firstItem="iyk-Pt-zj9" firstAttribute="leading" secondItem="4Xa-8L-L9t" secondAttribute="leadingMargin" constant="9" id="eDw-VU-CSP"/>
+                                                <constraint firstItem="T0A-3q-nTx" firstAttribute="trailing" secondItem="4Xa-8L-L9t" secondAttribute="trailingMargin" id="xyt-FZ-yDg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -162,10 +184,21 @@ Please contact info@wetutor.com with any questions or concerns</string>
                                                     <color key="textColor" red="0.19215686269999999" green="0.59607843140000005" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="twitter.com/wetutorapp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh3-hd-fX5">
+                                                    <rect key="frame" x="197" y="15" width="137" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="137" id="bYk-b3-KJ2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.0" alpha="0.40496575340000002" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bf4-N8-faq" firstAttribute="centerY" secondItem="Qmj-LC-WOn" secondAttribute="centerY" id="0ve-SP-z9Z"/>
                                                 <constraint firstItem="bf4-N8-faq" firstAttribute="leading" secondItem="Qmj-LC-WOn" secondAttribute="leadingMargin" constant="9" id="Lpc-58-ywf"/>
+                                                <constraint firstItem="oh3-hd-fX5" firstAttribute="centerY" secondItem="Qmj-LC-WOn" secondAttribute="centerY" id="coT-yL-WN5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oh3-hd-fX5" secondAttribute="trailing" id="h0I-va-0bY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -188,7 +221,7 @@ Please contact info@wetutor.com with any questions or concerns</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1S-yk-pYS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1495" y="1167"/>
+            <point key="canvasLocation" x="1493.5999999999999" y="1166.2668665667168"/>
         </scene>
         <!--About Us-->
         <scene sceneID="avT-0G-KoF">

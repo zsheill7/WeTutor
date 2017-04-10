@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D0O-0T-CPl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D0O-0T-CPl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
         <!--Map View Controller-->
         <scene sceneID="JZF-aa-q2I">
             <objects>
-                <viewController id="DiH-Za-hfG" customClass="MapViewController" customModule="TutorMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DiH-Za-hfG" customClass="MapViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gnf-KA-0xj"/>
                         <viewControllerLayoutGuide type="bottom" id="O1A-Of-FDA"/>
@@ -22,15 +22,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gb2-Ye-HAf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="331"/>
                             </mapView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-A3-VMy">
-                                <rect key="frame" x="234" y="619" width="125" height="29"/>
-                                <segments>
-                                    <segment title="Car"/>
-                                    <segment title="Walking"/>
-                                </segments>
-                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="vHS-bJ-Oo1" customClass="DirectionsTableView" customModule="WeTutor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="395" width="375" height="272"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="272" id="3kK-Kd-BTK"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionCell" id="hlL-an-wV8">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hlL-an-wV8" id="Hdg-fS-u9Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                             <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSG-FI-GWn">
                                 <rect key="frame" x="325" y="141" width="34" height="34"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,16 +59,36 @@
                                     <action selector="showDirection:" destination="DiH-Za-hfG" eventType="touchUpInside" id="dqS-D4-KZw"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuB-aC-g6r">
+                                <rect key="frame" x="317" y="97" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-A3-VMy">
+                                <rect key="frame" x="234" y="359" width="125" height="29"/>
+                                <segments>
+                                    <segment title="Car"/>
+                                    <segment title="Walking"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="7XM-sm-4mK"/>
                             <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="BQt-A3-VMy" secondAttribute="bottom" constant="20" id="Fm4-vy-fO9"/>
                             <constraint firstItem="aSG-FI-GWn" firstAttribute="top" secondItem="gnf-KA-0xj" secondAttribute="bottom" constant="77" id="JiL-Gk-SNM"/>
                             <constraint firstItem="BQt-A3-VMy" firstAttribute="trailing" secondItem="nFL-Dm-JiT" secondAttribute="trailingMargin" id="Kn6-d3-KRw"/>
+                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="Oti-l9-gNb"/>
                             <constraint firstItem="gb2-Ye-HAf" firstAttribute="leading" secondItem="nFL-Dm-JiT" secondAttribute="leading" id="UDg-pX-UO8"/>
+                            <constraint firstAttribute="trailing" secondItem="vHS-bJ-Oo1" secondAttribute="trailing" id="ULB-vL-dBc"/>
                             <constraint firstItem="gb2-Ye-HAf" firstAttribute="top" secondItem="gnf-KA-0xj" secondAttribute="bottom" id="UUP-KI-ZDd"/>
+                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="vHS-bJ-Oo1" secondAttribute="bottom" id="dT9-4k-7JQ"/>
+                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="leading" secondItem="nFL-Dm-JiT" secondAttribute="leading" id="gkX-Fa-age"/>
                             <constraint firstAttribute="trailing" secondItem="gb2-Ye-HAf" secondAttribute="trailing" id="id4-fd-yHk"/>
+                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="ijh-w8-TnD"/>
+                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="lRO-Zr-m07"/>
+                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="vHS-bJ-Oo1" secondAttribute="bottom" id="rkp-Qz-QOD"/>
                             <constraint firstItem="aSG-FI-GWn" firstAttribute="trailing" secondItem="nFL-Dm-JiT" secondAttribute="trailingMargin" id="w6W-9L-LlI"/>
                         </constraints>
                     </view>
@@ -70,8 +100,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="directionsTableView" destination="vHS-bJ-Oo1" id="edX-9d-Iip"/>
                         <outlet property="mapView" destination="gb2-Ye-HAf" id="Vlm-UU-wVF"/>
                         <outlet property="segmentedControl" destination="BQt-A3-VMy" id="YNr-xT-cW9"/>
+                        <outlet property="totalTimeLabel" destination="ZuB-aC-g6r" id="Oac-Gc-e8i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hab-yE-QHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,7 +114,7 @@
         <scene sceneID="Ucs-al-b82">
             <objects>
                 <navigationController id="D0O-0T-CPl" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Gbp-Zo-9X0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Gbp-Zo-9X0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.30980392159999998" green="0.71764705880000002" blue="0.75686274509999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

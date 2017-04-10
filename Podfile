@@ -30,4 +30,5 @@ use_frameworks!
  pod 'Stripe'
  pod 'IQKeyboardManager'
  pod 'Instructions', :git => 'https://github.com/ephread/Instructions.git'
+ pod "Popover"
 end
