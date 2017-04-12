@@ -1200,6 +1200,9 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="90" id="AYZ-QB-aUx"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <segue destination="wvg-0W-A7x" kind="embed" identifier="embedAvailability" id="yus-Yi-QUa"/>
+                                                                </connections>
                                                             </containerView>
                                                         </subviews>
                                                     </stackView>
@@ -1394,7 +1397,7 @@
             <objects>
                 <navigationController storyboardIdentifier="settingsNC" automaticallyAdjustsScrollViewInsets="NO" id="fuX-TZ-T1h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LKG-Hb-mqR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LKG-Hb-mqR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1406,6 +1409,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMz-Tr-hdX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="444" y="950"/>
+        </scene>
+        <!--Availability Table View Controller-->
+        <scene sceneID="LrH-Qa-aGh">
+            <objects>
+                <viewController id="wvg-0W-A7x" customClass="AvailabilityTableViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cpl-IY-bMR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Prh-o7-jW2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DeC-vc-UeT">
+                        <rect key="frame" x="0.0" y="0.0" width="335" height="90"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n3w-9c-Q0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1918" y="1409"/>
         </scene>
     </scenes>
     <resources>

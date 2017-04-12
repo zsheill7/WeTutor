@@ -524,6 +524,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
+    
+    
 }
 
 

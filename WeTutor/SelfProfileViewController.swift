@@ -198,7 +198,7 @@ class SelfProfileViewController: UIViewController, UIScrollViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "embedAvailability" {
             if let vc = segue.destination as? AvailabilityTableViewController {
-                vc.destUser = destUser
+                vc.destUser = currentUser
             }
         }
     }

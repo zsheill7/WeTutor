@@ -7,7 +7,7 @@ import CoreLocation
 import FirebaseDatabase
 import FirebaseAnalytics
 import FirebaseAuth
-
+import Popover
 class TutorSignUpViewControllerTwo : FormViewController {
     
     let firstLanguages = ["English", "Spanish", "French", "Chinese", "Other"]
@@ -15,7 +15,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
 
   
     /*override func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }*/
     
@@ -24,7 +24,8 @@ class TutorSignUpViewControllerTwo : FormViewController {
     }
     
     var ref: FIRDatabaseReference!
-    
+    var currentUser: User?
+    var profileImageUrlString = ""
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,21 @@ class TutorSignUpViewControllerTwo : FormViewController {
         
         self.loadForm()
         
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let user = User(snapshot: snapshot)
+            self.currentUser = user
+            let value = snapshot.value as? NSDictionary
+            let profile = value?["profileImageURL"] as! String
+            // let user = User.init(username: username)
+            self.profileImageUrlString = profile
+            
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
   
     }
     
@@ -91,8 +107,23 @@ class TutorSignUpViewControllerTwo : FormViewController {
                 
                 row.value = row.options[0]
             }
-            
-            
+             +++ Section()
+            ButtonRow() {
+                $0.title = "Price FAQ"
+            }
+            .onCellSelection {  cell, row in  //do whatever you want  
+                self.openPricePopover()
+                }
+                
+            <<< DecimalRow() {
+                $0.useFormatterDuringInput = true
+                $0.title = "Price"
+                $0.placeholder = "$17.00"
+                let formatter = CurrencyFormatter()
+                formatter.locale = .current
+                formatter.numberStyle = .currency
+                $0.formatter = formatter
+            }
             
             +++ Section()
             <<< ButtonRow() {
@@ -184,10 +215,41 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     
                     
+                    
+                    
         }
+        
 
     }
     
+    let popover = Popover()
+    func openPricePopover() {
+       /* self.popover = Popover()
+        let startPoint = CGPoint(x: self.view.frame.width - 25, y: self.view.frame.height - 55)
+        
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        tableView.numberOfSections = 1
+        tableView.numberOfRowsInSection = 1
+        tableView.cellForRowAt
+        tableView.isScrollEnabled = false
+        //self.popover = Popover(options: self.popoverOptions)
+        
+        //self.popover.show(tableView, point: self.rightButtomButton)
+        popover.show(tableView, point: startPoint)*/
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfilePictureVC" {
+            
+            
+            let destinationVC: ProfilePictureViewController = segue.destination as! ProfilePictureViewController
+            
+           // destinationVC.currentUser = currentUser
+            
+            destinationVC.profileImageUrlString = profileImageUrlString
+        }
+    }
     /**
      * Called when 'return' key pressed. return NO to ignore.
      */
@@ -218,6 +280,34 @@ class TutorSignUpViewControllerTwo : FormViewController {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
     }
 }
+
+/*extension TutorSignUpViewControllerTwo: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.popover.dismiss()
+    }
+}
+
+extension TutorSignUpViewControllerTwo: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = self.texts[(indexPath as NSIndexPath).row]
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+}*/
 
 
 

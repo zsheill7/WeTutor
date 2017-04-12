@@ -413,6 +413,7 @@
 				C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */,
 				C827B4C71E10D8F500BDFD50 /* TutorSignUpViewControllerTwo.swift */,
 				C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */,
+				C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */,
 				C8338B371E63DFC300202E3A /* eventItem.swift */,
 				C8338B381E63DFC300202E3A /* EventCell.swift */,
 				C8338B3B1E63E2C400202E3A /* DetailViewController.swift */,
@@ -420,7 +421,6 @@
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
 				C8D9B8261E688BDF00EBDEA5 /* NativeEventViewController.swift */,
 				C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */,
-				C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */,
 				C8E47F2B1E7636D7009351C8 /* Unused.swift */,
 			);
 			name = "In Main Storyboard";

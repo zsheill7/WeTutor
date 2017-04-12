@@ -39,7 +39,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
         print(currentUser?.availabilityInfo)
         
         
-        self.tableView?.addBlueBackground("mixed2")
+        //self.tableView?.addBlueBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         let availabilityInfo: String = ""
         var languages: [String] = [String]()

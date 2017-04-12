@@ -17,7 +17,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     let pickedProfileImage = UIImagePickerController()
     
     @IBOutlet weak var profileImage: UIImageView!
-    
+    var profileImageUrlString = ""
     func displayAlert(title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
     }
@@ -26,21 +26,9 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.profileImage.loadImageUsingCacheWithUrlString(profileImageUrlString)
         
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let profile = value?["profileImageURL"]
-            // let user = User.init(username: username)
-            
-            self.profileImage.loadImageUsingCacheWithUrlString(profile as! String)
-            
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }
         
         view.addSubview(profileImageView)
 
