@@ -327,7 +327,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     
-    func loadCalendar() {
+    /*func loadCalendar() {
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
@@ -354,7 +354,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 
             }
         })
-    }
+    }*/
     
     
     // TODO: handle returning the default EKCalendar
@@ -494,7 +494,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
     }*/
  
-    func createCalendar(_ channelId: String) {
+    /*func createCalendar(_ channelId: String) {
         
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
@@ -527,7 +527,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         self.calendars.append(newCalendar)
         
-    }
+    }*/
  
 
     
@@ -535,7 +535,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Check whether we are authorized to access Calendar
-        self.checkEventStoreAccessForCalendar()
+       // self.checkEventStoreAccessForCalendar()
         
     }
     
@@ -677,7 +677,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: Access Calendar
     
     // Check the authorization status of our application for Calendar
-    private func checkEventStoreAccessForCalendar() {
+    /*private func checkEventStoreAccessForCalendar() {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
         
         switch status {
@@ -747,7 +747,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let events = eventStore.events(matching: predicate)
         
         return events
-    }
+    }*/
     
     
     //MARK: -
@@ -755,7 +755,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     // Display an event edit view controller when the user taps the "+" button.
     // A new event is added to Calendar when the user taps the "Done" button in the above view controller.
-    func addEvent() {
+    /*func addEvent() {
         // Create an instance of EKEventEditViewController
         let addController = EKEventEditViewController()
         
@@ -770,7 +770,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             ])
         self.present(addController, animated: true, completion: nil)
         tableView.reloadData()
-    }
+    }*/
     
     
     //MARK: -
