@@ -31,4 +31,6 @@ use_frameworks!
  pod 'IQKeyboardManager'
  pod 'Instructions', :git => 'https://github.com/ephread/Instructions.git'
  pod "Popover"
+ pod "Timepiece"
+ pod “Hero”
 end

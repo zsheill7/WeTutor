@@ -59,6 +59,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Hero.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IQKeyboardManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -144,6 +149,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Timepiece.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>TwicketSegmentedControl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -152,12 +162,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0AC46679136797FC419D5A7EFEF55C3F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0D508FA5B63D4F515F8F105DB5FC4D7B</key>
+		<key>1C8E350D1CBB05656BF83550FB12B116</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,6 +177,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>39A7F07264C398917182E05104074C95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3EDFE4052B5DE7D509935AC0774CB135</key>
 		<dict>
 			<key>primary</key>
@@ -182,7 +192,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4E3BB2910EF1E5AE27CAC8FD8921D15B</key>
+		<key>4A3E211676B243619B026D147D272253</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4FC54199A9813004D5312551A97DE1E0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -197,12 +212,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6124F465AE20CA404975F9490FB2E178</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6188D40841B9BAFF736052752342E8F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>675A114988AE198732ED4AD726408964</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>680BF1722FC3481AEEA036272B71E0F0</key>
+		<key>69B2F957AC0F66F60470706E27B9A771</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -227,7 +252,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7864B656356F0206242CA2CDD256421B</key>
+		<key>7D441BD9E3E3D416EA4D8736D646BF9D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -242,7 +267,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A2C233628126F59ED062D93094F05383</key>
+		<key>9A869FF501D8F3D0C40DC11DED4F75CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -252,12 +277,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A74936EC1FB41C7B8CCB83251E4C65B8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C04FD1475F44048D00B9282C30347523</key>
+		<key>BE247936DE195B0679157F73B5F0D799</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -277,6 +297,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C73D6B043B780C28B11EAC607EB09ADC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C7DCF2B547F7871B9BFD74DE93B0E173</key>
 		<dict>
 			<key>primary</key>
@@ -288,11 +313,6 @@
 			<true/>
 		</dict>
 		<key>D386C75EFD4F03725E4EFB866B600B9A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F386C633CDEA96ADD17EBE6B780F6FAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

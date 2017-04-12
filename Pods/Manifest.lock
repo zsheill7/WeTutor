@@ -59,6 +59,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
+  - Hero (0.3.6)
   - Instructions (0.5.0):
     - Instructions/Core (= 0.5.0)
   - Instructions/Core (0.5.0)
@@ -77,6 +78,7 @@ PODS:
   - SCLAlertView (0.7.0)
   - Spring (1.0.3)
   - Stripe (10.0.1)
+  - Timepiece (1.1.0)
   - TwicketSegmentedControl (0.1.2)
 
 DEPENDENCIES:
@@ -94,6 +96,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - FSCalendar
+  - Hero
   - Instructions (from `https://github.com/ephread/Instructions.git`)
   - IQKeyboardManager
   - JSQMessagesViewController
@@ -105,6 +108,7 @@ DEPENDENCIES:
   - SCLAlertView
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - Stripe
+  - Timepiece
   - TwicketSegmentedControl
 
 EXTERNAL SOURCES:
@@ -153,6 +157,7 @@ SPEC CHECKSUMS:
   FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
+  Hero: d3c6f4dd80cdcdbb339be64e57ae3b5c3ab9938c
   Instructions: 6976f674ce788aefec475be6f18500572f1645d4
   IQKeyboardManager: 322c7405df3eb5f7e50dede32ea937bf3d4364e0
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
@@ -166,8 +171,9 @@ SPEC CHECKSUMS:
   SCLAlertView: 8a14ffc40590c619e183eed2298b854385f30be1
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   Stripe: dd6df0e2c6a8463e2f1ca9b15dc246e5ae1eee64
+  Timepiece: 4190a7bc5ae1c05c87531fd75b14e17d2a017902
   TwicketSegmentedControl: 6d7a4cf243657e0ac3f00d06d873a25334c04042
 
-PODFILE CHECKSUM: 86a09a063546f0cc2446dd5f85a263126499759a
+PODFILE CHECKSUM: '05078755ef0c8367ef5bfd70973e281ae4a576e4'
 
 COCOAPODS: 1.2.0

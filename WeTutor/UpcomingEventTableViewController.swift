@@ -210,7 +210,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         FriendSystem.system.addFriendObserver {
             print("inside FriendSystem.system.addFriendObserver")
-            self.loadAllCalendars()
+           // self.loadAllCalendars()
             
             self.tableView.reloadData()
             //self.observeChannels()
@@ -365,7 +365,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return EKCalendar()
     }
     */
-    func loadAllCalendars() {
+    /*func loadAllCalendars() {
         print("loadAllCalendars()")
         let friendList = FriendSystem.system.friendList
         print("friendList.count \(friendList.count)")
@@ -492,7 +492,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         })
         
         
-    }
+    }*/
  
     func createCalendar(_ channelId: String) {
         

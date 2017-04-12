@@ -11,7 +11,7 @@ import FirebaseAuth
 import Firebase
 import EventKit
 import EventKitUI
-import BubbleTransition
+import Hero
 
 extension UIApplication {
     class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
@@ -218,8 +218,12 @@ class PagingMenuViewController: UIViewController  {
                 let controller = storyboard.instantiateViewController(withIdentifier: "aboutUsNC") as! UINavigationController
                 //let controller = storyboard.instantiateViewController(withIdentifier: "AboutUsTableViewController") as! AboutUsTableViewController
                              // controller.modalTransitionStyle = .flipHorizontal
-                controller.modalPresentationStyle = .custom
-
+                //controller.modalPresentationStyle = .zoom
+               // Hero.shared.setDefaultAnimationForNextTransition(.zoom)
+                
+                
+                // Hero.shared.setContainerColorForNextTransition(.lightGray)
+                //self.hero_replaceViewController(with: controller)
                 self.present(controller, animated: true, completion: nil)
                 //self.performSegue(withIdentifier: "toAboutThisApp", sender: self)
             } else if indexPath == 1 {
@@ -245,7 +249,7 @@ class PagingMenuViewController: UIViewController  {
         self.navigationItem.titleView = menuView
     }
     
-    let transition = BubbleTransition()
+    //let transition = BubbleTransition()
     
     func openChat() {
         pagingMenuController?.move(toPage: 0, animated: true)
@@ -254,7 +258,7 @@ class PagingMenuViewController: UIViewController  {
     func openCalendar() {
         pagingMenuController?.move(toPage: 2, animated: true)
     }
-    public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    /*public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present
         transition.startingPoint = CGPoint(x: self.view.frame.width / 2, y: 25)
         transition.bubbleColor = (self.navigationController?.navigationBar.barTintColor)!
@@ -266,5 +270,5 @@ class PagingMenuViewController: UIViewController  {
         transition.startingPoint = CGPoint(x: self.view.frame.width / 2, y: 25)
         transition.bubbleColor = (self.navigationController?.navigationBar.barTintColor)!
         return transition
-    }
+    }*/
 }
