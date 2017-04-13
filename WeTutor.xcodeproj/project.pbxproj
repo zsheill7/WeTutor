@@ -23,6 +23,8 @@
 		C82800E11E0F4F7600329B7D /* Tutee.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82800E01E0F4F7600329B7D /* Tutee.storyboard */; };
 		C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */; };
 		C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */; };
+		C829705D1E9EF6E6002233FB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C829705C1E9EF6E6002233FB /* UsersViewController.swift */; };
+		C829705F1E9EFB2C002233FB /* AddEventChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C829705E1E9EFB2C002233FB /* AddEventChannelListViewController.swift */; };
 		C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BEE171E8608D6008C77AC /* Unused.storyboard */; };
 		C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */; };
 		C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */; };
@@ -38,7 +40,6 @@
 		C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
 		C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B31E1982BA004A794C /* UserListViewController.swift */; };
-		C838A8B81E1982BA004A794C /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B41E1982BA004A794C /* FriendViewController.swift */; };
 		C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B51E1982BA004A794C /* RequestViewController.swift */; };
 		C838A8BC1E19C47E004A794C /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C838A8BB1E19C47E004A794C /* Map.storyboard */; };
 		C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8BD1E19C4E1004A794C /* MapViewController.swift */; };
@@ -69,7 +70,6 @@
 		C87984961E0C763F003EB7A1 /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984881E0C763F003EB7A1 /* PagingViewController.swift */; };
 		C87984971E0C763F003EB7A1 /* PagingMenuControllerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984891E0C763F003EB7A1 /* PagingMenuControllerOptions.swift */; };
 		C87984991E0C763F003EB7A1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C879848B1E0C763F003EB7A1 /* RootViewController.swift */; };
-		C879849D1E0C763F003EB7A1 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C879848F1E0C763F003EB7A1 /* UsersViewController.swift */; };
 		C879849E1E0C763F003EB7A1 /* PagingMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984901E0C763F003EB7A1 /* PagingMenuViewController.swift */; };
 		C87984A41E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984A01E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift */; };
 		C87984A51E0C76A5003EB7A1 /* MenuViewCustomizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87984A11E0C76A5003EB7A1 /* MenuViewCustomizable.swift */; };
@@ -152,6 +152,8 @@
 		C82800E01E0F4F7600329B7D /* Tutee.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutee.storyboard; sourceTree = "<group>"; };
 		C82800E21E0FA38C00329B7D /* AboutThisApp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AboutThisApp.storyboard; sourceTree = "<group>"; };
 		C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutThisAppViewController.swift; sourceTree = "<group>"; };
+		C829705C1E9EF6E6002233FB /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		C829705E1E9EFB2C002233FB /* AddEventChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventChannelListViewController.swift; sourceTree = "<group>"; };
 		C82BEE171E8608D6008C77AC /* Unused.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Unused.storyboard; sourceTree = "<group>"; };
 		C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityTableViewController.swift; sourceTree = "<group>"; };
 		C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -168,7 +170,6 @@
 		C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableView.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
 		C838A8B31E1982BA004A794C /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		C838A8B41E1982BA004A794C /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		C838A8B51E1982BA004A794C /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		C838A8BB1E19C47E004A794C /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		C838A8BD1E19C4E1004A794C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -199,7 +200,6 @@
 		C87984881E0C763F003EB7A1 /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
 		C87984891E0C763F003EB7A1 /* PagingMenuControllerOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuControllerOptions.swift; sourceTree = "<group>"; };
 		C879848B1E0C763F003EB7A1 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		C879848F1E0C763F003EB7A1 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		C87984901E0C763F003EB7A1 /* PagingMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuViewController.swift; sourceTree = "<group>"; };
 		C87984A01E0C76A5003EB7A1 /* MenuItemViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItemViewCustomizable.swift; path = Protocols/MenuItemViewCustomizable.swift; sourceTree = "<group>"; };
 		C87984A11E0C76A5003EB7A1 /* MenuViewCustomizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewCustomizable.swift; path = Protocols/MenuViewCustomizable.swift; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		C890A0981E27FDDC007DE45D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
 		C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateChannelCell.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/CreateChannelCell.swift"; sourceTree = "<group>"; };
 		C890A09B1E27FDDC007DE45D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/Channel.swift"; sourceTree = "<group>"; };
-		C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
+		C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
 		C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBasicInfoTableViewController.swift; sourceTree = "<group>"; };
 		C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAvailabilityTableViewController.swift; sourceTree = "<group>"; };
 		C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -394,10 +394,11 @@
 		C82800E61E107AC900329B7D /* In Tutor Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */,
 				C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */,
-				C879848F1E0C763F003EB7A1 /* UsersViewController.swift */,
 				C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */,
 				C86D41111E996CE9000C5B0F /* AddEventViewController.swift */,
+				C829705E1E9EFB2C002233FB /* AddEventChannelListViewController.swift */,
 			);
 			name = "In Tutor Storyboard";
 			sourceTree = "<group>";
@@ -426,6 +427,7 @@
 		C82C35F41E8F074A00DD17CD /* More */ = {
 			isa = PBXGroup;
 			children = (
+				C829705C1E9EF6E6002233FB /* UsersViewController.swift */,
 				C87984A21E0C76A5003EB7A1 /* Pagable.swift */,
 				C879848B1E0C763F003EB7A1 /* RootViewController.swift */,
 				C87984841E0C763F003EB7A1 /* PagingMenuController.swift */,
@@ -466,7 +468,6 @@
 			children = (
 				C838A8B21E1982BA004A794C /* FriendSystem.swift */,
 				C838A8B31E1982BA004A794C /* UserListViewController.swift */,
-				C838A8B41E1982BA004A794C /* FriendViewController.swift */,
 				C838A8B51E1982BA004A794C /* RequestViewController.swift */,
 			);
 			name = "Friend System";
@@ -476,7 +477,6 @@
 			isa = PBXGroup;
 			children = (
 				C890A0981E27FDDC007DE45D /* ChatViewController.swift */,
-				C8BD683D1E36F4FC0028EC37 /* ChannelListViewController.swift */,
 				C890A09B1E27FDDC007DE45D /* Channel.swift */,
 				C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */,
 				C8F668CD1E6D31D500D9DC53 /* Message.swift */,
@@ -634,7 +634,7 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = HNK7ZEMZ36;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
 								enabled = 0;
@@ -755,6 +755,7 @@
 				C82800DE1E0EFDAF00329B7D /* UIImageExtensions.swift in Sources */,
 				C87237FF1E8C163A00C5A641 /* UserCellThree.swift in Sources */,
 				C8F668CC1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift in Sources */,
+				C829705D1E9EF6E6002233FB /* UsersViewController.swift in Sources */,
 				C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */,
 				C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */,
 				C8EE88591E0DB144003775C2 /* FSCalendarConstants.m in Sources */,
@@ -807,7 +808,6 @@
 				C86D41161E9ACC39000C5B0F /* FollowUsTableViewController.swift in Sources */,
 				C8EE885C1E0DB144003775C2 /* FSCalendarExtensions.m in Sources */,
 				C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */,
-				C879849D1E0C763F003EB7A1 /* UsersViewController.swift in Sources */,
 				C87984941E0C763F003EB7A1 /* MenuItemView.swift in Sources */,
 				C879849E1E0C763F003EB7A1 /* PagingMenuViewController.swift in Sources */,
 				C86BCCC31E12F8B3007D24F9 /* CustomCells.swift in Sources */,
@@ -825,11 +825,11 @@
 				C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */,
 				C87984A61E0C76A5003EB7A1 /* Pagable.swift in Sources */,
 				C87984B51E0D01FB003EB7A1 /* User.swift in Sources */,
-				C838A8B81E1982BA004A794C /* FriendViewController.swift in Sources */,
 				C84F180B1E70D58000EC54BF /* UniversalVariables.swift in Sources */,
 				C84F18091E708A9300EC54BF /* WeekDaysCellTwo.swift in Sources */,
 				C8EE88551E0DB144003775C2 /* FSCalendarCalculator.m in Sources */,
 				C87984A51E0C76A5003EB7A1 /* MenuViewCustomizable.swift in Sources */,
+				C829705F1E9EFB2C002233FB /* AddEventChannelListViewController.swift in Sources */,
 				C87984961E0C763F003EB7A1 /* PagingViewController.swift in Sources */,
 				96090AE81D9CDD2E00709CA6 /* AppDelegate.swift in Sources */,
 			);
@@ -951,8 +951,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = HNK7ZEMZ36;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -964,8 +964,8 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "adbbbd18-7982-4e0a-b573-8600d8dd4f9f";
-				PROVISIONING_PROFILE_SPECIFIER = "WeTutor Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/WeTutor-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0.1;
@@ -980,8 +980,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = HNK7ZEMZ36;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -993,8 +993,8 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tutorme.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "adbbbd18-7982-4e0a-b573-8600d8dd4f9f";
-				PROVISIONING_PROFILE_SPECIFIER = "WeTutor Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "WeTutor/WeTutor-Bridging-Header.h";
 				SWIFT_VERSION = 3.0.1;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eSB-hO-8xe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eSB-hO-8xe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,16 +20,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading Page" translatesAutoresizingMaskIntoConstraints="NO" id="cNp-dz-W2Y">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="YkY-0I-ZkH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cNp-dz-W2Y" firstAttribute="leading" secondItem="khi-da-9AC" secondAttribute="leading" id="26C-35-2gm"/>
-                            <constraint firstItem="McG-dM-c8J" firstAttribute="top" secondItem="cNp-dz-W2Y" secondAttribute="bottom" id="9w8-mT-WDd"/>
-                            <constraint firstAttribute="trailing" secondItem="cNp-dz-W2Y" secondAttribute="trailing" id="qqq-eu-gc7"/>
-                            <constraint firstItem="cNp-dz-W2Y" firstAttribute="top" secondItem="khi-da-9AC" secondAttribute="top" id="xbu-Zz-Bsv"/>
+                            <constraint firstItem="McG-dM-c8J" firstAttribute="top" secondItem="YkY-0I-ZkH" secondAttribute="bottom" id="7lo-t5-gpr"/>
+                            <constraint firstAttribute="trailing" secondItem="YkY-0I-ZkH" secondAttribute="trailing" id="K1c-QA-iWL"/>
+                            <constraint firstItem="YkY-0I-ZkH" firstAttribute="leading" secondItem="khi-da-9AC" secondAttribute="leading" id="Rfi-sJ-gKm"/>
+                            <constraint firstItem="YkY-0I-ZkH" firstAttribute="top" secondItem="khi-da-9AC" secondAttribute="top" id="oaW-mL-F0m"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -39,6 +39,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Loading Page" width="1125" height="2001"/>
+        <image name="LaunchScreenImage" width="1242" height="2208"/>
     </resources>
 </document>

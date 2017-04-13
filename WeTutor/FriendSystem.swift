@@ -249,12 +249,85 @@ class FriendSystem {
             ])
     }
     
+    fileprivate lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
+    func createChannel(otherUser: String) {
+        
+        var tutorName: String = ""
+        var tuteeName: String = ""
+        
+        /*let userDefaults = UserDefaults.standard
+         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+         let userName = userDefaults.value(forKey: "name") as? String {
+         }
+         }*/
+        let userDefaults = UserDefaults.standard
+        let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
+        
+        if let userID = FIRAuth.auth()?.currentUser?.uid {
+            
+            if isTutor == true {
+                tutorName = userID
+                tuteeName = otherUser
+            } else {
+                tutorName = otherUser
+                tuteeName = userID
+            }
+        } else {
+            tutorName = "Chat"
+            tuteeName = "Chat"
+        }
+        
+        
+        let channelItem = [
+            "tutorName": tutorName,
+            "tuteeName": tuteeName
+        ]
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userChannelRef = USER_REF.child(userID!).child("channels")
+        let uuid = UUID().uuidString
+        let newChannelRef = channelRef.child(uuid)
+        newChannelRef.setValue(channelItem)
+        userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
+        userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
+        
+        //channelRef.child(uuid).setValue(
+        
+    }
+    
     /** Accepts a friend request from the user with the specified id */
     func acceptFriendRequest(_ userID: String) {
+        
+        let uuid = UUID().uuidString
+        
        // CURRENT_USER_REF.child("requests").child(userID).removeValue()
         CURRENT_USER_REF.child("friends").child(userID).setValue(true)
         USER_REF.child(userID).child("friends").child(CURRENT_USER_ID).setValue(true)
-        
+        let userDefaults = UserDefaults.standard
+        if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool {
+            
+            if isTutor == true {
+                let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: userID)
+                
+                
+                self.createChannel(otherUser: userID)
+                
+                
+                //self.performSegue(withIdentifier: "toChatVC", sender: channel)
+                
+                
+            } else if isTutor == false {
+                let channel = Channel(id: uuid, name: "Chat", tutorName: userID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
+                
+                self.createChannel(otherUser: userID)
+                print("perform segue channel4")
+                print(channel)
+                //self.performSegue(withIdentifier: "toChatVC", sender: channel)
+                
+            }
+        }
+    
+
         FIRAnalytics.logEvent(withName: "friend_added", parameters: [
             "current_user": CURRENT_USER_ID as NSObject,
             "other_user": userID as NSObject

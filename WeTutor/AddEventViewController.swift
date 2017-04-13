@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import FirebaseDatabase
 
 class AddEventNavigationController: UINavigationController, RowControllerType {
     var onDismissCallback : ((UIViewController) -> ())?
@@ -16,16 +17,44 @@ class AddEventNavigationController: UINavigationController, RowControllerType {
 
 class AddEventViewController: FormViewController {
 
+    var channel: Channel? {
+        didSet {
+            title = channel?.name
+        }
+    }
+    var channelRef: FIRDatabaseReference?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        FriendSystem.system.getCurrentUser { (user) in
+            //self.usernameLabel.text = user.email
+        }
+        
+        FriendSystem.system.addFriendObserver {
+            print("inside FriendSystem.system.addFriendObserver")
+            // self.loadAllCalendars()
+            
+            self.tableView?.reloadData()
+            //self.observeChannels()
+            
+        }
+        
         initializeForm()
+        
+        
         
         self.navigationItem.leftBarButtonItem?.target = self
         self.navigationItem.leftBarButtonItem?.action = #selector(AddEventViewController.cancelTapped(_:))
         // Do any additional setup after loading the view.
     }
 
+    /*@IBAction func backButtonPressed(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+        //controller.modalTransitionStyle = .flipHorizontal
+        self.present(controller, animated: true, completion: nil)
+    }*/
     private func initializeForm() {
         
         form +++
@@ -176,6 +205,20 @@ class AddEventViewController: FormViewController {
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
         }
         
+        form +++
+        
+            ButtonRow() {
+                $0.title = "Add Event"
+                
+            }.onCellSelection {  cell, row in
+                
+                
+                
+                let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                //controller.modalTransitionStyle = .flipHorizontal
+                self.present(controller, animated: true, completion: nil)
+        }
     }
     
     func cancelTapped(_ barButtonItem: UIBarButtonItem) {

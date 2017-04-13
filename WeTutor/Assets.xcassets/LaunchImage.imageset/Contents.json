@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "WeTutor launch screen640x.png",
+      "filename" : "WeTutor320x480.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Default-736@2x-1.png",
+      "filename" : "Default@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "WeTutor launch screen.png",
+      "filename" : "iphone6plus_1.png",
       "scale" : "3x"
     },
     {
@@ -25,12 +25,6 @@
       "idiom" : "universal",
       "filename" : "Default-667h@2x.png",
       "subtype" : "667h",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "filename" : "LaunchScreen iPhone 4.png",
-      "unassigned" : true,
       "scale" : "2x"
     }
   ],

@@ -13,6 +13,7 @@ import SCLAlertView
 import EventKit
 import EventKitUI
 import DropDown
+import Hero
 
 struct properties {
     static let pickerEvents = [
@@ -63,6 +64,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addEventButton: UIButton!
     
   // let dateFormatter = DateFormatter()
     fileprivate let formatter: DateFormatter = {
@@ -73,12 +75,19 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     @IBAction func addEvent(_ sender: Any) {
-        let addController = EKEventEditViewController()
+        
+        let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
+        
+       // let controller = storyboard.instantiateViewController(withIdentifier: "addEventVC") as! AddEventViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "addEventNC") as! UINavigationController
+        //Hero.shared.setDefaultAnimationForNextTransition(.push(direction: .right))
+        //hero_replaceViewController(with: controller)
+        /*let addController = EKEventEditViewController()
         
         // Set addController's event store to the current event store
         addController.eventStore = eventStore!
-        addController.editViewDelegate = self
-        self.present(addController, animated: true, completion: nil)
+        addController.editViewDelegate = self*/
+        self.present(controller, animated: true, completion: nil)
         
     }
     
@@ -216,7 +225,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             //self.observeChannels()
             
         }
-        
+        self.view.bringSubview(toFront: addEventButton)
         
        // let calendars = eventStore.calendars(for: .event)
         

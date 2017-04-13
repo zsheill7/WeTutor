@@ -339,7 +339,7 @@
         <image name="Owl Icon-2" width="687" height="687"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yHJ-Ym-rSV"/>
         <segue reference="UNl-nb-Bdv"/>
+        <segue reference="NVR-V7-DSM"/>
     </inferredMetricsTieBreakers>
 </document>

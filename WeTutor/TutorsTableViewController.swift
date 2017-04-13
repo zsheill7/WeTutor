@@ -168,9 +168,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
         }
 
-        if self.finalUserList.count != 0 {
-            self.view.addBackground()
-        }
+        self.view.addBackground()
+        
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)
   
@@ -299,12 +298,18 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                     
                 }
             }
+            /*if finalUserList.count == 0 {
+                //Removes purple/blue background
+                let viewToRemove = self.view.viewWithTag(4)
+                viewToRemove?.removeFromSuperview()
+            }*/
             tableView.reloadData()
         case 1: //students
             finalUserList.removeAll()
             for user in FriendSystem.system.userList {
                 if user.isTutor != true {
                     finalUserList.append(user)
+                    
                 }
             }
             tableView.reloadData()
@@ -835,13 +840,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "No Users to Display"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline),NSForegroundColorAttributeName : UIColor.white ]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "There are no nearby users at this time.  Please try again later."
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body), NSForegroundColorAttributeName : UIColor.white]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
