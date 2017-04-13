@@ -225,6 +225,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             self.loadAllEvents()
             self.observeChannels()
             self.tableView.reloadData()
+            print("1FriendSystem.system.friendList \(FriendSystem.system.friendList.count)")
             
             
         }
@@ -531,6 +532,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                             print(" if let channelDict = channel.value as? Dictionary<String, AnyObject> {")
                             //print(" if let channel = snapshot.value as? [String: String] {")
                             //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                            print("friendList \(friendList)")
                             for destUser in friendList {
                                 let destUserID = destUser.uid
                                 if self.currentUserIsTutor == false {
@@ -547,6 +549,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 print(channel)
                                                 // let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
                                                 if let eventsDict = channelDict["events"] as? [String: AnyObject] {
+                                                    print("1st \(eventsDict)")
                                                     for event in eventsDict {
                                                         print("1print event in eventsDict \(event)" )
                                                         let startDateDouble = eventsDict["startDate"] as? Double ?? Date().timeIntervalSince1970
@@ -786,7 +789,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let eventAtRow = self.events[indexPath.row]
         tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell
-        
+        cell?.contentView.backgroundColor = UIColor.clear
         // Get the event at the row selected and display its title
         let title = eventAtRow.title
         let startDateString = String(describing: eventAtRow.startDate)
