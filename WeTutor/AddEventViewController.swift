@@ -233,9 +233,9 @@ class AddEventViewController: FormViewController {
                 let notes = row7?.value
                 //let row7: TextRow? = self.form.rowBy(tag: "Title")
                 //let title = row7?.value
-                
+                let uuid = UUID().uuidString
                 let eventDict = ["title": title, "location": location, "startDate": startDateInterval, "endDate": endDateInterval, "repeatInterval": repeatInterval, "alert": alert ?? "", "notes": notes ?? ""] as [String : Any]
-                self.channelRef?.child("events").setValue(eventDict)
+                self.channelRef?.child("events").child(uuid).setValue(eventDict)
                 
                 let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController

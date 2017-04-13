@@ -82,7 +82,6 @@
 		C88498C01E0B51A0000C4675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88498BF1E0B51A0000C4675 /* Main.storyboard */; };
 		C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */; };
 		C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */; };
-		C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */; };
 		C890A09C1E27FDDC007DE45D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A0981E27FDDC007DE45D /* ChatViewController.swift */; };
 		C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */; };
 		C890A09F1E27FDDC007DE45D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890A09B1E27FDDC007DE45D /* Channel.swift */; };
@@ -212,7 +211,6 @@
 		C88498BF1E0B51A0000C4675 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C88498C11E0B5B4F000C4675 /* TutorOrTuteeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorOrTuteeViewController.swift; sourceTree = "<group>"; };
 		C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerOne.swift; sourceTree = "<group>"; };
-		C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaSectionHeader.xib; sourceTree = "<group>"; };
 		C890A0981E27FDDC007DE45D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
 		C890A09A1E27FDDC007DE45D /* CreateChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateChannelCell.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/CreateChannelCell.swift"; sourceTree = "<group>"; };
 		C890A09B1E27FDDC007DE45D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/Channel.swift"; sourceTree = "<group>"; };
@@ -414,7 +412,6 @@
 				C82C35F91E915BC400DD17CD /* TutorSignUpViewControllerThree.swift */,
 				C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */,
 				C8338B371E63DFC300202E3A /* Event.swift */,
-				C8338B381E63DFC300202E3A /* EventCell.swift */,
 				C8338B3B1E63E2C400202E3A /* DetailViewController.swift */,
 				C86BCCF01E14E142007D24F9 /* MoreInfoViewController.swift */,
 				C87984B41E0D01FB003EB7A1 /* User.swift */,
@@ -540,17 +537,17 @@
 			isa = PBXGroup;
 			children = (
 				C87983971E0B90F0003EB7A1 /* WeekDaysCell.xib */,
-				C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */,
-				C88498C91E0B8C16000C4675 /* EurekaSectionHeader.xib */,
-				C838A9471E1B46EC004A794C /* UserCell.xib */,
-				C87237FC1E8C10E100C5A641 /* UserCellThree.xib */,
-				C84F180C1E713CF700EC54BF /* SubjectCell.xib */,
-				C82C35FC1E93405900DD17CD /* EventCell.xib */,
 				C84F18021E6F129300EC54BF /* WeekDaysCell.swift */,
-				C838A9491E1B6E32004A794C /* UserCell.swift */,
-				C87237FE1E8C163900C5A641 /* UserCellThree.swift */,
+				C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */,
 				C84F18081E708A9300EC54BF /* WeekDaysCellTwo.swift */,
+				C838A9471E1B46EC004A794C /* UserCell.xib */,
+				C838A9491E1B6E32004A794C /* UserCell.swift */,
+				C87237FC1E8C10E100C5A641 /* UserCellThree.xib */,
+				C87237FE1E8C163900C5A641 /* UserCellThree.swift */,
+				C84F180C1E713CF700EC54BF /* SubjectCell.xib */,
 				C84F180E1E71434C00EC54BF /* SubjectCell.swift */,
+				C82C35FC1E93405900DD17CD /* EventCell.xib */,
+				C8338B381E63DFC300202E3A /* EventCell.swift */,
 				C83A5E571E8ED58500716C89 /* ChatUserCell.swift */,
 			);
 			name = "Xib Files";
@@ -689,7 +686,6 @@
 				C87983981E0B90F0003EB7A1 /* WeekDaysCell.xib in Resources */,
 				C87984B31E0D013A003EB7A1 /* GoogleService-Info.plist in Resources */,
 				C82C35FD1E93405A00DD17CD /* EventCell.xib in Resources */,
-				C88498CA1E0B8C16000C4675 /* EurekaSectionHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

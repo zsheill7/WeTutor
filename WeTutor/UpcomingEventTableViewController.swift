@@ -223,9 +223,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         FriendSystem.system.addFriendObserver {
             print("inside FriendSystem.system.addFriendObserver")
             self.loadAllEvents()
-            
+            self.observeChannels()
             self.tableView.reloadData()
-            //self.observeChannels()
+            
             
         }
         self.view.bringSubview(toFront: addEventButton)
@@ -239,8 +239,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         //  self.addButton.isEnabled = false
     }
     
-    var events: [EKEvent] = [EKEvent]()
-    func displayAllCalendars() {
+    var events: [Event] = [Event]()
+   /* func displayAllCalendars() {
         //self.events.removeAll()
         print("in display all calendars")
         /*var titles : [String] = []
@@ -271,7 +271,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
         }
         tableView.reloadData()
-    }
+    }*/
     
     /*func addEventsToCalendar() {
         for event in self.events {
@@ -317,7 +317,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             //print("userObject.channels")
             //print( userObject.channels)
             
-            self.calendars.removeAll()
+            /*self.calendars.removeAll()
             for channel in userObject.channels {
                 
                 let calendarId = channel.calendarId
@@ -331,7 +331,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 //self.channels.append(channel)
                 
                 
-            }
+            }*/
         })
          self.tableView.reloadData()
         
@@ -512,6 +512,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         print("friendList.count \(friendList.count)")
         print(friendList.count)
         //let destUserID = destUser.uid
+        events.removeAll()
         let channelRef = FIRDatabase.database().reference().child("channels")
         
         channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -536,7 +537,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                     print("if self.currentUserIsTutor == false {")
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
-                                        print(" let  tutorName = channelDict[tutorName] as? String{")
+                                        print("1 let  tutorName = channelDict[tutorName] as? String{")
                                         if tuteeName == FIRAuth.auth()?.currentUser?.uid {
                                             print("1if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
                                             
@@ -547,7 +548,18 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 // let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
                                                 if let eventsDict = channelDict["events"] as? [String: AnyObject] {
                                                     for event in eventsDict {
-                                                        print("print event in eventsDict \(event)" )
+                                                        print("1print event in eventsDict \(event)" )
+                                                        let startDateDouble = eventsDict["startDate"] as? Double ?? Date().timeIntervalSince1970
+                                                        let endDateDouble = eventsDict["endDate"] as? Double ?? Date().timeIntervalSince1970
+                                                        let endDate = Date(timeIntervalSince1970: endDateDouble)
+                                                        let startDate = Date(timeIntervalSince1970: startDateDouble)
+                                                        let eventTitle = eventsDict["title"] as? String ?? "New Event"
+                                                        let description = eventsDict["description"] as? String ?? "I look forward to seeing you!"
+                                                        let repeatInterval = eventsDict["repeatInterval"] as? String ?? "Never"
+                                                        let eventAlert = eventsDict["eventAlert"] as? String ?? "Never"
+                                                        let eventLocation = eventsDict["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
+                                                        let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
+                                                        self.events.append(newEvent)
                                                     }
                                                     
                                                 } else {
@@ -563,16 +575,27 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                     print("if self.currentUserIsTutor == true {")
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
-                                        print(" let  tutorName = channelDict[tutorName] as? String{")
+                                        print("2 let  tutorName = channelDict[tutorName] as? String{")
                                         if tutorName == FIRAuth.auth()?.currentUser?.uid {
-                                           print("1if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
+                                           print("2if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
                                             if tuteeName == destUserID {
                                                 self.iterationStatus = "done"
                                                 print("perform segue channel upcoming event")
                                                 print(channel)
                                                 if let eventsDict = channelDict["events"] as? [String: AnyObject] {
                                                     for event in eventsDict {
-                                                        print("print event in eventsDict \(event)" )
+                                                        print("2print event in eventsDict \(event)" )
+                                                        let startDateDouble = eventsDict["startDate"] as? Double ?? Date().timeIntervalSince1970
+                                                        let endDateDouble = eventsDict["endDate"] as? Double ?? Date().timeIntervalSince1970
+                                                        let endDate = Date(timeIntervalSince1970: endDateDouble)
+                                                        let startDate = Date(timeIntervalSince1970: startDateDouble)
+                                                        let eventTitle = eventsDict["title"] as? String ?? "New Event"
+                                                        let description = eventsDict["description"] as? String ?? "I look forward to seeing you!"
+                                                        let repeatInterval = eventsDict["repeatInterval"] as? String ?? "Never"
+                                                        let eventAlert = eventsDict["eventAlert"] as? String ?? "Never"
+                                                        let eventLocation = eventsDict["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
+                                                        let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
+                                                        self.events.append(newEvent)
                                                     }
                                                     
                                                 } else {
@@ -595,7 +618,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 
                 
             } //if snapshot.exists() {
-            self.displayAllCalendars()
+           // self.displayAllCalendars()
             /*let uuid = UUID().uuidString
              if self.iterationStatus == "inProcess" {
              if self.tutorOrTutee == "tuteeName" {
@@ -711,7 +734,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let controller = segue.destination
         controller.transitioningDelegate = self
         controller.modalPresentationStyle = .custom
-        if segue.identifier == "showEventViewController" {
+        /*if segue.identifier == "showEventViewController" {
             // Configure the destination event view controller
             let eventViewController = segue.destination as! EKEventViewController
             // Fetch the index path associated with the selected event
@@ -721,7 +744,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             
             // Allow event editing
             eventViewController.allowsEditing = true
-        }
+        }*/
        
         
         
@@ -769,11 +792,11 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let startDateString = String(describing: eventAtRow.startDate)
         let endDateString = String(describing: eventAtRow.endDate)
         let location = String(describing: eventAtRow.location)
-        let calendarMonth = calendar.component(.month, from: eventAtRow.startDate)
-        let calendarDay = calendar.component(.day, from: eventAtRow.startDate)
+        let calendarMonth = calendar.component(.month, from: eventAtRow.startDate as Date)
+        let calendarDay = calendar.component(.day, from: eventAtRow.startDate as Date)
         
-        let formattedStartDateString = dateFormatter.string(from: eventAtRow.startDate)
-        let formattedEndDateString = dateFormatter.string(from: eventAtRow.endDate)
+        let formattedStartDateString = dateFormatter.string(from: eventAtRow.startDate as Date)
+        let formattedEndDateString = dateFormatter.string(from: eventAtRow.endDate as Date)
         cell?.eventTitle.text = title
         cell?.eventDate.text = formattedStartDateString + " - " + formattedEndDateString
         cell?.eventDescription.text = location

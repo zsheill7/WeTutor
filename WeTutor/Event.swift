@@ -35,7 +35,7 @@ struct Event {
     var repeatInterval: String
     var uid: String
     var objectID: String
-    var eventAlert: EventAlert
+    var eventAlert: String//EventAlert
     
     let labelFont = UIFont(name: "HelveticaNeue-Bold", size: 18)
     //let attributes :Dictionary = [NSFontAttributeName : labelFont]
@@ -43,7 +43,7 @@ struct Event {
     
     
     
-    init(title: String,  startDate: NSDate, endDate: NSDate, description: String, location: CLLocation, repeatInterval: String, uid: String, objectID: String, eventAlert: EventAlert) {
+    init(title: String,  startDate: NSDate, endDate: NSDate, description: String, location: CLLocation, repeatInterval: String, uid: String, objectID: String, eventAlert:String) {
         self.startDate = startDate
         self.endDate = endDate
         self.title = title
