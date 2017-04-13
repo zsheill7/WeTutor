@@ -373,11 +373,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MeE-12-hV2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iEp-VQ-Lrt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4708" y="186"/>
+            <point key="canvasLocation" x="5647.1999999999998" y="185.75712143928038"/>
         </scene>
         <!--Request View Controller-->
         <scene sceneID="jNs-U0-UTc">
@@ -518,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oes-7q-Czu" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4708" y="790.25487256371821"/>
+            <point key="canvasLocation" x="5647.1999999999998" y="790.25487256371821"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X1D-pW-B4K">
@@ -613,7 +612,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYb-0o-8RV">
-                                <rect key="frame" x="219" y="332" width="70" height="70"/>
+                                <rect key="frame" x="239" y="332" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="ZS4-dx-YMn"/>
                                     <constraint firstAttribute="height" constant="70" id="nya-7b-RON"/>
@@ -655,7 +654,7 @@
                             <constraint firstItem="bhN-UQ-8Hd" firstAttribute="top" secondItem="kaL-S7-iTr" secondAttribute="bottom" id="65H-eH-3Db"/>
                             <constraint firstItem="kYb-0o-8RV" firstAttribute="bottom" secondItem="kaL-S7-iTr" secondAttribute="bottom" constant="30" id="E6J-uG-Svy"/>
                             <constraint firstAttribute="trailing" secondItem="bhN-UQ-8Hd" secondAttribute="trailing" id="Fhw-bR-A7v"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kYb-0o-8RV" secondAttribute="trailing" constant="70" id="QZ6-hy-0Ud"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kYb-0o-8RV" secondAttribute="trailing" constant="50" id="QZ6-hy-0Ud"/>
                             <constraint firstItem="JlQ-Ab-l64" firstAttribute="top" secondItem="bhN-UQ-8Hd" secondAttribute="bottom" id="T22-TH-0ce"/>
                             <constraint firstItem="kaL-S7-iTr" firstAttribute="trailing" secondItem="5fA-HR-5dw" secondAttribute="trailingMargin" constant="10" id="fNC-vQ-A7c"/>
                             <constraint firstItem="bhN-UQ-8Hd" firstAttribute="leading" secondItem="5fA-HR-5dw" secondAttribute="leading" id="qx2-SS-pqg"/>
@@ -688,11 +687,12 @@
                         <segue destination="XVT-N9-jpa" kind="showDetail" identifier="showDetail" id="PWj-8N-5wz">
                             <nil key="action"/>
                         </segue>
+                        <segue destination="HgH-54-5Oj" kind="show" identifier="toAddEventNC" id="Iwy-ab-0kw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gjq-bt-aFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="1038.5307346326838"/>
+            <point key="canvasLocation" x="999" y="1014"/>
         </scene>
         <!--More Info View Controller-->
         <scene sceneID="Nk4-hi-wj4">
@@ -1111,28 +1111,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wg3-Tw-n1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="HPa-rc-4wx">
-            <objects>
-                <navigationController storyboardIdentifier="addEventNC" automaticallyAdjustsScrollViewInsets="NO" id="Wk1-LL-YBZ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="znl-Ry-QOQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="HgH-54-5Oj" kind="relationship" relationship="rootViewController" id="iAg-iT-fP5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eDm-8I-VuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3048.8000000000002" y="185.75712143928038"/>
-        </scene>
         <!--Add Event Channel List View Controller-->
         <scene sceneID="O0X-2k-cT5">
             <objects>
-                <tableViewController storyboardIdentifier="AddEventChannelListViewController" id="HgH-54-5Oj" customClass="AddEventChannelListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddEventChannelListViewController" id="HgH-54-5Oj" customClass="AddEventChannelListViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7ep-2c-Scq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1202,13 +1184,7 @@
                             <outlet property="delegate" destination="HgH-54-5Oj" id="M0w-4s-o6p"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="tB7-Id-KdI">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="42U-rF-vkE">
-                            <connections>
-                                <action selector="backButtonPressed:" destination="HgH-54-5Oj" id="D0V-Dc-sA4"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="tB7-Id-KdI"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="chx-aO-JWA" id="qyb-hu-KCq"/>
                         <segue destination="9IE-oX-SF6" kind="show" identifier="toAddEventVC" id="9yB-rU-WY6"/>
@@ -1224,7 +1200,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3809" y="186"/>
+            <point key="canvasLocation" x="4748" y="185.75712143928038"/>
         </scene>
     </scenes>
     <resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eDQ-NE-3k0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eDQ-NE-3k0">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,7 +24,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sign Up" id="VJX-LX-BRm"/>
                     <connections>
-                        <segue destination="aTv-SR-QJN" kind="show" identifier="toSecondVC" id="bL7-cN-6tJ"/>
+                        <segue destination="zzC-Eo-xJr" kind="show" identifier="toSecondVC" id="TGF-7T-zAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juc-EF-d8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -216,7 +216,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginNC" automaticallyAdjustsScrollViewInsets="NO" id="1kV-iB-SjC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TX5-wN-JVX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TX5-wN-JVX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -234,7 +234,7 @@
             <objects>
                 <navigationController storyboardIdentifier="signupNC" automaticallyAdjustsScrollViewInsets="NO" id="eDQ-NE-3k0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="maU-b1-d8V">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="maU-b1-d8V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -252,7 +252,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerOneNC" automaticallyAdjustsScrollViewInsets="NO" id="r5a-IX-An8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ks-9t-bVe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ks-9t-bVe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -270,7 +270,7 @@
             <objects>
                 <navigationController storyboardIdentifier="TutorSignUpViewControllerTwoNC" automaticallyAdjustsScrollViewInsets="NO" id="aTv-SR-QJN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jOj-rE-hEi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jOj-rE-hEi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -340,6 +340,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UNl-nb-Bdv"/>
-        <segue reference="NVR-V7-DSM"/>
+        <segue reference="yHJ-Ym-rSV"/>
+        <segue reference="TGF-7T-zAf"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -200,7 +200,7 @@ class AddEventViewController: FormViewController {
         form +++
             
             
-            TextAreaRow("notes") {
+            TextAreaRow("Notes") {
                 $0.placeholder = "Notes"
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
         }
@@ -212,7 +212,30 @@ class AddEventViewController: FormViewController {
                 
             }.onCellSelection {  cell, row in
                 
+                let row1: TextRow? = self.form.rowBy(tag: "Title")
+                let title = row1?.value
+                let row2: TextRow? = self.form.rowBy(tag: "Location")
+                let location = row2?.value
+                let row3: DateTimeInlineRow? = self.form.rowBy(tag: "Starts")
                 
+                let startDate = row3?.value
+                var startDateInterval = startDate?.timeIntervalSince1970
+                let row4: DateTimeInlineRow? = self.form.rowBy(tag: "Ends")
+                let endDate = row4?.value
+                var endDateInterval = endDate?.timeIntervalSince1970
+                
+                let row5: PushRow<RepeatInterval>? = self.form.rowBy(tag: "Repeat")
+                let repeatInterval = row5?.value?.description
+                let row6: PushRow<EventAlert>? = self.form.rowBy(tag: "Alert")
+                let alert = row6?.value?.description
+                
+                let row7: TextAreaRow? = self.form.rowBy(tag: "Notes")
+                let notes = row7?.value
+                //let row7: TextRow? = self.form.rowBy(tag: "Title")
+                //let title = row7?.value
+                
+                let eventDict = ["title": title, "location": location, "startDate": startDateInterval, "endDate": endDateInterval, "repeatInterval": repeatInterval, "alert": alert ?? "", "notes": notes ?? ""] as [String : Any]
+                self.channelRef?.child("events").setValue(eventDict)
                 
                 let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController

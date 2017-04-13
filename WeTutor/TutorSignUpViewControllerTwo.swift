@@ -107,15 +107,15 @@ class TutorSignUpViewControllerTwo : FormViewController {
                 
                 row.value = row.options[0]
             }
-             +++ Section()
-            ButtonRow() {
+             +++ Section("Prices")
+            /*ButtonRow() {
                 $0.title = "Price FAQ"
             }
             .onCellSelection {  cell, row in  //do whatever you want  
                 self.openPricePopover()
-                }
+                }*/
                 
-            <<< DecimalRow() {
+            <<< DecimalRow("Price") {
                 $0.useFormatterDuringInput = true
                 $0.title = "Price"
                 $0.placeholder = "$17.00"
@@ -187,6 +187,13 @@ class TutorSignUpViewControllerTwo : FormViewController {
                     
                     print(languages)
                     
+                    let row6: DecimalRow? = self.form.rowBy(tag: "Price")
+                    let hourlyPrice = row6?.value
+                    if hourlyPrice != nil {
+                        FIRAnalytics.setUserPropertyString(String(describing: hourlyPrice), forName: "third_language")
+                    }
+                    
+                    
                     for i in 0...6 {
                         FIRAnalytics.setUserPropertyString("\(weekDayArray[i])", forName: "\(weekdays[i])_available")
                     }
@@ -205,7 +212,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         self.ref.child("users/\(user.uid)/languages").setValue(languages)
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
                         self.ref.child("users/\(user.uid)/completedTutorial").setValue(false)
-                        
+                        self.ref.child("users/\(user.uid)/hourlyPrice").setValue(hourlyPrice)
                         self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
                         
                     } else {

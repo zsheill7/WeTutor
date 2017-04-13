@@ -168,7 +168,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
         }
 
-        self.view.addBackground()
+        self.view.addFlippedBackground()
         
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)
@@ -691,8 +691,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             cell!.gpaLabel.text = gpaString
         }
         if userAtRow.hourlyPrice != nil && userAtRow.hourlyPrice > 0 {
-            let hourlyPriceString = String(format: "%.2f", userAtRow.hourlyPrice)
-            cell!.hourlyPriceLabel.text = hourlyPriceString
+            let hourlyPriceString = String(format: "%.0f", userAtRow.hourlyPrice)
+            cell!.hourlyPriceLabel.text = "$" + hourlyPriceString
         }
        // cell!.chatButton.accessibilityIdentifier = userAtRow.uid
         

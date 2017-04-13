@@ -14,6 +14,7 @@ import EventKit
 import EventKitUI
 import DropDown
 import Hero
+import BubbleTransition
 
 struct properties {
     static let pickerEvents = [
@@ -79,7 +80,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         
        // let controller = storyboard.instantiateViewController(withIdentifier: "addEventVC") as! AddEventViewController
-        let controller = storyboard.instantiateViewController(withIdentifier: "addEventNC") as! UINavigationController
+        //let controller = storyboard.instantiateViewController(withIdentifier: "AddEventChannelListViewController") as! AddEventChannelListViewController
+        //let controller = storyboard.instantiateViewController(withIdentifier: "addEventNC") as! UINavigationController
+        
         //Hero.shared.setDefaultAnimationForNextTransition(.push(direction: .right))
         //hero_replaceViewController(with: controller)
         /*let addController = EKEventEditViewController()
@@ -87,8 +90,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // Set addController's event store to the current event store
         addController.eventStore = eventStore!
         addController.editViewDelegate = self*/
-        self.present(controller, animated: true, completion: nil)
-        
+        //self.present(controller, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "toAddEventNC", sender: self)
     }
     
     
@@ -219,7 +222,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         FriendSystem.system.addFriendObserver {
             print("inside FriendSystem.system.addFriendObserver")
-           // self.loadAllCalendars()
+            self.loadAllEvents()
             
             self.tableView.reloadData()
             //self.observeChannels()
@@ -503,8 +506,131 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
     }*/
  
-    /*func createCalendar(_ channelId: String) {
+    func loadAllEvents() {
+        print("loadAllCalendars()")
+        let friendList = FriendSystem.system.friendList
+        print("friendList.count \(friendList.count)")
+        print(friendList.count)
+        //let destUserID = destUser.uid
+        let channelRef = FIRDatabase.database().reference().child("channels")
         
+        channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
+            if snapshot.exists() {
+                print(" if snapshot.exists() {")
+                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                    print("typeofall")
+                    print(type(of: allChannels))
+                    print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
+                    self.iterationStatus = "inProcess"
+                    for channel in allChannels {
+                        
+                        if let channelDict = channel.value as? Dictionary<String, AnyObject> {
+                            
+                            print(" if let channelDict = channel.value as? Dictionary<String, AnyObject> {")
+                            //print(" if let channel = snapshot.value as? [String: String] {")
+                            //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                            for destUser in friendList {
+                                let destUserID = destUser.uid
+                                if self.currentUserIsTutor == false {
+                                    print("if self.currentUserIsTutor == false {")
+                                    if let tuteeName = channelDict["tuteeName"] as? String,
+                                        let  tutorName = channelDict["tutorName"] as? String{
+                                        print(" let  tutorName = channelDict[tutorName] as? String{")
+                                        if tuteeName == FIRAuth.auth()?.currentUser?.uid {
+                                            print("1if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
+                                            
+                                            if tutorName == destUserID {
+                                                self.iterationStatus = "done"
+                                                print("perform segue channel upcoming event")
+                                                print(channel)
+                                                // let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
+                                                if let eventsDict = channelDict["events"] as? [String: AnyObject] {
+                                                    for event in eventsDict {
+                                                        print("print event in eventsDict \(event)" )
+                                                    }
+                                                    
+                                                } else {
+                                                    // TODO: Handle nil case or default EKCalendar
+                                                }
+                                                
+                                                
+                                            }
+                                        }
+                                    }
+                                    
+                                } else if self.currentUserIsTutor == true {
+                                    print("if self.currentUserIsTutor == true {")
+                                    if let tuteeName = channelDict["tuteeName"] as? String,
+                                        let  tutorName = channelDict["tutorName"] as? String{
+                                        print(" let  tutorName = channelDict[tutorName] as? String{")
+                                        if tutorName == FIRAuth.auth()?.currentUser?.uid {
+                                           print("1if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
+                                            if tuteeName == destUserID {
+                                                self.iterationStatus = "done"
+                                                print("perform segue channel upcoming event")
+                                                print(channel)
+                                                if let eventsDict = channelDict["events"] as? [String: AnyObject] {
+                                                    for event in eventsDict {
+                                                        print("print event in eventsDict \(event)" )
+                                                    }
+                                                    
+                                                } else {
+                                                    // TODO: Handle nil case or default EKCalendar
+                                                }
+                                                
+                                            }
+                                        } //if channelDict["tutorName"]
+                                    }
+                                }
+                            } //for destUser in friendList
+                            
+                        }
+                        //self.displayAllCalendars()
+                        self.tableView.reloadData()
+                    } //for channel in allChannels {
+                    
+                }
+                
+                
+                
+            } //if snapshot.exists() {
+            self.displayAllCalendars()
+            /*let uuid = UUID().uuidString
+             if self.iterationStatus == "inProcess" {
+             if self.tutorOrTutee == "tuteeName" {
+             let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+             print("if tutorOrTutee == tuteeName {")
+             print("iterationStatus")
+             print(self.iterationStatus)
+             
+             self.createChannel(otherUser: destUserID)
+             print("if self.iterationStatus == inProcess1 {")
+             print("perform segue channel3")
+             print(channel)
+             
+             self.performSegue(withIdentifier: "toChatVC", sender: channel)
+             
+             
+             } else if self.tutorOrTutee == "tutorName" {
+             let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
+             print("if tutorOrTutee == tutorName {")
+             
+             print("if self.iterationStatus == inProcess2 {")
+             self.createChannel(otherUser: destUserID)
+             print("perform segue channel4")
+             print(channel)
+             self.performSegue(withIdentifier: "toChatVC", sender: channel)
+             
+             }
+             }*/
+            
+        })
+        
+        
+    }
+    /*func createCalendar(_ channelId: String) {
+     
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
@@ -559,7 +685,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.calendarView.appearance.selectionColor = UIColor.white
         self.calendarView.appearance.titleSelectionColor = UIColor.red
         self.calendarView.appearance.todayColor = UIColor.red
-        self.calendarView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
+        self.calendarView.backgroundColor = UIColor.white.withAlphaComponent(0.0)
         //self.calendarView.opacity = 0.3
         //self.calendarView.backgroundColor = UIColor(patternImage: UIImage(named:"calendar header bg")!)
       //  self.calendarView.appearance.
@@ -582,6 +708,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     // This method is called when the user selects an event in the table view. It configures the destination
     // event view controller with this event.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination
+        controller.transitioningDelegate = self
+        controller.modalPresentationStyle = .custom
         if segue.identifier == "showEventViewController" {
             // Configure the destination event view controller
             let eventViewController = segue.destination as! EKEventViewController
@@ -593,6 +722,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             // Allow event editing
             eventViewController.allowsEditing = true
         }
+       
+        
+        
     }
     /*func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         calendarHeightConstraint.constant = bounds.height
@@ -681,7 +813,25 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return titleString
     }
     
+    let transition = BubbleTransition()
     
+   
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    
+    public func animationController(forPresented presented: UITableViewController, presenting: UITableViewController, source: UITableViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        transition.startingPoint = addEventButton.center
+        transition.bubbleColor = addEventButton.backgroundColor!
+        return transition
+    }
+    
+    public func animationController(forDismissed dismissed: UITableViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        transition.startingPoint = addEventButton.center
+        transition.bubbleColor = addEventButton.backgroundColor!
+        return transition
+    }
     //MARK: -
     //MARK: Access Calendar
     
