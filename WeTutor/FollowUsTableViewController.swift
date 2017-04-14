@@ -13,7 +13,7 @@ class FollowUsTableViewController: UITableViewController {
     let facebookUrlString = "https://www.facebook.com/WeTutor-1832581133659961/?ref=aymt_homepage_panel"
     let inFacebookUrlString = "fb://profile/1832581133659961"
     let twitterUrlString = "https://twitter.com/wetutorapp"
-    let websiteUrlString = "wetutorapp.com"
+    let websiteUrlString = "https://www.wetutorapp.com"
     
     var facebookUrl: URL?
     var twitterUrl: URL?
@@ -41,11 +41,14 @@ class FollowUsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
             case 0:
-                self.openUrl(urlString: websiteUrlString)
+                break;
             case 1:
-                self.openUrl(urlString: facebookUrlString)
+                self.openUrl(urlString: websiteUrlString)
             case 2:
+                self.openUrl(urlString: facebookUrlString)
+            case 3:
                 self.openUrl(urlString: twitterUrlString)
+            
             default:
                 break;
         }

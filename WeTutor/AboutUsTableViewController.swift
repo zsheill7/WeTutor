@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import SCLAlertView
 
 class AboutUsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
@@ -19,6 +20,10 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
     }
     var currentUser: User?
     
+    func displayAlert(title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
     
     func rateApp(appId: String, completion: @escaping ((_ success: Bool)->())) {
         guard let url = URL(string : /*"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=\(appId)&onlyLatestVersion=true&pageNumber=0&sortOrdering=1"*/"itms-apps://itunes.apple.com/app/" + appId) else {
@@ -102,27 +107,33 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
     }
     
     func sendFeedback() {
-        
-        let mailComposerVC = MFMailComposeViewController()
-                mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
-        mailComposerVC.setSubject("Feedback")
-        mailComposerVC.setMessageBody("", isHTML: false)
-        mailComposerVC.navigationBar.tintColor = UIColor.white
+        if MFMailComposeViewController.canSendMail() {
+            let mailComposerVC = MFMailComposeViewController()
+                    mailComposerVC.mailComposeDelegate = self
+            mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
+            mailComposerVC.setSubject("Feedback")
+            mailComposerVC.setMessageBody("", isHTML: false)
+            mailComposerVC.navigationBar.tintColor = UIColor.white
 
-        self.present(mailComposerVC, animated: true, completion: nil)
-        
+            self.present(mailComposerVC, animated: true, completion: nil)
+        } else {
+            self.displayAlert(title: "Send Feedback", message: "Feel free to send feedback to wetutorapp@gmail.com")
+        }
     }
     
     func contactUs() {
-        let mailComposerVC = MFMailComposeViewController()
-        //if mailComposerVC.canSendMail() {
-            mailComposerVC.mailComposeDelegate = self
-            mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
-            mailComposerVC.setSubject("")
-            mailComposerVC.setMessageBody("", isHTML: false)
-            mailComposerVC.navigationBar.tintColor = UIColor.white
-            self.present(mailComposerVC, animated: true, completion: nil)
+         if MFMailComposeViewController.canSendMail() {
+            let mailComposerVC = MFMailComposeViewController()
+            //if mailComposerVC.canSendMail() {
+                mailComposerVC.mailComposeDelegate = self
+                mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
+                mailComposerVC.setSubject("")
+                mailComposerVC.setMessageBody("", isHTML: false)
+                mailComposerVC.navigationBar.tintColor = UIColor.white
+                self.present(mailComposerVC, animated: true, completion: nil)
+         } else {
+            self.displayAlert(title: "Contact Us", message: "Feel free to contact us at wetutorapp@gmail.com")
+        }
        // }
     }
     

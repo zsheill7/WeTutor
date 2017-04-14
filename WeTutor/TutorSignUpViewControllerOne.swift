@@ -17,7 +17,7 @@ import CoreLocation
 import NVActivityIndicatorView
 import FirebaseAnalytics
 
-var gradeLevels = ["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "College"]
+var gradeLevels = ["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "Undergraduate", "Graduate"]
 private enum MenuSection {
     case all(content: AllContent)
     case menuView(content: MenuViewContent)
@@ -248,6 +248,12 @@ class TutorSignUpViewControllerOne : FormViewController {
             +++ Section("Biography")
             
             
+            <<< TextRow("gpa") {
+                $0.title = "GPA (4.0 scale)"
+                $0.tag = "gpa"
+                $0.placeholder = "3.6"
+            }
+            
             <<< TextAreaRow("description") {
                 $0.placeholder = "Tell us a bit about yourself. This will appear on your profile."
                 $0.tag = "description"
@@ -301,6 +307,9 @@ class TutorSignUpViewControllerOne : FormViewController {
         }
         let row7: TextAreaRow? = self.form.rowBy(tag: "description")
         let description = row7?.value
+        
+        let row8: TextRow? = self.form.rowBy(tag: "gpa")
+        let gpa = row8?.value
         
         print(zipcode)
         print(school)
@@ -372,10 +381,12 @@ class TutorSignUpViewControllerOne : FormViewController {
                     self.ref.child("users/\(userID!)/grade").setValue(grade)
                     self.ref.child("users/\(userID!)/preferredSubject").setValue(subjectArray)
                     self.ref.child("users/\(userID!)/description").setValue(description)
+                    self.ref.child("users/\(userID!)/gpa").setValue(gpa)
               
                     FIRAnalytics.setUserPropertyString(school, forName: "school")
                     FIRAnalytics.setUserPropertyString(gender, forName: "gender")
                     FIRAnalytics.setUserPropertyString(grade, forName: "grade")
+                    FIRAnalytics.setUserPropertyString(gpa, forName: "gpa")
                     
                     for subject in subjectArray! {
                         FIRAnalytics.setUserPropertyString(subject, forName: "preferred_subject")

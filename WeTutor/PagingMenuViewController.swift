@@ -240,7 +240,7 @@ class PagingMenuViewController: UIViewController  {
                
                 userDefaults.synchronize()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "signupNC") as! UINavigationController
+                let controller = storyboard.instantiateViewController(withIdentifier: "loginNC") as! UINavigationController
                 self.present(controller, animated: true, completion: nil)
             }
     

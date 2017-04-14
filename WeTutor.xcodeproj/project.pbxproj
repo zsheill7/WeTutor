@@ -25,7 +25,8 @@
 		C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */; };
 		C829705D1E9EF6E6002233FB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C829705C1E9EF6E6002233FB /* UsersViewController.swift */; };
 		C829705F1E9EFB2C002233FB /* AddEventChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C829705E1E9EFB2C002233FB /* AddEventChannelListViewController.swift */; };
-		C82970611EA04336002233FB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82970601EA04336002233FB /* EventCell.swift */; };
+		C82970651EA045FE002233FB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82970641EA045FE002233FB /* EventCell.swift */; };
+		C82970671EA0516B002233FB /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82970661EA0516B002233FB /* AcknowledgementsViewController.swift */; };
 		C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BEE171E8608D6008C77AC /* Unused.storyboard */; };
 		C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */; };
 		C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */; };
@@ -153,7 +154,8 @@
 		C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutThisAppViewController.swift; sourceTree = "<group>"; };
 		C829705C1E9EF6E6002233FB /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		C829705E1E9EFB2C002233FB /* AddEventChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventChannelListViewController.swift; sourceTree = "<group>"; };
-		C82970601EA04336002233FB /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		C82970641EA045FE002233FB /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		C82970661EA0516B002233FB /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		C82BEE171E8608D6008C77AC /* Unused.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Unused.storyboard; sourceTree = "<group>"; };
 		C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityTableViewController.swift; sourceTree = "<group>"; };
 		C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -371,6 +373,7 @@
 				C82C9E521E987FA10082901E /* AboutUsTableViewController.swift */,
 				C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */,
 				C86D41151E9ACC39000C5B0F /* FollowUsTableViewController.swift */,
+				C82970661EA0516B002233FB /* AcknowledgementsViewController.swift */,
 			);
 			name = "About This App";
 			sourceTree = "<group>";
@@ -546,8 +549,8 @@
 				C87237FE1E8C163900C5A641 /* UserCellThree.swift */,
 				C84F180C1E713CF700EC54BF /* SubjectCell.xib */,
 				C84F180E1E71434C00EC54BF /* SubjectCell.swift */,
+				C82970641EA045FE002233FB /* EventCell.swift */,
 				C82C35FC1E93405900DD17CD /* EventCell.xib */,
-				C82970601EA04336002233FB /* EventCell.swift */,
 				C83A5E571E8ED58500716C89 /* ChatUserCell.swift */,
 			);
 			name = "Xib Files";
@@ -765,7 +768,6 @@
 				C81DA3CE1E3FB8A600CB15A8 /* SettingsTableViewController.swift in Sources */,
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
-				C82970611EA04336002233FB /* EventCell.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
 				C82C9E531E987FA30082901E /* AboutUsTableViewController.swift in Sources */,
 				C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */,
@@ -800,6 +802,7 @@
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */,
 				C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */,
+				C82970671EA0516B002233FB /* AcknowledgementsViewController.swift in Sources */,
 				C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */,
 				C86D41161E9ACC39000C5B0F /* FollowUsTableViewController.swift in Sources */,
 				C8EE885C1E0DB144003775C2 /* FSCalendarExtensions.m in Sources */,
@@ -821,6 +824,7 @@
 				C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */,
 				C87984A61E0C76A5003EB7A1 /* Pagable.swift in Sources */,
 				C87984B51E0D01FB003EB7A1 /* User.swift in Sources */,
+				C82970651EA045FE002233FB /* EventCell.swift in Sources */,
 				C84F180B1E70D58000EC54BF /* UniversalVariables.swift in Sources */,
 				C84F18091E708A9300EC54BF /* WeekDaysCellTwo.swift in Sources */,
 				C8EE88551E0DB144003775C2 /* FSCalendarCalculator.m in Sources */,

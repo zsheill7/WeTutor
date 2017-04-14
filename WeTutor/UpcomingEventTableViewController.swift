@@ -214,7 +214,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         self.view.addBackground()
         calendarWidthConstraint.constant = self.view.frame.size.width
-        self.tableView.backgroundColor = UIColor.white
+        self.tableView.backgroundColor = UIColor.clear
         self.calendarView.width = self.view.width + 20
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
@@ -788,9 +788,16 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         let calendar = Calendar.current
         let eventAtRow = self.events[indexPath.row]
         tableView.register(UINib(nibName: "EventCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell
-        cell?.contentView.backgroundColor = UIColor.clear
+        var cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? EventCell
+        //cell?.contentView.backgroundColor = UIColor.blue
+        cell?.backgroundColor = UIColor.clear
+        cell?.selectionStyle = UITableViewCellSelectionStyle.none
         // Get the event at the row selected and display its title
+        
+        if cell != nil {
+            print( "cell != nil")
+        }
+        
         let title = eventAtRow.title
         let startDateString = String(describing: eventAtRow.startDate)
         let endDateString = String(describing: eventAtRow.endDate)

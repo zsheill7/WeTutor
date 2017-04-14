@@ -25,12 +25,14 @@ class EventCell: UITableViewCell {
     override func awakeFromNib() {
         var screenBounds = UIScreen.main.bounds
         
-        let cellHeight = 70
-        self.contentView.backgroundColor = UIColor.clear
+        let width = screenBounds.size.width
+        let cellHeight = 105
+        let cornerRadius:CGFloat = 5
+        //self.contentView.backgroundColor = UIColor.red
         if let calendarImage = UIImage(named: "calendarIcon") {
             calendarIcon.image = calendarImage
         }
-         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight - 20))
+         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight))
         
         whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
         whiteRoundedView.layer.masksToBounds = false
@@ -45,11 +47,11 @@ class EventCell: UITableViewCell {
         
         
         
-        self.contentView.alpha = 0
+        self.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.contentView.alpha = 1
         }
-        self.contentView.addSubview(whiteRoundedView)
-        self.contentView.sendSubview(toBack: whiteRoundedView)
+        self.addSubview(whiteRoundedView)
+        self.sendSubview(toBack: whiteRoundedView)
     }
 }

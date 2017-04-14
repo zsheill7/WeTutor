@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="t5v-fx-kkl">
-                    <rect key="frame" x="14" y="12" width="60" height="60"/>
+                    <rect key="frame" x="20" y="12" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="2Tc-rg-vKH"/>
                         <constraint firstAttribute="height" constant="60" id="VeK-Ws-ELd"/>
@@ -73,13 +73,13 @@
                     </constraints>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Xoq-fc-eH1" firstAttribute="centerX" secondItem="t5v-fx-kkl" secondAttribute="centerX" id="LMC-tb-O7C"/>
                 <constraint firstItem="nxV-hY-Dmy" firstAttribute="centerX" secondItem="t5v-fx-kkl" secondAttribute="centerX" id="X6D-TM-vh6"/>
                 <constraint firstItem="h7G-xH-E7J" firstAttribute="leading" secondItem="t5v-fx-kkl" secondAttribute="trailing" constant="12" id="a3A-Me-P1p"/>
                 <constraint firstItem="t5v-fx-kkl" firstAttribute="centerY" secondItem="OFA-vm-86F" secondAttribute="centerY" id="g9P-JK-fNe"/>
-                <constraint firstItem="t5v-fx-kkl" firstAttribute="leading" secondItem="OFA-vm-86F" secondAttribute="leading" constant="14" id="lHV-aG-T33"/>
+                <constraint firstItem="t5v-fx-kkl" firstAttribute="leading" secondItem="OFA-vm-86F" secondAttribute="leading" constant="20" id="lHV-aG-T33"/>
                 <constraint firstItem="t5v-fx-kkl" firstAttribute="top" secondItem="nxV-hY-Dmy" secondAttribute="bottom" constant="-21" id="q0k-Z4-OOe"/>
                 <constraint firstItem="h7G-xH-E7J" firstAttribute="centerY" secondItem="t5v-fx-kkl" secondAttribute="centerY" id="u9D-uG-qHz"/>
                 <constraint firstItem="Xoq-fc-eH1" firstAttribute="centerY" secondItem="t5v-fx-kkl" secondAttribute="centerY" constant="9" id="xR4-H8-nA0"/>

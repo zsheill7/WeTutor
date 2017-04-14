@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="po6-xZ-mW1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="po6-xZ-mW1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,8 +36,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="291" id="abO-KE-fJr"/>
                                 </constraints>
-                                <mutableString key="text">     WeTutor is an app made by TokkiTech, a company founded by four students from Mercer Island High School: Zoe Sheill, Emily Kim, Katherine Gelsey, and Valentina Muti.       Having prior experience tutoring other students and observing their community around them, they wanted to create an app which would ease the access and communication between the students and tutors. </mutableString>
-                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">     WeTutor is an app made by TokkiTech, a company founded by four students from Mercer Island High School: Zoe Sheill, Emily Kim, Katherine Gelsey, and Valentina Muti.       Having prior experience tutoring other students and observing their community around them, they wanted to create an app which would ease the access and communication between the students and tutors. </string>
+                                <color key="textColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="2696.8000000000002" y="10.344827586206897"/>
         </scene>
-        <!--View Controller-->
+        <!--Acknowledgements View Controller-->
         <scene sceneID="8jf-JC-tob">
             <objects>
-                <viewController storyboardIdentifier="AcknowledgementsViewController" id="WQZ-Ha-rO9" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AcknowledgementsViewController" id="WQZ-Ha-rO9" customClass="AcknowledgementsViewController" customModule="WeTutor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c3a-gL-cHn"/>
                         <viewControllerLayoutGuide type="bottom" id="kdg-PB-fFA"/>
@@ -73,12 +73,43 @@
                     <view key="view" contentMode="scaleToFill" id="Dz9-fu-GT5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Huge thank you to Libby Johnson McKee, the Director of Recommerce at Amazon, for her guidance and support along the way!" translatesAutoresizingMaskIntoConstraints="NO" id="Joj-7d-j5L">
+                                <rect key="frame" x="26" y="265" width="323" height="291"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="291" id="IxS-kZ-cvt"/>
+                                </constraints>
+                                <color key="textColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES" address="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XpT-VQ-xwO">
+                                <rect key="frame" x="23" y="606" width="329" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Okay">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedOkay:" destination="6Bg-O0-SRl" eventType="touchUpInside" id="AEx-jc-0f7"/>
+                                    <action selector="pressedOkay:" destination="WQZ-Ha-rO9" eventType="touchUpInside" id="ILk-Rt-nTu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Joj-7d-j5L" secondAttribute="trailing" constant="10" id="Fcu-pd-5VR"/>
+                            <constraint firstItem="Joj-7d-j5L" firstAttribute="leading" secondItem="Dz9-fu-GT5" secondAttribute="leadingMargin" constant="10" id="H7M-K6-aTL"/>
+                            <constraint firstItem="XpT-VQ-xwO" firstAttribute="leading" secondItem="Dz9-fu-GT5" secondAttribute="leading" constant="23" id="RoQ-iM-hqC"/>
+                            <constraint firstItem="kdg-PB-fFA" firstAttribute="top" secondItem="XpT-VQ-xwO" secondAttribute="bottom" constant="27" id="YIr-Gw-z3C"/>
+                            <constraint firstItem="XpT-VQ-xwO" firstAttribute="top" secondItem="Joj-7d-j5L" secondAttribute="bottom" constant="50" id="iJ7-cr-vGb"/>
+                            <constraint firstAttribute="trailing" secondItem="XpT-VQ-xwO" secondAttribute="trailing" constant="23" id="srg-mM-4Og"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3v-dX-j0w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2716" y="494.30284857571218"/>
+            <point key="canvasLocation" x="2726" y="666"/>
         </scene>
         <!--Follow Us Table View Controller-->
         <scene sceneID="9O4-1D-mxp">
