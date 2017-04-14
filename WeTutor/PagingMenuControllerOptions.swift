@@ -50,7 +50,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
         }*/
 
         var defaultPage: Int {
-            return 0
+            return 1
         }
         
         var height: CGFloat {

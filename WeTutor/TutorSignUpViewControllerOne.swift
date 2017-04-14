@@ -124,29 +124,27 @@ class TutorSignUpViewControllerOne : FormViewController {
     }
     
     typealias Emoji = String
+    var currentUserIsTutor: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        FriendSystem.system.getCurrentUser {_ in 
+            
+        }
         navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         
         
-        
-                        
-                        
-                /* cellWidth = Int(self.view.frame.width / CGFloat(cols))
-                 cellHeight = Int(self.view.frame.height / CGFloat(rows))*/
-                
-                //self.view?.backgroundColor = UIColor.backgroundBlue()
-                //self.view.addBackground("Info Input Page (solid)")
-                //self.view.backgroundColor = UIColor(red:0.40, green:0.75, blue:0.80, alpha:1.0)
-        //self.tableView?.backgroundColor = UIColor.backgroundBlue()
-         self.view.addBackground()
+        self.view.addBackground()
         self.loadForm()
         //self.view.backgroundColor = UIColor
         //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(byPercentage: 0.2)
                 //self.view.addBackground("book.png")
                 
               //  self.hideKeyboardWhenTappedAround()
+        let currentUser = FriendSystem.system.currentUser
+        if currentUser != nil {
+            self.currentUserIsTutor = currentUser?.isTutor
+        }
     }
     
     func loadForm() {
@@ -252,6 +250,14 @@ class TutorSignUpViewControllerOne : FormViewController {
                 $0.title = "GPA (4.0 scale)"
                 $0.tag = "gpa"
                 $0.placeholder = "3.6"
+                if currentUserIsTutor != nil {
+                    $0.hidden = .function([""], { form -> Bool in
+                        return !self.currentUserIsTutor!
+                    })
+                    
+                } else {
+                    $0.hidden = false
+                }
             }
             
             <<< TextAreaRow("description") {

@@ -25,7 +25,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
 
   
     var ref: FIRDatabaseReference!
-    var currentUser: User?
+
     
     func displayAlert(title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
@@ -33,12 +33,23 @@ class SettingsAvailabilityTableViewController : FormViewController {
     }
     
     //MARK: - viewDidLoad
+    var currentUser: User?
+    var currentUserIsTutor: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("currentUser?.availabilityInfo")
-        print(currentUser?.availabilityInfo)
+        print("currentUser?.phone as AnyObject?")
+        print(currentUser?.phone as AnyObject?)
+        //initializeForm()
         
         
+        FriendSystem.system.getCurrentUser {_ in
+            
+        }
+        
+         currentUser = FriendSystem.system.currentUser
+        if currentUser != nil {
+            self.currentUserIsTutor = currentUser?.isTutor
+        }
         //self.tableView?.addBlueBackground("mixed2")
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         let availabilityInfo: String = ""
@@ -73,7 +84,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
             +++ Section("More Info on Availability (optional)")
 
             <<< TextAreaRow("Availability Notes") {
-                $0.placeholder = "I'm available Sundays, but only after 3:00."
+                $0.placeholder = currentUser?.availabilityInfo
                 $0.textAreaHeight = .dynamic(initialTextViewHeight: 70)
                 
                 
@@ -108,80 +119,42 @@ class SettingsAvailabilityTableViewController : FormViewController {
                         }
                 }
         
+            +++ Section("Prices")
+            /*ButtonRow() {
+             $0.title = "Price FAQ"
+             }
+             .onCellSelection {  cell, row in  //do whatever you want
+             self.openPricePopover()
+             }*/
+            
+            <<< DecimalRow("Price") {
+                $0.useFormatterDuringInput = true
+                $0.title = "Price"
+                $0.value = currentUser?.hourlyPrice
+                let formatter = CurrencyFormatter()
+                formatter.locale = .current
+                formatter.numberStyle = .currency
+                $0.formatter = formatter
+                if currentUserIsTutor != nil {
+                    $0.hidden = .function([""], { form -> Bool in
+                        return !self.currentUserIsTutor!
+                    })
+                    
+                } else {
+                    $0.hidden = false
+                }
+            }
+            
+
+            
             +++ Section()
             <<< ButtonRow() {
-                $0.title = "Finish"
+                $0.title = "Save"
                 }
                 .onCellSelection { cell, row in
                     
-                    let userDefaults = UserDefaults.standard
-                    
-                    
-                    
-                    
-                    //let availableDays: [Bool] = row
-                    let row1: WeekDayRow? = self.form.rowBy(tag: "Available Days")
-                    let daysValue = row1?.value
-                    
-                   //
-                    var weekDayString = ""
-                    let weekDayCell = WeekDayCell()
-                    if daysValue != nil {
-                        weekDayString = weekDayCell.getStringFromArray(daysValue!)
-                        print("daysValue: " + weekDayString)
-                    }
-                    
-                    
-                    let row2: TextRow? = self.form.rowBy(tag: "Availability Notes")
-                    let availabilityInfo = row2?.value
-                    row2?.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.7)
-                    
-                    var firstLanguage = ""
-                    if let row3 = self.form.rowBy(tag: "First Language") as? TextRow? {
-                        firstLanguage = (row3?.value)!
-                    } else {
-                        firstLanguage = "English"
-                    }
-                    
-                   
-                    print(firstLanguage)
-                    let row4: TextRow? = self.form.rowBy(tag: "Second Language")
-                    let secondLanguage = row4?.value
-                    
-                    let row5: TextRow? = self.form.rowBy(tag: "Third Language")
-                    let thirdLanguage = row5?.value
-                    
-                    if firstLanguage != "None" {
-                        languages.append(firstLanguage)
-                    }
-                    if secondLanguage != "None" && secondLanguage != nil{
-                        languages.append(secondLanguage!)
-                    }
-                    if thirdLanguage != "None" && thirdLanguage != nil{
-                        languages.append(thirdLanguage!)
-                    }
-
-                    print(languages)
-             
-                    
-                    userDefaults.setValue(weekDayString, forKey: "availableDays")
-                    userDefaults.setValue(languages, forKey: "languages")
-                    userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
-                    userDefaults.synchronize()
-                    
-                    if let user = FIRAuth.auth()?.currentUser {
-                        self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
-                        self.ref.child("users/\(user.uid)/languages").setValue(languages)
-                        self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
-                        
-                        //self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
-                        self.displayAlert(title: "Success!", message: "Your settings have been updated")
-                        self.goBackToSettings()
-                    
-                    } else {
-                        // No user is signed in.
-                        // ...
-                    }
+                    self.continueSelected()
+                    self.goBackToSettings()
         
                     
                     
@@ -195,6 +168,101 @@ class SettingsAvailabilityTableViewController : FormViewController {
         
         
     }
+    
+    func continueSelected() {
+        let userDefaults = UserDefaults.standard
+        
+        
+        var languages: [String] = [String]()
+        
+        //let availableDays: [Bool] = row
+        let row1: WeekDayRow? = self.form.rowBy(tag: "Available Days")
+        let daysValue = row1?.value
+        
+        //
+        var weekDayString = ""
+        var weekDayArray:[Bool] = []
+        let weekDayCell = WeekDayCell()
+        if daysValue != nil {
+            weekDayString = weekDayCell.getStringFromArray(daysValue!)
+            weekDayArray = weekDayCell.getBoolArrayFromArray(daysValue!)
+            print("daysValue: " + weekDayString)
+        } else {
+            print( "if daysValue == nil" )
+        }
+        
+        
+        let row2: TextRow? = self.form.rowBy(tag: "Availability Notes")
+        let availabilityInfo = row2?.value
+        row2?.cell.contentView.tintColor = UIColor(white: 1, alpha: 0.7)
+        
+        var firstLanguage = ""
+        if let row3 = self.form.rowBy(tag: "First Language") as? TextRow? {
+            firstLanguage = (row3?.value)!
+        } else {
+            firstLanguage = "English"
+        }
+        
+        
+        print(firstLanguage)
+        let row4: TextRow? = self.form.rowBy(tag: "Second Language")
+        let secondLanguage = row4?.value
+        
+        let row5: TextRow? = self.form.rowBy(tag: "Third Language")
+        let thirdLanguage = row5?.value
+        
+        if firstLanguage != "None" {
+            languages.append(firstLanguage)
+            FIRAnalytics.setUserPropertyString(firstLanguage, forName: "first_language")
+        }
+        if secondLanguage != "None" && secondLanguage != nil{
+            languages.append(secondLanguage!)
+            FIRAnalytics.setUserPropertyString(secondLanguage, forName: "second_language")
+        }
+        if thirdLanguage != "None" && thirdLanguage != nil{
+            languages.append(thirdLanguage!)
+            FIRAnalytics.setUserPropertyString(thirdLanguage, forName: "third_language")
+        }
+        
+        print(languages)
+        
+        let row6: DecimalRow? = self.form.rowBy(tag: "Price")
+        let hourlyPrice = row6?.value
+        if hourlyPrice != nil {
+            FIRAnalytics.setUserPropertyString(String(describing: hourlyPrice), forName: "third_language")
+        }
+        
+        
+        for i in 0...6 {
+            FIRAnalytics.setUserPropertyString("\(weekDayArray[i])", forName: "\(weekdays[i])_available")
+        }
+        FIRAnalytics.setUserPropertyString(availabilityInfo, forName: "availability_info")
+        
+        
+        
+        userDefaults.setValue(weekDayString, forKey: "availableDays")
+        userDefaults.setValue(languages, forKey: "languages")
+        userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
+        userDefaults.synchronize()
+        
+        if let user = FIRAuth.auth()?.currentUser {
+            self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
+            self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
+            self.ref.child("users/\(user.uid)/languages").setValue(languages)
+            self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
+            self.ref.child("users/\(user.uid)/completedTutorial").setValue(false)
+            self.ref.child("users/\(user.uid)/hourlyPrice").setValue(hourlyPrice)
+            //self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
+            
+        } else {
+            // No user is signed in.
+            // ...
+        }
+    }
+    
+    /*override func viewWillDisappear(_ animated: Bool) {
+        self.continueSelected()
+    }*/
     
     func multipleSelectorDone(_ item:UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
@@ -219,16 +287,16 @@ class SettingsAvailabilityTableViewController : FormViewController {
 
 
 /*class EurekaLogoViewNib: UIView {
-    
+ 
     @IBOutlet weak var imageView: UIImageView!
-    
+ 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 }
 
 class EurekaLogoView: UIView {
-    
+ 
     override init(frame: CGRect) {
         super.init(frame: frame)
         let imageView = UIImageView(image: UIImage(named: "Eureka"))

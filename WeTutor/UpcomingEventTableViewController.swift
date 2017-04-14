@@ -207,6 +207,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         super.viewDidLoad()
         // Initialize the event store
        // eventStore = EKEventStore()
+        self.transitioningDelegate = self
        eventStore = EKEventStore()
         self.setupCalendarAppearance()
         
@@ -846,25 +847,31 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return titleString
     }
     
-    let transition = BubbleTransition()
+    
     
    
-    
+   /* func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return DrinkPresentationViewController(presentedViewController:presented, presenting: presenting)
+    }*/
     // MARK: UIViewControllerTransitioningDelegate
     
-    public func animationController(forPresented presented: UITableViewController, presenting: UITableViewController, source: UITableViewController) -> UIViewControllerAnimatedTransitioning? {
+    public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = BubbleTransition()
         transition.transitionMode = .present
         transition.startingPoint = addEventButton.center
-        transition.bubbleColor = addEventButton.backgroundColor!
+        transition.bubbleColor = UIColor.blue//addEventButton.backgroundColor!
         return transition
     }
     
-    public func animationController(forDismissed dismissed: UITableViewController) -> UIViewControllerAnimatedTransitioning? {
+    public override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = BubbleTransition()
         transition.transitionMode = .dismiss
         transition.startingPoint = addEventButton.center
         transition.bubbleColor = addEventButton.backgroundColor!
         return transition
     }
+    
+   
     //MARK: -
     //MARK: Access Calendar
     

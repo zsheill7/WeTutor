@@ -12,6 +12,7 @@ import Firebase
 import EventKit
 import EventKitUI
 import Hero
+import BubbleTransition
 
 extension UIApplication {
     class func topViewController(_ base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
@@ -86,6 +87,13 @@ private enum MenuSection {
 }
 
 
+/*extension PagingMenuViewController: UINavigationControllerDelegate {
+    
+    override func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        //Check for the good animation
+        return MyAnimation()
+    }
+}*/
 
 class PagingMenuViewController: UIViewController  {
     
@@ -249,6 +257,26 @@ class PagingMenuViewController: UIViewController  {
         self.navigationItem.titleView = menuView
     }
     
+    
+    // MARK: UIViewControllerTransitioningDelegate
+    
+    public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = BubbleTransition()
+        transition.transitionMode = .present
+        transition.startingPoint = self.view.center
+        transition.bubbleColor = UIColor.blue//addEventButton.backgroundColor!
+        return transition
+    }
+    
+    public override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = BubbleTransition()
+        transition.transitionMode = .dismiss
+        transition.startingPoint = self.view.center//addEventButton.center
+        transition.bubbleColor =  UIColor.blue//addEventButton.backgroundColor!
+        return transition
+    }
+
+    
     //let transition = BubbleTransition()
     
     func openChat() {
@@ -257,6 +285,12 @@ class PagingMenuViewController: UIViewController  {
     
     func openCalendar() {
         pagingMenuController?.move(toPage: 2, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination
+        controller.transitioningDelegate = self
+        controller.modalPresentationStyle = .custom
     }
     /*public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transition.transitionMode = .present

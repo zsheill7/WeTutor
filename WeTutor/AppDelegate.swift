@@ -31,15 +31,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // UIFont(
      //  UIApplication.shared.statusBarStyle = .lightContent
         
+        var currentUser: User?
         
         let userDefaults = UserDefaults.standard
+        
+        FriendSystem.system.getCurrentUser { (user) in
+            currentUser = user
+        }
+        
+        
+        
         print(userDefaults.value(forKey: "isTutor") as? Bool)
        // print(userDefaults.value(forKey: "languages") as? [String])
         print(userDefaults.value(forKey: "description") as? String)
         print(FIRAuth.auth()?.currentUser?.uid)
-        if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+        if let isTutor = currentUser?.isTutor as? Bool,
         
-            let hasDescription = userDefaults.value(forKey: "description") as? String,
+            let hasDescription = currentUser?.isTutor as? String,
+            let availableDays = currentUser?.availableDaysArray,
             let uid = FIRAuth.auth()?.currentUser?.uid {
         
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)

@@ -26,6 +26,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
     var ref: FIRDatabaseReference!
     var currentUser: User?
     var profileImageUrlString = ""
+    var currentUserIsTutor: Bool?
     //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,10 @@ class TutorSignUpViewControllerTwo : FormViewController {
             print(error.localizedDescription)
         }
   
+        let currentUser = FriendSystem.system.currentUser
+        if currentUser != nil {
+            self.currentUserIsTutor = currentUser?.isTutor
+        }
     }
     
     func loadForm() {
@@ -123,6 +128,14 @@ class TutorSignUpViewControllerTwo : FormViewController {
                 formatter.locale = .current
                 formatter.numberStyle = .currency
                 $0.formatter = formatter
+                if currentUserIsTutor != nil {
+                    $0.hidden = .function([""], { form -> Bool in
+                        return !self.currentUserIsTutor!
+                    })
+
+                } else {
+                    $0.hidden = false
+                }
             }
             
             +++ Section()

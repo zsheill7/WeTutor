@@ -56,7 +56,7 @@ private enum MenuSection {
 
 class SettingsBasicInfoTableViewController : FormViewController {
     var ref: FIRDatabaseReference!
-    var currentUser: User?
+    
     
     func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
@@ -98,6 +98,8 @@ class SettingsBasicInfoTableViewController : FormViewController {
         self.present(controller, animated: true, completion: nil)
     }
        typealias Emoji = String
+    var currentUser: User?
+    var currentUserIsTutor: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
         print("currentUser?.phone as AnyObject?")
@@ -105,6 +107,16 @@ class SettingsBasicInfoTableViewController : FormViewController {
         //initializeForm()
         
  
+        FriendSystem.system.getCurrentUser {_ in
+            
+        }
+        
+        currentUser = FriendSystem.system.currentUser
+        
+        if currentUser != nil {
+            self.currentUserIsTutor = currentUser?.isTutor
+        }
+        
         cellWidth = Int(self.view.frame.width / CGFloat(cols))
         cellHeight = Int(self.view.frame.height / CGFloat(rows))
         
@@ -117,22 +129,24 @@ class SettingsBasicInfoTableViewController : FormViewController {
             
             Section()
             
-            
-            <<< ZipCodeRow() {
-                $0.title = "ZipCodeRow"
-                $0.placeholder = "90210"
+            <<< ZipCodeRow("zipcode") {
+                $0.title = "Zipcode"
+                $0.tag = "zipcode"
+                $0.value = currentUser?.address
             }
             
-            <<< TextRow() {
+            <<< TextRow("school") {
                 $0.title = "School Name"
-                $0.placeholder = "Mercer Island High School"
+                $0.tag = "school"
+               $0.value = currentUser?.school
             }
             
-            <<< PhoneRow() {
-                $0.title = "PhoneRow (disabled)"
-                $0.value = "+598 9898983510"
-                $0.disabled = true
+            <<< PhoneRow("phone") {
+                $0.title = "Phone Number"
+                $0.tag = "phone"
+                $0.value = currentUser?.phone
             }
+            
             
             +++ Section()
             
@@ -140,14 +154,14 @@ class SettingsBasicInfoTableViewController : FormViewController {
                 $0.title = "Gender"
                 $0.options = ["Male", "Female", "Other"]
                 
-                $0.value = $0.options.first
+                $0.value = currentUser?.gender
             }
             
             
             <<< PushRow<Emoji>() {
                 $0.title = "Grade"
                 $0.options = gradeLevels
-                $0.value = gradeLevels[0]
+                $0.value = currentUser?.grade
                 $0.selectorTitle = "Choose your grade level"
                 }.onPresent { from, to in
                     to.sectionKeyForValue = { option in
@@ -160,7 +174,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
             <<< PushRow<Emoji>() {
                 $0.title = "Preferred Subject"
                 $0.options = subjectNames
-                $0.value = subjectNames[0]
+                $0.value = currentUser?.preferredSubjects[0]
                 $0.selectorTitle = "Choose your preferred subject(s)"
                 }.onPresent { from, to in
                     to.sectionKeyForValue = { option in
@@ -172,13 +186,51 @@ class SettingsBasicInfoTableViewController : FormViewController {
                         }
                     }
             }
+            
+            
+            
+            +++ Section("Biography")
+            
+            
+            
+            <<< TextRow("gpa") {
+                $0.title = "GPA (4.0 scale)"
+                $0.tag = "gpa"
+                $0.value = String(describing: currentUser?.gpa)
+                if currentUserIsTutor != nil {
+                    $0.hidden = .function([""], { form -> Bool in
+                        return !self.currentUserIsTutor!
+                    })
+                    
+                } else {
+                    $0.hidden = false
+                }
+            }
+            
+            <<< TextAreaRow("description") {
+                $0.value = currentUser?.description
+                $0.tag = "description"
+                $0.textAreaHeight = .dynamic(initialTextViewHeight: 90)
+                }.cellSetup({ (cell, row) in
+                    cell.backgroundColor = UIColor.white
+                    
+                    
+                    cell.textView.backgroundColor = UIColor.clear
+                })
+            
             +++ Section()
+            <<< ButtonRow() {
+                $0.title = "Save"
+                }
+                .onCellSelection { cell, row in
+                    print("here0")
+                    self.continueSelected()
+                    self.goBackToSettings()
+                    
+            }
+
             
-            <<< TextAreaRow("Description") {
-                $0.placeholder = "Tell us about yourself"
-                $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
-        }
-            
+        
             
             
             
@@ -191,7 +243,171 @@ class SettingsBasicInfoTableViewController : FormViewController {
             
             self.hideKeyboardWhenTappedAround()
         }
+    
+    func continueSelected() {
+        print("here1")
+        let row1: ZipCodeRow? = self.form.rowBy(tag: "zipcode")
+        let zipcode = row1?.value
+        
+        let row2: TextRow? = self.form.rowBy(tag: "school")
+        let school = row2?.value
+        let row3: PhoneRow? = self.form.rowBy(tag: "phone")
+        let phone = row3?.value
+        let row4: PickerInlineRow<String>? = self.form.rowBy(tag: "gender")
+        let gender = row4?.value
+        let row5: PickerInlineRow<String>? = self.form.rowBy(tag: "grade")
+        let grade = row5?.value
+        let row6: MultipleSelectorRow<Emoji>? = self.form.rowBy(tag: "subject")
+        let subject = row6?.value
+        
+        var subjectArray: [String]?
+        if subject != nil {
+            subjectArray = Array(subject!)
+        }
+        let row7: TextAreaRow? = self.form.rowBy(tag: "description")
+        let description = row7?.value
+        
+        let row8: TextRow? = self.form.rowBy(tag: "gpa")
+        let gpa = row8?.value
+        
+        print(zipcode)
+        print(school)
+        print(phone)
+        print(gender)
+        print(grade)
+        print(subject)
+        print(description)
+        print()
+        
+        
+        
+        if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subjectArray != nil {
+            
+            self.ref = FIRDatabase.database().reference()
+            
+            
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(description, forKey: "description")
+            print(school)
+            print(grade)
+            print(description)
+            
+            let user = FIRAuth.auth()?.currentUser
+            
+            let userID = FIRAuth.auth()?.currentUser?.uid
+            self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                print("got snapshot")
+                
+                let value = snapshot.value as? NSDictionary
+                print("value?[name] as? String \(value?["name"] as? String)")
+                print("value?[password] as? String \(value?["password"] as? String)")
+                print("value?[email] as? String \(value?["email"] as? String)")
+                print("value?[isTutor] as? String \(value?["isTutor"] as? Bool)")
+                if let name = value?["name"] as? String,
+                    let password = value?["password"] as? String,
+                    let email = value?["email"] as? String,
+                    let isTutor = value?["isTutor"] as? Bool{
+                    
+                    
+                    /* if let email = userDefaults.value(forKey: "email"),
+                     let password = userDefaults.value(forKey: "password"),
+                     let name = userDefaults.value(forKey: "name"),
+                     let user = FIRAuth.auth()?.currentUser {*/
+                    let x = Int(self.view.center.x)
+                    let y = Int(self.view.center.y)
+                    let frame = CGRect(x: x, y: y, width: self.cellWidth, height: self.cellHeight)
+                    
+                    let activityIndicatorView = NVActivityIndicatorView(frame: frame,
+                                                                        type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.lineScale.rawValue) )
+                    let animationTypeLabel = UILabel(frame: frame)
+                    
+                    animationTypeLabel.text = "Loading..."
+                    animationTypeLabel.sizeToFit()
+                    animationTypeLabel.textColor = UIColor.white
+                    animationTypeLabel.frame.origin.x += 5
+                    animationTypeLabel.frame.origin.y += CGFloat(self.cellHeight) - animationTypeLabel.frame.size.height
+                    
+                    activityIndicatorView.padding = 20
+                    self.view.addSubview(activityIndicatorView)
+                    self.view.addSubview(animationTypeLabel)
+                    activityIndicatorView.startAnimating()
+                    
+                    self.ref.child("users/\(userID!)/zipcode").setValue(zipcode)
+                    self.ref.child("users/\(userID!)/schoolName").setValue(school)
+                    self.ref.child("users/\(userID!)/phone").setValue(phone)
+                    self.ref.child("users/\(userID!)/gender").setValue(gender)
+                    self.ref.child("users/\(userID!)/grade").setValue(grade)
+                    self.ref.child("users/\(userID!)/preferredSubject").setValue(subjectArray)
+                    self.ref.child("users/\(userID!)/description").setValue(description)
+                    self.ref.child("users/\(userID!)/gpa").setValue(gpa)
+                    
+                    FIRAnalytics.setUserPropertyString(school, forName: "school")
+                    FIRAnalytics.setUserPropertyString(gender, forName: "gender")
+                    FIRAnalytics.setUserPropertyString(grade, forName: "grade")
+                    FIRAnalytics.setUserPropertyString(gpa, forName: "gpa")
+                    
+                    for subject in subjectArray! {
+                        FIRAnalytics.setUserPropertyString(subject, forName: "preferred_subject")
+                    }
+                    
+                    
+                    print("error=nil")
+                    let geocoder = CLGeocoder()
+                    geocoder.geocodeAddressString(zipcode!) { placemarks, error in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "")
+                        } else {
+                            for placemark in placemarks! {
+                                let location = placemark.location
+                                let latitude = location?.coordinate.latitude
+                                let longitude = location?.coordinate.longitude
+                                self.ref.child("users/\(userID!)/latitude").setValue(latitude)
+                                self.ref.child("users/\(userID!)/longitude").setValue(longitude)
+                            }
+                        }
+                    }
+                    activityIndicatorView.stopAnimating()
+                    
+                    
+                    
+                } else {
+                    self.displayAlert("You are not signed in", message: "Please log in again")
+                }//if let zipcode = self.form.sections[0].rows[0].value,
+                //let schoolName = self.form.sections[1].rows[0].value,
+                
+                
+                // ...
+            }) { (error) in
+                self.displayAlert("Error", message: error.localizedDescription)
+            }
+            
+            
+            
+            
+            
+        } else {
+            self.displayAlert("Error", message: "Please fill out every section.")
+        }
+        
     }
+    
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    /*override func viewWillDisappear(_ animated: Bool) {
+        self.continueSelected()
+    }
+    */
+    /*func goBackToSettings() {
+        self.dismissViewController(animted)
+    }*/
+
+}
+
+
     /*override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
     }*/

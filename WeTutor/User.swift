@@ -16,7 +16,8 @@ struct User {
     let email:String
     let name:String
     let isTutor: Bool
-
+    let gender: String
+    
     let description: String
     let phone: String
     let address:String
@@ -26,6 +27,7 @@ struct User {
     let availableDaysStringArray: [String]
     let availableDaysArray: [Bool]
     let preferredSubjects: [String]
+    
     
     let availabilityInfo: String
     let grade: String
@@ -263,6 +265,12 @@ struct User {
             self.hourlyPrice = hourlyPrice
         } else {
             self.hourlyPrice = 0.0
+        }
+        
+        if let gender = snapshotValue?["gender"] as? String {
+            self.gender = gender
+        } else {
+            self.gender = "Male"
         }
         
         if let completedTutorial = snapshotValue?["completedTutorial"] as? Bool {

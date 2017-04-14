@@ -46,6 +46,7 @@ class FriendSystem {
         return id!
     }
 
+    var currentUser: User?
     
     /** Gets the current User object for the user id */
     func getCurrentUser(_ completion: @escaping (User) -> Void) {
@@ -55,6 +56,7 @@ class FriendSystem {
            // let email = snapshot.childSnapshot(forPath: "email").value as! String
             let id = snapshot.key
             completion(User(snapshot: snapshot))
+            self.currentUser = User(snapshot: snapshot)
         })
     }
     /** Gets the User object for the specified user id */
