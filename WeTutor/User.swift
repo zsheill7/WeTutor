@@ -47,6 +47,9 @@ struct User {
     var hourlyPrice: Double
     
     var completedTutorial: Bool
+    
+    var recentMessageText: String
+    var recentMessageTimestamp: Date
     /*
      
      uid
@@ -277,6 +280,18 @@ struct User {
             self.completedTutorial = completedTutorial
         } else {
             self.completedTutorial = Bool()
+        }
+        
+        if let recentMessageText = snapshotValue?["recentMessageText"] as? String {
+            self.recentMessageText = recentMessageText
+        } else {
+            self.recentMessageText = ""
+        }
+        
+        if let recentMessageTimestamp = snapshotValue?["recentMessageTimestamp"] as? Double {
+            self.recentMessageTimestamp = Date(timeIntervalSince1970: recentMessageTimestamp)
+        } else {
+            self.recentMessageTimestamp = Date()
         }
                 /*if let  = snapshotValue?[""] as? String {
          

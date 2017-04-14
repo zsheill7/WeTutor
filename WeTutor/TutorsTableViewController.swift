@@ -72,7 +72,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     var currentUser: User?
     
     var finalUserList = [User]()
-    var finalUserUIDList = [String]()
+    var friendUserUIDList = [String]()
     
     @IBOutlet weak var tableView: UITableView!
    // @IBOutlet weak var dropdownView: UIView!
@@ -161,11 +161,17 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             for user in FriendSystem.system.userList {
                 if user.isTutor == true {
                     self.finalUserList.append(user)
-                    self.finalUserUIDList.append(user.uid)
+                    
                 }
             }
 
             self.tableView.reloadData()
+        }
+        
+        FriendSystem.system.addFriendObserver {
+            for friend in FriendSystem.system.friendList {
+                self.friendUserUIDList.append(friend.uid)
+            }
         }
 
         self.view.addFlippedBackground()
@@ -294,6 +300,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             finalUserList.removeAll()
             for user in FriendSystem.system.userList {
                 if user.isTutor == true {
+                    
                     finalUserList.append(user)
                     
                 }
@@ -661,7 +668,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //let colorIndex = Int(arc4random_uniform(5))
         //cell!.colorView.backgroundColor = colors[indexPath.row % 5]
         
-        let friendInArray = finalUserUIDList.doesContain(obj: userAtRow.uid)
+        let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
         if friendInArray == true {
             cell!.friendIndicatorView.backgroundColor = UIColor.green
         } else {
@@ -686,9 +693,12 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         cell!.schoolLabel.text = "\(userAtRow.school)"
         cell!.gradeLabel.text = "\(userAtRow.grade)"
         
+        
         if userAtRow.gpa != nil && userAtRow.gpa > 0 {
             let gpaString = String(format: "%.1f", userAtRow.gpa)
             cell!.gpaLabel.text = gpaString
+        } else {
+            cell!.gpaLabel.text = ""
         }
         if userAtRow.hourlyPrice != nil && userAtRow.hourlyPrice > 0 {
             let hourlyPriceString = String(format: "%.0f", userAtRow.hourlyPrice)

@@ -37,6 +37,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FriendSystem.system.getCurrentUser { (user) in
             currentUser = user
+            if let isTutor = currentUser?.isTutor as? Bool,
+                
+                let hasDescription = currentUser?.isTutor as? String,
+                let availableDays = currentUser?.availableDaysArray,
+                let uid = FIRAuth.auth()?.currentUser?.uid {
+                
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                self.window?.rootViewController = viewController
+                
+                /* if isTutor == true {
+                 //self.present(viewController, animated: true, completion: nil)
+                 } else {
+                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
+                 let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
+                 window?.rootViewController = viewController
+                 // self.present(viewController, animated: true, completion: nil)
+                 }*/
+            }
+            
         }
         
         
@@ -45,25 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // print(userDefaults.value(forKey: "languages") as? [String])
         print(userDefaults.value(forKey: "description") as? String)
         print(FIRAuth.auth()?.currentUser?.uid)
-        if let isTutor = currentUser?.isTutor as? Bool,
-        
-            let hasDescription = currentUser?.isTutor as? String,
-            let availableDays = currentUser?.availableDaysArray,
-            let uid = FIRAuth.auth()?.currentUser?.uid {
-        
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-            window?.rootViewController = viewController
-
-           /* if isTutor == true {
-                                //self.present(viewController, animated: true, completion: nil)
-            } else {
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
-                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
-                window?.rootViewController = viewController
-               // self.present(viewController, animated: true, completion: nil)
-            }*/
-        }
         
         IQKeyboardManager.shared().isEnabled = true
         DropDown.startListeningToKeyboard()

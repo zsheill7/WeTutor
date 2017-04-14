@@ -8,40 +8,34 @@
 
 import UIKit
 import Firebase
+import UIKit
+
+import Firebase
 
 class Message: NSObject {
-
-    var fromId: String?
+    
+    var senderId: String?
     var text: String?
     var timestamp: NSNumber?
     var toId: String?
+    var photoUrl: String?
+    var senderName: String?
+   
     
-    var imageUrl: String?
-    var imageHeight: NSNumber?
-    var imageWidth: NSNumber?
-    
-    var videoUrl: String?
+    init(dictionary: [String: Any]) {
+        self.senderId = dictionary["senderId"] as? String
+        self.text = dictionary["text"] as? String
+        self.toId = dictionary["toId"] as? String
+        self.timestamp = dictionary["timestamp"] as? NSNumber
+        self.photoUrl = dictionary["photoUrl"] as? String
+        self.senderName = dictionary["senderName"] as? String
+    }
     
     func chatPartnerId() -> String? {
-        return fromId == FIRAuth.auth()?.currentUser?.uid ? toId : fromId
+        return senderId == FIRAuth.auth()?.currentUser?.uid ? toId : senderId
     }
     
-    init(dictionary: [String: AnyObject]) {
-        super.init()
-        
-        fromId = dictionary["fromId"] as? String
-        text = dictionary["text"] as? String
-        timestamp = dictionary["timestamp"] as? NSNumber
-        toId = dictionary["toId"] as? String
-        
-        imageUrl = dictionary["imageUrl"] as? String
-        imageHeight = dictionary["imageHeight"] as? NSNumber
-        imageWidth = dictionary["imageWidth"] as? NSNumber
-        
-        videoUrl = dictionary["videoUrl"] as? String
-    }
 }
-
 
 
 
