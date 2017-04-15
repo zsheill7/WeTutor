@@ -143,7 +143,7 @@ class TutorOrTuteeViewController: UIViewController {
         ballView.width = 150
         ballView.height = 100
         ballView.position.x = centerX
-        ballView.position.y = centerY - 75
+        ballView.position.y = centerY - 50
 
         ballView.layer.cornerRadius = cornerRadius
         ballView.layer.add(animation, forKey: "radius")

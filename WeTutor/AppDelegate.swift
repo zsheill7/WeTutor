@@ -35,29 +35,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let userDefaults = UserDefaults.standard
         
-        FriendSystem.system.getCurrentUser { (user) in
-            currentUser = user
-            if let isTutor = currentUser?.isTutor as? Bool,
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+        self.window?.rootViewController = viewController
+
+        /*if FIRAuth.auth()?.currentUser?.uid != nil {
+            FriendSystem.system.getCurrentUser { (user) in
+                currentUser = user
+                if let isTutor = currentUser?.isTutor as? Bool,
+                    
+                    let hasDescription = currentUser?.isTutor as? String,
+                    let availableDays = currentUser?.availableDaysArray,
+                    let uid = FIRAuth.auth()?.currentUser?.uid {
+                    
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                    self.window?.rootViewController = viewController
+                    
+                    /* if isTutor == true {
+                     //self.present(viewController, animated: true, completion: nil)
+                     } else {
+                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
+                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
+                     window?.rootViewController = viewController
+                     // self.present(viewController, animated: true, completion: nil)
+                     }*/
+                }
                 
-                let hasDescription = currentUser?.isTutor as? String,
-                let availableDays = currentUser?.availableDaysArray,
-                let uid = FIRAuth.auth()?.currentUser?.uid {
-                
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-                self.window?.rootViewController = viewController
-                
-                /* if isTutor == true {
-                 //self.present(viewController, animated: true, completion: nil)
-                 } else {
-                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
-                 let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
-                 window?.rootViewController = viewController
-                 // self.present(viewController, animated: true, completion: nil)
-                 }*/
             }
-            
-        }
+        }*/
         
         
         

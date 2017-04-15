@@ -16,6 +16,7 @@ import FirebaseDatabase
 import CoreLocation
 import NVActivityIndicatorView
 import FirebaseAnalytics
+import NVActivityIndicatorView
 
 var gradeLevels = ["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "Undergraduate", "Graduate"]
 private enum MenuSection {
@@ -79,7 +80,7 @@ private enum MenuSection {
 
 
 
-class TutorSignUpViewControllerOne : FormViewController {
+class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorViewable {
     var ref: FIRDatabaseReference!
     
     func displayAlert(_ title: String, message: String) {
@@ -277,7 +278,12 @@ class TutorSignUpViewControllerOne : FormViewController {
                 }
                 .onCellSelection { cell, row in
                     print("here0")
+                    let size = CGSize(width: 30, height:30)
+                    
+                    self.startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: 6)!)
+                    
                     self.continueSelected()
+                    
                     
         }
         
@@ -357,28 +363,10 @@ class TutorSignUpViewControllerOne : FormViewController {
                     let isTutor = value?["isTutor"] as? Bool{
                     
                     
-                    /* if let email = userDefaults.value(forKey: "email"),
-                     let password = userDefaults.value(forKey: "password"),
-                     let name = userDefaults.value(forKey: "name"),
-                     let user = FIRAuth.auth()?.currentUser {*/
-                    let x = Int(self.view.center.x)
-                    let y = Int(self.view.center.y)
-                    let frame = CGRect(x: x, y: y, width: self.cellWidth, height: self.cellHeight)
                     
-                    let activityIndicatorView = NVActivityIndicatorView(frame: frame,
-                                                                        type: NVActivityIndicatorType(rawValue: NVActivityIndicatorType.lineScale.rawValue) )
-                    let animationTypeLabel = UILabel(frame: frame)
+                    let size = CGSize(width: 30, height:30)
                     
-                    animationTypeLabel.text = "Loading..."
-                    animationTypeLabel.sizeToFit()
-                    animationTypeLabel.textColor = UIColor.white
-                    animationTypeLabel.frame.origin.x += 5
-                    animationTypeLabel.frame.origin.y += CGFloat(self.cellHeight) - animationTypeLabel.frame.size.height
                     
-                    activityIndicatorView.padding = 20
-                    self.view.addSubview(activityIndicatorView)
-                    self.view.addSubview(animationTypeLabel)
-                    activityIndicatorView.startAnimating()
                     
                     self.ref.child("users/\(userID!)/zipcode").setValue(zipcode)
                     self.ref.child("users/\(userID!)/schoolName").setValue(school)
@@ -414,7 +402,8 @@ class TutorSignUpViewControllerOne : FormViewController {
                             }
                         }
                     }
-                    activityIndicatorView.stopAnimating()
+                    self.stopAnimating()
+                    
                     self.performSegue(withIdentifier: "toSecondVC", sender: self)
                     
                    

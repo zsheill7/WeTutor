@@ -111,7 +111,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     var dropDown: DropDown = DropDown()
-    var segmentIndex = 0
+    var segmentIndexIsTutor  = 0
+     var segmentItemSubject  = "All Subjects"
     
     let coachMarksController = CoachMarksController()
     
@@ -168,6 +169,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
         }
         
+        FriendSystem.system.friendList.removeAll()
         FriendSystem.system.addFriendObserver {
             for friend in FriendSystem.system.friendList {
                 self.friendUserUIDList.append(friend.uid)
@@ -295,7 +297,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     func didSelect(_ segmentIndex: Int) {
         self.segmentIndex = segmentIndex
-        switch segmentIndex {
+        finalFilter(segmentIndexIsTutor: self.segmentIndex, segmentItemSubject: self.segmentItemSubject)
+        /*switch segmentIndex {
         case 0: //tutors
             finalUserList.removeAll()
             for user in FriendSystem.system.userList {
@@ -305,12 +308,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                     
                 }
             }
-            /*if finalUserList.count == 0 {
-                //Removes purple/blue background
-                let viewToRemove = self.view.viewWithTag(4)
-                viewToRemove?.removeFromSuperview()
-            }*/
-            tableView.reloadData()
+                        tableView.reloadData()
         case 1: //students
             finalUserList.removeAll()
             for user in FriendSystem.system.userList {
@@ -328,11 +326,12 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
            
             finalUserList = FriendSystem.system.userList
             tableView.reloadData()
-        }
+        }*/
         
     }
     
     func filterBySubject(_ segmentItem: String) {
+        self.segmentItemSubject = segmentItem
         if segmentItem == "All Subjects" {
             self.didSelect(dropDown.indexForSelectedRow!)
         } else {
@@ -347,6 +346,23 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             tableView.reloadData()
         }
 
+    }
+    
+    func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
+    
+        if segmentItem == "All Subjects" {
+            self.didSelect(dropDown.indexForSelectedRow!)
+        } else {
+            finalUserList = [User]()
+            for user in FriendSystem.system.userList {
+                for subject in user.preferredSubjects {
+                    if subject == segmentItemSubject && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)) {
+                        finalUserList.append(user)
+                    }
+                }
+            }
+            tableView.reloadData()
+        }
     }
     
     
@@ -490,7 +506,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
          }
          }*/
         let userDefaults = UserDefaults.standard
-        let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
+       // let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
+        let isTutor = FriendSystem.system.currentUser?.isTutor
         
         if let userID = FIRAuth.auth()?.currentUser?.uid {
             
@@ -508,12 +525,12 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         
         
-        let newCalendarId = createCalendar(destUser: otherUser)
+       // let newCalendarId = createCalendar(destUser: otherUser)
 
         let channelItem = [
             "tutorName": tutorName,
             "tuteeName": tuteeName,
-            "calendarId": newCalendarId
+           // "calendarId": newCalendarId
         ]
         
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -537,7 +554,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //This sets the channel item in the child "channels"
         userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
         userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
-        userChannelRef.child(uuid).child("calendarId").setValue(newCalendarId)
+      //  userChannelRef.child(uuid).child("calendarId").setValue(newCalendarId)
         
         //This adds the other user as a "friend" child to the current user ref and vice versa
         FriendSystem.system.acceptFriendRequest(otherUser.uid)
@@ -547,7 +564,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     //This function creates a new calendar identifier to add to a newly created channel
-    func createCalendar(destUser: User) -> String {
+  /*  func createCalendar(destUser: User) -> String {
         
         let userID = FIRAuth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
@@ -597,7 +614,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         return newCalendar.calendarIdentifier
         
     }
-
+*/
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
@@ -723,13 +740,14 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         cell!.addFriendButton.contentMode = .scaleAspectFit
         
         
+        print("in cell for row")
         cell!.setAddFriendFunction {
             print(userAtRow)
             let id = userAtRow.uid
-            print(id)
+            print("userAtRow.uid \(id)")
             //FriendSystem.system.sendRequestToUser(id)
             FriendSystem.system.acceptFriendRequest(id)
-             self.createChannel(userAtRow)
+            self.createChannel(userAtRow)
             self.displayAlert("Success!", message: "Contact Added")
         }
       /*  cell!.setChatFunction {

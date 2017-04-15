@@ -8,7 +8,9 @@ import FirebaseDatabase
 import FirebaseAnalytics
 import FirebaseAuth
 import Popover
-class TutorSignUpViewControllerTwo : FormViewController {
+import NVActivityIndicatorView
+
+class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorViewable {
     
     let firstLanguages = ["English", "Spanish", "French", "Chinese", "Other"]
     let secondLanguages = ["None", "English", "Spanish", "French", "Chinese", "Other"]
@@ -143,6 +145,9 @@ class TutorSignUpViewControllerTwo : FormViewController {
                 $0.title = "Finish"
                 }
                 .onCellSelection { cell, row in
+                    let size = CGSize(width: 30, height:30)
+                    
+                    self.startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: 6)!)
                     
                     let userDefaults = UserDefaults.standard
                     
@@ -226,6 +231,7 @@ class TutorSignUpViewControllerTwo : FormViewController {
                         self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
                         self.ref.child("users/\(user.uid)/completedTutorial").setValue(false)
                         self.ref.child("users/\(user.uid)/hourlyPrice").setValue(hourlyPrice)
+                        self.stopAnimating()
                         self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
                         
                     } else {

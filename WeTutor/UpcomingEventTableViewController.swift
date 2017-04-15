@@ -220,7 +220,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
-        
+        FriendSystem.system.friendList.removeAll()
         FriendSystem.system.addFriendObserver {
             print("inside FriendSystem.system.addFriendObserver")
             self.loadAllEvents()
@@ -230,6 +230,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             
             
         }
+        self.loadAllEvents()
+        self.observeChannels()
+        self.tableView.reloadData()
         self.view.bringSubview(toFront: addEventButton)
         
        // let calendars = eventStore.calendars(for: .event)

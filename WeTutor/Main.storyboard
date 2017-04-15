@@ -95,8 +95,8 @@
                                     <action selector="tutorTapped:" destination="f1O-17-5Nh" eventType="touchUpInside" id="bbR-Sk-VML"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Are you a student or a tutor?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-WE-1je">
-                                <rect key="frame" x="56" y="154" width="270" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you a student or a tutor?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-WE-1je">
+                                <rect key="frame" x="56.5" y="145" width="262.5" height="57"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="0.59890545685279184" green="0.59890545685279184" blue="0.59890545685279184" alpha="0.56126926369863017" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,7 +108,7 @@
                         <constraints>
                             <constraint firstItem="IHY-WE-1je" firstAttribute="centerX" secondItem="XYM-7p-E6M" secondAttribute="centerX" id="UQj-Is-gnK"/>
                             <constraint firstItem="IHY-WE-1je" firstAttribute="width" secondItem="XYM-7p-E6M" secondAttribute="width" multiplier="0.7" id="hYO-5n-JBc"/>
-                            <constraint firstItem="IHY-WE-1je" firstAttribute="top" secondItem="MeE-ad-Wbd" secondAttribute="bottom" constant="90" id="ta9-9w-hU4"/>
+                            <constraint firstItem="IHY-WE-1je" firstAttribute="centerY" secondItem="XYM-7p-E6M" secondAttribute="centerY" constant="-160" id="rvs-HI-oKD"/>
                         </constraints>
                     </view>
                     <connections>

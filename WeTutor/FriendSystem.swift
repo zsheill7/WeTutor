@@ -393,12 +393,27 @@ class FriendSystem {
     var friendList = [User]()
   
     func addFriendObserver(_ update: @escaping () -> Void) {
-        CURRENT_USER_FRIENDS_REF.observe(FIRDataEventType.value, with: { (snapshot) in
-            self.friendList.removeAll()
-            for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
+        print("friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendList.count)")
+        friendList = [User]()
+        CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
+            
+            
+            let friendSnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            print("friendSnapshot \(friendSnapshot)")
+            for child in friendSnapshot {
                 let id = child.key
                 self.getUser(id, completion: { (user) in
-                    self.friendList.append(user)
+                    var doesContain =  false
+                    for friend in self.friendList {
+                        if friend.uid == id {
+                            doesContain = true
+                        }
+                    }
+                    if doesContain == false {
+                        self.friendList.append(user)
+                    }
+                    print("useremail \(user.email))")
+                    print("friendobserver2FriendSystem.system.friendList.count \(FriendSystem.system.friendList.count)")
                     update()
                 })
             }
