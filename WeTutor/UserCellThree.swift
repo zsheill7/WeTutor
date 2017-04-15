@@ -85,7 +85,7 @@ class UserCellThree: UITableViewCell {
         
         addFriendButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
         addFriendButton.contentVerticalAlignment = UIControlContentVerticalAlignment.fill*/
-        
+        //78
         
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight))
         

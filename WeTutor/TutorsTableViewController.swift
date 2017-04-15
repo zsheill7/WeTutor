@@ -204,7 +204,33 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
     }
     
+    var screenBounds = UIScreen.main.bounds
+    
    
+    func getColoredView() -> UIView{
+        let width = screenBounds.size.width
+        let height = screenBounds.size.height
+        let cellHeight = 135
+        let cornerRadius:CGFloat = 5
+        let coloredRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*//*Int(width - 20)*/77, height: cellHeight))
+        
+        
+        coloredRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+        coloredRoundedView.layer.masksToBounds = false
+       // coloredRoundedView.layer.cornerRadius = cornerRadius
+        coloredRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        coloredRoundedView.layer.shadowOpacity = 0.2
+        
+        //leftColorView.backgroundColor = colors[indexPath.row % 6]
+        coloredRoundedView.tag = 10
+        coloredRoundedView.backgroundColor = colors[colorsCount % 5]
+        
+        colorsCount += 1
+        
+        coloredRoundedView.roundCorners(corners: [.topLeft, .bottomLeft], radius: cornerRadius)
+
+        return coloredRoundedView
+    }
     
     func setupDropDown() {
         
@@ -691,6 +717,23 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             cell!.friendIndicatorView.image = UIImage(named: "Ok-50") //UIColor.green
         } else {
             cell!.friendIndicatorView.image = nil
+        }
+        
+        if userAtRow.isTutor == false {
+            cell!.addSubview(getColoredView())
+        } else {
+            if let viewWithTag = self.view.viewWithTag(10) {
+                print("Tag 100")
+                viewWithTag.removeFromSuperview()
+            }
+            if let viewWithTag2 = self.view.viewWithTag(10) {
+                print("Tag 100")
+                viewWithTag2.removeFromSuperview()
+            }
+            if let viewWithTag3 = self.view.viewWithTag(10) {
+                print("Tag 100")
+                viewWithTag3.removeFromSuperview()
+            }
         }
        /* if FriendSystem.system.friendList.contains(where: userAtRow) {
             cell!.friendIndicatorView.backgroundColor = UIColor.green
