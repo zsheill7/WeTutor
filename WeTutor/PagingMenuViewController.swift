@@ -149,6 +149,7 @@ class PagingMenuViewController: UIViewController  {
                 //print(menuController)
             case let .didMoveController(menuController, previousMenuController):
                 print("")
+                
                // print(previousMenuController)
                 //print(menuController)
             case let .willMoveItem(menuItemView, previousMenuItemView):
@@ -163,6 +164,32 @@ class PagingMenuViewController: UIViewController  {
         }
     }
     
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        
+        let widthRatio  = targetSize.width  / image.size.width
+        let heightRatio = targetSize.height / image.size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
     
     
     func createDropdown() {
@@ -186,8 +213,12 @@ class PagingMenuViewController: UIViewController  {
         let imageView = UIImageView(image:logo)
         
         //self.navigationItem.contentView = imageView
-        let leftButtonImg = UIImage(named: "leftButtonChat-25")
-        let leftButton = UIBarButtonItem(image: leftButtonImg, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openChat))
+        let leftButtonImg = UIImage(named: "Speech Bubble Filled-50"/*"leftButtonChat-25"*/)
+        let resizedLeftButton = self.resizeImage(image: leftButtonImg!, targetSize: CGSize(width: 25, height: 25))
+        let leftButtonImageView = UIImageView(image: leftButtonImg)
+        let leftButton = UIBarButtonItem(image: resizedLeftButton, style: UIBarButtonItemStyle.plain, target: self, action: #selector(openChat))
+        
+      //  let leftButton = UIBarButtonItem(
         
         self.navigationItem.leftBarButtonItem = leftButton
         
@@ -195,6 +226,8 @@ class PagingMenuViewController: UIViewController  {
        
         self.navigationItem.titleView = imageView
         
+        let menuImage = UIImage(named: "Menu 2-25")
+       // let resizedMenu
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view,
                                             title: "WeTutor", items: items as [AnyObject])
         
@@ -208,7 +241,7 @@ class PagingMenuViewController: UIViewController  {
         
         menuView.cellTextLabelAlignment = .left // .Center // .Right // .Left
         //menuView.arrowImage = UIImage(named: "Settings Filled-25")
-        menuView.arrowImage = UIImage(named: "Menu 2 Filled-25")
+        menuView.arrowImage = menuImage
        // menuView.arrowImage = UIImage(named: "More Filled-25")
         menuView.arrowPadding = 25
         menuView.animationDuration = 0.5

@@ -51,6 +51,9 @@ struct User {
     var recentMessageText: String
     var recentMessageTimestamp: Date
     var ratings: [String: [String: Any]]
+    var averageRating: Double?
+    
+    var numberOfRatings: Int
     /*
      
      uid
@@ -308,10 +311,36 @@ struct User {
             self.ratings = [String: [String: Any]]()
         }
         
+        var numberRatingArray: [Double] = [Double]()
         
+        for rating in self.ratings {
+            if let ratingNumber = rating.value["ratingNumber"] as? Double {
+                numberRatingArray.append(ratingNumber)
+            }
+        }
+        
+        self.numberOfRatings = ratings.count
         coordinate = CLLocation()
         distanceFromUser = Double()
+        
+        self.averageRating = self.averageOf(numbers: numberRatingArray)
+        print("self.averageRating \(self.averageRating)")
+        
+        
     }
+    
+    func averageOf(numbers: [Double]) -> Double {
+        var sum = 0.0
+        var countOfNumbers = 0
+        for number in numbers {
+            sum += number
+            countOfNumbers += 1
+        }
+    
+        var result: Double = Double(sum) / Double(countOfNumbers)
+        return result
+    }
+
     
     /*init (uid: String, email: String, name: String, school: String, isTutor: Bool, address: String, description: String, languages: [String], availableDaysArray: [Bool], phone: String, preferredSubjects: [String], channels: [Channel], availabilityInfo: String, latitude: Double, longitude: Double, grade: String, weekDayString: String, friends: [String: Bool], coordinate: CLLocation, distanceFromUser: Double) {
         self.uid = uid

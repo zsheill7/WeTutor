@@ -57,6 +57,7 @@ class UserCellThree: UITableViewCell {
     
     @IBOutlet weak var ratingView: CosmosView!
     
+    @IBOutlet var numberOfRatingsLabel: UILabel!
     
     @IBOutlet weak var gradeLabel: UILabel!
 

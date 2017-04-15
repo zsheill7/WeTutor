@@ -3,22 +3,28 @@
 //  WeTutor
 //
 //  Created by Zoe on 4/7/17.
-//  Copyright © 2017 CosmicMind. All rights reserved.
+//  Copyright © 2017 TokkiTech. All rights reserved.
 //
 
 import UIKit
 import MessageUI
 import SCLAlertView
+import FirebaseAuth
 
 class AboutUsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
-    @IBAction func backButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-        //controller.modalTransitionStyle = .flipHorizontal
-        self.present(controller, animated: true, completion: nil)
-    }
+    var currentVersion: String = ""
+    let currentLocale = NSLocale.current
+    
+    let uid = FIRAuth.auth()?.currentUser?.uid
+    var sendFeedbackString = ""
+    
+    var uidString = ""
+    
+    let shareString = "Check out WeTutor - it's an app that easily connects students and tutors! \n https://itunes.apple.com/us/app/wetutor/id1202611809 "
     var currentUser: User?
+    
+    
     
     func displayAlert(title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
@@ -40,7 +46,14 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            self.currentVersion = version
+        }
+        if uid != nil {
+            uidString = uid!
+        }
+        self.sendFeedbackString = "\n\n\n\n\n\n\n\n\n--\nVersion: \(currentVersion)\nDevice: \(UIDevice.current.modelName)\nLocale: \(currentLocale)\nFirebase ID: \(uidString)"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -55,15 +68,6 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
 
     // MARK: - Table view data source
 
-    /*override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }*/
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
@@ -94,9 +98,6 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
         }
     }
     
-    let sendFeedbackString = "\n\n\n\n\n\n\n\n\n--\nDevice"
-    
-    let shareString = "Check out WeTutor - it's an app that easily connects students and tutors! \n https://itunes.apple.com/us/app/wetutor/id1202611809 "
     
     func shareApp() {
         let activity = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
@@ -107,12 +108,15 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
     }
     
     func sendFeedback() {
+       // let weTutorEmail = wetutorapp@gmail.com
+         let weTutorEmail = "info@wetutorapp.com"
+        let zoeEmail = "zoe@wetutorapp.com"
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
                     mailComposerVC.mailComposeDelegate = self
-            mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
+            mailComposerVC.setToRecipients([zoeEmail])
             mailComposerVC.setSubject("Feedback")
-            mailComposerVC.setMessageBody("", isHTML: false)
+            mailComposerVC.setMessageBody(sendFeedbackString, isHTML: false)
             mailComposerVC.navigationBar.tintColor = UIColor.white
 
             self.present(mailComposerVC, animated: true, completion: nil)
@@ -122,11 +126,12 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
     }
     
     func contactUs() {
+         let weTutorEmail = "info@wetutorapp.com"
          if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
             //if mailComposerVC.canSendMail() {
                 mailComposerVC.mailComposeDelegate = self
-                mailComposerVC.setToRecipients(["wetutorapp@gmail.com"])
+                mailComposerVC.setToRecipients([weTutorEmail])
                 mailComposerVC.setSubject("")
                 mailComposerVC.setMessageBody("", isHTML: false)
                 mailComposerVC.navigationBar.tintColor = UIColor.white
@@ -137,62 +142,16 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
        // }
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+        //controller.modalTransitionStyle = .flipHorizontal
+        self.present(controller, animated: true, completion: nil)
+    }
+
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

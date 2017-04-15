@@ -161,13 +161,15 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             showCloseButton: false
         )
 
-        let subview = UIView(frame: CGRect(x: 40,y: 20,width: 216, height: 70))
+        let subview = UIView(frame: CGRect(x: 25,y: 0,width: 216, height: 140))
         let newCosmosView = CosmosView(frame: CGRect(x: 0,y: 10,width: 216, height: 40))
         newCosmosView.isUserInteractionEnabled = true
+        newCosmosView.settings.starSize = 30
         subview.addSubview(newCosmosView)
         
+        
         let x = (subview.frame.width - 180) / 2
-        let textField1 = UITextField(frame: CGRect(x: 0/*x*/,y: 40,width: 180, height: 30))
+        let textField1 = UITextField(frame: CGRect(x: 0/*x*/,y: 40,width: 180, height: 80))
         textField1.placeholder = "Additional Comments"
         subview.addSubview(textField1)
         let alert = SCLAlertView(appearance: appearance)

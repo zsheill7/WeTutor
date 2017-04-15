@@ -825,7 +825,7 @@
                                                                 <rect key="frame" x="0.0" y="40" width="335" height="30"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0yy-bM-PYO" customClass="CosmosView" customModule="Cosmos">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="30"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="30" id="uYt-69-hRB"/>
@@ -837,7 +837,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfa-K9-oDB">
-                                                                        <rect key="frame" x="120" y="0.0" width="215" height="30"/>
+                                                                        <rect key="frame" x="190" y="0.0" width="145" height="30"/>
                                                                         <state key="normal" title="Rate your experience"/>
                                                                         <connections>
                                                                             <action selector="rateYourExperience:" destination="Kz5-hQ-YSe" eventType="touchUpInside" id="o4k-Xk-oWC"/>

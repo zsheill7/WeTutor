@@ -105,23 +105,23 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mn3-a2-4GP">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="25"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Joe B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9T-oS-3T9">
-                                                <rect key="frame" x="0.0" y="0.0" width="211" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="211" height="25"/>
                                                 <color key="backgroundColor" red="0.33950561359999998" green="1" blue="0.34826469469999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Tg-y6-Y4k">
-                                                <rect key="frame" x="211" y="0.0" width="30" height="34"/>
+                                                <rect key="frame" x="211" y="0.0" width="30" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="sI9-us-qDn"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bts-8g-vbJ">
-                                                <rect key="frame" x="241" y="0.0" width="70" height="34"/>
+                                                <rect key="frame" x="241" y="0.0" width="70" height="25"/>
                                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="yrT-Bc-CHk"/>
@@ -132,18 +132,33 @@
                                             <constraint firstAttribute="height" constant="25" id="D0q-QC-gcA"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYd-HU-wTr" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="0.0" y="34" width="311" height="18"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="Hek-nX-0W4"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oFR-c2-5Uc">
+                                        <rect key="frame" x="0.0" y="25" width="311" height="27"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tYd-HU-wTr" customClass="CosmosView" customModule="Cosmos">
+                                                <rect key="frame" x="0.0" y="0.0" width="211" height="27"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="Hek-nX-0W4"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0 ratings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sa-6G-hgT">
+                                                <rect key="frame" x="211" y="0.0" width="100" height="27"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="J73-dL-BjZ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.57614511986301364" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6O1-79-y5B">
                                         <rect key="frame" x="0.0" y="52" width="311" height="22"/>
                                         <constraints>
@@ -295,6 +310,7 @@
                 <outlet property="hourlyPriceLabel" destination="ExI-zr-xt9" id="WvL-pV-rM1"/>
                 <outlet property="infoButton" destination="Mmj-Jb-fbS" id="mif-ul-3QY"/>
                 <outlet property="nameLabel" destination="v9T-oS-3T9" id="eWS-tT-pC1"/>
+                <outlet property="numberOfRatingsLabel" destination="3sa-6G-hgT" id="wmN-rV-q3P"/>
                 <outlet property="ratingView" destination="tYd-HU-wTr" id="App-Ex-KG9"/>
                 <outlet property="schoolLabel" destination="6O1-79-y5B" id="RbS-3x-9EG"/>
                 <outlet property="subjectLabel" destination="0XE-mj-glu" id="atP-Vx-jJl"/>

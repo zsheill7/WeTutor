@@ -753,7 +753,14 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         cell!.nameLabel.text = "\(userAtRow.name)"
         cell!.schoolLabel.text = "\(userAtRow.school)"
         cell!.gradeLabel.text = "\(userAtRow.grade)"
+        if let userAverageRating = userAtRow.averageRating {
+            cell!.ratingView.rating = userAverageRating
+        } else {
+            cell!.ratingView.rating = 0
+        }
         
+        let numberOfRatings = userAtRow.numberOfRatings
+        cell!.numberOfRatingsLabel.text = String(describing: numberOfRatings)
         
         if userAtRow.gpa != nil && userAtRow.gpa > 0 {
             let gpaString = String(format: "%.1f", userAtRow.gpa)

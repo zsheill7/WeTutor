@@ -136,6 +136,14 @@ open class PagingMenuController: UIViewController {
     }
     
     open func move(toPage page: Int, animated: Bool = true) {
+        if page == 0 {
+            self.navigationItem.leftBarButtonItem?.width = 0.01
+             self.navigationItem.rightBarButtonItem?.width = 0
+        } else if page == 2 {
+            self.navigationItem.leftBarButtonItem?.width = 0
+            self.navigationItem.rightBarButtonItem?.width = 0.01
+
+        }
         switch options.componentType {
         case .menuView, .all:
             // ignore an unexpected page number
