@@ -296,8 +296,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     
     func didSelect(_ segmentIndex: Int) {
-        self.segmentIndex = segmentIndex
-        finalFilter(segmentIndexIsTutor: self.segmentIndex, segmentItemSubject: self.segmentItemSubject)
+        self.segmentIndexIsTutor = segmentIndex
+        finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
         /*switch segmentIndex {
         case 0: //tutors
             finalUserList.removeAll()
@@ -332,7 +332,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     func filterBySubject(_ segmentItem: String) {
         self.segmentItemSubject = segmentItem
-        if segmentItem == "All Subjects" {
+        finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
+        /*if segmentItem == "All Subjects" {
             self.didSelect(dropDown.indexForSelectedRow!)
         } else {
             finalUserList = [User]()
@@ -344,25 +345,25 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 }
             }
             tableView.reloadData()
-        }
+        }*/
 
     }
     
     func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
     
-        if segmentItem == "All Subjects" {
-            self.didSelect(dropDown.indexForSelectedRow!)
-        } else {
+        /*if segmentItemSubject == "All Subjects" {
+            //self.didSelect(dropDown.indexForSelectedRow!)
+        } else {*/
             finalUserList = [User]()
             for user in FriendSystem.system.userList {
                 for subject in user.preferredSubjects {
-                    if subject == segmentItemSubject && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)) {
+                    if (subject == segmentItemSubject || segmentItemSubject == "All Subjects")  && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)) {
                         finalUserList.append(user)
                     }
                 }
             }
             tableView.reloadData()
-        }
+        //}
     }
     
     
@@ -687,9 +688,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
         if friendInArray == true {
-            cell!.friendIndicatorView.backgroundColor = UIColor.green
+            cell!.friendIndicatorView.image = UIImage(named: "Ok-50") //UIColor.green
         } else {
-            cell!.friendIndicatorView.backgroundColor = UIColor.clear
+            cell!.friendIndicatorView.image = nil
         }
        /* if FriendSystem.system.friendList.contains(where: userAtRow) {
             cell!.friendIndicatorView.backgroundColor = UIColor.green

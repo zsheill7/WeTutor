@@ -36,7 +36,7 @@ class UserCellThree: UITableViewCell {
     
     @IBOutlet weak var infoButton: UIButton!
     */
-    @IBOutlet weak var friendIndicatorView: UIView!
+    @IBOutlet weak var friendIndicatorView: UIImageView!
     
     @IBOutlet weak var colorView: UIView!
     
