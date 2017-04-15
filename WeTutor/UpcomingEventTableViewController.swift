@@ -715,7 +715,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.calendarView.appearance.selectionColor = UIColor.white
         self.calendarView.appearance.titleSelectionColor = UIColor.red
         self.calendarView.appearance.todayColor = UIColor.red
-        self.calendarView.backgroundColor = UIColor.white.withAlphaComponent(0.0)
+        self.calendarView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         //self.calendarView.opacity = 0.3
         //self.calendarView.backgroundColor = UIColor(patternImage: UIImage(named:"calendar header bg")!)
       //  self.calendarView.appearance.

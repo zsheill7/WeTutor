@@ -9,6 +9,7 @@ import FirebaseAnalytics
 import FirebaseAuth
 import FirebaseDatabase
 import EventKit
+import Cosmos
 
 class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
@@ -63,6 +64,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     var iterationStatus = ""
     var newChannel: Channel?
     
+    @IBOutlet var rateYourExperienceButton: UIButton!
     fileprivate lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
     
     var availableDaysString = ""
@@ -85,8 +87,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             self.currentUser = user
         }
         
-       callButton.contentMode = .scaleAspectFit
-       textButton.contentMode = .scaleAspectFit
+      // callButton.contentMode = .scaleAspectFit
+      // textButton.contentMode = .scaleAspectFit
         
         self.containerView.isUserInteractionEnabled = false
         
@@ -151,6 +153,46 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         
     }
     
+    @IBAction func rateYourExperience(_ sender: Any) {
+        let appearance = SCLAlertView.SCLAppearance(
+           /* kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,*/
+            showCloseButton: false
+        )
+
+        let subview = UIView(frame: CGRect(x: 40,y: 20,width: 216, height: 70))
+        let newCosmosView = CosmosView(frame: CGRect(x: 0,y: 10,width: 216, height: 40))
+        newCosmosView.isUserInteractionEnabled = true
+        subview.addSubview(newCosmosView)
+        
+        let x = (subview.frame.width - 180) / 2
+        let textField1 = UITextField(frame: CGRect(x: 0/*x*/,y: 40,width: 180, height: 30))
+        textField1.placeholder = "Additional Comments"
+        subview.addSubview(textField1)
+        let alert = SCLAlertView(appearance: appearance)
+        alert.customSubview = subview
+        alert.addButton("Done") {
+            
+            let uuid = UUID().uuidString
+            let cosmosRating = newCosmosView.rating
+            let comment = textField1.text
+            
+            //let newRating = Rating(rating: cosmosRating, comment: comment)
+        self.userRef.child(self.currentUser.uid).child("ratings").child(uuid).child("ratingNumber").setValue(cosmosRating)
+        self.userRef.child(self.currentUser.uid).child("ratings").child(uuid).child("comment").setValue(comment)
+            
+            
+        }
+        alert.addButton("Cancel") {
+            
+            
+        }
+        alert.showInfo("Rate Your Experience", subTitle: "How would you rate your experience with this person?")
+        
+        
+        
+    }
     func loadHorizontalScrollView() {
         let horizontalScrollView:ASHorizontalScrollView = ASHorizontalScrollView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 60))
         //for iPhone 5s and lower versions in portrait

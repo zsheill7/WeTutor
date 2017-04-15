@@ -50,6 +50,7 @@ struct User {
     
     var recentMessageText: String
     var recentMessageTimestamp: Date
+    var ratings: [String: [String: Any]]
     /*
      
      uid
@@ -293,11 +294,21 @@ struct User {
         } else {
             self.recentMessageTimestamp = Date()
         }
-                /*if let  = snapshotValue?[""] as? String {
+        
+        /*if let  = snapshotValue?[""] as? String {
          
         } else {
          
         }*/
+        
+        if let ratings = snapshotValue?["ratings"] as? [String: [String: Any]] {
+            self.ratings = ratings/*[Rating(ratings: ratings)]*/
+            print("self.ratings \(self.ratings)")
+        } else {
+            self.ratings = [String: [String: Any]]()
+        }
+        
+        
         coordinate = CLLocation()
         distanceFromUser = Double()
     }

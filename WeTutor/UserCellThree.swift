@@ -78,8 +78,14 @@ class UserCellThree: UITableViewCell {
         hourlyPriceLabel.isUserInteractionEnabled = false
         
         
-        infoButton.contentMode = .scaleAspectFit
-        addFriendButton.contentMode = .scaleAspectFit
+        infoButton.imageView?.contentMode = .scaleAspectFit
+        addFriendButton.imageView?.contentMode = .scaleAspectFit
+        /*infoButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
+        infoButton.contentVerticalAlignment = UIControlContentVerticalAlignment.fill
+        
+        addFriendButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
+        addFriendButton.contentVerticalAlignment = UIControlContentVerticalAlignment.fill*/
+        
         
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*/Int(width - 20), height: cellHeight))
         
