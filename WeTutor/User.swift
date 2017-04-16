@@ -336,6 +336,9 @@ struct User {
             sum += number
             countOfNumbers += 1
         }
+        if countOfNumbers == 0 {
+            return 0
+        }
     
         var result: Double = Double(sum) / Double(countOfNumbers)
         return result

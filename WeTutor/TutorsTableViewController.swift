@@ -681,7 +681,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         
-        var ref: FIRDatabaseReference!
+       var ref: FIRDatabaseReference!
         
         ref = FIRDatabase.database().reference()
         
@@ -719,7 +719,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             cell!.friendIndicatorView.image = nil
         }
         
-        if userAtRow.isTutor == false {
+        /*if userAtRow.isTutor == false {
             cell!.addSubview(getColoredView())
         } else {
             if let viewWithTag = self.view.viewWithTag(10) {
@@ -734,7 +734,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 print("Tag 100")
                 viewWithTag3.removeFromSuperview()
             }
-        }
+        }*/
        /* if FriendSystem.system.friendList.contains(where: userAtRow) {
             cell!.friendIndicatorView.backgroundColor = UIColor.green
         } else {
@@ -760,7 +760,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
         
         let numberOfRatings = userAtRow.numberOfRatings
-        cell!.numberOfRatingsLabel.text = String(describing: numberOfRatings)
+        var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
+        if numberOfRatings == 1 {
+            numberOfRatingsString = "\(String(describing: numberOfRatings)) rating"
+        }
+        cell!.numberOfRatingsLabel.text = numberOfRatingsString
         
         if userAtRow.gpa != nil && userAtRow.gpa > 0 {
             let gpaString = String(format: "%.1f", userAtRow.gpa)

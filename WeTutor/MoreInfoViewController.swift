@@ -44,11 +44,13 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var fullPageScrollView: UIScrollView!
     
+    @IBOutlet var numberOfRatingsLabel: UILabel!
     @IBOutlet weak var availabilityInfo: UILabel!
     
     @IBOutlet weak var containerView: UIView!
    // @IBOutlet weak var weekDayView: UIScrollView!
     
+    @IBOutlet var ratingView: CosmosView!
      var UID: String!
     var userRef = FIRDatabase.database().reference().child("users")
     var senderDisplayName: String?
@@ -108,16 +110,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         
       // containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDayCell
         
-       /* form
-            
-            +++ Section("Available Days")
-            
-            
-            
-            <<< WeekDayRow("Available Days"){
-                $0.value = [.monday, .wednesday, .friday]
-                
-        }*/
+       
         
         //let backView = UIView(frame: self.tableView.bounds)
         
@@ -150,6 +143,19 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         //availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
         nameLabel.text = "\(destUser.name)"
         availabilityInfo.text = destUser.availabilityInfo
+        
+        if let userAverageRating = destUser.averageRating {
+            self.ratingView.rating = userAverageRating
+        } else {
+            self.ratingView.rating = 0
+        }
+        
+        let numberOfRatings = destUser.numberOfRatings
+        
+        /*rateYourExperienceButton.setTitle("Rate your experience", for: UIControlState.normal)
+        rateYourExperienceButton.title.numberOfLines = 0
+        rateYourExperienceButton.title.lineBreakMode = NSLineBreakMode.byWordWrapping*/
+        self.numberOfRatingsLabel.text = "\(String(describing: numberOfRatings)) ratings"
         
     }
     

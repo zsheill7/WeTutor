@@ -552,8 +552,8 @@
 				C87237FE1E8C163900C5A641 /* UserCellThree.swift */,
 				C84F180C1E713CF700EC54BF /* SubjectCell.xib */,
 				C84F180E1E71434C00EC54BF /* SubjectCell.swift */,
-				C82970641EA045FE002233FB /* EventCell.swift */,
 				C82C35FC1E93405900DD17CD /* EventCell.xib */,
+				C82970641EA045FE002233FB /* EventCell.swift */,
 				C83A5E571E8ED58500716C89 /* ChatUserCell.swift */,
 			);
 			name = "Xib Files";
