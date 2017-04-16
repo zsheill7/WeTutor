@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"
-            timestampString = "513902062.46571"
+            timestampString = "514061793.335392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"
-            timestampString = "513903398.304291"
+            timestampString = "514061793.335392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "390"
+            endingLineNumber = "390"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
             <Locations>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"
-            timestampString = "513905708.232911"
+            timestampString = "514061793.335392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "579"
+            endingLineNumber = "579"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6124F465AE20CA404975F9490FB2E178'
+               BlueprintIdentifier = '39CC4E5DAAC8A2652E2795BDD39B23D9'
                BlueprintName = 'TwicketSegmentedControl'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'TwicketSegmentedControl.framework'>

@@ -221,8 +221,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
-        FriendSystem.system.friendList.removeAll()
-        FriendSystem.system.addFriendObserver {
+        //FriendSystem.system.friendList.removeAll()
+        /*FriendSystem.system.addFriendObserver {
             print("inside FriendSystem.system.addFriendObserver")
             self.loadAllEvents(completed: {
                 self.observeChannels()
@@ -237,7 +237,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             print("1FriendSystem.system.friendList \(FriendSystem.system.friendList.count)")
             
             
-        }
+        }*/
         
        
         self.view.bringSubview(toFront: addEventButton)
@@ -520,14 +520,16 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
  
     func loadAllEvents(completed: @escaping (() -> ())) {
         print("loadAllCalendars()")
-        let friendList = FriendSystem.system.friendList
+        let friendList = FriendSystem.system.friendListThree
         print("friendList.count \(friendList.count)")
         print(friendList.count)
         //let destUserID = destUser.uid
-        events.removeAll()
+        self.events.removeAll()
+        self.events = [Event]()
         let channelRef = FIRDatabase.database().reference().child("channels")
         
         channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
             if snapshot.exists() {
                 print(" if snapshot.exists() {")
@@ -536,19 +538,19 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     print(type(of: allChannels))
                     print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
                     self.iterationStatus = "inProcess"
-                    for channel in allChannels {
+                   /* for channel in allChannels {
                         
                         if let channelDict = channel.value as? Dictionary<String, AnyObject> {
                             print("1channelDict \(channelDict)")
                             print(" if let channelDict = channel.value as? Dictionary<String, AnyObject> {")
                             //print(" if let channel = snapshot.value as? [String: String] {")
-                            //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                            //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user*/
                             for friend in friendList {
                                 print("friendList \(friend.uid)")
                             }
                             for destUser in friendList {
                                 let destUserID = destUser.uid
-                                if self.currentUserIsTutor == false {
+                                /*if self.currentUserIsTutor == false {
                                     print("if self.currentUserIsTutor == false {")
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
@@ -588,7 +590,23 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                         }
                                     }
                                     
-                                } else if self.currentUserIsTutor == true {
+                                }*/// else if self.currentUserIsTutor == true {
+                                var channelCount = 0
+                                for channel in allChannels {
+                                    channelCount += 1
+                                    if let channelDict = channel.value as? Dictionary<String, AnyObject> {
+                                        print("1channelDict \(channelDict)")
+                                        print(" if let channelDict = channel.value as? Dictionary<String, AnyObject> {")
+                                        //print(" if let channel = snapshot.value as? [String: String] {")
+                                        //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
+                                        var friendCount = 0
+                                        for friend in friendList {
+                                            
+                                            print("friendList \(friend.uid)")
+                                        }
+                                        for destUser in friendList {
+                                            friendCount += 1
+                                            let destUserID = destUser.uid
                                     print("if self.currentUserIsTutor == true {")
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
@@ -599,8 +617,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 self.iterationStatus = "done"
                                                 print("perform segue channel upcoming event")
                                                 print(channel)
+                                            
                                                 if let eventsDict = channelDict["events"] as? [String: AnyObject] {
                                                      print("2nd \(eventsDict)")
+                                                    
                                                     for event in eventsDict {
                                                         print("2print event in eventsDict \(event)" )
                                                         let startDateDouble = eventsDict["startDate"] as? Double ?? Date().timeIntervalSince1970
@@ -613,7 +633,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                         let eventAlert = eventsDict["eventAlert"] as? String ?? "Never"
                                                         let eventLocation = eventsDict["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
                                                         let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
-                                                        print("2newEvent \(newEvent)")
+                                                        print("2newEvent \(newEvent.uid) channelCount \(channelCount) friendCount \(friendCount)")
                                                         self.events.append(newEvent)
                                                        // print("self.events inside \(self.events.count)  \(self.events)")
                                                     }
@@ -625,6 +645,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                             }
                                         } //if channelDict["tutorName"]
                                     }
+                                        
                                 }
                             } //for destUser in friendList
                             

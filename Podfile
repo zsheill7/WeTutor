@@ -33,4 +33,5 @@ use_frameworks!
  pod "Popover"
  pod "Timepiece"
  pod “Hero”
+ pod 'PullToRefresher', '~> 2.0'
 end

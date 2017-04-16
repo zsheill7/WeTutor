@@ -390,11 +390,17 @@ class FriendSystem {
     
     // MARK: - All friends
     /** The list of all friends of the current user. */
-    var friendList = [User]()
+    var friendListOne = [User]()
+    var friendListTwo = [User]()
+    var friendListThree = [User]()
   
-    func addFriendObserver(_ update: @escaping () -> Void) {
-        print("friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendList.count)")
-        friendList = [User]()
+    //FIRDatabaseReference
+    func addFriendObserver(friendListNumber: Int, _ update: @escaping () -> Void) {
+        print("friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendListOne.count)")
+        friendListOne = [User]()
+        
+        let myGroup = DispatchGroup()
+        
         CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
             
             
@@ -402,27 +408,55 @@ class FriendSystem {
             print("friendSnapshot \(friendSnapshot)")
             for child in friendSnapshot {
                 let id = child.key
+                myGroup.enter()
                 self.getUser(id, completion: { (user) in
+                    
                     var doesContain =  false
-                    for friend in self.friendList {
+                    for friend in self.friendListOne {
                         if friend.uid == id {
                             doesContain = true
                         }
+                        print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(doesContain)")
                     }
+                    print("user.uid \(user.uid)")
                     if doesContain == false {
-                        self.friendList.append(user)
+                        if friendListNumber == 1 {
+                            self.friendListOne.append(user)
+                        } else if friendListNumber == 2 {
+                            self.friendListTwo.append(user)
+                        } else if friendListNumber == 3 {
+                            self.friendListThree.append(user)
+                        }
                     }
                     print("useremail \(user.email))")
-                    print("friendobserver2FriendSystem.system.friendList.count \(FriendSystem.system.friendList.count)")
-                    update()
+                    print("friendobserver2FriendSystem.system.friendListOne.count \(FriendSystem.system.friendListOne.count)")
+                    
+                    myGroup.leave()
                 })
             }
+            
+            myGroup.notify(queue: .main) {
+                print("Finished all requests.")
+                
+                update()
+                
+            }
+            
+            
             // If there are no children, run completion here instead
             if snapshot.childrenCount == 0 {
                 update()
             }
+            
+            
         })
     }
+    
+   /* func loadFriendList(friendListNumber: Int) {
+        
+    }*/
+    
+    
     /** Removes the friend observer. This should be done when leaving the view that uses the observer. */
     func removeFriendObserver() {
         CURRENT_USER_FRIENDS_REF.removeAllObservers()
