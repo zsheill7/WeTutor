@@ -31,6 +31,7 @@ struct Event {
     var startDate: NSDate
     var endDate: NSDate
     var description: String
+    
     var location: CLLocation
     var repeatInterval: String
     var uid: String

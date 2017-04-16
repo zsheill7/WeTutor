@@ -398,7 +398,8 @@ class FriendSystem {
     func addFriendObserver(friendListNumber: Int, _ update: @escaping () -> Void) {
         print("friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendListOne.count)")
         friendListOne = [User]()
-        
+         friendListTwo = [User]()
+        friendListThree = [User]()
         let myGroup = DispatchGroup()
         
         CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
@@ -411,27 +412,49 @@ class FriendSystem {
                 myGroup.enter()
                 self.getUser(id, completion: { (user) in
                     
-                    var doesContain =  false
+                    var oneDoesContain =  false
                     for friend in self.friendListOne {
                         if friend.uid == id {
-                            doesContain = true
+                            oneDoesContain = true
                         }
-                        print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(doesContain)")
+                        print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(oneDoesContain)")
+                    }
+                    var twoDoesContain =  false
+                    for friend in self.friendListTwo {
+                        if friend.uid == id {
+                            twoDoesContain = true
+                        }
+                        print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(twoDoesContain)")
+                    }
+                    var threeDoesContain =  false
+                    for friend in self.friendListThree {
+                        if friend.uid == id {
+                            threeDoesContain = true
+                        }
+                        print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(threeDoesContain)")
                     }
                     print("user.uid \(user.uid)")
-                    if doesContain == false {
-                        if friendListNumber == 1 {
+                    
+                        
+                    if friendListNumber == 1 {
+                        if oneDoesContain == false {
                             self.friendListOne.append(user)
-                        } else if friendListNumber == 2 {
+                        }
+                    } else if friendListNumber == 2 {
+                        if twoDoesContain == false {
                             self.friendListTwo.append(user)
-                        } else if friendListNumber == 3 {
+                        }
+                    } else if friendListNumber == 3 {
+                        if threeDoesContain == false {
                             self.friendListThree.append(user)
                         }
                     }
+                    
+                    myGroup.leave()
                     print("useremail \(user.email))")
                     print("friendobserver2FriendSystem.system.friendListOne.count \(FriendSystem.system.friendListOne.count)")
                     
-                    myGroup.leave()
+                   
                 })
             }
             

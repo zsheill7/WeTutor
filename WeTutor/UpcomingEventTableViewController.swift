@@ -223,8 +223,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
         //FriendSystem.system.friendList.removeAll()
         FriendSystem.system.addFriendObserver(friendListNumber: 3) {
-            print("inside FriendSystem.system.addFriendObserver")
+           // print("inside FriendSystem.system.addFriendObserver")
+             print("jaFriendSystem.system.friendListThree  \(FriendSystem.system.friendListThree.count)")
             self.loadAllEvents(completed: {
+                for event in self.events {
+                    print("event.uid \(event.uid)\n event.title \(event.title)")
+                }
                 self.observeChannels()
                 self.tableView.reloadData()
             })
@@ -612,29 +616,39 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                         let  tutorName = channelDict["tutorName"] as? String{
                                         print("2 let  tutorName = channelDict[tutorName] as? String{")
                                         if tutorName == FIRAuth.auth()?.currentUser?.uid {
-                                           print("2if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
+                                          
                                             if tuteeName == destUserID {
                                                 self.iterationStatus = "done"
+                                                
+                                                 print("2if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
                                                 print("perform segue channel upcoming event")
                                                 print(channel)
                                             
-                                                if let eventsDict = channelDict["events"] as? [String: AnyObject] {
+                                                if let eventsDict = channelDict["events"] as? [String: [String: AnyObject]] {
                                                      print("2nd \(eventsDict)")
                                                     
-                                                    for event in eventsDict {
+                                                    for (key, event) in eventsDict {
                                                         print("2print event in eventsDict \(event)" )
-                                                        let startDateDouble = eventsDict["startDate"] as? Double ?? Date().timeIntervalSince1970
-                                                        let endDateDouble = eventsDict["endDate"] as? Double ?? Date().timeIntervalSince1970
+                                                        let startDateDouble = event["startDate"] as? Double ?? Date().timeIntervalSince1970
+                                                        let endDateDouble = event["endDate"] as? Double ?? Date().timeIntervalSince1970
                                                         let endDate = Date(timeIntervalSince1970: endDateDouble)
                                                         let startDate = Date(timeIntervalSince1970: startDateDouble)
-                                                        let eventTitle = eventsDict["title"] as? String ?? "New Event"
-                                                        let description = eventsDict["description"] as? String ?? "I look forward to seeing you!"
-                                                        let repeatInterval = eventsDict["repeatInterval"] as? String ?? "Never"
-                                                        let eventAlert = eventsDict["eventAlert"] as? String ?? "Never"
-                                                        let eventLocation = eventsDict["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
+                                                        let eventTitle = event["title"] as? String ?? "New Event"
+                                                        let description = event["description"] as? String ?? "I look forward to seeing you!"
+                                                        let repeatInterval = event["repeatInterval"] as? String ?? "Never"
+                                                        let eventAlert = event["eventAlert"] as? String ?? "Never"
+                                                        let eventLocation = event["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
                                                         let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
                                                         print("2newEvent \(newEvent.uid) channelCount \(channelCount) friendCount \(friendCount)")
-                                                        self.events.append(newEvent)
+                                                        var eventListDoesContain = false
+                                                        for eventListEvent in self.events {
+                                                            if eventListEvent.uid == event.key {
+                                                                eventListDoesContain = true
+                                                            }
+                                                        }
+                                                        if eventListDoesContain == false {
+                                                            self.events.append(newEvent)
+                                                        }
                                                        // print("self.events inside \(self.events.count)  \(self.events)")
                                                     }
                                                     
@@ -689,11 +703,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
              }
              }*/
             print("self.events.count \(self.events.count)")
+            
          //   print("self.events \(self.events)" )
+            print("right before completed")
+            completed()
             
         })
         
-        completed()
+        
         
     }
     

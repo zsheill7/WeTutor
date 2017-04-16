@@ -67,10 +67,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="DaC-gx-wcn" firstAttribute="centerY" secondItem="h7G-xH-E7J" secondAttribute="centerY" id="Fax-gH-KLY"/>
-                        <constraint firstItem="DaC-gx-wcn" firstAttribute="top" secondItem="h7G-xH-E7J" secondAttribute="top" id="O2q-sJ-hgE"/>
-                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
