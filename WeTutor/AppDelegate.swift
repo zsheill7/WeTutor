@@ -31,15 +31,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // UIFont(
      //  UIApplication.shared.statusBarStyle = .lightContent
         
-       /* var currentUser: User?
+        var currentUser: User?
         
         let userDefaults = UserDefaults.standard
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-        self.window?.rootViewController = viewController*/
+        self.window?.rootViewController = viewController
 
-        if FIRAuth.auth()?.currentUser?.uid != nil {
+       /* if FIRAuth.auth()?.currentUser?.uid != nil {
             FriendSystem.system.getCurrentUser { (user) in
                 currentUser = user
                 if let isTutor = currentUser?.isTutor as? Bool,
@@ -63,13 +63,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
             }
-        }
+        }*/
         
         
         
-        print(userDefaults.value(forKey: "isTutor") as? Bool)
+        //print(userDefaults.value(forKey: "isTutor") as? Bool)
        // print(userDefaults.value(forKey: "languages") as? [String])
-        print(userDefaults.value(forKey: "description") as? String)
+       // print(userDefaults.value(forKey: "description") as? String)
         print(FIRAuth.auth()?.currentUser?.uid)
         
         IQKeyboardManager.shared().isEnabled = true

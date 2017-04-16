@@ -104,6 +104,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var pickerFrame: CGRect?
     var activityIndicator = UIActivityIndicatorView()
     
+  
     
     let userRef = FIRDatabase.database().reference().child("users")
     var currentUserUID = FIRAuth.auth()?.currentUser?.uid
@@ -223,16 +224,22 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         FriendSystem.system.friendList.removeAll()
         FriendSystem.system.addFriendObserver {
             print("inside FriendSystem.system.addFriendObserver")
-            self.loadAllEvents()
+            self.loadAllEvents(completed: {
+                self.observeChannels()
+                self.tableView.reloadData()
+            })
+
+           /* self.loadAllEvents{ () -> () in
+                self.newQuestion()
+            }
             self.observeChannels()
-            self.tableView.reloadData()
+            self.tableView.reloadData()*/
             print("1FriendSystem.system.friendList \(FriendSystem.system.friendList.count)")
             
             
         }
-        self.loadAllEvents()
-        self.observeChannels()
-        self.tableView.reloadData()
+        
+       
         self.view.bringSubview(toFront: addEventButton)
         
        // let calendars = eventStore.calendars(for: .event)
@@ -511,7 +518,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
     }*/
  
-    func loadAllEvents() {
+    func loadAllEvents(completed: @escaping (() -> ())) {
         print("loadAllCalendars()")
         let friendList = FriendSystem.system.friendList
         print("friendList.count \(friendList.count)")
@@ -532,11 +539,13 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     for channel in allChannels {
                         
                         if let channelDict = channel.value as? Dictionary<String, AnyObject> {
-                            
+                            print("1channelDict \(channelDict)")
                             print(" if let channelDict = channel.value as? Dictionary<String, AnyObject> {")
                             //print(" if let channel = snapshot.value as? [String: String] {")
                             //This iterates through the channel list and checks if either the tutorName or the tutorName is equal to the current user
-                            print("friendList \(friendList)")
+                            for friend in friendList {
+                                print("friendList \(friend.uid)")
+                            }
                             for destUser in friendList {
                                 let destUserID = destUser.uid
                                 if self.currentUserIsTutor == false {
@@ -566,6 +575,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                         let eventAlert = eventsDict["eventAlert"] as? String ?? "Never"
                                                         let eventLocation = eventsDict["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
                                                         let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
+                                                        print("1newEvent \(newEvent)")
                                                         self.events.append(newEvent)
                                                     }
                                                     
@@ -590,6 +600,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 print("perform segue channel upcoming event")
                                                 print(channel)
                                                 if let eventsDict = channelDict["events"] as? [String: AnyObject] {
+                                                     print("2nd \(eventsDict)")
                                                     for event in eventsDict {
                                                         print("2print event in eventsDict \(event)" )
                                                         let startDateDouble = eventsDict["startDate"] as? Double ?? Date().timeIntervalSince1970
@@ -602,7 +613,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                         let eventAlert = eventsDict["eventAlert"] as? String ?? "Never"
                                                         let eventLocation = eventsDict["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
                                                         let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
+                                                        print("2newEvent \(newEvent)")
                                                         self.events.append(newEvent)
+                                                       // print("self.events inside \(self.events.count)  \(self.events)")
                                                     }
                                                     
                                                 } else {
@@ -654,11 +667,18 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
              
              }
              }*/
+            print("self.events.count \(self.events.count)")
+         //   print("self.events \(self.events)" )
             
         })
         
+        completed()
         
     }
+    
+    /*loadAllEvents { () -> () in
+        loadDataFromDatabase()
+    }*/
     /*func createCalendar(_ channelId: String) {
      
         let userID = FIRAuth.auth()?.currentUser?.uid
