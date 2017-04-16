@@ -169,9 +169,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
         }
         
-        FriendSystem.system.friendList.removeAll()
-        FriendSystem.system.addFriendObserver {
-            for friend in FriendSystem.system.friendList {
+        FriendSystem.system.friendListTwo.removeAll()
+        FriendSystem.system.addFriendObserver(friendListNumber: 2) {
+            for friend in FriendSystem.system.friendListTwo {
                 self.friendUserUIDList.append(friend.uid)
             }
         }
@@ -735,7 +735,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 viewWithTag3.removeFromSuperview()
             }
         }*/
-       /* if FriendSystem.system.friendList.contains(where: userAtRow) {
+       /* if FriendSystem.system.friendListTwo.contains(where: userAtRow) {
             cell!.friendIndicatorView.backgroundColor = UIColor.green
         } else {
             cell!.friendIndicatorView.backgroundColor = UIColor.clear

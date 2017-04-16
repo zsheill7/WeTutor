@@ -98,18 +98,18 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         /*FriendSystem.system.addUserObserver { () in
          self.tableView.reloadData()
          }*/
-        FriendSystem.system.addFriendObserver {
-            print("FriendSystem.system.friendList  \(FriendSystem.system.friendList)")
+       // FriendSystem.system.addFriendObserver {
+     //       print("FriendSystem.system.friendListThreeThree  \(FriendSystem.system.friendListThree)")
             self.tableView.reloadData()
             // self.observeChannels()
-        }
+      //  }
         
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: cellId)
         self.tableView.reloadData()
-        if FriendSystem.system.friendList.count != 0 {
+        if FriendSystem.system.friendListThree.count != 0 {
             //self.view.addBackground()
         }
-        //filteredData = FriendSystem.system.friendList
+        //filteredData = FriendSystem.system.friendListThree
         
         dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
@@ -307,8 +307,8 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         let userChannelRef = userRef.child(userID!).child("channels")
         
         print("inside observeChannels)")
-        for friend in FriendSystem.system.friendList {
-            print("for friend in FriendSystem.system.friendList")
+        for friend in FriendSystem.system.friendListThree {
+            print("for friend in FriendSystem.system.friendListThree")
             var ref: FIRDatabaseReference!
             let userID = FIRAuth.auth()?.currentUser?.uid
             ref = FIRDatabase.database().reference()
@@ -457,10 +457,10 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         //return tutors.count
-        print("FriendSystem.system.friendList.count \(FriendSystem.system.friendList.count)")
-        print(FriendSystem.system.friendList.count)
+        print("FriendSystem.system.friendListThree.count \(FriendSystem.system.friendListThree.count)")
+        print(FriendSystem.system.friendListThree.count)
         //print(filteredData.count)
-        return FriendSystem.system.friendList.count
+        return FriendSystem.system.friendListThree.count
         
     }
     
@@ -482,7 +482,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ChatUserCell
         
-        let user = FriendSystem.system.friendList[indexPath.row]
+        let user = FriendSystem.system.friendListThree[indexPath.row]
         cell.textLabel?.text = user.name
         cell.detailTextLabel?.text = user.email
         
@@ -520,7 +520,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                 ])
         }
         
-        let destUser = FriendSystem.system.friendList[indexPath.row]
+        let destUser = FriendSystem.system.friendListThree[indexPath.row]
         let destUserID = destUser.uid
         channelRef.observeSingleEvent(of: .value, with: { (snapshot) in
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
@@ -620,10 +620,10 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
     
     /* func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
      if searchText.isEmpty {
-     filteredData = FriendSystem.system.friendList
+     filteredData = FriendSystem.system.friendListThree
      } else {
      //If the user has entered text into the search box
-     filteredData = FriendSystem.system.friendList.filter({(dataItem: String) -> Bool in
+     filteredData = FriendSystem.system.friendListThree.filter({(dataItem: String) -> Bool in
      // If dataItem matches the searchText, return true to include it
      if dataItem.range(ofString: searchText, options: .caseInsensitiveSearch) != nil {
      return true

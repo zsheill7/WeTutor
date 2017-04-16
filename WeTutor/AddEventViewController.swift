@@ -30,14 +30,14 @@ class AddEventViewController: FormViewController {
             //self.usernameLabel.text = user.email
         }
         
-        FriendSystem.system.addFriendObserver {
+        //FriendSystem.system.addFriendObserver(friendListNumber: <#Int#>) {
             print("inside FriendSystem.system.addFriendObserver")
             // self.loadAllCalendars()
             
             self.tableView?.reloadData()
             //self.observeChannels()
             
-        }
+       // }
         
         initializeForm()
         

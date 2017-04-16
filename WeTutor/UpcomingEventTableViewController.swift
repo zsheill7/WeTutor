@@ -222,7 +222,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             //self.usernameLabel.text = user.email
         }
         //FriendSystem.system.friendList.removeAll()
-        /*FriendSystem.system.addFriendObserver {
+        FriendSystem.system.addFriendObserver(friendListNumber: 3) {
             print("inside FriendSystem.system.addFriendObserver")
             self.loadAllEvents(completed: {
                 self.observeChannels()
@@ -234,10 +234,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             }
             self.observeChannels()
             self.tableView.reloadData()*/
-            print("1FriendSystem.system.friendList \(FriendSystem.system.friendList.count)")
+            print("1FriendSystem.system.friendListThree \(FriendSystem.system.friendListThree.count)")
             
             
-        }*/
+        }
         
        
         self.view.bringSubview(toFront: addEventButton)
