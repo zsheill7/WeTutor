@@ -135,21 +135,21 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }
     var datesWithEvent:[NSDate] = []
     
-    func calendar(calendar: FSCalendar, hasEventForDate date: NSDate) -> Bool {
+    func calendar(_ calendar: FSCalendar, hasEventFor date: Date) -> Bool {
         for event in self.events {
             datesWithEvent.append(event.startDate as NSDate)
-            /*let order = Calendar.current.compare(event.startDate, to: date as Date, toGranularity: .day)
+            let order = Calendar.current.compare(event.startDate as Date, to: date as Date, toGranularity: .day)
             if order == ComparisonResult.orderedSame {
                 let unitFlags: NSCalendar.Unit = [.day, .month, .year]
                 let calendar2: Calendar = Calendar.current
                 let components: DateComponents = calendar2.components(unitFlags, fromDate: event.startDate)
                 datesWithEvent.append(calendar2.dateComponents(components)!)
-            }*/
+            }
         }
         return datesWithEvent.contains(date)
     }
     
-    func calendar(calendar: FSCalendar, numberOfEventsForDate date: NSDate) -> Int {
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         /*for event in self.events {
             let order = Calendar.current.compare(event.startDate!, to: date, toGranularity: .day)
            
@@ -637,12 +637,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                         let description = event["description"] as? String ?? "I look forward to seeing you!"
                                                         let repeatInterval = event["repeatInterval"] as? String ?? "Never"
                                                         let eventAlert = event["eventAlert"] as? String ?? "Never"
-                                                        let eventLocation = event["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
-                                                        let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
+                                                        let eventLocation = event["location"] as? String ?? "Mercer Island Library"//CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
+                                                        let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: key, objectID: UUID().uuidString, eventAlert: eventAlert)
                                                         print("2newEvent \(newEvent.uid) channelCount \(channelCount) friendCount \(friendCount)")
                                                         var eventListDoesContain = false
                                                         for eventListEvent in self.events {
-                                                            if eventListEvent.uid == event.key {
+                                                            if eventListEvent.uid == key {
                                                                 eventListDoesContain = true
                                                             }
                                                         }
