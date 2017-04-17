@@ -133,17 +133,21 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         /*let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
          return storyboard.instantiateViewController(withIdentifier: "UsersViewController") as! TutorsTableViewController*/
     }
-    var datesWithEvent:[NSDate] = []
+    var datesWithEvent:[Date] = []
     
     func calendar(_ calendar: FSCalendar, hasEventFor date: Date) -> Bool {
         for event in self.events {
-            datesWithEvent.append(event.startDate as NSDate)
+            datesWithEvent.append(event.startDate as Date)
             let order = Calendar.current.compare(event.startDate as Date, to: date as Date, toGranularity: .day)
             if order == ComparisonResult.orderedSame {
-                let unitFlags: NSCalendar.Unit = [.day, .month, .year]
+               // let unitFlags: NSCalendar.Unit = [.day, .month, .year]
+                let unitFlags:Set<Calendar.Component> = [
+                    .hour, .day, .month,
+                    .year,.minute,.hour,/*.second,
+                    .calendar*/]
                 let calendar2: Calendar = Calendar.current
-                let components: DateComponents = calendar2.components( //calendar2.components(unitFlags, fromDate: event.startDate)
-                datesWithEvent.append(calendar2.dateComponents(components)!)
+                let components: DateComponents = calendar2.dateComponents(unitFlags, from: Date()) //calendar2.components(unitFlags, fromDate: event.startDate)
+                datesWithEvent.append(calendar2.date(from: components)!/*calendar.date(from: components)*//*calendar2.dateComponents(components)!*/)
             }
         }
         return datesWithEvent.contains(date)
@@ -160,8 +164,18 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         //return 0
     }*/
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let day: Int! = self.gregorian.component(.day, from: date)
-        return day % 5 == 0 ? day/5 : 0;
+        var numberOfEvents = 0
+        for event in self.events {
+            let order = Calendar.current.compare(event.startDate as Date, to: date, toGranularity: .day)
+            
+            if order == .orderedSame {
+                numberOfEvents += 1
+            }
+            
+        }
+        return numberOfEvents
+        /*let day: Int! = self.gregorian.component(.day, from: date)
+        return day % 5 == 0 ? day/5 : 0;*/
     }
     
     
