@@ -9,7 +9,7 @@
 import UIKit
 import PullToRefresh
 
-class Animator: RefreshViewAnimator {
+class RefreshAnimator: RefreshViewAnimator {
     
     private let refreshView: RefreshView
     

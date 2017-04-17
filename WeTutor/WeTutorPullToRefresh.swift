@@ -14,7 +14,7 @@ class WeTutorPullToRefresh: PullToRefresh {
     convenience init() {
         let refreshView = Bundle(for: type(of: self)).loadNibNamed("RefreshView", owner: nil, options: nil)!.first as! RefreshView
         refreshView.imageView.image = #imageLiteral(resourceName: "Loading Pull-down 1")
-        let animator = Animator(refreshView: refreshView)
-        self.init(height: refreshView.height, position: .top)
+        let animator = RefreshAnimator(refreshView: refreshView)
+        self.init(refreshView: refreshView, animator: animator, height: 40, position: .top)
     }
 }

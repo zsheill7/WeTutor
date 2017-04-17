@@ -11,8 +11,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var directionsTableView: DirectionsTableView!
-    @IBOutlet weak var totalTimeLabel: UILabel!
+   // @IBOutlet weak var directionsTableView: DirectionsTableView!
+   // @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet var segmentedControl:UISegmentedControl!
     
     var currentRoute:MKRoute?
@@ -34,14 +34,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     
+    @IBAction func openInMaps(_ sender: Any) {
+        
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: locationToShow, addressDictionary:nil))
+        mapItem.name = self.navigationController?.title
+        mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+    }
     
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    directionsTableView.contentInset = UIEdgeInsetsMake(-36, 0, -20, 0)
-    addActivityIndicator()
-   // calculateSegmentDirections(0, time: 0, routes: [])
+    //directionsTableView.contentInset = UIEdgeInsetsMake(-36, 0, -20, 0)
+   // addActivityIndicator()
+  // calculateSegmentDirections(0, time: 0, routes: [])
     
     segmentedControl.isHidden = true
     segmentedControl.addTarget(self, action: #selector(showDirection), for: .valueChanged)
@@ -173,8 +179,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             plotPolyline(routes[index])
            // directionsArray += [(startingAddress: locationArray[index].textField?.text!, endingAddress: locationArray[index+1].textField?.text!, route: routes[index])]
         }
-        displayDirections(directionsArray)
-        printTimeToLabel(time)
+        //displayDirections(directionsArray)
+        //printTimeToLabel(time)
     }
     
     func plotPolyline(_ route: MKRoute) {
@@ -193,13 +199,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                                       animated: false)
         }
     }
-    func displayDirections(_ directionsArray: [(startingAddress: String, endingAddress: String, route: MKRoute)]) {
+    /*func displayDirections(_ directionsArray: [(startingAddress: String, endingAddress: String, route: MKRoute)]) {
         directionsTableView.directionsArray = directionsArray
         directionsTableView.delegate = directionsTableView
         directionsTableView.dataSource = directionsTableView
         directionsTableView.reloadData()
     }
-    
+    */
     func calculateSegmentDirections(_ index: Int,
                                     time: TimeInterval, routes: [MKRoute]) {
         
@@ -250,11 +256,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
 
-    func printTimeToLabel(_ time: TimeInterval) {
+   /* func printTimeToLabel(_ time: TimeInterval) {
         let timeString = time.formatted()
         totalTimeLabel.text = "Total Time: \(timeString)"
     }
-    
+    */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = (currentTransportType == .automobile) ? UIColor.blue : UIColor.orange

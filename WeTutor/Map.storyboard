@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D0O-0T-CPl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="D0O-0T-CPl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,32 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gb2-Ye-HAf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="331"/>
-                            </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="vHS-bJ-Oo1" customClass="DirectionsTableView" customModule="WeTutor" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="395" width="375" height="272"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-A3-VMy">
+                                <rect key="frame" x="234" y="619" width="125" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="272" id="3kK-Kd-BTK"/>
+                                    <constraint firstAttribute="width" constant="125" id="H86-NW-84b"/>
                                 </constraints>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionCell" id="hlL-an-wV8">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hlL-an-wV8" id="Hdg-fS-u9Q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                <segments>
+                                    <segment title="Car"/>
+                                    <segment title="Walking"/>
+                                </segments>
+                            </segmentedControl>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gb2-Ye-HAf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
                             <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSG-FI-GWn">
-                                <rect key="frame" x="325" y="141" width="34" height="34"/>
+                                <rect key="frame" x="309" y="141" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="0tT-ng-fzV"/>
-                                    <constraint firstAttribute="height" constant="34" id="gzh-Hl-GHW"/>
+                                    <constraint firstAttribute="width" constant="50" id="0tT-ng-fzV"/>
+                                    <constraint firstAttribute="height" constant="50" id="gzh-Hl-GHW"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="direction"/>
@@ -59,36 +52,40 @@
                                     <action selector="showDirection:" destination="DiH-Za-hfG" eventType="touchUpInside" id="dqS-D4-KZw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuB-aC-g6r">
-                                <rect key="frame" x="317" y="97" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BQt-A3-VMy">
-                                <rect key="frame" x="234" y="359" width="125" height="29"/>
-                                <segments>
-                                    <segment title="Car"/>
-                                    <segment title="Walking"/>
-                                </segments>
-                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9i2-yY-BAN">
+                                <rect key="frame" x="229" y="615.5" width="130" height="35"/>
+                                <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="WSu-Ri-zgZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <state key="normal" title="Open in Maps">
+                                    <color key="titleColor" red="0.19215686269999999" green="0.59607843140000005" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openInMaps:" destination="DiH-Za-hfG" eventType="touchUpInside" id="GSK-oV-o78"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="9i2-yY-BAN" secondAttribute="trailing" id="1vD-Wd-dGc"/>
+                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="BQt-A3-VMy" secondAttribute="bottom" constant="20" id="7MH-I1-qwY"/>
                             <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="BQt-A3-VMy" secondAttribute="bottom" constant="20" id="Fm4-vy-fO9"/>
                             <constraint firstItem="aSG-FI-GWn" firstAttribute="top" secondItem="gnf-KA-0xj" secondAttribute="bottom" constant="77" id="JiL-Gk-SNM"/>
                             <constraint firstItem="BQt-A3-VMy" firstAttribute="trailing" secondItem="nFL-Dm-JiT" secondAttribute="trailingMargin" id="Kn6-d3-KRw"/>
-                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="Oti-l9-gNb"/>
                             <constraint firstItem="gb2-Ye-HAf" firstAttribute="leading" secondItem="nFL-Dm-JiT" secondAttribute="leading" id="UDg-pX-UO8"/>
-                            <constraint firstAttribute="trailing" secondItem="vHS-bJ-Oo1" secondAttribute="trailing" id="ULB-vL-dBc"/>
                             <constraint firstItem="gb2-Ye-HAf" firstAttribute="top" secondItem="gnf-KA-0xj" secondAttribute="bottom" id="UUP-KI-ZDd"/>
-                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="vHS-bJ-Oo1" secondAttribute="bottom" id="dT9-4k-7JQ"/>
-                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="leading" secondItem="nFL-Dm-JiT" secondAttribute="leading" id="gkX-Fa-age"/>
+                            <constraint firstItem="9i2-yY-BAN" firstAttribute="centerY" secondItem="BQt-A3-VMy" secondAttribute="centerY" id="W6q-BX-7jV"/>
+                            <constraint firstItem="gb2-Ye-HAf" firstAttribute="top" secondItem="gnf-KA-0xj" secondAttribute="bottom" id="e6d-g9-6X8"/>
+                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="fXp-bE-cL7"/>
                             <constraint firstAttribute="trailing" secondItem="gb2-Ye-HAf" secondAttribute="trailing" id="id4-fd-yHk"/>
-                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="ijh-w8-TnD"/>
-                            <constraint firstItem="vHS-bJ-Oo1" firstAttribute="top" secondItem="gb2-Ye-HAf" secondAttribute="bottom" id="lRO-Zr-m07"/>
-                            <constraint firstItem="O1A-Of-FDA" firstAttribute="top" secondItem="vHS-bJ-Oo1" secondAttribute="bottom" id="rkp-Qz-QOD"/>
+                            <constraint firstItem="BQt-A3-VMy" firstAttribute="trailing" secondItem="nFL-Dm-JiT" secondAttribute="trailingMargin" id="qHx-hx-0xQ"/>
                             <constraint firstItem="aSG-FI-GWn" firstAttribute="trailing" secondItem="nFL-Dm-JiT" secondAttribute="trailingMargin" id="w6W-9L-LlI"/>
                         </constraints>
                     </view>
@@ -100,10 +97,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="directionsTableView" destination="vHS-bJ-Oo1" id="edX-9d-Iip"/>
                         <outlet property="mapView" destination="gb2-Ye-HAf" id="Vlm-UU-wVF"/>
                         <outlet property="segmentedControl" destination="BQt-A3-VMy" id="YNr-xT-cW9"/>
-                        <outlet property="totalTimeLabel" destination="ZuB-aC-g6r" id="Oac-Gc-e8i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hab-yE-QHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
