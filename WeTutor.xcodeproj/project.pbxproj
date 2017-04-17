@@ -48,6 +48,8 @@
 		C838A9481E1B46EC004A794C /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C838A9471E1B46EC004A794C /* UserCell.xib */; };
 		C838A94A1E1B6E32004A794C /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A9491E1B6E32004A794C /* UserCell.swift */; };
 		C83A5E581E8ED58500716C89 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A5E571E8ED58500716C89 /* ChatUserCell.swift */; };
+		C84536BA1EA53C9400E76999 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C84536B91EA53C9400E76999 /* RefreshView.xib */; };
+		C84536BC1EA53CBE00E76999 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84536BB1EA53CBE00E76999 /* RefreshView.swift */; };
 		C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */; };
 		C84F18031E6F129300EC54BF /* WeekDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18021E6F129300EC54BF /* WeekDaysCell.swift */; };
 		C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */; };
@@ -179,6 +181,8 @@
 		C838A9471E1B46EC004A794C /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		C838A9491E1B6E32004A794C /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		C83A5E571E8ED58500716C89 /* ChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
+		C84536B91EA53C9400E76999 /* RefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
+		C84536BB1EA53CBE00E76999 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		C84F18021E6F129300EC54BF /* WeekDaysCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDaysCell.swift; sourceTree = "<group>"; };
 		C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCellTwo.xib; sourceTree = "<group>"; };
@@ -555,6 +559,8 @@
 				C82C35FC1E93405900DD17CD /* EventCell.xib */,
 				C82970641EA045FE002233FB /* EventCell.swift */,
 				C83A5E571E8ED58500716C89 /* ChatUserCell.swift */,
+				C84536B91EA53C9400E76999 /* RefreshView.xib */,
+				C84536BB1EA53CBE00E76999 /* RefreshView.swift */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -686,6 +692,7 @@
 				C84F180D1E713CF700EC54BF /* SubjectCell.xib in Resources */,
 				C82800E11E0F4F7600329B7D /* Tutee.storyboard in Resources */,
 				96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */,
+				C84536BA1EA53C9400E76999 /* RefreshView.xib in Resources */,
 				C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */,
 				C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */,
 				C838A9481E1B46EC004A794C /* UserCell.xib in Resources */,
@@ -799,6 +806,7 @@
 				C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */,
 				C82C35FA1E915BC500DD17CD /* TutorSignUpViewControllerThree.swift in Sources */,
 				C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */,
+				C84536BC1EA53CBE00E76999 /* RefreshView.swift in Sources */,
 				C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */,
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
