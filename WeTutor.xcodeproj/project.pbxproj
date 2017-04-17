@@ -50,6 +50,8 @@
 		C83A5E581E8ED58500716C89 /* ChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83A5E571E8ED58500716C89 /* ChatUserCell.swift */; };
 		C84536BA1EA53C9400E76999 /* RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C84536B91EA53C9400E76999 /* RefreshView.xib */; };
 		C84536BC1EA53CBE00E76999 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84536BB1EA53CBE00E76999 /* RefreshView.swift */; };
+		C84536BE1EA5493100E76999 /* RefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84536BD1EA5493100E76999 /* RefreshAnimator.swift */; };
+		C84536C01EA5497200E76999 /* WeTutorPullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84536BF1EA5497200E76999 /* WeTutorPullToRefresh.swift */; };
 		C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */; };
 		C84F18031E6F129300EC54BF /* WeekDaysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84F18021E6F129300EC54BF /* WeekDaysCell.swift */; };
 		C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */ = {isa = PBXBuildFile; fileRef = C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */; };
@@ -183,6 +185,8 @@
 		C83A5E571E8ED58500716C89 /* ChatUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatUserCell.swift; sourceTree = "<group>"; };
 		C84536B91EA53C9400E76999 /* RefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshView.xib; sourceTree = "<group>"; };
 		C84536BB1EA53CBE00E76999 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		C84536BD1EA5493100E76999 /* RefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshAnimator.swift; sourceTree = "<group>"; };
+		C84536BF1EA5497200E76999 /* WeTutorPullToRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeTutorPullToRefresh.swift; sourceTree = "<group>"; };
 		C84F18001E6E9FE000EC54BF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		C84F18021E6F129300EC54BF /* WeekDaysCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDaysCell.swift; sourceTree = "<group>"; };
 		C84F18061E70895300EC54BF /* WeekDaysCellTwo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeekDaysCellTwo.xib; sourceTree = "<group>"; };
@@ -561,6 +565,8 @@
 				C83A5E571E8ED58500716C89 /* ChatUserCell.swift */,
 				C84536B91EA53C9400E76999 /* RefreshView.xib */,
 				C84536BB1EA53CBE00E76999 /* RefreshView.swift */,
+				C84536BD1EA5493100E76999 /* RefreshAnimator.swift */,
+				C84536BF1EA5497200E76999 /* WeTutorPullToRefresh.swift */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -783,6 +789,7 @@
 				C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
 				C890A09E1E27FDDC007DE45D /* CreateChannelCell.swift in Sources */,
+				C84536BE1EA5493100E76999 /* RefreshAnimator.swift in Sources */,
 				C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */,
 				C8E47F2C1E7636D7009351C8 /* Unused.swift in Sources */,
 				C8338B391E63DFC300202E3A /* Event.swift in Sources */,
@@ -810,6 +817,7 @@
 				C84F18011E6E9FE000EC54BF /* UIViewControllerExtensions.swift in Sources */,
 				C82800DC1E0EFD9700329B7D /* UIColorExtensions.swift in Sources */,
 				C8EE88571E0DB144003775C2 /* FSCalendarCollectionView.m in Sources */,
+				C84536C01EA5497200E76999 /* WeTutorPullToRefresh.swift in Sources */,
 				C8EE88531E0DB144003775C2 /* FSCalendarAnimator.m in Sources */,
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */,
