@@ -294,7 +294,7 @@
             <objects>
                 <navigationController storyboardIdentifier="chatNC" automaticallyAdjustsScrollViewInsets="NO" id="jjT-IL-3Rh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="00J-m5-9yb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="00J-m5-9yb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -517,7 +517,7 @@
         <scene sceneID="X1D-pW-B4K">
             <objects>
                 <navigationController id="XVT-N9-jpa" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="llK-Wk-1MO">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="llK-Wk-1MO">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -676,6 +676,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addEventButton" destination="kYb-0o-8RV" id="1a9-dF-8hJ"/>
+                        <outlet property="calendarHeightConstraint" destination="6Aw-7R-DN0" id="yi1-Wj-Non"/>
                         <outlet property="calendarView" destination="kaL-S7-iTr" id="HeF-YG-k1q"/>
                         <outlet property="calendarWidthConstraint" destination="Ppy-OK-Xg4" id="ZK4-eL-acI"/>
                         <outlet property="tableView" destination="bhN-UQ-8Hd" id="Ncq-NW-xdf"/>

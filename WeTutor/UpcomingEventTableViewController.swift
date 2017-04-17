@@ -61,7 +61,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
    // @IBOutlet weak var nagivationItem: UINavigationItem!
     //@IBOutlet weak var table: UITableView!
-   // @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -142,14 +142,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             if order == ComparisonResult.orderedSame {
                 let unitFlags: NSCalendar.Unit = [.day, .month, .year]
                 let calendar2: Calendar = Calendar.current
-                let components: DateComponents = calendar2.components(unitFlags, fromDate: event.startDate)
+                let components: DateComponents = calendar2.components( //calendar2.components(unitFlags, fromDate: event.startDate)
                 datesWithEvent.append(calendar2.dateComponents(components)!)
             }
         }
         return datesWithEvent.contains(date)
     }
     
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+   /* func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         /*for event in self.events {
             let order = Calendar.current.compare(event.startDate!, to: date, toGranularity: .day)
            
@@ -158,6 +158,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }*/
         return self.events.count
         //return 0
+    }*/
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let day: Int! = self.gregorian.component(.day, from: date)
+        return day % 5 == 0 ? day/5 : 0;
     }
     
     
@@ -819,7 +823,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         view.layoutIfNeeded()
     }*/
     
-    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.calendarHeightConstraint.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
     //MARK: -
     //MARK: Table View
     
