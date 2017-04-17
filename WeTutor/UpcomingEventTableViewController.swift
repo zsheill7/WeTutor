@@ -15,6 +15,7 @@ import EventKitUI
 import DropDown
 import Hero
 import BubbleTransition
+import PullToRefresh
 
 struct properties {
     static let pickerEvents = [
@@ -136,6 +137,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     var datesWithEvent:[Date] = []
     
     func calendar(_ calendar: FSCalendar, hasEventFor date: Date) -> Bool {
+        print("has event for")
         for event in self.events {
             datesWithEvent.append(event.startDate as Date)
             let order = Calendar.current.compare(event.startDate as Date, to: date as Date, toGranularity: .day)
@@ -153,6 +155,32 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return datesWithEvent.contains(date)
     }
     
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderDefaultColorFor date: Date) -> UIColor? {
+        /*let key = self.dateFormatter1.string(from: date)
+        if let color = self.borderDefaultColors[key] {
+            return color
+        }
+        return appearance.borderDefaultColor*/
+        return UIColor.white
+        for event in self.events {
+            let order = Calendar.current.compare(event.startDate as Date, to: date, toGranularity: .day)
+            print("for event in self.events")
+            if order == .orderedSame {
+                print("orderedsame")
+                // numberOfEvents += 1
+                //return event.numberOfEvent
+                return UIColor.white
+            }
+            
+        }
+        return appearance.borderDefaultColor
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
+       
+        return 1.0
+    }
+    
    /* func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         /*for event in self.events {
             let order = Calendar.current.compare(event.startDate!, to: date, toGranularity: .day)
@@ -164,16 +192,29 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         //return 0
     }*/
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        var numberOfEvents = 0
+      // var numberOfEvents = 0
+        
+        print("number of events for date")
         for event in self.events {
             let order = Calendar.current.compare(event.startDate as Date, to: date, toGranularity: .day)
-            
+            print("for event in self.events")
             if order == .orderedSame {
-                numberOfEvents += 1
+                print("orderedsame")
+               // numberOfEvents += 1
+                //return event.numberOfEvent
+                return 1
             }
             
         }
-        return numberOfEvents
+        return 0//numberOfEvents
+        
+       /* for data in eventsArray{
+            let order = NSCalendar.currentCalendar().compareDate(data.eventDate!, toDate: date, toUnitGranularity: .Day)
+            if order == NSComparisonResult.OrderedSame{
+                return data.numberOfEvent!
+            }
+        }
+        return 0*/
         /*let day: Int! = self.gregorian.component(.day, from: date)
         return day % 5 == 0 ? day/5 : 0;*/
     }
@@ -231,11 +272,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.setupCalendarAppearance()
         
         self.initializeDateFormatter()
+        calendarView.delegate = self
+        calendarView.dataSource = self
+       
         
         self.view.addBackground()
         calendarWidthConstraint.constant = self.view.frame.size.width
         self.tableView.backgroundColor = UIColor.clear
-        self.calendarView.width = self.view.width + 20
+        //self.calendarView.width = self.view.width + 20
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
@@ -249,6 +293,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 }
                 self.observeChannels()
                 self.tableView.reloadData()
+                self.calendarView.reloadData()
+                
             })
 
            /* self.loadAllEvents{ () -> () in
@@ -261,6 +307,16 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             
         }
         
+        let refresher = PullToRefresh()
+        tableView.addPullToRefresh(refresher) {
+            let when = DispatchTime.now() + 1.2
+            self.tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self.tableView.endRefreshing(at: .top)
+                //self.tableView.removePullToRefresh(self.tableView.topPullToRefresh!)
+                
+            }
+        }
        
         self.view.bringSubview(toFront: addEventButton)
         
@@ -313,6 +369,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         }
     }*/
     var ref: FIRDatabaseReference!
+    
+    
     fileprivate func observeChannels() {
         // We can use the observe method to listen for new
         // channels being written to the Firebase DB
@@ -788,6 +846,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.calendarView.appearance.headerTitleColor = UIColor.white
         //self.calendarView.appearance.titleDefaultColor = UIColor.white
         self.calendarView.appearance.weekdayTextColor = UIColor.white
+        //self.calendarView.appearance.
         self.calendarView.appearance.selectionColor = UIColor.white
         self.calendarView.appearance.titleSelectionColor = UIColor.red
         self.calendarView.appearance.todayColor = UIColor.red
@@ -851,6 +910,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    
+
     
     let dateFormatter = DateFormatter()
     

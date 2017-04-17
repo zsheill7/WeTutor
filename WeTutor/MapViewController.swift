@@ -41,7 +41,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     directionsTableView.contentInset = UIEdgeInsetsMake(-36, 0, -20, 0)
     addActivityIndicator()
-    calculateSegmentDirections(0, time: 0, routes: [])
+   // calculateSegmentDirections(0, time: 0, routes: [])
     
     segmentedControl.isHidden = true
     segmentedControl.addTarget(self, action: #selector(showDirection), for: .valueChanged)

@@ -16,6 +16,7 @@ import TwicketSegmentedControl
 import EventKit
 import FirebaseAnalytics
 import Instructions
+import PullToRefresh
 
 extension Array {
     func doesContain<T where T : Equatable>(obj: T) -> Bool {
@@ -133,6 +134,17 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         tableView.emptyDataSetDelegate = self
         self.tableView.isUserInteractionEnabled = true
         
+        let refresher = PullToRefresh()
+        tableView.addPullToRefresh(refresher) {
+            let when = DispatchTime.now() + 1.2
+            self.tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self.tableView.endRefreshing(at: .top)
+                //self.tableView.removePullToRefresh(self.tableView.topPullToRefresh!)
+                
+            }
+        }
+        
         //self.coachMarksController.dataSource = self
         
         //self.tableView.opacity = 0
@@ -189,7 +201,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 print("finalUserList.count")
         print(finalUserList.count)
        
-        tableView.reloadData()
+        self.tableView.reloadData()
         
         /*if (currentUser?.isTutor) == true {
             segmentedControl.move(to: 1)
