@@ -125,7 +125,7 @@ class PagingMenuViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("here")
-        let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 0) as IndexPath)
+        let sectionType = MenuSection(indexPath: IndexPath(row: 1, section: 0) as IndexPath)
        // self.view?.backgroundColor = UIColor.clear
         self.view.backgroundColor = UIColor.clear
         options = sectionType?.options
@@ -314,7 +314,7 @@ class PagingMenuViewController: UIViewController  {
     
     func openChat() {
         //pagingMenuController?.move(toPage: 0, animated: true)
-        pagingMenuController?.move(toPage: 1, animated: true)
+        pagingMenuController?.move(toPage: 0, animated: true)
     }
     
     func openCalendar() {

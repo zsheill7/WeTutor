@@ -170,6 +170,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.currentUser = user
         }
         
+        self.finalUserList.removeAll()
         FriendSystem.system.addUserObserver { () in
             for user in FriendSystem.system.userList {
                 if user.isTutor == true && user.email != "kimemily1@gmail.com"{
@@ -177,7 +178,14 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                     
                 }
             }
-
+            for (index, user) in FriendSystem.system.userList.enumerated() {
+                print("FriendSystem.system.userList \(index) \(user.uid)")
+            }
+            for (index, user) in self.finalUserList.enumerated() {
+                print("1finalUserList  \(index) \(user.uid)")
+            }
+            
+            //fEFFFzzJQNQzATcxCh6vGdsXLox2
             self.tableView.reloadData()
         }
         
@@ -717,6 +725,10 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //let userAtRow = FriendSystem.system.userList[indexPath.row]
         let userAtRow = finalUserList[indexPath.row]
         
+        for (index, auser) in finalUserList.enumerated() {
+            print("finalUserList \(index) \(auser.uid)")
+        }
+        
         let userID = FIRAuth.auth()?.currentUser?.uid
         /*if userAtRow.profileImageUrl != nil {
             print("if userAtRow.profileImageUrl != nil {")
@@ -745,22 +757,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             cell!.friendIndicatorView.image = nil
         }
         
-        /*if userAtRow.isTutor == false {
-            cell!.addSubview(getColoredView())
-        } else {
-            if let viewWithTag = self.view.viewWithTag(10) {
-                print("Tag 100")
-                viewWithTag.removeFromSuperview()
-            }
-            if let viewWithTag2 = self.view.viewWithTag(10) {
-                print("Tag 100")
-                viewWithTag2.removeFromSuperview()
-            }
-            if let viewWithTag3 = self.view.viewWithTag(10) {
-                print("Tag 100")
-                viewWithTag3.removeFromSuperview()
-            }
-        }*/
        /* if FriendSystem.system.friendListTwo.contains(where: userAtRow) {
             cell!.friendIndicatorView.backgroundColor = UIColor.green
         } else {
@@ -846,12 +842,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     
-    /*func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        /*let tutor = tutors[indexPath.row]
-        UID = tutor.uid
-        destinationUser = tutor
-        self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)*/
-    }*/
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

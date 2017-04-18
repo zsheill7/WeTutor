@@ -271,10 +271,11 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
        eventStore = EKEventStore()
         self.setupCalendarAppearance()
         
+        
         self.initializeDateFormatter()
         calendarView.delegate = self
         calendarView.dataSource = self
-       
+        calendarView.isUserInteractionEnabled = false
         
         self.view.addBackground()
         calendarWidthConstraint.constant = self.view.frame.size.width

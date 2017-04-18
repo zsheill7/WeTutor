@@ -409,6 +409,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                    
                 } else {
                     self.displayAlert("You are not signed in", message: "Please log in again")
+                    self.stopAnimating()
                 }//if let zipcode = self.form.sections[0].rows[0].value,
                 //let schoolName = self.form.sections[1].rows[0].value,
                 
@@ -416,6 +417,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                 // ...
             }) { (error) in
                 self.displayAlert("Error", message: error.localizedDescription)
+                self.stopAnimating()
+                
             }
             
             
@@ -424,6 +427,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
             
         } else {
             self.displayAlert("Error", message: "Please fill out every section.")
+            self.stopAnimating()
+            
         }
 
     }

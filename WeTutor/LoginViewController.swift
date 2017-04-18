@@ -120,8 +120,10 @@ class LoginViewController: UIViewController {
         } else {
             FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                 if error == nil {
+                    print("sign user.uid \(user?.uid) \(FIRAuth.auth()?.currentUser?.uid)")
+                 //   print
                     /*if !(user?.isEmailVerified)!{
-                        
+                     
                         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
                             /*contentViewColor: UIColor.alertViewBlue()*/)
                         let alert = SCLAlertView(appearance: appearance)
@@ -161,6 +163,7 @@ class LoginViewController: UIViewController {
                         print(languages)
                         print(isTutor)
                         let userDefaults = UserDefaults.standard
+                        
                         
                         userDefaults.setValue(isTutor, forKey: "isTutor")
                         userDefaults.setValue(languages, forKey: "languages")

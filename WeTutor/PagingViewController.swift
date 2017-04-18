@@ -288,7 +288,7 @@ extension PagingViewController {
     }
     
     fileprivate func shouldWaitForLayout() -> Bool {
-        switch options.componentType {
+       /* switch options.componentType {
         case .all(let menuOptions, _):
             guard case .infinite = menuOptions.displayMode else { return false }
             return true
@@ -296,6 +296,7 @@ extension PagingViewController {
         }
         
         guard options.defaultPage > 0 else { return false }
-        return true
+        return true*/
+        return false
     }
 }

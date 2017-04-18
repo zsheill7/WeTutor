@@ -344,8 +344,11 @@ class FriendSystem {
     var userList = [User]()
     /** Adds a user observer. The completion function will run every time this list changes, allowing you
      to update your UI. */
+    
     func addUserObserver(_ update: @escaping () -> Void) {
         /*FriendSystem.system.*/USER_REF.observe(FIRDataEventType.value, with: { (snapshot) in
+            //let myGroup = DispatchGroup()
+            
             self.userList.removeAll()
             for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 let value = child.value as? [String: AnyObject]
@@ -368,9 +371,22 @@ class FriendSystem {
                         (currentUserIsTutor == false && isTutor == true) {*/
                         //print(User(snapshot: child))
                         print("here in if email")
+                    var doesContain =  false
+                    for user in self.userList {
+                        if user.uid == child.key {
+                            doesContain = true
+                        }
+                       // print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(oneDoesContain)")
+                    }
+                    if doesContain == false {
                         self.userList.append(User(snapshot: child))
+                    }
                         print("going through 1")
-                        
+                    for (index, user) in FriendSystem.system.userList.enumerated() {
+                        print("inside FriendSystem.system.userList \(user.uid) \(index)")
+                    }
+                   // myGroup.leave()
+                    
                     //}
                 }
                 
@@ -379,7 +395,11 @@ class FriendSystem {
                 
             }
             update()
+            /*myGroup.notify(queue: .main) {
+             
+            }*/
         })
+        
     }
     /** Removes the user observer. This should be done when leaving the view that uses the observer. */
     func removeUserObserver() {

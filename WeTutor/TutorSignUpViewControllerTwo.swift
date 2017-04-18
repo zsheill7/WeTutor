@@ -239,7 +239,8 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                         // ...
                     }
                     
-                    
+                    self.stopAnimating()
+
                     
                     
                     

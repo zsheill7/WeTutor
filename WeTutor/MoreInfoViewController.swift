@@ -118,7 +118,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         
         // Set the kerning to 1 to increase spacing between letters
        
-        for (index, subject) in destUser.preferredSubjects.enumerated() {
+        /*for (index, subject) in destUser.preferredSubjects.enumerated() {
             if index != (destUser.preferredSubjects.count - 1) {
                 preferredSubjectsString += "\(subject), "
             } else {
@@ -132,7 +132,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             } else {
                 preferredSubjectsString += "\(day)"
             }
-        }
+        }*/
         
         headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }
         
@@ -144,6 +144,12 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         nameLabel.text = "\(destUser.name)"
         availabilityInfo.text = destUser.availabilityInfo
         
+        self.setupUserRating()
+        
+        
+    }
+    
+    func setupUserRating() {
         if let userAverageRating = destUser.averageRating {
             self.ratingView.rating = userAverageRating
         } else {
@@ -152,11 +158,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         
         let numberOfRatings = destUser.numberOfRatings
         
-        /*rateYourExperienceButton.setTitle("Rate your experience", for: UIControlState.normal)
-        rateYourExperienceButton.title.numberOfLines = 0
-        rateYourExperienceButton.title.lineBreakMode = NSLineBreakMode.byWordWrapping*/
-        self.numberOfRatingsLabel.text = "\(String(describing: numberOfRatings)) ratings"
         
+        self.numberOfRatingsLabel.text = "\(String(describing: numberOfRatings)) ratings"
     }
     
     @IBAction func rateYourExperience(_ sender: Any) {
@@ -181,16 +184,16 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         let alert = SCLAlertView(appearance: appearance)
         alert.customSubview = subview
         alert.addButton("Done") {
-            
+            print("inside done")
             let uuid = UUID().uuidString
             let cosmosRating = newCosmosView.rating
             let comment = textField1.text
             
             //let newRating = Rating(rating: cosmosRating, comment: comment)
-        self.userRef.child(self.currentUser.uid).child("ratings").child(uuid).child("ratingNumber").setValue(cosmosRating)
-        self.userRef.child(self.currentUser.uid).child("ratings").child(uuid).child("comment").setValue(comment)
+            self.userRef.child(self.destUser.uid).child("ratings").child(uuid).child("ratingNumber").setValue(cosmosRating)
+            self.userRef.child(self.destUser.uid).child("ratings").child(uuid).child("comment").setValue(comment)
             
-            
+            self.setupUserRating()
         }
         alert.addButton("Cancel") {
             
