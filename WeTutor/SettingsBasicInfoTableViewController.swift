@@ -88,10 +88,10 @@ class SettingsBasicInfoTableViewController : FormViewController {
         static let textView = "textview"
     }
     
-    required init(coder aDecoder: NSCoder) {
+   /* required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
 
-    }
+    }*/
     func goBackToSettings() {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! UINavigationController
@@ -108,10 +108,10 @@ class SettingsBasicInfoTableViewController : FormViewController {
         
  
         FriendSystem.system.getCurrentUser {_ in
-            
+            self.currentUser = FriendSystem.system.currentUser
         }
         
-        currentUser = FriendSystem.system.currentUser
+        
         
         if currentUser != nil {
             self.currentUserIsTutor = currentUser?.isTutor
@@ -241,7 +241,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
 
             //self.view.addBackground("book.png")
             
-            self.hideKeyboardWhenTappedAround()
+           // self.hideKeyboardWhenTappedAround()
         }
     
     func continueSelected() {
@@ -395,6 +395,10 @@ class SettingsBasicInfoTableViewController : FormViewController {
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func multipleSelectorDone(_ item:UIBarButtonItem) {
+        _ = navigationController?.popViewController(animated: true)
     }
     
     /*override func viewWillDisappear(_ animated: Bool) {

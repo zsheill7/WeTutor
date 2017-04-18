@@ -172,7 +172,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         FriendSystem.system.addUserObserver { () in
             for user in FriendSystem.system.userList {
-                if user.isTutor == true {
+                if user.isTutor == true && user.email != "kimemily1@gmail.com"{
                     self.finalUserList.append(user)
                     
                 }
@@ -316,7 +316,17 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                         if (self.currentUser?.isTutor == true && isTutor == false) ||
                             (self.currentUser?.isTutor == false && isTutor == true) {
                             if userObject.uid != currentUserUID {
+                                var doesContain = false
+                                for user in newUsers {
+                                    if user.uid == userObject.uid {
+                                        doesContain = true
+                                    }
+                                }
+                                if doesContain == false && userObject.email != "kimemily1@gmail.com" {
+                                    
+                                
                                 newUsers.append(userObject)
+                                }
                             }
                         }
                     }
@@ -329,6 +339,10 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 print(error)
             }
         }
+    }
+    
+    func userArrayDoesContain() {
+        
     }
     
     
@@ -395,7 +409,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             finalUserList = [User]()
             for user in FriendSystem.system.userList {
                 for subject in user.preferredSubjects {
-                    if (subject == segmentItemSubject || segmentItemSubject == "All Subjects")  && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)) {
+                    if (subject == segmentItemSubject || segmentItemSubject == "All Subjects")  && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)) && user.email != "kimemily1@gmail.com"{
                         finalUserList.append(user)
                     }
                 }

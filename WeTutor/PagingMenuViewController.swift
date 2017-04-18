@@ -138,7 +138,7 @@ class PagingMenuViewController: UIViewController  {
         /*let pagingMenuController = UIApplication.topViewController(base: self) as! PagingMenuController*/
         
         pagingMenuController?.setup(options)
-        pagingMenuController?.move(toPage: 1, animated: false)
+        //pagingMenuController?.move(toPage: 1, animated: false)
        // pagingMenuController?.defaultPage
         //pagingMenuController?.initial
         pagingMenuController?.onMove = { state in
@@ -313,7 +313,8 @@ class PagingMenuViewController: UIViewController  {
     //let transition = BubbleTransition()
     
     func openChat() {
-        pagingMenuController?.move(toPage: 0, animated: true)
+        //pagingMenuController?.move(toPage: 0, animated: true)
+        pagingMenuController?.move(toPage: 1, animated: true)
     }
     
     func openCalendar() {

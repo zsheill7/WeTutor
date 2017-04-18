@@ -228,7 +228,7 @@ class SettingsTableViewController: UITableViewController {
             self.performSegue(withIdentifier: "toBasicInfo", sender: self)
         case (0, 1):
             self.performSegue(withIdentifier: "toAvailability", sender: self)
-        case (0, 3):
+        case (0, 2):
             self.performSegue(withIdentifier: "toSelfProfileVC", sender: self)
         case (1, 0):
             self.performSegue(withIdentifier: "toChangePassword", sender: self)

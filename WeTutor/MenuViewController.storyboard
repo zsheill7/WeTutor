@@ -268,7 +268,47 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1865" y="1759"/>
+            <point key="canvasLocation" x="1864.8" y="1758.1709145427287"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sVK-hN-As1">
+            <objects>
+                <viewController id="5US-n9-fz5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gIv-G9-fvB"/>
+                        <viewControllerLayoutGuide type="bottom" id="I7B-UU-x90"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Izf-yk-0sY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7It-lW-Fa8">
+                                <rect key="frame" x="-16" y="146" width="375" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RxX-cb-jrL">
+                                        <rect key="frame" x="87.5" y="10.5" width="200" height="24"/>
+                                        <color key="backgroundColor" red="0.99019607843137258" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="dWH-nP-j5S"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                        <color key="textColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="RxX-cb-jrL" firstAttribute="centerX" secondItem="7It-lW-Fa8" secondAttribute="centerX" id="HVf-4M-GeT"/>
+                                    <constraint firstItem="RxX-cb-jrL" firstAttribute="centerY" secondItem="7It-lW-Fa8" secondAttribute="centerY" id="XL9-kP-kwt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FUO-RW-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2502" y="1929"/>
         </scene>
         <!--ChatViewController-->
         <scene sceneID="Gop-g8-ISL">
@@ -294,7 +334,7 @@
             <objects>
                 <navigationController storyboardIdentifier="chatNC" automaticallyAdjustsScrollViewInsets="NO" id="jjT-IL-3Rh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="00J-m5-9yb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="00J-m5-9yb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -517,7 +557,7 @@
         <scene sceneID="X1D-pW-B4K">
             <objects>
                 <navigationController id="XVT-N9-jpa" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="llK-Wk-1MO">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="llK-Wk-1MO">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -709,9 +749,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="724.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Info Input Page (w-stripes)" translatesAutoresizingMaskIntoConstraints="NO" id="Xq2-hH-Jt7">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                                <rect key="frame" x="0.0" y="-90" width="375" height="260"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="169" id="Dhs-s1-yKG"/>
+                                                    <constraint firstAttribute="height" constant="260" id="Dhs-s1-yKG"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Oval" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-Fg-0rj">
@@ -852,7 +892,8 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="100" id="Z7R-XM-Yal"/>
                                                                         </constraints>
-                                                                        <state key="normal" title="Rate"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                                        <state key="normal" title="RATE"/>
                                                                         <connections>
                                                                             <action selector="rateYourExperience:" destination="Kz5-hQ-YSe" eventType="touchUpInside" id="o4k-Xk-oWC"/>
                                                                         </connections>
@@ -1011,7 +1052,7 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="r5d-Z7-3AL" secondAttribute="bottom" id="0Un-rM-LGD"/>
                                             <constraint firstAttribute="trailing" secondItem="Xq2-hH-Jt7" secondAttribute="trailing" id="G6h-UK-ZAe"/>
                                             <constraint firstItem="r5d-Z7-3AL" firstAttribute="top" secondItem="Ub8-m8-fY1" secondAttribute="topMargin" id="ISx-X7-kVj"/>
-                                            <constraint firstItem="Xq2-hH-Jt7" firstAttribute="top" secondItem="Ub8-m8-fY1" secondAttribute="top" id="Riz-GW-Aws"/>
+                                            <constraint firstItem="Xq2-hH-Jt7" firstAttribute="top" secondItem="Ub8-m8-fY1" secondAttribute="top" constant="-90" id="Riz-GW-Aws"/>
                                             <constraint firstItem="Xq2-hH-Jt7" firstAttribute="leading" secondItem="Ub8-m8-fY1" secondAttribute="leading" id="XU4-F9-xDK"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="r5d-Z7-3AL" secondAttribute="trailing" id="eCH-6J-bN2"/>
                                             <constraint firstItem="uYB-t9-bjP" firstAttribute="width" secondItem="DoH-Fg-0rj" secondAttribute="width" multiplier="0.95" id="krq-qV-yxS"/>
@@ -1207,6 +1248,6 @@
         <image name="telephonebook" width="74" height="74"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ssn-N4-XFi"/>
+        <segue reference="7xH-tV-nU1"/>
     </inferredMetricsTieBreakers>
 </document>
