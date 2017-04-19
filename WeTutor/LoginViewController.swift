@@ -165,30 +165,54 @@ class LoginViewController: UIViewController {
                         let userDefaults = UserDefaults.standard
                         
                         
+                        
                         userDefaults.setValue(isTutor, forKey: "isTutor")
                         userDefaults.setValue(languages, forKey: "languages")
                         userDefaults.setValue(description, forKey: "description")
                         
                         userDefaults.synchronize()
 
-                        
-                        FIRAnalytics.logEvent(withName: "logged_in", parameters: [
-                            "name": userObject.name as NSObject,
-                            "is_tutor": userObject.isTutor as NSObject
-                            ])
-                        
-                        if description.characters.count > 0{
-                            print("in neither are nil")
+                        if userObject.email == "" {
+                            /*FriendSystem.system.createAccount(self.emailField.text!, password: passwordField.text!, name: self.nameField.text!) { (success) in
+                                if success {
+                                    print("You have successfully signed up")
+                                    
+                                   self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                                } else {
+                                    //self.displayAlert(title: "Unable to Sign Up", message: "Please try again later"/*error.localizedDescription*/)
+                                }
+                            }*/
+                            let user = FIRAuth.auth()?.currentUser
                             
-                                /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "toPagingMenuVC") as! UINavigationController
-                                //window?.rootViewController = viewController
-                                self.present(viewController, animated: true, completion: nil)*/
-                            self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
-                            
-                            //self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                            user?.delete { error in
+                                if let error = error {
+                                    // An error happened.
+                                } else {
+                                    // Account deleted.
+                                }
+                            }
+                            self.displayAlert("Error", message: "Please create an account again")
+                           
                         } else {
-                            self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                        
+                            FIRAnalytics.logEvent(withName: "logged_in", parameters: [
+                                "name": userObject.name as NSObject,
+                                "is_tutor": userObject.isTutor as NSObject
+                                ])
+                            
+                            if description.characters.count > 0{
+                                print("in neither are nil")
+                                
+                                    /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "toPagingMenuVC") as! UINavigationController
+                                    //window?.rootViewController = viewController
+                                    self.present(viewController, animated: true, completion: nil)*/
+                                self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
+                                
+                                //self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                            } else {
+                                self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
+                            }
                         }
                         
                         

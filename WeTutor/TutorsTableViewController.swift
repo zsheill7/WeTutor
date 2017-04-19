@@ -224,6 +224,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
     }
     
+    
+    
     var screenBounds = UIScreen.main.bounds
     
    
@@ -706,12 +708,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
         
         
-            tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "UserCell")
-           var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
+            tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "TutorCell")
+           var cell = tableView.dequeueReusableCell(withIdentifier: "TutorCell") as? UserCellThree
         
-        /*let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.white
-        cell?.selectedBackgroundView = backgroundView*/
+        tableView.register(UINib(nibName: "TuteeUserCell", bundle: nil), forCellReuseIdentifier: "TuteeCell")
+        var tuteeCell = tableView.dequeueReusableCell(withIdentifier: "TuteeCell") as? TuteeUserCell
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         
@@ -719,10 +720,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         ref = FIRDatabase.database().reference()
         
-       
-       //cell?.alpha = 0
-        // Modify cell
-        //let userAtRow = FriendSystem.system.userList[indexPath.row]
         let userAtRow = finalUserList[indexPath.row]
         
         for (index, auser) in finalUserList.enumerated() {
@@ -730,115 +727,146 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
         
         let userID = FIRAuth.auth()?.currentUser?.uid
-        /*if userAtRow.profileImageUrl != nil {
-            print("if userAtRow.profileImageUrl != nil {")
-            if URL(string: userAtRow.profileImageUrl!) != nil {
-                print("if URL(string: userAtRow.profileImageUrl!) != nil {")
-                cell!.profileImageView.loadImageUsingCacheWithUrlString(userAtRow.profileImageUrl!)
-            } else {
-                cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon")
-            }
-        } else {
-            cell!.profileImageView.image = #imageLiteral(resourceName: "Owl Icon")
-        }*/
         
-        //cell!.layer.cornerRadius = 10
         cell?.contentView.backgroundColor = UIColor.clear
         
                
         
-        //let colorIndex = Int(arc4random_uniform(5))
-        //cell!.colorView.backgroundColor = colors[indexPath.row % 5]
-        
-        let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
-        if friendInArray == true {
-            cell!.friendIndicatorView.image = UIImage(named: "Ok-50") //UIColor.green
-        } else {
-            cell!.friendIndicatorView.image = nil
-        }
-        
-       /* if FriendSystem.system.friendListTwo.contains(where: userAtRow) {
-            cell!.friendIndicatorView.backgroundColor = UIColor.green
-        } else {
-            cell!.friendIndicatorView.backgroundColor = UIColor.clear
-        }*/
+        if userAtRow.isTutor == true {
+            let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
+            if friendInArray == true {
+                cell!.friendIndicatorView.image = UIImage(named: "Ok-50") //UIColor.green
+            } else {
+                cell!.friendIndicatorView.image = nil
+            }
+            
+           
 
-        
-        
-        /*if friendInArray {
-            cell!.friendIndicatorView.backgroundColor = UIColor.green
-        } else {
-             cell!.friendIndicatorView.backgroundColor = UIColor.clear
-        }*/
-
-        
-        cell!.nameLabel.text = "\(userAtRow.name)"
-        cell!.schoolLabel.text = "\(userAtRow.school)"
-        cell!.gradeLabel.text = "\(userAtRow.grade)"
-        if let userAverageRating = userAtRow.averageRating {
-            cell!.ratingView.rating = userAverageRating
-        } else {
-            cell!.ratingView.rating = 0
-        }
-        
-        let numberOfRatings = userAtRow.numberOfRatings
-        var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
-        if numberOfRatings == 1 {
-            numberOfRatingsString = "\(String(describing: numberOfRatings)) rating"
-        }
-        cell!.numberOfRatingsLabel.text = numberOfRatingsString
-        
-        if userAtRow.gpa != nil && userAtRow.gpa > 0 {
-            let gpaString = String(format: "%.1f", userAtRow.gpa)
-            cell!.gpaLabel.text = gpaString
-        } else {
-            cell!.gpaLabel.text = ""
-        }
-        if userAtRow.hourlyPrice != nil && userAtRow.hourlyPrice > 0 {
-            let hourlyPriceString = String(format: "%.0f", userAtRow.hourlyPrice)
-            cell!.hourlyPriceLabel.text = "$" + hourlyPriceString
-        }
-       // cell!.chatButton.accessibilityIdentifier = userAtRow.uid
-        
-        
-        let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
-        //print(subjectsString)
-        
-        if subjectsString != nil && cell!.subjectLabel != nil{
-            cell!.subjectLabel.text = "\(subjectsString)"
-        } else {
-           // cell!.subjectLabel.text = ""
-        }
-        
-        
-        print("Name: \(userAtRow.name)")
-        print(cell!.nameLabel.text)
-        cell!.infoButton.contentMode = .scaleAspectFit
-        cell!.addFriendButton.contentMode = .scaleAspectFit
-        
-        
-        print("in cell for row")
-        cell!.setAddFriendFunction {
-            print(userAtRow)
-            let id = userAtRow.uid
-            print("userAtRow.uid \(id)")
-            //FriendSystem.system.sendRequestToUser(id)
-            FriendSystem.system.acceptFriendRequest(id)
-            self.createChannel(userAtRow)
-            self.displayAlert("Success!", message: "Contact Added")
-        }
-      /*  cell!.setChatFunction {
-            self.createChannel(userAtRow.uid)
-        }*/
-        cell!.setInfoFunction {
-            let tutor = userAtRow
-            self.UID = tutor.uid
-            self.destinationUser = tutor
-            self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
-        }
+            
+            cell!.nameLabel.text = "\(userAtRow.name)"
+            cell!.schoolLabel.text = "\(userAtRow.school)"
+            cell!.gradeLabel.text = "\(userAtRow.grade)"
+            if let userAverageRating = userAtRow.averageRating {
+                cell!.ratingView.rating = userAverageRating
+            } else {
+                cell!.ratingView.rating = 0
+            }
+            
+            let numberOfRatings = userAtRow.numberOfRatings
+            var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
+            if numberOfRatings == 1 {
+                numberOfRatingsString = "\(String(describing: numberOfRatings)) rating"
+            }
+            cell!.numberOfRatingsLabel.text = numberOfRatingsString
+            
+            if userAtRow.gpa != nil && userAtRow.gpa > 0 {
+                let gpaString = String(format: "%.1f", userAtRow.gpa)
+                cell!.gpaLabel.text = gpaString
+            } else {
+                cell!.gpaLabel.text = ""
+            }
+            if userAtRow.hourlyPrice != nil && userAtRow.hourlyPrice > 0 {
+                let hourlyPriceString = String(format: "%.0f", userAtRow.hourlyPrice)
+                cell!.hourlyPriceLabel.text = "$" + hourlyPriceString
+            }
+            
+            
+            let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
+            //print(subjectsString)
+            
+            if subjectsString != nil && cell!.subjectLabel != nil{
+                cell!.subjectLabel.text = "\(subjectsString)"
+            } else {
+               // cell!.subjectLabel.text = ""
+            }
+            
+            
+            print("Name: \(userAtRow.name)")
+            print(cell!.nameLabel.text)
+            cell!.infoButton.contentMode = .scaleAspectFit
+            cell!.addFriendButton.contentMode = .scaleAspectFit
+            
+            
+            print("in cell for row")
+            cell!.setAddFriendFunction {
+                print(userAtRow)
+                let id = userAtRow.uid
+                print("userAtRow.uid \(id)")
+                //FriendSystem.system.sendRequestToUser(id)
+                FriendSystem.system.acceptFriendRequest(id)
+                self.createChannel(userAtRow)
+                self.displayAlert("Success!", message: "Contact Added")
+            }
+         
+            cell!.setInfoFunction {
+                let tutor = userAtRow
+                self.UID = tutor.uid
+                self.destinationUser = tutor
+                self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+            }
         
         // Return cell
-        return cell!
+        } else {
+            let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
+            if friendInArray == true {
+                tuteeCell!.friendIndicatorView.image = UIImage(named: "Ok-50") //UIColor.green
+            } else {
+                tuteeCell!.friendIndicatorView.image = nil
+            }
+            
+            
+            
+            
+            tuteeCell!.nameLabel.text = "\(userAtRow.name)"
+            tuteeCell!.schoolLabel.text = "\(userAtRow.school)"
+            tuteeCell!.gradeLabel.text = "\(userAtRow.grade)"
+            
+            
+            let numberOfRatings = userAtRow.numberOfRatings
+            var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
+            if numberOfRatings == 1 {
+                numberOfRatingsString = "\(String(describing: numberOfRatings)) rating"
+            }
+           
+            let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
+            //print(subjectsString)
+            
+            if subjectsString != nil && tuteeCell!.subjectLabel != nil{
+                tuteeCell!.subjectLabel.text = "\(subjectsString)"
+            } else {
+                // tuteeCell!.subjectLabel.text = ""
+            }
+            
+            
+            print("Name: \(userAtRow.name)")
+            print(tuteeCell!.nameLabel.text)
+            tuteeCell!.infoButton.contentMode = .scaleAspectFit
+            tuteeCell!.addFriendButton.contentMode = .scaleAspectFit
+            
+            
+            print("in tuteeCell for row")
+            tuteeCell!.setAddFriendFunction {
+                print(userAtRow)
+                let id = userAtRow.uid
+                print("userAtRow.uid \(id)")
+                //FriendSystem.system.sendRequestToUser(id)
+                FriendSystem.system.acceptFriendRequest(id)
+                self.createChannel(userAtRow)
+                self.displayAlert("Success!", message: "Contact Added")
+            }
+            
+            tuteeCell!.setInfoFunction {
+                let tutor = userAtRow
+                self.UID = tutor.uid
+                self.destinationUser = tutor
+                self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
+            }
+
+        }
+        if userAtRow.isTutor == true {
+            return cell!
+        }
+        return tuteeCell!
     }
     
     

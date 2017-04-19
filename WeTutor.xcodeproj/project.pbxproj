@@ -34,6 +34,8 @@
 		C82C35FD1E93405A00DD17CD /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C82C35FC1E93405900DD17CD /* EventCell.xib */; };
 		C82C9E4F1E96ACCF0082901E /* DeviceStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C9E4E1E96ACCE0082901E /* DeviceStructs.swift */; };
 		C82C9E531E987FA30082901E /* AboutUsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82C9E521E987FA10082901E /* AboutUsTableViewController.swift */; };
+		C831B6C81EA71D6B005C230F /* TuteeUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C831B6C71EA71D6B005C230F /* TuteeUserCell.xib */; };
+		C831B6CA1EA71DA3005C230F /* TuteeUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831B6C91EA71DA3005C230F /* TuteeUserCell.swift */; };
 		C8338AFC1E629D6E00202E3A /* UpcomingEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */; };
 		C8338B391E63DFC300202E3A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* Event.swift */; };
 		C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B3B1E63E2C400202E3A /* DetailViewController.swift */; };
@@ -169,6 +171,8 @@
 		C82C35FC1E93405900DD17CD /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		C82C9E4E1E96ACCE0082901E /* DeviceStructs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceStructs.swift; sourceTree = "<group>"; };
 		C82C9E521E987FA10082901E /* AboutUsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsTableViewController.swift; sourceTree = "<group>"; };
+		C831B6C71EA71D6B005C230F /* TuteeUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TuteeUserCell.xib; sourceTree = "<group>"; };
+		C831B6C91EA71DA3005C230F /* TuteeUserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuteeUserCell.swift; sourceTree = "<group>"; };
 		C8338AFB1E629D6E00202E3A /* UpcomingEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventTableViewController.swift; sourceTree = "<group>"; };
 		C8338B371E63DFC300202E3A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		C8338B3B1E63E2C400202E3A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -567,6 +571,8 @@
 				C84536BB1EA53CBE00E76999 /* RefreshView.swift */,
 				C84536BD1EA5493100E76999 /* RefreshAnimator.swift */,
 				C84536BF1EA5497200E76999 /* WeTutorPullToRefresh.swift */,
+				C831B6C71EA71D6B005C230F /* TuteeUserCell.xib */,
+				C831B6C91EA71DA3005C230F /* TuteeUserCell.swift */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -698,6 +704,7 @@
 				C84F180D1E713CF700EC54BF /* SubjectCell.xib in Resources */,
 				C82800E11E0F4F7600329B7D /* Tutee.storyboard in Resources */,
 				96090AEF1D9CDD2E00709CA6 /* Assets.xcassets in Resources */,
+				C831B6C81EA71D6B005C230F /* TuteeUserCell.xib in Resources */,
 				C84536BA1EA53C9400E76999 /* RefreshView.xib in Resources */,
 				C84F18071E70895300EC54BF /* WeekDaysCellTwo.xib in Resources */,
 				C82800E31E0FA38C00329B7D /* AboutThisApp.storyboard in Resources */,
@@ -829,6 +836,7 @@
 				C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */,
 				C87984941E0C763F003EB7A1 /* MenuItemView.swift in Sources */,
 				C879849E1E0C763F003EB7A1 /* PagingMenuViewController.swift in Sources */,
+				C831B6CA1EA71DA3005C230F /* TuteeUserCell.swift in Sources */,
 				C86BCCC31E12F8B3007D24F9 /* CustomCells.swift in Sources */,
 				C8EE885D1E0DB144003775C2 /* FSCalendarHeaderView.m in Sources */,
 				C87984991E0C763F003EB7A1 /* RootViewController.swift in Sources */,
