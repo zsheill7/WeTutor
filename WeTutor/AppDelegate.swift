@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
         self.window?.rootViewController = viewController
 
-      /* if FIRAuth.auth()?.currentUser?.uid != nil {
+       if FIRAuth.auth()?.currentUser?.uid != nil {
             FriendSystem.system.getCurrentUser { (user) in
                 currentUser = user
                 if let isTutor = currentUser?.isTutor as? Bool,
@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
             }
-        }*/
+        }
         
         
         

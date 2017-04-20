@@ -122,6 +122,8 @@ class PagingMenuViewController: UIViewController  {
     
     var pagingMenuController: PagingMenuController?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("here")
@@ -130,7 +132,7 @@ class PagingMenuViewController: UIViewController  {
         self.view.backgroundColor = UIColor.clear
         options = sectionType?.options
         
-        createDropdown()
+       
         
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -162,6 +164,7 @@ class PagingMenuViewController: UIViewController  {
                // print(menuItemView)
             }
         }
+         createDropdown()
     }
     
     

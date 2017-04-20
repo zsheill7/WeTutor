@@ -172,8 +172,16 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         self.finalUserList.removeAll()
         FriendSystem.system.addUserObserver { () in
+            
+            
             for user in FriendSystem.system.userList {
-                if user.isTutor == true && user.email != "kimemily1@gmail.com"{
+                var contains = false
+                for finalUser in self.finalUserList {
+                    if finalUser.uid == user.uid {
+                        contains = true
+                    }
+                }
+                if user.isTutor == true && user.email != "kimemily1@gmail.com" && contains == false{
                     self.finalUserList.append(user)
                     
                 }
@@ -752,6 +760,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 cell!.ratingView.rating = 0
             }
             
+            cell!.colorView = getColoredView()
             let numberOfRatings = userAtRow.numberOfRatings
             var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
             if numberOfRatings == 1 {
@@ -813,7 +822,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             } else {
                 tuteeCell!.friendIndicatorView.image = nil
             }
-            
+            cell!.colorView = getColoredView()
             
             
             

@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeTutor/TutorsTableViewController.swift"
-            timestampString = "514269468.848665"
+            timestampString = "514343787.615031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
             landmarkName = "createChannel(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -144,6 +144,22 @@
             startingLineNumber = "139"
             endingLineNumber = "139"
             landmarkName = "calendar(_:hasEventFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeTutor/MoreInfoViewController.swift"
+            timestampString = "514343393.673614"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "rateYourExperience(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

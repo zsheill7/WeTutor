@@ -160,10 +160,12 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         alert.customSubview = subview
         alert.addButton("Done") {
             print("inside done")
+            
             let uuid = UUID().uuidString
             let cosmosRating = newCosmosView.rating
             let comment = textField1.text
             
+            FriendSystem.system.userList.removeAll()
             //let newRating = Rating(rating: cosmosRating, comment: comment)
             
             let ratingRef = [
@@ -174,6 +176,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             //self.userRef.child(self.destUser.uid).child("ratings").child(uuid).child("comment").setValue(comment)
             
             self.setupUserRating()
+            FriendSystem.system.userList.removeAll()
         }
         alert.addButton("Cancel") {
             
