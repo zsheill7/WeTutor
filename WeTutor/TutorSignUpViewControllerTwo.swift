@@ -41,7 +41,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
         
         ref = FIRDatabase.database().reference()
         
-        self.loadForm()
+        
         
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -63,6 +63,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
         if currentUser != nil {
             self.currentUserIsTutor = currentUser?.isTutor
         }
+        self.loadForm()
     }
     
     func loadForm() {
@@ -122,7 +123,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                 self.openPricePopover()
                 }*/
                 
-            <<< DecimalRow("Price") {
+            <<< DecimalRow("") {
                 $0.useFormatterDuringInput = true
                 $0.title = "Price"
                 $0.placeholder = "$17.00"

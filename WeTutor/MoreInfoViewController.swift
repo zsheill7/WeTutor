@@ -20,9 +20,9 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var headingLabels: [UILabel]!
     
    // @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var callButton: UIButton!
+  //  @IBOutlet weak var callButton: UIButton!
     
-    @IBOutlet weak var textButton: UIButton!
+//    @IBOutlet weak var textButton: UIButton!
     var indexPathRow: Int!
    
     @IBOutlet weak var basicInfoLabel: UILabel!
@@ -107,32 +107,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         
         self.loadHorizontalScrollView()
         
-        
-      // containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDayCell
-        
-       
-        
-        //let backView = UIView(frame: self.tableView.bounds)
-        
-       // self.fullPageScrollView.addBackground("Info Input Page (w-stripes)")
-        
-        // Set the kerning to 1 to increase spacing between letters
-       
-        /*for (index, subject) in destUser.preferredSubjects.enumerated() {
-            if index != (destUser.preferredSubjects.count - 1) {
-                preferredSubjectsString += "\(subject), "
-            } else {
-                preferredSubjectsString += "\(subject)"
-            }
-        }
-        
-        for (index, day) in destUser.availableDaysStringArray.enumerated() {
-            if index != (destUser.availableDaysStringArray.count - 1) {
-                preferredSubjectsString += "\(day), "
-            } else {
-                preferredSubjectsString += "\(day)"
-            }
-        }*/
+      
         
         headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }
         
@@ -190,8 +165,13 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             let comment = textField1.text
             
             //let newRating = Rating(rating: cosmosRating, comment: comment)
-            self.userRef.child(self.destUser.uid).child("ratings").child(uuid).child("ratingNumber").setValue(cosmosRating)
-            self.userRef.child(self.destUser.uid).child("ratings").child(uuid).child("comment").setValue(comment)
+            
+            let ratingRef = [
+                "ratingNumber": cosmosRating,
+                "comment": comment
+            ] as [String : Any]
+           self.userRef.child(self.destUser.uid).child("ratings").child(uuid).setValue(ratingRef)//child("ratingNumber").setValue(cosmosRating)
+            //self.userRef.child(self.destUser.uid).child("ratings").child(uuid).child("comment").setValue(comment)
             
             self.setupUserRating()
         }

@@ -30,6 +30,7 @@ class TutorOrTuteeViewController: UIViewController {
     var userRef: FIRDatabaseReference!
     var userUID = ""
     
+    var currentUserIsTutor = false
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,6 +193,7 @@ class TutorOrTuteeViewController: UIViewController {
         
         userDefaults.setValue(false, forKey: "isTutor")
         userDefaults.synchronize()
+        self.currentUserIsTutor = false
  
         FIRAnalytics.setUserPropertyString("false", forName: "is_tutor")
         
@@ -202,7 +204,7 @@ class TutorOrTuteeViewController: UIViewController {
         self.userRef.child("\(userUID)").child("isTutor").setValue(true)
         let userDefaults = UserDefaults.standard
         userDefaults.setValue(true, forKey: "isTutor")
-        
+        self.currentUserIsTutor = true
         userDefaults.synchronize()
         FIRAnalytics.setUserPropertyString("true", forName: "is_tutor")
 
@@ -217,14 +219,24 @@ class TutorOrTuteeViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toTutorSignUpVC" {
+            print("in segue identifier")
+            if let destinationNavigationController = segue.destination as? UINavigationController {
+                
+                let targetController = destinationNavigationController.topViewController as! TutorSignUpViewControllerOne
+                targetController.currentUserIsTutor = currentUserIsTutor
+            }
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+ 
 
 }

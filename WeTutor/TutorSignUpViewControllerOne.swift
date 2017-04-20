@@ -130,22 +130,25 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
     override func viewDidLoad() {
         super.viewDidLoad()
         FriendSystem.system.getCurrentUser {_ in 
+            let currentUser = FriendSystem.system.currentUser
+            if currentUser != nil {
+                self.currentUserIsTutor = currentUser?.isTutor
+            }
             
         }
+        
         navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         
-        
-        self.view.addBackground()
+       // self.view.addBackground()
+        print("self.currentUserIsTutor \(self.currentUserIsTutor)")
         self.loadForm()
+       
         //self.view.backgroundColor = UIColor
-        //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(byPercentage: 0.2)
+        //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(bybPercentage: 0.2)
                 //self.view.addBackground("book.png")
                 
               //  self.hideKeyboardWhenTappedAround()
-        let currentUser = FriendSystem.system.currentUser
-        if currentUser != nil {
-            self.currentUserIsTutor = currentUser?.isTutor
-        }
+       
     }
     
     func loadForm() {
@@ -252,9 +255,11 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                 $0.tag = "gpa"
                 $0.placeholder = "3.6"
                 if currentUserIsTutor != nil {
-                    $0.hidden = .function([""], { form -> Bool in
-                        return !self.currentUserIsTutor!
-                    })
+                    if currentUserIsTutor == true {
+                        $0.hidden = false
+                    } else {
+                        $0.hidden = true
+                    }
                     
                 } else {
                     $0.hidden = false
