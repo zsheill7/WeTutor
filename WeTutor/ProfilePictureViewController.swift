@@ -26,12 +26,12 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.profileImage.loadImageUsingCacheWithUrlString(profileImageUrlString)
+       
         
-        
+         self.profileImage.loadImageUsingCacheWithUrlString(profileImageUrlString)
         
         view.addSubview(profileImageView)
-
+        self.view.backgroundColor = UIColor.white//UIColor(netHex: 0xEFEFF4)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -76,6 +76,9 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
+    @IBAction func cameraButtonTapped(_ sender: Any) {
+        self.changePhoto()
+    }
     func fetchCurrentUser() {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
@@ -221,7 +224,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         
     }*/
     
-    /*func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+  /*  func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.dismiss(animated: true, completion: nil)
         
         

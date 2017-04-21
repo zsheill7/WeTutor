@@ -35,7 +35,7 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
         return .all(menuOptions: MenuOptions(), pagingControllers: [   chatViewController, usersViewController, calendarViewController/*organizationsViewController,*/ /*requestViewController*/])
     }
     var lazyLoadingPage: LazyLoadingPage {
-        return .all
+        return .three
     }
     
     struct MenuOptions: MenuViewCustomizable {

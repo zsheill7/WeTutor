@@ -115,7 +115,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                 
                 row.value = row.options[0]
             }
-             +++ Section("Prices")
+             +++ Section("")
             /*ButtonRow() {
                 $0.title = "Price FAQ"
             }
@@ -123,7 +123,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                 self.openPricePopover()
                 }*/
                 
-            <<< DecimalRow("") {
+            <<< DecimalRow("Price") {
                 $0.useFormatterDuringInput = true
                 $0.title = "Price"
                 $0.placeholder = "$17.00"
@@ -305,7 +305,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
+        cell.backgroundColor = UIColor(white: 1, alpha: 1.0)
     }
 }
 

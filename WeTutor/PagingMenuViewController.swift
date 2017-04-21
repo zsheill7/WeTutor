@@ -127,12 +127,20 @@ class PagingMenuViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("here")
-        let sectionType = MenuSection(indexPath: IndexPath(row: 1, section: 0) as IndexPath)
-       // self.view?.backgroundColor = UIColor.clear
+                let view = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width + 20, height: UIScreen.main.bounds.height + 20))
+        
+        let blackColorImage = UIImage(color: .black)
+        view.image = blackColorImage
+        self.view.addSubview(view)
+        UIView.animate(withDuration: 1.0, animations: {
+            view.alpha = 0.0
+        })
+        let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 2) as IndexPath)
+        // self.view?.backgroundColor = UIColor.clear
         self.view.backgroundColor = UIColor.clear
         options = sectionType?.options
         
-       
+        
         
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -141,8 +149,10 @@ class PagingMenuViewController: UIViewController  {
         
         pagingMenuController?.setup(options)
         //pagingMenuController?.move(toPage: 1, animated: false)
-       // pagingMenuController?.defaultPage
+        // pagingMenuController?.defaultPage
         //pagingMenuController?.initial
+        
+
         pagingMenuController?.onMove = { state in
             switch state {
             case let .willMoveController(menuController, previousMenuController):
@@ -164,7 +174,8 @@ class PagingMenuViewController: UIViewController  {
                // print(menuItemView)
             }
         }
-         createDropdown()
+        createDropdown()
+        
     }
     
     

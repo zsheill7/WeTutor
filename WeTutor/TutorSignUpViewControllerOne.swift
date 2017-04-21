@@ -458,7 +458,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
     
    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.6)
+        cell.backgroundColor = UIColor(white: 1, alpha: 1.0)
         //cell.backgroundColor = UIColor(red:0.43, green:0.82, blue:0.83, alpha:1.0)
     }
    

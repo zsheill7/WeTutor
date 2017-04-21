@@ -91,6 +91,8 @@ extension ProfilePictureViewController {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
+        
+        print("did finish picking")
         var selectedImageFromPicker: UIImage?
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
@@ -116,6 +118,7 @@ extension ProfilePictureViewController {
                 
                 if error != nil {
                     print(error)
+                    self.profileImageView.image = profileImage
                     return
                 }
                 
