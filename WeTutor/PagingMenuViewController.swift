@@ -132,7 +132,7 @@ class PagingMenuViewController: UIViewController  {
         let blackColorImage = UIImage(color: .black)
         view.image = blackColorImage
         self.view.addSubview(view)
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 1.3, animations: {
             view.alpha = 0.0
         })
         let sectionType = MenuSection(indexPath: IndexPath(row: 0, section: 2) as IndexPath)

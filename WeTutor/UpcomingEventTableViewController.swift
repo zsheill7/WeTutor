@@ -1,9 +1,9 @@
 //
 //  SecondViewController.swift
-//  Band App Test
+//
 //
 //  Created by Zoe Sheill on 6/23/16.
-//  Copyright © 2016 ClassroomM. All rights reserved.
+//  Copyright © 2016 TokkiTech. All rights reserved.
 //
 
 import UIKit
@@ -660,6 +660,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 false: ["tutorName": FIRAuth.auth()?.currentUser?.uid,
                                                                        "tuteeName": destUserID]
                                             ]
+                                            print("channelDict[events] \(channelDict["events"])")
                                             
                                             
                                     print("if self.currentUserIsTutor == true {")
@@ -667,9 +668,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                         let  tutorName = channelDict["tutorName"] as? String{
                                         print("2 let  tutorName = channelDict[tutorName] as? String{")
                                         print("(currentUserIsTutorNameDict[self.currentUserIsTutor]?[tutorName])! \((currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])!) \(FIRAuth.auth()?.currentUser?.uid)")
-                                        if tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! {
+                                       // if tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! {
                                           
-                                            if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
+                                           // if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
                                                 self.iterationStatus = "done"
                                                 
                                                  print("2if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
@@ -710,9 +711,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 
                                             }
                                         } //if channelDict["tutorName"]
-                                    }
+                                  //  }
                                         
-                                }
+                             //   }
                             } //for destUser in friendList
                             
                         }

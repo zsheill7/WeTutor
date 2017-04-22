@@ -1,9 +1,9 @@
 //
 //  eventItem.swift
-//  Band App Add Event
+// 
 //
 //  Created by Zoe Sheill on 7/11/16.
-//  Copyright © 2016 ClassroomM. All rights reserved.
+//  Copyright © 2016 TokkiTech. All rights reserved.
 //
 
 import UIKit

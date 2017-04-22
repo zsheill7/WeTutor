@@ -2,7 +2,7 @@
 //  ProfilePictureViewController.swift
 //  TutorMe
 //
-//  Created by Zoe on 3/5/17.
+//  Created by Zoe Sheill on 3/5/17.
 //
 
 import UIKit

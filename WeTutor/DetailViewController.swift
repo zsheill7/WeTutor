@@ -3,7 +3,7 @@
 //  AddEventTest
 //
 //  Created by Zoe on 8/18/16.
-//  Copyright © 2016 Zoe. All rights reserved.
+//  Copyright © 2016 TokkiTech. All rights reserved.
 //
 
 import UIKit
