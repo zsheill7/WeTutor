@@ -178,7 +178,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
        
-        return 10.0
+        return 20.0
     }
     
    /* func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -265,6 +265,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
   //  @IBOutlet weak var calendarWidthConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("FIRAuth.auth.currentUser.uid \(FIRAuth.auth()?.currentUser?.uid)")
         // Initialize the event store
        // eventStore = EKEventStore()
         self.transitioningDelegate = self
@@ -847,7 +849,13 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         self.calendarView.appearance.headerTitleColor = UIColor.white
         //self.calendarView.appearance.titleDefaultColor = UIColor.white
         self.calendarView.appearance.weekdayTextColor = UIColor.white
+        //self.calendarView.appearance.cell
         //self.calendarView.appearance.
+        self.calendarView.appearance.eventColor = UIColor.white
+        self.calendarView.appearance.cellShape = .circle
+        self.calendarView.appearance.borderRadius = 10
+       // self.calendarView.appearance.
+        
         self.calendarView.appearance.selectionColor = UIColor.white
         self.calendarView.appearance.titleSelectionColor = UIColor.red
         self.calendarView.appearance.todayColor = UIColor.red
