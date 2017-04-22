@@ -101,25 +101,7 @@ class SelfProfileViewController: UIViewController, UIScrollViewDelegate {
         
         self.loadHorizontalScrollView()
         
-        
-        // containerView.loadFromNibNamed(nibNamed: "WeekDaysCell")! as! WeekDayCell
-        
-        /* form
-         
-         +++ Section("Available Days")
-         
-         
-         
-         <<< WeekDayRow("Available Days"){
-         $0.value = [.monday, .wednesday, .friday]
-         
-         }*/
-        
-        //let backView = UIView(frame: self.tableView.bounds)
-        
-        // self.fullPageScrollView.addBackground("Info Input Page (w-stripes)")
-        
-        // Set the kerning to 1 to increase spacing between letters
+       
         
         for (index, subject) in currentUser.preferredSubjects.enumerated() {
             if index != (currentUser.preferredSubjects.count - 1) {

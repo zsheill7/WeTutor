@@ -1,4 +1,10 @@
 
+//  SettingsAvailabilityTableViewController.swift
+//
+//  Created by Zoe on 3/6/17.
+//  Copyright © 2017 TokkiTech. All rights reserved.
+//
+
 
 import UIKit
 import Eureka
@@ -279,36 +285,4 @@ class SettingsAvailabilityTableViewController : FormViewController {
     }
 }
 
-//MARK: Field row customization Example
 
-
-//MARK: HiddenRowsExample
-
-
-
-/*class EurekaLogoViewNib: UIView {
- 
-    @IBOutlet weak var imageView: UIImageView!
- 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-}
-
-class EurekaLogoView: UIView {
- 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        let imageView = UIImageView(image: UIImage(named: "Eureka"))
-        imageView.frame = CGRect(x: 0, y: 0, width: 320, height: 130)
-        imageView.autoresizingMask = .flexibleWidth
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: 130)
-        imageView.contentMode = .scaleAspectFit
-        self.addSubview(imageView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-*/
