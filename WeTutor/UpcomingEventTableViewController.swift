@@ -1116,21 +1116,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             if action != .canceled {
                 DispatchQueue.main.async {
                     // Re-fetch all events happening in the next 24 hours
-                    //self?.eventsList = self!.fetchEvents()
-                    // Update the UI with the above events
                     self?.tableView.reloadData()
                 }
             }
         }
         self.tableView.reloadData()
     }
-    
-    //var default​Calendar​For​New​Events:​ EKCalendar
-    
-    // Set the calendar edited by EKEventEditViewController to our chosen calendar - the default calendar.
-    /*func eventEditViewControllerDefaultCalendar(forNewEvents controller: EKEventEditViewController) -> EKCalendar {
-        return eventStore.calendar(withIdentifier: "")!
-    }*/
     
 }
 

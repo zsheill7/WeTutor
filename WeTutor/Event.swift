@@ -39,7 +39,6 @@ struct Event {
     var eventAlert: String//EventAlert
     
     let labelFont = UIFont(name: "HelveticaNeue-Bold", size: 18)
-    //let attributes :Dictionary = [NSFontAttributeName : labelFont]
     let formatter = DateFormatter()
     
     
@@ -55,9 +54,6 @@ struct Event {
         self.uid = uid
         self.objectID = objectID
         self.eventAlert = eventAlert
-        
-       // formatter.dateStyle = DateFormatter.Style.LongStyle
-       // formatter.timeStyle = DateFormatter.Style.ShortStyle
     }
     
     var isOverdue: Bool {

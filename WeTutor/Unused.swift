@@ -345,3 +345,49 @@ import Foundation
  
  }
  */
+
+/*userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot1) in
+ 
+ if snapshot1.hasChild("channels") {
+ 
+ let channelRefHandle = userChannelRef.observe(.childAdded, with: { (snapshot) -> Void in
+ //let channelData = snapshot.value as! Dictionary<String, AnyObject>
+ if let channelData = snapshot.value as? Dictionary<String, AnyObject> {
+ print("  if let channelData = snapshot.value as? Dictionary<String, AnyObject> {")
+ let id = snapshot.key
+ var ref: FIRDatabaseReference!
+ let userID = FIRAuth.auth()?.currentUser?.uid
+ ref = FIRDatabase.database().reference()
+ ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+ // Get user value
+ let userObject = User(snapshot: snapshot )
+ 
+ let value = snapshot.value as? NSDictionary
+ let isTutor = userObject.isTutor
+ if isTutor != nil {
+ if isTutor == true {
+ tutorOrTutee = "tuteeName"
+ } else {
+ tutorOrTutee = "tutorName"
+ }
+ }
+ else {
+ // no highscore exists
+ }
+ })
+ 
+ if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {
+ print(" if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {")
+ self.channels.append(Channel(id: id, name: name))
+ self.tableView.reloadData()
+ } else {
+ print("Error! Could not decode channel data")
+ }
+ }
+ })
+ } else {
+ print("false room doesn't exist")
+ }
+ })
+ }*/
+

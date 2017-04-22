@@ -31,13 +31,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
          self.profileImage.loadImageUsingCacheWithUrlString(profileImageUrlString)
         
         view.addSubview(profileImageView)
-        self.view.backgroundColor = UIColor.white//UIColor(netHex: 0xEFEFF4)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.view.backgroundColor = UIColor.white
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
@@ -59,7 +53,6 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     }()
     
     func setupProfileImageView() {
-        //need x, y, width, height constraints
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         let widthConstraint = NSLayoutConstraint(item: profileImageView,
@@ -71,7 +64,6 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
                                                  constant: 100)
         self.view.addConstraints([widthConstraint])
         profileImageView.width = 100
-        //profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -12).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
@@ -83,13 +75,10 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                
                 let userID = FIRAuth.auth()?.currentUser?.uid
                 self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                    // Get user value
                     let value = snapshot.value as? NSDictionary
                     let profileImageURL = value?["profileImageURL"] as? String ?? ""
-                   // let user = User.init(username: username)
                     
                     // ...
                     if profileImageURL  != nil {
@@ -98,12 +87,6 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
                 }) { (error) in
                     print(error.localizedDescription)
                 }
-                //if you use this setter, your app will crash if your class properties don't exactly match up with the firebase dictionary keys
-                //self.user?.setValuesForKeys(dictionary)
-                
-                //this will crash because of background thread, so lets use dispatch_async to fix
-                
-                //                user.name = dictionary["name"]
             }
             
         }, withCancel: nil)
@@ -136,16 +119,8 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
 
         
         
-        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
-            /*contentViewColor: UIColor.alertViewBlue()*/)
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alert = SCLAlertView(appearance: appearance)
-        //let emailTextField = alert.addTextField("Email")
-        
-        /*_ = alert.addButton("Show Name") {
-         print("Text value: \(txt.text)")
-         }*/
-        
-        
         
         let choosePhotoButton = alert.addButton("Choose From Photo Library") {
             self.pickedProfileImage.delegate = self
@@ -172,17 +147,8 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
             print("close")
             
         }
-        
-        //presentViewController(alertController, animated: true, completion: nil)
-        
-        /*_ = alert.addButton("Cancel") {
-         print("Second button tapped")
-         }*/
+       
         _ = alert.showInfo("Change Profile Photo", subTitle:"")
-        //emailButton.backgroundColor = UIColor.alertViewBlue()
-        //closeButton.backgroundColor = UIColor.alertViewBlue()
-        //emailTextField.borderColor = UIColor.alertViewBlue()
-        
     }
     
     

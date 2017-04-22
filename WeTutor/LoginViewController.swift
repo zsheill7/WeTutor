@@ -37,7 +37,6 @@ class LoginViewController: UIViewController {
     let lightGrayColor = UIColor.lightGray.lighten(byPercentage: 0.1)!
     
     let screenHeight = UIScreen.main.bounds.size.height
-    //let screenHeight = Double(screenSize.height)
     var IS_IPHONE = Bool()
     var IS_IPAD  = Bool()
     
@@ -49,32 +48,15 @@ class LoginViewController: UIViewController {
         if IS_IPAD {
             horizConstant = 100
         }
-        /*self.view.backgroundColor = UIColor.init(
-         gradientStyle: UIGradientStyle.leftToRight,
-         withFrame: self.view.frame,
-         andColors: [ Color.blue.lighten4, Color.blue.lighten4 ]
-         )*/
-        /*UIGraphicsBeginImageContext(self.view.frame.size)
-         UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
+        
       self.view.addBackground("book.png")
-      //  self.view?.backgroundColor = UIColor.backgroundBlue()
-       /* let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "fullbackgroundtransculentlogin")
-        self.view.insertSubview(backgroundImage, at: 0)*/
-        //self.view.backgroundColor = UIColor.newSkyBlue()
-        /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-         
-         UIGraphicsEndImageContext()
-         
-         self.view.backgroundColor = UIColor(patternImage: image)*/
+     
         
         RZTransitionsManager.shared().defaultPresentDismissAnimationController = RZZoomAlphaAnimationController()
         RZTransitionsManager.shared().defaultPushPopAnimationController = RZCardSlideAnimationController()
         
-        //prepareNameField()
         prepareEmailField()
         preparePasswordField()
-        //prepareConfirmPasswordField()
         prepareNextButton()
         prepareForgotPasswordButton()
         prepareSignupButton()
@@ -201,15 +183,7 @@ class LoginViewController: UIViewController {
                                 ])
                             
                             if description.characters.count > 0{
-                                print("in neither are nil")
-                                
-                                    /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "toPagingMenuVC") as! UINavigationController
-                                    //window?.rootViewController = viewController
-                                    self.present(viewController, animated: true, completion: nil)*/
                                 self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
-                                
-                                //self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
                             } else {
                                 self.performSegue(withIdentifier: "toTutorOrTuteeVC", sender: self)
                             }
@@ -232,28 +206,11 @@ class LoginViewController: UIViewController {
                         self.displayAlert("Unable to Log In", message: errorMessage)
                         
                     }
-                 // }
                     
 
                 } else {
                     self.displayAlert("Error", message: (error?.localizedDescription)!)
                 }
-                /*if error != nil {
-                    print(error?.localizedDescription)
-                } else if (self.userDefaults.value(forKey: "birthday") as? String) != nil {
-                    
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerTwoNC") as! UINavigationController
-                    self.present(viewController, animated: true, completion: nil)
-                    
-                } else if (self.userDefaults.value(forKey: "isTutor") as? String) != nil {
-                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerOneNC") as! UINavigationController
-                    self.present(viewController, animated: true, completion: nil)
-                } else {
-                    self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
-                }*/
-                
             })
         }
     }
@@ -264,18 +221,8 @@ class LoginViewController: UIViewController {
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         emailField.width = view.height - 2 * horizConstant
     }
-    
-    /// Prepares the resign responder button.
-    /*private func prepareResignResponderButton() {
-     let btn = RaisedButton(title: "Resign", titleColor: Color.blue.base)
-     
-     btn.addTarget(self, action: #selector(handleResignResponderButton(button:)), for: .touchUpInside)
-     
-     view.layout(btn).width(100).height(constant).top(24).right(24)
-     }*/
     fileprivate func prepareNextButton() {
-        /*let btn = UIButton()
-         btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
+        
         let btn = RaisedButton(title: "Log In", titleColor: Color.grey.lighten3)
          btn.backgroundColor = UIColor(netHex: 0x51679F)//UIColor.titleBlue().lighten(byPercentage: 0.08)
         
@@ -290,13 +237,10 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func prepareForgotPasswordButton() {
-        //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
-        
         let btn: UIButton! = UIButton()
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(lightGrayColor, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
-        //btn.title = "Forgot Password?"
         btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_ :)), for: .touchUpInside)
         
@@ -309,8 +253,6 @@ class LoginViewController: UIViewController {
     }
     
     fileprivate func prepareSignupButton() {
-        //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
-        
         let btn: UIButton! = UIButton()
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(lightGrayColor, for: .highlighted)
@@ -351,8 +293,6 @@ class LoginViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "signupNC") as! UINavigationController
         controller.modalTransitionStyle = .flipHorizontal
         self.present(controller, animated: true, completion: nil)
-        
-        //createForgotPasswordAlert()
     }
     func resetIsTutor() {
         let userID = FIRAuth.auth()?.currentUser?.uid
@@ -381,13 +321,7 @@ class LoginViewController: UIViewController {
     }
     
     func createForgotPasswordAlert() {
-        /*let alertView = SCLAlertView()
-         alertView.showInfo("Reset Password", subTitle: "Please enter your email for a password reset link.")
-         let emailField = alertView.addTextField("Email:")*/
-        
-        
-        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
-            /*contentViewColor: UIColor.alertViewBlue()*/)
+        let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alert = SCLAlertView(appearance: appearance)
         let emailTextField = alert.addTextField("Email")
         
@@ -419,15 +353,7 @@ class LoginViewController: UIViewController {
             print("close")
         }
         
-        
-        /*_ = alert.addButton("Cancel") {
-         print("Second button tapped")
-         }*/
         _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
-        //emailButton.backgroundColor = UIColor.alertViewBlue()
-        //closeButton.backgroundColor = UIColor.alertViewBlue()
-        //emailTextField.borderColor = UIColor.alertViewBlue()
-        
     }
     
     let lightPurpleColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
@@ -460,7 +386,6 @@ class LoginViewController: UIViewController {
     fileprivate func preparePasswordField() {
         passwordField = TextField()
         passwordField.placeholder = "Password"
-        //passwordField.detail = "At least 8 characters"
         passwordField.clearButtonMode = .whileEditing
         passwordField.isVisibilityIconButtonEnabled = true
         passwordField.placeholderNormalColor = UIColor.white

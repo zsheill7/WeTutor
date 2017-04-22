@@ -48,7 +48,6 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var availabilityInfo: UILabel!
     
     @IBOutlet weak var containerView: UIView!
-   // @IBOutlet weak var weekDayView: UIScrollView!
     
     @IBOutlet var ratingView: CosmosView!
      var UID: String!
@@ -82,16 +81,10 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.addBackground(imageName: "mixed2")
-        
-        
+
         FriendSystem.system.getCurrentUser { (user) in
             self.currentUser = user
         }
-        
-      // callButton.contentMode = .scaleAspectFit
-      // textButton.contentMode = .scaleAspectFit
-        
         self.containerView.isUserInteractionEnabled = false
         
               // Clear background colors from labels and buttons
@@ -99,23 +92,15 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             view.backgroundColor = UIColor.clear
         }
         
-        let viewFromNib: UIView? = Bundle.main.loadNibNamed("WeekDaysCellTwo",
-                                                            owner: nil,
-                                                            options: nil)?.first as! UIView?
+        
         fullPageScrollView.delegate = self
         fullPageScrollView.isDirectionalLockEnabled = true
         
         self.loadHorizontalScrollView()
-        
-      
-        
         headingLabels.forEach { $0.attributedText = NSAttributedString(string: $0.text!, attributes: [NSKernAttributeName: 1]) }
         
         basicInfoLabel.text = "Age: \(destUser.grade) \nSchool: \(destUser.school)\nPhone: \(destUser.phone)\nemail:\(destUser.email)"
-        // title = destUser.name
          descriptionLabel.text = destUser.description
-      //  preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
-        //availabilityLabel.text = "Available Days: \(destUser.availableDays)\n\(destUser.availabilityInfo)"
         nameLabel.text = "\(destUser.name)"
         availabilityInfo.text = destUser.availabilityInfo
         
@@ -139,9 +124,6 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func rateYourExperience(_ sender: Any) {
         let appearance = SCLAlertView.SCLAppearance(
-           /* kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
-            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
-            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,*/
             showCloseButton: false
         )
 
@@ -172,9 +154,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                 "ratingNumber": cosmosRating,
                 "comment": comment
             ] as [String : Any]
-           self.userRef.child(self.destUser.uid).child("ratings").child(uuid).setValue(ratingRef)//child("ratingNumber").setValue(cosmosRating)
-            //self.userRef.child(self.destUser.uid).child("ratings").child(uuid).child("comment").setValue(comment)
-            
+           self.userRef.child(self.destUser.uid).child("ratings").child(uuid).setValue(ratingRef)
             self.setupUserRating()
             FriendSystem.system.userList.removeAll()
         }
@@ -214,8 +194,6 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                     imageView.image = buttonImage
                 }
             }
-            
-           // button.backgroundColor = UIColor.blue
             horizontalScrollView.addItem(imageView)
         }
         _ = horizontalScrollView.centerSubviews()
@@ -235,12 +213,6 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func createChannel() {
-        
-        //self.performSegue(withIdentifier: "ShowChannel", sender: self)
-        
-        /*if (indexPath as NSIndexPath).section == Section1.currentChannelsSection.rawValue {*/
-        //
-        
         //To see if a user started a chat with someone on their friends list
         if currentUser != nil {
             FIRAnalytics.logEvent(withName: "did_select_chat", parameters: [
@@ -341,14 +313,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     
     func createChannel(_ otherUser: User) {
-        
-        
-        
-        /*let userDefaults = UserDefaults.standard
-         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
-         let userName = userDefaults.value(forKey: "name") as? String {
-         }
-         }*/
+      
         let userDefaults = UserDefaults.standard
         let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         
@@ -402,7 +367,6 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         //This adds the other user as a "friend" child to the current user ref and vice versa
         FriendSystem.system.acceptFriendRequest(otherUser.uid)
         
-        // self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
         
     }
     
@@ -414,17 +378,10 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         let channelRef = FIRDatabase.database().reference()
         
         let eventStore = EKEventStore()
-        //let initCalendar = EKCalendar()
-        //let eventCalendar = initCalendar.calendar
-        
-        // Use Event Store to create a new calendar instance
+
         // Configure its title
         var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
-        
-        //var newCalendar = eventStore.calendar
-        // newCalendar.calendarIdentifier = identifier
-        // Probably want to prevent someone from saving a calendar
-        // if they don't type in a name...
+       
         
         if currentUser != nil {
             newCalendar.title = "Events (\(destUser.name) & \(currentUser!.name))"
@@ -440,38 +397,25 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             (source: EKSource) -> Bool in
             source.sourceType.rawValue == EKSourceType.local.rawValue
             }.first!
-        
-        //channelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
-        //userChannelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
-        
-        //self.calendars.append(newCalendar)
+
         
         do {
             try eventStore.saveCalendar(newCalendar, commit: true)
-            //UserDefaults.standardUserDefaults().setObject(newCalendar.calendarIdentifier, forKey: "EventTrackerPrimaryCalendar")
+           
         } catch {
-            //  displayAlert("Unab", message: <#T##String#>)
         }
-        
         return newCalendar.calendarIdentifier
-        
     }
     
     
     func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-       
     }
-    
 
-    
-    
     @IBAction func callNumber(_ sender: Any) {
         let phoneNumber = destUser.phone
         print("inside call number")

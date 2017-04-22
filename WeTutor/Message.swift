@@ -2,8 +2,8 @@
 //  Message.swift
 //  gameofchats
 //
-//  Created by Brian Voong on 7/7/16.
-//  Copyright © 2016 letsbuildthatapp. All rights reserved.
+//  Created by Zoe Sheill on 7/7/16.
+//  Copyright © 2016 TokkiTech. All rights reserved.
 //
 
 import UIKit

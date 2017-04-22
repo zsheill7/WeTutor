@@ -35,10 +35,6 @@ class TutorOrTuteeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //self.view?.backgroundColor = UIColor.backgroundBlue()
-       // self.view?.backgroundColor = UIColor(netHex: 0xEFEFF4)
-       // self.view?.addBackground("mixed2")
         self.view.addBackground("book.png")
         userRef = FIRDatabase.database().reference().child("users")
         if FIRAuth.auth()?.currentUser?.uid != nil {
@@ -138,8 +134,6 @@ class TutorOrTuteeViewController: UIViewController {
         animation.fromValue = isBall ? 10 : halfWidth
         animation.toValue = cornerRadius
         animation.duration = 0.2
-        /*ballView2.position.x = centerX
-         ballView2.position.y = centerY + 100*/
         ballView2.width = 150
         ballView2.height = 100
         
@@ -162,6 +156,7 @@ class TutorOrTuteeViewController: UIViewController {
         
         self.performSegue(withIdentifier: "toTutorSignUpVC", sender: self)
     }
+    
     @IBAction func tutorTapped(_ sender: Any) {
         print("tapped")
         self.userRef.child("\(userUID)").child("isTutor").setValue(true)
@@ -173,8 +168,6 @@ class TutorOrTuteeViewController: UIViewController {
 
         self.performSegue(withIdentifier: "toTutorSignUpVC", sender: self)
     }
-    
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -48,30 +48,7 @@ private enum MenuSection {
         let options: PagingMenuControllerCustomizable
         options = PagingMenuOptions1()
         return options
-        /*switch self {
-        case .all(let content):
-            switch content {
-            case .standard:
-                options = PagingMenuOptions1()
-            case .segmentedControl:
-                options = PagingMenuOptions2()
-            case .infinite:
-                options = PagingMenuOptions3()
-            }
-        case .menuView(let content):
-            switch content {
-            case .underline:
-                options = PagingMenuOptions4()
-            case .roundRect:
-                options = PagingMenuOptions5()
-            }
-        case .menuController(let content):
-            switch content {
-            case .standard:
-                options = PagingMenuOptions6()
-            }
-        }
-        return options*/
+        
     }
 }
 
@@ -112,12 +89,6 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
     }
     
    
-    
-    /*override func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }*/
-    
     override func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -136,16 +107,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         }
         
         navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-        
-       // self.view.addBackground()
         print("self.currentUserIsTutor \(self.currentUserIsTutor)")
         self.loadForm()
-       
-        //self.view.backgroundColor = UIColor
-        //self.view.backgroundColor = UIColor.flatSkyBlue.lighten(bybPercentage: 0.2)
-                //self.view.addBackground("book.png")
-                
-              //  self.hideKeyboardWhenTappedAround()
        
     }
     
@@ -175,12 +138,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
             
             +++ Section()
             
-            /*<<< PickerInputRow<String>("gender"){
-                $0.title = "Gender"
-                $0.options = ["Male", "Female", "Other"]
-                
-                $0.value = $0.options.first
-            }*/
+            
             <<< PickerInlineRow<String>("gender") { (row : PickerInlineRow<String>) -> Void in
                 row.title = "Gender"
                 row.tag = "gender"
@@ -198,24 +156,6 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
             }
 
             
-            /*<<< PushRow<Emoji>("grade") {
-                $0.title = "Grade"
-                $0.options = gradeLevels
-                $0.value = gradeLevels[0]
-                $0.selectorTitle = "Choose your grade level"
-                }.onPresent { from, to in
-                    to.sectionKeyForValue = { option in
-                        guard let value = option as? String else { return "" }
-                        return value
-                    }
-            }*/
-            /*<<< PickerInlineRow<String>("subject") { (row : PickerInlineRow<String>) -> Void in
-                row.title = "Preferred Subject"
-                row.tag = "subject"
-                row.options = subjectNames
-                
-                row.value = row.options[0]
-            }*/
             <<< MultipleSelectorRow<Emoji>("subject") {
                 $0.title = "Preferred Subject"
                 $0.tag = "subject"
@@ -227,24 +167,6 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                     to.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: from, action: #selector(self.multipleSelectorDone(_:)))
             }
 
-            
-            /*<<< PushRow<Emoji>("subject") {
-                $0.title = "Preferred Subject"
-                $0.options = subjectNames
-                $0.value = subjectNames[0]
-                $0.selectorTitle = "Choose your preferred subject(s)"
-                }.onPresent { from, to in
-                    to.sectionKeyForValue = { option in
-                        switch option {
-                        case "English", "History": return "Humanities"
-                        case "Math", "Chemistry", "Physics", "Biology": return "STEM"
-                        case "Spanish", "French", "Chinese", "German", "Latin": return "Languages"
-                        default: return ""
-                        }
-                    }
-            }*/
-            
-           
             +++ Section("Biography")
             
             
@@ -286,14 +208,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                     self.startAnimating(size, message: "Loading...", type: NVActivityIndicatorType(rawValue: 6)!)
                     
                     self.continueSelected()
-                    
-                    
         }
-        
-        
-
-        
-
     }
     
     func multipleSelectorDone(_ item:UIBarButtonItem) {
@@ -326,17 +241,6 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         let row8: TextRow? = self.form.rowBy(tag: "gpa")
         let gpa = row8?.value
         
-        print(zipcode)
-        print(school)
-        print(phone)
-        print(gender)
-        print(grade)
-        print(subject)
-        print(description)
-        print()
-
-        
-        
         if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subjectArray != nil {
             
             self.ref = FIRDatabase.database().reference()
@@ -344,10 +248,6 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
             
             let userDefaults = UserDefaults.standard
             userDefaults.set(description, forKey: "description")
-            print(school)
-            print(grade)
-            print(description)
-            
             let user = FIRAuth.auth()?.currentUser
             
             let userID = FIRAuth.auth()?.currentUser?.uid
@@ -413,8 +313,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                 } else {
                     self.displayAlert("You are not signed in", message: "Please log in again")
                     self.stopAnimating()
-                }//if let zipcode = self.form.sections[0].rows[0].value,
-                //let schoolName = self.form.sections[1].rows[0].value,
+                }
                 
                 
                 // ...
@@ -446,7 +345,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated) // <<< ---ADD THIS LINE
+        super.viewWillAppear(animated)
         //
         self.tableView?.tableFooterView = UIView()
         
@@ -455,12 +354,9 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 1.0)
-        //cell.backgroundColor = UIColor(red:0.43, green:0.82, blue:0.83, alpha:1.0)
     }
    
-    /**
-     * Called when 'return' key pressed. return NO to ignore.
-     */
+   
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

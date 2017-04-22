@@ -634,7 +634,6 @@ func createAccount() {
         confirmPasswordField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         confirmPasswordField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         
-        // Setting the visibilityIconButton color.
         confirmPasswordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
         let leftView = UIImageView()
@@ -646,9 +645,6 @@ func createAccount() {
         confirmPasswordField.leftViewActiveColor = .green
 
         var verticalMult: CGFloat = 10
-        
-        //let deviceType = UIDevice.current.deviceType
-        //let new = deviceType.IS_IPAD
         print("\(screenHeight) screenHeight")
         
         view.layout(confirmPasswordField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
