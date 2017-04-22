@@ -600,6 +600,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         
         
     }*/
+    
+    
  
     func loadAllEvents(completed: @escaping (() -> ())) {
         print("loadAllCalendars()")
@@ -633,47 +635,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                             }
                             for destUser in friendList {
                                 let destUserID = destUser.uid
-                                /*if self.currentUserIsTutor == false {
-                                    print("if self.currentUserIsTutor == false {")
-                                    if let tuteeName = channelDict["tuteeName"] as? String,
-                                        let  tutorName = channelDict["tutorName"] as? String{
-                                        print("1 let  tutorName = channelDict[tutorName] as? String{")
-                                        if tuteeName == FIRAuth.auth()?.currentUser?.uid {
-                                            print("1if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
-                                            
-                                            if tutorName == destUserID {
-                                                self.iterationStatus = "done"
-                                                print("perform segue channel upcoming event")
-                                                print(channel)
-                                                // let newChannel = Channel(id: channel.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
-                                                if let eventsDict = channelDict["events"] as? [String: AnyObject] {
-                                                    print("1st \(eventsDict)")
-                                                    for event in eventsDict {
-                                                        print("1print event in eventsDict \(event)" )
-                                                        let startDateDouble = eventsDict["startDate"] as? Double ?? Date().timeIntervalSince1970
-                                                        let endDateDouble = eventsDict["endDate"] as? Double ?? Date().timeIntervalSince1970
-                                                        let endDate = Date(timeIntervalSince1970: endDateDouble)
-                                                        let startDate = Date(timeIntervalSince1970: startDateDouble)
-                                                        let eventTitle = eventsDict["title"] as? String ?? "New Event"
-                                                        let description = eventsDict["description"] as? String ?? "I look forward to seeing you!"
-                                                        let repeatInterval = eventsDict["repeatInterval"] as? String ?? "Never"
-                                                        let eventAlert = eventsDict["eventAlert"] as? String ?? "Never"
-                                                        let eventLocation = eventsDict["location"] as? CLLocation ?? CLLocation(latitude: 47.566951, longitude: -122.221192)
-                                                        let newEvent = Event(title: eventTitle, startDate: startDate as NSDate, endDate: endDate as NSDate, description: description, location: eventLocation, repeatInterval: repeatInterval, uid: event.key, objectID: UUID().uuidString, eventAlert: eventAlert)
-                                                        print("1newEvent \(newEvent)")
-                                                        self.events.append(newEvent)
-                                                    }
-                                                    
-                                                } else {
-                                                    // TODO: Handle nil case or default EKCalendar
-                                                }
-                                                
-                                                
-                                            }
-                                        }
-                                    }
-                                    
-                                }*/// else if self.currentUserIsTutor == true {
+                                // else if self.currentUserIsTutor == true {
                                 var channelCount = 0
                                 for channel in allChannels {
                                     channelCount += 1
@@ -690,13 +652,22 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                         for destUser in friendList {
                                             friendCount += 1
                                             let destUserID = destUser.uid
+                                            let currentUserIsTutorNameDict = [
+                                                true: ["tutorName": destUserID,
+                                                                       "tuteeName": FIRAuth.auth()?.currentUser?.uid],
+                                                false: ["tutorName": FIRAuth.auth()?.currentUser?.uid,
+                                                                       "tuteeName": destUserID]
+                                            ]
+                                            
+                                            
                                     print("if self.currentUserIsTutor == true {")
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
                                         print("2 let  tutorName = channelDict[tutorName] as? String{")
-                                        if tutorName == FIRAuth.auth()?.currentUser?.uid {
+                                        print("(currentUserIsTutorNameDict[self.currentUserIsTutor]?[tutorName])! \((currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])!) \(FIRAuth.auth()?.currentUser?.uid)")
+                                        if tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! {
                                           
-                                            if tuteeName == destUserID {
+                                            if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
                                                 self.iterationStatus = "done"
                                                 
                                                  print("2if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")

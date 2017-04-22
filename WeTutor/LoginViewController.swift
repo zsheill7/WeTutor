@@ -219,9 +219,14 @@ class LoginViewController: UIViewController {
                         // ...
                     }) { (error) in
                         let noInternetError = "Network error (such as timeout, interrupted connection or unreachable host) has occurred."
+                        let invalidPasswordError = "The password is invalid or the user does not have a password."
+                        
                         var errorMessage = error.localizedDescription
                         if error.localizedDescription == noInternetError {
                             errorMessage = "Please check your internet connection and try again later."
+                        }
+                        if error.localizedDescription == invalidPasswordError {
+                            errorMessage = "The username or password is incorrect."
                         }
                         
                         self.displayAlert("Unable to Log In", message: errorMessage)

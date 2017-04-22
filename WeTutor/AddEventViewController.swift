@@ -9,6 +9,7 @@
 import UIKit
 import Eureka
 import FirebaseDatabase
+import FirebaseAuth
 
 class AddEventNavigationController: UINavigationController, RowControllerType {
     var onDismissCallback : ((UIViewController) -> ())?
@@ -235,6 +236,7 @@ class AddEventViewController: FormViewController {
                 //let title = row7?.value
                 let uuid = UUID().uuidString
                 let eventDict = ["title": title, "location": location, "startDate": startDateInterval, "endDate": endDateInterval, "repeatInterval": repeatInterval, "alert": alert ?? "", "notes": notes ?? ""] as [String : Any]
+                print("channelRefe \(self.channelRef) eventDict \(eventDict) uid \(FIRAuth.auth()?.currentUser?.uid)")
                 self.channelRef?.child("events").child(uuid).setValue(eventDict)
                 
                 let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
