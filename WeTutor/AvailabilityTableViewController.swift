@@ -19,11 +19,6 @@ class AvailabilityTableViewController: FormViewController{
         self.tableView?.backgroundColor = UIColor.white
         self.loadForm()
         self.view.isUserInteractionEnabled = false
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,8 +28,6 @@ class AvailabilityTableViewController: FormViewController{
     
     func loadForm() {
         
-       /* let availabilityInfo: String = ""
-        var languages: [String] = [String]()*/
         let availableDaysBoolArray = destUser.availableDaysArray
         
         let weekDayCell = WeekDayCell()
@@ -59,8 +52,7 @@ class AvailabilityTableViewController: FormViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated) // <<< ---ADD THIS LINE
-        //
+        super.viewWillAppear(animated)
         self.tableView?.tableFooterView = UIView()
         
     }

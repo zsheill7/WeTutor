@@ -65,9 +65,6 @@ class SettingsTableViewController: UITableViewController {
         print("userID")
         print(userID)
         print(ref.child("users").child(userID!))
-        //self.tableView?.addBlueBackground("mixed2")
-       
-        //self.view.addBackground()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             print("inside observeSingleEvent")
@@ -82,26 +79,6 @@ class SettingsTableViewController: UITableViewController {
             print(error.localizedDescription)
         }
         
-        /*print("test1")
-        if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
-            print("test2")
-            self.marchingInst.text! = marchingInst
-        }
-        
-        if let concertInst = FIRAuth.auth()?.currentUser!["concertInstrument"] as? String {
-            print("test2")
-            self.concertInst.text! = concertInst
-        }
-        if let concertBandType = FIRAuth.auth()?.currentUser!["concertBandType"] as? String {
-            print("test2")
-            self.ensemble.text! = concertBandType
-        }*/
-        /*marchingInstCell.tag = 1
-        concertInstCell.tag = 2
-        ensembleTypeCell.tag = 3*/
-        
-        
-        
         var frame: CGRect = table.frame;
         frame.size.height = table.contentSize.height
         table.frame = frame
@@ -109,22 +86,6 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-     
-        
-       /* if let marchingInst = FIRAuth.auth()?.currentUser!["marchingInstrument"] as? String {
-            
-            self.marchingInst.text! = marchingInst
-        }
-        
-        if let concertInst = FIRAuth.auth()?.currentUser!["concertInstrument"] as? String {
-
-            self.concertInst.text! = concertInst
-        }
-        if let concertBandType = FIRAuth.auth()?.currentUser!["concertBandType"] as? String {
-            print("test3")
-            self.ensemble.text! = concertBandType
-        }*/
-        
         
     }
     
@@ -251,35 +212,6 @@ class SettingsTableViewController: UITableViewController {
             print("Second button tapped")
         }
         alertView.showInfo("Logout", subTitle: "Do you want to log out?")
-        /*let alert = UIAlertController(title: "Logout", message: "Do you want to log out?", preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            
-            self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
-            self.activityIndicator.center = self.view.center
-            self.activityIndicator.hidesWhenStopped = true
-            self.activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            self.view.addSubview(self.activityIndicator)
-            self.activityIndicator.startAnimating()
-            UIApplication.shared.beginIgnoringInteractionEvents()
-            
-            try! FIRAuth.auth()!.signOut()
-            
-            let initialStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginNC = initialStoryboard.instantiateViewController(withIdentifier: "loginNC")
-            
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            
-            self.present(loginNC, animated: true, completion: nil)
-        
-
-        })))
-        alert.addAction((UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) -> Void in
-            
-        })))
-        
-        self.present(alert, animated: true, completion: nil)*/
     }
     func logOut() {
         self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))

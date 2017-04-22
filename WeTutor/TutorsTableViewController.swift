@@ -195,16 +195,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         let height = screenBounds.size.height
         let cellHeight = 135
         let cornerRadius:CGFloat = 5
-        let coloredRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: /*Int(self.frame.size.width - 40)*//*Int(width - 20)*/77, height: cellHeight))
+        let coloredRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: 77, height: cellHeight))
         
         
         coloredRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
         coloredRoundedView.layer.masksToBounds = false
-       // coloredRoundedView.layer.cornerRadius = cornerRadius
         coloredRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
         coloredRoundedView.layer.shadowOpacity = 0.2
-        
-        //leftColorView.backgroundColor = colors[indexPath.row % 6]
         coloredRoundedView.tag = 10
         coloredRoundedView.backgroundColor = colors[colorsCount % 5]
         
@@ -216,13 +213,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     func setupDropDown() {
-        
-        
         // The view to which the drop down will appear on
         dropdownButton.width = self.view.frame.width - 10
         dropdownButton.layer.cornerRadius = 16
         dropdownButton.layer.width = view.frame.width - 10
-        dropdownButton.layer.backgroundColor = UIColor.sliderGreen().cgColor//UIColor.titleBlue().cgColor
+        dropdownButton.layer.backgroundColor = UIColor.sliderGreen().cgColor
         dropDown.anchorView = dropdownButton // UIView or UIBarButtonItem
         dropDown.bottomOffset = CGPoint(x: 0, y: 20)
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
@@ -235,9 +230,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 cell.subjectImage.image = UIImage(named: "\(imageName)")
             }
         }
-        // The list of items to display. Can be changed dynamically
-       // dropDown.backgroundColor = UIColor.backgroundBlue()
-        dropDown.dataSource = subjectNames//preferredSubj
+        dropDown.dataSource = subjectNames
         dropDown.cellNib = UINib(nibName: "SubjectCell", bundle: nil)
         dropDown.selectionAction = { [unowned self] (index, item) in
             self.dropdownButton.setTitle(item, for: .normal)

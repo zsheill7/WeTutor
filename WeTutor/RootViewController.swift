@@ -33,30 +33,7 @@ private enum Section {
         let options: PagingMenuControllerCustomizable
         options = PagingMenuOptions1()
         return options
-        /*switch self {
-        case .all(let content):
-            switch content {
-            case .standard:
-                options = PagingMenuOptions1()
-            case .segmentedControl:
-                options = PagingMenuOptions2()
-            case .infinite:
-                options = PagingMenuOptions3()
-            }
-        case .menuView(let content):
-            switch content {
-            case .underline:
-                options = PagingMenuOptions4()
-            case .roundRect:
-                options = PagingMenuOptions5()
-            }
-        case .menuController(let content):
-            switch content {
-            case .standard:
-                options = PagingMenuOptions6()
-            }
-        }
-        return options*/
+        
     }
 }
 

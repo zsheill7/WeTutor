@@ -89,7 +89,7 @@ open class PagingViewController: UIViewController {
     
     fileprivate func constructPagingViewControllers() {
         for (index, controller) in controllers.enumerated() {
-            // construct three child view controllers at a maximum, previous(optional), current and next(optional)
+
             if !shouldLoad(index) {
                 // remove unnecessary child view controllers
                 if isVisible(controller) {
@@ -102,7 +102,6 @@ open class PagingViewController: UIViewController {
                 continue
             }
             
-            // ignore if it's already added
             if isVisible(controller) {
                 continue
             }
@@ -138,7 +137,6 @@ open class PagingViewController: UIViewController {
             if options.lazyLoadingPage == LazyLoadingPage.one ||
                 controllers.count == MinimumSupportedViewCount ||
             options.menuControllerSet == MenuControllerSet.single {
-                // H:|[pagingView]|
                 NSLayoutConstraint.activate([
                     pagingView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor),
                     pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor),
@@ -149,17 +147,14 @@ open class PagingViewController: UIViewController {
                     if index == currentPage {
                         guard let previousPagingView = controllers[previousPage].view,
                             let nextPagingView = controllers[nextPage].view else { continue }
-                        
-                        // H:[previousPagingView][pagingView][nextPagingView]
+
                         NSLayoutConstraint.activate([
                             previousPagingView.trailingAnchor.constraint(equalTo: pagingView.leadingAnchor, constant: 0),
                             pagingView.trailingAnchor.constraint(equalTo: nextPagingView.leadingAnchor, constant: 0)
                             ])
                     } else if index == previousPage {
-                        // "H:|[pagingView]
                         pagingView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor).isActive = true
                     } else if index == nextPage {
-                        // H:[pagingView]|
                         pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor).isActive = true
                     }
                 } else {
@@ -167,27 +162,22 @@ open class PagingViewController: UIViewController {
                     case (.three, 0),
                          (.three, previousPage),
                          (.all, 0):
-                        // H:|[pagingView]
                         pagingView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor).isActive = true
                     case (.three, controllers.count - 1),
                              (.three, nextPage),
                              (.all, controllers.count - 1):
                             guard let previousPagingView = controllers[index - 1].view else { continue }
-                            // H:[previousPagingView][pagingView]|
                             previousPagingView.trailingAnchor.constraint(equalTo: pagingView.leadingAnchor, constant: 0).isActive = true
                             pagingView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor).isActive = true
                     case (.three, _), (.all, _):
                         guard let previousPagingView = controllers[index - 1].view else { continue }
-                        // H:[previousPagingView][pagingView]
                         previousPagingView.trailingAnchor.constraint(equalTo: pagingView.leadingAnchor, constant: 0).isActive = true
                     default: break
                     }
                 }
             }
-            // H:[pagingView(==contentScrollView)
             pagingView.widthAnchor.constraint(equalTo: contentScrollView.widthAnchor).isActive = true
             
-            // V:|[pagingView(==contentScrollView)]|
             NSLayoutConstraint.activate([
                 pagingView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
                 pagingView.bottomAnchor.constraint(equalTo: contentScrollView.bottomAnchor),

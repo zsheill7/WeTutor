@@ -14,13 +14,9 @@ enum Section1: Int {
 
 class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UISearchBarDelegate {
     
-   // @IBOutlet weak var searchBar: UISearchBar!
     var filteredData: [User]!
     
     let cellId = "ChatUserCell"
-    // MARK: Properties
-    
-   // @IBOutlet weak var backButton: UIBarButtonItem!
    
     var senderDisplayName: String?
     var newChannelTextField: UITextField?
@@ -58,10 +54,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
-        
-        // searchBar.delegate = self
-        //self.view.addBackground()
-        
        
         if let userID = FIRAuth.auth()?.currentUser?.uid {
             userRef.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -88,21 +80,13 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                 
             })
         }
-        // title = "RW RIC"
         
-        
-        //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backButtonPressed))
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
-        /*FriendSystem.system.addUserObserver { () in
-         self.tableView.reloadData()
-         }*/
-       // FriendSystem.system.addFriendObserver {
-     //       print("FriendSystem.system.friendListThreeThree  \(FriendSystem.system.friendListThree)")
-            self.tableView.reloadData()
-            // self.observeChannels()
-      //  }
+       
+        self.tableView.reloadData()
+        
         
         tableView.register(ChatUserCell.self, forCellReuseIdentifier: cellId)
         self.tableView.reloadData()
@@ -193,106 +177,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         
     }
     
-    /*func createChannelTemp(otherUser: String) {
-     
-     
-     
-     /*let userDefaults = UserDefaults.standard
-     if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
-     let userName = userDefaults.value(forKey: "name") as? String {
-     }
-     }*/
-     let userDefaults = UserDefaults.standard
-     let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
-     
-     if let userID = FIRAuth.auth()?.currentUser?.uid {
-     
-     if isTutor == true {
-     tutorName = userID
-     tuteeName = otherUser
-     } else {
-     
-     }
-     } else {
-     tutorName = "Chat"
-     tuteeName = "Chat"
-     }
-     
-     let newChannelRef = channelRef.childByAutoId()
-     let channelItem = [
-     "tutorName": tutorName,
-     "tuteeName": tuteeName
-     ]
-     newChannelRef.setValue(channelItem)
-     let userID = FIRAuth.auth()?.currentUser?.uid
-     let userChannelRef = userRef.child(userID!).child("channels")
-     let uuid = UUID().uuidString
-     
-     userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
-     userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
-     
-     }*/
-    
-    /*func createChannel(otherUser: String) {
-     print("in create channel")
-     let userDefaults = UserDefaults.standard
-     
-     let userID = FIRAuth.auth()?.currentUser?.uid
-     print(userID)
-     var ref: FIRDatabaseReference!
-     let user = FIRAuth.auth()?.currentUser
-     
-     ref = FIRDatabase.database().reference()
-     ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-     
-     print("in child observesingleevent")
-     let userObject = User(snapshot: snapshot )
-     print(userObject)
-     let value = snapshot.value as? NSDictionary
-     let isTutor = userObject.isTutor
-     
-     if isTutor != nil {
-     print("tutor != nil")
-     
-     if isTutor == true {
-     self.tutorName = userID!
-     self.tuteeName = otherUser
-     } else {
-     
-     }
-     } else {
-     self.tutorName = "Chat"
-     self.tuteeName = "Chat"
-     }
-     
-     print("Tutor Name: " + self.tutorName)
-     print("Tutee Name: " + self.tuteeName)
-     
-     
-     let uuid = UUID().uuidString
-     let channelItem = [
-     "tutorName": self.tutorName,
-     "tuteeName": self.tuteeName
-     ]
-     
-     //self.createChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
-     
-     let newChannelRef = self.channelRef.childByAutoId()
-     
-     newChannelRef.setValue(channelItem)
-     let userID = FIRAuth.auth()?.currentUser?.uid
-     let userChannelRef = self.userRef.child(userID!).child("channels")
-     userChannelRef.setValue(self.channelRef)
-     /*userChannelRef.child("tutorName").setValue(self.tutorName)
-     userChannelRef.child("tuteeName").setValue(tuteeName)*/
-     self.performSegue(withIdentifier: "toChatVC", sender: self)
-     
-     
-     
-     })
-     
-     
-     }*/
     
     // MARK: Firebase related methods
     
@@ -331,9 +215,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                     // no highscore exists
                 }
                 let email = userObject.email
-                //print(email)
-                //print("userObject.channels")
-                //print( userObject.channels)
                 for channel in userObject.channels {
                     
                     self.channels.append(channel)
@@ -342,49 +223,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                 }
             })
         }
-        /*userRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot1) in
-         
-         if snapshot1.hasChild("channels") {
-         
-         let channelRefHandle = userChannelRef.observe(.childAdded, with: { (snapshot) -> Void in
-         //let channelData = snapshot.value as! Dictionary<String, AnyObject>
-         if let channelData = snapshot.value as? Dictionary<String, AnyObject> {
-         print("  if let channelData = snapshot.value as? Dictionary<String, AnyObject> {")
-         let id = snapshot.key
-         var ref: FIRDatabaseReference!
-         let userID = FIRAuth.auth()?.currentUser?.uid
-         ref = FIRDatabase.database().reference()
-         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-         // Get user value
-         let userObject = User(snapshot: snapshot )
-         
-         let value = snapshot.value as? NSDictionary
-         let isTutor = userObject.isTutor
-         if isTutor != nil {
-         if isTutor == true {
-         tutorOrTutee = "tuteeName"
-         } else {
-         tutorOrTutee = "tutorName"
-         }
-         }
-         else {
-         // no highscore exists
-         }
-         })
-         
-         if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {
-         print(" if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {")
-         self.channels.append(Channel(id: id, name: name))
-         self.tableView.reloadData()
-         } else {
-         print("Error! Could not decode channel data")
-         }
-         }
-         })
-         } else {
-         print("false room doesn't exist")
-         }
-         })*/
     }
     
     /* MARK: EmptyDataSet */
@@ -404,19 +242,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
         return UIImage(named: "placeholder_kickstarter")
     }
-    /*
-     func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
-     let str = "Add Grokkleglob"
-     let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
-     return NSAttributedString(string: str, attributes: attrs)
-     }
-     
-     func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
-     let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
-     ac.addAction(UIAlertAction(title: "Hurray", style: .default))
-     present(ac, animated: true)
-     }
-     */
     // MARK: Navigation
     
     
@@ -431,7 +256,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
             print(senderDisplayName)
             print("channelRef1")
             print(channelRef.child(channel.id))
-            //addEventVC.senderDisplayName = senderDisplayName!
             addEventVC.channel = channel
             addEventVC.channelRef = channelRef.child(channel.id)
         }
@@ -447,7 +271,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
    func backButtonPressed() {
         let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-        //controller.modalTransitionStyle = .flipHorizontal
         self.present(controller, animated: true, completion: nil)
     }
    
@@ -463,12 +286,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         return FriendSystem.system.friendListThree.count
         
     }
-    
-    //Talking to administrators
-    //Bad words or meanness
-    //Teachers can't text students
-    //Teacher would be able to recommend the app?
-    //See if admins think this is a good idea
     
     
     let cellHeight: CGFloat = 90.0
@@ -497,20 +314,11 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         }
         
         return cell
-        
-        
-        // Return cell
-        //return cell!
     }
     
     // MARK: UITableViewDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //self.performSegue(withIdentifier: "ShowChannel", sender: self)
-        
-        /*if (indexPath as NSIndexPath).section == Section1.currentChannelsSection.rawValue {*/
-        //
         
         //To see if a user started a chat with someone on their friends list
         if currentUser != nil {
@@ -608,14 +416,6 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                 }
             }
         })
-        
-        
-        
-        /*   let channel = channels[(indexPath as NSIndexPath).row]
-         print("channel.id")
-         print(channel.id)*/
-        
-        // }
     }
     
     /* func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {

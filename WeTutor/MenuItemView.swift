@@ -185,9 +185,7 @@ open class MenuItemView: UIView {
     }
     
     fileprivate func layoutMultiLineLabel() {
-        // H:|[titleLabel(==labelSize.width)]|
-        // H:|[descriptionLabel(==labelSize.width)]|
-        // V:|-margin-[titleLabel][descriptionLabel]-margin|
+
         let titleLabelSize = calculateLabelSize(titleLabel, maxWidth: maxWindowSize)
         let descriptionLabelSize = calculateLabelSize(descriptionLabel, maxWidth: maxWindowSize)
         let verticalMargin = max(menuOptions.height - (titleLabelSize.height + descriptionLabelSize.height), 0) / 2
@@ -208,8 +206,6 @@ open class MenuItemView: UIView {
     }
 
     fileprivate func layoutLabel() {
-        // H:|[titleLabel](==labelSize.width)|
-        // V:|[titleLabel]|
         let titleLabelSize = calculateLabelSize(titleLabel, maxWidth: maxWindowSize)
         widthConstraint = titleLabel.widthAnchor.constraint(equalToConstant: titleLabelSize.width)
         NSLayoutConstraint.activate([
@@ -289,7 +285,6 @@ extension MenuItemView {
     }
 }
 
-// MARK: Lable Size
 
 extension MenuItemView {
     fileprivate func labelWidth(_ widthMode: MenuItemWidthMode, estimatedSize: CGSize) -> CGFloat {

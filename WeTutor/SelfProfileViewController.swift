@@ -124,8 +124,6 @@ class SelfProfileViewController: UIViewController, UIScrollViewDelegate {
         basicInfoLabel.text = "Age: \(currentUser.grade) \nSchool: \(currentUser.school)\nPhone: \(currentUser.phone)\nemail:\(currentUser.email)"
         // title = currentUser.name
         descriptionLabel.text = currentUser.description
-        //  preferencesLabel.text = "Preferred Subjects: \(preferredSubjectsString)"
-        //availabilityLabel.text = "Available Days: \(currentUser.availableDays)\n\(currentUser.availabilityInfo)"
         nameLabel.text = "\(currentUser.name)"
         availabilityInfo.text = currentUser.availabilityInfo
         

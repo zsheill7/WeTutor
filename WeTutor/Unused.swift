@@ -391,3 +391,105 @@ import Foundation
  })
  }*/
 
+
+/*func createChannelTemp(otherUser: String) {
+ 
+ 
+ 
+ /*let userDefaults = UserDefaults.standard
+ if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
+ let userName = userDefaults.value(forKey: "name") as? String {
+ }
+ }*/
+ let userDefaults = UserDefaults.standard
+ let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
+ 
+ if let userID = FIRAuth.auth()?.currentUser?.uid {
+ 
+ if isTutor == true {
+ tutorName = userID
+ tuteeName = otherUser
+ } else {
+ 
+ }
+ } else {
+ tutorName = "Chat"
+ tuteeName = "Chat"
+ }
+ 
+ let newChannelRef = channelRef.childByAutoId()
+ let channelItem = [
+ "tutorName": tutorName,
+ "tuteeName": tuteeName
+ ]
+ newChannelRef.setValue(channelItem)
+ let userID = FIRAuth.auth()?.currentUser?.uid
+ let userChannelRef = userRef.child(userID!).child("channels")
+ let uuid = UUID().uuidString
+ 
+ userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
+ userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
+ 
+ }*/
+
+/*func createChannel(otherUser: String) {
+ print("in create channel")
+ let userDefaults = UserDefaults.standard
+ 
+ let userID = FIRAuth.auth()?.currentUser?.uid
+ print(userID)
+ var ref: FIRDatabaseReference!
+ let user = FIRAuth.auth()?.currentUser
+ 
+ ref = FIRDatabase.database().reference()
+ ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+ 
+ print("in child observesingleevent")
+ let userObject = User(snapshot: snapshot )
+ print(userObject)
+ let value = snapshot.value as? NSDictionary
+ let isTutor = userObject.isTutor
+ 
+ if isTutor != nil {
+ print("tutor != nil")
+ 
+ if isTutor == true {
+ self.tutorName = userID!
+ self.tuteeName = otherUser
+ } else {
+ 
+ }
+ } else {
+ self.tutorName = "Chat"
+ self.tuteeName = "Chat"
+ }
+ 
+ print("Tutor Name: " + self.tutorName)
+ print("Tutee Name: " + self.tuteeName)
+ 
+ 
+ let uuid = UUID().uuidString
+ let channelItem = [
+ "tutorName": self.tutorName,
+ "tuteeName": self.tuteeName
+ ]
+ 
+ //self.createChannel = Channel(id: uuid, name: channelItem["tutorName"]!)
+ 
+ let newChannelRef = self.channelRef.childByAutoId()
+ 
+ newChannelRef.setValue(channelItem)
+ let userID = FIRAuth.auth()?.currentUser?.uid
+ let userChannelRef = self.userRef.child(userID!).child("channels")
+ userChannelRef.setValue(self.channelRef)
+ /*userChannelRef.child("tutorName").setValue(self.tutorName)
+ userChannelRef.child("tuteeName").setValue(tuteeName)*/
+ self.performSegue(withIdentifier: "toChatVC", sender: self)
+ 
+ 
+ 
+ })
+ 
+ 
+ }*/
+

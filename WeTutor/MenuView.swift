@@ -187,8 +187,6 @@ open class MenuView: UIScrollView {
     }
     
     fileprivate func layoutContentView() {
-        // H:|[contentView]|
-        // V:|[contentView(==scrollView)]|
         NSLayoutConstraint.activate([
             contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -237,19 +235,14 @@ open class MenuView: UIScrollView {
         
         for (index, menuItemView) in sortedMenuItemViews.enumerated() {
             if index == 0 {
-                // H:|[menuItemView]
                 menuItemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
             } else  {
                 if index == sortedMenuItemViews.count - 1 {
-                    // H:[menuItemView]|
                     menuItemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
                 }
-                // H:[previousMenuItemView][menuItemView]
                 let previousMenuItemView = sortedMenuItemViews[index - 1]
                 previousMenuItemView.trailingAnchor.constraint(equalTo: menuItemView.leadingAnchor, constant: 0).isActive = true
             }
-            
-            // V:|[menuItemView]|
             NSLayoutConstraint.activate([
                 menuItemView.topAnchor.constraint(equalTo: contentView.topAnchor),
                 menuItemView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)

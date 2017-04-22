@@ -100,7 +100,7 @@ class ChangePasswordTableViewController: UITableViewController {
         if resetEmailField.text == nil {
             
         } else if self.isValidEmail(testStr: self.newEmailField.text!) == false {
-            //self.displayAlert(title: "Not Long Enough", message: "Please enter a email that is 5 or more characters")
+
             self.displayAlert(title: "Not a Valid Email", message: "Please enter new email")
         } else {
             FIRAuth.auth()?.sendPasswordReset(withEmail: resetEmailField.text!) { (error) in

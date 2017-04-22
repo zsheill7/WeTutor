@@ -7,17 +7,8 @@
 //
 
 import UIKit
-// AcknowledgementsViewController.swift
-//
-//  Created by Zoe on 3/6/17.
-//  Copyright © 2017 TokkiTech. All rights reserved.
-//
-
-
 import Firebase
 import FirebaseDatabase
-
-
 
 class AcknowledgementsViewController: UIViewController {
     var currentUserIsTutor: Bool?
@@ -35,27 +26,7 @@ class AcknowledgementsViewController: UIViewController {
     }
     
     @IBAction func pressedOkay(_ sender: Any) {
-        
-        
+
         self.dismiss(animated: true, completion: nil)
-    
-        /*let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-        //controller.modalTransitionStyle = .flipHorizontal
-        self.present(controller, animated: true, completion: nil)*/
-        
-        
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

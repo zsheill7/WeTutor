@@ -34,10 +34,6 @@ class AboutThisAppViewController: UIViewController {
     }
     
     @IBAction func pressedOkay(_ sender: Any) {
-        
-        
-             self.dismiss(animated: true, completion: nil)
-        
-
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -49,8 +49,6 @@ class SettingsAvailabilityTableViewController : FormViewController {
         if currentUser != nil {
             self.currentUserIsTutor = currentUser?.isTutor
         }
-        //self.tableView?.addBlueBackground("mixed2")
-        //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         let availabilityInfo: String = ""
         var languages: [String] = [String]()
         
@@ -106,13 +104,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
                 }
         
             +++ Section("Prices")
-            /*ButtonRow() {
-             $0.title = "Price FAQ"
-             }
-             .onCellSelection {  cell, row in  //do whatever you want
-             self.openPricePopover()
-             }*/
-            
+
             <<< DecimalRow("Price") {
                 $0.useFormatterDuringInput = true
                 $0.title = "Price"
@@ -141,18 +133,8 @@ class SettingsAvailabilityTableViewController : FormViewController {
                     
                     self.continueSelected()
                     self.goBackToSettings()
-        
-                    
-                    
+
         }
-        
-    
-
-        
-
-
-        
-        
     }
     
     func continueSelected() {
@@ -237,7 +219,6 @@ class SettingsAvailabilityTableViewController : FormViewController {
             self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
             self.ref.child("users/\(user.uid)/completedTutorial").setValue(false)
             self.ref.child("users/\(user.uid)/hourlyPrice").setValue(hourlyPrice)
-            //self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
             
         } else {
             // No user is signed in.

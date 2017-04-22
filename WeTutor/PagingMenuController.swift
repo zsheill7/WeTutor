@@ -71,8 +71,7 @@ open class PagingMenuController: UIViewController {
     
     override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        // fix unnecessary inset for menu view when implemented by programmatically
+
         menuView?.contentInset.top = 0
     }
     
@@ -222,21 +221,16 @@ open class PagingMenuController: UIViewController {
             height = menuOptions.height
             switch menuOptions.menuPosition {
             case .top:
-                // V:|[menuView]
                 menuView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
             case .bottom:
-                // V:[menuView]|
                 menuView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             }
         case .menuView(let menuOptions):
             height = menuOptions.height
-            // V:|[menuView]
             menuView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         default: return
         }
         
-        // H:|[menuView]|
-        // V:[menuView(height)]
         NSLayoutConstraint.activate([
             menuView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             menuView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -261,7 +255,6 @@ open class PagingMenuController: UIViewController {
     fileprivate func layoutPagingViewController() {
         guard let pagingViewController = pagingViewController else { return }
         
-        // H:|[pagingView]|
         NSLayoutConstraint.activate([
             pagingViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             pagingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -269,7 +262,6 @@ open class PagingMenuController: UIViewController {
         
         switch options.componentType {
         case .pagingController:
-            // V:|[pagingView]|
             NSLayoutConstraint.activate([
                 pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
                 pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -279,13 +271,11 @@ open class PagingMenuController: UIViewController {
             
             switch menuOptions.menuPosition {
             case .top:
-                // V:[menuView][pagingView]|
                 NSLayoutConstraint.activate([
                     menuView.bottomAnchor.constraint(equalTo: pagingViewController.view.topAnchor, constant: 0),
                     pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                     ])
             case .bottom:
-                // V:|[pagingView][menuView]
                 NSLayoutConstraint.activate([
                     pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
                     pagingViewController.view.bottomAnchor.constraint(equalTo: menuView.topAnchor, constant: 0),
