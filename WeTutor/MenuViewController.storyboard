@@ -42,7 +42,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBg-ci-Mac">
-                                <rect key="frame" x="21" y="65" width="333" height="30"/>
+                                <rect key="frame" x="15" y="65" width="345" height="30"/>
                                 <color key="backgroundColor" red="0.15740184610795738" green="0.74231832674917231" blue="0.6942359668199799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="AT7-6h-urB"/>
@@ -58,13 +58,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="QBg-ci-Mac" secondAttribute="trailing" constant="5" id="Abk-qL-dDJ"/>
-                            <constraint firstItem="QBg-ci-Mac" firstAttribute="leading" secondItem="3EE-co-1CN" secondAttribute="leadingMargin" constant="5" id="BSC-li-mjZ"/>
                             <constraint firstItem="J4U-jX-tMO" firstAttribute="leading" secondItem="3EE-co-1CN" secondAttribute="leading" id="BWj-cR-1VT"/>
                             <constraint firstItem="J4U-jX-tMO" firstAttribute="top" secondItem="QBg-ci-Mac" secondAttribute="bottom" constant="4" id="D0Z-gj-cDW"/>
                             <constraint firstAttribute="trailing" secondItem="J4U-jX-tMO" secondAttribute="trailing" id="DsR-nI-8dp"/>
                             <constraint firstItem="QBg-ci-Mac" firstAttribute="centerX" secondItem="3EE-co-1CN" secondAttribute="centerX" id="WZX-f0-1l7"/>
                             <constraint firstItem="JdY-zI-tuY" firstAttribute="top" secondItem="J4U-jX-tMO" secondAttribute="bottom" id="XhP-nu-wZx"/>
+                            <constraint firstItem="QBg-ci-Mac" firstAttribute="width" secondItem="3EE-co-1CN" secondAttribute="width" constant="-30" id="hvT-qF-Upa"/>
                             <constraint firstItem="QBg-ci-Mac" firstAttribute="top" secondItem="Z0u-Mh-GNY" secondAttribute="bottom" constant="45" id="oVQ-uR-M0g"/>
                         </constraints>
                     </view>
@@ -657,11 +656,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-S7-iTr" customClass="FSCalendar">
-                                <rect key="frame" x="10" y="64" width="359" height="308"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="308"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="308" id="6Aw-7R-DN0"/>
-                                    <constraint firstAttribute="width" constant="359" id="Ppy-OK-Xg4"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bhN-UQ-8Hd">
@@ -687,6 +685,8 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bhN-UQ-8Hd" firstAttribute="top" secondItem="kaL-S7-iTr" secondAttribute="bottom" id="65H-eH-3Db"/>
+                            <constraint firstItem="kaL-S7-iTr" firstAttribute="leading" secondItem="5fA-HR-5dw" secondAttribute="leading" id="A2V-LK-zqw"/>
+                            <constraint firstAttribute="trailing" secondItem="kaL-S7-iTr" secondAttribute="trailing" id="AzB-pU-9kr"/>
                             <constraint firstItem="kYb-0o-8RV" firstAttribute="bottom" secondItem="kaL-S7-iTr" secondAttribute="bottom" constant="30" id="E6J-uG-Svy"/>
                             <constraint firstAttribute="trailing" secondItem="bhN-UQ-8Hd" secondAttribute="trailing" id="Fhw-bR-A7v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kYb-0o-8RV" secondAttribute="trailing" constant="50" id="QZ6-hy-0Ud"/>
@@ -718,7 +718,6 @@
                         <outlet property="addEventButton" destination="kYb-0o-8RV" id="1a9-dF-8hJ"/>
                         <outlet property="calendarHeightConstraint" destination="6Aw-7R-DN0" id="yi1-Wj-Non"/>
                         <outlet property="calendarView" destination="kaL-S7-iTr" id="HeF-YG-k1q"/>
-                        <outlet property="calendarWidthConstraint" destination="Ppy-OK-Xg4" id="ZK4-eL-acI"/>
                         <outlet property="tableView" destination="bhN-UQ-8Hd" id="Ncq-NW-xdf"/>
                         <segue destination="XVT-N9-jpa" kind="showDetail" identifier="showDetail" id="PWj-8N-5wz">
                             <nil key="action"/>
@@ -1248,6 +1247,6 @@
         <image name="telephonebook" width="74" height="74"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7xH-tV-nU1"/>
+        <segue reference="9UM-xc-NC9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -35,9 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let userDefaults = UserDefaults.standard
         
-       /* let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-        self.window?.rootViewController = viewController*/
+        self.window?.rootViewController = viewController
 
        if FIRAuth.auth()?.currentUser?.uid != nil {
             FriendSystem.system.getCurrentUser { (user) in

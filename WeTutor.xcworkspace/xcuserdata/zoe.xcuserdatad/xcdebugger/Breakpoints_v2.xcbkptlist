@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WeTutor/TutorsTableViewController.swift"
-            timestampString = "514343787.615031"
+            timestampString = "514511660.377508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "577"
-            endingLineNumber = "577"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "createChannel(_:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -178,7 +178,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, borderRadiusFor date: Date) -> CGFloat {
        
-        return 1.0
+        return 10.0
     }
     
    /* func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -262,7 +262,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: -
     //MARK: View lifecycle
     
-    @IBOutlet weak var calendarWidthConstraint: NSLayoutConstraint!
+  //  @IBOutlet weak var calendarWidthConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Initialize the event store
@@ -278,7 +278,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         calendarView.isUserInteractionEnabled = false
         
         self.view.addBackground()
-        calendarWidthConstraint.constant = self.view.frame.size.width
+    //    calendarWidthConstraint.constant = self.view.frame.size.width
         self.tableView.backgroundColor = UIColor.clear
         //self.calendarView.width = self.view.width + 20
         FriendSystem.system.getCurrentUser { (user) in

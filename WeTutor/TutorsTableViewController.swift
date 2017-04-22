@@ -57,12 +57,6 @@ struct CoachMarkInfo {
 }
 
 class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, TwicketSegmentedControlDelegate, UITableViewDelegate, UITableViewDataSource, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
-    
-
-    
-   
-    
-   
 
     var dbRef: FIRDatabaseReference!
     var tutors = [User]()
@@ -120,11 +114,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //dbRef = FIRDatabase.database().reference().child("users")
         userRef = FIRDatabase.database().reference().child("users")
-
-        //self.tableView.isEditing = false
-        //self.tableView.allowsSelection = true
         
         setupDropDown()
         
@@ -144,25 +134,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 
             }
         }
-        
-        //self.coachMarksController.dataSource = self
-        
-        //self.tableView.opacity = 0
-        
-        //self.tableView.backgroundColor = UIColor.clear//clearbackgroundBlue()
-        
-       // self.tableView.addBackground()
         let titles = ["Tutors", "Students"]
         let frame = CGRect(x: 5, y: 0, width: view.frame.width - 10, height: 40)
-
-        //self.view.backgroundColor = UIColor.backgroundBlue()
-        /*let backgroundImageView = UIImageView(image: UIImage(named:"background")!)
-        
-       let screenWidth = self.view.frame.width
-        backgroundImageView.frame = CGRect(x: 0,y: 0, width: screenWidth, height: backgroundImageView.height)
-        self.view.backgroundColor = UIColor(patternImage: backgroundImageView)*/
-        
-        //self.view.addBackground()
         
         self.tableView.backgroundColor = UIColor.clear
         
@@ -172,8 +145,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         self.finalUserList.removeAll()
         FriendSystem.system.addUserObserver { () in
-            
-            
             for user in FriendSystem.system.userList {
                 var contains = false
                 for finalUser in self.finalUserList {
@@ -181,9 +152,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                         contains = true
                     }
                 }
-                if user.isTutor == true && user.email != "kimemily1@gmail.com" && contains == false{
+                if user.isTutor == true && contains == false{
                     self.finalUserList.append(user)
-                    
                 }
             }
             for (index, user) in FriendSystem.system.userList.enumerated() {
@@ -192,8 +162,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             for (index, user) in self.finalUserList.enumerated() {
                 print("1finalUserList  \(index) \(user.uid)")
             }
-            
-            //fEFFFzzJQNQzATcxCh6vGdsXLox2
             self.tableView.reloadData()
         }
         
@@ -213,22 +181,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         segmentedControl.sliderBackgroundColor = UIColor.sliderGreen()//UIColor.flatBlue
         segmentedControl.backgroundColor = UIColor.clear
         view.addSubview(segmentedControl)
-        
-                print("finalUserList.count")
         print(finalUserList.count)
        
         self.tableView.reloadData()
-        
-        /*if (currentUser?.isTutor) == true {
-            segmentedControl.move(to: 1)
-        }*/
-        
-        
-        
-        //observeChannels()
-        
-        //startObservingDB()
-        
         
     }
     
@@ -266,6 +221,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         
         // The view to which the drop down will appear on
+        dropdownButton.width = self.view.frame.width - 10
         dropdownButton.layer.cornerRadius = 16
         dropdownButton.layer.width = view.frame.width - 10
         dropdownButton.layer.backgroundColor = UIColor.sliderGreen().cgColor//UIColor.titleBlue().cgColor
@@ -366,6 +322,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     
     func didSelect(_ segmentIndex: Int) {
+        print("didSelect")
         self.segmentIndexIsTutor = segmentIndex
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
         /*switch segmentIndex {
@@ -401,6 +358,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     func filterBySubject(_ segmentItem: String) {
+        print("filterBySubject")
         self.segmentItemSubject = segmentItem
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
         /*if segmentItem == "All Subjects" {
@@ -420,18 +378,28 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
-    
+    print("finalFilter")
         /*if segmentItemSubject == "All Subjects" {
             //self.didSelect(dropDown.indexForSelectedRow!)
         } else {*/
             finalUserList = [User]()
             for user in FriendSystem.system.userList {
                 for subject in user.preferredSubjects {
-                    if (subject == segmentItemSubject || segmentItemSubject == "All Subjects")  && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)) && user.email != "kimemily1@gmail.com"{
-                        finalUserList.append(user)
+                    if (subject == segmentItemSubject || segmentItemSubject == "All Subjects")  && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)){
+                        var elementInArray = false
+                        for lastUser in finalUserList {
+                            print("finalUserList2 \(lastUser.uid)")
+                            if lastUser.uid == user.uid {
+                                elementInArray = true
+                            }
+                        }
+                        if elementInArray == false {
+                            finalUserList.append(user)
+                        }
                     }
                 }
             }
+        
             tableView.reloadData()
         //}
     }
@@ -514,16 +482,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }*/
         let userID = FIRAuth.auth()?.currentUser?.uid
         print("create new Chat")
-        /*channelRef.child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            let username = value?["username"] as? String ?? ""
-            let user = User.init(username: username)
-            
-            // ...
-        }) { (error) in
-            print(error.localizedDescription)
-        }*/
+       
         var finishedObserve = false
         
         if let uid = (sender as AnyObject).accessibilityIdentifier {
@@ -723,6 +682,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         var tuteeCell = tableView.dequeueReusableCell(withIdentifier: "TuteeCell") as? TuteeUserCell
         
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
+        tuteeCell?.selectionStyle = UITableViewCellSelectionStyle.none
         
        var ref: FIRDatabaseReference!
         
