@@ -2,8 +2,8 @@
 //  FSCalendarScopeHandle.m
 //  FSCalendar
 //
-//  Created by dingwenchao on 4/29/16.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  4/29/16.
+//  
 //
 
 #import "FSCalendarScopeHandle.h"

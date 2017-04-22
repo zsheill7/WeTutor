@@ -65,13 +65,6 @@ class AvailabilityTableViewController: FormViewController{
         
     }
     
-    /**
-     * Called when the user click on the view (outside the UITextField).
-     */
-    /* override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-     self.view.endEditing(true)
-     }
-     */
     func multipleSelectorDone(_ item:UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
     }

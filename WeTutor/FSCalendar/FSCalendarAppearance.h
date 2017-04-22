@@ -2,8 +2,8 @@
 //  FSCalendarAppearance.h
 //  Pods
 //
-//  Created by DingWenchao on 6/29/15.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  6/29/15.
+//  
 //
 //  https://github.com/WenchaoD
 //

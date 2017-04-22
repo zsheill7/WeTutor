@@ -2,7 +2,7 @@
 //  FSCalendarDynamicHeader.h
 //  Pods
 //
-//  Created by DingWenchao on 6/29/15.
+//  6/29/15.
 //
 //  动感头文件，仅供框架内部使用。
 //  Private header, don't use it.

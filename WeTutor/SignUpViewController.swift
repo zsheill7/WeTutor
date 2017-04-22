@@ -61,15 +61,9 @@ extension UIView {
     }
 }
 
-/* @enum This class connects with the FriendSystem class to create user accounts */
 
 class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
-    /**
-     Sent to the delegate when the button was used to login.
-     - Parameter loginButton: the sender
-     - Parameter result: The results of the login
-     - Parameter error: The error (if any) from the login
-     */
+   
    
     fileprivate var nameField: TextField!
     fileprivate var emailField: ErrorTextField!

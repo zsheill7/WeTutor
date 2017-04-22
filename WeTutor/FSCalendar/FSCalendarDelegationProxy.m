@@ -2,8 +2,8 @@
 //  FSCalendarDelegationProxy.m
 //  FSCalendar
 //
-//  Created by dingwenchao on 11/12/2016.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  11/12/2016.
+//  
 //
 
 #import "FSCalendarDelegationProxy.h"

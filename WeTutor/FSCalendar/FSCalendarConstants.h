@@ -2,8 +2,8 @@
 //  FSCalendarConstane.h
 //  FSCalendar
 //
-//  Created by dingwenchao on 8/28/15.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  8/28/15.
+//  
 //
 //  https://github.com/WenchaoD
 //

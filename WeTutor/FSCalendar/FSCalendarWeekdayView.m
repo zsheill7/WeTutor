@@ -2,8 +2,8 @@
 //  FSCalendarWeekdayView.m
 //  FSCalendar
 //
-//  Created by dingwenchao on 03/11/2016.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  03/11/2016.
+//  
 //
 
 #import "FSCalendarWeekdayView.h"

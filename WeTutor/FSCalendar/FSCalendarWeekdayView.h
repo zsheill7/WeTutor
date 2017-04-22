@@ -2,7 +2,7 @@
 //  FSCalendarWeekdayView.h
 //  FSCalendar
 //
-//  Created by dingwenchao on 03/11/2016.
+//  03/11/2016.
 //  Copyright © 2016 dingwenchao. All rights reserved.
 //
 

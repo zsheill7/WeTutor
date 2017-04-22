@@ -2,8 +2,8 @@
 //  FSCalendarExtensions.h
 //  FSCalendar
 //
-//  Created by dingwenchao on 10/8/16.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  10/8/16.
+//  
 //
 
 #import <UIKit/UIKit.h>

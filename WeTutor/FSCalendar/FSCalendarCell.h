@@ -2,7 +2,7 @@
 //  FSCalendarCell.h
 //  Pods
 //
-//  Created by Wenchao Ding on 12/3/15.
+//  12/3/15.
 //
 //
 

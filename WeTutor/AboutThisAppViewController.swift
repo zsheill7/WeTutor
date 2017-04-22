@@ -37,17 +37,7 @@ class AboutThisAppViewController: UIViewController {
         
         
              self.dismiss(animated: true, completion: nil)
-        /*let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-        //controller.modalTransitionStyle = .flipHorizontal
-        self.present(controller, animated: true, completion: nil)*/
-            
-        /*} else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "signupNC") as! UINavigationController
-            //controller.modalTransitionStyle = .crossDissolve
-            self.present(controller, animated: true, completion: nil)
-        }*/
+        
 
     }
    

@@ -43,7 +43,6 @@
 		C837BF811EA1EA9E000F0CEF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837BF801EA1EA9C000F0CEF /* Rating.swift */; };
 		C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
-		C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B31E1982BA004A794C /* UserListViewController.swift */; };
 		C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B51E1982BA004A794C /* RequestViewController.swift */; };
 		C838A8BC1E19C47E004A794C /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C838A8BB1E19C47E004A794C /* Map.storyboard */; };
 		C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8BD1E19C4E1004A794C /* MapViewController.swift */; };
@@ -180,7 +179,6 @@
 		C837BF801EA1EA9C000F0CEF /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableView.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
-		C838A8B31E1982BA004A794C /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		C838A8B51E1982BA004A794C /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		C838A8BB1E19C47E004A794C /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		C838A8BD1E19C4E1004A794C /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -482,7 +480,6 @@
 			isa = PBXGroup;
 			children = (
 				C838A8B21E1982BA004A794C /* FriendSystem.swift */,
-				C838A8B31E1982BA004A794C /* UserListViewController.swift */,
 				C838A8B51E1982BA004A794C /* RequestViewController.swift */,
 			);
 			name = "Friend System";
@@ -828,7 +825,6 @@
 				C8EE88531E0DB144003775C2 /* FSCalendarAnimator.m in Sources */,
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */,
-				C838A8B71E1982BA004A794C /* UserListViewController.swift in Sources */,
 				C82970671EA0516B002233FB /* AcknowledgementsViewController.swift in Sources */,
 				C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */,
 				C86D41161E9ACC39000C5B0F /* FollowUsTableViewController.swift in Sources */,

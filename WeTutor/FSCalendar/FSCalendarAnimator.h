@@ -2,8 +2,8 @@
 //  FSCalendarAnimator.h
 //  FSCalendar
 //
-//  Created by dingwenchao on 3/13/16.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  3/13/16.
+//  
 //
 
 #import "FSCalendar.h"

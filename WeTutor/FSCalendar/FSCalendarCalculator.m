@@ -2,8 +2,8 @@
 //  FSCalendarCalculator.m
 //  FSCalendar
 //
-//  Created by dingwenchao on 30/10/2016.
-//  Copyright © 2016 Wenchao Ding. All rights reserved.
+//  30/10/2016.
+//  
 //
 
 #import "FSCalendar.h"
