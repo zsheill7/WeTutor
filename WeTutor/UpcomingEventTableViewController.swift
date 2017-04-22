@@ -295,7 +295,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     print("event.uid \(event.uid)\n event.title \(event.title)")
                 }
                 self.observeChannels()
+                self.events.sort(by: { $0.startDate.compare($1.startDate as Date) == ComparisonResult.orderedAscending })
                 self.tableView.reloadData()
+                
                 self.calendarView.reloadData()
                 
             })
