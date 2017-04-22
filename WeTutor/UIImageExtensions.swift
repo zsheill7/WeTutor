@@ -111,7 +111,7 @@ extension UIImage {
         delay = delayObject as! Double
         
         if delay < 0.1 {
-            delay = 0.1 // Make sure they're not too fast
+            delay = 0.1
         }
         
         return delay
@@ -131,8 +131,7 @@ extension UIImage {
         
         var a = _a!
         var b = _b!
-        
-        // Swap for modulo
+
         if a < b {
             let c = a
             a = b
@@ -179,13 +178,11 @@ extension UIImage {
                 images.append(image)
             }
             
-            // At it's delay in cs
             let delaySeconds = UIImage.delayForImageAtIndex(Int(i),
                                                             source: source)
             delays.append(Int(delaySeconds * 1000.0)) // Seconds to ms
         }
-        
-        // Calculate full duration
+
         let duration: Int = {
             var sum = 0
             
@@ -195,8 +192,7 @@ extension UIImage {
             
             return sum
         }()
-        
-        // Get frames
+
         let gcd = gcdForArray(delays)
         var frames = [UIImage]()
         
@@ -210,8 +206,7 @@ extension UIImage {
                 frames.append(frame)
             }
         }
-        
-        // Heyhey
+
         let animation = UIImage.animatedImage(with: frames,
                                               duration: Double(duration) / 1000.0)
         

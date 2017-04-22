@@ -342,12 +342,11 @@ class LoginViewController: UIViewController {
         
     }
     internal func handleForgotPasswordButton(_ button: UIButton) {
-        //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
-        print("hello")
+               print("hello")
         createForgotPasswordAlert()
     }
     internal func handleSignUpButton(_ button: UIButton) {
-        //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
+      
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "signupNC") as! UINavigationController
         controller.modalTransitionStyle = .flipHorizontal
@@ -361,7 +360,7 @@ class LoginViewController: UIViewController {
         
         ref = FIRDatabase.database().reference()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
+ 
             let userObject = User(snapshot: snapshot )
             
             let value = snapshot.value as? NSDictionary
@@ -392,9 +391,6 @@ class LoginViewController: UIViewController {
         let alert = SCLAlertView(appearance: appearance)
         let emailTextField = alert.addTextField("Email")
         
-        /*_ = alert.addButton("Show Name") {
-         print("Text value: \(txt.text)")
-         }*/
         
         
         let emailButton = alert.addButton("Send Email") {
@@ -414,9 +410,7 @@ class LoginViewController: UIViewController {
                             message = "Password reset email sent."
                             self.emailField.text = ""
                         }
-                        
                         SCLAlertView().showInfo("Success!", subTitle: "Password reset email sent.")
-                        
                     })
                 }
             }
@@ -458,14 +452,7 @@ class LoginViewController: UIViewController {
         
         emailField.leftView = leftView
         emailField.leftViewMode = .always
-        //emailField.leftViewNormalColor = .brown
-        //emailField.leftViewActiveColor = .blue
-        
-        // Set the colors for the emailField, different from the defaults.
-        //        emailField.placeholderNormalColor = Color.amber.darken4
-        //        emailField.placeholderActiveColor = Color.pink.base
-        //        emailField.dividerNormalColor = Color.cyan.base
-        //        emailField.dividerActiveColor = Color.green.base
+       
         
         view.addSubview(emailField)
     }
@@ -486,9 +473,7 @@ class LoginViewController: UIViewController {
         passwordField.dividerActiveColor = lightPurpleColor
         passwordField.leftViewActiveColor = lightPurpleColor
         passwordField.placeholderActiveColor =  lightPurpleColor
-    
 
-        
         let leftView = UIImageView()
         leftView.image = UIImage(named: "Lock white")?.imageResize(CGSize(width: 27, height: 27))
         

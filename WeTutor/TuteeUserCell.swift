@@ -18,28 +18,7 @@ class TuteeUserCell: UITableViewCell {
     
     
     
-    /*@IBOutlet weak var nameLabel: UILabel!
-     
-     @IBOutlet weak var schoolLabel: UILabel!
-     
-     @IBOutlet weak var gradeLabel: UILabel!
-     
-     @IBOutlet weak var subjectLabel: UILabel!
-     //  @IBOutlet weak var chatButton: UIButton!
-     
-     @IBOutlet weak var hourlyPrice: UILabel!
-     
-     
-     //@IBOutlet weak var addFriendButton: UIButton!
-     
-     
-     
-     @IBOutlet weak var userRating: CosmosView!
-     
-     @IBOutlet weak var gpaLabel: UILabel!
-     
-     @IBOutlet weak var infoButton: UIButton!
-     */
+   
     @IBOutlet weak var friendIndicatorView: UIImageView!
     
     @IBOutlet weak var colorView: UIView!

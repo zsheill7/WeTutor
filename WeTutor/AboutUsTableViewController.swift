@@ -54,11 +54,6 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
             uidString = uid!
         }
         self.sendFeedbackString = "\n\n\n\n\n\n\n\n\n--\nVersion: \(currentVersion)\nDevice: \(UIDevice.current.modelName)\nLocale: \(currentLocale)\nFirebase ID: \(uidString)"
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,7 +103,6 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
     }
     
     func sendFeedback() {
-       // let weTutorEmail = wetutorapp@gmail.com
          let weTutorEmail = "info@wetutorapp.com"
         let zoeEmail = "zoe@wetutorapp.com"
         if MFMailComposeViewController.canSendMail() {
@@ -129,7 +123,6 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
          let weTutorEmail = "info@wetutorapp.com"
          if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
-            //if mailComposerVC.canSendMail() {
                 mailComposerVC.mailComposeDelegate = self
                 mailComposerVC.setToRecipients([weTutorEmail])
                 mailComposerVC.setSubject("")
@@ -139,13 +132,11 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
          } else {
             self.displayAlert(title: "Contact Us", message: "Feel free to contact us at wetutorapp@gmail.com")
         }
-       // }
     }
     
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Tutor", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-        //controller.modalTransitionStyle = .flipHorizontal
         self.present(controller, animated: true, completion: nil)
     }
 

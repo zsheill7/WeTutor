@@ -55,44 +55,7 @@ class TutorOrTuteeViewController: UIViewController {
         changeBall2()
         
         chooseLabel.font = UIFont(name: "Helvetica", size: 25)
-       /* chooseLabel.layer.shadowColor = UIColor.black.cgColor
-        chooseLabel.layer.shadowOffset = CGSize(width: 2, height: 2)
-        chooseLabel.layer.shadowOpacity = 0.1
-        chooseLabel.layer.shadowRadius = 2*/
-        
-       /* let pickOneLabel = UILabel()
-        pickOneLabel.backgroundColor = UIColor.blue
-        pickOneLabel.text = "Are you signing up as a "
-        pickOneLabel.textColor = UIColor.white
-        pickOneLabel.translatesAutoresizingMaskIntoConstraints = false
-       /* pickOneLabel.position.x = centerX
-        pickOneLabel.position.y = centerY + 40*/
-         pickOneLabel.center = CGPoint(x: centerX, y: centerY + 50)
-        pickOneLabel.font = UIFont(name: "Helvetica-Bold", size: 20)
-        pickOneLabel.height = 20
-        //pickOneLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        pickOneLabel.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        pickOneLabel.textAlignment = .center
-        let yConstraint = NSLayoutConstraint(item: pickOneLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self.tableView, attribute: .CenterY, multiplier: 1, constant: 0)
-       /* pickOneLabel.centerXAnchor.constraint(equalTo: pickOneLabel.superview!.centerXAnchor).isActive = true
-        pickOneLabel.centerYAnchor.constraint(equalTo: pickOneLabel.superview!.centerYAnchor).isActive = true*/
-        self.view.addSubview(pickOneLabel)
-         pickOneLabel.center = CGPoint(x: centerX, y: centerY + 50)
-        
-        let pickOneLabelTwo = UILabel()
-        //pickOneLabelTwo.backgroundColor = UIColor.blue
-        pickOneLabelTwo.text = "tutor or a student?"
-        pickOneLabelTwo.textColor = UIColor.white
-        pickOneLabelTwo.height = 20
-        pickOneLabelTwo.translatesAutoresizingMaskIntoConstraints = false
-        pickOneLabelTwo.center = CGPoint(x: centerX, y: centerY + 30)
-        pickOneLabelTwo.font = UIFont(name: "Helvetica-Bold", size: 20)
-        pickOneLabelTwo.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        pickOneLabelTwo.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        pickOneLabelTwo.textAlignment = .center
-        /* pickOneLabelTwo.centerXAnchor.constraint(equalTo: pickOneLabelTwo.superview!.centerXAnchor).isActive = true
-         pickOneLabelTwo.centerYAnchor.constraint(equalTo: pickOneLabelTwo.superview!.centerYAnchor).isActive = true*/
-        self.view.addSubview(pickOneLabelTwo)*/
+      
         
         
         print(centerX)
@@ -219,10 +182,6 @@ class TutorOrTuteeViewController: UIViewController {
     }
     
 
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toTutorSignUpVC" {
@@ -233,9 +192,6 @@ class TutorOrTuteeViewController: UIViewController {
                 targetController.currentUserIsTutor = currentUserIsTutor
             }
         }
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
  
 

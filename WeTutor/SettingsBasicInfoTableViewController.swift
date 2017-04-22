@@ -23,10 +23,7 @@ private enum MenuSection {
     fileprivate enum AllContent: Int { case standard, segmentedControl, infinite }
     fileprivate enum MenuViewContent: Int { case underline, roundRect }
     fileprivate enum MenuControllerContent: Int { case standard }
-    
-    
 
-    
     init?(indexPath: IndexPath) {
         switch ((indexPath as NSIndexPath).section, (indexPath as NSIndexPath).row) {
         case (0, let row):
@@ -49,9 +46,6 @@ private enum MenuSection {
         
     }
 }
-
-
-
 
 class SettingsBasicInfoTableViewController : FormViewController {
     var ref: FIRDatabaseReference!
@@ -86,11 +80,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
         static let slider = "slider"
         static let textView = "textview"
     }
-    
-   /* required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)!
 
-    }*/
     func goBackToSettings() {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "settingsNC") as! UINavigationController
@@ -101,17 +91,11 @@ class SettingsBasicInfoTableViewController : FormViewController {
     var currentUserIsTutor: Bool?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("currentUser?.phone as AnyObject?")
-        print(currentUser?.phone as AnyObject?)
-        //initializeForm()
         
- 
         FriendSystem.system.getCurrentUser {_ in
             self.currentUser = FriendSystem.system.currentUser
         }
-        
-        
-        
+
         if currentUser != nil {
             self.currentUserIsTutor = currentUser?.isTutor
         }
@@ -120,10 +104,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
         cellHeight = Int(self.view.frame.height / CGFloat(rows))
         
         self.view?.backgroundColor = UIColor.backgroundBlue()
-        
-     
-        
- 
+
         form +++
             
             Section()
@@ -186,11 +167,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
                     }
             }
             
-            
-            
             +++ Section("Biography")
-            
-            
             
             <<< TextRow("gpa") {
                 $0.title = "GPA (4.0 scale)"
@@ -228,12 +205,6 @@ class SettingsBasicInfoTableViewController : FormViewController {
                     
             }
 
-            
-        
-            
-            
-            
-            
             /* cellWidth = Int(self.view.frame.width / CGFloat(cols))
              cellHeight = Int(self.view.frame.height / CGFloat(rows))*/
             
@@ -269,17 +240,6 @@ class SettingsBasicInfoTableViewController : FormViewController {
         let row8: TextRow? = self.form.rowBy(tag: "gpa")
         let gpa = row8?.value
         
-        print(zipcode)
-        print(school)
-        print(phone)
-        print(gender)
-        print(grade)
-        print(subject)
-        print(description)
-        print()
-        
-        
-        
         if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subjectArray != nil {
             
             self.ref = FIRDatabase.database().reference()
@@ -287,10 +247,6 @@ class SettingsBasicInfoTableViewController : FormViewController {
             
             let userDefaults = UserDefaults.standard
             userDefaults.set(description, forKey: "description")
-            print(school)
-            print(grade)
-            print(description)
-            
             let user = FIRAuth.auth()?.currentUser
             
             let userID = FIRAuth.auth()?.currentUser?.uid
@@ -308,11 +264,6 @@ class SettingsBasicInfoTableViewController : FormViewController {
                     let email = value?["email"] as? String,
                     let isTutor = value?["isTutor"] as? Bool{
                     
-                    
-                    /* if let email = userDefaults.value(forKey: "email"),
-                     let password = userDefaults.value(forKey: "password"),
-                     let name = userDefaults.value(forKey: "name"),
-                     let user = FIRAuth.auth()?.currentUser {*/
                     let x = Int(self.view.center.x)
                     let y = Int(self.view.center.y)
                     let frame = CGRect(x: x, y: y, width: self.cellWidth, height: self.cellHeight)
@@ -349,9 +300,7 @@ class SettingsBasicInfoTableViewController : FormViewController {
                     for subject in subjectArray! {
                         FIRAnalytics.setUserPropertyString(subject, forName: "preferred_subject")
                     }
-                    
-                    
-                    print("error=nil")
+
                     let geocoder = CLGeocoder()
                     geocoder.geocodeAddressString(zipcode!) { placemarks, error in
                         if error != nil {
@@ -367,24 +316,14 @@ class SettingsBasicInfoTableViewController : FormViewController {
                         }
                     }
                     activityIndicatorView.stopAnimating()
-                    
-                    
-                    
+
                 } else {
                     self.displayAlert("You are not signed in", message: "Please log in again")
-                }//if let zipcode = self.form.sections[0].rows[0].value,
-                //let schoolName = self.form.sections[1].rows[0].value,
-                
-                
-                // ...
+                }
             }) { (error) in
                 self.displayAlert("Error", message: error.localizedDescription)
             }
-            
-            
-            
-            
-            
+
         } else {
             self.displayAlert("Error", message: "Please fill out every section.")
         }

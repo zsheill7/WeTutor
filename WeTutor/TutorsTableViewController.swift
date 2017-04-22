@@ -40,8 +40,6 @@ class TutorTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }
@@ -379,9 +377,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
     print("finalFilter")
-        /*if segmentItemSubject == "All Subjects" {
-            //self.didSelect(dropDown.indexForSelectedRow!)
-        } else {*/
             finalUserList = [User]()
             for user in FriendSystem.system.userList {
                 for subject in user.preferredSubjects {
@@ -418,7 +413,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         //return tutors.count
         
         return finalUserList.count
@@ -429,42 +423,16 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     let coachMark1 = CoachMarkInfo(title: "Add a Friend", content: "Click this button to add this person to your contact list")
     let coachMark2 = CoachMarkInfo(title: "Added Friend", content: "This circle will turn green if you have already added this person as a friend. ")
-   // let coachMark2 = CoachMarkInfo(title: "Added Friend", content: "This circle will turn green if you have already added this person as a friend. ")
-
     
     func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
         return 1
     }
     
     
-    
-    /// Asks for the metadata of the coach mark that will be displayed in the
-    /// given nth place. All `CoachMark` metadata are optional or filled with
-    /// sensible defaults. You are not forced to provide the `cutoutPath`.
-    /// If you don't the coach mark will be dispayed at the bottom of the screen,
-    /// without an arrow.
-    ///
-    /// - Parameter coachMarksController: the coach mark controller requesting
-    ///                                   the information.
-    /// - Parameter coachMarkViewsForIndex: the index referring to the nth place.
-    ///
-    /// - Returns: the coach mark metadata.
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
         return coachMarksController.helper.makeCoachMark(for: self.dropdownButton)
     }
     
-    /// Asks for the views defining the coach mark that will be displayed in
-    /// the given nth place. The arrow view is optional. However, if you provide
-    /// one, you are responsible for supplying the proper arrow orientation.
-    /// The expected orientation is available through
-    /// `coachMark.arrowOrientation` and was computed beforehand.
-    ///
-    /// - Parameter coachMarksController: the coach mark controller requesting
-    ///                                   the information.
-    /// - Parameter coachMarkViewsForIndex: the index referring to the nth place.
-    /// - Parameter coachMark: the coach mark meta data.
-    ///
-    /// - Returns: a tuple packaging the body component and the arrow component.
     
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
         let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
@@ -594,67 +562,14 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     //This function creates a new calendar identifier to add to a newly created channel
-  /*  func createCalendar(destUser: User) -> String {
-        
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        let userChannelRef = userRef.child(userID!).child("channels")
-        
-        let channelRef = FIRDatabase.database().reference()
-        
-        let eventStore = EKEventStore()
-        //let initCalendar = EKCalendar()
-        //let eventCalendar = initCalendar.calendar
-        
-        // Use Event Store to create a new calendar instance
-        // Configure its title
-        var newCalendar = EKCalendar(for: .event, eventStore: eventStore)
-        
-        //var newCalendar = eventStore.calendar
-        // newCalendar.calendarIdentifier = identifier
-        // Probably want to prevent someone from saving a calendar
-        // if they don't type in a name...
-      
-        if currentUser != nil {
-            newCalendar.title = "Events (\(destUser.name) & \(currentUser!.name))"
-        }
-        
-        
-        // Access list of available sources from the Event Store
-        let sourcesInEventStore = eventStore.sources
-        
-        // Filter the available sources and select the "Local" source to assign to the new calendar's
-        // source property
-        newCalendar.source = sourcesInEventStore.filter{
-            (source: EKSource) -> Bool in
-            source.sourceType.rawValue == EKSourceType.local.rawValue
-            }.first!
-        
-        //channelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
-        //userChannelRef.child("calendarId").setValue(newCalendar.calendarIdentifier)
-        
-        //self.calendars.append(newCalendar)
-        
-        do {
-            try eventStore.saveCalendar(newCalendar, commit: true)
-            //UserDefaults.standardUserDefaults().setObject(newCalendar.calendarIdentifier, forKey: "EventTrackerPrimaryCalendar")
-        } catch {
-          //  displayAlert("Unab", message: <#T##String#>)
-        }
-        
-        return newCalendar.calendarIdentifier
-        
-    }
-*/
+ 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("in did select")
-        //tableView.deselectRow(at: indexPath, animated: true)
-        //your code...
-        /*var selectedCell:UserCellThree = tableView.cellForRow(at: indexPath)! as! UserCellThree
-        selectedCell.contentView.backgroundColor = UIColor.clear*/
+       
         
         let userAtRow = finalUserList[indexPath.row]
         
@@ -932,7 +847,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             }
         }
     }
-    /* EmptyDataSet */
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         let str = "No Users to Display"
@@ -954,62 +868,4 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-/*
- func buttonTitle(forEmptyDataSet scrollView: UIScrollView, for state: UIControlState) -> NSAttributedString? {
- let str = "Add Grokkleglob"
- let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
- return NSAttributedString(string: str, attributes: attrs)
- }
- 
- func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
- let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
- ac.addAction(UIAlertAction(title: "Hurray", style: .default))
- present(ac, animated: true)
- }*/
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

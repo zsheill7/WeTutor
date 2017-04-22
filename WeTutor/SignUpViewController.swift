@@ -17,22 +17,17 @@ import Popover
 
 extension UIView {
     func addBackground(_ imageName: String) {
-        // screen width and height:
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
         
         let newWidth = height * 2.1
-        //let newWidth = height * 2.8
-        
-        //let rect = CGRect(origin: CGPoint(x: -newWidth / 2,y : 0), size: CGSize(width: newWidth, height: height * 1.75))
-        //let rect = CGRect(origin: CGPoint(x: -newWidth / 2 + 400,y : 0), size: CGSize(width: newWidth, height: height * 2))
+       
         let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 10,y : 90), size: CGSize(width: newWidth, height: height * 1.7))
-       // let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 5,y : 130), size: CGSize(width: newWidth, height: height * 1.7))
+     
         
         let imageViewBackground = UIImageView(frame: rect)
         imageViewBackground.image = UIImage(named: imageName)
-        
-        // you can change the content mode:
+
         imageViewBackground.contentMode = UIViewContentMode.scaleAspectFill
         
         self.addSubview(imageViewBackground)
@@ -40,14 +35,11 @@ extension UIView {
     }
     
     func addBlueBackground(_ imageName: String) {
-        // screen width and height:
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
         
         let newWidth = height * 2.0
         
-        //let rect = CGRect(origin: CGPoint(x: -newWidth / 2,y : 0), size: CGSize(width: newWidth, height: height * 1.75))
-        //let rect = CGRect(origin: CGPoint(x: -newWidth / 2 + 400,y : 0), size: CGSize(width: newWidth, height: height * 2))
         let rect = CGRect(origin: CGPoint(x: -newWidth / 2 - 10,y : 0), size: CGSize(width: newWidth, height: height * 1.7))
         
         let imageViewBackground = UIImageView(frame: rect)
@@ -314,28 +306,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User Logged Out")
     }
     
-   /* func returnUserData()
-    {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                print("Error: \(error)")
-            }
-            else
-            {
-                print("fetched user: \(result)")
-                let userName : NSString = result["name"] as! NSString
-                print("User Name is: \(userName)")
-                let userEmail : NSString = result.value(forKey: "email") as! NSString
-                print("User Email is: \(userEmail)")
-            }
-        })
-    }
-    */
-    func createAccount() {
+func createAccount() {
         if emailField.text == "" || nameField.text == "" || passwordField.text == "" || confirmPasswordField.text == "" {
             displayAlert("Error", message: "Please complete all fields")
             
@@ -505,7 +476,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                     }
                     
                     SCLAlertView().showInfo("Success!", subTitle: "Password reset email sent.")
-                    
                 })
                 }
             }
@@ -548,16 +518,8 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         nameField.leftView = leftView
         nameField.leftViewMode = .always
-        
-        
-        
+ 
         var verticalMult: CGFloat = 4
-        
-        /*if IS_IPAD {
-            verticalMult = 3
-        }*/
-        //view.layout(infoButton).width(25).height(25).top(verticalMult * constant).right(horizConstant - 10)
-        
         view.layout(nameField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
     let infoButton = UIButton()
@@ -568,32 +530,14 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         
         infoButton.setImage(UIImage(named: "Info-25"), for: UIControlState.normal)
-        // infoButton.frame = CGRect(x: /*nameField.center.x + nameField.frame.size.width / 2*/nameField.frame.size.width, y: nameField.center.y, width: 30, height: 30)
         infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
-        //self.view.addSubview(infoButton)
         let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info-25"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(infoButtonTapped))//infoBarButtonItem
-
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info-25"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(infoButtonTapped))
     }
     var texts = ["For parents: feel free to sign up with your child's name and your email account."]
     func infoButtonTapped() {
         
-        /*let stepsTextField = UITextField(frame: CGRect(x: self.view.frame.width - 25, y: 10, width: 200, height: 50))
-        stepsTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.center
-        stepsTextField.text = text
-        stepsTextField.isUserInteractionEnabled = false
-        let startPoint = CGPoint(x: self.view.frame.width - 25, y: 55)
-        let aView = UIView(frame: CGRect(x: self.view.frame.width, y: 10, width: 200, height: 50))
-        let label = UILabel()
-        label.backgroundColor = UIColor.white
-        label.text = text
-        label.textAlignment = NSTextAlignment.center
-        aView.addSubview(stepsTextField)
-        
-        //aView.titleLabel = text
-        let popover = Popover()
-        //popover.text? = text
-        popover.show(aView, point: startPoint)*/
+       
         self.popover = Popover()
         let startPoint = CGPoint(x: self.view.frame.width - 25, y: 55)
 
@@ -635,15 +579,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         emailField.leftView = leftView
         emailField.leftViewMode = .always
-        //emailField.leftViewNormalColor = .brown
-        //emailField.leftViewActiveColor = .blue
-        
-        // Set the colors for the emailField, different from the defaults.
-//        emailField.placeholderNormalColor = Color.amber.darken4
-//        emailField.placeholderActiveColor = Color.pink.base
-//        emailField.dividerNormalColor = Color.cyan.base
-//        emailField.dividerActiveColor = Color.green.base
-        
         view.addSubview(emailField)
     }
     

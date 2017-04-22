@@ -109,7 +109,7 @@ open class _ImageRow<Cell: CellType>: SelectorRow<Cell, ImagePickerController> w
             return
         }
         
-        // now that we know the number of actions aren't empty
+
         let sourceActionSheet = UIAlertController(title: nil, message: selectorTitle, preferredStyle: .actionSheet)
         guard let tableView = cell.formViewController()?.tableView  else { fatalError() }
         if let popView = sourceActionSheet.popoverPresentationController {
@@ -125,7 +125,6 @@ open class _ImageRow<Cell: CellType>: SelectorRow<Cell, ImagePickerController> w
                 })
             sourceActionSheet.addAction(clearPhotoOption)
         }
-        // check if we have only one source type given
         if sourceActionSheet.actions.count == 1 {
             if let imagePickerSourceType = UIImagePickerControllerSourceType(rawValue: sourceTypes.imagePickerControllerSourceTypeRawValue) {
                 displayImagePickerController(imagePickerSourceType)

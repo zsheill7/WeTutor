@@ -32,10 +32,6 @@ class ChangePasswordTableViewController: UITableViewController {
         return emailTest.evaluate(with: testStr)
     }
     
-   /*  override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
-    }*/
-    
     @IBOutlet weak var oldEmailField: UITextField!
     
     @IBOutlet weak var newEmailField: UITextField!
@@ -86,37 +82,6 @@ class ChangePasswordTableViewController: UITableViewController {
                         self.displayAlert(title: "Success!", message: "Your email has been changed")
                     }
                 })
-                /*ref.changeEmailForUser("users/\(userID)/email",
-                    
-                    fromOld: oldEmailField.text, toNew: newEmailField.text!)
-                    
-                { (ErrorType) -> Void in
-                    
-                    if ErrorType != nil {
-                        
-                        print("There was an error processing the request")
-                        
-                        
-                        
-                    } else {
-                        
-                        if #available(iOS 8.0, *) {
-                            let alert = UIAlertController(title: "Success!", message: "Your email has been changed", preferredStyle: UIAlertControllerStyle.alert)
-                            
-                            alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                                
-                                self.dismiss(animated: true, completion: nil)
-                                self.performSegue(withIdentifier: "passToSettings", sender: self)
-                                
-                            })))
-                            
-                            self.present(alert, animated: true, completion: nil)
-                        } else {
-                            print("error")
-                        }
-                        print("email changed successfully")
-                    }
-                }*/
                 
                 UIApplication.shared.endIgnoringInteractionEvents()
                 self.activityIndicator.stopAnimating()

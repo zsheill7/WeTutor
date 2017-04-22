@@ -8,8 +8,6 @@
 import UIKit
 import Eureka
 import Material
-//import ChameleonFramework
-//import SwiftForms
 import SCLAlertView
 import Firebase
 import FirebaseDatabase
@@ -444,8 +442,6 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                             forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
             view.backgroundView?.backgroundColor = UIColor(white: 1, alpha: 0.0)
-            //view.textLabel.backgroundColor = UIColor.clearColor()
-            //view.textLabel.textColor = UIColor.whiteColor()
         }
     }
     
@@ -469,17 +465,6 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         textField.resignFirstResponder()
         return true
     }
-    
-    
-    /**
-     * Called when the user click on the view (outside the UITextField).
-     */
-    /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }*/
-    
-    
-   
 }
    
 

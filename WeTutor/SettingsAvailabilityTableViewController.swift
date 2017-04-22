@@ -161,7 +161,6 @@ class SettingsAvailabilityTableViewController : FormViewController {
         
         var languages: [String] = [String]()
         
-        //let availableDays: [Bool] = row
         let row1: WeekDayRow? = self.form.rowBy(tag: "Available Days")
         let daysValue = row1?.value
         
@@ -245,18 +244,10 @@ class SettingsAvailabilityTableViewController : FormViewController {
             // ...
         }
     }
-    
-    /*override func viewWillDisappear(_ animated: Bool) {
-        self.continueSelected()
-    }*/
-    
+   
     func multipleSelectorDone(_ item:UIBarButtonItem) {
         _ = navigationController?.popViewController(animated: true)
     }
-    
-    /*func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = UIColor(white: 1, alpha: 0.7)
-    }*/
     
     func goBackToSettings() {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)

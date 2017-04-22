@@ -95,12 +95,9 @@ import UIKit
 		} else {
 			title.textColor = titleTextColour
 		}
-		// Should we show or hide the title label?
 		if text?.isEmpty ?? true {
-			// Hide
 			hideTitle(isResp)
 		} else {
-			// Show
 			showTitle(isResp)
 		}
 	}

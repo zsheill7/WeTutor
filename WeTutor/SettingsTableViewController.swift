@@ -315,11 +315,4 @@ class SettingsTableViewController: UITableViewController {
         }
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
-
-    /*override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let headerView = view as! UITableViewHeaderFooterView
-        headerView.textLabel!.textColor = UIColor.titleGreen()
-    }*/
-    
-    
 }

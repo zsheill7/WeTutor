@@ -16,10 +16,6 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
     let secondLanguages = ["None", "English", "Spanish", "French", "Chinese", "Other"]
 
   
-    /*override func hideKeyboardWhenTappedAround() {
-        var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }*/
     
     override func dismissKeyboard() {
         view.endEditing(true)
@@ -34,10 +30,6 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
         super.viewDidLoad()
         navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         
-       // self.hideKeyboardWhenTappedAround()
-       // self.tableView?.addBlueBackground("mixed2")
-        //let availableDays: [Bool] = [false, false, false, false, false, false, false]
-        //self.tableView?.addBackground()
         
         ref = FIRDatabase.database().reference()
         
@@ -309,33 +301,6 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
     }
 }
 
-/*extension TutorSignUpViewControllerTwo: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.popover.dismiss()
-    }
-}
-
-extension TutorSignUpViewControllerTwo: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = self.texts[(indexPath as NSIndexPath).row]
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
-        return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-}*/
 
 
 

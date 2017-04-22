@@ -17,7 +17,4 @@ struct Rating {
         self.comment = comment
     }
     
-    /*init(ratings: [String: Any]) {
-        
-    }*/
 }
