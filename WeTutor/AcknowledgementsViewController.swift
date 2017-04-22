@@ -7,6 +7,13 @@
 //
 
 import UIKit
+// AcknowledgementsViewController.swift
+//
+//  Created by Zoe on 3/6/17.
+//  Copyright © 2017 TokkiTech. All rights reserved.
+//
+
+
 import Firebase
 import FirebaseDatabase
 

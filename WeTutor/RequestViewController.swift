@@ -1,8 +1,11 @@
-/*
- * Copyright (C) 2017, Zoe Sheill.
- * All rights reserved.
- *
- */
+//
+ // Copyright (C) 2017, Zoe Sheill.
+ // All rights reserved.
+ //
+ //  Created by Zoe on 3/6/17.
+ //  Copyright © 2017 TokkiTech. All rights reserved.
+ //
+
 
 
 import UIKit

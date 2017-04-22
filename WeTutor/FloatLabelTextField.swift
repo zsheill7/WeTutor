@@ -2,14 +2,9 @@
 //  FloatLabelTextField.swift
 //  FloatLabelFields
 //
-//  Created by Fahim Farook on 28/11/14.
-//  Copyright (c) 2014 RookSoft Ltd. All rights reserved.
 //
-//  Original Concept by Matt D. Smith
-//  http://dribbble.com/shots/1254439--GIF-Mobile-Form-Interaction?list=users
-//
-//  Objective-C version by Jared Verdi
-//  https://github.com/jverdi/JVFloatLabeledTextField
+//  Created by Zoe on 3/6/17.
+//  Copyright © 2017 TokkiTech. All rights reserved.
 //
 
 import UIKit

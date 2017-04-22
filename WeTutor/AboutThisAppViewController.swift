@@ -1,6 +1,6 @@
 //
 //  AboutThisAppViewController.swift
-//  TutorMe
+//  WeTutor
 //
 //  Created by Zoe on 12/24/16.
 //  Copyright © 2017 Zoe Sheill. All rights reserved.
