@@ -73,14 +73,11 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     }
     
-   // let deviceType = UIDevice.current.deviceType
-    /// A constant to layout the textFields.
     fileprivate let constant: CGFloat = 32
     var horizConstant: CGFloat = 32
     let device = UIDevice.current
     
     let screenHeight = UIScreen.main.bounds.size.height
-    //let screenHeight = Double(screenSize.height)
     var IS_IPHONE = Bool()
     var IS_IPAD  = Bool()
     
@@ -89,8 +86,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*IS_IPHONE = screenHeight <= CGFloat(1000.0)
-        IS_IPAD  = screenHeight > CGFloat(1000.0)*/
         
         IS_IPAD = device.userInterfaceIdiom == .pad
         IS_IPHONE = device.userInterfaceIdiom == .phone
@@ -103,14 +98,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
        // if DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO {
             
       //  }
-        /*self.view.backgroundColor = UIColor.init(
-            gradientStyle: UIGradientStyle.leftToRight,
-            withFrame: self.view.frame,
-            andColors: [ Color.blue.lighten4, Color.blue.lighten4 ]
-        )*/
-        /*UIGraphicsBeginImageContext(self.view.frame.size)
-        UIImage(named: "blur-images-18")?.draw(in: self.view.bounds)*/
-        //self.view?.backgroundColor = UIColor.backgroundBlue()
+       
         self.view.addBackground("book.png")
         
         
@@ -134,15 +122,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
             loginView.delegate = self
         }
         */
-        /*let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "fullbackgroundtransculent4")
-        self.view.insertSubview(backgroundImage, at: 0)*/
-        //self.view.backgroundColor = UIColor.newSkyBlue()
-        /*var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        
-        UIGraphicsEndImageContext()
-        
-        self.view.backgroundColor = UIColor(patternImage: image)*/
         
         RZTransitionsManager.shared().defaultPresentDismissAnimationController = RZZoomAlphaAnimationController()
         RZTransitionsManager.shared().defaultPushPopAnimationController = RZCardSlideAnimationController()
@@ -165,7 +144,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
         if currentUserUID != nil {
             
             ref.child("users").child(currentUserUID!).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
                 let value = snapshot.value as? NSDictionary
                 let isTutor = value?["isTutor"] as? Bool
                 if isTutor != nil {
@@ -234,7 +212,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                         let uid = user?.uid as String!
                         let animalIndex =  Int(arc4random_uniform(6))
                         let profileImage = UIImage(named: animalImageNames[animalIndex])
-                        print(profileImage)
                         let userInfo = ["name": user?.displayName, "email": user?.email]
                         FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
                         self.setProfileImage(profileImage: profileImage!)
@@ -242,24 +219,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                     }
                 }
             }
-            
-            /*FIRAuth.auth()?.addStateDidChangeListener { (auth, user) in
-                if (user != nil) {
-                    let uid = user?.uid as String!
-                    
-                    let userInfo = ["name": user?.displayName, "email": user?.email]
-                    FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
-                    self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
-                }
-                
-            }*/
-            
-            /*// If you ask for multiple permissions at once, you
-             // should check if specific permissions missing
-             if result.grantedPermissions.contains("email")
-             {
-             // Do work
-             }*/
         }
         
     }
@@ -280,7 +239,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
             storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                 
                 if error != nil {
-                    print(error)
                     return
                 }
                 
@@ -290,8 +248,6 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
                         usersRef.child(currentUserUID!).child("profileImageURL").setValue(profileImageUrl)
                         print("set image")
                     }
-                    //let values = ["name": name, "email": email, "profileImageUrl": profileImageUrl]
-                    //self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
                 }
             })
         } else {
@@ -318,7 +274,6 @@ func createAccount() {
         } else if passwordField.text != confirmPasswordField.text {
             self.displayAlert("Passwords Do Not Match", message: "Please re-enter passwords")
         } else {
-            /*FIRAuth.auth()?.createUser(withEmail: emailField.text!, password: passwordField.text!, completion: { (user, error) in*/
             FriendSystem.system.createAccount(emailField.text!, password: passwordField.text!, name: nameField.text!) { (success) in
                 if success {
                     print("You have successfully signed up")
@@ -338,30 +293,13 @@ func createAccount() {
         }
     }
     
-    /// Programmatic update for the textField as it rotates.
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         emailField.width = view.height - 2 * constant
     }
-    
-    /// Prepares the resign responder button.
-    /*
-    private func prepareResignResponderButton() {
-        let btn = RaisedButton(title: "Resign", titleColor: Color.blue.base)
-    
-        btn.addTarget(self, action: #selector(handleResignResponderButton(button:)), for: .touchUpInside)
-        
-        view.layout(btn).width(100).height(constant).top(24).right(24)
-    }
-    */
-    
-    //MARK: Uses Material library and Chameleon for colors
+   
     fileprivate func prepareNextButton() {
-        /*let btn = UIButton()
-        btn.setImage(UIImage(named: "nextButton-1"), for: .normal)*/
         let btn = RaisedButton(title: "Sign Up", titleColor: Color.grey.lighten3)
-        btn.backgroundColor = UIColor(netHex: 0x51679F)//UIColor.titleBlue().lighten(byPercentage: 0.08)
-        
-        
+        btn.backgroundColor = UIColor(netHex: 0x51679F)
         btn.addTarget(self, action: #selector(handleNextButton(_:)), for: .touchUpInside)
         
         //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
@@ -372,27 +310,20 @@ func createAccount() {
     }
     
     fileprivate func prepareForgotPasswordButton() {
-        //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
-        
+       
         let btn: UIButton! = UIButton()
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitleColor(lightGrayColor, for: .highlighted)
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
-        //btn.title = "Forgot Password?"
         btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_:)), for: .touchUpInside)
         
         var verticalMult: CGFloat = 15
-        /*if IS_IPAD {
-            verticalMult = 12.5
-        }*/
-    
-        
+
         view.layout(btn).width(200).height(constant).top(verticalMult * constant).centerHorizontally()
     }
     
     fileprivate func prepareLoginButton() {
-        //let btn = RaisedButton(title: "Forgot Password?", titleColor: UIColor.textGray())
         
         let btn: UIButton! = UIButton()
         btn.setTitleColor(UIColor.white, for: .normal)
@@ -425,7 +356,7 @@ func createAccount() {
         
     }
     internal func handleForgotPasswordButton(_ button: UIButton) {
-        //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
+       
         print("hello")
         createForgotPasswordAlert()
     }
@@ -442,19 +373,10 @@ func createAccount() {
     //MARK: Creates a popup SCLAlertView for retrieving password
     
     func createForgotPasswordAlert() {
-        /*let alertView = SCLAlertView()
-        alertView.showInfo("Reset Password", subTitle: "Please enter your email for a password reset link.")
-        let emailField = alertView.addTextField("Email:")*/
-        
-        
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false
                                                     /*contentViewColor: UIColor.alertViewBlue()*/)
         let alert = SCLAlertView(appearance: appearance)
         let emailTextField = alert.addTextField("Email")
-        
-        /*_ = alert.addButton("Show Name") {
-            print("Text value: \(txt.text)")
-        }*/
         
       
         let emailButton = alert.addButton("Send Email") {
@@ -484,25 +406,14 @@ func createAccount() {
             print("close")
         }
         
-        
-        /*_ = alert.addButton("Cancel") {
-            print("Second button tapped")
-        }*/
         _ = alert.showInfo("Reset Password", subTitle:"Please enter your email for a password reset link.")
-        //emailButton.backgroundColor = UIColor.alertViewBlue()
-        //closeButton.backgroundColor = UIColor.alertViewBlue()
-        //emailTextField.borderColor = UIColor.alertViewBlue()
         
     }
     
     
     fileprivate func prepareNameField() {
         nameField = TextField()
-        //nameField.addBackground(imageName: "Rectangle 8")
-        //nameField.background = UIImage(named: "Rectangle 8")
         nameField.placeholder = "Name"
-        //nameField.detail = "Your given name"
-        //nameField.isClearIconButtonEnabled = true
         nameField.placeholderNormalColor = UIColor.white
         nameField.dividerColor = UIColor.white
         nameField.dividerNormalColor = UIColor.white
@@ -553,15 +464,11 @@ func createAccount() {
     
     fileprivate func prepareEmailField() {
         var verticalMult: CGFloat = 6
-        
-       /* if IS_IPAD {
-            verticalMult = 5
-        }*/
+ 
         
         emailField = ErrorTextField(frame: CGRect(x: horizConstant, y: verticalMult * constant, width: view.width - (2 * horizConstant), height: constant))
         emailField.placeholder = "Email"
         emailField.detail = "Error, incorrect email"
-        //emailField.isClearIconButtonEnabled = true
         emailField.placeholderNormalColor = UIColor.white
         emailField.dividerColor = UIColor.white
         emailField.dividerNormalColor = UIColor.white

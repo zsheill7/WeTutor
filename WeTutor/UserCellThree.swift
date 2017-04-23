@@ -11,9 +11,6 @@ var colorsCount = 0
 class UserCellThree: UITableViewCell {
     
     
-    
-    
-    
     /*@IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var schoolLabel: UILabel!

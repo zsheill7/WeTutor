@@ -161,8 +161,6 @@ open class _ImageRow<Cell: CellType>: SelectorRow<Cell, ImagePickerController> w
             cell.accessoryView = nil
         }
     }
-    
-
 }
 
 extension _ImageRow {

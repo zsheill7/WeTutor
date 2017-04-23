@@ -11,9 +11,6 @@ import UIKit
 
 class WeekDaysCell: UITableViewCell {
     
-    
-    
-    
    // @IBOutlet var weekDaysView: UIView!
     
     @IBOutlet weak var sundayButton: UIButton!
