@@ -262,15 +262,20 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     //MARK: -
     //MARK: View lifecycle
     
-  //  @IBOutlet weak var calendarWidthConstraint: NSLayoutConstraint!
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+    
+   @IBOutlet weak var calendarWidthConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("in view did load")
         print("FIRAuth.auth.currentUser.uid \(FIRAuth.auth()?.currentUser?.uid)")
         // Initialize the event store
-       // eventStore = EKEventStore()
+        // eventStore = EKEventStore()
         self.transitioningDelegate = self
-       eventStore = EKEventStore()
+        eventStore = EKEventStore()
         self.setupCalendarAppearance()
         
         
@@ -280,16 +285,17 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         calendarView.isUserInteractionEnabled = false
         
         self.view.addBackground()
-    //    calendarWidthConstraint.constant = self.view.frame.size.width
+        calendarWidthConstraint.constant = self.view.frame.size.width
         self.tableView.backgroundColor = UIColor.clear
         //self.calendarView.width = self.view.width + 20
         FriendSystem.system.getCurrentUser { (user) in
             //self.usernameLabel.text = user.email
         }
         //FriendSystem.system.friendList.removeAll()
-        FriendSystem.system.addFriendObserver(friendListNumber: 3) {
-           // print("inside FriendSystem.system.addFriendObserver")
-             print("jaFriendSystem.system.friendListThree  \(FriendSystem.system.friendListThree.count)")
+    
+    FriendSystem.system.addFriendObserverThree(friendListNumber: 3) {
+            // print("inside FriendSystem.system.addFriendObserver")
+            print("jaFriendSystem.system.friendListThree  \(FriendSystem.system.friendListThree.count)")
             self.loadAllEvents(completed: {
                 for event in self.events {
                     print("event.uid \(event.uid)\n event.title \(event.title)")
@@ -301,12 +307,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 self.calendarView.reloadData()
                 
             })
-
-           /* self.loadAllEvents{ () -> () in
-                self.newQuestion()
-            }
-            self.observeChannels()
-            self.tableView.reloadData()*/
+            
+            /* self.loadAllEvents{ () -> () in
+             self.newQuestion()
+             }
+             self.observeChannels()
+             self.tableView.reloadData()*/
             print("1FriendSystem.system.friendListThree \(FriendSystem.system.friendListThree.count)")
             
             
@@ -322,10 +328,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                 
             }
         }
-       
+        
         self.view.bringSubview(toFront: addEventButton)
         
-       // let calendars = eventStore.calendars(for: .event)
+        // let calendars = eventStore.calendars(for: .event)
         
         
         
@@ -668,9 +674,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                         let  tutorName = channelDict["tutorName"] as? String{
                                         print("2 let  tutorName = channelDict[tutorName] as? String{")
                                         print("(currentUserIsTutorNameDict[self.currentUserIsTutor]?[tutorName])! \((currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])!) \(FIRAuth.auth()?.currentUser?.uid)")
-                                       // if tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! {
+                                       if tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! {
                                           
-                                           // if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
+                                        if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
                                                 self.iterationStatus = "done"
                                                 
                                                  print("2if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
@@ -711,9 +717,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                 
                                             }
                                         } //if channelDict["tutorName"]
-                                  //  }
+                                    }
                                         
-                             //   }
+                               }
                             } //for destUser in friendList
                             
                         }
@@ -807,13 +813,6 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
  
 
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        // Check whether we are authorized to access Calendar
-       // self.checkEventStoreAccessForCalendar()
-        
-    }
     
     func setupCalendarAppearance() {
         self.calendarView.appearance.caseOptions = [.headerUsesUpperCase,.weekdayUsesUpperCase]

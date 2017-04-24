@@ -656,10 +656,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaL-S7-iTr" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="64" width="375" height="308"/>
+                                <rect key="frame" x="-6" y="64" width="375" height="308"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="308" id="6Aw-7R-DN0"/>
+                                    <constraint firstAttribute="width" constant="375" id="CVh-8D-52B"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="bhN-UQ-8Hd">
@@ -685,8 +686,6 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bhN-UQ-8Hd" firstAttribute="top" secondItem="kaL-S7-iTr" secondAttribute="bottom" id="65H-eH-3Db"/>
-                            <constraint firstItem="kaL-S7-iTr" firstAttribute="leading" secondItem="5fA-HR-5dw" secondAttribute="leading" id="A2V-LK-zqw"/>
-                            <constraint firstAttribute="trailing" secondItem="kaL-S7-iTr" secondAttribute="trailing" id="AzB-pU-9kr"/>
                             <constraint firstItem="kYb-0o-8RV" firstAttribute="bottom" secondItem="kaL-S7-iTr" secondAttribute="bottom" constant="30" id="E6J-uG-Svy"/>
                             <constraint firstAttribute="trailing" secondItem="bhN-UQ-8Hd" secondAttribute="trailing" id="Fhw-bR-A7v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kYb-0o-8RV" secondAttribute="trailing" constant="50" id="QZ6-hy-0Ud"/>
@@ -718,6 +717,7 @@
                         <outlet property="addEventButton" destination="kYb-0o-8RV" id="1a9-dF-8hJ"/>
                         <outlet property="calendarHeightConstraint" destination="6Aw-7R-DN0" id="yi1-Wj-Non"/>
                         <outlet property="calendarView" destination="kaL-S7-iTr" id="HeF-YG-k1q"/>
+                        <outlet property="calendarWidthConstraint" destination="CVh-8D-52B" id="NMY-fl-SVq"/>
                         <outlet property="tableView" destination="bhN-UQ-8Hd" id="Ncq-NW-xdf"/>
                         <segue destination="XVT-N9-jpa" kind="showDetail" identifier="showDetail" id="PWj-8N-5wz">
                             <nil key="action"/>

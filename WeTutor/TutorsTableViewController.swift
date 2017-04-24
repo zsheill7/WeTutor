@@ -164,7 +164,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
         
         FriendSystem.system.friendListTwo.removeAll()
-        FriendSystem.system.addFriendObserver(friendListNumber: 2) {
+        FriendSystem.system.addFriendObserverTwo(friendListNumber: 2) {
             for friend in FriendSystem.system.friendListTwo {
                 self.friendUserUIDList.append(friend.uid)
             }
@@ -660,6 +660,16 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             
             print("Name: \(userAtRow.name)")
             print(cell!.nameLabel.text)
+            
+            //if cell!.nameLabel.text != nil {
+                if cell!.nameLabel.isTruncated() {
+                    var delimiter = " "
+                    var newstr = cell!.nameLabel.text
+                    var truncatedName = newstr?.components(separatedBy: delimiter)
+                    print ("Truncated Name \(truncatedName?[0])")
+                    cell!.nameLabel.text = truncatedName?[0]
+                }
+           // }
             cell!.infoButton.contentMode = .scaleAspectFit
             cell!.addFriendButton.contentMode = .scaleAspectFit
             

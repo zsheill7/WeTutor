@@ -40,6 +40,7 @@
 		C8338B391E63DFC300202E3A /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B371E63DFC300202E3A /* Event.swift */; };
 		C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338B3B1E63E2C400202E3A /* DetailViewController.swift */; };
 		C837271B1E9C38A700EEEC61 /* SelfProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837271A1E9C38A700EEEC61 /* SelfProfileViewController.swift */; };
+		C8372A651EAE543D00CEF21D /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A641EAE543D00CEF21D /* UILabelExtensions.swift */; };
 		C837BF811EA1EA9E000F0CEF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837BF801EA1EA9C000F0CEF /* Rating.swift */; };
 		C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
@@ -176,6 +177,7 @@
 		C8338B371E63DFC300202E3A /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		C8338B3B1E63E2C400202E3A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C837271A1E9C38A700EEEC61 /* SelfProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfProfileViewController.swift; sourceTree = "<group>"; };
+		C8372A641EAE543D00CEF21D /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		C837BF801EA1EA9C000F0CEF /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableView.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			children = (
 				C84F180A1E70D58000EC54BF /* UniversalVariables.swift */,
 				C82800D91E0EFD8B00329B7D /* StringExtensions.swift */,
+				C8372A641EAE543D00CEF21D /* UILabelExtensions.swift */,
 				C82800DB1E0EFD9700329B7D /* UIColorExtensions.swift */,
 				C82800DD1E0EFDAF00329B7D /* UIImageExtensions.swift */,
 				C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */,
@@ -799,6 +802,7 @@
 				C8338B391E63DFC300202E3A /* Event.swift in Sources */,
 				C86D41121E996CE9000C5B0F /* AddEventViewController.swift in Sources */,
 				C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */,
+				C8372A651EAE543D00CEF21D /* UILabelExtensions.swift in Sources */,
 				C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,

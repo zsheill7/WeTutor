@@ -417,8 +417,71 @@ class FriendSystem {
     func addFriendObserver(friendListNumber: Int, _ update: @escaping () -> Void) {
         print("friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendListOne.count)")
         friendListOne = [User]()
-         friendListTwo = [User]()
-        friendListThree = [User]()
+        let myGroup = DispatchGroup()
+        
+        CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
+            
+            
+            let friendSnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            print("friendSnapshot \(friendSnapshot)")
+            for child in friendSnapshot {
+                let id = child.key
+                myGroup.enter()
+                USER_REF.child(userID).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                    if let email = snapshot.childSnapshot(forPath: "email").value as? String {
+                        
+                        let id = snapshot.key
+                        let user = User(snapshot: snapshot)
+                        
+                        var oneDoesContain =  false
+                        for friend in self.friendListOne {
+                            if friend.uid == id {
+                                oneDoesContain = true
+                            }
+                            print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(oneDoesContain)")
+                        }
+                        
+                        
+                        if friendListNumber == 1 {
+                            if oneDoesContain == false {
+                                self.friendListOne.append(user)
+                            }
+                        }
+                        
+                        
+                        myGroup.leave()
+                        print("useremail \(user.email))")
+                        print("friendobserver2FriendSystem.system.friendListOne.count \(FriendSystem.system.friendListOne.count)")
+                    }
+                })
+                /*self.getUser(id, completion: { (user) in
+                    
+                    
+                    
+                   
+                })*/
+            }
+            
+            myGroup.notify(queue: .main) {
+                print("Finished all requests.")
+                
+                update()
+                
+            }
+            
+            
+            // If there are no children, run completion here instead
+            if snapshot.childrenCount == 0 {
+                update()
+            }
+            
+            
+        })
+    }
+    func addFriendObserverTwo(friendListNumber: Int, _ update: @escaping () -> Void) {
+        print("friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendListOne.count)")
+
+        friendListTwo = [User]()
         let myGroup = DispatchGroup()
         
         CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
@@ -431,13 +494,7 @@ class FriendSystem {
                 myGroup.enter()
                 self.getUser(id, completion: { (user) in
                     
-                    var oneDoesContain =  false
-                    for friend in self.friendListOne {
-                        if friend.uid == id {
-                            oneDoesContain = true
-                        }
-                        print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(oneDoesContain)")
-                    }
+                    
                     var twoDoesContain =  false
                     for friend in self.friendListTwo {
                         if friend.uid == id {
@@ -445,41 +502,75 @@ class FriendSystem {
                         }
                         print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(twoDoesContain)")
                     }
-                    var threeDoesContain =  false
-                    for friend in self.friendListThree {
-                        if friend.uid == id {
-                            threeDoesContain = true
-                        }
-                        print("friend.uid \(friend.uid)  currentuid \(id) doescontain \(threeDoesContain)")
-                    }
+                   
                     print("user.uid \(user.uid)")
                     
-                        
-                    if friendListNumber == 1 {
-                        if oneDoesContain == false {
-                            self.friendListOne.append(user)
-                        }
-                    } else if friendListNumber == 2 {
-                        if twoDoesContain == false {
-                            self.friendListTwo.append(user)
-                        }
-                    } else if friendListNumber == 3 {
-                        if threeDoesContain == false {
-                            self.friendListThree.append(user)
-                        }
+                    
+                    if twoDoesContain == false {
+                        self.friendListTwo.append(user)
                     }
                     
                     myGroup.leave()
                     print("useremail \(user.email))")
                     print("friendobserver2FriendSystem.system.friendListOne.count \(FriendSystem.system.friendListOne.count)")
                     
-                   
+                    
                 })
             }
             
             myGroup.notify(queue: .main) {
                 print("Finished all requests.")
                 
+                update()
+                
+            }
+            // If there are no children, run completion here instead
+            if snapshot.childrenCount == 0 {
+                update()
+            }
+            
+            
+        })
+    }
+
+    func addFriendObserverThree(friendListNumber: Int, _ update: @escaping () -> Void) {
+        print("3friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendListOne.count)")
+        friendListThree = [User]()
+        let myGroup = DispatchGroup()
+        
+        CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
+            
+            
+            let friendSnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            print("3friendSnapshot \(friendSnapshot)")
+            for child in friendSnapshot {
+                let id = child.key
+                myGroup.enter()
+                self.getUser(id, completion: { (user) in
+                    
+                    
+                    var threeDoesContain =  false
+                    for friend in self.friendListThree {
+                        if friend.uid == id {
+                            threeDoesContain = true
+                        }
+                        print("3friend.uid \(friend.uid)  currentuid \(id) doescontain \(threeDoesContain)")
+                    }
+                    print("3user.uid \(user.uid)")
+                    if threeDoesContain == false {
+                        self.friendListThree.append(user)
+                    }
+                    myGroup.leave()
+                    print("3useremail \(user.email))")
+                    print("3friendobserver2FriendSystem.system.friendListThree.count \(FriendSystem.system.friendListThree.count)")
+                    
+                    
+                })
+            }
+            
+            myGroup.notify(queue: .main) {
+                print("3Finished all requests.")
+                print("before update 3friendobserver2FriendSystem.system.friendListThree.count \(FriendSystem.system.friendListThree.count)")
                 update()
                 
             }
