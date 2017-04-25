@@ -15,6 +15,7 @@ import CoreLocation
 import NVActivityIndicatorView
 import FirebaseAnalytics
 import NVActivityIndicatorView
+import Popover
 
 var gradeLevels = ["Kindergarten", "1st grade", "2nd grade", "3rd grade", "4th grade", "5th grade", "6th grade", "7th grade", "8th grade", "9th grade", "10th grade", "11th grade", "12th grade", "Undergraduate", "Graduate"]
 private enum MenuSection {
@@ -333,6 +334,37 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
             
         }
 
+    }
+    
+    let infoButton = UIButton()
+    
+    fileprivate var popover: Popover!
+    
+    func prepareInfoButton() {
+        
+        
+        infoButton.setImage(UIImage(named: "Info-25"), for: UIControlState.normal)
+        infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info-25"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(infoButtonTapped))
+    }
+    
+    var texts = ["If you wish to be a volunteer tutor, please enter 0.00 for your price"]
+    
+    func infoButtonTapped() {
+        
+        
+        self.popover = Popover()
+        let startPoint = CGPoint(x: self.view.frame.width - 25, y: 55)
+        
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        //self.popover = Popover(options: self.popoverOptions)
+        
+        //self.popover.show(tableView, point: self.rightButtomButton)
+        popover.show(tableView, point: startPoint)
     }
     
     

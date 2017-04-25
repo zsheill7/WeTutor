@@ -9,13 +9,17 @@ import FirebaseAnalytics
 import FirebaseAuth
 import Popover
 import NVActivityIndicatorView
+import SCLAlertView
 
 class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorViewable {
     
     let firstLanguages = ["English", "Spanish", "French", "Chinese", "Other"]
     let secondLanguages = ["None", "English", "Spanish", "French", "Chinese", "Other"]
 
-  
+    func displayAlert(_ title: String, message: String) {
+        SCLAlertView().showInfo(title, subTitle: message)
+        
+    }
     
     override func dismissKeyboard() {
         view.endEditing(true)
@@ -204,32 +208,38 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                         FIRAnalytics.setUserPropertyString(String(describing: hourlyPrice), forName: "third_language")
                     }
                     
-                    
-                    for i in 0...6 {
-                        FIRAnalytics.setUserPropertyString("\(weekDayArray[i])", forName: "\(weekdays[i])_available")
-                    }
-                    FIRAnalytics.setUserPropertyString(availabilityInfo, forName: "availability_info")
-                    
-                    
-                    
-                    userDefaults.setValue(weekDayString, forKey: "availableDays")
-                    userDefaults.setValue(languages, forKey: "languages")
-                    userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
-                    userDefaults.synchronize()
-                    
-                    if let user = FIRAuth.auth()?.currentUser {
-                        self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
-                        self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
-                        self.ref.child("users/\(user.uid)/languages").setValue(languages)
-                        self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
-                        self.ref.child("users/\(user.uid)/completedTutorial").setValue(false)
-                        self.ref.child("users/\(user.uid)/hourlyPrice").setValue(hourlyPrice)
-                        self.stopAnimating()
-                        self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
+                    if hourlyPrice != nil || self.currentUserIsTutor == false {
                         
+                        for i in 0...6 {
+                            FIRAnalytics.setUserPropertyString("\(weekDayArray[i])", forName: "\(weekdays[i])_available")
+                        }
+                        FIRAnalytics.setUserPropertyString(availabilityInfo, forName: "availability_info")
+                        
+                        
+                        
+                        userDefaults.setValue(weekDayString, forKey: "availableDays")
+                        userDefaults.setValue(languages, forKey: "languages")
+                        userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
+                        userDefaults.synchronize()
+                        
+                        if let user = FIRAuth.auth()?.currentUser {
+                            self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
+                            self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
+                            self.ref.child("users/\(user.uid)/languages").setValue(languages)
+                            self.ref.child("users/\(user.uid)/availabilityInfo").setValue(availabilityInfo)
+                            self.ref.child("users/\(user.uid)/completedTutorial").setValue(false)
+                            self.ref.child("users/\(user.uid)/hourlyPrice").setValue(hourlyPrice)
+                            self.stopAnimating()
+                            self.performSegue(withIdentifier: "toProfilePictureVC", sender: self)
+                            
+                        } else {
+                            // No user is signed in.
+                            // ...
+                        }
+                        
+
                     } else {
-                        // No user is signed in.
-                        // ...
+                       self.displayAlert("Error", message: "Please input a price.")
                     }
                     
                     self.stopAnimating()

@@ -660,12 +660,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                         for destUser in friendList {
                                             friendCount += 1
                                             let destUserID = destUser.uid
-                                            let currentUserIsTutorNameDict = [
+                                            /*let currentUserIsTutorNameDict = [
                                                 true: ["tutorName": destUserID,
                                                                        "tuteeName": FIRAuth.auth()?.currentUser?.uid],
                                                 false: ["tutorName": FIRAuth.auth()?.currentUser?.uid,
                                                                        "tuteeName": destUserID]
-                                            ]
+                                            ]*/
                                             print("channelDict[events] \(channelDict["events"])")
                                             
                                             
@@ -673,10 +673,13 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
                                         print("2 let  tutorName = channelDict[tutorName] as? String{")
-                                        print("(currentUserIsTutorNameDict[self.currentUserIsTutor]?[tutorName])! \((currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])!) \(FIRAuth.auth()?.currentUser?.uid)")
-                                       if tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! {
+                                        //print("(currentUserIsTutorNameDict[self.currentUserIsTutor]?[tutorName])! \((currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])!) \(FIRAuth.auth()?.currentUser?.uid)")
+                                       //if (tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! || ()) {
+                                        
+                                        print("3self.currentUserIsTutor == true \(self.currentUserIsTutor == true) tutorName == FIRAuth.auth()?.currentUser?.uid \(tutorName) \(FIRAuth.auth()?.currentUser?.uid)")
+                                        if ((tutorName == FIRAuth.auth()?.currentUser?.uid) || (tuteeName == FIRAuth.auth()?.currentUser?.uid)) {
                                           
-                                        if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
+                                        //if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
                                                 self.iterationStatus = "done"
                                                 
                                                  print("2if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
@@ -715,7 +718,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                                     // TODO: Handle nil case or default EKCalendar
                                                 }
                                                 
-                                            }
+                                          //  }
                                         } //if channelDict["tutorName"]
                                     }
                                         

@@ -427,7 +427,7 @@ class FriendSystem {
             for child in friendSnapshot {
                 let id = child.key
                 myGroup.enter()
-                USER_REF.child(userID).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                self.USER_REF.child(id).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
                     if let email = snapshot.childSnapshot(forPath: "email").value as? String {
                         
                         let id = snapshot.key
