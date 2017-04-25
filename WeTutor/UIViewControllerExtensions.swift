@@ -33,7 +33,12 @@ extension UIView {
         //let height = UIScreen.mainScreen().bounds.size.height
         let backgroundImage = UIImage(named: "background")
 
-        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: -90, width: width, height: (backgroundImage?.height)! * 1.1))
+        var imageViewBackground = UIImageView(frame: CGRect(x: 0, y: -90, width: width, height: (backgroundImage?.height)! * 1.1))
+        
+        let screenHeight = UIScreen.main.bounds.height
+        if screenHeight > 800.0 {
+            imageViewBackground = UIImageView(frame: CGRect(x: 0, y: -90, width: width, height: (backgroundImage?.height)! * 1.7))
+        }
         imageViewBackground.image = backgroundImage
         // you can change the content mode:
         imageViewBackground.contentMode = UIViewContentMode.scaleToFill
@@ -47,7 +52,11 @@ extension UIView {
         //let height = UIScreen.mainScreen().bounds.size.height
         let backgroundImage = UIImage(named: "flippedBackground")
         
-        let imageViewBackground = UIImageView(frame: CGRect(x: 0, y: -90, width: width, height: (backgroundImage?.height)! * 1.1))
+        var imageViewBackground = UIImageView(frame: CGRect(x: 0, y: -90, width: width, height: (backgroundImage?.height)! * 1.1))
+        let screenHeight = UIScreen.main.bounds.height
+        if screenHeight > 800.0 {
+            imageViewBackground = UIImageView(frame: CGRect(x: 0, y: -90, width: width, height: (backgroundImage?.height)! * 1.7))
+        }
         imageViewBackground.image = backgroundImage
         // you can change the content mode:
         imageViewBackground.contentMode = UIViewContentMode.scaleToFill
