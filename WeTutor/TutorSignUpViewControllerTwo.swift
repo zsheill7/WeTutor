@@ -34,6 +34,9 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
         super.viewDidLoad()
         navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
         
+        if currentUserIsTutor == true {
+            prepareInfoButton()
+        }
         
         ref = FIRDatabase.database().reference()
         
@@ -121,7 +124,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                 
             <<< DecimalRow("Price") {
                 $0.useFormatterDuringInput = true
-                $0.title = "Price"
+                $0.title = "Hourly Price"
                 $0.placeholder = "$17.00"
                 let formatter = CurrencyFormatter()
                 formatter.locale = .current
@@ -252,7 +255,46 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
 
     }
     
-    let popover = Popover()
+    let infoButton = UIButton()
+    
+    fileprivate var popover: Popover!
+    
+    func prepareInfoButton() {
+        
+        
+        infoButton.setImage(UIImage(named: "Info-25"), for: UIControlState.normal)
+        infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
+        let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info-25"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(infoButtonTapped))
+    }
+    
+    var texts = ["If you wish to be a volunteer tutor, please enter 0.00 for your price"]
+    
+    func infoButtonTapped() {
+        
+        
+        self.popover = Popover()
+        
+        let startPoint = CGPoint(x: self.view.frame.width - 25, y: 55)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let pricePopoverVC = storyboard.instantiateViewController(withIdentifier: "pricePopoverVC")
+        
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        /*tableView.delegate = self
+        tableView.dataSource = self
+        tableView.isScrollEnabled = false*/
+        
+        view.addSubview(pricePopoverVC.view)
+        //self.popover = Popover(options: self.popoverOptions)
+        
+        //self.popover.show(tableView, point: self.rightButtomButton)
+        popover.show(view, point: startPoint)
+    }
+
+    
+   // let popover = Popover()
     func openPricePopover() {
        /* self.popover = Popover()
         let startPoint = CGPoint(x: self.view.frame.width - 25, y: self.view.frame.height - 55)

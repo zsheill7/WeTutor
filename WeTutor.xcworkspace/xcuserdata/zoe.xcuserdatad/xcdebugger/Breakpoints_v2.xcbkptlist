@@ -157,7 +157,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "170"
             endingLineNumber = "170"
-            landmarkName = "rateYourExperience(_:)"
+            landmarkName = "loadHorizontalScrollView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

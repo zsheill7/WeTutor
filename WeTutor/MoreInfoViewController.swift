@@ -458,8 +458,9 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func chatTapped(_ sender: Any) {
-        self.addFriend()
         self.createChannel()
+        self.addFriend()
+        
     }
     
     
