@@ -1,4 +1,4 @@
-<h1> TutorMe</h1>
+<h1> WeTutor</h1>
 
 WeTutor is a tutoring marketplace that allows students needing academic assistance to connect with nearby tutors. Tutors may offer their services for a fixed price or for free as volunteers, and the messaging and calendar functions allow students and tutors to coordinate meetings quickly and efficiently.
 
