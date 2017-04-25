@@ -42,8 +42,8 @@
 		C837271B1E9C38A700EEEC61 /* SelfProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837271A1E9C38A700EEEC61 /* SelfProfileViewController.swift */; };
 		C8372A651EAE543D00CEF21D /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A641EAE543D00CEF21D /* UILabelExtensions.swift */; };
 		C8372A691EB0186400CEF21D /* ChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A661EB0186400CEF21D /* ChannelListViewController.swift */; };
-		C8372A6A1EB0186400CEF21D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A671EB0186400CEF21D /* ChatViewController.swift */; };
-		C8372A6B1EB0186400CEF21D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A681EB0186400CEF21D /* Channel.swift */; };
+		C8372A6D1EB019EC00CEF21D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A6C1EB019EC00CEF21D /* Channel.swift */; };
+		C8372A6F1EB01A1800CEF21D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A6E1EB01A1800CEF21D /* ChatViewController.swift */; };
 		C837BF811EA1EA9E000F0CEF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837BF801EA1EA9C000F0CEF /* Rating.swift */; };
 		C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
@@ -178,8 +178,8 @@
 		C837271A1E9C38A700EEEC61 /* SelfProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfProfileViewController.swift; sourceTree = "<group>"; };
 		C8372A641EAE543D00CEF21D /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		C8372A661EB0186400CEF21D /* ChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelListViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channel Example/ChatChat/ChannelListViewController.swift"; sourceTree = "<group>"; };
-		C8372A671EB0186400CEF21D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channel Example/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
-		C8372A681EB0186400CEF21D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../Xcode projects/Wenderlich Chat Channel Example/ChatChat/Channel.swift"; sourceTree = "<group>"; };
+		C8372A6C1EB019EC00CEF21D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/Channel.swift"; sourceTree = "<group>"; };
+		C8372A6E1EB01A1800CEF21D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = "../../Xcode projects/Wenderlich Chat Channels Example/ChatChat/ChatViewController.swift"; sourceTree = "<group>"; };
 		C837BF801EA1EA9C000F0CEF /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableView.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
@@ -489,8 +489,8 @@
 			isa = PBXGroup;
 			children = (
 				C8372A661EB0186400CEF21D /* ChannelListViewController.swift */,
-				C8372A671EB0186400CEF21D /* ChatViewController.swift */,
-				C8372A681EB0186400CEF21D /* Channel.swift */,
+				C8372A6E1EB01A1800CEF21D /* ChatViewController.swift */,
+				C8372A6C1EB019EC00CEF21D /* Channel.swift */,
 				C8F668CD1E6D31D500D9DC53 /* Message.swift */,
 			);
 			name = Chat;
@@ -769,7 +769,6 @@
 			files = (
 				C84F180F1E71434C00EC54BF /* SubjectCell.swift in Sources */,
 				96090AEA1D9CDD2E00709CA6 /* SignUpViewController.swift in Sources */,
-				C8372A6A1EB0186400CEF21D /* ChatViewController.swift in Sources */,
 				C838A8BE1E19C4E1004A794C /* MapViewController.swift in Sources */,
 				C838A8B91E1982BA004A794C /* RequestViewController.swift in Sources */,
 				C82800DE1E0EFDAF00329B7D /* UIImageExtensions.swift in Sources */,
@@ -802,7 +801,6 @@
 				C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */,
 				C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */,
 				C86BCCD31E12FABD007D24F9 /* FloatLabelTextField.swift in Sources */,
-				C8372A6B1EB0186400CEF21D /* Channel.swift in Sources */,
 				C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */,
 				C8EE88521E0DB144003775C2 /* FSCalendar+Deprecated.m in Sources */,
 				C837BF811EA1EA9E000F0CEF /* Rating.swift in Sources */,
@@ -828,6 +826,7 @@
 				C86BCCC61E12F8DE007D24F9 /* ImagePickerController.swift in Sources */,
 				C81DA3CF1E3FB8A600CB15A8 /* ChangePasswordTableViewController.swift in Sources */,
 				C82970671EA0516B002233FB /* AcknowledgementsViewController.swift in Sources */,
+				C8372A6D1EB019EC00CEF21D /* Channel.swift in Sources */,
 				C88498C21E0B5B4F000C4675 /* TutorOrTuteeViewController.swift in Sources */,
 				C86D41161E9ACC39000C5B0F /* FollowUsTableViewController.swift in Sources */,
 				C8EE885C1E0DB144003775C2 /* FSCalendarExtensions.m in Sources */,
@@ -855,6 +854,7 @@
 				C87984A51E0C76A5003EB7A1 /* MenuViewCustomizable.swift in Sources */,
 				C829705F1E9EFB2C002233FB /* AddEventChannelListViewController.swift in Sources */,
 				C87984961E0C763F003EB7A1 /* PagingViewController.swift in Sources */,
+				C8372A6F1EB01A1800CEF21D /* ChatViewController.swift in Sources */,
 				96090AE81D9CDD2E00709CA6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
