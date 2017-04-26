@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.displayAlert("Welcome to WeTutor!", message: "If you wish to test out WeTutor, feel free to use the email wetutorapp@gmail.com and the password qwertyu")
+        self.displayAlert("Welcome to WeTutor!", message: "If you wish to test out WeTutor, feel free to use the email tokkitechnology@gmail.com and the password tokkitech")
     }
     
     override func viewDidLoad() {

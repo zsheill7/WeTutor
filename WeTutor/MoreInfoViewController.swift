@@ -93,6 +93,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         }
         
         
+        
         fullPageScrollView.delegate = self
         fullPageScrollView.isDirectionalLockEnabled = true
         
@@ -107,7 +108,15 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         
         self.setupUserRating()
         
-        
+       /* if let profileImageUrl = destUser.profileImageUrl {
+            if URL(string: destUser.profileImageUrl!) != nil {
+                profileImage.loadImageUsingCacheWithUrlString(profileImageUrl)
+            } else {
+                profileImage.image = #imageLiteral(resourceName: "Owl Icon")
+            }
+        } else {
+            profileImage.image = #imageLiteral(resourceName: "Owl Icon")
+        }*/
     }
     
     func setupUserRating() {
