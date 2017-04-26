@@ -11,8 +11,8 @@ import RZTransitions
 import FirebaseAuth
 import Firebase
 import SCLAlertView
-import FBSDKCoreKit
-import FBSDKLoginKit
+//import FBSDKCoreKit
+//import FBSDKLoginKit
 import Popover
 
 extension UIView {
@@ -54,7 +54,7 @@ extension UIView {
 }
 
 
-class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
+class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
    
    
     fileprivate var nameField: TextField!
@@ -184,7 +184,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     }*/
     //MARK: Facebook SDK Default Signin
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+   /* func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User Logged In")
         
         if ((error) != nil)
@@ -221,7 +221,7 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
         
-    }
+    }*/
     
     func setProfileImage(profileImage: UIImage) {
         let imageName = UUID().uuidString
@@ -258,9 +258,9 @@ class SignUpViewController: UIViewController, FBSDKLoginButtonDelegate {
     
   
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+  /*  func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
-    }
+    }*/
     
 func createAccount() {
         if emailField.text == "" || nameField.text == "" || passwordField.text == "" || confirmPasswordField.text == "" {
