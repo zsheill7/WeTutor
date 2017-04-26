@@ -169,7 +169,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        FBSDKAppEvents.activateApp()
+       // FBSDKAppEvents.activateApp()
     }
 
 }

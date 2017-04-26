@@ -96,7 +96,6 @@
 		C88498C41E0B8A5D000C4675 /* TutorSignUpViewControllerOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */; };
 		C8C5DE391E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */; };
 		C8C5DE3A1E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */; };
-		C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */; };
 		C8E47F2C1E7636D7009351C8 /* Unused.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E47F2B1E7636D7009351C8 /* Unused.swift */; };
 		C8EE88291E0D08DC003775C2 /* TutorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */; };
 		C8EE88511E0DB144003775C2 /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88321E0DB144003775C2 /* FSCalendar.m */; };
@@ -115,7 +114,6 @@
 		C8EE885E1E0DB144003775C2 /* FSCalendarScopeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE884C1E0DB144003775C2 /* FSCalendarScopeHandle.m */; };
 		C8EE885F1E0DB144003775C2 /* FSCalendarStickyHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE884E1E0DB144003775C2 /* FSCalendarStickyHeader.m */; };
 		C8EE88601E0DB144003775C2 /* FSCalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C8EE88501E0DB144003775C2 /* FSCalendarWeekdayView.m */; };
-		C8F668C31E6B479F00D9DC53 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */; };
 		C8F668CA1E6CEEDF00D9DC53 /* ProfilePictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */; };
 		C8F668CC1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */; };
 		C8F668D21E6DEEBC00D9DC53 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */; };
@@ -232,7 +230,6 @@
 		C88498C31E0B8A5C000C4675 /* TutorSignUpViewControllerOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorSignUpViewControllerOne.swift; sourceTree = "<group>"; };
 		C8C5DE371E4185DC008CCFDB /* SettingsBasicInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBasicInfoTableViewController.swift; sourceTree = "<group>"; };
 		C8C5DE381E4185DC008CCFDB /* SettingsAvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAvailabilityTableViewController.swift; sourceTree = "<group>"; };
-		C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C8E47F2B1E7636D7009351C8 /* Unused.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unused.swift; sourceTree = "<group>"; };
 		C8EE88281E0D08DC003775C2 /* TutorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorsTableViewController.swift; sourceTree = "<group>"; };
 		C8EE882E1E0DB08C003775C2 /* WeTutor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WeTutor-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -268,7 +265,6 @@
 		C8EE884E1E0DB144003775C2 /* FSCalendarStickyHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSCalendarStickyHeader.m; path = FSCalendar/FSCalendarStickyHeader.m; sourceTree = "<group>"; };
 		C8EE884F1E0DB144003775C2 /* FSCalendarWeekdayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSCalendarWeekdayView.h; path = FSCalendar/FSCalendarWeekdayView.h; sourceTree = "<group>"; };
 		C8EE88501E0DB144003775C2 /* FSCalendarWeekdayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSCalendarWeekdayView.m; path = FSCalendar/FSCalendarWeekdayView.m; sourceTree = "<group>"; };
-		C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		C8F668C91E6CEEDF00D9DC53 /* ProfilePictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureViewController.swift; sourceTree = "<group>"; };
 		C8F668CB1E6D170F00D9DC53 /* ProfilePictureViewController+handlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProfilePictureViewController+handlers.swift"; sourceTree = "<group>"; };
 		C8F668D11E6DEEBC00D9DC53 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
@@ -281,8 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82C35F61E8F1E4A00DD17CD /* AdSupport.framework in Frameworks */,
-				C8C744A71E6AAC39005AB3EA /* FBSDKLoginKit.framework in Frameworks */,
-				C8F668C31E6B479F00D9DC53 /* FBSDKCoreKit.framework in Frameworks */,
 				18B5C49AFA2A076AD1009440 /* Pods_WeTutor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,8 +289,6 @@
 			children = (
 				C82C35F51E8F1E4A00DD17CD /* AdSupport.framework */,
 				B8B62CCD5A010F1F7EC99019 /* Pods_TextField.framework */,
-				C8F668C21E6B479F00D9DC53 /* FBSDKCoreKit.framework */,
-				C8C744A61E6AAC39005AB3EA /* FBSDKLoginKit.framework */,
 				E32F40C5AE612C64AD0FDBC9 /* Pods_WeTutor.framework */,
 			);
 			name = Frameworks;
