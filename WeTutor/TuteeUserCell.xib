@@ -109,8 +109,44 @@
                                             <constraint firstAttribute="height" constant="40" id="kaG-xz-qBG"/>
                                         </constraints>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74D-eA-hYz">
+                                        <rect key="frame" x="0.0" y="50" width="343.5" height="22"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTm-7U-BuY" customClass="CosmosView" customModule="Cosmos">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="22"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="130" id="WNY-ef-mBi"/>
+                                                    <constraint firstAttribute="height" constant="18" id="wR5-pe-loE"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0 ratings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dJ-33-4I8">
+                                                <rect key="frame" x="130" y="0.0" width="58" height="22"/>
+                                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="58" id="O3j-b0-jCg"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.57614511989999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rf3-IV-ctq">
+                                                <rect key="frame" x="188" y="0.0" width="155.5" height="22"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="aZQ-Lt-v8B"/>
+                                            <constraint firstItem="4dJ-33-4I8" firstAttribute="leading" secondItem="pTm-7U-BuY" secondAttribute="trailing" constant="10" id="rSt-81-H8l"/>
+                                        </constraints>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8J-yi-4OC">
-                                        <rect key="frame" x="0.0" y="50" width="343.5" height="22.5"/>
+                                        <rect key="frame" x="0.0" y="72" width="343.5" height="15"/>
                                         <attributedString key="attributedText">
                                             <fragment content="School: Mercer Island High School">
                                                 <attributes>
@@ -121,14 +157,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Grade: 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbM-JZ-huh">
-                                        <rect key="frame" x="0.0" y="72.5" width="343.5" height="22.5"/>
+                                        <rect key="frame" x="0.0" y="87" width="343.5" height="15.5"/>
                                         <color key="backgroundColor" red="0.35284627950000003" green="1" blue="0.98577280739999995" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Subject: French, Calculus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3I-os-SB3">
-                                        <rect key="frame" x="0.0" y="95" width="343.5" height="23"/>
+                                        <rect key="frame" x="0.0" y="102.5" width="343.5" height="15.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -254,6 +290,7 @@
                 <outlet property="gradeLabel" destination="HbM-JZ-huh" id="auW-0m-Gy9"/>
                 <outlet property="infoButton" destination="jqm-40-nXf" id="8Aw-hI-Aqt"/>
                 <outlet property="nameLabel" destination="RJH-x7-ASz" id="kbo-AE-WC0"/>
+                <outlet property="ratingView" destination="pTm-7U-BuY" id="uks-bU-scZ"/>
                 <outlet property="schoolLabel" destination="z8J-yi-4OC" id="O30-da-Pvn"/>
                 <outlet property="subjectLabel" destination="Q3I-os-SB3" id="ifg-pF-jHq"/>
             </connections>

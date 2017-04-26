@@ -17,6 +17,7 @@ class TuteeUserCell: UITableViewCell {
     
     
     
+    @IBOutlet var ratingView: CosmosView!
     
    
     @IBOutlet weak var friendIndicatorView: UIImageView!

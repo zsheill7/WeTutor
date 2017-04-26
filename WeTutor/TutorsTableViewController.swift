@@ -629,6 +629,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             }
             
             cell!.colorView = getColoredView()
+            
             let numberOfRatings = userAtRow.numberOfRatings
             var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
             if numberOfRatings == 1 {
@@ -722,6 +723,16 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             if numberOfRatings == 1 {
                 numberOfRatingsString = "\(String(describing: numberOfRatings)) rating"
             }
+            
+            if let userAverageRating = userAtRow.averageRating {
+                cell!.ratingView.rating = userAverageRating
+            } else {
+                cell!.ratingView.rating = 0
+            }
+            
+           
+            cell!.numberOfRatingsLabel.text = numberOfRatingsString
+            
            
             let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
             //print(subjectsString)
