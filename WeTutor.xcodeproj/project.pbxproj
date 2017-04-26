@@ -25,7 +25,6 @@
 		C82800E51E0FA96D00329B7D /* AboutThisAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */; };
 		C829705D1E9EF6E6002233FB /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C829705C1E9EF6E6002233FB /* UsersViewController.swift */; };
 		C829705F1E9EFB2C002233FB /* AddEventChannelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C829705E1E9EFB2C002233FB /* AddEventChannelListViewController.swift */; };
-		C82970651EA045FE002233FB /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82970641EA045FE002233FB /* EventCell.swift */; };
 		C82970671EA0516B002233FB /* AcknowledgementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82970661EA0516B002233FB /* AcknowledgementsViewController.swift */; };
 		C82BEE181E8608D6008C77AC /* Unused.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C82BEE171E8608D6008C77AC /* Unused.storyboard */; };
 		C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */; };
@@ -45,6 +44,7 @@
 		C8372A731EB01D2600CEF21D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A721EB01D2600CEF21D /* Channel.swift */; };
 		C8372A771EB01D6500CEF21D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A761EB01D6500CEF21D /* Message.swift */; };
 		C8372A791EB01DBD00CEF21D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A781EB01DBD00CEF21D /* ChatViewController.swift */; };
+		C8372A7D1EB02CE500CEF21D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A7C1EB02CE500CEF21D /* EventCell.swift */; };
 		C837BF811EA1EA9E000F0CEF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837BF801EA1EA9C000F0CEF /* Rating.swift */; };
 		C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
@@ -158,7 +158,6 @@
 		C82800E41E0FA96D00329B7D /* AboutThisAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutThisAppViewController.swift; sourceTree = "<group>"; };
 		C829705C1E9EF6E6002233FB /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		C829705E1E9EFB2C002233FB /* AddEventChannelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventChannelListViewController.swift; sourceTree = "<group>"; };
-		C82970641EA045FE002233FB /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		C82970661EA0516B002233FB /* AcknowledgementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgementsViewController.swift; sourceTree = "<group>"; };
 		C82BEE171E8608D6008C77AC /* Unused.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Unused.storyboard; sourceTree = "<group>"; };
 		C82BEE191E86DF85008C77AC /* AvailabilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvailabilityTableViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +178,7 @@
 		C8372A721EB01D2600CEF21D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = WeTutor/Channel.swift; sourceTree = SOURCE_ROOT; };
 		C8372A761EB01D6500CEF21D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = WeTutor/Message.swift; sourceTree = SOURCE_ROOT; };
 		C8372A781EB01DBD00CEF21D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = WeTutor/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
+		C8372A7C1EB02CE500CEF21D /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		C837BF801EA1EA9C000F0CEF /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableView.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
@@ -554,11 +554,11 @@
 				C84F180C1E713CF700EC54BF /* SubjectCell.xib */,
 				C84F180E1E71434C00EC54BF /* SubjectCell.swift */,
 				C82C35FC1E93405900DD17CD /* EventCell.xib */,
-				C82970641EA045FE002233FB /* EventCell.swift */,
 				C83A5E571E8ED58500716C89 /* ChatUserCell.swift */,
 				C84536B91EA53C9400E76999 /* RefreshView.xib */,
 				C84536BB1EA53CBE00E76999 /* RefreshView.swift */,
 				C84536BD1EA5493100E76999 /* RefreshAnimator.swift */,
+				C8372A7C1EB02CE500CEF21D /* EventCell.swift */,
 				C84536BF1EA5497200E76999 /* WeTutorPullToRefresh.swift */,
 				C831B6C71EA71D6B005C230F /* TuteeUserCell.xib */,
 				C831B6C91EA71DA3005C230F /* TuteeUserCell.swift */,
@@ -780,6 +780,7 @@
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
+				C8372A7D1EB02CE500CEF21D /* EventCell.swift in Sources */,
 				C82C9E531E987FA30082901E /* AboutUsTableViewController.swift in Sources */,
 				C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,
@@ -839,7 +840,6 @@
 				C8338B3C1E63E2C400202E3A /* DetailViewController.swift in Sources */,
 				C87984A61E0C76A5003EB7A1 /* Pagable.swift in Sources */,
 				C87984B51E0D01FB003EB7A1 /* User.swift in Sources */,
-				C82970651EA045FE002233FB /* EventCell.swift in Sources */,
 				C84F180B1E70D58000EC54BF /* UniversalVariables.swift in Sources */,
 				C84F18091E708A9300EC54BF /* WeekDaysCellTwo.swift in Sources */,
 				C8EE88551E0DB144003775C2 /* FSCalendarCalculator.m in Sources */,
