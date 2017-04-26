@@ -75,7 +75,7 @@ class UserCellThree: UITableViewCell {
         hourlyPriceLabel.textAlignment = .center
         hourlyPriceLabel.isUserInteractionEnabled = false
         
-        
+        infoButton.imageView?.image = UIImage(named: "Info Icon")
         infoButton.imageView?.contentMode = .scaleAspectFit
         addFriendButton.imageView?.contentMode = .scaleAspectFit
         /*infoButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.fill
