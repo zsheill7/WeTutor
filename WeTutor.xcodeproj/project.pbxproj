@@ -44,7 +44,7 @@
 		C8372A731EB01D2600CEF21D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A721EB01D2600CEF21D /* Channel.swift */; };
 		C8372A771EB01D6500CEF21D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A761EB01D6500CEF21D /* Message.swift */; };
 		C8372A791EB01DBD00CEF21D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A781EB01DBD00CEF21D /* ChatViewController.swift */; };
-		C8372A7D1EB02CE500CEF21D /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A7C1EB02CE500CEF21D /* EventCell.swift */; };
+		C8372A811EB033E100CEF21D /* EventCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8372A801EB033E100CEF21D /* EventCell2.swift */; };
 		C837BF811EA1EA9E000F0CEF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C837BF801EA1EA9C000F0CEF /* Rating.swift */; };
 		C83883C31E9B287F00EF6A55 /* DirectionsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */; };
 		C838A8B61E1982BA004A794C /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C838A8B21E1982BA004A794C /* FriendSystem.swift */; };
@@ -178,7 +178,7 @@
 		C8372A721EB01D2600CEF21D /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = WeTutor/Channel.swift; sourceTree = SOURCE_ROOT; };
 		C8372A761EB01D6500CEF21D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = WeTutor/Message.swift; sourceTree = SOURCE_ROOT; };
 		C8372A781EB01DBD00CEF21D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = WeTutor/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
-		C8372A7C1EB02CE500CEF21D /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		C8372A801EB033E100CEF21D /* EventCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell2.swift; sourceTree = "<group>"; };
 		C837BF801EA1EA9C000F0CEF /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		C83883C21E9B287F00EF6A55 /* DirectionsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsTableView.swift; sourceTree = "<group>"; };
 		C838A8B21E1982BA004A794C /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
@@ -558,10 +558,10 @@
 				C84536B91EA53C9400E76999 /* RefreshView.xib */,
 				C84536BB1EA53CBE00E76999 /* RefreshView.swift */,
 				C84536BD1EA5493100E76999 /* RefreshAnimator.swift */,
-				C8372A7C1EB02CE500CEF21D /* EventCell.swift */,
 				C84536BF1EA5497200E76999 /* WeTutorPullToRefresh.swift */,
 				C831B6C71EA71D6B005C230F /* TuteeUserCell.xib */,
 				C831B6C91EA71DA3005C230F /* TuteeUserCell.swift */,
+				C8372A801EB033E100CEF21D /* EventCell2.swift */,
 			);
 			name = "Xib Files";
 			sourceTree = "<group>";
@@ -780,7 +780,7 @@
 				C87984921E0C763F003EB7A1 /* PagingMenuController.swift in Sources */,
 				C82800DA1E0EFD8B00329B7D /* StringExtensions.swift in Sources */,
 				C8EE885A1E0DB144003775C2 /* FSCalendarDelegationFactory.m in Sources */,
-				C8372A7D1EB02CE500CEF21D /* EventCell.swift in Sources */,
+				C8372A811EB033E100CEF21D /* EventCell2.swift in Sources */,
 				C82C9E531E987FA30082901E /* AboutUsTableViewController.swift in Sources */,
 				C82BEE1A1E86DF85008C77AC /* AvailabilityTableViewController.swift in Sources */,
 				C87984931E0C763F003EB7A1 /* MenuView.swift in Sources */,

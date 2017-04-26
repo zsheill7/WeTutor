@@ -1,17 +1,18 @@
 //
-//  eventCell.swift
-//  Band App Add Event
+//  EventCell.swift
+//  WeTutor
 //
-//  Created by Zoe Sheill on 7/12/16.
-//  Copyright © 2016 ClassroomM. All rights reserved.
+//  Created by Zoe on 4/25/17.
+//  Copyright © 2017 CosmicMind. All rights reserved.
 //
+
 
 import UIKit
 
 class EventCell: UITableViewCell {
     
     @IBOutlet weak var eventTitle: UILabel!
-  
+    
     @IBOutlet weak var eventDate: UILabel!
     
     @IBOutlet weak var eventDescription: UILabel!
@@ -22,7 +23,7 @@ class EventCell: UITableViewCell {
     
     @IBOutlet weak var calendarIcon: UIImageView!
     
-   
+    
     
     override func awakeFromNib() {
         print("awake from nib")
@@ -55,6 +56,6 @@ class EventCell: UITableViewCell {
         }
         self.addSubview(whiteRoundedView)
         self.sendSubview(toBack: whiteRoundedView)
-
+        
     }
 }
