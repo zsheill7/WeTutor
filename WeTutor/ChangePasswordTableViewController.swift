@@ -22,7 +22,7 @@ class ChangePasswordTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         ref = FIRDatabase.database().reference()
-        self.view?.backgroundColor = UIColor.backgroundBlue()
+       // self.view?.backgroundColor = UIColor.backgroundBlue()
     }
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")

@@ -163,7 +163,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
         }
         
-        FriendSystem.system.friendListTwo.removeAll()
+      //  FriendSystem.system.friendListTwo.removeAll()
         FriendSystem.system.addFriendObserverTwo(friendListNumber: 2) {
             for friend in FriendSystem.system.friendListTwo {
                 self.friendUserUIDList.append(friend.uid)

@@ -82,7 +82,10 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     var IS_IPAD  = Bool()
     
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.displayAlert("Welcome to WeTutor!", message: "If you wish to test out WeTutor, feel free to use the email wetutorapp@gmail.com and the password qwertyu")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -462,6 +462,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         self.createChannel()
         self.addFriend()
         
+        
+        
     }
     
     
