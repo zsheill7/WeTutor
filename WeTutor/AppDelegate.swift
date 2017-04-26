@@ -11,7 +11,7 @@ import FirebaseDatabase
 import UserNotifications
 import FirebaseInstanceID
 import FirebaseMessaging
-import FBSDKCoreKit
+//import FBSDKCoreKit
 import DropDown
 import Stripe
 import IQKeyboardManager
@@ -127,13 +127,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+  /*  func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(
             application,
             open: url as URL!,
             sourceApplication: sourceApplication,
             annotation: annotation)
-    }
+    }*/
     
     //let ref = Firebase(url:"https://tutorme-e7292.firebaseio.com/users")
     
