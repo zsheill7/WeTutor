@@ -278,13 +278,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         eventStore = EKEventStore()
         self.setupCalendarAppearance()
         
+        self.view.addFullScreenBackground("background-green")
         
         self.initializeDateFormatter()
         calendarView.delegate = self
         calendarView.dataSource = self
         calendarView.isUserInteractionEnabled = false
         
-        self.view.addBackground()
+        //self.view.addBackground()
         calendarWidthConstraint.constant = self.view.frame.size.width
         self.tableView.backgroundColor = UIColor.clear
         //self.calendarView.width = self.view.width + 20

@@ -223,7 +223,7 @@ class PagingMenuViewController: UIViewController  {
         let menuImage = UIImage(named: "Menu 2-25")
        // let resizedMenu
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view,
-                                            title: "WeTutor", items: items as [AnyObject])
+                                            title: "EcoFriends", items: items as [AnyObject])
         
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor

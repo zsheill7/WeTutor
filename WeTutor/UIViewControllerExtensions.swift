@@ -47,6 +47,23 @@ extension UIView {
         self.sendSubview(toBack: imageViewBackground)
     }
     
+    func addFullScreenBackground(_ named: String) {
+        // screen width and height:
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
+        let backgroundImage = UIImage(named: named)
+        
+        var imageViewBackground = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        
+        imageViewBackground.image = backgroundImage
+        // you can change the content mode:
+        imageViewBackground.contentMode = UIViewContentMode.scaleToFill
+        imageViewBackground.tag = 4
+        self.addSubview(imageViewBackground)
+        self.sendSubview(toBack: imageViewBackground)
+    }
+    
     func addFlippedBackground() {
         let width = UIScreen.main.bounds.size.width
         //let height = UIScreen.mainScreen().bounds.size.height
