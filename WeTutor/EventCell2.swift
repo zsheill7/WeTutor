@@ -3,7 +3,7 @@
 //  WeTutor
 //
 //  Created by Zoe on 4/25/17.
-//  Copyright © 2017 CosmicMind. All rights reserved.
+//  Copyright © 2017 TokkiTech. All rights reserved.
 //
 
 
