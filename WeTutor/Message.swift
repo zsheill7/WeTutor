@@ -1,6 +1,6 @@
 //
 //  Message.swift
-//  gameofchats
+// 
 //
 //  Created by Zoe Sheill on 7/7/16.
 //  Copyright © 2016 TokkiTech. All rights reserved.

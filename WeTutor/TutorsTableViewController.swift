@@ -170,8 +170,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             }
         }
 
-        //self.view.addFlippedBackground()
-        self.view.addFullScreenBackground("background-green flipped")
+        self.view.addFlippedBackground()
+        //self.view.addFullScreenBackground("background-green flipped")
         
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)
