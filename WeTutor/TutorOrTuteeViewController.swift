@@ -32,6 +32,8 @@ class TutorOrTuteeViewController: UIViewController {
     
     var currentUserIsTutor = false
    
+    //MARK: viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,10 +42,7 @@ class TutorOrTuteeViewController: UIViewController {
         if FIRAuth.auth()?.currentUser?.uid != nil {
             userUID = FIRAuth.auth()!.currentUser!.uid
         }
-        
-       
-        
-        
+
         centerX = CGFloat(self.view.frame.width / 2)
         centerY = CGFloat(self.view.frame.height / 2)
         
@@ -51,11 +50,7 @@ class TutorOrTuteeViewController: UIViewController {
         changeBall2()
         
         chooseLabel.font = UIFont(name: "Helvetica", size: 25)
-      
         
-        
-        print(centerX)
-        print(centerY)
          self.ballView.backgroundColor = /*UIColor(hex: "69DBFF")*/UIColor.titleBlue()
         /*UIView.animate(withDuration: 0.1, animations: {
            
@@ -90,6 +85,8 @@ class TutorOrTuteeViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    // Set up the "current user is tutor" label
     func changeBall() {
          let isBall = false
         let animation = CABasicAnimation()
@@ -108,6 +105,8 @@ class TutorOrTuteeViewController: UIViewController {
         ballView.layer.cornerRadius = cornerRadius
         ballView.layer.add(animation, forKey: "radius")
     }
+    
+    //Apply shadows to box labels
     
     func applyPlainShadow(view: SpringButton) {
         var layer = view.layer

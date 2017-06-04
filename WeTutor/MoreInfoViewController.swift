@@ -78,6 +78,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             ).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
     
+    //MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()

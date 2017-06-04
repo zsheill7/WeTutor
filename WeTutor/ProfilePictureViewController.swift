@@ -23,6 +23,9 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     }
     
     let ref = FIRDatabase.database().reference()
+    
+    //MARK: viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,6 +41,8 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         self.performSegue(withIdentifier: "toPagingMenuVC", sender: self)
     }
     
+    //Creates a default profile imageview
+    
     lazy var profileImageView: UIImageView = {
         
         let imageView = UIImageView()
@@ -51,6 +56,8 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         
         return imageView
     }()
+    
+    //Sets up the default profile imageview
     
     func setupProfileImageView() {
         profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -71,6 +78,8 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     @IBAction func cameraButtonTapped(_ sender: Any) {
         self.changePhoto()
     }
+    
+    // If the current user already has a profile image, set it
     func fetchCurrentUser() {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
@@ -115,10 +124,8 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         // Dispose of any resources that can be recreated.
     }
     
+    // Change the profile image
     func changePhoto() {
-
-        
-        
         let appearance = SCLAlertView.SCLAppearance(showCloseButton: false)
         let alert = SCLAlertView(appearance: appearance)
         

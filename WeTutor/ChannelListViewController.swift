@@ -48,7 +48,8 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
         tableView.reloadData()
     }
    
-  
+  // MARK: viewDidLoad
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     self.senderDisplayName = "User"

@@ -34,6 +34,7 @@ extension UIView {
         self.sendSubview(toBack: imageViewBackground)
     }
     
+    
     func addBlueBackground(_ imageName: String) {
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
@@ -57,6 +58,8 @@ extension UIView {
 class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
    
    
+    //This sets up the textFields
+    
     fileprivate var nameField: TextField!
     fileprivate var emailField: ErrorTextField!
     fileprivate var passwordField: TextField!
@@ -73,6 +76,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
 
     }
     
+    //This sets up the constant to correctly lay out each textfield
     fileprivate let constant: CGFloat = 32
     var horizConstant: CGFloat = 32
     let device = UIDevice.current
@@ -87,8 +91,12 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         self.displayAlert("Welcome to WeTutor!", message: "If you wish to test out WeTutor, feel free to use the email tokkitechnology@gmail.com and the password tokkitech")
     }
     
+    //MARK: viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Check if the current device is an iPad or an iPhone and adjust layout accordingly
         
         IS_IPAD = device.userInterfaceIdiom == .pad
         IS_IPHONE = device.userInterfaceIdiom == .phone
@@ -98,13 +106,10 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         if IS_IPAD {
           horizConstant = 100
         }
-       // if DeviceType.IS_IPAD || DeviceType.IS_IPAD_PRO {
-            
-      //  }
        
         self.view.addBackground("book.png")
         
-        
+        //Log in with Facebook
         /*if (FBSDKAccessToken.current() != nil)
         {
             // User is already logged in     
@@ -129,6 +134,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         RZTransitionsManager.shared().defaultPresentDismissAnimationController = RZZoomAlphaAnimationController()
         RZTransitionsManager.shared().defaultPushPopAnimationController = RZCardSlideAnimationController()
         
+        //Prepares all the individual UI elements
         prepareInfoButton()
         prepareNameField()
         prepareEmailField()
@@ -141,6 +147,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         self.hideKeyboardWhenTappedAround()
     }
     
+    
+    //Check if the current user is already signed in, and if so, perform segue to main view controller
     func alreadySignedIn() {
         ref = FIRDatabase.database().reference()
         let currentUserUID = FIRAuth.auth()?.currentUser?.uid
@@ -151,6 +159,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                 let isTutor = value?["isTutor"] as? Bool
                 if isTutor != nil {
                     if isTutor == true {
+                        
+                        //go to main view controller
                         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
                         self.present(viewController, animated: true, completion: nil)
@@ -226,6 +236,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         
     }*/
     
+    //Automatically set your own profile image
+    
     func setProfileImage(profileImage: UIImage) {
         let imageName = UUID().uuidString
         let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
@@ -265,7 +277,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         print("User Logged Out")
     }*/
     
-func createAccount() {
+    // Create a new account
+    func createAccount() {
         if emailField.text == "" || nameField.text == "" || passwordField.text == "" || confirmPasswordField.text == "" {
             displayAlert("Error", message: "Please complete all fields")
             
@@ -296,10 +309,14 @@ func createAccount() {
         }
     }
     
+    
+    //Check if the interface orientation will rotate and adjust the UI accordingly.
+    
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         emailField.width = view.height - 2 * constant
     }
    
+    //Prepare the signup button
     fileprivate func prepareNextButton() {
         let btn = RaisedButton(title: "Sign Up", titleColor: Color.grey.lighten3)
         btn.backgroundColor = UIColor(netHex: 0x51679F)

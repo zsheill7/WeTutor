@@ -40,6 +40,8 @@ class LoginViewController: UIViewController {
     var IS_IPHONE = Bool()
     var IS_IPAD  = Bool()
     
+    //MARK: viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         IS_IPHONE = screenHeight <= CGFloat(1000.0)
@@ -96,6 +98,8 @@ class LoginViewController: UIViewController {
     func instantiateNextVC() {
         
     }
+    
+    
     func logIn() {
         if self.emailField.text == "" || self.passwordField.text == "" {
             self.displayAlert("Error", message: "Please enter an email and password.")
@@ -236,6 +240,7 @@ class LoginViewController: UIViewController {
         view.layout(btn).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
     }
     
+    //Sets up the forgot password button
     fileprivate func prepareForgotPasswordButton() {
         let btn: UIButton! = UIButton()
         btn.setTitleColor(UIColor.white, for: .normal)

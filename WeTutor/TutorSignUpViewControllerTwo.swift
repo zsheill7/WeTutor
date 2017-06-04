@@ -29,7 +29,9 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
     var currentUser: User?
     var profileImageUrlString = ""
     var currentUserIsTutor: Bool?
+    
     //MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationAccessoryView = NavigationAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
@@ -64,6 +66,8 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
         }
         self.loadForm()
     }
+    
+     // Uses the Eureka pod to load the signup form
     
     func loadForm() {
         
@@ -225,6 +229,8 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                         userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
                         userDefaults.synchronize()
                         
+                        // Set user values in Firebase
+                        
                         if let user = FIRAuth.auth()?.currentUser {
                             self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
                             self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
@@ -259,9 +265,9 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
     
     fileprivate var popover: Popover!
     
+    // Create a button at the top that opens a popover.  Includes info for parents
+    
     func prepareInfoButton() {
-        
-        
         infoButton.setImage(UIImage(named: "Info-25"), for: UIControlState.normal)
         infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
         let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
@@ -310,15 +316,10 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
         popover.show(tableView, point: startPoint)*/
     }
     
-    
+    //Set the url reference of a random profile image
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toProfilePictureVC" {
-            
-            
             let destinationVC: ProfilePictureViewController = segue.destination as! ProfilePictureViewController
-            
-           // destinationVC.currentUser = currentUser
-            
             destinationVC.profileImageUrlString = profileImageUrlString
         }
     }

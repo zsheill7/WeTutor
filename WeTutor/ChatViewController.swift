@@ -46,6 +46,8 @@ final class ChatViewController: JSQMessagesViewController {
   lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
   
   // MARK: View Lifecycle
+    
+    // MARK: viewDidLoad
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -379,7 +381,7 @@ extension ChatViewController: UIImagePickerControllerDelegate {
         })
       }
     } else {
-      // Handle picking a Photo from the Camera - TODO
+      // Handle picking a Photo from the Camera
     }
   }
 

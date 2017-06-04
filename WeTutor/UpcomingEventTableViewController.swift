@@ -268,6 +268,9 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }
     
    @IBOutlet weak var calendarWidthConstraint: NSLayoutConstraint!
+    
+    // MARK: viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("in view did load")

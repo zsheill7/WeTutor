@@ -37,6 +37,8 @@ extension ProfilePictureViewController {
         })
     }*/
     
+    //Create an image picker controller
+    
     func handleSelectProfileImageView() {
         let picker = UIImagePickerController()
         
@@ -45,6 +47,8 @@ extension ProfilePictureViewController {
         
         present(picker, animated: true, completion: nil)
     }
+    
+    //After the user picks a photo, store that photo in url form in their Firebase database
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         

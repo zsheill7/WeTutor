@@ -102,7 +102,7 @@ class PagingMenuViewController: UIViewController  {
     
     var pagingMenuController: PagingMenuController?
     
-    
+    // MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()

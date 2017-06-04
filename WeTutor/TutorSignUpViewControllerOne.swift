@@ -69,6 +69,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
     var cellWidth = 2
     var cellHeight = 2
     
+    //Set up tags to identify each field later one
+    
     struct Static {
         static let nameTag = "name"
         static let passwordTag = "password"
@@ -97,6 +99,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
     typealias Emoji = String
     var currentUserIsTutor: Bool?
 
+    //MARK: viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         FriendSystem.system.getCurrentUser {_ in 
@@ -112,6 +116,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         self.loadForm()
        
     }
+    
+    // Uses the Eureka pod to load the signup form
     
     func loadForm() {
         form
@@ -242,6 +248,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         let row8: TextRow? = self.form.rowBy(tag: "gpa")
         let gpa = row8?.value
         
+        // Check if all fields are filled in
         if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subjectArray != nil {
             
             self.ref = FIRDatabase.database().reference()
@@ -271,7 +278,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                     let size = CGSize(width: 30, height:30)
                     
                     
-                    
+                    // Set user values in Firebase
                     self.ref.child("users/\(userID!)/zipcode").setValue(zipcode)
                     self.ref.child("users/\(userID!)/schoolName").setValue(school)
                     self.ref.child("users/\(userID!)/phone").setValue(phone)
@@ -281,6 +288,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
                     self.ref.child("users/\(userID!)/description").setValue(description)
                     self.ref.child("users/\(userID!)/gpa").setValue(gpa)
               
+                    
+                    // Use Firebase Analytics to set user properties
                     FIRAnalytics.setUserPropertyString(school, forName: "school")
                     FIRAnalytics.setUserPropertyString(gender, forName: "gender")
                     FIRAnalytics.setUserPropertyString(grade, forName: "grade")
@@ -336,7 +345,8 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
 
     }
     
-       
+    
+    //Add a header view
     
     func tableView(_ tableView: UITableView,
                             willDisplayHeaderView view: UIView,
@@ -358,6 +368,7 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         cell.backgroundColor = UIColor(white: 1, alpha: 1.0)
     }
    
+    
    
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
