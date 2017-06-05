@@ -33,15 +33,10 @@ class TuteeUserCell: UITableViewCell {
     
     @IBOutlet weak var schoolLabel: UILabel!
     
-  //  @IBOutlet weak var hourlyPriceLabel: UITextField!
-    
- //   @IBOutlet weak var gpaLabel: UILabel!
+
     
     @IBOutlet weak var subjectLabel: UILabel!
     
-  //  @IBOutlet weak var ratingView: CosmosView!
-    
- //   @IBOutlet var numberOfRatingsLabel: UILabel!
     
     @IBOutlet weak var gradeLabel: UILabel!
     
