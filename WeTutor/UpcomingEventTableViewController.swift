@@ -59,16 +59,12 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     var eventStore: EKEventStore!
-    
-   // @IBOutlet weak var nagivationItem: UINavigationItem!
-    //@IBOutlet weak var table: UITableView!
+
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var addEventButton: UIButton!
-    
-  // let dateFormatter = DateFormatter()
     fileprivate let formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"

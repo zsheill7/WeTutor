@@ -31,16 +31,14 @@ struct PagingMenuOptions1: PagingMenuControllerCustomizable {
     
     struct MenuOptions: MenuViewCustomizable {
         var displayMode: MenuDisplayMode {
-            /*return .standard(widthMode: .flexible, centerItem: false, scrollingMode: .pagingEnabled)*/
+            
             return .segmentedControl
         }
         
         var focusMode: MenuFocusMode {
             return .underline(height: 3, color: UIColor.white, horizontalPadding: 10, verticalPadding: 3)
         }
-       /* var focusMode: MenuFocusMode {
-            return .roundRect(radius: 12, horizontalPadding: 8, verticalPadding: 8, selectedColor: UIColor.white/*UIColor.lightGray.lighten(byPercentage: 0.2)!*/)
-        }*/
+      
 
         var defaultPage: Int {
             return 1
