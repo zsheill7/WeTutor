@@ -180,7 +180,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     }
     func loadHorizontalScrollView() {
         let horizontalScrollView:ASHorizontalScrollView = ASHorizontalScrollView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 60))
-        //for iPhone 5s and lower versions in portrait
+      
         horizontalScrollView.marginSettings_320 = MarginSettings(leftMargin: 10, miniMarginBetweenItems: 5, miniAppearWidthOfLastItem: 20)
         //for iPhone 4s and lower versions in landscape
         horizontalScrollView.marginSettings_480 = MarginSettings(leftMargin: 10, miniMarginBetweenItems: 5, miniAppearWidthOfLastItem: 20)

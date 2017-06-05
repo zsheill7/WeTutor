@@ -32,11 +32,11 @@ struct Event {
     var endDate: NSDate
     var description: String
     
-    var location: String//CLLocation
+    var location: String
     var repeatInterval: String
     var uid: String
     var objectID: String
-    var eventAlert: String//EventAlert
+    var eventAlert: String
     
     let labelFont = UIFont(name: "HelveticaNeue-Bold", size: 18)
     let formatter = DateFormatter()
