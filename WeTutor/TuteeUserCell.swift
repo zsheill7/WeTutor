@@ -85,18 +85,13 @@ class TuteeUserCell: UITableViewCell {
     }
     
     
-    // @IBOutlet weak var profileImageView: UIImageView!
+   
     
     var addFriendFunc: (() -> (Void))!
     var chatFunc: (() -> (Void))!
     var moreInfoFunc: (() -> (Void))!
     
-    /*required init?(coder aDecoder: NSCoder) {
-     super.init(coder: aDecoder)
-     infoButton.contentMode = .scaleAspectFit
-     addFriendButton.contentMode = .scaleAspectFit
-     }*/
-    
+  
     
     @IBAction func addFriendTapped(_ sender: Any) {
         addFriendFunc()
