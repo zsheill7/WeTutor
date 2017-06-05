@@ -40,11 +40,7 @@ class TuteeUserCell: UITableViewCell {
     
     @IBOutlet weak var gradeLabel: UILabel!
     
-    /*@IBOutlet weak var subjectLabel: UILabel!
-     
-     @IBOutlet weak var infoButton: UIButton!
-     
-     @IBOutlet weak var addFriendButton2: UIButton!*/
+   
     
     var screenBounds = UIScreen.main.bounds
     
