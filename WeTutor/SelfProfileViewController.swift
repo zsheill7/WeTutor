@@ -25,7 +25,6 @@ class SelfProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var backgroundColoredViews: [UIView]!
     @IBOutlet var headingLabels: [UILabel]!
     
-    // @IBOutlet weak var name: UILabel!
     @IBOutlet weak var callButton: UIButton!
     
     @IBOutlet weak var textButton: UIButton!
@@ -34,9 +33,7 @@ class SelfProfileViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var basicInfoLabel: UILabel!
     
     @IBOutlet weak var nameLabel: UILabel!
-    //   @IBOutlet weak var preferencesLabel: UILabel!
-    
-    //@IBOutlet weak var availabilityLabel: UILabel!
+
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
