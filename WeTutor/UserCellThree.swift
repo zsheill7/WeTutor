@@ -1,8 +1,11 @@
-/*
- * Copyright (c) 2017 Zoe Sheill
- *
- */
-
+//
+//  UserCellThree.swift
+//  UserCellThree
+//
+//  Created by Zoe on 3/6/17.
+//  Copyright © 2017 TokkiTech. All rights reserved.
+//
+//
 import UIKit
 import Cosmos
 

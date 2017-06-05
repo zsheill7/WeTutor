@@ -1,6 +1,6 @@
 //
 //  TutorSignUpViewController.swift
-//  TextField
+//  WeTutor
 //
 //  Created by Zoe on 12/21/16.
 //  Copyright © 2017 Zoe Sheill. All rights reserved.

@@ -1,8 +1,11 @@
-/*
- * Copyright (C) 2015 - 2016, Zoe Sheill>.
- * All rights reserved.
- *
- */
+//
+//  LoginViewController.swift
+//  LoginViewController
+//
+//  Created by Zoe on 3/6/17.
+//  Copyright © 2017 TokkiTech. All rights reserved.
+//
+//
 
 import UIKit
 import Material

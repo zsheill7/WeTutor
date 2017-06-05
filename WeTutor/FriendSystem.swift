@@ -1,8 +1,11 @@
 //
+//  FriendSystem.swift
+//  FriendSystem
+//
 //  Created by Zoe on 3/6/17.
 //  Copyright © 2017 TokkiTech. All rights reserved.
 //
-
+//
 
 import Foundation
 import Firebase
