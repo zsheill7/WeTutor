@@ -161,6 +161,49 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             for (index, user) in self.finalUserList.enumerated() {
                 print("1finalUserList  \(index) \(user.uid)")
             }
+            
+            
+            let userCoordinate = self.currentUser!.coordinate
+            let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+            
+            self.userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+                var newUsers = [User]()
+                for user in snapshot.children {
+                    
+                    var userObject = User(snapshot: user as! FIRDataSnapshot)
+                    let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
+                    let isTutor = userObject.isTutor
+                    userObject.coordinate = coordinate
+                    
+                    let distanceBetween = coordinate.distance(from: userCoordinate)
+                    userObject.distanceFromUser = distanceBetween
+                    if distanceBetween <= 50000  {
+                        if (self.currentUser?.isTutor == true && isTutor == false) ||
+                            (self.currentUser?.isTutor == false && isTutor == true) {
+                            if userObject.uid != currentUserUID {
+                                var doesContain = false
+                                for user in newUsers {
+                                    if user.uid == userObject.uid {
+                                        doesContain = true
+                                    }
+                                }
+                                if doesContain == false {
+                                    
+                                    
+                                    newUsers.append(userObject)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                self.finalUserList = newUsers
+                self.tableView.reloadData()
+            }) { (error: Error) in
+                print("inside error")
+                print(error)
+            }
+
             self.tableView.reloadData()
         }
         
@@ -279,7 +322,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                     
                     let distanceBetween = coordinate.distance(from: userCoordinate)
                     userObject.distanceFromUser = distanceBetween
+                    print("TutorsTableViewController: distanceBetween: \(distanceBetween)")
                     if distanceBetween <= 50000  {
+                        print("TutorsTableViewController: Distance within 50000")
                         if (self.currentUser?.isTutor == true && isTutor == false) ||
                             (self.currentUser?.isTutor == false && isTutor == true) {
                             if userObject.uid != currentUserUID {
@@ -289,7 +334,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                                         doesContain = true
                                     }
                                 }
-                                if doesContain == false && userObject.email != "kimemily1@gmail.com" {
+                                if doesContain == false {
                                     
                                 
                                 newUsers.append(userObject)
@@ -299,8 +344,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                     }
                 }
                     
-                    self.tutors = newUsers
-                    self.tableView.reloadData()
+                self.tutors = newUsers
+                self.tableView.reloadData()
             }) { (error: Error) in
                 print("inside error")
                 print(error)

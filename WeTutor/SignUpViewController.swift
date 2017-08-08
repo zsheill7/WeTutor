@@ -88,30 +88,27 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     var IS_IPHONE = Bool()
     var IS_IPAD  = Bool()
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.displayAlert("Welcome to WeTutor!", message: "If you wish to test out WeTutor, feel free to use the email tokkitechnology@gmail.com and the password tokkitech")
+       // self.displayAlert("Welcome to WeTutor!", message: "If you wish to test out WeTutor, feel free to use the email tokkitechnology@gmail.com and the password tokkitech")
     }
-    
     //MARK: viewDidLoad
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Check if the current device is an iPad or an iPhone and adjust layout accordingly
-        
         IS_IPAD = device.userInterfaceIdiom == .pad
         IS_IPHONE = device.userInterfaceIdiom == .phone
         print("IS_IPAD " + String(IS_IPAD))
         print("IS_IPHONE " + String(IS_IPHONE))
-        
         if IS_IPAD {
           horizConstant = 100
         }
        
         self.view.addBackground("book.png")
         
+        
+        self.alreadySignedIn()
         //Log in with Facebook
         /*if (FBSDKAccessToken.current() != nil)
         {
@@ -161,25 +158,14 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                 let value = snapshot.value as? NSDictionary
                 let isTutor = value?["isTutor"] as? Bool
                 if isTutor != nil {
-                    if isTutor == true {
-                        
-                        //go to main view controller
-                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-                        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
-                        self.present(viewController, animated: true, completion: nil)
-                    } else {
-                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
-                        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenu NC") as! UINavigationController
-                        self.present(viewController, animated: true, completion: nil)
-                    }
+                    //go to main view controller
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
+                    self.present(viewController, animated: true, completion: nil)
                 }
-                
-                // ...
             }) { (error) in
                 print(error.localizedDescription)
             }
-            
-            /**/
         } else {
             // No user is signed in.
             // ...
@@ -296,11 +282,10 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
             FriendSystem.system.createAccount(emailField.text!, password: passwordField.text!, name: nameField.text!) { (success) in
                 if success {
                     print("You have successfully signed up")
-                    
                                        
-                    let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.alert)
+                   /* let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)*/
                     
                     self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
                     

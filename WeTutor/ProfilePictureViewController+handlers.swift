@@ -53,19 +53,31 @@ extension ProfilePictureViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         
-        print("did finish picking")
+        print("ProfilePictureViewController: did finish picking image")
         var selectedImageFromPicker: UIImage?
         
         if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-            selectedImageFromPicker = editedImage
+            DispatchQueue.main.async {
+                self.profileImageView.image = editedImage
+                self.profileImage.image = editedImage
+                self.profileImageView.setNeedsDisplay()
+            }
         } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            
-            selectedImageFromPicker = originalImage
+            DispatchQueue.main.async {
+                self.profileImageView.image = originalImage
+                self.profileImage.image = originalImage
+                self.profileImageView.setNeedsDisplay()
+            }
         }
         
-        if let selectedImage = selectedImageFromPicker {
+        
+        
+       /* if let selectedImage = selectedImageFromPicker {
+            print("ProfilePictureViewController: selectedImage = selectedImageFromPicker")
             profileImageView.image = selectedImage
-        }
+        } else {
+            print("ProfilePictureViewController: selectedImage != selectedImageFromPicker")
+        }*/
         
         let imageName = UUID().uuidString
         let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
@@ -84,7 +96,7 @@ extension ProfilePictureViewController {
                 }
                 
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                    
+                    print("ProfilePictureViewController: profileImageUrl = metadata?.downloadURL()?.absoluteString")
                     if currentUserUID != nil {
                         usersRef.child(currentUserUID!).child("profile_image").setValue(profileImageUrl)
                     }
@@ -93,8 +105,6 @@ extension ProfilePictureViewController {
                 }
             })
         }
-        
-        
         dismiss(animated: true, completion: nil)
         
     }

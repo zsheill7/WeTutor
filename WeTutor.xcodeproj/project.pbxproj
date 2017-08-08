@@ -638,7 +638,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = CosmicMind;
+				ORGANIZATIONNAME = TokkiTech;
 				TargetAttributes = {
 					96090AE31D9CDD2E00709CA6 = {
 						CreatedOnToolsVersion = 8.0;
@@ -653,7 +653,7 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

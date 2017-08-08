@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.4</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3.9</string>
+	<string>4.1</string>
 	<key>FacebookAppID</key>
 	<string>414979308853205</string>
 	<key>FacebookDisplayName</key>
@@ -44,6 +44,8 @@
 	<true/>
 	<key>NSCalendarsUsageDescription</key>
 	<string>WeTutor would like to access your calendar to help you schedule events</string>
+	<key>NSCameraUsageDescription</key>
+	<string>WeTutor would like access to the photo library to customize your profile. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>WeTutor would like to request your location to accurately give directions</string>
 	<key>NSPhotoLibraryUsageDescription</key>

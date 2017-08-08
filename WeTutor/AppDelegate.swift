@@ -41,36 +41,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = viewController*/
 
        if FIRAuth.auth()?.currentUser?.uid != nil {
+            print("FIRAuth.auth()?.currentUser?.uid != nil")
             FriendSystem.system.getCurrentUser { (user) in
                 currentUser = user
-                if let isTutor = currentUser?.isTutor as? Bool,
-                    
-                    let hasDescription = currentUser?.isTutor as? String,
-                    let availableDays = currentUser?.availableDaysArray,
-                    let uid = FIRAuth.auth()?.currentUser?.uid {
+                if let _ = currentUser?.isTutor,
+                    let _ = currentUser?.isTutor as? String,
+                    let _ = currentUser?.availableDaysArray,
+                    let _ = FIRAuth.auth()?.currentUser?.uid {
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
                     self.window?.rootViewController = viewController
-                    
-                    /* if isTutor == true {
-                     //self.present(viewController, animated: true, completion: nil)
-                     } else {
-                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutee", bundle: nil)
-                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tuteePagingMenuNC") as! UINavigationController
-                     window?.rootViewController = viewController
-                     // self.present(viewController, animated: true, completion: nil)
-                     }*/
                 }
-                
             }
         }
         
-        
-        
-        //print(userDefaults.value(forKey: "isTutor") as? Bool)
-       // print(userDefaults.value(forKey: "languages") as? [String])
-       // print(userDefaults.value(forKey: "description") as? String)
         print(FIRAuth.auth()?.currentUser?.uid)
         
         IQKeyboardManager.shared().isEnabled = true
@@ -81,27 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         STPPaymentConfiguration.shared().publishableKey = "pk_test_yov6ZvesIp3jqqP0lSplDmkF"
         
         STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.com.wetutor"
-              // DropDown.appearance().selectionBackgroundColor = UIColor.flatBlue
-       // DropDown.appearance().backgroundColor = UIColor.flatBlue
-        
-       /* let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "ProfilePictureViewController") as! UIViewController
-        window?.rootViewController = viewController*/
 
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "MenuViewController", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "MoreInfoViewControllerTest") as! UIViewController
-        window?.rootViewController = viewController*/
-        
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorSignUpViewControllerTwoNC") as! UINavigationController
-        window?.rootViewController = viewController*/
-        
-        
-        /*let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TutorOrTuteeViewController") as! UIViewController
-        window?.rootViewController = viewController  */
-        
-       
         
         // iOS 10 support
         if #available(iOS 10.0, *) {
