@@ -164,13 +164,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             
             
             let userCoordinate = self.currentUser!.coordinate
-            let currentUserUID = Auth.auth()?.currentUser?.uid
+            let currentUserUID = Auth.auth().currentUser?.uid
             
-            self.userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+            self.userRef.observe(.value, with: { (snapshot: DataSnapshot) in
                 var newUsers = [User]()
                 for user in snapshot.children {
                     
-                    var userObject = User(snapshot: user as! FIRDataSnapshot)
+                    var userObject = User(snapshot: user as! DataSnapshot)
                     let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
                     let isTutor = userObject.isTutor
                     userObject.coordinate = coordinate
@@ -291,7 +291,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         if currentUser?.completedTutorial == false {
         
-            self.coachMarksController.startOn(self)
+            self.coachMarksController.start(on: self)
             self.userRef.child((currentUser?.uid)!).child("completedTutorial").setValue(true)
         }
     }
@@ -309,13 +309,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         if currentUser != nil {
             
             let userCoordinate = currentUser!.coordinate
-            let currentUserUID = Auth.auth()?.currentUser?.uid
+            let currentUserUID = Auth.auth().currentUser?.uid
             
-            userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+            userRef.observe(.value, with: { (snapshot: DataSnapshot) in
                 var newUsers = [User]()
                 for user in snapshot.children {
                     
-                    var userObject = User(snapshot: user as! FIRDataSnapshot)
+                    var userObject = User(snapshot: user as! DataSnapshot)
                     let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
                     let isTutor = userObject.isTutor
                     userObject.coordinate = coordinate
@@ -488,14 +488,14 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             
             createChannel(otherUser: uid!)
         }*/
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         print("create new Chat")
        
         var finishedObserve = false
         
         if let uid = (sender as AnyObject).accessibilityIdentifier {
             print(uid)
-            channelRef.observe(FIRDataEventType.value, with: { (snapshot) in
+            channelRef.observe(DataEventType.value, with: { (snapshot) in
                 print("in observe")
                 let value = snapshot.value as? [String : AnyObject] ?? [:]
                 if let tuteeName = value["tuteeName"] as? String,
@@ -511,7 +511,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                            
                             self.senderDisplayName = userID
                         } else {
-                            self.senderDisplayName = Auth.auth()?.currentUser?.email
+                            self.senderDisplayName = Auth.auth().currentUser?.email
                         }
                         
                         
@@ -547,7 +547,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
        // let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         let isTutor = FriendSystem.system.currentUser?.isTutor
         
-        if let userID = Auth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth().currentUser?.uid {
             
             if isTutor == true {
                 tutorName = userID
@@ -571,7 +571,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
            // "calendarId": newCalendarId
         ]
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         
 
         
@@ -581,7 +581,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
             self.senderDisplayName = userID
         } else {
-            self.senderDisplayName = Auth.auth()?.currentUser?.email
+            self.senderDisplayName = Auth.auth().currentUser?.email
         }
         
 
@@ -649,7 +649,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             print("finalUserList \(index) \(auser.uid)")
         }
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         
         cell?.contentView.backgroundColor = UIColor.clear
         
@@ -867,7 +867,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             if let channelData = snapshot.value as? Dictionary<String, AnyObject> {
                 let id = snapshot.key
                 var ref: DatabaseReference!
-                let userID = Auth.auth()?.currentUser?.uid
+                let userID = Auth.auth().currentUser?.uid
                 ref = Database.database().reference()
                 ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     // Get user value
@@ -909,7 +909,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             //log if the user scrolls to bottom
             if currentUser != nil {
                 print("logged scroll to bottom")
-            FIRAnalytics.logEvent(withName: "scrolled_to_bottom", parameters: [
+            Analytics.logEvent("scrolled_to_bottom", parameters: [
                 "current_user": currentUser!.uid as NSObject,
                 "current_user_is_tutor": currentUser!.isTutor as NSObject
                 ])

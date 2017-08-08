@@ -55,7 +55,7 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var ensemble: UILabel!
     
-    var userID = Auth.auth()?.currentUser?.uid
+    var userID = Auth.auth().currentUser?.uid
     var ref: DatabaseReference!
     var currentUser: User?
     
@@ -166,7 +166,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func deleteAccount() {
-         let user = Auth.auth()?.currentUser
+         let user = Auth.auth().currentUser
         user?.delete { error in
             if error != nil {
                 // An error happened.
@@ -222,7 +222,7 @@ class SettingsTableViewController: UITableViewController {
         self.activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
         
-        try! Auth.auth()!.signOut()
+        try! Auth.auth().signOut()
         
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: "isTutor")

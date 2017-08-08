@@ -247,9 +247,9 @@ class SettingsBasicInfoTableViewController : FormViewController {
             
             let userDefaults = UserDefaults.standard
             userDefaults.set(description, forKey: "description")
-            let user = Auth.auth()?.currentUser
+            let user = Auth.auth().currentUser
             
-            let userID = Auth.auth()?.currentUser?.uid
+            let userID = Auth.auth().currentUser?.uid
             self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 print("got snapshot")
@@ -292,13 +292,13 @@ class SettingsBasicInfoTableViewController : FormViewController {
                     self.ref.child("users/\(userID!)/description").setValue(description)
                     self.ref.child("users/\(userID!)/gpa").setValue(gpa)
                     
-                    FIRAnalytics.setUserPropertyString(school, forName: "school")
-                    FIRAnalytics.setUserPropertyString(gender, forName: "gender")
-                    FIRAnalytics.setUserPropertyString(grade, forName: "grade")
-                    FIRAnalytics.setUserPropertyString(gpa, forName: "gpa")
+                    Analytics.setUserProperty(school, forName: "school")
+                    Analytics.setUserProperty(gender, forName: "gender")
+                    Analytics.setUserProperty(grade, forName: "grade")
+                    Analytics.setUserProperty(gpa, forName: "gpa")
                     
                     for subject in subjectArray! {
-                        FIRAnalytics.setUserPropertyString(subject, forName: "preferred_subject")
+                        Analytics.setUserProperty(subject, forName: "preferred_subject")
                     }
 
                     let geocoder = CLGeocoder()

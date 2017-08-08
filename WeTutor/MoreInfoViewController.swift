@@ -226,7 +226,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     func createChannel() {
         //To see if a user started a chat with someone on their friends list
         if currentUser != nil {
-            FIRAnalytics.logEvent(withName: "did_select_chat", parameters: [
+            Analytics.logEvent("did_select_chat", parameters: [
                 "current_user": currentUser.uid as NSObject,
                 "current_user_is_tutor": currentUser.isTutor as NSObject
                 ])
@@ -238,7 +238,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
             if snapshot.exists() {
                 print(" if snapshot.exists() {")
-                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                if let allChannels = snapshot.children.allObjects as? [DataSnapshot] {
                     print("typeofall")
                     print(type(of: allChannels))
                     print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
@@ -254,8 +254,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                             if self.currentUserIsTutor == false {
                                 if let tuteeName = channelDict["tuteeName"] as? String,
                                     let  tutorName = channelDict["tutorName"] as? String{
-                                    if tuteeName == Auth.auth()?.currentUser?.uid {
-                                        print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
+                                    if tuteeName == Auth.auth().currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == Auth.auth().currentUser?.uid {")
                                         
                                         if tutorName == destUserID {
                                             self.iterationStatus = "done"
@@ -271,8 +271,8 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                             } else if self.currentUserIsTutor == true {
                                 if let tuteeName = channelDict["tuteeName"] as? String,
                                     let  tutorName = channelDict["tutorName"] as? String{
-                                    if tutorName == Auth.auth()?.currentUser?.uid {
-                                        print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
+                                    if tutorName == Auth.auth().currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == Auth.auth().currentUser?.uid {")
                                         if tuteeName == destUserID {
                                             self.iterationStatus = "done"
                                             print("perform segue channel2")
@@ -294,7 +294,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             let uuid = UUID().uuidString
             if self.iterationStatus == "inProcess" {
                 if self.tutorOrTutee == "tuteeName" {
-                    let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth().currentUser?.uid)!, tuteeName: destUserID)
                     print("if tutorOrTutee == tuteeName {")
                     print("iterationStatus")
                     print(self.iterationStatus)
@@ -308,7 +308,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
                     
                     
                 } else if self.tutorOrTutee == "tutorName" {
-                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth()?.currentUser?.uid)!)
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth().currentUser?.uid)!)
                     print("if tutorOrTutee == tutorName {")
                     
                     print("if self.iterationStatus == inProcess2 {")
@@ -328,7 +328,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
         let userDefaults = UserDefaults.standard
         let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         
-        if let userID = Auth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth().currentUser?.uid {
             
             if isTutor == true {
                 tutorName = userID
@@ -352,7 +352,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             "calendarId": newCalendarId
         ]
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         
         
         
@@ -362,7 +362,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
             
             self.senderDisplayName = userID
         } else {
-            self.senderDisplayName = Auth.auth()?.currentUser?.email
+            self.senderDisplayName = Auth.auth().currentUser?.email
         }
         
         
@@ -383,7 +383,7 @@ class MoreInfoViewController: UIViewController, UIScrollViewDelegate {
     
     func createCalendar(destUser: User) -> String {
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
         let channelRef = Database.database().reference()

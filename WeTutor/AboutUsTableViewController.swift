@@ -16,7 +16,7 @@ class AboutUsTableViewController: UITableViewController, MFMailComposeViewContro
     var currentVersion: String = ""
     let currentLocale = NSLocale.current
     
-    let uid = Auth.auth()?.currentUser?.uid
+    let uid = Auth.auth().currentUser?.uid
     var sendFeedbackString = ""
     
     var uidString = ""

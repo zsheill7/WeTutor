@@ -257,7 +257,7 @@ open class MenuItemView: UIView {
             ])
     }
     
-    fileprivate func layoutDivider() {
+    open override func layoutDivider() {
         guard let dividerImageView = dividerImageView else { return }
         
         NSLayoutConstraint.activate([

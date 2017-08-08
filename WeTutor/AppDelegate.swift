@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      let gcmMessageIDKey = "gcm.message_id"
     func applicationDidFinishLaunching(_ application: UIApplication) {
         
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         let navigationBarAppearance = UINavigationBar.appearance()
         navigationBarAppearance.barTintColor = UIColor(netHex: 0x51679F/*0x959595*/)
@@ -40,14 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
         self.window?.rootViewController = viewController*/
 
-       if Auth.auth()?.currentUser?.uid != nil {
-            print("Auth.auth()?.currentUser?.uid != nil")
+       if Auth.auth().currentUser?.uid != nil {
+            print("Auth.auth().currentUser?.uid != nil")
             FriendSystem.system.getCurrentUser { (user) in
                 currentUser = user
                 if let _ = currentUser?.isTutor,
                     let _ = currentUser?.isTutor as? String,
                     let _ = currentUser?.availableDaysArray,
-                    let _ = Auth.auth()?.currentUser?.uid {
+                    let _ = Auth.auth().currentUser?.uid {
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        print(Auth.auth()?.currentUser?.uid)
+        print(Auth.auth().currentUser?.uid)
         
         IQKeyboardManager.shared().isEnabled = true
         DropDown.startListeningToKeyboard()
@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 completionHandler: {_, _ in })
             
             // For iOS 10 data message (sent via FCM)
-            FIRMessaging.messaging().remoteMessageDelegate = self
+            Messaging.messaging().remoteMessageDelegate = self
             
         } else {
             let settings: UIUserNotificationSettings =
@@ -190,9 +190,16 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 }
 // [END ios_10_message_handling]
 // [START ios_10_data_message_handling]
-extension AppDelegate : FIRMessagingDelegate {
+extension AppDelegate : MessagingDelegate {
+    /// This method will be called whenever FCM receives a new, default FCM token for your
+    /// Firebase project's Sender ID.
+    /// You can send this token to your application server to send notifications to this device.
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        
+    }
+
     // Receive data message on iOS 10 devices while app is in the foreground.
-    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+    func application(received remoteMessage: MessagingRemoteMessage) {
         print(remoteMessage.appData)
     }
 }

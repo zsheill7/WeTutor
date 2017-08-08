@@ -267,7 +267,7 @@ class PagingMenuViewController: UIViewController  {
                 self.present(controller, animated: true, completion: nil)
 
             } else if indexPath == 2 {
-                try! Auth.auth()!.signOut()
+                try! Auth.auth().signOut()
                 let userDefaults = UserDefaults.standard
                 userDefaults.removeObject(forKey: "isTutor")
                 userDefaults.removeObject(forKey: "languages")
@@ -287,7 +287,7 @@ class PagingMenuViewController: UIViewController  {
     
     // MARK: UIViewControllerTransitioningDelegate
     
-    public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let transition = BubbleTransition()
         transition.transitionMode = .present
         transition.startingPoint = self.view.center
@@ -295,7 +295,7 @@ class PagingMenuViewController: UIViewController  {
         return transition
     }
     
-    public override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let transition = BubbleTransition()
         transition.transitionMode = .dismiss
         transition.startingPoint = self.view.center//addEventButton.center
@@ -317,7 +317,7 @@ class PagingMenuViewController: UIViewController  {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination
-        controller.transitioningDelegate = self
+        controller.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
         controller.modalPresentationStyle = .custom
     }
     /*public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

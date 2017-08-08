@@ -39,8 +39,8 @@ class TutorOrTuteeViewController: UIViewController {
         
         self.view.addBackground("book.png")
         userRef = Database.database().reference().child("users")
-        if Auth.auth()?.currentUser?.uid != nil {
-            userUID = Auth.auth()!.currentUser!.uid
+        if Auth.auth().currentUser?.uid != nil {
+            userUID = Auth.auth().currentUser!.uid
         }
 
         centerX = CGFloat(self.view.frame.width / 2)
@@ -151,7 +151,7 @@ class TutorOrTuteeViewController: UIViewController {
         userDefaults.synchronize()
         self.currentUserIsTutor = false
  
-        FIRAnalytics.setUserPropertyString("false", forName: "is_tutor")
+        Analytics.setUserProperty("false", forName: "is_tutor")
         
         self.performSegue(withIdentifier: "toTutorSignUpVC", sender: self)
     }
@@ -163,7 +163,7 @@ class TutorOrTuteeViewController: UIViewController {
         userDefaults.setValue(true, forKey: "isTutor")
         self.currentUserIsTutor = true
         userDefaults.synchronize()
-        FIRAnalytics.setUserPropertyString("true", forName: "is_tutor")
+        Analytics.setUserProperty("true", forName: "is_tutor")
 
         self.performSegue(withIdentifier: "toTutorSignUpVC", sender: self)
     }

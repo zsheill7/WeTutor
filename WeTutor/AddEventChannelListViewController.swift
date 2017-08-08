@@ -59,7 +59,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         tableView.emptyDataSetDelegate = self
         tableView.tableFooterView = UIView()
        
-        if let userID = Auth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth().currentUser?.uid {
             userRef.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let userObject = User(snapshot: snapshot )
@@ -107,10 +107,10 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
     
     func startObservingDB () {
         
-        dbRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
+        dbRef.observe(.value, with: { (snapshot: DataSnapshot) in
             var newUsers = [User]()
             for user in snapshot.children {
-                let userObject = User(snapshot: user as! FIRDataSnapshot)
+                let userObject = User(snapshot: user as! DataSnapshot)
                 newUsers.append(userObject)
             }
             self.tutors = newUsers
@@ -149,7 +149,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         let userDefaults = UserDefaults.standard
         let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         
-        if let userID = Auth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth().currentUser?.uid {
             
             if isTutor == true {
                 tutorName = userID
@@ -169,7 +169,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
             "tuteeName": tuteeName
         ]
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         let uuid = UUID().uuidString
         let newChannelRef = channelRef.child(uuid)
@@ -191,14 +191,14 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         
         self.channels.removeAll()
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
         print("inside observeChannels)")
         for friend in FriendSystem.system.friendListThree {
             print("for friend in FriendSystem.system.friendListThree")
             var ref: DatabaseReference!
-            let userID = Auth.auth()?.currentUser?.uid
+            let userID = Auth.auth().currentUser?.uid
             ref = Database.database().reference()
             ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
@@ -326,7 +326,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
         
         //To see if a user started a chat with someone on their friends list
         if currentUser != nil {
-            FIRAnalytics.logEvent(withName: "did_select_chat", parameters: [
+            Analytics.logEvent("did_select_chat", parameters: [
                 "current_user": currentUser.uid as NSObject,
                 "current_user_is_tutor": currentUserIsTutor as NSObject
                 ])
@@ -338,7 +338,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
             if snapshot.exists() {
                 print(" if snapshot.exists() {")
-                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                if let allChannels = snapshot.children.allObjects as? [DataSnapshot] {
                     print("typeofall")
                     print(type(of: allChannels))
                     print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
@@ -354,8 +354,8 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                             if self.currentUserIsTutor == false {
                                 if let tuteeName = channelDict["tuteeName"] as? String,
                                     let  tutorName = channelDict["tutorName"] as? String{
-                                    if tuteeName == Auth.auth()?.currentUser?.uid {
-                                        print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
+                                    if tuteeName == Auth.auth().currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == Auth.auth().currentUser?.uid {")
                                         
                                         if tutorName == destUserID {
                                             self.iterationStatus = "done"
@@ -371,8 +371,8 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                             } else if self.currentUserIsTutor == true {
                                 if let tuteeName = channelDict["tuteeName"] as? String,
                                     let  tutorName = channelDict["tutorName"] as? String{
-                                    if tutorName == Auth.auth()?.currentUser?.uid {
-                                        print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
+                                    if tutorName == Auth.auth().currentUser?.uid {
+                                        print("if channel[self.tutorOrTutee] == Auth.auth().currentUser?.uid {")
                                         if tuteeName == destUserID {
                                             self.iterationStatus = "done"
                                             print("perform segue channel2")
@@ -394,7 +394,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
             let uuid = UUID().uuidString
             if self.iterationStatus == "inProcess" {
                 if self.tutorOrTutee == "tuteeName" {
-                    let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth().currentUser?.uid)!, tuteeName: destUserID)
                     print("if tutorOrTutee == tuteeName {")
                     print("iterationStatus")
                     print(self.iterationStatus)
@@ -408,7 +408,7 @@ class AddEventChannelListViewController: UITableViewController, DZNEmptyDataSetS
                     
                     
                 } else if self.tutorOrTutee == "tutorName" {
-                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth()?.currentUser?.uid)!)
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth().currentUser?.uid)!)
                     print("if tutorOrTutee == tutorName {")
                     
                     print("if self.iterationStatus == inProcess2 {")

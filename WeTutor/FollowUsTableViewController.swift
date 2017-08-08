@@ -59,7 +59,7 @@ class FollowUsTableViewController: UITableViewController {
                 UIApplication.shared.openURL(url)
             }
         } else {
-            FIRAnalytics.logEvent(withName: "opened URL", parameters: [
+            Analytics.logEvent("opened URL", parameters: [
                 "succeeded" : false as NSObject,
                 "urlString": urlString as NSObject
                 ])

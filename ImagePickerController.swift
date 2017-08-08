@@ -16,7 +16,7 @@ open class ImagePickerController : UIImagePickerController, TypedRowControllerTy
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
     }
     
     open func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

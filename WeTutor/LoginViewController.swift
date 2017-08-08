@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
     
     func alreadySignedIn() {
         ref = Database.database().reference()
-        let currentUserUID = Auth.auth()?.currentUser?.uid
+        let currentUserUID = Auth.auth().currentUser?.uid
         if currentUserUID != nil {
             
             ref.child("users").child(currentUserUID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -107,9 +107,9 @@ class LoginViewController: UIViewController {
         if self.emailField.text == "" || self.passwordField.text == "" {
             self.displayAlert("Error", message: "Please enter an email and password.")
         } else {
-            Auth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                 if error == nil {
-                    print("sign user.uid \(user?.uid) \(Auth.auth()?.currentUser?.uid)")
+                    print("sign user.uid \(user?.uid) \(Auth.auth().currentUser?.uid)")
                  //   print
                     /*if !(user?.isEmailVerified)!{
                      
@@ -138,7 +138,7 @@ class LoginViewController: UIViewController {
                     
                     ref = Database.database().reference()
                     
-                    //let userID = Auth.auth()?.currentUser?.uid
+                    //let userID = Auth.auth().currentUser?.uid
                     ref.child("users").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                         // Get user value
                         let userObject = User(snapshot: snapshot )
@@ -171,7 +171,7 @@ class LoginViewController: UIViewController {
                                     //self.displayAlert(title: "Unable to Sign Up", message: "Please try again later"/*error.localizedDescription*/)
                                 }
                             }*/
-                            let user = Auth.auth()?.currentUser
+                            let user = Auth.auth().currentUser
                             
                             user?.delete { error in
                                 if let error = error {
@@ -184,7 +184,7 @@ class LoginViewController: UIViewController {
                            
                         } else {
                         
-                            FIRAnalytics.logEvent(withName: "logged_in", parameters: [
+                            Analytics.logEvent("logged_in", parameters: [
                                 "name": userObject.name as NSObject,
                                 "is_tutor": userObject.isTutor as NSObject
                                 ])
@@ -303,7 +303,7 @@ class LoginViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
     }
     func resetIsTutor() {
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         var ref: DatabaseReference!
         
         ref = Database.database().reference()
@@ -340,7 +340,7 @@ class LoginViewController: UIViewController {
                 if emailTextField.text?.isEmail() == false {
                     SCLAlertView().showInfo("Error", subTitle: "Please enter a valid email.")
                 } else {
-                    Auth.auth()?.sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
+                    Auth.auth().sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
                        var title = ""
                         var message = ""
                         

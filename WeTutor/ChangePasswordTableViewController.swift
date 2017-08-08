@@ -12,7 +12,7 @@ import SCLAlertView
 class ChangePasswordTableViewController: UITableViewController {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var user = Auth.auth()?.currentUser
+    var user = Auth.auth().currentUser
 
     var ref: DatabaseReference!
     func displayAlert(title: String, message: String) {
@@ -43,7 +43,7 @@ class ChangePasswordTableViewController: UITableViewController {
         
         
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -73,7 +73,7 @@ class ChangePasswordTableViewController: UITableViewController {
                 UIApplication.shared.beginIgnoringInteractionEvents()
                 
                 
-                Auth.auth()?.currentUser?.updateEmail(self.newEmailField.text!, completion: { (error) in
+                Auth.auth().currentUser?.updateEmail(to: self.newEmailField.text!, completion: { (error) in
                     if error != nil {
                         self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
                     } else {
@@ -101,7 +101,7 @@ class ChangePasswordTableViewController: UITableViewController {
 
             self.displayAlert(title: "Not a Valid Email", message: "Please enter new email")
         } else {
-            Auth.auth()?.sendPasswordReset(withEmail: resetEmailField.text!) { (error) in
+            Auth.auth().sendPasswordReset(withEmail: resetEmailField.text!) { (error) in
                 if error != nil {
                     self.displayAlert(title: "Unable to Send Reset Email", message: "Please try again later")
                 } else {

@@ -28,8 +28,8 @@ class FriendSystem {
     
 
     var CURRENT_USER_REF: DatabaseReference {
-        let id = Auth.auth()?.currentUser!.uid
-        return USER_REF.child("\(id!)")
+        let id = Auth.auth().currentUser!.uid
+        return USER_REF.child("\(id)")
     }
     
 
@@ -44,8 +44,8 @@ class FriendSystem {
     
     /** The current user's id */
     var CURRENT_USER_ID: String {
-        let id = Auth.auth()?.currentUser!.uid
-        return id!
+        let id = Auth.auth().currentUser!.uid
+        return id
     }
 
     var currentUser: User?
@@ -82,7 +82,7 @@ class FriendSystem {
      indicates whether or not the signup was a success
      */
     func createAccount(_ email: String, password: String, name: String, completion: @escaping (_ success: Bool) -> Void) {
-        Auth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
             
             if (error == nil) {
                 // Success
@@ -103,13 +103,13 @@ class FriendSystem {
                 
                 completion(true)
                 
-                FIRAnalytics.logEvent(withName: "create_account", parameters: [
+                Analytics.logEvent("create_account", parameters: [
                     "succeeded": "true" as NSObject,
                     "userUID": user!.uid as NSObject,
                     "email": user!.email! as NSObject
                     ])
                 
-                Auth.auth()?.currentUser!.sendEmailVerification(completion: { (error) in
+                Auth.auth().currentUser!.sendEmailVerification(completion: { (error) in
                 })
                 
                 
@@ -128,13 +128,13 @@ class FriendSystem {
                 }
                 
                 if user != nil && user!.uid != nil && user!.email != nil{
-                FIRAnalytics.logEvent(withName: "create_account", parameters: [
+                Analytics.logEvent("create_account", parameters: [
                     "succeeded": "false" as NSObject,
                     "userUID": user!.uid as NSObject,
                     "email": user!.email! as NSObject
                     ])
                 } else {
-                    FIRAnalytics.logEvent(withName: "create_account", parameters: [
+                    Analytics.logEvent("create_account", parameters: [
                         "succeeded": "false" as NSObject,
                     ])
                 }
@@ -165,13 +165,13 @@ class FriendSystem {
         
         if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
             print(" if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {")
-            storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 
                 if error != nil {
                     print(error)
                     
                     if currentUserUID != nil {
-                        FIRAnalytics.logEvent(withName: "set_profile_image", parameters: [
+                        Analytics.logEvent("set_profile_image", parameters: [
                             "succeeded": "false" as NSObject,
                             "userUID": currentUserUID! as NSObject
                             ])
@@ -187,7 +187,7 @@ class FriendSystem {
                         usersRef.child(currentUserUID!).child("profileImageURL").setValue(profileImageUrl)
                         print("set image")
                     }
-                    FIRAnalytics.logEvent(withName: "set_profile_image", parameters: [
+                    Analytics.logEvent("set_profile_image", parameters: [
                         "succeeded": "true" as NSObject,
                         "userUID": currentUserUID! as NSObject
                         ])
@@ -210,7 +210,7 @@ class FriendSystem {
      */
     
     func loginAccount(_ email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
-        Auth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
             
             if (error == nil) {
                 // Success
@@ -226,9 +226,9 @@ class FriendSystem {
     
     /** Logs out an account */
     func logoutAccount() {
-        try! Auth.auth()?.signOut()
+        try! Auth.auth().signOut()
         
-        FIRAnalytics.logEvent(withName: "logged_out", parameters: [
+        Analytics.logEvent("logged_out", parameters: [
             "current_user": CURRENT_USER_ID as NSObject,
         ])
     }
@@ -247,7 +247,7 @@ class FriendSystem {
         CURRENT_USER_REF.child("friends").child(userID).removeValue()
         USER_REF.child(userID).child("friends").child(CURRENT_USER_ID).removeValue()
         
-        FIRAnalytics.logEvent(withName: "friend_removed", parameters: [
+        Analytics.logEvent("friend_removed", parameters: [
             "current_user": CURRENT_USER_ID as NSObject,
             "other_user": userID as NSObject
             ])
@@ -267,7 +267,7 @@ class FriendSystem {
         let userDefaults = UserDefaults.standard
         let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         
-        if let userID = Auth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth().currentUser?.uid {
             
             if isTutor == true {
                 tutorName = userID
@@ -287,7 +287,7 @@ class FriendSystem {
             "tuteeName": tuteeName
         ]
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         let userChannelRef = USER_REF.child(userID!).child("channels")
         let uuid = UUID().uuidString
         let newChannelRef = channelRef.child(uuid)
@@ -311,7 +311,7 @@ class FriendSystem {
         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool {
             
             if isTutor == true {
-                let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth()?.currentUser?.uid)!, tuteeName: userID)
+                let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth().currentUser?.uid)!, tuteeName: userID)
                 
                 
                 self.createChannel(otherUser: userID)
@@ -332,7 +332,7 @@ class FriendSystem {
         }
     
 
-        FIRAnalytics.logEvent(withName: "friend_added", parameters: [
+        Analytics.logEvent("friend_added", parameters: [
             "current_user": CURRENT_USER_ID as NSObject,
             "other_user": userID as NSObject
             ])
@@ -348,11 +348,11 @@ class FriendSystem {
      to update your UI. */
     
     func addUserObserver(_ update: @escaping () -> Void) {
-        /*FriendSystem.system.*/USER_REF.observe(FIRDataEventType.value, with: { (snapshot) in
+        /*FriendSystem.system.*/USER_REF.observe(DataEventType.value, with: { (snapshot) in
             //let myGroup = DispatchGroup()
             
             self.userList.removeAll()
-            for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
                 let value = child.value as? [String: AnyObject]
                 //print(value)
                 let email = value?["email"] as? String
@@ -368,7 +368,7 @@ class FriendSystem {
                 //print("name:" + name!)
                 // let email = snapshot.childSnapshot(forPath: "email").value as! String
                 
-                if email != Auth.auth()?.currentUser?.email! && description != nil {
+                if email != Auth.auth().currentUser?.email! && description != nil {
                     /*if (currentUserIsTutor == true && isTutor == false) ||
                         (currentUserIsTutor == false && isTutor == true) {*/
                         //print(User(snapshot: child))
@@ -425,12 +425,12 @@ class FriendSystem {
         CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
             
             
-            let friendSnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            let friendSnapshot = snapshot.children.allObjects as! [DataSnapshot]
             print("friendSnapshot \(friendSnapshot)")
             for child in friendSnapshot {
                 let id = child.key
                 myGroup.enter()
-                self.USER_REF.child(id).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                self.USER_REF.child(id).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                     if let email = snapshot.childSnapshot(forPath: "email").value as? String {
                         
                         let id = snapshot.key
@@ -490,7 +490,7 @@ class FriendSystem {
         CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
             
             
-            let friendSnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            let friendSnapshot = snapshot.children.allObjects as! [DataSnapshot]
             print("friendSnapshot \(friendSnapshot)")
             for child in friendSnapshot {
                 let id = child.key
@@ -544,7 +544,7 @@ class FriendSystem {
         CURRENT_USER_FRIENDS_REF.observeSingleEvent(of: .value, with: { snapshot in
             
             
-            let friendSnapshot = snapshot.children.allObjects as! [FIRDataSnapshot]
+            let friendSnapshot = snapshot.children.allObjects as! [DataSnapshot]
             print("3friendSnapshot \(friendSnapshot)")
             for child in friendSnapshot {
                 let id = child.key
@@ -606,9 +606,9 @@ class FriendSystem {
     /** Adds a friend request observer. The completion function will run every time this list changes, allowing you
      to update your UI. */
     func addRequestObserver(_ update: @escaping () -> Void) {
-        CURRENT_USER_REQUESTS_REF.observe(FIRDataEventType.value, with: { (snapshot) in
+        CURRENT_USER_REQUESTS_REF.observe(DataEventType.value, with: { (snapshot) in
             self.requestList.removeAll()
-            for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
                 let id = child.key
                 self.getUser(id, completion: { (user) in
                     self.requestList.append(user)

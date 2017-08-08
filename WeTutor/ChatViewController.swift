@@ -16,7 +16,7 @@ final class ChatViewController: JSQMessagesViewController {
   var channelRef: DatabaseReference?
 
   fileprivate lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
-  fileprivate lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference(forURL: "gs://tutorme-e7292.appspot.com")
+  fileprivate lazy var storageRef: StorageReference = Storage.storage().reference(forURL: "gs://tutorme-e7292.appspot.com")
   fileprivate lazy var userIsTypingRef: DatabaseReference = self.channelRef!.child("typingIndicator").child(self.senderId)
   fileprivate lazy var usersTypingQuery: DatabaseQuery = self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
 
@@ -52,8 +52,8 @@ final class ChatViewController: JSQMessagesViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.senderId = Auth.auth()?.currentUser?.uid
-    //self.senderDisplayName = Auth.auth()?.currentUser?.uid
+    self.senderId = Auth.auth().currentUser?.uid
+    //self.senderDisplayName = Auth.auth().currentUser?.uid
     
     print("channelRef")
     print(channelRef)
@@ -177,14 +177,14 @@ final class ChatViewController: JSQMessagesViewController {
   }
   
   fileprivate func fetchImageDataAtURL(_ photoURL: String, forMediaItem mediaItem: JSQPhotoMediaItem, clearsPhotoMessageMapOnSuccessForKey key: String?) {
-    let storageRef = FIRStorage.storage().reference(forURL: photoURL)
-    storageRef.data(withMaxSize: INT64_MAX){ (data, error) in
+    let storageRef = Storage.storage().reference(forURL: photoURL)
+    storageRef.getData(maxSize: INT64_MAX){ (data, error) in
       if let error = error {
         print("Error downloading image data: \(error)")
         return
       }
       
-      storageRef.metadata(completion: { (metadata, metadataErr) in
+      storageRef.getMetadata(completion: { (metadata, metadataErr) in
         if let error = metadataErr {
           print("Error downloading metadata: \(error)")
           return
@@ -212,7 +212,7 @@ final class ChatViewController: JSQMessagesViewController {
     userIsTypingRef.onDisconnectRemoveValue()
     usersTypingQuery = typingIndicatorRef.queryOrderedByValue().queryEqual(toValue: true)
     
-    usersTypingQuery.observe(.value) { (data: FIRDataSnapshot) in
+    usersTypingQuery.observe(.value) { (data: DataSnapshot) in
       
       // You're the only typing, don't show the indicator
       if data.childrenCount == 1 && self.isTyping {
@@ -262,7 +262,7 @@ final class ChatViewController: JSQMessagesViewController {
     isTyping = false
     
     //To see if a user sent a message.  We can count the number of times this happens to see how many messages are sent over time
-   FIRAnalytics.logEvent(withName: "did_send_message", parameters: [
+   Analytics.logEvent("did_send_message", parameters: [
     "current_user": senderId! as NSObject,
     //"current_user_is_tutor": currentUser.isTutor! as NSObject
     ])
@@ -308,7 +308,7 @@ final class ChatViewController: JSQMessagesViewController {
 
   override func didPressAccessoryButton(_ sender: UIButton) {
     let picker = UIImagePickerController()
-    picker.delegate = self
+    picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
     if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
       picker.sourceType = UIImagePickerControllerSourceType.camera
     } else {
@@ -367,10 +367,10 @@ extension ChatViewController: UIImagePickerControllerDelegate {
           let imageFileURL = contentEditingInput?.fullSizeImageURL
 
     
-          let path = "\(Auth.auth()?.currentUser?.uid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(photoReferenceUrl.lastPathComponent)"
+          let path = "\(Auth.auth().currentUser?.uid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(photoReferenceUrl.lastPathComponent)"
 
       
-          self.storageRef.child(path).putFile(imageFileURL!, metadata: nil) { (metadata, error) in
+          self.storageRef.child(path).putFile(from: imageFileURL!, metadata: nil) { (metadata, error) in
             if let error = error {
               print("Error uploading photo: \(error.localizedDescription)")
               return

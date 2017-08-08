@@ -117,7 +117,7 @@ struct User {
         coordinate
     }*/
     
-    init (snapshot:FIRDataSnapshot) {
+    init (snapshot:DataSnapshot) {
         
         let snapshotValue = snapshot.value as? NSDictionary
         let channelSnapshot = snapshot.childSnapshot(forPath: "channels")
@@ -125,7 +125,7 @@ struct User {
         
         channels = [Channel]()
        
-        for channel in channelSnapshot.children.allObjects as! [FIRDataSnapshot] {
+        for channel in channelSnapshot.children.allObjects as! [DataSnapshot] {
             let channelValue = channel.value as? NSDictionary
             let id = channel.key
             let name = "Chat"

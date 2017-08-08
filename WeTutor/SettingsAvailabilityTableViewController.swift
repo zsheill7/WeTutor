@@ -180,15 +180,15 @@ class SettingsAvailabilityTableViewController : FormViewController {
         
         if firstLanguage != "None" {
             languages.append(firstLanguage)
-            FIRAnalytics.setUserPropertyString(firstLanguage, forName: "first_language")
+            Analytics.setUserProperty(firstLanguage, forName: "first_language")
         }
         if secondLanguage != "None" && secondLanguage != nil{
             languages.append(secondLanguage!)
-            FIRAnalytics.setUserPropertyString(secondLanguage, forName: "second_language")
+            Analytics.setUserProperty(secondLanguage, forName: "second_language")
         }
         if thirdLanguage != "None" && thirdLanguage != nil{
             languages.append(thirdLanguage!)
-            FIRAnalytics.setUserPropertyString(thirdLanguage, forName: "third_language")
+            Analytics.setUserProperty(thirdLanguage, forName: "third_language")
         }
         
         print(languages)
@@ -196,14 +196,14 @@ class SettingsAvailabilityTableViewController : FormViewController {
         let row6: DecimalRow? = self.form.rowBy(tag: "Price")
         let hourlyPrice = row6?.value
         if hourlyPrice != nil {
-            FIRAnalytics.setUserPropertyString(String(describing: hourlyPrice), forName: "third_language")
+            Analytics.setUserProperty(String(describing: hourlyPrice), forName: "third_language")
         }
         
         
         for i in 0...6 {
-            FIRAnalytics.setUserPropertyString("\(weekDayArray[i])", forName: "\(weekdays[i])_available")
+            Analytics.setUserProperty("\(weekDayArray[i])", forName: "\(weekdays[i])_available")
         }
-        FIRAnalytics.setUserPropertyString(availabilityInfo, forName: "availability_info")
+        Analytics.setUserProperty(availabilityInfo, forName: "availability_info")
         
         
         
@@ -212,7 +212,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
         userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
         userDefaults.synchronize()
         
-        if let user = Auth.auth()?.currentUser {
+        if let user = Auth.auth().currentUser {
             self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
             self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
             self.ref.child("users/\(user.uid)/languages").setValue(languages)

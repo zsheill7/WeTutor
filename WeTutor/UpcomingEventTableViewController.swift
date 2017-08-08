@@ -104,7 +104,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
   
     
     let userRef = Database.database().reference().child("users")
-    var currentUserUID = Auth.auth()?.currentUser?.uid
+    var currentUserUID = Auth.auth().currentUser?.uid
     var currentUser: User?
     var calendars: [EKCalendar] = []
     
@@ -270,10 +270,10 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         print("in view did load")
-        print("Auth.auth.currentUser.uid \(Auth.auth()?.currentUser?.uid)")
+        print("Auth.auth.currentUser.uid \(Auth.auth().currentUser?.uid)")
         // Initialize the event store
         // eventStore = EKEventStore()
-        self.transitioningDelegate = self
+        self.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
         eventStore = EKEventStore()
         self.setupCalendarAppearance()
         
@@ -386,14 +386,14 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // We can use the observe method to listen for new
         // channels being written to the Firebase DB
         
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
         print("inside observeChannels)")
     
         print("for friend in FriendSystem.system.friendList")
         
-        //let userID = Auth.auth()?.currentUser?.uid
+        //let userID = Auth.auth().currentUser?.uid
         ref = Database.database().reference()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
@@ -443,7 +443,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     
     
     /*func loadCalendar() {
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -492,7 +492,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
             if snapshot.exists() {
                 print(" if snapshot.exists() {")
-                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                if let allChannels = snapshot.children.allObjects as? [DataSnapshot] {
                     print("typeofall")
                     print(type(of: allChannels))
                     print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
@@ -511,8 +511,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
                                         print(" let  tutorName = channelDict[tutorName] as? String{")
-                                        if tuteeName == Auth.auth()?.currentUser?.uid {
-                                            print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
+                                        if tuteeName == Auth.auth().currentUser?.uid {
+                                            print("if channel[self.tutorOrTutee] == Auth.auth().currentUser?.uid {")
                                             
                                             if tutorName == destUserID {
                                                 self.iterationStatus = "done"
@@ -542,8 +542,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
                                          print(" let  tutorName = channelDict[tutorName] as? String{")
-                                        if tutorName == Auth.auth()?.currentUser?.uid {
-                                            print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
+                                        if tutorName == Auth.auth().currentUser?.uid {
+                                            print("if channel[self.tutorOrTutee] == Auth.auth().currentUser?.uid {")
                                             if tuteeName == destUserID {
                                                 self.iterationStatus = "done"
                                                 print("perform segue channel")
@@ -578,7 +578,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             /*let uuid = UUID().uuidString
             if self.iterationStatus == "inProcess" {
                 if self.tutorOrTutee == "tuteeName" {
-                    let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth().currentUser?.uid)!, tuteeName: destUserID)
                     print("if tutorOrTutee == tuteeName {")
                     print("iterationStatus")
                     print(self.iterationStatus)
@@ -592,7 +592,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                     
                     
                 } else if self.tutorOrTutee == "tutorName" {
-                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth()?.currentUser?.uid)!)
+                    let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth().currentUser?.uid)!)
                     print("if tutorOrTutee == tutorName {")
                     
                     print("if self.iterationStatus == inProcess2 {")
@@ -626,7 +626,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             print("channelRef.observeSingleEvent(of: .value, with: { (snapshot) in")
             if snapshot.exists() {
                 print(" if snapshot.exists() {")
-                if let allChannels = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                if let allChannels = snapshot.children.allObjects as? [DataSnapshot] {
                     print("typeofall")
                     print(type(of: allChannels))
                     print("if let allChannels = ((snapshot.value as AnyObject).allKeys)! as? [String] {")
@@ -662,8 +662,8 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                             let destUserID = destUser.uid
                                             /*let currentUserIsTutorNameDict = [
                                                 true: ["tutorName": destUserID,
-                                                                       "tuteeName": Auth.auth()?.currentUser?.uid],
-                                                false: ["tutorName": Auth.auth()?.currentUser?.uid,
+                                                                       "tuteeName": Auth.auth().currentUser?.uid],
+                                                false: ["tutorName": Auth.auth().currentUser?.uid,
                                                                        "tuteeName": destUserID]
                                             ]*/
                                             print("channelDict[events] \(channelDict["events"])")
@@ -673,16 +673,16 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
                                     if let tuteeName = channelDict["tuteeName"] as? String,
                                         let  tutorName = channelDict["tutorName"] as? String{
                                         print("2 let  tutorName = channelDict[tutorName] as? String{")
-                                        //print("(currentUserIsTutorNameDict[self.currentUserIsTutor]?[tutorName])! \((currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])!) \(Auth.auth()?.currentUser?.uid)")
+                                        //print("(currentUserIsTutorNameDict[self.currentUserIsTutor]?[tutorName])! \((currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])!) \(Auth.auth().currentUser?.uid)")
                                        //if (tutorName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tutorName"])! || ()) {
                                         
-                                        print("3self.currentUserIsTutor == true \(self.currentUserIsTutor == true) tutorName == Auth.auth()?.currentUser?.uid \(tutorName) \(Auth.auth()?.currentUser?.uid)")
-                                        if ((tutorName == Auth.auth()?.currentUser?.uid) || (tuteeName == Auth.auth()?.currentUser?.uid)) {
+                                        print("3self.currentUserIsTutor == true \(self.currentUserIsTutor == true) tutorName == Auth.auth().currentUser?.uid \(tutorName) \(Auth.auth().currentUser?.uid)")
+                                        if ((tutorName == Auth.auth().currentUser?.uid) || (tuteeName == Auth.auth().currentUser?.uid)) {
                                           
                                         //if tuteeName == (currentUserIsTutorNameDict[self.currentUserIsTutor]?["tuteeName"])! {
                                                 self.iterationStatus = "done"
                                                 
-                                                 print("2if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
+                                                 print("2if channel[self.tutorOrTutee] == Auth.auth().currentUser?.uid { tutor\(tutorName) tutee \(tuteeName) channel \(channel.key)")
                                                 print("perform segue channel upcoming event")
                                                 print(channel)
                                             
@@ -739,7 +739,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
             /*let uuid = UUID().uuidString
              if self.iterationStatus == "inProcess" {
              if self.tutorOrTutee == "tuteeName" {
-             let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+             let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth().currentUser?.uid)!, tuteeName: destUserID)
              print("if tutorOrTutee == tuteeName {")
              print("iterationStatus")
              print(self.iterationStatus)
@@ -753,7 +753,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
              
              
              } else if self.tutorOrTutee == "tutorName" {
-             let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth()?.currentUser?.uid)!)
+             let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth().currentUser?.uid)!)
              print("if tutorOrTutee == tutorName {")
              
              print("if self.iterationStatus == inProcess2 {")
@@ -781,7 +781,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }*/
     /*func createCalendar(_ channelId: String) {
      
-        let userID = Auth.auth()?.currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         
         let channelRef = Database.database().reference().child("channels")
@@ -859,7 +859,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     // event view controller with this event.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination
-        controller.transitioningDelegate = self
+        controller.transitioningDelegate = self as! UIViewControllerTransitioningDelegate
         controller.modalPresentationStyle = .custom
         /*if segue.identifier == "showEventViewController" {
             // Configure the destination event view controller
@@ -984,7 +984,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
     }*/
     // MARK: UIViewControllerTransitioningDelegate
     
-    public override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let transition = BubbleTransition()
         transition.transitionMode = .present
         transition.startingPoint = addEventButton.center
@@ -992,7 +992,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         return transition
     }
     
-    public override func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let transition = BubbleTransition()
         transition.transitionMode = .dismiss
         transition.startingPoint = addEventButton.center
@@ -1092,7 +1092,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         addController.editViewDelegate = self
         
         //Add a new calendar event
-        FIRAnalytics.logEvent(withName: "added_calendar_event", parameters: [
+        Analytics.logEvent(withName: "added_calendar_event", parameters: [
             "current_user": currentUserUID! as NSObject,
             "current_user_is_tutor": currentUserIsTutor as NSObject
             ])
@@ -1109,7 +1109,7 @@ class UpcomingEventTableViewController: UIViewController, UITableViewDelegate, U
         // Dismiss the modal view controller
         
         //See if the user finished adding the calendar event
-        FIRAnalytics.logEvent(withName: "finished_added_calendar_event", parameters: [
+        Analytics.logEvent("finished_added_calendar_event", parameters: [
             "current_user": currentUserUID! as NSObject,
             "current_user_is_tutor": currentUserIsTutor as NSObject
         ])

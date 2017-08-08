@@ -12,7 +12,7 @@ import Firebase
 class ProfilePictureViewController: UIViewController, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var nextButton: UIButton!
-    var user = Auth.auth()?.currentUser
+    var user = Auth.auth().currentUser
     
     let pickedProfileImage = UIImagePickerController()
     
@@ -84,7 +84,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let userID = Auth.auth()?.currentUser?.uid
+                let userID = Auth.auth().currentUser?.uid
                 self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     let value = snapshot.value as? NSDictionary
                     let profileImageURL = value?["profileImageURL"] as? String ?? ""
@@ -117,7 +117,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         let alert = SCLAlertView(appearance: appearance)
         
         let choosePhotoButton = alert.addButton("Choose From Photo Library") {
-            self.pickedProfileImage.delegate = self
+            self.pickedProfileImage.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
             self.pickedProfileImage.sourceType = UIImagePickerControllerSourceType.photoLibrary
             self.pickedProfileImage.allowsEditing = false
             

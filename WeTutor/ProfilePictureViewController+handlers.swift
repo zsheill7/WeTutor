@@ -42,7 +42,7 @@ extension ProfilePictureViewController {
     func handleSelectProfileImageView() {
         let picker = UIImagePickerController()
         
-        picker.delegate = self
+        picker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
         picker.allowsEditing = true
         
         present(picker, animated: true, completion: nil)
@@ -87,7 +87,7 @@ extension ProfilePictureViewController {
         
         if let profileImage = self.profileImageView.image, let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
             
-            storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 
                 if error != nil {
                     print(error)

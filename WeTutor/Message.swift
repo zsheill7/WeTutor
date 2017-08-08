@@ -32,7 +32,7 @@ class Message: NSObject {
     }
     
     func chatPartnerId() -> String? {
-        return senderId == Auth.auth()?.currentUser?.uid ? toId : senderId
+        return senderId == Auth.auth().currentUser?.uid ? toId : senderId
     }
     
 }
