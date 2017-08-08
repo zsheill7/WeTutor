@@ -53,8 +53,8 @@ class SelfProfileViewController: UIViewController, UIScrollViewDelegate {
     // @IBOutlet weak var weekDayView: UIScrollView!
     
     var UID: String!
-    var userRef = FIRDatabase.database().reference().child("users")
-    var dbRef: FIRDatabaseReference!
+    var userRef = Database.database().reference().child("users")
+    var dbRef: DatabaseReference!
     var tutors = [User]()
     
     

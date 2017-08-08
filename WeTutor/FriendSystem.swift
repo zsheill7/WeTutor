@@ -22,29 +22,29 @@ class FriendSystem {
 
     // MARK: - Firebase references
 
-    let BASE_REF = FIRDatabase.database().reference()
+    let BASE_REF = Database.database().reference()
 
-    let USER_REF = FIRDatabase.database().reference().child("users")
+    let USER_REF = Database.database().reference().child("users")
     
 
-    var CURRENT_USER_REF: FIRDatabaseReference {
-        let id = FIRAuth.auth()?.currentUser!.uid
+    var CURRENT_USER_REF: DatabaseReference {
+        let id = Auth.auth()?.currentUser!.uid
         return USER_REF.child("\(id!)")
     }
     
 
-    var CURRENT_USER_FRIENDS_REF: FIRDatabaseReference {
+    var CURRENT_USER_FRIENDS_REF: DatabaseReference {
         return CURRENT_USER_REF.child("friends")
     }
     
     /** Gets the current user's active friend requests **/
-    var CURRENT_USER_REQUESTS_REF: FIRDatabaseReference {
+    var CURRENT_USER_REQUESTS_REF: DatabaseReference {
         return CURRENT_USER_REF.child("requests")
     }
     
     /** The current user's id */
     var CURRENT_USER_ID: String {
-        let id = FIRAuth.auth()?.currentUser!.uid
+        let id = Auth.auth()?.currentUser!.uid
         return id!
     }
 
@@ -52,7 +52,7 @@ class FriendSystem {
     
     /** Gets the current User object for the user id */
     func getCurrentUser(_ completion: @escaping (User) -> Void) {
-        CURRENT_USER_REF.observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+        CURRENT_USER_REF.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             let email = value?["email"] as? String
            // let email = snapshot.childSnapshot(forPath: "email").value as! String
@@ -63,7 +63,7 @@ class FriendSystem {
     }
     /** Gets the User object for the specified user id */
     func getUser(_ userID: String, completion: @escaping (User) -> Void) {
-        USER_REF.child(userID).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+        USER_REF.child(userID).observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             if let email = snapshot.childSnapshot(forPath: "email").value as? String {
             
                 let id = snapshot.key
@@ -82,7 +82,7 @@ class FriendSystem {
      indicates whether or not the signup was a success
      */
     func createAccount(_ email: String, password: String, name: String, completion: @escaping (_ success: Bool) -> Void) {
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             
             if (error == nil) {
                 // Success
@@ -98,7 +98,7 @@ class FriendSystem {
                 let profileImage = UIImage(named: animalImageNames[animalIndex])
                 print(profileImage)
                // let userInfo = ["name": user?.displayName, "email": user?.email]
-                //FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
+                //Database.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
                 self.setProfileImage(profileImage: profileImage!)
                 
                 completion(true)
@@ -109,7 +109,7 @@ class FriendSystem {
                     "email": user!.email! as NSObject
                     ])
                 
-                FIRAuth.auth()?.currentUser!.sendEmailVerification(completion: { (error) in
+                Auth.auth()?.currentUser!.sendEmailVerification(completion: { (error) in
                 })
                 
                 
@@ -155,12 +155,12 @@ class FriendSystem {
         
     func setProfileImage(profileImage: UIImage) {
         print("inside setprofileimage")
-        FIRAnalytics.setUserPropertyString("true", forName: "did_set_profile_image")
+        Analytics.setUserProperty("true", forName: "did_set_profile_image")
         let imageName = UUID().uuidString
-        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
+        let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).jpg")
         
-        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
-        let usersRef = FIRDatabase.database().reference().child("users")
+        let currentUserUID = Auth.auth().currentUser?.uid
+        let usersRef = Database.database().reference().child("users")
         
         
         if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
@@ -210,7 +210,7 @@ class FriendSystem {
      */
     
     func loginAccount(_ email: String, password: String, completion: @escaping (_ success: Bool) -> Void) {
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
             
             if (error == nil) {
                 // Success
@@ -226,7 +226,7 @@ class FriendSystem {
     
     /** Logs out an account */
     func logoutAccount() {
-        try! FIRAuth.auth()?.signOut()
+        try! Auth.auth()?.signOut()
         
         FIRAnalytics.logEvent(withName: "logged_out", parameters: [
             "current_user": CURRENT_USER_ID as NSObject,
@@ -253,7 +253,7 @@ class FriendSystem {
             ])
     }
     
-    fileprivate lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
+    fileprivate lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
     func createChannel(otherUser: String) {
         
         var tutorName: String = ""
@@ -267,7 +267,7 @@ class FriendSystem {
         let userDefaults = UserDefaults.standard
         let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         
-        if let userID = FIRAuth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth()?.currentUser?.uid {
             
             if isTutor == true {
                 tutorName = userID
@@ -287,7 +287,7 @@ class FriendSystem {
             "tuteeName": tuteeName
         ]
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth()?.currentUser?.uid
         let userChannelRef = USER_REF.child(userID!).child("channels")
         let uuid = UUID().uuidString
         let newChannelRef = channelRef.child(uuid)
@@ -311,7 +311,7 @@ class FriendSystem {
         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool {
             
             if isTutor == true {
-                let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: userID)
+                let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth()?.currentUser?.uid)!, tuteeName: userID)
                 
                 
                 self.createChannel(otherUser: userID)
@@ -321,7 +321,7 @@ class FriendSystem {
                 
                 
             } else if isTutor == false {
-                let channel = Channel(id: uuid, name: "Chat", tutorName: userID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
+                let channel = Channel(id: uuid, name: "Chat", tutorName: userID, tuteeName: (Auth.auth().currentUser?.uid)!)
                 
                 self.createChannel(otherUser: userID)
                 print("perform segue channel4")
@@ -368,7 +368,7 @@ class FriendSystem {
                 //print("name:" + name!)
                 // let email = snapshot.childSnapshot(forPath: "email").value as! String
                 
-                if email != FIRAuth.auth()?.currentUser?.email! && description != nil {
+                if email != Auth.auth()?.currentUser?.email! && description != nil {
                     /*if (currentUserIsTutor == true && isTutor == false) ||
                         (currentUserIsTutor == false && isTutor == true) {*/
                         //print(User(snapshot: child))
@@ -416,7 +416,7 @@ class FriendSystem {
     var friendListTwo = [User]()
     var friendListThree = [User]()
   
-    //FIRDatabaseReference
+    //DatabaseReference
     func addFriendObserver(friendListNumber: Int, _ update: @escaping () -> Void) {
         print("friendobserverFriendSystem.system.friendList.count \(FriendSystem.system.friendListOne.count)")
         friendListOne = [User]()

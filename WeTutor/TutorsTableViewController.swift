@@ -56,9 +56,9 @@ struct CoachMarkInfo {
 
 class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, TwicketSegmentedControlDelegate, UITableViewDelegate, UITableViewDataSource, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
 
-    var dbRef: FIRDatabaseReference!
+    var dbRef: DatabaseReference!
     var tutors = [User]()
-    var userRef: FIRDatabaseReference!
+    var userRef: DatabaseReference!
     var senderDisplayName: String?
     var newChannel: Channel?
     var destinationUser: User!
@@ -79,13 +79,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     
-    fileprivate var channelRefHandle: FIRDatabaseHandle?
+    fileprivate var channelRefHandle: DatabaseHandle?
     fileprivate var channels: [Channel] = []
     var tutorName: String = "Chat"
     var tuteeName: String = "Chat"
     var UID: String = ""
     
-    fileprivate lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
+    fileprivate lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
     
     deinit {
         if let refHandle = channelRefHandle {
@@ -113,7 +113,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userRef = FIRDatabase.database().reference().child("users")
+        userRef = Database.database().reference().child("users")
         
         setupDropDown()
         
@@ -164,7 +164,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             
             
             let userCoordinate = self.currentUser!.coordinate
-            let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+            let currentUserUID = Auth.auth()?.currentUser?.uid
             
             self.userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
                 var newUsers = [User]()
@@ -309,7 +309,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         if currentUser != nil {
             
             let userCoordinate = currentUser!.coordinate
-            let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+            let currentUserUID = Auth.auth()?.currentUser?.uid
             
             userRef.observe(.value, with: { (snapshot: FIRDataSnapshot) in
                 var newUsers = [User]()
@@ -488,7 +488,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             
             createChannel(otherUser: uid!)
         }*/
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth()?.currentUser?.uid
         print("create new Chat")
        
         var finishedObserve = false
@@ -511,7 +511,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                            
                             self.senderDisplayName = userID
                         } else {
-                            self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+                            self.senderDisplayName = Auth.auth()?.currentUser?.email
                         }
                         
                         
@@ -547,7 +547,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
        // let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         let isTutor = FriendSystem.system.currentUser?.isTutor
         
-        if let userID = FIRAuth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth()?.currentUser?.uid {
             
             if isTutor == true {
                 tutorName = userID
@@ -571,7 +571,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
            // "calendarId": newCalendarId
         ]
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth()?.currentUser?.uid
         
 
         
@@ -581,7 +581,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
             self.senderDisplayName = userID
         } else {
-            self.senderDisplayName = FIRAuth.auth()?.currentUser?.email
+            self.senderDisplayName = Auth.auth()?.currentUser?.email
         }
         
 
@@ -639,9 +639,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         tuteeCell?.selectionStyle = UITableViewCellSelectionStyle.none
         
-       var ref: FIRDatabaseReference!
+       var ref: DatabaseReference!
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         let userAtRow = finalUserList[indexPath.row]
         
@@ -649,7 +649,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             print("finalUserList \(index) \(auser.uid)")
         }
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth()?.currentUser?.uid
         
         cell?.contentView.backgroundColor = UIColor.clear
         
@@ -866,9 +866,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in
             if let channelData = snapshot.value as? Dictionary<String, AnyObject> {
                 let id = snapshot.key
-                var ref: FIRDatabaseReference!
-                let userID = FIRAuth.auth()?.currentUser?.uid
-                ref = FIRDatabase.database().reference()
+                var ref: DatabaseReference!
+                let userID = Auth.auth()?.currentUser?.uid
+                ref = Database.database().reference()
                 ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     // Get user value
                     let userObject = User(snapshot: snapshot )

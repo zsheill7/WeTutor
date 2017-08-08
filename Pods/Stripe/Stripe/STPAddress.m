@@ -13,16 +13,41 @@
 #import "STPPhoneNumberValidator.h"
 #import "STPPostalCodeValidator.h"
 
+#import <Contacts/Contacts.h>
+
 #define FAUXPAS_IGNORED_IN_FILE(...)
 FAUXPAS_IGNORED_IN_FILE(APIAvailability)
+
+NSString *stringIfHasContentsElseNil(NSString *string);
 
 @interface STPAddress ()
 
 @property (nonatomic, readwrite, nonnull, copy) NSDictionary *allResponseFields;
-
+@property (nonatomic, readwrite, nullable, copy) NSString *givenName;
+@property (nonatomic, readwrite, nullable, copy) NSString *familyName;
 @end
 
 @implementation STPAddress
+
++ (NSDictionary *)shippingInfoForChargeWithAddress:(nullable STPAddress *)address
+                                    shippingMethod:(nullable PKShippingMethod *)method {
+    if (!address) {
+        return nil;
+    }
+    NSMutableDictionary *params = [NSMutableDictionary new];
+    params[@"name"] = address.name;
+    params[@"phone"] = address.phone;
+    params[@"carrier"] = method.label;
+    NSMutableDictionary *addressDict = [NSMutableDictionary new];
+    addressDict[@"line1"] = address.line1;
+    addressDict[@"line2"] = address.line2;
+    addressDict[@"city"] = address.city;
+    addressDict[@"state"] = address.state;
+    addressDict[@"postal_code"] = address.postalCode;
+    addressDict[@"country"] = address.country;
+    params[@"address"] = [addressDict copy];
+    return [params copy];
+}
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
@@ -126,6 +151,61 @@ FAUXPAS_IGNORED_IN_FILE(APIAvailability)
 
 #pragma clang diagnostic pop
 
+- (NSString *)sanitizedPhoneStringFromCNPhoneNumber:(CNPhoneNumber *)phoneNumber {
+    NSString *phone = phoneNumber.stringValue;
+    if (phone) {
+        phone = [STPCardValidator sanitizedNumericStringForString:phone];
+    }
+
+    return stringIfHasContentsElseNil(phone);
+}
+
+- (instancetype)initWithCNContact:(CNContact *)contact {
+    self = [super init];
+    if (self) {
+
+        _givenName = stringIfHasContentsElseNil(contact.givenName);
+        _familyName = stringIfHasContentsElseNil(contact.familyName);
+        _name = stringIfHasContentsElseNil([CNContactFormatter stringFromContact:contact
+                                                                           style:CNContactFormatterStyleFullName]);
+        _email = stringIfHasContentsElseNil([contact.emailAddresses firstObject].value);
+        _phone = [self sanitizedPhoneStringFromCNPhoneNumber:contact.phoneNumbers.firstObject.value];
+
+
+        [self setAddressFromCNPostalAddress:contact.postalAddresses.firstObject.value];
+    }
+    return self;
+}
+
+- (instancetype)initWithPKContact:(PKContact *)contact {
+    self = [super init];
+    if (self) {
+        NSPersonNameComponents *nameComponents = contact.name;
+        if (nameComponents) {
+            _givenName = stringIfHasContentsElseNil(nameComponents.givenName);
+            _familyName = stringIfHasContentsElseNil(nameComponents.familyName);
+            _name = stringIfHasContentsElseNil([NSPersonNameComponentsFormatter localizedStringFromPersonNameComponents:nameComponents
+                                                                                                                  style:NSPersonNameComponentsFormatterStyleDefault
+                                                                                                                options:(NSPersonNameComponentsFormatterOptions)0]);
+        }
+        _email = stringIfHasContentsElseNil(contact.emailAddress);
+        _phone = [self sanitizedPhoneStringFromCNPhoneNumber:contact.phoneNumber];
+        [self setAddressFromCNPostalAddress:contact.postalAddress];
+
+    }
+    return self;
+}
+
+- (void)setAddressFromCNPostalAddress:(CNPostalAddress *)address {
+    if (address) {
+        _line1 = stringIfHasContentsElseNil(address.street);
+        _city = stringIfHasContentsElseNil(address.city);
+        _state = stringIfHasContentsElseNil(address.state);
+        _postalCode = stringIfHasContentsElseNil(address.postalCode);
+        _country = stringIfHasContentsElseNil(address.ISOCountryCode.uppercaseString);
+    }
+}
+
 - (PKContact *)PKContactValue {
     PKContact *contact = [PKContact new];
     NSPersonNameComponents *name = [NSPersonNameComponents new];
@@ -145,19 +225,29 @@ FAUXPAS_IGNORED_IN_FILE(APIAvailability)
 }
 
 - (NSString *)firstName {
-    NSArray<NSString *>*components = [self.name componentsSeparatedByString:@" "];
-    return [components firstObject];
+    if (self.givenName) {
+        return self.givenName;
+    }
+    else {
+        NSArray<NSString *>*components = [self.name componentsSeparatedByString:@" "];
+        return [components firstObject];
+    }
 }
 
 - (NSString *)lastName {
-    NSArray<NSString *>*components = [self.name componentsSeparatedByString:@" "];
-    NSString *firstName = [components firstObject];
-    NSString *lastName = [self.name stringByReplacingOccurrencesOfString:firstName withString:@""];
-    lastName = [lastName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if ([lastName length] == 0) {
-        lastName = nil;
+    if (self.familyName) {
+        return self.familyName;
     }
-    return lastName;
+    else {
+        NSArray<NSString *>*components = [self.name componentsSeparatedByString:@" "];
+        NSString *firstName = [components firstObject];
+        NSString *lastName = [self.name stringByReplacingOccurrencesOfString:firstName withString:@""];
+        lastName = [lastName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        if ([lastName length] == 0) {
+            lastName = nil;
+        }
+        return lastName;
+    }
 }
 
 - (NSString *)street {
@@ -177,8 +267,8 @@ FAUXPAS_IGNORED_IN_FILE(APIAvailability)
         case STPBillingAddressFieldsNone:
             return YES;
         case STPBillingAddressFieldsZip:
-            return [STPPostalCodeValidator stringIsValidPostalCode:self.postalCode 
-                                                       countryCode:self.country];
+            return ([STPPostalCodeValidator validationStateForPostalCode:self.postalCode
+                                                             countryCode:self.country] == STPCardValidationStateValid);
         case STPBillingAddressFieldsFull:
             return [self hasValidPostalAddress];
     }
@@ -207,8 +297,8 @@ FAUXPAS_IGNORED_IN_FILE(APIAvailability)
             && self.city.length > 0 
             && self.country.length > 0 
             && (self.state.length > 0 || ![self.country isEqualToString:@"US"])  
-            && [STPPostalCodeValidator stringIsValidPostalCode:self.postalCode 
-                                                   countryCode:self.country]);
+            && ([STPPostalCodeValidator validationStateForPostalCode:self.postalCode
+                                                         countryCode:self.country] == STPCardValidationStateValid));
 }
 
 + (PKAddressField)applePayAddressFieldsFromBillingAddressFields:(STPBillingAddressFields)billingAddressFields {
@@ -246,4 +336,13 @@ FAUXPAS_IGNORED_IN_FILE(APIAvailability)
 }
 
 @end
+
+NSString *stringIfHasContentsElseNil(NSString *string) {
+    if (string.length > 0) {
+        return string;
+    }
+    else {
+        return nil;
+    }
+}
 

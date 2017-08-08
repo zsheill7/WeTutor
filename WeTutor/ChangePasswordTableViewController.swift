@@ -12,16 +12,16 @@ import SCLAlertView
 class ChangePasswordTableViewController: UITableViewController {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var user = FIRAuth.auth()?.currentUser
+    var user = Auth.auth()?.currentUser
 
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     func displayAlert(title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
 
     }
     
     override func viewDidLoad() {
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
     }
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
@@ -43,7 +43,7 @@ class ChangePasswordTableViewController: UITableViewController {
         
         
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -73,7 +73,7 @@ class ChangePasswordTableViewController: UITableViewController {
                 UIApplication.shared.beginIgnoringInteractionEvents()
                 
                 
-                FIRAuth.auth()?.currentUser?.updateEmail(self.newEmailField.text!, completion: { (error) in
+                Auth.auth()?.currentUser?.updateEmail(self.newEmailField.text!, completion: { (error) in
                     if error != nil {
                         self.displayAlert(title: "Error", message: (error?.localizedDescription)!)
                     } else {
@@ -101,7 +101,7 @@ class ChangePasswordTableViewController: UITableViewController {
 
             self.displayAlert(title: "Not a Valid Email", message: "Please enter new email")
         } else {
-            FIRAuth.auth()?.sendPasswordReset(withEmail: resetEmailField.text!) { (error) in
+            Auth.auth()?.sendPasswordReset(withEmail: resetEmailField.text!) { (error) in
                 if error != nil {
                     self.displayAlert(title: "Unable to Send Reset Email", message: "Please try again later")
                 } else {

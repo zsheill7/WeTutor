@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "39F379914D170726C408D9FE7228FF32"
+               BlueprintIdentifier = "ADB521B8E11AD8808E6DCC797D329168"
                BuildableName = "Pods_WeTutor.framework"
                BlueprintName = "Pods-WeTutor"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "39F379914D170726C408D9FE7228FF32"
+            BlueprintIdentifier = "ADB521B8E11AD8808E6DCC797D329168"
             BuildableName = "Pods_WeTutor.framework"
             BlueprintName = "Pods-WeTutor"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -18,7 +18,7 @@ class AboutThisAppViewController: UIViewController {
     @IBOutlet var textView: UITextView!
     
     var currentUserIsTutor: Bool?
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.linkTextAttributes = [NSForegroundColorAttributeName: UIColor.lightTeal().lighten(byPercentage: 0.5) ?? UIColor.lightTeal()]

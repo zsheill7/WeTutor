@@ -117,6 +117,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Stripe/Stripe.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Timepiece/Timepiece.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TwicketSegmentedControl/TwicketSegmentedControl.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ASHorizontalScrollView/ASHorizontalScrollView.framework"
@@ -147,6 +148,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Stripe/Stripe.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Timepiece/Timepiece.framework"
   install_framework "$BUILT_PRODUCTS_DIR/TwicketSegmentedControl/TwicketSegmentedControl.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

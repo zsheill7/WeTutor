@@ -174,7 +174,10 @@ open class Popover: UIView {
   }
 
   open func showAsDialog(_ contentView: UIView) {
-    self.showAsDialog(contentView, inView: UIApplication.shared.windows.first!)
+    guard let rootView = UIApplication.shared.windows.last ?? UIApplication.shared.keyWindow else {
+        return
+    }
+    self.showAsDialog(contentView, inView: rootView)
   }
 
   open func showAsDialog(_ contentView: UIView, inView: UIView) {
@@ -185,7 +188,10 @@ open class Popover: UIView {
   }
 
   open func show(_ contentView: UIView, fromView: UIView) {
-    self.show(contentView, fromView: fromView, inView: UIApplication.shared.windows.first!)
+    guard let rootView = UIApplication.shared.windows.last ?? UIApplication.shared.keyWindow else {
+        return
+    }
+    self.show(contentView, fromView: fromView, inView: rootView)
   }
 
   open func show(_ contentView: UIView, fromView: UIView, inView: UIView) {
@@ -205,14 +211,18 @@ open class Popover: UIView {
   }
 
   open func show(_ contentView: UIView, point: CGPoint) {
-    self.show(contentView, point: point, inView: UIApplication.shared.windows.first!)
+    guard let rootView = UIApplication.shared.windows.last ?? UIApplication.shared.keyWindow else {
+        return
+    }
+    self.show(contentView, point: point, inView: rootView)
   }
 
   open func show(_ contentView: UIView, point: CGPoint, inView: UIView) {
-    if showBlackOverlay {
-        self.blackOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        self.blackOverlay.frame = inView.bounds
+    self.blackOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    self.blackOverlay.frame = inView.bounds
+    inView.addSubview(self.blackOverlay)
 
+    if showBlackOverlay {
         if let overlayBlur = self.overlayBlur {
           let effectView = UIVisualEffectView(effect: overlayBlur)
           effectView.frame = self.blackOverlay.bounds
@@ -224,12 +234,10 @@ open class Popover: UIView {
           }
           self.blackOverlay.alpha = 0
         }
+    }
 
-        inView.addSubview(self.blackOverlay)
-        
-        if self.dismissOnBlackOverlayTap {
-            self.blackOverlay.addTarget(self, action: #selector(Popover.dismiss), for: .touchUpInside)
-        }
+    if self.dismissOnBlackOverlayTap {
+        self.blackOverlay.addTarget(self, action: #selector(Popover.dismiss), for: .touchUpInside)
     }
 
     self.containerView = inView

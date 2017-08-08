@@ -53,6 +53,30 @@
     self.addressCountry = address.country;
 }
 
+#pragma mark - Description
+
+- (NSString *)description {
+    NSArray *props = @[
+                       // Object
+                       [NSString stringWithFormat:@"%@: %p", NSStringFromClass([self class]), self],
+
+                       // Basic card details
+                       [NSString stringWithFormat:@"last4 = %@", self.last4],
+                       [NSString stringWithFormat:@"expMonth = %lu", (unsigned long)self.expMonth],
+                       [NSString stringWithFormat:@"expYear = %lu", (unsigned long)self.expYear],
+                       [NSString stringWithFormat:@"cvc = %@", (self.cvc) ? @"<redacted>" : nil],
+
+                       // Additional card details (alphabetical)
+                       [NSString stringWithFormat:@"currency = %@", self.currency],
+
+                       // Cardholder details
+                       [NSString stringWithFormat:@"name = %@", (self.name) ? @"<redacted>" : nil],
+                       [NSString stringWithFormat:@"address = %@", (self.address) ? @"<redacted>" : nil],
+                       ];
+
+    return [NSString stringWithFormat:@"<%@>", [props componentsJoinedByString:@"; "]];
+}
+
 #pragma mark - STPFormEncodable
 
 + (NSString *)rootObjectName {
@@ -61,18 +85,18 @@
 
 + (NSDictionary *)propertyNamesToFormFieldNamesMapping {
     return @{
-             @"number": @"number",
-             @"cvc": @"cvc",
-             @"name": @"name",
-             @"addressLine1": @"address_line1",
-             @"addressLine2": @"address_line2",
-             @"addressCity": @"address_city",
-             @"addressState": @"address_state",
-             @"addressZip": @"address_zip",
-             @"addressCountry": @"address_country",
-             @"expMonth": @"exp_month",
-             @"expYear": @"exp_year",
-             @"currency": @"currency",
+             NSStringFromSelector(@selector(number)): @"number",
+             NSStringFromSelector(@selector(cvc)): @"cvc",
+             NSStringFromSelector(@selector(name)): @"name",
+             NSStringFromSelector(@selector(addressLine1)): @"address_line1",
+             NSStringFromSelector(@selector(addressLine2)): @"address_line2",
+             NSStringFromSelector(@selector(addressCity)): @"address_city",
+             NSStringFromSelector(@selector(addressState)): @"address_state",
+             NSStringFromSelector(@selector(addressZip)): @"address_zip",
+             NSStringFromSelector(@selector(addressCountry)): @"address_country",
+             NSStringFromSelector(@selector(expMonth)): @"exp_month",
+             NSStringFromSelector(@selector(expYear)): @"exp_year",
+             NSStringFromSelector(@selector(currency)): @"currency",
              };
 }
 

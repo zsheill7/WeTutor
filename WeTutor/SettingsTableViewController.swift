@@ -55,13 +55,13 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var ensemble: UILabel!
     
-    var userID = FIRAuth.auth()?.currentUser?.uid
-    var ref: FIRDatabaseReference!
+    var userID = Auth.auth()?.currentUser?.uid
+    var ref: DatabaseReference!
     var currentUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         ref = FIRDatabase.database().reference()
+         ref = Database.database().reference()
         print("userID")
         print(userID)
         print(ref.child("users").child(userID!))
@@ -166,7 +166,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     func deleteAccount() {
-         let user = FIRAuth.auth()?.currentUser
+         let user = Auth.auth()?.currentUser
         user?.delete { error in
             if error != nil {
                 // An error happened.
@@ -222,7 +222,7 @@ class SettingsTableViewController: UITableViewController {
         self.activityIndicator.startAnimating()
         UIApplication.shared.beginIgnoringInteractionEvents()
         
-        try! FIRAuth.auth()!.signOut()
+        try! Auth.auth()!.signOut()
         
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: "isTutor")

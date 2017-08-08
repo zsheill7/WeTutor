@@ -32,7 +32,7 @@ class TutorSignUpViewControllerThree : FormViewController {
         view.endEditing(true)
     }
 
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
 
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class TutorSignUpViewControllerThree : FormViewController {
         //let availableDays: [Bool] = [false, false, false, false, false, false, false]
         self.tableView?.backgroundColor = UIColor.backgroundBlue()
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         self.loadForm()
         

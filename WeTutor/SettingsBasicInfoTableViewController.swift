@@ -48,7 +48,7 @@ private enum MenuSection {
 }
 
 class SettingsBasicInfoTableViewController : FormViewController {
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     
     func displayAlert(_ title: String, message: String) {
@@ -242,14 +242,14 @@ class SettingsBasicInfoTableViewController : FormViewController {
         
         if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subjectArray != nil {
             
-            self.ref = FIRDatabase.database().reference()
+            self.ref = Database.database().reference()
             
             
             let userDefaults = UserDefaults.standard
             userDefaults.set(description, forKey: "description")
-            let user = FIRAuth.auth()?.currentUser
+            let user = Auth.auth()?.currentUser
             
-            let userID = FIRAuth.auth()?.currentUser?.uid
+            let userID = Auth.auth()?.currentUser?.uid
             self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 print("got snapshot")

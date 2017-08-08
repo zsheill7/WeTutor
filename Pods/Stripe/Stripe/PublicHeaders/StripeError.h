@@ -22,13 +22,22 @@ STP_ERROR_ENUM(NSInteger, STPErrorCode, StripeDomain) {
 #else
 typedef NS_ENUM(NSInteger, STPErrorCode) {
 #endif
-    STPConnectionError = 40,     // Trouble connecting to Stripe.
-    STPInvalidRequestError = 50, // Your request had invalid parameters.
-    STPAPIError = 60,            // General-purpose API error (should be rare).
-    STPCardError = 70,           // Something was wrong with the given card (most common).
-    STPCancellationError = 80,   // The operation was cancelled.
-    STPCheckoutUnknownError = 5000,   // Checkout failed
-    STPCheckoutTooManyAttemptsError = 5001,   // Too many incorrect code attempts
+    // Trouble connecting to Stripe.
+    STPConnectionError = 40,
+    // Your request had invalid parameters.
+    STPInvalidRequestError = 50,
+    // General-purpose API error.
+    STPAPIError = 60,
+    // Something was wrong with the given card details.
+    STPCardError = 70,
+    // The operation was cancelled.
+    STPCancellationError = 80,
+    /**
+     The ephemeral key could not be decoded. Make sure your backend is sending
+     the unmodified JSON of the ephemeral key to your app.
+     https://stripe.com/docs/mobile/ios/standard#prepare-your-api
+     */
+    STPEphemeralKeyDecodingError = 1000,
 };
 
 #pragma mark userInfo keys
@@ -43,6 +52,14 @@ FOUNDATION_EXPORT NSString * __nonnull const STPCardErrorCodeKey;
 // Which parameter on the STPCard had an error (e.g., "cvc"). Useful for marking up the
 // right UI element.
 FOUNDATION_EXPORT NSString * __nonnull const STPErrorParameterKey;
+
+// The error code returned by the Stripe API.
+// https://stripe.com/docs/api#errors-type
+FOUNDATION_EXPORT NSString * __nonnull const STPStripeErrorCodeKey;
+
+// The error type returned by the Stripe API.
+// https://stripe.com/docs/api#errors-code
+FOUNDATION_EXPORT NSString * __nonnull const STPStripeErrorTypeKey;
 
 #pragma mark STPCardErrorCodeKeys
 
@@ -69,9 +86,8 @@ FOUNDATION_EXPORT STPCardErrorCode __nonnull const STPIncorrectCVC;
 @interface NSError(Stripe)
 
 + (nullable NSError *)stp_errorFromStripeResponse:(nullable NSDictionary *)jsonDictionary;
++ (nonnull NSError *)stp_genericConnectionError;
 + (nonnull NSError *)stp_genericFailedToParseResponseError;
-- (BOOL)stp_isUnknownCheckoutError;
-- (BOOL)stp_isURLSessionCancellationError;
 
 #pragma mark Strings
 
@@ -84,5 +100,7 @@ FOUNDATION_EXPORT STPCardErrorCode __nonnull const STPIncorrectCVC;
 + (nonnull NSString *)stp_cardErrorProcessingErrorUserMessage;
 + (nonnull NSString *)stp_unexpectedErrorMessage;
 
-
 @end
+
+void linkNSErrorCategory(void);
+

@@ -267,7 +267,7 @@ class PagingMenuViewController: UIViewController  {
                 self.present(controller, animated: true, completion: nil)
 
             } else if indexPath == 2 {
-                try! FIRAuth.auth()!.signOut()
+                try! Auth.auth()!.signOut()
                 let userDefaults = UserDefaults.standard
                 userDefaults.removeObject(forKey: "isTutor")
                 userDefaults.removeObject(forKey: "languages")

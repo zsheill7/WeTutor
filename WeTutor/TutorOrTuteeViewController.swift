@@ -27,7 +27,7 @@ class TutorOrTuteeViewController: UIViewController {
     var centerY: CGFloat = 0
     
     
-    var userRef: FIRDatabaseReference!
+    var userRef: DatabaseReference!
     var userUID = ""
     
     var currentUserIsTutor = false
@@ -38,9 +38,9 @@ class TutorOrTuteeViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.addBackground("book.png")
-        userRef = FIRDatabase.database().reference().child("users")
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            userUID = FIRAuth.auth()!.currentUser!.uid
+        userRef = Database.database().reference().child("users")
+        if Auth.auth()?.currentUser?.uid != nil {
+            userUID = Auth.auth()!.currentUser!.uid
         }
 
         centerX = CGFloat(self.view.frame.width / 2)

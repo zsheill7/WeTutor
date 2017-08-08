@@ -32,7 +32,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
         view.endEditing(true)
     }
     
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     var currentUser: User?
     var profileImageUrlString = ""
     var currentUserIsTutor: Bool?
@@ -47,11 +47,11 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
             prepareInfoButton()
         }
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         
         
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let user = User(snapshot: snapshot)
@@ -238,7 +238,7 @@ class TutorSignUpViewControllerTwo : FormViewController, NVActivityIndicatorView
                         
                         // Set user values in Firebase
                         
-                        if let user = FIRAuth.auth()?.currentUser {
+                        if let user = Auth.auth()?.currentUser {
                             self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
                             self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
                             self.ref.child("users/\(user.uid)/languages").setValue(languages)

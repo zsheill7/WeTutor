@@ -16,7 +16,7 @@ extension ProfilePictureViewController {
     
     
    /* fileprivate func registerUserIntoDatabaseWithUID(_ uid: String, values: [String: AnyObject]) {
-        let ref = FIRDatabase.database().reference()
+        let ref = Database.database().reference()
         let usersReference = ref.child("users").child(uid)
         
         usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
@@ -80,10 +80,10 @@ extension ProfilePictureViewController {
         }*/
         
         let imageName = UUID().uuidString
-        let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
+        let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).jpg")
         
-        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
-        let usersRef = FIRDatabase.database().reference().child("users")
+        let currentUserUID = Auth.auth().currentUser?.uid
+        let usersRef = Database.database().reference().child("users")
         
         if let profileImage = self.profileImageView.image, let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
             

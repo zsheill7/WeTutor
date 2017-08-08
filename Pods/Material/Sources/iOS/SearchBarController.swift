@@ -30,36 +30,18 @@
 
 import UIKit
 
-extension UIViewController {
-	/**
+public extension UIViewController {
+    /**
      A convenience property that provides access to the SearchBarController.
      This is the recommended method of accessing the SearchBarController
      through child UIViewControllers.
      */
-	public var searchBarController: SearchBarController? {
-		var viewController: UIViewController? = self
-		while nil != viewController {
-			if viewController is SearchBarController {
-				return viewController as? SearchBarController
-			}
-			viewController = viewController?.parent
-		}
-		return nil
-	}
+    var searchBarController: SearchBarController? {
+        return traverseViewControllerHierarchyForClassType()
+    }
 }
 
 open class SearchBarController: StatusBarController {
-    /**
-     A Display value to indicate whether or not to
-     display the rootViewController to the full view
-     bounds, or up to the searchBar height.
-     */
-    open var searchBarDisplay = Display.partial {
-        didSet {
-            layoutSubviews()
-        }
-    }
-    
     /// Reference to the SearchBar.
     @IBInspectable
     open let searchBar = SearchBar()
@@ -72,14 +54,16 @@ open class SearchBarController: StatusBarController {
         searchBar.y = y
         searchBar.width = view.width
         
-        switch searchBarDisplay {
+        switch displayStyle {
         case .partial:
             let h = y + searchBar.height
-            rootViewController.view.y = h
-            rootViewController.view.height = view.height - h
+            container.y = h
+            container.height = view.height - h
         case .full:
-            rootViewController.view.frame = view.bounds
+            container.frame = view.bounds
         }
+        
+        rootViewController.view.frame = container.bounds
 	}
 	
 	/**
@@ -91,6 +75,8 @@ open class SearchBarController: StatusBarController {
      */
 	open override func prepare() {
 		super.prepare()
+        displayStyle = .partial
+        
         prepareStatusBar()
 		prepareSearchBar()
 	}

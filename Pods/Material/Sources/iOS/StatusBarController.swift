@@ -37,24 +37,17 @@ extension UIViewController {
      through child UIViewControllers.
      */
 	public var statusBarController: StatusBarController? {
-		var viewController: UIViewController? = self
-		while nil != viewController {
-			if viewController is StatusBarController {
-				return viewController as? StatusBarController
-			}
-			viewController = viewController?.parent
-		}
-		return nil
+		return traverseViewControllerHierarchyForClassType()
 	}
 }
 
-open class StatusBarController: RootController {
+open class StatusBarController: TransitionController {
     /**
      A Display value to indicate whether or not to
      display the rootViewController to the full view
      bounds, or up to the toolbar height.
      */
-    open var statusBarDisplay = Display.full {
+    open var displayStyle = DisplayStyle.full {
         didSet {
             layoutSubviews()
         }
@@ -94,20 +87,23 @@ open class StatusBarController: RootController {
      */
 	open override func layoutSubviews() {
 		super.layoutSubviews()
+        
         if shouldHideStatusBarOnRotation {
             statusBar.isHidden = Application.shouldStatusBarBeHidden
         }
         
         statusBar.width = view.width
         
-        switch statusBarDisplay {
+        switch displayStyle {
         case .partial:
             let h = statusBar.height
-            rootViewController.view.y = h
-            rootViewController.view.height = view.height - h
+            container.y = h
+            container.height = view.height - h
         case .full:
-            rootViewController.view.frame = view.bounds
+            container.frame = view.bounds
         }
+        
+        rootViewController.view.frame = container.bounds
 	}
 	
 	/**

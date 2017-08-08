@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     let kSubtitle = "You've just displayed this awesome Pop Up View"
     let blueColor: Int! = 0x22B573
     
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
@@ -70,8 +70,8 @@ class LoginViewController: UIViewController {
     }
     
     func alreadySignedIn() {
-        ref = FIRDatabase.database().reference()
-        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+        ref = Database.database().reference()
+        let currentUserUID = Auth.auth()?.currentUser?.uid
         if currentUserUID != nil {
             
             ref.child("users").child(currentUserUID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -107,9 +107,9 @@ class LoginViewController: UIViewController {
         if self.emailField.text == "" || self.passwordField.text == "" {
             self.displayAlert("Error", message: "Please enter an email and password.")
         } else {
-            FIRAuth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
+            Auth.auth()?.signIn(withEmail: self.emailField.text!, password: self.passwordField.text!, completion: { (user, error) in
                 if error == nil {
-                    print("sign user.uid \(user?.uid) \(FIRAuth.auth()?.currentUser?.uid)")
+                    print("sign user.uid \(user?.uid) \(Auth.auth()?.currentUser?.uid)")
                  //   print
                     /*if !(user?.isEmailVerified)!{
                      
@@ -134,11 +134,11 @@ class LoginViewController: UIViewController {
                         print ("Email verified. Signing in...")
                     
                     //self.emailField.text!
-                    var ref: FIRDatabaseReference!
+                    var ref: DatabaseReference!
                     
-                    ref = FIRDatabase.database().reference()
+                    ref = Database.database().reference()
                     
-                    //let userID = FIRAuth.auth()?.currentUser?.uid
+                    //let userID = Auth.auth()?.currentUser?.uid
                     ref.child("users").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                         // Get user value
                         let userObject = User(snapshot: snapshot )
@@ -171,7 +171,7 @@ class LoginViewController: UIViewController {
                                     //self.displayAlert(title: "Unable to Sign Up", message: "Please try again later"/*error.localizedDescription*/)
                                 }
                             }*/
-                            let user = FIRAuth.auth()?.currentUser
+                            let user = Auth.auth()?.currentUser
                             
                             user?.delete { error in
                                 if let error = error {
@@ -303,10 +303,10 @@ class LoginViewController: UIViewController {
         self.present(controller, animated: true, completion: nil)
     }
     func resetIsTutor() {
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        var ref: FIRDatabaseReference!
+        let userID = Auth.auth()?.currentUser?.uid
+        var ref: DatabaseReference!
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
  
             let userObject = User(snapshot: snapshot )
@@ -340,7 +340,7 @@ class LoginViewController: UIViewController {
                 if emailTextField.text?.isEmail() == false {
                     SCLAlertView().showInfo("Error", subTitle: "Please enter a valid email.")
                 } else {
-                    FIRAuth.auth()?.sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
+                    Auth.auth()?.sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
                        var title = ""
                         var message = ""
                         

@@ -12,7 +12,7 @@ import Firebase
 class ProfilePictureViewController: UIViewController, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var nextButton: UIButton!
-    var user = FIRAuth.auth()?.currentUser
+    var user = Auth.auth()?.currentUser
     
     let pickedProfileImage = UIImagePickerController()
     
@@ -22,7 +22,7 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
         SCLAlertView().showInfo(title, subTitle: message)
     }
     
-    let ref = FIRDatabase.database().reference()
+    let ref = Database.database().reference()
     
     //MARK: viewDidLoad
     override func viewWillAppear(_ animated: Bool) {
@@ -81,10 +81,10 @@ class ProfilePictureViewController: UIViewController, UIImagePickerControllerDel
     
     // If the current user already has a profile image, set it
     func fetchCurrentUser() {
-        FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+        Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let userID = FIRAuth.auth()?.currentUser?.uid
+                let userID = Auth.auth()?.currentUser?.uid
                 self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     let value = snapshot.value as? NSDictionary
                     let profileImageURL = value?["profileImageURL"] as? String ?? ""

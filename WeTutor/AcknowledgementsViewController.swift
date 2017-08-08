@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 class AcknowledgementsViewController: UIViewController {
     var currentUserIsTutor: Bool?
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
         

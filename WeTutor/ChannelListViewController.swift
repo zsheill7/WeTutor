@@ -22,9 +22,9 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     
   var senderDisplayName: String?
   var newChannelTextField: UITextField?
-  var dbRef: FIRDatabaseReference!
+  var dbRef: DatabaseReference!
     var tutors = [User]()
-  fileprivate var channelRefHandle: FIRDatabaseHandle?
+  fileprivate var channelRefHandle: DatabaseHandle?
   fileprivate var channels: [Channel] = []
     var tutorName: String = ""
     var tuteeName: String = ""
@@ -33,9 +33,9 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     var iterationStatus = ""
     
     var currentUser: User!
-  fileprivate lazy var channelRef: FIRDatabaseReference = FIRDatabase.database().reference().child("channels")
+  fileprivate lazy var channelRef: DatabaseReference = Database.database().reference().child("channels")
   
-    var userRef = FIRDatabase.database().reference().child("users")
+    var userRef = Database.database().reference().child("users")
     
     
   // MARK: View Lifecycle
@@ -90,7 +90,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     //self.view.addFullScreenBackground("background-green")
    // searchBar.delegate = self
     //self.view.addBackground()
-     if let userID = FIRAuth.auth()?.currentUser?.uid {
+     if let userID = Auth.auth()?.currentUser?.uid {
         userRef.child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let userObject = User(snapshot: snapshot )
@@ -149,8 +149,8 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     }
     //filteredData = FriendSystem.system.friendListOne
     
-    dbRef = FIRDatabase.database().reference().child("users")
-    userRef = FIRDatabase.database().reference().child("users")
+    dbRef = Database.database().reference().child("users")
+    userRef = Database.database().reference().child("users")
     //startObservingDB()
     
   }
@@ -204,7 +204,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
         let userDefaults = UserDefaults.standard
         let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         
-        if let userID = FIRAuth.auth()?.currentUser?.uid {
+        if let userID = Auth.auth()?.currentUser?.uid {
           
             if isTutor == true {
                 tutorName = userID
@@ -224,7 +224,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
             "tuteeName": tuteeName
         ]
         
-        let userID = FIRAuth.auth()?.currentUser?.uid
+        let userID = Auth.auth()?.currentUser?.uid
         let userChannelRef = userRef.child(userID!).child("channels")
         let uuid = UUID().uuidString
         let newChannelRef = channelRef.child(uuid)
@@ -240,7 +240,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     fileprivate func fetchMessageWithMessageId(messageId: String, senderId: String) {
         
-        let messagesReference = FIRDatabase.database().reference().child("channels").child("messages").child(messageId)
+        let messagesReference = Database.database().reference().child("channels").child("messages").child(messageId)
         
         messagesReference.observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -249,7 +249,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
                 
                 if let chatPartnerId = message.chatPartnerId() {
                     self.messagesDictionary[chatPartnerId] = message
-                    /*let recentMessageReference = FIRDatabase.database().reference().child("users").child(senderId).child("recentMessage")
+                    /*let recentMessageReference = Database.database().reference().child("users").child(senderId).child("recentMessage")
 
                     recentMessageReference.child("text").setValue(message.text)
                     recentMessageReference.child("timestamp").setValue(message.timestamp)*/
@@ -293,15 +293,15 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
     
     self.channels.removeAll()
     
-    let userID = FIRAuth.auth()?.currentUser?.uid
+    let userID = Auth.auth()?.currentUser?.uid
     let userChannelRef = userRef.child(userID!).child("channels")
     
     print("inside observeChannels)")
     for friend in FriendSystem.system.friendListOne {
         print("for friend in FriendSystem.system.friendListOne")
-        var ref: FIRDatabaseReference!
-        let userID = FIRAuth.auth()?.currentUser?.uid
-        ref = FIRDatabase.database().reference()
+        var ref: DatabaseReference!
+        let userID = Auth.auth()?.currentUser?.uid
+        ref = Database.database().reference()
         ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let userObject = User(snapshot: snapshot )
@@ -468,8 +468,8 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
                         if self.currentUserIsTutor == false {
                             if let tuteeName = channelDict["tuteeName"] as? String,
                                 let  tutorName = channelDict["tutorName"] as? String{
-                                if tuteeName == FIRAuth.auth()?.currentUser?.uid {
-                                    print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                if tuteeName == Auth.auth()?.currentUser?.uid {
+                                    print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
                               
                                     if tutorName == destUserID {
                                         self.iterationStatus = "done"
@@ -487,8 +487,8 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
                         } else if self.currentUserIsTutor == true {
                             if let tuteeName = channelDict["tuteeName"] as? String,
                                 let  tutorName = channelDict["tutorName"] as? String{
-                                if tutorName == FIRAuth.auth()?.currentUser?.uid {
-                                    print("if channel[self.tutorOrTutee] == FIRAuth.auth()?.currentUser?.uid {")
+                                if tutorName == Auth.auth()?.currentUser?.uid {
+                                    print("if channel[self.tutorOrTutee] == Auth.auth()?.currentUser?.uid {")
                                     if tuteeName == destUserID {
                                         self.iterationStatus = "done"
                                         print("perform segue channel2")
@@ -512,7 +512,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
         let uuid = UUID().uuidString
         if self.iterationStatus == "inProcess" {
             if self.tutorOrTutee == "tuteeName" {
-                let channel = Channel(id: uuid, name: "Chat", tutorName: (FIRAuth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
+                let channel = Channel(id: uuid, name: "Chat", tutorName: (Auth.auth()?.currentUser?.uid)!, tuteeName: destUserID)
                 print("if tutorOrTutee == tuteeName {")
                 print("iterationStatus")
                 print(self.iterationStatus)
@@ -526,7 +526,7 @@ class ChannelListViewController: UITableViewController, DZNEmptyDataSetSource, D
                 
                 
             } else if self.tutorOrTutee == "tutorName" {
-                let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (FIRAuth.auth()?.currentUser?.uid)!)
+                let channel = Channel(id: uuid, name: "Chat", tutorName: destUserID, tuteeName: (Auth.auth()?.currentUser?.uid)!)
                 print("if tutorOrTutee == tutorName {")
 
                 print("if self.iterationStatus == inProcess2 {")

@@ -183,7 +183,7 @@ import Foundation
  let preferredSubject = self.form.sections[3].rows[2].value,
  let description = self.form.sections[4].rows[0].value as? String {
  
- self.ref = FIRDatabase.database().reference()
+ self.ref = Database.database().reference()
  
  
  let userDefaults = UserDefaults.standard
@@ -192,9 +192,9 @@ import Foundation
  print(grade)
  print(description)
  
- let user = FIRAuth.auth()?.currentUser
+ let user = Auth.auth()?.currentUser
  
- let userID = FIRAuth.auth()?.currentUser?.uid
+ let userID = Auth.auth()?.currentUser?.uid
  self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
  // Get user value
  print("got snapshot")
@@ -213,7 +213,7 @@ import Foundation
  /* if let email = userDefaults.value(forKey: "email"),
  let password = userDefaults.value(forKey: "password"),
  let name = userDefaults.value(forKey: "name"),
- let user = FIRAuth.auth()?.currentUser {*/
+ let user = Auth.auth()?.currentUser {*/
  let x = Int(self.view.center.x)
  let y = Int(self.view.center.y)
  let frame = CGRect(x: x, y: y, width: self.cellWidth, height: self.cellHeight)
@@ -296,10 +296,10 @@ import Foundation
 
 /*  func createCalendar(destUser: User) -> String {
  
- let userID = FIRAuth.auth()?.currentUser?.uid
+ let userID = Auth.auth()?.currentUser?.uid
  let userChannelRef = userRef.child(userID!).child("channels")
  
- let channelRef = FIRDatabase.database().reference()
+ let channelRef = Database.database().reference()
  
  let eventStore = EKEventStore()
  //let initCalendar = EKCalendar()
@@ -355,9 +355,9 @@ import Foundation
  if let channelData = snapshot.value as? Dictionary<String, AnyObject> {
  print("  if let channelData = snapshot.value as? Dictionary<String, AnyObject> {")
  let id = snapshot.key
- var ref: FIRDatabaseReference!
- let userID = FIRAuth.auth()?.currentUser?.uid
- ref = FIRDatabase.database().reference()
+ var ref: DatabaseReference!
+ let userID = Auth.auth()?.currentUser?.uid
+ ref = Database.database().reference()
  ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
  // Get user value
  let userObject = User(snapshot: snapshot )
@@ -404,7 +404,7 @@ import Foundation
  let userDefaults = UserDefaults.standard
  let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
  
- if let userID = FIRAuth.auth()?.currentUser?.uid {
+ if let userID = Auth.auth()?.currentUser?.uid {
  
  if isTutor == true {
  tutorName = userID
@@ -423,7 +423,7 @@ import Foundation
  "tuteeName": tuteeName
  ]
  newChannelRef.setValue(channelItem)
- let userID = FIRAuth.auth()?.currentUser?.uid
+ let userID = Auth.auth()?.currentUser?.uid
  let userChannelRef = userRef.child(userID!).child("channels")
  let uuid = UUID().uuidString
  
@@ -436,12 +436,12 @@ import Foundation
  print("in create channel")
  let userDefaults = UserDefaults.standard
  
- let userID = FIRAuth.auth()?.currentUser?.uid
+ let userID = Auth.auth()?.currentUser?.uid
  print(userID)
- var ref: FIRDatabaseReference!
- let user = FIRAuth.auth()?.currentUser
+ var ref: DatabaseReference!
+ let user = Auth.auth()?.currentUser
  
- ref = FIRDatabase.database().reference()
+ ref = Database.database().reference()
  ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
  
  print("in child observesingleevent")
@@ -479,7 +479,7 @@ import Foundation
  let newChannelRef = self.channelRef.childByAutoId()
  
  newChannelRef.setValue(channelItem)
- let userID = FIRAuth.auth()?.currentUser?.uid
+ let userID = Auth.auth()?.currentUser?.uid
  let userChannelRef = self.userRef.child(userID!).child("channels")
  userChannelRef.setValue(self.channelRef)
  /*userChannelRef.child("tutorName").setValue(self.tutorName)

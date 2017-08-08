@@ -57,7 +57,7 @@ private enum MenuSection {
 
 
 class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorViewable {
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
     
     func displayAlert(_ title: String, message: String) {
         SCLAlertView().showInfo(title, subTitle: message)
@@ -251,14 +251,14 @@ class TutorSignUpViewControllerOne : FormViewController, NVActivityIndicatorView
         // Check if all fields are filled in
         if zipcode != nil, school != nil, phone != nil, gender != nil, grade != nil, subjectArray != nil {
             
-            self.ref = FIRDatabase.database().reference()
+            self.ref = Database.database().reference()
             
             
             let userDefaults = UserDefaults.standard
             userDefaults.set(description, forKey: "description")
-            let user = FIRAuth.auth()?.currentUser
+            let user = Auth.auth()?.currentUser
             
-            let userID = FIRAuth.auth()?.currentUser?.uid
+            let userID = Auth.auth()?.currentUser?.uid
             self.ref.child("users").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 print("got snapshot")

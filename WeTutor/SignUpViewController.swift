@@ -70,8 +70,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     let kInfoTitle = "Info"
     let kSubtitle = "You've just displayed this awesome Pop Up View"
     let blueColor: Int! = 0x22B573
-    //let user = FIRAuth.auth()?.currentUser
-    var ref: FIRDatabaseReference!
+    //let user = Auth.auth()?.currentUser
+    var ref: DatabaseReference!
     
     let lightGrayColor = UIColor.lightGray.lighten(byPercentage: 0.1)!
     func displayAlert(_ title: String, message: String) {
@@ -150,8 +150,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     
     //Check if the current user is already signed in, and if so, perform segue to main view controller
     func alreadySignedIn() {
-        ref = FIRDatabase.database().reference()
-        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
+        ref = Database.database().reference()
+        let currentUserUID = Auth.auth()?.currentUser?.uid
         if currentUserUID != nil {
             
             ref.child("users").child(currentUserUID!).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -203,7 +203,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             print("after let credential")
-            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            Auth.auth()?.signIn(with: credential) { (user, error) in
                 // ...
                 if let error = error {
                     // ...
@@ -215,7 +215,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                         let animalIndex =  Int(arc4random_uniform(6))
                         let profileImage = UIImage(named: animalImageNames[animalIndex])
                         let userInfo = ["name": user?.displayName, "email": user?.email]
-                        FIRDatabase.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
+                        Database.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
                         self.setProfileImage(profileImage: profileImage!)
                         self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
                     }
@@ -231,8 +231,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         let imageName = UUID().uuidString
         let storageRef = FIRStorage.storage().reference().child("profile_images").child("\(imageName).jpg")
         
-        let currentUserUID = FIRAuth.auth()?.currentUser?.uid
-        let usersRef = FIRDatabase.database().reference().child("users")
+        let currentUserUID = Auth.auth()?.currentUser?.uid
+        let usersRef = Database.database().reference().child("users")
         
         print("func setProfileImage(profileImage: UIImage) {")
         
@@ -392,7 +392,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
                 if emailTextField.text?.isEmail() == false {
                     SCLAlertView().showInfo("Error", subTitle: "Please enter a valid email.")
                 } else {
-                FIRAuth.auth()?.sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
+                Auth.auth()?.sendPasswordReset(withEmail: emailTextField.text!, completion: { (error) in
                     var title = ""
                     var message = ""
                     

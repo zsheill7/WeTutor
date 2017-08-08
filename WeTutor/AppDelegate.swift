@@ -40,14 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
         self.window?.rootViewController = viewController*/
 
-       if FIRAuth.auth()?.currentUser?.uid != nil {
-            print("FIRAuth.auth()?.currentUser?.uid != nil")
+       if Auth.auth()?.currentUser?.uid != nil {
+            print("Auth.auth()?.currentUser?.uid != nil")
             FriendSystem.system.getCurrentUser { (user) in
                 currentUser = user
                 if let _ = currentUser?.isTutor,
                     let _ = currentUser?.isTutor as? String,
                     let _ = currentUser?.availableDaysArray,
-                    let _ = FIRAuth.auth()?.currentUser?.uid {
+                    let _ = Auth.auth()?.currentUser?.uid {
                     
                     let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
                     let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuNC") as! UINavigationController
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        print(FIRAuth.auth()?.currentUser?.uid)
+        print(Auth.auth()?.currentUser?.uid)
         
         IQKeyboardManager.shared().isEnabled = true
         DropDown.startListeningToKeyboard()

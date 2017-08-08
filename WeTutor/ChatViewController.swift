@@ -13,15 +13,15 @@ final class ChatViewController: JSQMessagesViewController {
   // MARK: Properties
   fileprivate let imageURLNotSetKey = "NOTSET"
   
-  var channelRef: FIRDatabaseReference?
+  var channelRef: DatabaseReference?
 
-  fileprivate lazy var messageRef: FIRDatabaseReference = self.channelRef!.child("messages")
+  fileprivate lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
   fileprivate lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference(forURL: "gs://tutorme-e7292.appspot.com")
-  fileprivate lazy var userIsTypingRef: FIRDatabaseReference = self.channelRef!.child("typingIndicator").child(self.senderId)
-  fileprivate lazy var usersTypingQuery: FIRDatabaseQuery = self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
+  fileprivate lazy var userIsTypingRef: DatabaseReference = self.channelRef!.child("typingIndicator").child(self.senderId)
+  fileprivate lazy var usersTypingQuery: DatabaseQuery = self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
 
-  fileprivate var newMessageRefHandle: FIRDatabaseHandle?
-  fileprivate var updatedMessageRefHandle: FIRDatabaseHandle?
+  fileprivate var newMessageRefHandle: DatabaseHandle?
+  fileprivate var updatedMessageRefHandle: DatabaseHandle?
   
   fileprivate var messages: [JSQMessage] = []
   fileprivate var photoMessageMap = [String: JSQPhotoMediaItem]()
@@ -52,8 +52,8 @@ final class ChatViewController: JSQMessagesViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.senderId = FIRAuth.auth()?.currentUser?.uid
-    //self.senderDisplayName = FIRAuth.auth()?.currentUser?.uid
+    self.senderId = Auth.auth()?.currentUser?.uid
+    //self.senderDisplayName = Auth.auth()?.currentUser?.uid
     
     print("channelRef")
     print(channelRef)
@@ -135,7 +135,7 @@ final class ChatViewController: JSQMessagesViewController {
   // MARK: Firebase related methods
   
   fileprivate func observeMessages() {
-    messageRef = channelRef!.child("messages")//FIRDatabase.database().reference().child("messages")
+    messageRef = channelRef!.child("messages")//Database.database().reference().child("messages")
     let messageQuery = messageRef.queryLimited(toLast:25)
     
     // We can use the observe method to listen for new
@@ -243,11 +243,11 @@ final class ChatViewController: JSQMessagesViewController {
     
 
     itemRef.setValue(messageItem)
-    //let userRef = FIRDatabase.database().reference().child("users").child(senderId).child(")
-    //let recentMessageTextReference = FIRDatabase.database().reference().child("users").child(senderId).child("recentMessageText")
-   // let recentMessageTimestampReference = FIRDatabase.database().reference().child("users").child(senderId).child("recentMessageTimestamp")
+    //let userRef = Database.database().reference().child("users").child(senderId).child(")
+    //let recentMessageTextReference = Database.database().reference().child("users").child(senderId).child("recentMessageText")
+   // let recentMessageTimestampReference = Database.database().reference().child("users").child(senderId).child("recentMessageTimestamp")
     
-    let recentMessageSenderRef = FIRDatabase.database().reference().child("users").child(senderId)
+    let recentMessageSenderRef = Database.database().reference().child("users").child(senderId)
     recentMessageSenderRef.child("recentMessageText").setValue(text!)
      //recentMessageSenderRef.child("recentMessageTimestamp").setValue(timestamp)
     
@@ -367,7 +367,7 @@ extension ChatViewController: UIImagePickerControllerDelegate {
           let imageFileURL = contentEditingInput?.fullSizeImageURL
 
     
-          let path = "\(FIRAuth.auth()?.currentUser?.uid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(photoReferenceUrl.lastPathComponent)"
+          let path = "\(Auth.auth()?.currentUser?.uid)/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(photoReferenceUrl.lastPathComponent)"
 
       
           self.storageRef.child(path).putFile(imageFileURL!, metadata: nil) { (metadata, error) in

@@ -23,7 +23,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
     let secondLanguages = ["None", "English", "Spanish", "French", "Chinese", "Other"]
 
   
-    var ref: FIRDatabaseReference!
+    var ref: DatabaseReference!
 
     
     func displayAlert(title: String, message: String) {
@@ -53,7 +53,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
         var languages: [String] = [String]()
         
         
-        ref = FIRDatabase.database().reference()
+        ref = Database.database().reference()
         form
             
              +++ Section("Available Days")
@@ -212,7 +212,7 @@ class SettingsAvailabilityTableViewController : FormViewController {
         userDefaults.setValue(availabilityInfo, forKey: "availabilityInfo")
         userDefaults.synchronize()
         
-        if let user = FIRAuth.auth()?.currentUser {
+        if let user = Auth.auth()?.currentUser {
             self.ref.child("users/\(user.uid)/availableDays").setValue(weekDayString)
             self.ref.child("users/\(user.uid)/availableDaysArray").setValue(weekDayArray)
             self.ref.child("users/\(user.uid)/languages").setValue(languages)
