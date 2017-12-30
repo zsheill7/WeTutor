@@ -6,6 +6,8 @@ Visit our website at http://wetutorapp.com
 
 If you wish to test out WeTutor, feel free to use the email tokkitechnology@gmail.com and the password tokkitech.
 
+Contact us at info@wetutorapp.com.
+
 <img src="Assets/WeTutor Screenshots/Calendar.png" alt = "pic" width="350"> &nbsp; &nbsp;<img src="Assets/WeTutor Screenshots/studentscreen.PNG" alt ="signup" width="350">
 
 <img src="Assets/WeTutor Screenshots/Users.png" alt ="signup" width="350"> &nbsp; &nbsp;<img src="Assets/WeTutor Screenshots/main screen.png" alt = "pic" width="350">
