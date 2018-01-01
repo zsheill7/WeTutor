@@ -93,6 +93,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
     }
     
+    // Instantiates TutorsTableViewController
     class func instantiateFromStoryboard() -> TutorsTableViewController {
         let storyboard = UIStoryboard(name: "MenuViewController", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: String(describing: self)) as! TutorsTableViewController
@@ -136,6 +137,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
         
         self.finalUserList.removeAll()
+        // Creates list of user (either tutors or students) for the current user to view
         FriendSystem.system.addUserObserver { () in
             for user in FriendSystem.system.userList {
                 var contains = false
@@ -151,14 +153,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             for (index, user) in FriendSystem.system.userList.enumerated() {
                 print("FriendSystem.system.userList \(index) \(user.uid)")
             }
-            for (index, user) in self.finalUserList.enumerated() {
-                print("1finalUserList  \(index) \(user.uid)")
-            }
-            
-            
+                                       
             let userCoordinate = self.currentUser!.coordinate
             let currentUserUID = Auth.auth().currentUser?.uid
             
+            // Adds user in Firebase snapshot to user list if they are near the current user
             self.userRef.observe(.value, with: { (snapshot: DataSnapshot) in
                 var newUsers = [User]()
                 for user in snapshot.children {
@@ -197,7 +196,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
         }
         
-      //  FriendSystem.system.friendListTwo.removeAll()
+        // Stores information about the current user's friends for updating the user table
         FriendSystem.system.addFriendObserverTwo(friendListNumber: 2) {
             for friend in FriendSystem.system.friendListTwo {
                 self.friendUserUIDList.append(friend.uid)
@@ -215,18 +214,17 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         view.addSubview(segmentedControl)
        
         self.tableView.reloadData()
-        
     }
     
     var screenBounds = UIScreen.main.bounds
    
+    // Programatically sets up UI for user cells
     func getColoredView() -> UIView{
         let width = screenBounds.size.width
         let height = screenBounds.size.height
         let cellHeight = 135
         let cornerRadius:CGFloat = 5
         let coloredRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 8, width: 77, height: cellHeight))
-        
         
         coloredRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
         coloredRoundedView.layer.masksToBounds = false
@@ -242,6 +240,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         return coloredRoundedView
     }
     
+    // Sets up filter for selecting subjects
     func setupDropDown() {
         // The view to which the drop down will appear on
         dropdownButton.width = self.view.frame.width - 10
@@ -269,6 +268,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
     }
     
+    // Begin tutorial if user has not yet completed it
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
         if currentUser?.completedTutorial == false {
@@ -279,57 +279,10 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.coachMarksController.stop(immediately: true)
     }
-
-    func startObservingDB () {
-        
-        if currentUser != nil {
-            
-            let userCoordinate = currentUser!.coordinate
-            let currentUserUID = Auth.auth().currentUser?.uid
-            
-            userRef.observe(.value, with: { (snapshot: DataSnapshot) in
-                var newUsers = [User]()
-                for user in snapshot.children {
-                    
-                    var userObject = User(snapshot: user as! DataSnapshot)
-                    let coordinate = CLLocation(latitude: userObject.latitude, longitude: userObject.longitude)
-                    let isTutor = userObject.isTutor
-                    userObject.coordinate = coordinate
-                    
-                    let distanceBetween = coordinate.distance(from: userCoordinate)
-                    userObject.distanceFromUser = distanceBetween
-                    print("TutorsTableViewController: distanceBetween: \(distanceBetween)")
-                    if distanceBetween <= 50000  {
-                        print("TutorsTableViewController: Distance within 50000")
-                        if (self.currentUser?.isTutor == true && isTutor == false) ||
-                            (self.currentUser?.isTutor == false && isTutor == true) {
-                            if userObject.uid != currentUserUID {
-                                var doesContain = false
-                                for user in newUsers {
-                                    if user.uid == userObject.uid {
-                                        doesContain = true
-                                    }
-                                }
-                                if doesContain == false {
-                                    newUsers.append(userObject)
-                                }
-                            }
-                        }
-                    }
-                }
-                    
-                self.tutors = newUsers
-                self.tableView.reloadData()
-            }) { (error: Error) in
-                print("inside error")
-                print(error)
-            }
-        }
-    }
     
+    // Tutor/student filter
     func didSelect(_ segmentIndex: Int) {
         self.segmentIndexIsTutor = segmentIndex
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
@@ -340,6 +293,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
     }
     
+    // Universal filter for students/tutors/school subjects
     func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
             finalUserList = [User]()
             for user in FriendSystem.system.userList {
@@ -386,7 +340,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         return 1
     }
     
-    
     func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkAt index: Int) -> CoachMark {
         return coachMarksController.helper.makeCoachMark(for: self.dropdownButton)
     }
@@ -400,7 +353,8 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
         return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
     }
-
+    
+    // Begin a new chat with another user
     @IBAction func createNewChat(_ sender: Any) {
         let userID = Auth.auth().currentUser?.uid
         var finishedObserve = false
@@ -430,6 +384,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
     }
     
+    // Create a chat channel with another user
     func createChannel(_ otherUser: User) {
         let userDefaults = UserDefaults.standard
         let isTutor = FriendSystem.system.currentUser?.isTutor
@@ -490,6 +445,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
     }
     
+    // Register user cell for row
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "TutorCell")
         var cell = tableView.dequeueReusableCell(withIdentifier: "TutorCell") as? UserCellThree
