@@ -1,6 +1,6 @@
 //
 //  TutorsTableViewController.swift
-//  TutorMe
+//  WeTutor
 //
 //  Created by Zoe on 12/22/16.
 //  Copyright © 2017 Zoe Sheill. All rights reserved.
@@ -24,13 +24,11 @@ extension Array {
     }
 }
 
-
 class TutorTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
-    
     
     @IBOutlet weak var contactButton: NSLayoutConstraint!
     override func awakeFromNib() {
@@ -68,16 +66,12 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     var friendUserUIDList = [String]()
     
     @IBOutlet weak var tableView: UITableView!
-   // @IBOutlet weak var dropdownView: UIView!
     
     @IBOutlet weak var dropdownButton: UIButton!
     
-    
-
     @IBAction func pressedShowDropdown(_ sender: Any) {
         dropDown.show()
     }
-    
     
     fileprivate var channelRefHandle: DatabaseHandle?
     fileprivate var channels: [Channel] = []
@@ -129,8 +123,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.tableView.reloadData()
             DispatchQueue.main.asyncAfter(deadline: when) {
                 self.tableView.endRefreshing(at: .top)
-                //self.tableView.removePullToRefresh(self.tableView.topPullToRefresh!)
-                
             }
         }
         let titles = ["Tutors", "Students"]
@@ -188,8 +180,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                                     }
                                 }
                                 if doesContain == false {
-                                    
-                                    
                                     newUsers.append(userObject)
                                 }
                             }
@@ -215,7 +205,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
 
         self.view.addFlippedBackground()
-        //self.view.addFullScreenBackground("background-green flipped")
         
         let segmentedControl = TwicketSegmentedControl(frame: frame)
         segmentedControl.setSegmentItems(titles)
@@ -230,10 +219,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         
     }
     
-    
-    
     var screenBounds = UIScreen.main.bounds
-    
    
     func getColoredView() -> UIView{
         let width = screenBounds.size.width
@@ -302,8 +288,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         self.coachMarksController.stop(immediately: true)
     }
 
-    
-    
     func startObservingDB () {
         
         if currentUser != nil {
@@ -335,9 +319,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                                     }
                                 }
                                 if doesContain == false {
-                                    
-                                
-                                newUsers.append(userObject)
+                                    newUsers.append(userObject)
                                 }
                             }
                         }
@@ -353,66 +335,16 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         }
     }
     
-    func userArrayDoesContain() {
-        
-    }
-    
-    
-    
     func didSelect(_ segmentIndex: Int) {
         print("didSelect")
         self.segmentIndexIsTutor = segmentIndex
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
-        /*switch segmentIndex {
-        case 0: //tutors
-            finalUserList.removeAll()
-            for user in FriendSystem.system.userList {
-                if user.isTutor == true {
-                    
-                    finalUserList.append(user)
-                    
-                }
-            }
-                        tableView.reloadData()
-        case 1: //students
-            finalUserList.removeAll()
-            for user in FriendSystem.system.userList {
-                if user.isTutor != true {
-                    finalUserList.append(user)
-                    
-                }
-            }
-            tableView.reloadData()
-        case 2: //everyone
-         
-            finalUserList = FriendSystem.system.userList
-            tableView.reloadData()
-        default:
-           
-            finalUserList = FriendSystem.system.userList
-            tableView.reloadData()
-        }*/
-        
     }
     
     func filterBySubject(_ segmentItem: String) {
         print("filterBySubject")
         self.segmentItemSubject = segmentItem
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
-        /*if segmentItem == "All Subjects" {
-            self.didSelect(dropDown.indexForSelectedRow!)
-        } else {
-            finalUserList = [User]()
-            for user in FriendSystem.system.userList {
-                for subject in user.preferredSubjects {
-                    if subject == segmentItem {
-                        finalUserList.append(user)
-                    }
-                }
-            }
-            tableView.reloadData()
-        }*/
-
     }
     
     func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
@@ -434,9 +366,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                     }
                 }
             }
-        
             tableView.reloadData()
-        //}
     }
     
     
@@ -448,13 +378,10 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return tutors.count
-        
         return finalUserList.count
     }
     
@@ -484,10 +411,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
 
     @IBAction func createNewChat(_ sender: Any) {
-        /*if let uid = (sender as AnyObject).accessibilityIdentifier {
-            
-            createChannel(otherUser: uid!)
-        }*/
         let userID = Auth.auth().currentUser?.uid
         print("create new Chat")
        
@@ -513,38 +436,17 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                         } else {
                             self.senderDisplayName = Auth.auth().currentUser?.email
                         }
-                        
-                        
                         self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
                         
                     }
                 }
                 
             })
-            if finishedObserve == false {
-                print("finishedObserve == false")
-               //createChannel(uid!)
-            }
         }
-        
-       
-        
-        
     }
     
-    
-    
     func createChannel(_ otherUser: User) {
-        
-        
-        
-        /*let userDefaults = UserDefaults.standard
-         if let isTutor = userDefaults.value(forKey: "isTutor") as? Bool,
-         let userName = userDefaults.value(forKey: "name") as? String {
-         }
-         }*/
         let userDefaults = UserDefaults.standard
-       // let isTutor = userDefaults.value(forKey: "isTutor") as? Bool
         let isTutor = FriendSystem.system.currentUser?.isTutor
         
         if let userID = Auth.auth().currentUser?.uid {
@@ -560,21 +462,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             tutorName = "Chat"
             tuteeName = "Chat"
         }
-        
-        
-        
-       // let newCalendarId = createCalendar(destUser: otherUser)
 
         let channelItem = [
             "tutorName": tutorName,
             "tuteeName": tuteeName,
-           // "calendarId": newCalendarId
         ]
         
         let userID = Auth.auth().currentUser?.uid
-        
-
-        
         let uuid = UUID().uuidString
         self.newChannel = Channel(id: uuid, name: channelItem["tutorName"]!, tutorName: tutorName, tuteeName: tuteeName)
         if let userName = userDefaults.value(forKey: "name") as? String {
@@ -584,7 +478,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             self.senderDisplayName = Auth.auth().currentUser?.email
         }
         
-
         let userChannelRef = userRef.child(userID!).child("channels")
         let newChannelRef = channelRef.child(uuid)
         newChannelRef.setValue(channelItem)
@@ -592,13 +485,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         //This sets the channel item in the child "channels"
         userChannelRef.child(uuid).child("tutorName").setValue(tutorName)
         userChannelRef.child(uuid).child("tuteeName").setValue(tuteeName)
-      //  userChannelRef.child(uuid).child("calendarId").setValue(newCalendarId)
         
         //This adds the other user as a "friend" child to the current user ref and vice versa
         FriendSystem.system.acceptFriendRequest(otherUser.uid)
-        
-       // self.performSegue(withIdentifier: "toChatVC", sender: self.newChannel)
-        
     }
     
     //This function creates a new calendar identifier to add to a newly created channel
@@ -608,30 +497,17 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("in did select")
-       
-        
         let userAtRow = finalUserList[indexPath.row]
         
         let tutor = userAtRow
         self.UID = tutor.uid
         self.destinationUser = tutor
         self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
-        
     }
-
- 
-
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
-        
-        // Create cell
-        //var cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCellThree
-        
-        
-            tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "TutorCell")
-           var cell = tableView.dequeueReusableCell(withIdentifier: "TutorCell") as? UserCellThree
+        tableView.register(UINib(nibName: "UserCellThree", bundle: nil), forCellReuseIdentifier: "TutorCell")
+        var cell = tableView.dequeueReusableCell(withIdentifier: "TutorCell") as? UserCellThree
         
         tableView.register(UINib(nibName: "TuteeUserCell", bundle: nil), forCellReuseIdentifier: "TuteeCell")
         var tuteeCell = tableView.dequeueReusableCell(withIdentifier: "TuteeCell") as? TuteeUserCell
@@ -639,21 +515,13 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         tuteeCell?.selectionStyle = UITableViewCellSelectionStyle.none
         
-       var ref: DatabaseReference!
+        var ref: DatabaseReference!
         
         ref = Database.database().reference()
         
         let userAtRow = finalUserList[indexPath.row]
-        
-        for (index, auser) in finalUserList.enumerated() {
-            print("finalUserList \(index) \(auser.uid)")
-        }
-        
         let userID = Auth.auth().currentUser?.uid
-        
         cell?.contentView.backgroundColor = UIColor.clear
-        
-               
         
         if userAtRow.isTutor == true {
             let friendInArray = friendUserUIDList.doesContain(obj: userAtRow.uid)
@@ -662,9 +530,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             } else {
                 cell!.friendIndicatorView.image = nil
             }
-            
-           
-
             
             cell!.nameLabel.text = "\(userAtRow.name)"
             cell!.schoolLabel.text = "\(userAtRow.school)"
@@ -695,20 +560,14 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 cell!.hourlyPriceLabel.text = "$" + hourlyPriceString
             }
             
-            
             let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
-            //print(subjectsString)
             
             if subjectsString != nil && cell!.subjectLabel != nil{
                 cell!.subjectLabel.text = "\(subjectsString)"
-            } else {
-               // cell!.subjectLabel.text = ""
             }
-            
             
             print("Name: \(userAtRow.name)")
             print(cell!.nameLabel.text)
-            
             
             if cell!.nameLabel.isTruncated() {
                 var delimiter = " "
@@ -720,25 +579,16 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
          
             cell!.infoButton.contentMode = .scaleAspectFit
             cell!.addFriendButton.contentMode = .scaleAspectFit
-            
-            
-            print("in cell for row")
             cell!.setAddFriendFunction {
                 print(userAtRow)
                 let id = userAtRow.uid
                 print("userAtRow.uid \(id)")
-                //FriendSystem.system.sendRequestToUser(id)
                 FriendSystem.system.acceptFriendRequest(id)
                 self.createChannel(userAtRow)
                 self.displayAlert("Success!", message: "Contact Added")
                 FriendSystem.system.addFriendObserver(friendListNumber: 1) {
-                    print("chaFriendSystem.system.friendListOne  \(FriendSystem.system.friendListOne.count)")
-                    
-                    
-                   // self.tableView.reloadData()
-                    // self.observeChannels()
+                    print("FriendSystem.system.friendListOne  \(FriendSystem.system.friendListOne.count)")
                 }
-
             }
          
             cell!.setInfoFunction {
@@ -758,12 +608,9 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             }
             cell!.colorView = getColoredView()
             
-            
-            
             tuteeCell!.nameLabel.text = "\(userAtRow.name)"
             tuteeCell!.schoolLabel.text = "\(userAtRow.school)"
             tuteeCell!.gradeLabel.text = "\(userAtRow.grade)"
-            
             
             let numberOfRatings = userAtRow.numberOfRatings
             var numberOfRatingsString = "\(String(describing: numberOfRatings)) ratings"
@@ -777,32 +624,22 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 cell!.ratingView.rating = 0
             }
             
-           
             cell!.numberOfRatingsLabel.text = numberOfRatingsString
             
-           
             let subjectsString = userAtRow.preferredSubjects.joined(separator: ", ")
-            //print(subjectsString)
             
             if subjectsString != nil && tuteeCell!.subjectLabel != nil{
                 tuteeCell!.subjectLabel.text = "\(subjectsString)"
-            } else {
-                // tuteeCell!.subjectLabel.text = ""
             }
-            
-            
             print("Name: \(userAtRow.name)")
             print(tuteeCell!.nameLabel.text)
             tuteeCell!.infoButton.contentMode = .scaleAspectFit
             tuteeCell!.addFriendButton.contentMode = .scaleAspectFit
             
-            
-            print("in tuteeCell for row")
             tuteeCell!.setAddFriendFunction {
                 print(userAtRow)
                 let id = userAtRow.uid
                 print("userAtRow.uid \(id)")
-                //FriendSystem.system.sendRequestToUser(id)
                 FriendSystem.system.acceptFriendRequest(id)
                 self.createChannel(userAtRow)
                 self.displayAlert("Success!", message: "Contact Added")
@@ -814,46 +651,31 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 self.destinationUser = tutor
                 self.performSegue(withIdentifier: "toMoreInfoVC", sender: self)
             }
-
         }
         if userAtRow.isTutor == true {
             return cell!
         }
         return tuteeCell!
     }
-    
-    
-    
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        print("in prepare for segue")
-       if segue.identifier == "toChatVC" {
-        
-                print("toChatVC")
-                if let channel = sender as? Channel {
-                    print("in if let")
-                    
-                    let chatVc = segue.destination as! ChatViewController
-                    
-                    chatVc.senderDisplayName = senderDisplayName
-                    chatVc.channel = channel
-                    chatVc.channelRef = channelRef.child(channel.id)
-                }
-       } else if segue.identifier == "toMoreInfoVC" {
-        print("toMoreInfoVC")
-        let moreInfoVC = segue.destination as! MoreInfoViewController
-        
-        moreInfoVC.UID = UID
-        //moreInfoVC.indexPathRow = indexPath.row
-        moreInfoVC.destUser = destinationUser
-        
-    }
-        
+        if segue.identifier == "toChatVC" {
+                    print("toChatVC")
+                    if let channel = sender as? Channel {
+                        let chatVc = segue.destination as! ChatViewController
 
-        
-        
-        
+                        chatVc.senderDisplayName = senderDisplayName
+                        chatVc.channel = channel
+                        chatVc.channelRef = channelRef.child(channel.id)
+                    }
+           } else if segue.identifier == "toMoreInfoVC" {
+            print("toMoreInfoVC")
+            let moreInfoVC = segue.destination as! MoreInfoViewController
+
+            moreInfoVC.UID = UID
+            moreInfoVC.destUser = destinationUser
+         }
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor(white: 1, alpha: 0.0)
@@ -883,10 +705,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                             tutorOrTutee = "tutorName"
                         }
                     }
-                    else {
-                        // no highscore exists
-                    }
-                    
                     
                     if let name = channelData[tutorOrTutee] as! String!, name.characters.count > 0 {
                         self.channels.append(Channel(id: id, name: "Chat", tutorName: channelData["tutorName"] as! String, tuteeName: channelData["tuteeName"] as! String))
