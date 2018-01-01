@@ -39,9 +39,7 @@ class TutorTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }
-
 
 struct CoachMarkInfo {
     var title: String
@@ -99,7 +97,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     
     var dropDown: DropDown = DropDown()
     var segmentIndexIsTutor  = 0
-     var segmentItemSubject  = "All Subjects"
+    var segmentItemSubject  = "All Subjects"
     
     let coachMarksController = CoachMarksController()
     
@@ -190,7 +188,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 self.finalUserList = newUsers
                 self.tableView.reloadData()
             }) { (error: Error) in
-                print("inside error")
                 print(error)
             }
 
@@ -213,7 +210,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         segmentedControl.sliderBackgroundColor = UIColor.sliderGreen()//UIColor.flatBlue
         segmentedControl.backgroundColor = UIColor.clear
         view.addSubview(segmentedControl)
-        print(finalUserList.count)
        
         self.tableView.reloadData()
         
@@ -254,7 +250,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
         dropDown.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? SubjectCell else { return }
             
-            // Setup your custom UI components
+            // Setup custom UI components
             let currentSubject = subjectNames[index]
             cell.subjectLabel.text = currentSubject
             if let imageName: String = subjectImageNames[currentSubject] {
@@ -268,15 +264,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             
             self.filterBySubject(item)
         }
-        
-       
     }
     
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
-        
         if currentUser?.completedTutorial == false {
-        
             self.coachMarksController.start(on: self)
             self.userRef.child((currentUser?.uid)!).child("completedTutorial").setValue(true)
         }
@@ -336,26 +328,22 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     }
     
     func didSelect(_ segmentIndex: Int) {
-        print("didSelect")
         self.segmentIndexIsTutor = segmentIndex
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
     }
     
     func filterBySubject(_ segmentItem: String) {
-        print("filterBySubject")
         self.segmentItemSubject = segmentItem
         finalFilter(segmentIndexIsTutor: self.segmentIndexIsTutor, segmentItemSubject: self.segmentItemSubject)
     }
     
     func finalFilter(segmentIndexIsTutor: Int, segmentItemSubject: String) {
-    print("finalFilter")
             finalUserList = [User]()
             for user in FriendSystem.system.userList {
                 for subject in user.preferredSubjects {
                     if (subject == segmentItemSubject || segmentItemSubject == "All Subjects")  && ((segmentIndexIsTutor == 0 && user.isTutor == true) || (segmentIndexIsTutor == 1 && user.isTutor == false)){
                         var elementInArray = false
                         for lastUser in finalUserList {
-                            print("finalUserList2 \(lastUser.uid)")
                             if lastUser.uid == user.uid {
                                 elementInArray = true
                             }
@@ -412,14 +400,11 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
 
     @IBAction func createNewChat(_ sender: Any) {
         let userID = Auth.auth().currentUser?.uid
-        print("create new Chat")
-       
         var finishedObserve = false
         
         if let uid = (sender as AnyObject).accessibilityIdentifier {
             print(uid)
             channelRef.observe(DataEventType.value, with: { (snapshot) in
-                print("in observe")
                 let value = snapshot.value as? [String : AnyObject] ?? [:]
                 if let tuteeName = value["tuteeName"] as? String,
                     let tutorName = value["tutorName"] as? String {
@@ -428,10 +413,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                         self.newChannel = Channel(id: snapshot.key, name: "Chat", tutorName: tutorName, tuteeName: tuteeName)
                         let userDefaults = UserDefaults.standard
                          finishedObserve = true
-                        if let userName = userDefaults.value(forKey: "name") as? String {
-                            
-                            print(" if let userName = userDefaults.value(forKey: ) as? String {")
-                           
+                        if let userName = userDefaults.value(forKey: "name") as? String {                 
                             self.senderDisplayName = userID
                         } else {
                             self.senderDisplayName = Auth.auth().currentUser?.email
@@ -566,9 +548,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                 cell!.subjectLabel.text = "\(subjectsString)"
             }
             
-            print("Name: \(userAtRow.name)")
-            print(cell!.nameLabel.text)
-            
             if cell!.nameLabel.isTruncated() {
                 var delimiter = " "
                 var newstr = cell!.nameLabel.text
@@ -580,9 +559,7 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
             cell!.infoButton.contentMode = .scaleAspectFit
             cell!.addFriendButton.contentMode = .scaleAspectFit
             cell!.setAddFriendFunction {
-                print(userAtRow)
                 let id = userAtRow.uid
-                print("userAtRow.uid \(id)")
                 FriendSystem.system.acceptFriendRequest(id)
                 self.createChannel(userAtRow)
                 self.displayAlert("Success!", message: "Contact Added")
@@ -661,7 +638,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "toChatVC" {
-                    print("toChatVC")
                     if let channel = sender as? Channel {
                         let chatVc = segue.destination as! ChatViewController
 
@@ -670,7 +646,6 @@ class TutorsTableViewController: UIViewController, DZNEmptyDataSetSource, DZNEmp
                         chatVc.channelRef = channelRef.child(channel.id)
                     }
            } else if segue.identifier == "toMoreInfoVC" {
-            print("toMoreInfoVC")
             let moreInfoVC = segue.destination as! MoreInfoViewController
 
             moreInfoVC.UID = UID
