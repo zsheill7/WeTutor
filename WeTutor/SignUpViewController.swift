@@ -14,8 +14,6 @@ import RZTransitions
 import FirebaseAuth
 import Firebase
 import SCLAlertView
-//import FBSDKCoreKit
-//import FBSDKLoginKit
 import Popover
 
 extension UIView {
@@ -70,7 +68,6 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     let kInfoTitle = "Info"
     let kSubtitle = "You've just displayed this awesome Pop Up View"
     let blueColor: Int! = 0x22B573
-    //let user = Auth.auth().currentUser
     var ref: DatabaseReference!
     
     let lightGrayColor = UIColor.lightGray.lighten(byPercentage: 0.1)!
@@ -90,7 +87,6 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       // self.displayAlert("Welcome to WeTutor!", message: "If you wish to test out WeTutor, feel free to use the email tokkitechnology@gmail.com and the password tokkitech")
     }
     //MARK: viewDidLoad
     
@@ -106,35 +102,10 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         }
        
         self.view.addBackground("book.png")
-        
-        
         self.alreadySignedIn()
-        //Log in with Facebook
-        /*if (FBSDKAccessToken.current() != nil)
-        {
-            // User is already logged in     
-            print("(FBSDKAccessToken.current() != nil)")
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Tutor", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "tutorPagingMenuVC") as! PagingMenuViewController
-            self.present(viewController, animated: true, completion: nil)
-
-        }
-        else
-        {
-            print("create loginView")
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
-            self.view.addSubview(loginView)
-            let yValue = self.view.frame.height * 0.85
-            loginView.center = CGPoint(x: self.view.frame.width / 2, y: yValue)
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-        }
-        */
         
         RZTransitionsManager.shared().defaultPresentDismissAnimationController = RZZoomAlphaAnimationController()
         RZTransitionsManager.shared().defaultPushPopAnimationController = RZCardSlideAnimationController()
-        
-        //Prepares all the individual UI elements
         prepareInfoButton()
         prepareNameField()
         prepareEmailField()
@@ -143,7 +114,6 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         prepareNextButton()
         prepareForgotPasswordButton()
         prepareLoginButton()
-        
         self.hideKeyboardWhenTappedAround()
     }
     
@@ -166,64 +136,8 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
             }) { (error) in
                 print(error.localizedDescription)
             }
-        } else {
-            // No user is signed in.
-            // ...
         }
-
     }
-    
-    /*func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError?) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        // ...
-        
-        
-        
-        
-    }*/
-    //MARK: Facebook SDK Default Signin
-    
-   /* func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("User Logged In")
-        
-        if ((error) != nil)
-        {
-            // Process error
-            print("error1")
-            print(error)
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-            print("result was cancelled")
-            
-        }
-        else {
-            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            print("after let credential")
-            Auth.auth().signIn(with: credential) { (user, error) in
-                // ...
-                if let error = error {
-                    // ...
-                     self.displayAlert("Error", message: "Unable to access your account.")
-                    return
-                } else {
-                    if (user != nil) {
-                        let uid = user?.uid as String!
-                        let animalIndex =  Int(arc4random_uniform(6))
-                        let profileImage = UIImage(named: animalImageNames[animalIndex])
-                        let userInfo = ["name": user?.displayName, "email": user?.email]
-                        Database.database().reference().child("users/\(uid)").setValue(userInfo) // as well as other info
-                        self.setProfileImage(profileImage: profileImage!)
-                        self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
-                    }
-                }
-            }
-        }
-        
-    }*/
     
     //Automatically set your own profile image
     
@@ -234,18 +148,11 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         let currentUserUID = Auth.auth().currentUser?.uid
         let usersRef = Database.database().reference().child("users")
         
-        print("func setProfileImage(profileImage: UIImage) {")
-        
         if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
-            
-            print("if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {")
-            
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                
                 if error != nil {
                     return
                 }
-                
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                     
                     if currentUserUID != nil {
@@ -259,12 +166,6 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         }
         
     }
-    
-  
-    
-  /*  func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }*/
     
     // Create a new account
     func createAccount() {
@@ -280,18 +181,14 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
             self.displayAlert("Passwords Do Not Match", message: "Please re-enter passwords")
         } else {
             FriendSystem.system.createAccount(emailField.text!, password: passwordField.text!, name: nameField.text!) { (success) in
-                if success {
-                    print("You have successfully signed up")
-                                       
-                   /* let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.alert)
+                if success {                   
+                    let alert = UIAlertController(title: "Account Created", message: "Please verify your email by confirming the sent link.", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)*/
+                    self.present(alert, animated: true, completion: nil)
                     
                     self.performSegue(withIdentifier: "goToTutorOrTutee", sender: self)
-                    
-                    
                 } else {
-                    //self.displayAlert(title: "Unable to Sign Up", message: "Please try again later"/*error.localizedDescription*/)
+                    self.displayAlert(title: "Unable to Sign Up", message: "Please try again later"/*error.localizedDescription*/)
                 }
             }
         }
@@ -309,11 +206,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         let btn = RaisedButton(title: "Sign Up", titleColor: Color.grey.lighten3)
         btn.backgroundColor = UIColor(netHex: 0x51679F)
         btn.addTarget(self, action: #selector(handleNextButton(_:)), for: .touchUpInside)
-        
-        //view.layout(btn).width(310).height(constant).top(13 * constant).centerHorizontally()
         var verticalMult: CGFloat = 13
-        
-        
         view.layout(btn).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
     
@@ -325,9 +218,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         btn.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: 16)
         btn.setTitle("Forgot Your Password?", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleForgotPasswordButton(_:)), for: .touchUpInside)
-        
         var verticalMult: CGFloat = 15
-
         view.layout(btn).width(200).height(constant).top(verticalMult * constant).centerHorizontally()
     }
     
@@ -340,10 +231,7 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         
         btn.setTitle("Already Registered? Log In", for: UIControlState.normal)
         btn.addTarget(self, action: #selector(handleLogInButton(_:)), for: .touchUpInside)
-        
-         var verticalMult: CGFloat = 16
-        
-
+        var verticalMult: CGFloat = 16
         view.layout(btn).width(210).height(constant).top(verticalMult * constant).centerHorizontally()
     }
 
@@ -369,13 +257,10 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         createForgotPasswordAlert()
     }
     internal func handleLogInButton(_ button: UIButton) {
-        //SCLAlertView().showInfo("Hello Info", subTitle: "This is a more descriptive info text.") // Info
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "loginNC") as! UINavigationController
         controller.modalTransitionStyle = .flipHorizontal
         self.present(controller, animated: true, completion: nil)
-        
-        //createForgotPasswordAlert()
     }
     
     //MARK: Creates a popup SCLAlertView for retrieving password
@@ -464,9 +349,6 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
-        //self.popover = Popover(options: self.popoverOptions)
-        
-        //self.popover.show(tableView, point: self.rightButtomButton)
         popover.show(tableView, point: startPoint)
     }
     
@@ -500,21 +382,19 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
     fileprivate func preparePasswordField() {
         passwordField = TextField()
         passwordField.placeholder = "Password"
-        //passwordField.detail = "At least 8 characters"
         passwordField.clearButtonMode = .whileEditing
         passwordField.isVisibilityIconButtonEnabled = true
         passwordField.placeholderNormalColor = UIColor.white
         passwordField.dividerColor = UIColor.white
         passwordField.dividerNormalColor = UIColor.white
         passwordField.leftViewNormalColor = UIColor.white
-         passwordField.textColor = UIColor.white
-         passwordField.tintColor = UIColor.white
+        passwordField.textColor = UIColor.white
+        passwordField.tintColor = UIColor.white
         
         passwordField.dividerActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         passwordField.leftViewActiveColor = UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         passwordField.placeholderActiveColor =  UIColor(netHex: 0x51679F).lighten(byPercentage: 0.9)!
         
-        // Setting the visibilityIconButton color.
         passwordField.visibilityIconButton?.tintColor = Color.green.base.withAlphaComponent(passwordField.isSecureTextEntry ? 0.38 : 0.54)
         
         let leftView = UIImageView()
@@ -526,9 +406,6 @@ class SignUpViewController: UIViewController/*, FBSDKLoginButtonDelegate*/ {
         passwordField.leftViewActiveColor = .green
         
         var verticalMult: CGFloat = 8
-        
-        
-        
         view.layout(passwordField).top(verticalMult * constant).horizontally(left: horizConstant, right: horizConstant)
     }
     
