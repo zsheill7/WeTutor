@@ -2,7 +2,7 @@
 
 WeTutor is a tutoring marketplace that allows students needing academic assistance to connect with nearby tutors. Tutors may offer their services for a fixed price or for free as volunteers, and the messaging and calendar functions allow students and tutors to coordinate meetings efficiently.
 
-Visit our website at http://wetutorapp.com
+Visit our website at http://www.wetutorapp.com
 
 If you wish to test out WeTutor, feel free to use the email tokkitechnology@gmail.com and the password tokkitech.
 
